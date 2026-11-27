@@ -1,0 +1,1781 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Thyago Hoffman" />
+<meta name="reply-to" content="hoffmandev@outlook.com" />
+<title>PREFEITURA MUNICIPAL DE BOA ESPERANÇA - ES</title>
+<meta name="description" content="Boa Esperança é um município brasileiro do estado do Espírito Santo. Pertence à Mesorregião do Noroeste Espírito-Santense e à Microrregião..." />
+
+<meta property="og:title" content="PREFEITURA MUNICIPAL DE BOA ESPERANÇA - ES" />
+<meta property="og:site_name" content="PREFEITURA MUNICIPAL DE BOA ESPERANÇA - ES" />
+<meta property="og:url" content="https://boaesperanca.es.gov.br/" />
+<meta property="og:type" content="government" />
+<meta property="og:description" content="Boa Esperança é um município brasileiro do estado do..." />
+<!-- <meta property="og:image" content="" /> -->
+<meta property="og:image" content="https://boaesperanca.es.gov.br/assets/img/logotipo-share.png" />
+<meta property="og:type" content="article" />
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PREFEITURA MUNICIPAL DE BOA ESPERANÇA - ES" />
+<meta name="twitter:description" content="Boa Esperança é um município brasileiro do estado do Espírito Santo. Pertence à Mesorregião do Noroeste Espírito-Santense e à Microrregião..." />
+<!-- <meta name="twitter:image" content="" /> -->
+<meta property="twitter:image" content="https://boaesperanca.es.gov.br/assets/img/logotipo-share.png" />
+<meta property="twitter:type" content="article" />
+<link rel='shortcut icon' type='image/x-icon' href='https://boaesperanca.es.gov.br/assets/img/favicon.ico' />
+<!-- ================================
+Importa o Pre-Loader ================ -->
+<link rel="stylesheet" href="https://boaesperanca.es.gov.br/statics/assets/plugins/loaders/loaders.css-master/loaders.css?v=1795780471" />
+<!-- ================================ -->
+
+
+<link rel='stylesheet' href='https://boaesperanca.es.gov.br/statics/bootstrap/css/bootstrap.min.css?v=1795780471' type='text/css' />
+
+<link rel="stylesheet" href="https://boaesperanca.es.gov.br/statics/assets/plugins/prettyPhoto/css/prettyPhoto.css?v=1795780471" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://boaesperanca.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.css?v=1795780471" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" type="text/css" media="screen" />
+<link href='https://boaesperanca.es.gov.br/statics/frontend/acessibilidade/style_acessibilidade.css?v=1795780471' rel='stylesheet' type='text/css'>
+<script src='https://boaesperanca.es.gov.br/statics/frontend/acessibilidade/js_acessibilidade.js?v=1795780471'></script>
+<link href='https://unpkg.com/swiper@8/swiper-bundle.min.css?v=1795780471' rel='stylesheet' type='text/css'>
+<link href='https://boaesperanca.es.gov.br/statics/assets/plugins/validation/css/validationEngine.jquery.min.css?v=1795780471' rel='stylesheet' type='text/css'>
+<link href='https://boaesperanca.es.gov.br/statics/frontend/select2/dist/css/select2.min.css?v=1795780471' rel='stylesheet' type='text/css'>
+<link href='https://boaesperanca.es.gov.br/assets/css/style_site.css?v=1795780471' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <section>
+    <div id="preloader">
+        <div class="loaders">
+            <div class="preloader">
+                <div class="loader-inner ball-clip-rotate">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- Bloco Acessibilidade -->
+<section>
+    <nav class="navbar navbar-default back-primary2" id="acessibilidade">
+        <div class="container-fluid">
+            <div class="row bloco-middle-center">
+                <div class="col-lg-11 col-xs-12">
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header navbar-right text-right">
+                        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" role="button" data-target="#MENU-ACESSIBILIDADE" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button> -->
+                        <a class="navbar-toggle collapsed visible-xs" data-toggle="collapse" data-target="#MENU-ACESSIBILIDADE" aria-expanded="false" title="Menu Acessibilidade">ACESSIBILIDADE</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="MENU-ACESSIBILIDADE">
+                        <ul class="nav navbar-nav col-sm-6">
+                            <li><a href="#pagina_site" title="Ir para o conteúdo" accesskey=""><span>1</span> Ir para o conteúdo</a></li>
+                            <li><a href="#bloco-logo" title="Ir para o topo" accesskey="2"><span>2</span> Ir para o menu</a></li>
+                            <li><a href="#bloco-logo" onclick="openSearch()" title="Ir para o rodapé" accesskey="3"><span>3</span> Ir para a busca</a></li>
+                            <li><a href="#horarios" title="Ir para o rodapé" accesskey="4"><span>4</span> Ir para o rodapé</a></li>
+                            <li><a class="acessibilidade_fonte" accesskey="4" onClick="fonte('d');" title="Diminuir tamanho da fonte"><span>A<sup>-</sup></span> Diminuir fonte</a></li>
+                            <li><a class="acessibilidade_fonte" accesskey="3" onClick="fonte('a');" title="Aumentar tamanho da fonte"><span>A<sup>+</sup></span> Aumentar fonte</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right col-sm-6">
+                            <li><a href="https://boaesperanca.es.gov.br/acessibilidade" accesskey="6" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Acessibilidade do site"><span><img style="width:16px" src="https://boaesperanca.es.gov.br/assets/img/simbolo-universal-de-acessibilidade-seeklogo.png" alt=""></span> Acessibilidade</a></li>
+                            <li><a accesskey="5" onclick="ativar_contraste()" title="Contraste do Site"><span><i class="glyphicon glyphicon-adjust"></i></span> Contraste</a></li>
+                            <li><a href="https://boaesperanca.es.gov.br/sitemap" title="Contraste do Site"><span><i class="glyphicon glyphicon-map-marker"></i></span> Mapa do Site</a></li>
+                            <li class="dropdown">
+                                <a class=" dropdown-toggle submenu-institucional" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Links dos Sistemas"><span><i class="fa fa-chevron-down"></i></span> Sistemas </a>
+                                <ul class="dropdown-menu">
+                                                                                                                <li><a href="https://boaesperanca.prefeiturasempapel.com.br/Sistema/Login.aspx" target="_blank" accesskey="2" title="Ir para Processo Eletrônico">Processo Eletrônico</a></li>
+                                                                                                            <li><a href="https://boaesperanca.es.gov.br/sistema" target="_blank" accesskey="2" title="Ir para intranet">Intranet</a></li>
+
+                                    <!-- <li><a href="https://boaesperanca.es.gov.br/pagina/popup/2156" target="_blank" title="Ir para LGPD">LGPD</a></li> -->
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+</section>
+<!-- / Bloco Acessibilidade -->
+  <!-- Bloco Logo -->
+  <section>
+    <div class="container-fluid hidden-xs" id="bloco-logo">
+      <div class="row bloco-center">
+        <div class="col-lg-11 col-sm-12 bloco-vertical-middle justify-content-space-beetween">
+          <div class="col-sm-4 pad-left-0">
+            <a cl href="https://boaesperanca.es.gov.br/" title="Direcionar para a Home do Site">
+              <img id="logo-menu" class="img-responsive no-margin" src="https://boaesperanca.es.gov.br/assets/img/logo_site.png" alt="LOGO DE PREFEITURA MUNICIPAL DE BOA ESPERANÇA - ES" />
+            </a>
+          </div>
+          <div class="col-sm-8 bloco-vertical-middle no-padding justify-content-end">
+            <ul class="nav navbar-nav navbar-right">
+              <li class='presentation '><a class='' href='https://boaesperanca.prefeiturasempapel.com.br/'  title='Direcionar para Consulta de Processos'> Consulta de Processos</a></li><li class='presentation '><a class='' href='/pagina/ler/1046/controladoria-geral-do-municipio-cgm' target="_blank" title='Direcionar para Controladoria'> Controladoria</a></li><li class='presentation '><a class='' href='https://boaesperanca-es.portaltp.com.br/api/dadosabertos.aspx' target="_blank" title='Direcionar para Dados Abertos'> Dados Abertos</a></li><li class='presentation '><a class='' href='/secretaria' target="_blank" title='Direcionar para Secretarias'> Secretarias</a></li><li class='presentation '><a class='' href='/pagina/ler/1077/legislacao-tributaria-municipal' target="_blank" title='Direcionar para Legislação Tributária'> Legislação Tributária</a></li><li class='presentation '><a class='' href='/pagina/ler/1084/legislacao-covid-19' target="_blank" title='Direcionar para Legislação Covid-19'> Legislação Covid-19</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1145/denuncia-anonima-de-corrupcao' target="_blank" title='Direcionar para Denúncia de Corrupção (Anônima)'> Denúncia de Corrupção (Anônima)</a></li><li class='presentation '><a class='' href='https://boaesperanca-es.portaltp.com.br/consultas/documentos.aspx?id=272'  title='Direcionar para Conselho da Defesa Civil'> Conselho da Defesa Civil</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1153/audiencia-publica'  title='Direcionar para Audiência Pública PPA 2026 / 2029'> Audiência Pública PPA 2026 / 2029</a></li><li class='presentation '><a class='' href='/pagina/ler/1157/audiencias-publicas'  title='Direcionar para Audiências Públicas'> Audiências Públicas</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1155/e-sic'  title='Direcionar para e-SIC'> e-SIC</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/documento?tipo=74'  title='Direcionar para Educação'> Educação</a></li>            </ul>
+            <ul class="nav navbar-nav navbar-right">
+              <li>
+                <form class="form-padrao hidden" action="https://boaesperanca.es.gov.br/busca">
+                  <fieldset class="no-padding d-flex no-margin">
+                    <input type="text" class="form-control" name="q" id="q" placeholder="Faça sua busca aqui" />
+                    <span class="input-group-btn d-flex">
+                      <button class="btn" type="button" onclick="openSearch()"><i class="fa fa-search"></i></button>
+                    </span>
+                  </fieldset>
+                </form>
+                <button class="btn btn-default botao-busca" type="button" onclick="openSearch()"><i class="fa fa-search"></i></button>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Bloco Logo -->
+
+  <!-- Bloco Menu -->
+  <section>
+    <header class="container-fluid" id="bloco-menu">
+      <div class="row bloco-center">
+        <div class="col-lg-11 col-xs-12">
+          <nav class="navbar">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a href="https://boaesperanca.es.gov.br/" title="Direcionar para a Home do Site"><img class="navbar-brand visible-xs" src="https://boaesperanca.es.gov.br/assets/img/logo_site.png" alt="Logo de PREFEITURA MUNICIPAL DE BOA ESPERANÇA - ES" /></a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="menu">
+              <ul class="nav navbar-nav">
+                <li class='presentation '><a class='' href='#'  title='Direcionar para PÁGINA INICIAL'> PÁGINA INICIAL</a></li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para MUNICÍPIO'>
+                
+                MUNICÍPIO
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/pagina/ler/1017/historia-do-municipio'  title='Direcionar para História'> História</a></li><li class='presentation '><a class='' href='/pagina/ler/1036/hino-do-municipio'  title='Direcionar para Hino'> Hino</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para INSTITUCIONAL'>
+                
+                INSTITUCIONAL
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='https://drive.google.com/file/d/1N9qizI4U2_3GsCJxxGJ5OOWY2mrPk9k9/view?usp=sharing'  title='Direcionar para Plano de Governança Municipal'> Plano de Governança Municipal</a></li><li class='presentation '><a class='' href='/pagina/ler/1004/estrutura-organizacional' target="_blank" title='Direcionar para Estrutura Organizacional'> Estrutura Organizacional</a></li><li class='presentation '><a class='' href='/pagina/ler/1038/conselhos-municipais' target="_blank" title='Direcionar para Conselhos Municipais'> Conselhos Municipais</a></li><li class='presentation '><a class='' href='/pagina/ler/1008/localizacao' target="_blank" title='Direcionar para Localização'> Localização</a></li><li class='presentation '><a class='' href='/pagina/ler/1037/prefeito' target="_blank" title='Direcionar para Prefeito'> Prefeito</a></li><li class='presentation '><a class='' href='/pagina/ler/1044/vice-prefeito' target="_blank" title='Direcionar para Vice-Prefeito'> Vice-Prefeito</a></li><li class='presentation '><a class='' href='/pagina/ler/1058/unidades-escolares' target="_blank" title='Direcionar para Unidades Escolares'> Unidades Escolares</a></li><li class='presentation '><a class='' href='/pagina/ler/1059/unidades-de-saude' target="_blank" title='Direcionar para Unidades de Saúde'> Unidades de Saúde</a></li><li class='presentation '><a class='' href='/pagina/ler/1082/ipasbe' target="_blank" title='Direcionar para IPASBE'> IPASBE</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1152/defesa-civil' target="_blank" title='Direcionar para Defesa Civil'> Defesa Civil</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para PARCERIAS'>
+                
+                PARCERIAS
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/documento?tipo=72'  title='Direcionar para Projetos de Parcerias Público - Privada (PPP)'> Projetos de Parcerias Público - Privada (PPP)</a></li><li class='presentation '><a class='' href='/documento?tipo=65'  title='Direcionar para Parcerias/MROSC'> Parcerias/MROSC</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para TRANSPARÊNCIA'>
+                
+                TRANSPARÊNCIA
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='https://boaesperanca-es.portaltp.com.br/consultas/documentos.aspx?id=1513'  title='Direcionar para Decretos'> Decretos</a></li><li class='presentation '><a class='' href='https://boaesperanca-es.portaltp.com.br/consultas/documentos.aspx?id=1514'  title='Direcionar para Portarias'> Portarias</a></li><li class='presentation '><a class='' href='http://boaesperanca-es.portaltp.com.br/' target="_blank" title='Direcionar para Portal da Transparência'> Portal da Transparência</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1147/modelo-de-declaracoes'  title='Direcionar para Modelo de Declarações'> Modelo de Declarações</a></li><li class='presentation '><a class='' href='/licitacao' target="_blank" title='Direcionar para Licitações'> Licitações</a></li><li class='presentation '><a class='' href='http://boaesperanca-es.portaltp.com.br/consultas/documentos.aspx?id=8' target="_blank" title='Direcionar para Contratos'> Contratos</a></li><li class='presentation '><a class='' href='/documento?tipo=15' target="_blank" title='Direcionar para Concursos Públicos'> Concursos Públicos</a></li><li class='presentation '><a class='' href='/pagina/ler/1083/processo-seletivo-e-concursos-' target="_blank" title='Direcionar para Processos Seletivos'> Processos Seletivos</a></li><li class='presentation '><a class='' href='http://boaesperanca-es.portaltp.com.br/consultas/documentos.aspx?id=136' target="_blank" title='Direcionar para Compras Emergenciais Covid-19'> Compras Emergenciais Covid-19</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para LEGISLAÇÃO'>
+                
+                LEGISLAÇÃO
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='https://boaesperanca.camarasempapel.com.br/legislacao'  title='Direcionar para Legislação Municipal'> Legislação Municipal</a></li><li class='presentation '><a class='' href='https://boaesperanca.prefeiturasempapel.com.br/legislacao/consulta-legislacao.aspx?tipo=6' target="_blank" title='Direcionar para Decretos até 2024'> Decretos até 2024</a></li><li class='presentation '><a class='' href='https://boaesperanca.prefeiturasempapel.com.br/legislacao/consulta-legislacao.aspx?tipo=7' target="_blank" title='Direcionar para Portarias até 2024'> Portarias até 2024</a></li><li class='presentation '><a class='' href='/pagina/ler/1084/legislacao-covid-19' target="_blank" title='Direcionar para Covid-19'> Covid-19</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para SERVIÇOS'>
+                
+                SERVIÇOS
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='https://ioes.dio.es.gov.br/dom' target="_blank" title='Direcionar para Diário Municipal ES'> Diário Municipal ES</a></li><li class='presentation '><a class='' href='/pagina/ler/1040/minha-casa-minha-vida' target="_blank" title='Direcionar para Minha Casa Minha Vida'> Minha Casa Minha Vida</a></li><li class='presentation '><a class='' href='/pagina/ler/1041/medicos' target="_blank" title='Direcionar para Médicos'> Médicos</a></li><li class='presentation '><a class='' href='/pagina/ler/1042/medicamentos-gratuitos' target="_blank" title='Direcionar para Medicamentos Gratuitos'> Medicamentos Gratuitos</a></li><li class='presentation '><a class='' href='/formulario/iluminacao_publica' target="_blank" title='Direcionar para Iluminação Pública'> Iluminação Pública</a></li><li class='presentation '><a class='' href='/pagina/ler/1064/desenvolvimento-rural' target="_blank" title='Direcionar para Desenvolvimento Rural'> Desenvolvimento Rural</a></li><li class='presentation '><a class='' href='/pagina/ler/1065/desenvolvimento-urbano' target="_blank" title='Direcionar para Desenvolvimento Urbano'> Desenvolvimento Urbano</a></li><li class='presentation '><a class='' href='/pagina/ler/1066/licenciamento-ambiental' target="_blank" title='Direcionar para Licenciamento Ambiental'> Licenciamento Ambiental</a></li><li class='presentation '><a class='' href='/pagina/ler/1043/procon-municipal' target="_blank" title='Direcionar para Procon Municipal'> Procon Municipal</a></li><li class='presentation '><a class='' href='/pagina/ler/1067/pagina/ler/1067/fazenda-download' target="_blank" title='Direcionar para Fazenda/Download'> Fazenda/Download</a></li><li class='presentation '><a class='' href='/uploads/files/documentos/requerimento-rh---novo-1.doc' target="_blank" title='Direcionar para Download: Requerimento RH'> Download: Requerimento RH</a></li><li class='presentation '><a class='' href='/pagina/ler/1078/carta-de-servicos-ao-usuario' target="_blank" title='Direcionar para Carta de Serviços'> Carta de Serviços</a></li><li class='presentation '><a class='' href='http://www.saneamentomunicipal.com/dpd-ftp/bes/Produto%20K%20-%20PMSB/2018-ES-PMSB-BES-02.pdf' target="_blank" title='Direcionar para Plano de Saneamento Básico'> Plano de Saneamento Básico</a></li><li class='presentation '><a class='' href='http://siat.cb.es.gov.br/siat/'  title='Direcionar para Emissão de Alvará Corpo de Bombeiros (ALCB)'> Emissão de Alvará Corpo de Bombeiros (ALCB)</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1148/sala-do-empreendedor'  title='Direcionar para Sala do Empreendedor'> Sala do Empreendedor</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para COMUNICAÇÃO'>
+                
+                COMUNICAÇÃO
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/pagina/ler/2/perguntas-frequentes'  title='Direcionar para Perguntas Frequentes'> Perguntas Frequentes</a></li><li class='presentation '><a class='' href='pagina/ler/1156/secretarias-municipais'  title='Direcionar para Secretarias Municipais'> Secretarias Municipais</a></li><li class='presentation '><a class='' href='/noticia' target="_blank" title='Direcionar para Notícias'> Notícias</a></li><li class='presentation '><a class='' href='/pagina/ler/1016/feriados-do-municipio' target="_blank" title='Direcionar para Feriados Municipais'> Feriados Municipais</a></li><li class='presentation '><a class='' href='/galeria' target="_blank" title='Direcionar para Galeria de Fotos'> Galeria de Fotos</a></li><li class='presentation '><a class='' href='/pagina/ler/1022/telefones-uteis' target="_blank" title='Direcionar para Telefones Úteis'> Telefones Úteis</a></li><li class='presentation '><a class='' href='/pagina/ler/1020/links-interessantes' target="_blank" title='Direcionar para Links Úteis'> Links Úteis</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1094/esperanca-cast'  title='Direcionar para Esperança PodCast'> Esperança PodCast</a></li></ul>
+          </li>              </ul>
+            </div><!-- /.navbar-collapse -->
+          </nav>
+        </div>
+      </div>
+    </header>
+  </section>
+  <!-- / Bloco Menu -->
+  <!-- Caminho percorrido pelo usuário -->
+  <section>
+    <div class="container-fluid">
+      <div class="row bloco-center">
+        <div class="col-lg-11 col-xs-12">
+                  </div>
+      </div>
+    </div>
+  </section>
+
+      <!-- Bloco Banner -->
+    <section>
+      <div class="container-fluid">
+        <div class="row">
+          <!-- Swiper -->
+          <div class="swiper banners">
+            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                  <a target="_blank" href="/noticia/ler/1754/plantao-de-farmacias-janeiro-a-marco-de-2025" title="Banner: PLANTÃO DE FARMÁCIA">
+                    <img class="img-responsive" src="https://boaesperanca.es.gov.br/uploads/files/2026/banner-plantao-de-farmacia-2026.jpg" alt="PLANTÃO DE FARMÁCIA" />
+                  </a>
+                </div>
+                          </div>
+            <!-- <div class="swiper-button-next"></div> -->
+            <!-- <div class="swiper-button-prev"></div> -->
+            <!-- <div class="swiper-pagination"></div> -->
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /.Bloco Banner -->
+  
+  <div id="conteudo" tabindex="-1"></div> <!-- /conteudo - acessibilidade -->
+  <div class="ajustar_fonte pagina_site" id="pagina_site">
+
+    <!--Conteúdo-->
+        <!--Bloco Destaques -->
+    <section>
+        <div class="container-fluid top4" id="slide">
+            <div class="row bloco-center">
+                <!-- Bloco Notícias Destaque -->
+                <div class="col-lg-7 col-xs-12" id="destaques">
+                    <div class="titulo bloco-vertical-middle">
+                        <h2> Principais Notícias </h2>
+                    </div>
+
+                    <a href="https://boaesperanca.es.gov.br/noticia/ler/2418/exames-de-vista-beneficiam-150-alunos-da-rede-municipal-de-boa-esperanca" title="Direciona para a notícia: Exames de vista beneficiam 150 alunos da rede municipal de Boa Esperança">
+                        <div class="bloco-sombra imagem">
+                            <img class="img-responsive" src="https://boaesperanca.es.gov.br//uploads/files/capa-oftalmo.png" alt="Foto da notícia: Exames de vista beneficiam 150 alunos da rede municipal de Boa Esperança" class="img-responsive" />
+                        </div>
+                        <h5 class="text-muted">26 de novembro de 2026</h5>
+                        <h2>Exames de vista beneficiam 150 alunos da rede municipal de Boa Esperança</h2>
+                    </a>
+                </div>
+
+                <!-- Bloco Banners Home -->
+                <div class="col-lg-4 col-xs-12">
+                    <div class="titulo bloco-vertical-middle">
+                        <h2> Últimas Notícias </h2>
+                    </div>
+                    <div id="subdestaques">
+                                                    <a href="https://boaesperanca.es.gov.br/noticia/ler/2417/boa-esperanca-conquista-habilitacao-inedita-para-receber-novos-recursos-do-fundeb-em-2027" title="Notícia: Boa Esperança conquista habilitação inédita para receber novos recursos do Fundeb em 2027">
+                                <div class="imagem bloco-sombra">
+                                    <img class="img-responsive" alt="NOTÍCIA: Boa Esperança conquista habilitação inédita para receber novos recursos do Fundeb em 2027" src="https://boaesperanca.es.gov.br//uploads/files/vaar-jpg.jpg" />
+                                </div>
+                                <div class="texto">
+                                    <h5 class="text-muted">25 de novembro de 2026</h5>
+                                    <h4>Boa Esperança conquista habilitação inédita para receber novos recursos do...</h4>
+                                </div>
+                            </a>
+                                                    <a href="https://boaesperanca.es.gov.br/noticia/ler/2416/prefeitura-de-boa-esperanca-firmara-termo-de-fomento-com-a-cdl-para-campanha-de-natal-2026" title="Notícia: Prefeitura de Boa Esperança firmará Termo de Fomento com a CDL para campanha de Natal 2026">
+                                <div class="imagem bloco-sombra">
+                                    <img class="img-responsive" alt="NOTÍCIA: Prefeitura de Boa Esperança firmará Termo de Fomento com a CDL para campanha de Natal 2026" src="https://boaesperanca.es.gov.br//uploads/files/Natal-Esperanca-2026_-Fomento-a-CDL.png" />
+                                </div>
+                                <div class="texto">
+                                    <h5 class="text-muted">25 de novembro de 2026</h5>
+                                    <h4>Prefeitura de Boa Esperança firmará Termo de Fomento com a CDL para campanha...</h4>
+                                </div>
+                            </a>
+                                                    <a href="https://boaesperanca.es.gov.br/noticia/ler/2415/emefti-professora-izaura-de-almeida-silva-realiza-exposicao-sobre-a-consciencia-negra-no-centro-cultural-de-boa-esperanca" title="Notícia: EMEFTI Professora Izaura de Almeida Silva realiza exposição sobre a Consciência Negra no Centro Cultural de Boa Esperança">
+                                <div class="imagem bloco-sombra">
+                                    <img class="img-responsive" alt="NOTÍCIA: EMEFTI Professora Izaura de Almeida Silva realiza exposição sobre a Consciência Negra no Centro Cultural de Boa Esperança" src="https://boaesperanca.es.gov.br//uploads/files/capa-materia_exposicao.png" />
+                                </div>
+                                <div class="texto">
+                                    <h5 class="text-muted">23 de novembro de 2026</h5>
+                                    <h4>EMEFTI Professora Izaura de Almeida Silva realiza exposição sobre a...</h4>
+                                </div>
+                            </a>
+                                            </div>
+                    <div class="text-right">
+                        <a href="https://boaesperanca.es.gov.br/noticias" class="botao botao-primary1" title="Leia mais notícias">Mais notícias</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--/.Bloco Destaques -->
+
+<!-- Bloco Acesso Rápido -->
+<section>
+    <div class="container-fluid top3">
+        <div class="row bloco-center">
+            <div class="col-lg-11 col-xs-12">
+                <div class="titulo bloco-vertical-middle">
+                    <h2> Acesso Rápido </h2>
+                </div>
+                <p class="no-margin">Navegue entre as principais funcionalidades e os recursos mais acessados em nosso site.</p>
+                <div class="row">
+                    <div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a  href='https://forms.gle/9FJdTNY81LvtKXGKA' title='Pesquisa de Satisfação' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/pesquisa2.png alt='Exibe a foto do item: Pesquisa de Satisfação' />
+                          </div>
+                          <p>Pesquisa de Satisfação</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='/pagina/ler/1083/processo-seletivo-e-concursos-' title='Processo Seletivo e Concurso Público' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/flat-color-icons_fine-print.png alt='Exibe a foto do item: Processo Seletivo e Concurso Público' />
+                          </div>
+                          <p>Processo Seletivo e Concurso Público</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='/pagina/ler/600/acesso-informacao' title='Acesso à Informação / Ouvidoria' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/falabr-logo-verde3.png alt='Exibe a foto do item: Acesso à Informação / Ouvidoria' />
+                          </div>
+                          <p>Acesso à Informação / Ouvidoria</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='http://boaesperanca-es.portaltp.com.br/' title='Portal da Transparência' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/imagem---transparencia.png alt='Exibe a foto do item: Portal da Transparência' />
+                          </div>
+                          <p>Portal da Transparência</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='/cartaservico' title='Carta de Serviços ao Cidadão' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/mesa.jpg alt='Exibe a foto do item: Carta de Serviços ao Cidadão' />
+                          </div>
+                          <p>Carta de Serviços ao Cidadão</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='/pagina/ler/1090/plano-municipal-de-saneamento-basico' title='Plano de Saneamento Básico' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/algoritmo.jpg alt='Exibe a foto do item: Plano de Saneamento Básico' />
+                          </div>
+                          <p>Plano de Saneamento Básico</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='https://www.boaesperanca.es.gov.br/pagina/ler/1150/plano-municipal-de-educacao-ambiental' title='Plano Municipal de Educação Ambiental' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/13441814-1.png alt='Exibe a foto do item: Plano Municipal de Educação Ambiental' />
+                          </div>
+                          <p>Plano Municipal de Educação Ambiental</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='https://radardatransparencia.atricon.org.br/' title='Radar Da Transparência ' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/tp-tranparencia.jpg alt='Exibe a foto do item: Radar Da Transparência ' />
+                          </div>
+                          <p>Radar Da Transparência </p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='/pagina/ler/1080/ouvidoria' title='Ouvidoria da Saúde' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/icone2.jpg alt='Exibe a foto do item: Ouvidoria da Saúde' />
+                          </div>
+                          <p>Ouvidoria da Saúde</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='https://es-boaesperanca-pm-nfs.cloud.el.com.br/paginas/sistema/login.jsf' title='Nota Fiscal de Serviços Eletrônicos (NFS-E)' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/flat-color-icons_rules.png alt='Exibe a foto do item: Nota Fiscal de Serviços Eletrônicos (NFS-E)' />
+                          </div>
+                          <p>Nota Fiscal de Serviços Eletrônicos (NFS-E)</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='https://gpi20.cloud.el.com.br/ServerExec/acessoBase//?idPortal=3170ff0a-3ff9-44c9-a9f1-f5bbcb3cc03a' title='Serviços Online' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/computador-de-mesa.png alt='Exibe a foto do item: Serviços Online' />
+                          </div>
+                          <p>Serviços Online</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='https://servicos.cloud.el.com.br/es-boaesperanca-pm/portal/login' title='Contracheque Online' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/1214982986490395-1.jpg alt='Exibe a foto do item: Contracheque Online' />
+                          </div>
+                          <p>Contracheque Online</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='/pagina/ler/1067/fazenda-download' title='Fazenda / Download' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/dinheiro.jpg alt='Exibe a foto do item: Fazenda / Download' />
+                          </div>
+                          <p>Fazenda / Download</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='/pagina/ler/1096/meio-ambiente' title='Meio Ambiente' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/acacia.jpg alt='Exibe a foto do item: Meio Ambiente' />
+                          </div>
+                          <p>Meio Ambiente</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='/pagina/ler/1064/desenvolvimento-rural' title='Desenvolvimento Rural Serviços e Downloads' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/casa-de-fazenda.jpg alt='Exibe a foto do item: Desenvolvimento Rural Serviços e Downloads' />
+                          </div>
+                          <p>Desenvolvimento Rural Serviços e Downloads</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='/pagina/ler/1065/desenvolvimento-urbano' title='Desenvolvimento Urbano e Transportes Serviços e Downloads' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/verificacao.jpg alt='Exibe a foto do item: Desenvolvimento Urbano e Transportes Serviços e Downloads' />
+                          </div>
+                          <p>Desenvolvimento Urbano e Transportes Serviços e Downloads</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='https://www.boaesperanca.es.gov.br/agenda' title='Agenda do Prefeito' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/twemoji_calendar.png alt='Exibe a foto do item: Agenda do Prefeito' />
+                          </div>
+                          <p>Agenda do Prefeito</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a target="_blank" href='https://www.boaesperanca.es.gov.br/pagina/ler/1089/secretaria-municipal-de-saude' title='Saúde' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/acesso-rapido/cuidados-de-saude.jpg alt='Exibe a foto do item: Saúde' />
+                          </div>
+                          <p>Saúde</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a  href='https://www.boaesperanca.es.gov.br/pagina/ler/1148/sala-do-empreendedor' title='Sala do Empreendedor' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/v840oph2-1.png alt='Exibe a foto do item: Sala do Empreendedor' />
+                          </div>
+                          <p>Sala do Empreendedor</p>
+                        </a>
+
+                    </div><div class='col-md-3 col-sm-4 col-xs-6 top2'>
+
+                        <a  href='/uploads/files/decreto-092_97.pdf' title='Código de Ética e Conflito de Interesses' class=' acesso-rapido-item bloco-sombra '>
+                          <div>
+                          <img src=https://boaesperanca.es.gov.br/uploads/files/documentos-1.png alt='Exibe a foto do item: Código de Ética e Conflito de Interesses' />
+                          </div>
+                          <p>Código de Ética e Conflito de Interesses</p>
+                        </a>
+
+                    </div>                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /. Bloco Acesso Rápido -->
+
+    <!-- Bloco Banner -->
+    <section>
+        <div class="container-fluid top3">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12">
+                    <!-- Swiper -->
+                    <div class="swiper banners">
+                        <div class="swiper-wrapper">
+                                                            <div class="swiper-slide">
+                                    <a target="_blank" href="https://drive.google.com/file/d/1ixp5EcELzrvqEOMq0ZxO_TgWHvjlUEEQ/view?usp=sharing" title="Banner: Defesa Civil de Boa Esperança">
+                                        <img class="img-responsive" src="https://boaesperanca.es.gov.br//uploads/files/2025/banner-defesa-civil-novo.jpg" alt="Defesa Civil de Boa Esperança" />
+                                    </a>
+                                </div>
+                                                    </div>
+                        <div class="swiper-button-next"></div>
+                        <div class="swiper-button-prev"></div>
+                        <!-- <div class="swiper-pagination"></div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.Bloco Banner -->
+
+    <!--/.Conteúdo-->
+
+  </div>
+  <!--/.container - pagina_site -->
+
+  
+  <!-- Bloco Newsletter -->
+  <section>
+    <div class="container-fluid bot3 top2 back-cinza" id="bloco-fique-conectado">
+      <div class="row bloco-center">
+        <div class="col-lg-11 col-xs-12">
+          <div class="titulo">
+            <h2> Boletim Informativo </h2>
+          </div>
+          <p>Receba novidades por e-mail ou siga nossas redes sociais</p>
+          <form action="https://boaesperanca.es.gov.br/home/newsletter_contato_cadastrar" id="newsletter" class="row bloco-vertical-middle" method="post" accept-charset="utf-8">
+                                                            <input type="hidden" name="csrf_site_name" value="ea713049a0da8df589d93d723377d350" />
+          <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" value="6Leug74eAAAAABtQ1gXM_SdwZwJGTMB6GK79nquU" />
+          <!-- <div class="col-md-3 col-sm-4 col-xs-12">
+                        <input type="text" placeholder="Insira seu nome" class="form-control validate[required]" name="nome" id="nome" />
+                    </div> -->
+          <!-- <div class="col-sm-2 col-xs-12 top1">
+                                    <input required placeholder="Insira seu telefone" class="form-control" name="telefone" />
+                                </div> -->
+          <div class="col-md-6 col-sm-8 col-xs-12">
+            <input type="email" placeholder="Insira aqui seu endereço de e-mail" class="form-control validate[required,custom[email]]" name="email" id="email" required />
+          </div>
+          <div class="col-md-3 col-sm-4 col-xs-12">
+            <button type="submit" class="botao botao-primary1">QUERO ME INSCREVER </button>
+          </div>
+          <div class="col-md-3 col-xs-12">
+            <ul class="redes">
+                              <li><a target="_blank" href="https://www.instagram.com/prefboaesperanca?igsh=YTN2dTBweWM1aXdy" class="bloco-sombra" title="Link do Instagram"><img src="https://boaesperanca.es.gov.br/statics/assets/img/icone_instagram.svg" alt="Ícone do Instagram" /></a></li>
+                                            <li><a target="_blank" href="https://www.youtube.com/channel/UCFt2FR142s0fqfH0fCpavQw" class="bloco-sombra" title="Link do Youtube"><img src="https://boaesperanca.es.gov.br/statics/assets/img/icone_youtube.svg" alt="Ícone do Youtube" /></a></li>
+                                            <li><a target="_blank" href="https://www.facebook.com/prefeituraboaesperanca.es" class="bloco-sombra" title="Link do Facebook"><img src="https://boaesperanca.es.gov.br/statics/assets/img/icone_facebook.svg" alt="Ícone do Facebook" /></a></li>
+                                                                        <li><a target="_blank" href="https://wa.me/5527998256525" class="bloco-sombra" title="Link do WhatsApp"><img class="img-responsive" src="https://boaesperanca.es.gov.br/statics/assets/img/icone_whatsapp.svg" alt="Ícone do Whatsapp" /></a></li>
+                                        </ul>
+          </div>
+          </form>        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /.Bloco Newsletter -->
+
+  <!-- Bloco Horários -->
+  <section>
+    <div class="container-fluid back-primary1 top3 bot3" id="horarios">
+      <div class="row bloco-center">
+        <div class="col-lg-6 col-sm-6 col-xs-12">
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h3>Atendimento ao Público</h3>
+              <p>Segunda a Sexta-Feira de 07h00 às 11h00 e 12h30 às 16h30  </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 top2">
+              <h3>Telefone</h3>
+              <p>(27) 3749-0001</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 top2">
+              <h3>Endereço</h3>
+              <p>Avenida Senador Eurico Rezende, 780 | Centro | Boa Esperança | 29845000 | ES | Brasil</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 top2">
+              <h3>Whatsapp</h3>
+              <p>Fala Cidadão:  27998256525</p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-lg-5 col-sm-6 col-xs-12">
+          <h3>Localização</h3>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d945.6880917165128!2d-40.29810938056196!3d-18.5400893334849!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb5956886a9ff89%3A0x134d0f699a0a1b39!2sPrefeitura%20Municipal%20de%20Boa%20Esperan%C3%A7a!5e0!3m2!1spt-BR!2sbr!4v1663856035700!5m2!1spt-BR!2sbr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Bloco Horários -->
+
+  <!--Rodapé-->
+  <section>
+    <div class="container-fluid back-primary0 bot3 top3" id="rodape">
+      <div class="row bloco-center">
+        <div class="col-lg-11 col-xs-12">
+          <div class='col-md-4 col-xs-12'>
+              <div class='row'><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fa fa-university"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>MUNICÍPIO</h5>
+                      <ul><li class='presentation '><a class='' href='/pagina/ler/1017/historia-do-municipio'  title='Direcionar para História'> História</a></li><li class='presentation '><a class='' href='/pagina/ler/1036/hino-do-municipio'  title='Direcionar para Hino'> Hino</a></li><li class='presentation '><a class='' href='/pagina/ler/1037/prefeito'  title='Direcionar para Prefeito'> Prefeito</a></li><li class='presentation '><a class='' href='/pagina/ler/1044/vice-prefeito'  title='Direcionar para Vice-Prefeito'> Vice-Prefeito</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-building"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>INSTITUCIONAL</h5>
+                      <ul><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1004/estrutura-organizacional'  title='Direcionar para Estrutura Organizacional'> Estrutura Organizacional</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1038/conselhos-municipais'  title='Direcionar para Conselhos Municipais'> Conselhos Municipais</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1008/localizacao'  title='Direcionar para Localização'> Localização</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1058/unidades-escolares'  title='Direcionar para Unidades Escolares'> Unidades Escolares</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1059/unidades-de-saude'  title='Direcionar para Unidades de Saúde'> Unidades de Saúde</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1082/ipasbe'  title='Direcionar para IPASBE'> IPASBE</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-rss"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>COMUNICAÇÃO</h5>
+                      <ul><li class='presentation '><a class='' href='/noticia'  title='Direcionar para Notícias'> Notícias</a></li><li class='presentation '><a class='' href='/galeria'  title='Direcionar para Galeria de Fotos'> Galeria de Fotos</a></li><li class='presentation '><a class='' href='/pagina/ler/1022/telefones-uteis'  title='Direcionar para Telefones Úteis'> Telefones Úteis</a></li><li class='presentation '><a class='' href='/pagina/ler/1020/links-interessantes'  title='Direcionar para Links Úteis'> Links Úteis</a></li><li class='presentation '><a class='' href='https://www.boaesperanca.es.gov.br/pagina/ler/1094/esperanca-cast'  title='Direcionar para Esperança PodCast'> Esperança PodCast</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-file-alt"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <a href="/pagina/ler/1046/controladoria-geral-do-municipio-cgm" title="CONTROLADORIA"><h5>CONTROLADORIA</h5></a>
+                      <ul></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-file-alt"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <a href="/pagina/ler/1149/procuradoria-geral-do-municipio" title="Procuradoria"><h5>Procuradoria</h5></a>
+                      <ul></ul>
+                    </div>
+                  </div>  </div>
+            </div><div class='col-md-4 col-xs-12'>
+              <div class='row'><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-balance-scale"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>LEGISLAÇÃO</h5>
+                      <ul><li class='presentation '><a class='' href='https://boaesperanca.prefeiturasempapel.com.br/Legislacao/' target="_blank" title='Direcionar para Legislação Municipal'> Legislação Municipal</a></li><li class='presentation '><a class='' href='http://boaesperanca.prefeiturasempapel.com.br/legislacao/consulta-legislacao.aspx?tipo=6' target="_blank" title='Direcionar para Decretos'> Decretos</a></li><li class='presentation '><a class='' href='http://boaesperanca.prefeiturasempapel.com.br/legislacao/consulta-legislacao.aspx?tipo=7' target="_blank" title='Direcionar para Portarias'> Portarias</a></li><li class='presentation '><a class='' href='/pagina/ler/1084/legislacao-covid-19' target="_blank" title='Direcionar para Covid-19'> Covid-19</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-desktop"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>SERVIÇOS</h5>
+                      <ul><li class='presentation '><a class='' href='/pagina/ler/1040/minha-casa-minha-vida' target="_blank" title='Direcionar para Minha Casa Minha Vida'> Minha Casa Minha Vida</a></li><li class='presentation '><a class='' href='/pagina/ler/1041/medicos' target="_blank" title='Direcionar para Médicos'> Médicos</a></li><li class='presentation '><a class='' href='/pagina/ler/1042/medicamentos-gratuitos' target="_blank" title='Direcionar para Medicamentos Gratuitos'> Medicamentos Gratuitos</a></li><li class='presentation '><a class='' href='/formulario/iluminacao_publica'  title='Direcionar para Iluminação Pública'> Iluminação Pública</a></li><li class='presentation '><a class='' href='/pagina/ler/1064/desenvolvimento-rural' target="_blank" title='Direcionar para Desenvolvimento Rural'> Desenvolvimento Rural</a></li><li class='presentation '><a class='' href='/pagina/ler/1065/desenvolvimento-urbano' target="_blank" title='Direcionar para Desenvolvimento Urbano'> Desenvolvimento Urbano</a></li><li class='presentation '><a class='' href='/pagina/ler/1066/licenciamento-ambiental' target="_blank" title='Direcionar para Licenciamento Ambiental'> Licenciamento Ambiental</a></li><li class='presentation '><a class='' href='/pagina/ler/1043/procon-municipal' target="_blank" title='Direcionar para Procon Municipal'> Procon Municipal</a></li><li class='presentation '><a class='' href='/pagina/ler/1067/fazenda-download' target="_blank" title='Direcionar para Fazenda / Download'> Fazenda / Download</a></li><li class='presentation '><a class='' href='/pagina/ler/1078/carta-de-servicos-ao-usuario' target="_blank" title='Direcionar para Carta de Serviços'> Carta de Serviços</a></li><li class='presentation '><a class='' href='/uploads/files/documentos/requerimento-rh---novo-1.doc' target="_blank" title='Direcionar para Download: Requerimento RH'> Download: Requerimento RH</a></li><li class='presentation '><a class='' href='http://www.saneamentomunicipal.com/dpd-ftp/bes/Produto%20K%20-%20PMSB/2018-ES-PMSB-BES-02.pdf' target="_blank" title='Direcionar para Plano de Saneamento Básico'> Plano de Saneamento Básico</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fa fa-users"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <a href="/secretaria" title="SECRETARIAS"><h5>SECRETARIAS</h5></a>
+                      <ul></ul>
+                    </div>
+                  </div>  </div>
+            </div><div class='col-md-4 col-xs-12'>
+              <div class='row'><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-stream"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>TRANSPARÊNCIA</h5>
+                      <ul><li class='presentation '><a class='' href='http://boaesperanca-es.portaltp.com.br/' target="_blank" title='Direcionar para Portal da Transparência'> Portal da Transparência</a></li><li class='presentation '><a class='' href='/licitacao' target="_blank" title='Direcionar para Licitações'> Licitações</a></li><li class='presentation '><a class='' href='http://boaesperanca-es.portaltp.com.br/consultas/documentos.aspx?id=8' target="_blank" title='Direcionar para Contratos'> Contratos</a></li><li class='presentation '><a class='' href='/documento?tipo=15' target="_blank" title='Direcionar para Concursos Públicos'> Concursos Públicos</a></li><li class='presentation '><a class='' href='/pagina/ler/1083/processo-seletivo-e-concursos-' target="_blank" title='Direcionar para Processo Seletivos'> Processo Seletivos</a></li><li class='presentation '><a class='' href='http://boaesperanca-es.portaltp.com.br/consultas/documentos.aspx?id=136' target="_blank" title='Direcionar para Compras Emergenciais Covid-19'> Compras Emergenciais Covid-19</a></li><li class='presentation '><a class='' href='https://radar.tce.mt.gov.br/extensions/atricon2/atricon2.html' target="_blank" title='Direcionar para Radar da Transparência Pública'> Radar da Transparência Pública</a></li><li class='presentation '><a class='' href='/pagina/ler/1064/obras'  title='Direcionar para Obras'> Obras</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-phone-alt"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>OUVIDORIA</h5>
+                      <ul><li class='presentation '><a class='' href='https://falabr.cgu.gov.br/publico/ES/BoaEsperan%c3%a7a/Manifestacao/RegistrarManifestacao'  title='Direcionar para Registrar Demanda'> Registrar Demanda</a></li><li class='presentation '><a class='' href='http://boaesperanca-es.portaltp.com.br/consultas/documentos.aspx?id=480'  title='Direcionar para Relatório Estatístico da Ouvidoria'> Relatório Estatístico da Ouvidoria</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-lock"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>ACESSO INTERNO</h5>
+                      <ul><li class='presentation '><a class='' href='https://webmail-seguro.com.br/boaesperanca.es.gov.br/v2/' target="_blank" title='Direcionar para Webmail'> Webmail</a></li><li class='presentation '><a class='' href='/sistema' target="_blank" title='Direcionar para Intranet'> Intranet</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <a href="https://www.boaesperanca.es.gov.br/pagina/ler/1145/denuncia-anonima-de-corrupcao" title="Denúncia de Corrupção (Anônima)"><h5>Denúncia de Corrupção (Anônima)</h5></a>
+                      <ul></ul>
+                    </div>
+                  </div>  </div>
+            </div>        </div>
+      </div>
+    </div>
+  </section>
+  <!--/.Rodapé-->
+
+  <!-- SubRodapé Ágape -->
+  <section>
+    <div class="container-fluid back-primary1" id="sub-rodape">
+      <div class="row top1 bot1 bloco-middle-center">
+        <div class="col-sm-10 col-xs-12 icon-rodape">
+          <p>
+             Copyright © Prefeitura Municipal de Boa Esperança. Todos os direitos reservados.          </p>
+        </div>
+        <div class="col-lg-1 col-sm-2 col-xs-12 no-padding">
+          <a target="_blank" href="https://agapeconsultoria.com.br/" title="Direcionar para o site da Ágape Consultoria"><img alt="Logo da Ágape Consultoria" src="https://boaesperanca.es.gov.br/statics/assets/img/logo_empresa.png" class="img-responsive" /></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / SubRodapé Ágape -->
+
+    <!-- Container de Privacidade e Cookies  -->
+
+  <style>
+    /* GOOGLE ANALYTICS */
+
+    .cookies-container {
+      color: #222;
+      position: fixed;
+      bottom: 2rem;
+      z-index: 1000;
+    }
+
+    .card-title {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 21px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+
+    .card-link {
+      font-weight: bold;
+      text-decoration: none;
+      color: #2F2F2F;
+    }
+
+    .card-text {
+      font-style: normal;
+      font-weight: normal;
+
+      line-height: 150%;
+      align-items: center;
+      color: #505050;
+
+    }
+
+    .cookies-content {
+      background: white;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(1rem);
+      animation: slideUp 0.5s forwards;
+      border-radius: 4px;
+      background: rgba(251, 251, 251, 0.95);
+
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: initial;
+        opacity: initial;
+      }
+    }
+
+    .cookies-pref label {
+      margin-right: 1rem;
+    }
+
+    .cookies-save {
+      grid-column: 2;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: var(--Primary0);
+      color: white;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      padding: 0.8rem 2rem;
+      font-size: 16px;
+    }
+
+    .cookies-save:hover {
+      background: var(--Primary2);
+      transition: .3s;
+    }
+
+    @media (max-width: 500px) {
+      .cookies-content {
+        grid-template-columns: 1fr;
+      }
+
+      .cookies-save {
+        grid-column: 1;
+        grid-row: 3;
+      }
+    }
+  </style>
+
+  <div class="cookies-container col-md-12">
+    <div class="cookies-content col-md-10 col-md-offset-1">
+      <div class="col-md-12">
+        <h2 class="card-title">Política de Privacidade</h2>
+      </div>
+      <div class="col-md-10">
+        <p class="card-text">Utilizamos cookies essenciais e tecnologias semelhantes de acordo com a nossa
+          <a href="" target="_blank" class="card-link">Política de Privacidade</a>
+          e, ao continuar navegando, você concorda com as condições contidas nela.
+        </p>
+                  <input type="hidden" checked data-function="simplecookie" />
+              </div>
+      <div class="text-right col-md-2">
+        <button class="cookies-save card text-right">Continuar</button>
+      </div>
+    </div>
+  </div>
+  <!-- / Container de Privacidade e Cookies  -->
+
+  <!-- Privacidade -->
+  
+  <script>
+    function cookies(functions) {
+      const clientName = 'https:boaesperanca';
+      const container = document.querySelector('.cookies-container');
+      const save = document.querySelector('.cookies-save');
+      if (!container || !save) return null;
+
+      const localPref = JSON.parse(window.localStorage.getItem('cookies-pref' + clientName));
+      if (localPref) activateFunctions(localPref);
+
+      function getFormPref() {
+        return [...document.querySelectorAll('[data-function]')]
+          .filter((el) => el.checked)
+          .map((el) => el.getAttribute('data-function'));
+      }
+
+      function activateFunctions(pref) {
+        pref.forEach((f) => functions[f]());
+        container.style.display = 'none';
+        window.localStorage.setItem('cookies-pref' + clientName, JSON.stringify(pref));
+      }
+
+      function handleSave() {
+        const pref = getFormPref();
+        activateFunctions(pref);
+      }
+
+      save.addEventListener('click', handleSave);
+    }
+
+    function analytics() {
+
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', '');
+
+      console.log('Função anali..');
+    }
+
+    function simplecookie() {
+      console.log('Política de Privacidade Autorizada');
+    }
+
+    cookies({
+      simplecookie,    });
+  </script>
+
+  <!-- / Privacidade -->
+<div vw class="enabled">
+  <div vw-access-button class="active" accesskey="8"></div>
+  <div vw-plugin-wrapper>
+    <div class="vw-plugin-top-wrapper"></div>
+  </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+</div>
+
+<style>
+ img.vp-access-button{margin-inline: 0px !important}
+</style>
+
+<noscript>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="alert alert-warning" role="alert">
+      Você precisa habilitar o JavaScript para visualizar este Portal corretamente.
+    </div>
+  </div>
+</noscript><script src='https://unpkg.com/swiper@8/swiper-bundle.min.js?v=1795780471'></script>
+<script src='https://boaesperanca.es.gov.br/statics/assets/js/jquery-1.11.1.min.js?v=1795780471'></script>
+<script src='https://boaesperanca.es.gov.br/statics/bootstrap/js/bootstrap.min.js?v=1795780471'></script>
+<script src='https://boaesperanca.es.gov.br/statics/font-awesome/fontawesome-free-5.15.4-web/js/all.js?v=1795780471'></script>
+<script src="https://boaesperanca.es.gov.br/statics/assets/plugins/prettyPhoto/js/jquery.prettyPhoto.js?v=1795780471"></script>
+<script src="https://boaesperanca.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.js?v=1795780471"></script>
+
+<script src='https://boaesperanca.es.gov.br/statics/frontend/select2/dist/js/select2.full.min.js?v=1795780471'></script>
+
+<!-- Script para adicionar abertura em popup em links com a classe "popup" -->
+<script>
+  $(".popup").fancybox({
+    'width': '95%',
+    'height': '92%',
+    'autoScale': false,
+    'transitionIn': 'none',
+    'transitionOut': 'none',
+    'type': 'iframe'
+  });
+</script>
+
+<!-- Função da Pesquisa no Menu -->
+<script>
+  const BASE_URL = "https://boaesperanca.es.gov.br/";
+
+  function fonte(e) {
+    var elements = $('p, h1, h2, h3, h4, h5, h6, a, button, input, i, svg');
+
+    elements.each((index, item) => {
+      let element = $(item);
+      let font = $(element).css('font-size');
+
+      let newFont = e == 'a' ? parseInt(font) + 1 : parseInt(font) - 1;
+
+      element.css('font-size', newFont);
+    })
+  }
+
+  function openSearch(e) { // Função de Botão de Busca
+    if ($('#bloco-logo .form-padrao input').val() != '') {
+      $('#bloco-logo form').submit();
+    } else {
+      let button = document.querySelector('#bloco-logo button.botao-busca');
+      let form = document.querySelector('#bloco-logo .form-padrao');
+      form.classList.toggle('hidden');
+      button.classList.toggle('hidden');
+    }
+  }
+
+  function dataAtualFormatada(e) {
+    let data = new Date(e);
+    let dia = data.getDate();
+    if (dia <= 9) dia = "0" + dia;
+    var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    data = dia + " de " + meses[data.getMonth()] + " de " + data.getFullYear();
+    return data;
+  }
+
+  $(".nav-stacked a").click(function(e) {
+    if ($(this).children('svg').attr('data-icon') == 'plus')
+      $(this).children('svg').attr('data-icon', 'minus')
+    else
+      $(this).children('svg').attr('data-icon', 'plus')
+  });
+
+  $('.dropdown-submenu a.submenu-institucional').on("click", function(e) { // Faz os submenu do submenu funcionar no mobile
+    e.preventDefault();
+    $(this).next('ul').toggle('open');
+    e.stopPropagation();
+  });
+
+  $(document).ready(function() { // Processa depois de carregar a página
+
+    if (typeof funcion_a_comprobar === 'function') {
+      if (typeof number == "undefined" || number == null) {
+        let number = $('.inputmask_tel');
+        number.inputmask({
+          mask: ["+55 (99) 9999-9999", "+55 (99) 9 9999-9999", ],
+          keepStatic: true
+        });
+      }
+
+      if (typeof cpf_cnpj == "undefined" || cpf_cnpj == null) {
+        let cpf_cnpj = $('.inputmask_cpf_cnpj');
+        cpf_cnpj.inputmask({
+          mask: ["[CPF REDIGIDO]", "99.999.999/9999-99", ],
+          keepStatic: true
+        });
+      }
+    }
+
+    $(window).scroll(function() {
+      var scrollTop = $(window).scrollTop();
+      if (scrollTop > 80) {
+        $('#acessibilidade').addClass("navbar-fixed-top");
+      } else {
+        $('#acessibilidade').removeClass("navbar-fixed-top");
+      }
+    });
+
+    var html = document.getElementsByTagName('html')[0];
+    html.style.cssText = '--Primary0: #0D65A8; --Primary1: #2978B5; --Primary2: #4A8DC2;';
+
+
+
+    function removeAcento(text) { // Função que remove assentos
+      text = text.toLowerCase();
+      text = text.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
+      text = text.replace(new RegExp('[ÉÈÊ]', 'gi'), 'e');
+      text = text.replace(new RegExp('[ÍÌÎ]', 'gi'), 'i');
+      text = text.replace(new RegExp('[ÓÒÔÕ]', 'gi'), 'o');
+      text = text.replace(new RegExp('[ÚÙÛ]', 'gi'), 'u');
+      text = text.replace(new RegExp('[Ç]', 'gi'), 'c');
+      return text;
+    }
+
+    // ===================== SERVIÇOS =====================
+
+    // Filtro por Pesquisa
+    function filtra_servicos(value) {
+
+      value = removeAcento(value.toLowerCase());
+
+      setTimeout(() => {
+
+        var bloco_tabs = $('.bloco-tabs ul');
+        // bloco_tabs.hide();
+
+        $(".bloco-tabs ul li").filter(function() {
+          let item = removeAcento($(this).text().toLowerCase());
+          $(this).toggle(item.indexOf(value) > -1);
+          
+          if ($(bloco_tabs).is(":hidden")) {
+            return $('.openTabs').click();
+          }
+        });
+      }, 500);
+    }
+
+    $("#search-faq #termos").on("keyup", function(e) {
+      var value = e.target.value;
+      filtra_servicos(value);
+    });
+
+    $("#search-faq").on("submit", function(e) {
+      e.preventDefault();
+      var value = $("#search-faq #termos").val();
+      filtra_servicos(value);
+    });
+
+    $('#acesso a').click(function(e) {
+      e.preventDefault();
+      var categoria = $(this).data('categoria');
+      var request = $.ajax({
+          // type: 'POST',
+          // data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `faq/faqs_post/?categoria_id=` + categoria,
+          beforeSend() {
+            $('.bloco-tabs ul.nav').html('');
+            $('.bloco-tabs ul.nav').addClass('loader');
+          },
+        })
+        .done(function(msg) {
+          $('.bloco-tabs ul.nav').removeClass('loader');
+          $('.bloco-tabs ul.nav').load();
+          msg.map(item => {
+            $('ul.nav.nav-pills.nav-stacked').append(`
+              <li>
+                  <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                  <div class="texto collapse" id="${item.id}">
+                      ${item.resposta}
+                  </div>
+              </li>
+            `);
+          });
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+
+    });
+
+    var isSomethingTrue = false;
+    $('.openTabs').click(function(e) {
+      e.preventDefault();
+      $('.bloco-tabs').toggle('in');
+      $(this).toggleClass('botao-primary0');
+      if (!isSomethingTrue) {
+        isSomethingTrue = true;
+        $(this).html('Ver menos serviços');
+      } else {
+        isSomethingTrue = false;
+        $(this).html('Ver todos os serviços');
+      }
+    });
+
+    // ===================== SERVIÇOS =====================
+
+    // Função de Load More Notícias
+    var offset_posts = 5
+    $('#load_more_posts').click(function(e) {
+      e.preventDefault();
+      var request = $.ajax({
+          // type: 'GET',
+          // data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `noticia/get_post/${offset_posts}/5`,
+          beforeSend() {
+            $('#load_more_posts').html('Carregando...');
+            $('.loader').removeClass('hidden');
+          },
+        })
+        .done(function(msg) {
+          offset_posts = offset_posts + 5;
+          $('.loader').addClass('hidden');
+          $('#load_more_posts').html('Carregar mais notícias');
+          msg.map(item => {
+            $('.noticias').append(`
+            <a href="${BASE_URL}noticia/ler/${item.id}/${item.titulo.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w-]+/g, '-').toLowerCase()}" title="Notícia: ${item.titulo}">
+              <div class="col-xs-12 imagem no-padding">
+                  <img class="img-responsive" src="${item.capa}" alt="${item.titulo}" />
+              </div>
+              <div class="col-xs-12 texto">
+                  <h2>${item.titulo}</h2>
+                  <p>` + item.chamada.substring(0, 550) + `</p>
+                  <h5>` + dataAtualFormatada(item.publicacao) + `</h5>
+              </div>
+              <hr />
+            </a>
+          `);
+          })
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+    });
+
+    // Função de Load More nos Faqs
+    var offset_faqs = 8
+    $('#load_more_faq').click(function(e) {
+      e.preventDefault();
+
+      var request = $.ajax({
+          dataType: "json",
+          url: BASE_URL + `faq/faqs_post/${offset_faqs}/5`,
+          beforeSend() {
+            $('#load_more_faq').html('Carregando...');
+            $('.loader').removeClass('hidden');
+          },
+        })
+        .done(function(msg) {
+          offset_faqs = offset_faqs + 5;
+          $('.loader').addClass('hidden');
+          $('#load_more_faq').html('Carregar mais perguntas');
+          msg.map(item => {
+            $('ul.nav.nav-pills.nav-stacked').append(`
+              <li>
+                  <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                  <div class="texto collapse" id="${item.id}">
+                      ${item.resposta}
+                  </div>
+              </li>
+            `);
+          })
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+    });
+
+    // Bloco de Vereadores/Atividade Legislativa no Portal Institucional
+    var VereadoresAPI = $('.vereadores-lista').data('vereadoresapi');
+    if (typeof VereadoresAPI !== "undefined" && VereadoresAPI) {
+      // alert(VereadoresAPI);
+      $.getJSON(VereadoresAPI + 'api/vereador/?v=2&qtd=100', function(json) { // Lista os Vereadores
+        var bloco_vereadores = $('.vereadores-lista');
+        var parlamentar = $.map(json.dados, function(item) {
+          if (item.situacao == 'Licenciado para assumir cargo no Executivo') return;
+          if (item.situacao == 'Falecido') return;
+          return bloco_vereadores.append(`
+            <a target="_blank" href="${VereadoresAPI}vereador.aspx?id=${item.ID}" target="_blank" title="Veja mais sobre o vereador(a) ${item.nome_parlamentar}" class="vereador-item">
+              <div class="imagem">
+                  <img src="${item.foto}" alt="Foto do vereador(a) ${item.nome}" />
+              </div>
+              <div class="texto">
+                <h3>${item.nome}</h3>
+                <h5>${item.partido_sigla}</h5>
+              </div>
+            </a>
+          `);
+          // <p>Situação <span>${item.situacao}</span></p>
+        });
+      });
+      $('.vereadores-lista .loader').hide();
+
+    }
+    var ClienteUrlApi = $('#atividade-legislativa').data('clienteurlapi');
+    // console.log(ClienteUrlApi);
+    if (typeof ClienteUrlApi !== "undefined" && ClienteUrlApi) {
+      $.getJSON(ClienteUrlApi + 'api/norma_filtros?v=2', function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.especie_normativa').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+
+      $.getJSON(ClienteUrlApi + 'api/proposicao_filtros/?v=2&area=LEG', function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.proposicoes').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+
+      $.getJSON(ClienteUrlApi + 'api/proposicao_filtros/?v=2&area=ADM', function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.processos_administrativos').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+    }
+
+    // Função de Load More nos Faqs
+    // $('#fotos a:not(.botao)').click(function(e) {
+    $('#fotos .link-popup').click(function(e) {
+      e.preventDefault();
+      let idGaleria = $(this).data('id');
+      let dado = $(this);
+      //Initial csrf values
+      var data = {};
+      var api_images = [];
+      var api_titles = [];
+      var api_descriptions = [];
+
+      $.ajax({
+          // type: 'POST',
+          data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `galeria/get_galeria_anexos/` + idGaleria,
+        })
+        .done(function(msg) {
+          if (msg.length === 0) {
+            api_images.push(dado.context.href);
+            api_titles.push(dado.context.alt);
+            api_descriptions.push(['']);
+
+          } else {
+            msg.map(item => {
+              api_images.push(item['arquivo']);
+              api_titles.push(item['titulo']);
+              api_descriptions.push(['']);
+            });
+
+          }
+          $.prettyPhoto.open(api_images, api_titles, api_descriptions);
+          $.prettyPhoto.changePage('next');
+          $.prettyPhoto.changePage('previous');
+          $.prettyPhoto.close();
+
+
+        })
+        .fail(function(response, status, error) {
+          // console.log(error);
+          $.prettyPhoto.open(BASE_URL + 'assets/img/brasao.jpg', 'Não consegui carregar, tente novamente.', '');
+        });
+    });
+
+    $('#fotos .galeria').click(function(e) {
+      e.preventDefault();
+      let idGaleria = $(this).data('id');
+      let dado = $(this);
+      //Initial csrf values
+      var data = {};
+      var api_images = [];
+      var api_titles = [];
+      var api_descriptions = [];
+
+      $.ajax({
+          // type: 'POST',
+          data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `galeria/get_galeria_anexos/` + idGaleria,
+        })
+        .done(function(msg) {
+          if (msg.length === 0) {
+            api_images.push(dado.context.href);
+            api_titles.push(dado.context.alt);
+            api_descriptions.push(['']);
+
+          } else {
+            msg.map(item => {
+              api_images.push(item['arquivo']);
+              api_titles.push(item['titulo']);
+              api_descriptions.push(['']);
+            });
+
+          }
+          $.prettyPhoto.open(api_images, api_titles, api_descriptions);
+          $.prettyPhoto.changePage('next');
+          $.prettyPhoto.changePage('previous');
+          $.prettyPhoto.close();
+
+
+        })
+        .fail(function(response, status, error) {
+          // console.log(error);
+          $.prettyPhoto.open(BASE_URL + 'assets/img/brasao.jpg', 'Não consegui carregar, tente novamente.', '');
+        });
+    });
+
+    // Auto Contraste Função
+    $('#acessibilidade_contraste').on('click', function(event) {
+      event.preventDefault();
+
+      $('body').toggleClass('contrast');
+      $('body').toggleClass('scrollbar-color');
+      $('#acesso-rapido .col-lg-11>.row').toggleClass('scrollbar-color');
+      if ($(this).attr('data-original-title') == 'Aplicar auto contraste') {
+        $(this).attr('data-original-title', 'Remover auto contraste');
+      } else {
+        $(this).attr('data-original-title', 'Aplicar auto contraste');
+      };
+
+
+      var logo_menu = document.getElementById('logo-menu');
+      if (!logo_menu) return null;
+      if (logo_menu.src == 'https://boaesperanca.es.gov.br/assets/img/logo_site_branco.png') logo_menu.src = 'https://boaesperanca.es.gov.br/assets/img/logo_site.png';
+      else logo_menu.src = 'https://boaesperanca.es.gov.br/assets/img/logo_site_branco.png';
+
+    });
+
+    var Contrast = {
+      storage: 'contrastState',
+      cssClass: 'contrast',
+      currentState: null,
+      check: checkContrast,
+      getState: getContrastState,
+      setState: setContrastState,
+      toogle: toogleContrast,
+      updateView: updateViewContrast
+    };
+
+    toggleContrast = function() {
+      Contrast.toogle();
+    };
+
+    Contrast.check();
+
+    function checkContrast() {
+      this.updateView();
+    }
+
+    function getContrastState() {
+      return localStorage.getItem(this.storage) === 'true';
+    }
+
+    function setContrastState(state) {
+      localStorage.setItem(this.storage, '' + state);
+      this.currentState = state;
+      this.updateView();
+    }
+
+    function updateViewContrast() {
+      var body = document.body;
+
+      if (!body) return;
+
+      if (this.currentState === null)
+        this.currentState = this.getState();
+
+      if (this.currentState) {
+        body.classList.add(this.cssClass);
+      } else {
+        body.classList.remove(this.cssClass);
+      }
+    }
+
+    function toogleContrast() {
+      this.setState(!this.currentState);
+    }
+    // FIM AUTOCONTRASTE
+    $('a[rel=group]').fancybox();
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+      default_width: 700, //I have tried playing with these values
+      default_height: 500, //I have tried playing with these values
+      theme: 'light_rounded',
+      social_tools: '<a target="_blank" download href="#" class="download_image left btn btn-xs btn-default"><span class="fa fa-download"></span> Baixar Imagem</a>',
+
+      overlay_gallery: false,
+      show_title: false,
+      hideflash: true,
+      iframe_markup: "<iframe src='{path}' width='{width}' height='{height}' frameborder='no' allowfullscreen='true'></iframe>",
+      deeplinking: false
+    });
+
+    $('body').on('click', '.download_image', function() {
+      var foto_download = $('#fullResImage').attr('src');
+      $(this).attr('href', foto_download);
+    });
+
+    $('div.thumbnail').on('click', 'a', function() {
+      var id = $(this).attr('id');
+      if (id.length) {
+        $.ajax({
+          url: BASE_URL + 'galeria/contador_acessos/' + id,
+          type: "post",
+          data: {
+            'id': id
+          }
+        });
+      }
+    });
+
+    // VERIFICA SWIPER
+    if (document.getElementsByClassName('destaques').length !== 0) {
+      var destaques = new Swiper(".destaques", {
+        loop: true,
+        // autoHeight: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".destaques .swiper-pagination",
+          dynamicBullets: true,
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".destaques .swiper-button-next",
+          prevEl: ".destaques .swiper-button-prev",
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('especialidades').length !== 0) {
+      var especialidades = new Swiper(".especialidades", {
+        // slidesPerView: 1,
+        calculateHeight: true,
+        spaceBetween: 20,
+
+        breakpoints: {
+          // 0: {
+          // },
+          // when window width is >= 768px
+          769: {
+            slidesPerGroup: 4,
+            slidesPerView: 2,
+            allowTouchMove: false,
+            grid: {
+              rows: 2,
+            },
+          },
+        },
+
+        // loop: true, // <- causes issues combined with multi row setup!!
+        navigation: {
+          nextEl: ".especialidades .swiper-button-next",
+          prevEl: ".especialidades .swiper-button-prev",
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('galerias').length != 0) {
+      var banners = new Swiper(".galerias", {
+        slidesPerView: 1,
+        autoHeight: true,
+        loop: true,
+        spaceBetween: 10,
+        // effect: "fade",
+
+        breakpoints: {
+          // 0: {
+          // },
+          // when window width is >= 768px
+          769: {
+            slidesPerView: 4,
+          },
+        },
+        navigation: {
+          nextEl: "#galerias .next",
+          prevEl: "#galerias .prev",
+        },
+        pagination: {
+          el: ".galerias .swiper-pagination",
+          clickable: true,
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('banners').length != 0) {
+      var banners = new Swiper(".banners", {
+        slidesPerView: 1,
+        autoHeight: true,
+        loop: true,
+        spaceBetween: 10,
+        // effect: "fade",
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        navigation: {
+          nextEl: ".banners .swiper-button-next",
+          prevEl: ".banners .swiper-button-prev",
+        },
+        pagination: {
+          el: ".banners .swiper-pagination",
+          clickable: true,
+        },
+      });
+
+      var estatico = new Swiper(".estatico", {
+        slidesPerView: 1,
+        autoHeight: true,
+        loop: false,
+        spaceBetween: 10,
+        // effect: "fade",
+        autoplay: {
+          // delay: 3000,
+          disableOnInteraction: true,
+        },
+        navigation: {
+          nextEl: ".estatico .swiper-button-next",
+          prevEl: ".estatico .swiper-button-prev",
+        },
+        pagination: {
+          el: ".estatico .swiper-pagination",
+          clickable: true,
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('portais').length != 0) {
+      var portais = new Swiper(".portais", {
+        loop: true,
+        loopFillGroupWithBlank: true,
+        breakpoints: {
+          0: {
+            slidesPerView: 1,
+            slidesPerGroup: 1,
+          },
+          // when window width is >= 768px
+          769: {
+            slidesPerView: 6,
+            slidesPerGroup: 6,
+            spaceBetween: 30,
+          },
+        },
+        navigation: {
+          nextEl: ".portais .swiper-button-next",
+          prevEl: ".portais .swiper-button-prev",
+        },
+      });
+    }
+
+    $('#web-tv #video').carousel({
+      interval: false,
+    });
+
+    // bootstrap-datepicker ---------------------
+    if ($('.bootstrap_datepicker').length) {
+      $('.bootstrap_datepicker').datepicker({
+        format: 'dd/mm/yyyy'
+      });
+    }
+
+    $('#imprimir').click(function() {
+      window.print();
+    });
+  });
+
+  
+  function cookies(functions) {
+    const container = document.querySelector('.cookies-container');
+    const save = document.querySelector('.cookies-save');
+    if (!container || !save) return null;
+
+    const localPref = JSON.parse(window.localStorage.getItem('cookies-pref'));
+    if (localPref) activateFunctions(localPref);
+
+    function getFormPref() {
+      return [...document.querySelectorAll('[data-function]')]
+        .filter((el) => el.checked)
+        .map((el) => el.getAttribute('data-function'));
+    }
+
+    function activateFunctions(pref) {
+      pref.forEach((f) => functions[f]());
+      container.style.display = 'none';
+      window.localStorage.setItem('cookies-pref', JSON.stringify(pref));
+    }
+
+    function handleSave() {
+      const pref = getFormPref();
+      activateFunctions(pref);
+    }
+
+    save.addEventListener('click', handleSave);
+  }
+
+  function analytics() {
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', '');
+
+    console.log('Função anali..');
+  }
+
+  function simplecookie() {
+    console.log('Política de Privacidade Autorizada');
+  }
+
+  // ============================================================
+  // Função Frame do Youtube
+  
+
+  </script>
+
+  <script src="https://www.google.com/recaptcha/api.js?render=6Leug74eAAAAABtQ1gXM_SdwZwJGTMB6GK79nquU"></script>
+  <script text="text/Javascript">
+    $(function() { // Recaptcha no formulário da Newsletter
+      $(".form_recaptcha .bnt_submit_recaptcha").click(function(e) {
+        e.preventDefault();
+        grecaptcha.execute('6Leug74eAAAAABtQ1gXM_SdwZwJGTMB6GK79nquU').then(function(token) {
+          var recaptchaResponse = document.getElementById('recaptcha_token');
+          recaptchaResponse.value = token;
+
+          $('.form_recaptcha').submit();
+        })
+      })
+    });
+
+    // var form = $('#newsletter');
+    // $(form).submit(function(e) { // Função do Formulario newsletter da Home
+    //   e.preventDefault();
+    //   grecaptcha.execute('6Leug74eAAAAABtQ1gXM_SdwZwJGTMB6GK79nquU').then(function(token) {
+    //     // add token value to form
+    //     document.getElementById('g-recaptcha-response').value = token;
+
+    //     $.ajax({
+    //         type: form.attr('method'),
+    //         url: form.attr('action'),
+    //         dataType: 'json',
+    //         data: form.serialize(),
+    //         beforeSend() {
+    //           // console.log('Carregando...');
+    //           $('#newsletter .loader').toggleClass('hidden');
+    //         },
+    //       })
+    //       .success(function(msg) {
+    //         // console.log(msg);
+    //         if (msg == 200) {
+    //           alertify.success('Contato cadastrado com sucesso!');
+    //         } else {
+    //           alertify.error(msg);
+    //         }
+    //         $('#newsletter .loader').toggleClass('hidden');
+    //       })
+    //       .fail(function(request, status, error) {
+    //         // console.log('Status: ', status);
+    //         $('#newsletter .loader').toggleClass('hidden');
+    //       });
+    //   });
+    // });
+  </script>
+
+
+
+<script>
+  var preloader = document.getElementById('preloader');
+  if (typeof preloader !== "undefined" && preloader) {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        // if (document.readyState === "complete") { // Ainda carregando
+        preloader.classList.toggle('loaded')
+        setTimeout(() => {
+          preloader.classList.add('hidden')
+        }, 1000);
+        // }
+      }, 3000);
+    });
+  }
+</script>
+
+<noscript>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="alert alert-warning" role="alert">
+      Você precisa habilitar o JavaScript para visualizar este Portal corretamente.
+    </div>
+  </div>
+</noscript><script src='https://boaesperanca.es.gov.br/statics/assets/plugins/inputmask-5/jquery.inputmask.js?v=1795780471'></script>
+<script src='https://boaesperanca.es.gov.br/statics/assets/plugins/inputmask-5/inputmask_personalizacao.js?v=1795780471'></script>
+<script src='https://boaesperanca.es.gov.br/statics/assets/plugins/validation/js/languages/jquery.validationEngine-pt_BR.min.js?v=1795780471'></script>
+<script src='https://boaesperanca.es.gov.br/statics/assets/plugins/validation/js/jquery.validationEngine.min.js?v=1795780471'></script>
+<script src='https://boaesperanca.es.gov.br/statics/assets/plugins/validation/js/contrib/other-validations.js?v=1795780471'></script>
+<script src='https://boaesperanca.es.gov.br/statics/assets/js/recaptcha.js?v=1795780471'></script>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610f04d4db9b7bb',t:'MTc5NTc4MDQ3MQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610f04d4db9b7bb',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>

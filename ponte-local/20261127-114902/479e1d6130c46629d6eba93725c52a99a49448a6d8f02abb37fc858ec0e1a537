@@ -1,0 +1,1271 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>In&#xED;cio - Portal Institucional - Apresenta&#xE7;&#xE3;o</title>
+    <meta name="keywords" content="CMS Portal Institucional - Apresenta&#xE7;&#xE3;o" />
+    <meta name="description" content="Portal Institucional - Apresenta&#xE7;&#xE3;o">
+    <meta name="author" content="E&amp;L">
+
+    
+
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:site_name" content="Portal Institucional - Apresenta&#xE7;&#xE3;o" />
+
+    <!-- Favicon --> 
+    <link rel="shortcut icon" href="/common/imagens/logos/favicon.ico" type="image/png" />
+    <link rel="apple-touch-icon" href="/common/imagens/logos/favicon.ico" type="image/png" />
+
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, shrink-to-fit=no">
+
+    <!-- Web Fonts  -->
+    <link id="googleFonts"
+          href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800%7CRoboto+Slab:300,400,700,900&display=swap"
+          rel="stylesheet" type="text/css">
+
+
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="/portal/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/common/vendor/font-awesome-6/pro/css/all.min.css" />
+    <link rel="stylesheet" href="/portal/vendor/animate/animate.compat.css">
+    <link rel="stylesheet" href="/portal/vendor/simple-line-icons/css/simple-line-icons.min.css">
+
+    <link rel="stylesheet" href="/portal/vendor/owl.carousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/portal/vendor/owl.carousel/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/portal/vendor/magnific-popup/magnific-popup.min.css">
+
+    <!-- Theme CSS -->
+    <link rel="stylesheet" href="/portal/css/theme.css">
+    <link rel="stylesheet" href="/portal/css/theme-elements.css">
+    <link rel="stylesheet" href="/portal/css/theme-blog.css">
+    <link rel="stylesheet" href="/portal/css/theme-shop.css">
+
+    <!-- Demo CSS -->
+    <link rel="stylesheet" href="/portal/css/demos/demo-cleaning-services.css">
+
+    <!-- Skin CSS -->
+    <link id="skinCSS" rel="stylesheet" href="/portal/css/skins/skin-cleaning-services.css">
+
+    <!-- Theme Custom CSS -->
+    <link rel="stylesheet" href="/portal/css/custom.css">
+    <link rel="stylesheet" href="/portal/css/fullcalendar.custom.css" />
+
+
+    <!-- Vendor CSS -->
+    <link rel="stylesheet" href="/common/vendor/bootstrap-datepicker/css/bootstrap-datepicker3.css" />
+    <link rel="stylesheet" href="/portal/vendor/nanoscroller/nanoscroller.css" />
+    <link rel="stylesheet" href="/common/vendor/pnotify/pnotify.custom.css">
+
+    <!-- Revolution Slider CSS -->
+    <link rel="stylesheet" href="/portal/vendor/rs-plugin/css/settings.css">
+    <link rel="stylesheet" href="/portal/vendor/rs-plugin/css/layers.css">
+    <link rel="stylesheet" href="/portal/vendor/rs-plugin/css/navigation.css">
+
+
+    <link rel="stylesheet" href="/common/vendor/pnotify/pnotify.custom.css" />
+
+    <link rel="stylesheet" href="/portal/css/acessibilidade/acessibilidade.css" />
+
+    <!-- Head Libs -->
+    <script src="/portal/vendor/modernizr/modernizr.min.js"></script>
+
+    <link rel="stylesheet" href="/common/css/page_loader.css">
+
+    
+    <style>
+        .owl-carousel .owl-stage {
+            display: flex;
+        }
+
+        .banner-principal.owl-carousel .owl-stage {
+            height: 450px;
+        }
+
+        .banner-principal.owl-carousel .owl-dots {
+            height: 50px;
+            transform: translate3d(0px, 90px, 0px);
+        }
+
+        .banner-secundario.owl-carousel .owl-dots {
+            transform: translate3d(0px, -50px, 0px);
+        }
+
+        .section.section-with-shape-divider .shape-divider {
+            z-index: 0;
+        }
+
+        .acesso-rapido-home-texto {
+            display: flex;
+            flex-direction: column;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/portal/css/noticias/noticias.css">
+
+</head>
+
+<body data-el-app-page-loading-enabled="true" data-el-app-page-loading="on" data-plugin-scroll-spy data-plugin-options="{'target': '#header'}">
+    <button class="btn btn-light btn-modern btn-px-4 py-3 d-none"
+            data-plugin-gdpr-custom="button-gerenciar-preferencias"
+            style="position: fixed; bottom: 25px; left: 40px; z-index: 3">
+        <i class="fa-light fa-cookie-bite"></i>
+        Gerenciar Cookies
+    </button>
+    <!-- GDPR Bar -->
+    <div class="gdpr-bar" data-plugin-gdpr-custom="gdpr-bar">
+        <div class="gdpr-bar-description">
+            <p class="text-color-light opacity-7 mb-0">
+                Nós utilizamos cookies para otimizar e aprimorar sua navegação do site, manter uma melhoria contínua no
+                conteúdo oferecido e aperfeiçoar a experiência de nossos usuários. Todos os cookies, exceto os
+                estritamente necessários, necessitam de seu consentimento para serem executados.
+            </p>
+        </div>
+        <div class="gdpr-bar-actions">
+            <button class="btn text-decoration-none text-color-light btn-px-4 py-3 me-2"
+                    data-plugin-gdpr-custom="button-abrir-preferencias">
+                Preferências
+            </button>
+            <button class="text-decoration-none btn btn-primary btn-modern btn-px-4 py-3 font-weight-bold"
+                    data-plugin-gdpr-custom="button-continuar">
+                Continuar
+            </button>
+        </div>
+    </div>
+
+    <!-- GDPR Preferences Popup -->
+    <div class="gdpr-preferences-popup" data-plugin-gdpr-custom="modal-preferencias">
+        <div class="gdpr-preferences-popup-content position-relative">
+            <form id="cookies-preferencias-form" onsubmit="GDPRComponenteCustom.salvarPreferenciasCookiePersonalizado(event)" method="post">
+                <div class="gdpr-preferences-popup-content-body">
+                    <h4 class="text-color-dark font-weight-bold mb-3">Configurações de Cookies</h4>
+                    <p>
+                        Pensando na sua privacidade, oferecemos à você a opção de decidir como deseja que seus dados de
+                        navegação sejam coletados.
+                    </p>
+                    <hr>
+
+                    <div class="gdpr-cookie-item">
+                        <div class="gdpr-cookie-item-title">
+                            <strong class="text-color-dark">Cookies Essenciais</strong>
+                        </div>
+                        <div class="gdpr-cookie-item-description">
+                            <p class="mb-0">
+                                Cookies essenciais para o funcionamento do site e que não podem ser
+                                desativados em nosso sistema. Nenhuma informação pessoal será coletada.
+                            </p>
+                        </div>
+                        <div class="gdpr-cookie-item-action">
+                            <strong class="text-color-dark text-2">Obrigatório</strong>
+                        </div>
+                    </div>
+                    <div class="gdpr-cookie-item">
+                        <div class="gdpr-cookie-item-title">
+                            <strong class="text-color-dark">Estatísticas</strong>
+                        </div>
+                        <div class="gdpr-cookie-item-description">
+                            <p class="mb-0">
+                                Cookie opcional que nos ajuda a avaliar como os usuários interagem com os
+                                conteúdos do site. Nenhuma informação pessoal será coletada.
+                            </p>
+                        </div>
+                        <div class="gdpr-cookie-item-action">
+                            <input type="checkbox" name="cookies_autorizados" class="gdpr-input custom-checkbox-switch"
+                                   value="analytics_consent" checked />
+                        </div>
+                    </div>
+                </div>
+                <div class="gdpr-preferences-popup-content-footer d-flex justify-content-end">
+                    <button type="button" class="btn btn-light btn-modern btn-px-4 py-3 me-2 font-weight-bold text-end"
+                            data-plugin-gdpr-custom="button-fechar-preferencias">
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn btn-primary btn-modern btn-px-4 py-3 font-weight-bold text-end"
+                            data-plugin-gdpr-custom="button-salvar-preferencias">
+                        Salvar Preferências
+                    </button>
+                </div>
+            <input name="__RequestVerificationToken" type="hidden" value="CfDJ8AQh431_mzJPpyDUspkNVpL8Zdigj2EGEldRhEjIUjU2GZeBZK0tRmThLaKxC6aybzdv9UpMhgqmXtZX3ruZWn0sWfkgJyND3yX3ZV6yytDE9x0oTWg7ry06BwTFYQbpZTGpYElXyDuIHPekwBZrLVY" /></form>
+        </div>
+    </div>
+    <div class="body">
+        
+<header id="header"
+        class="header-effect-shrink d-print-none"
+        data-plugin-options="{'stickyEnabled': true, 'stickyEffect': 'shrink', 'stickyEnableOnBoxed': true, 'stickyEnableOnMobile': false, 'stickyStartAt': 148, 'stickySetTop': '-75px', 'stickyChangeLogo': true}">
+    <div class="header-body border-color-primary border-top-0 box-shadow-none">
+
+        <div id="acessibilidade_header" class="header-top header-top-default border-bottom-0 border-top-0">
+            <div class="w-100">
+                <div class="header-row pt-0">
+                    <div class="header-column justify-content-start">
+                        <div class="d-print-none w-100">
+    <div class="header-acessibilidade header-top header-top-default border-bottom-0 bg-primary">
+        <div class="d-flex justify-content-between w-100">
+
+            <nav class="acessibilidade header-nav-top">
+                <ul class="nav nav-pills navegacao text-2">
+                    <li class="nav-item">
+                        <a class="nav-link text-light d-flex align-items-center" onclick="aumentarFonte()"
+                           style="cursor:pointer" accesskey="4">
+                            <i class="fs-7 span-icone fa-light fa-plus mt-0 me-0 h-100"></i> Aumentar fonte
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light d-flex align-items-center" onclick="reduzirFonte()"
+                           style="cursor:pointer" accesskey="5">
+                            <i class="fs-7 span-icone fa-light fa-minus m-0"></i>
+                            Diminuir fonte
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light d-flex align-items-center" onclick="toggleGrayscale()"
+                           style="cursor:pointer" accesskey="6">
+                            <i class="fs-7 span-icone fa-light fa-circle-half-stroke me-0"></i> Contraste
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light d-flex align-items-center" accesskey="7" href="/acessibilidade">
+                            <i class="fs-7 span-icone fa-light fa-wheelchair me-0"></i> Acessibilidade
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light d-flex align-items-center" accesskey="8" href="/mapa-do-site">
+                            <i class="fs-7 span-icone fa-light fa-map me-0"></i> Mapa do Site
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://www.gov.br/governodigital/pt-br/acessibilidade-e-usuario/vlibras"
+                           class="nav-link text-light d-flex align-items-center" accesskey="9" target="_blank">
+                            <i class="fs-7 span-icone fa-light fa-hands me-0"></i> VLibras
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="header-nav-top">
+                <ul class="nav nav-pills text-2 navegacao">
+                    <li class="nav-item">
+                        <a class="nav-link text-light d-flex align-items-center" href="#topo" accesskey="1">
+                            <i class="fs-8 span-icone fa-light fa-1 me-0"></i> Ir para o topo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light d-flex align-items-center" href="#conteudo" accesskey="2">
+                            <i class="fs-8 span-icone fa-light fa-2 me-0"></i> Ir para o
+                            conteúdo
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-light d-flex align-items-center" href="#rodape" accesskey="3">
+                            <i class="fs-8 span-icone fa-light fa-3 me-0"></i> Ir para o rodapé
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <hr class="solid bg-primary m-0" style="height: 1px;">
+    <hr class="solid bg-tertiary m-0" style="height: 2px;">
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-container z-index-2">
+            <div class="header-row py-0">
+                <div class="header-column justify-content-end">
+                    <div class="header-row">
+                        <div class="header-logo header-logo-sticky-change">
+                            <a href="/">
+                                <img class="header-logo-sticky" alt="Logo branca do cabeçalho da Prefeitura de Pedro Canário" height="70" data-sticky-height="50" data-sticky-top="0" src="/common/imagens/logos/logo-verde.png" style="display:none">
+
+                                <img class="header-logo-non-sticky" alt="Logo do cabeçalho da Prefeitura de Pedro Canário" height="70" src="/common/imagens/logos/logo-verde.png">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-column justify-content-center">
+                    <div class="header-row">
+                        
+
+    <div class="header-nav header-nav-line header-nav-bottom-line header-nav-bottom-line-no-transform header-nav-bottom-line-active-text-dark header-nav-bottom-line-effect-1 order-2 order-lg-1">
+        <div class="header-nav-main header-nav-main-square header-nav-main-text-size-2 header-nav-main-text-weight-600 header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
+            <nav id="menu-topo" class="collapse">
+                <ul class="nav nav-pills text-uppercase text-3">
+                                <li class="nav-item nav-item-anim-icon">
+                                    <a class="nav-link fs-7" href="https://gpi01.cloud.el.com.br/ServerExec/acessoBase/?idPortal=2e4aa995-97f7-452b-8d9b-408b9f5bec8c" target="_blank">
+                                        e-Ouv
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-item-anim-icon">
+                                    <a class="nav-link fs-7" href="https://gpi01.cloud.el.com.br/ServerExec/acessoBase/?idPortal=2e4aa995-97f7-452b-8d9b-408b9f5bec8c" target="_blank">
+                                        e-SIC
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-item-anim-icon">
+                                    <a class="nav-link fs-7" href="https://pedrocanario-es.portaltp.com.br/" target="_blank">
+                                        Portal da Transpar&#xEA;ncia
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-item-anim-icon">
+                                    <a class="nav-link fs-7" href="https://ioes.dio.es.gov.br/portal/visualizacoes/diario_oficial" target="_blank">
+                                        Di&#xE1;rio Oficial
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-item-anim-icon">
+                                    <a class="nav-link fs-7" href="https://www.pedrocanario.es.gov.br/pagina/2156/lgpd" target="_self">
+                                        LGPD
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-item-anim-icon">
+                                    <a class="nav-link fs-7" href="https://webmail-seguro.com.br/pedrocanario.es.gov.br" target="_self">
+                                        Webmail
+                                    </a>
+                                </li>
+                </ul>
+            </nav>
+        </div>
+        <button class="btn header-btn-collapse-nav" data-bs-target="#menu-topo" data-bs-toggle="collapse">
+            <i class="fa-light fa-bars fa-xl"></i>
+        </button>
+    </div>
+
+                    </div>
+                </div>
+                <div class="header-column justify-content-start">
+                    <div class="header-row">
+                        <div class="header-nav-features header-nav-features-no-border header-nav-features-lg-show-border order-1 order-lg-2">
+                            <div class="header-nav-feature header-nav-features-search d-inline-flex">
+                                <a href="#" class="header-nav-features-toggle text-decoration-none"
+                                   data-focus="headerSearch" aria-label="Buscar">
+                                    <i class="fas fa-search header-nav-top-icon"></i><span class="visually-hidden">Buscar</span>
+                                </a>
+                                <div class="header-nav-features-dropdown" id="headerTopSearchDropdown">
+                                    <form role="search" method="get" action="/busca">
+                                        <div class="simple-search input-group">
+                                            <label for="termo" class="visually-hidden">Pesquisar</label>
+                                            <input class="form-control text-1" id="Termo" name="Termo"
+                                                   type="search" value="" placeholder="Pesquisar...">
+                                            <button class="btn" type="submit" aria-label="Search">
+                                                <i class="fas fa-search header-nav-top-icon"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                            <ul class="header-social-icons social-icons social-icons-md d-none d-sm-block social-icons-clean">
+                                    <li class="social-icons-primary">
+                                        <a href="https://www.facebook.com/pedrocanarioes" target="_blank" class="text-5" title="Facebook">
+                                            <i class="fa-brands fa-square-facebook"></i>
+                                            <span class="visually-hidden">Facebook</span>
+                                        </a>
+                                    </li>
+                                    <li class="social-icons-primary">
+                                        <a href="https://www.instagram.com/pedrocanarioes/" target="_blank" class="text-5" title="instagram">
+                                            <i class="fa-brands fa-instagram"></i>
+                                            <span class="visually-hidden">instagram</span>
+                                        </a>
+                                    </li>
+                                    <li class="social-icons-primary">
+                                        <a href="https://www.youtube.com/prefeituradepedrocanariooficial" target="_blank" class="text-5" title="Youtube">
+                                            <i class="fa-brands fa-youtube"></i>
+                                            <span class="visually-hidden">Youtube</span>
+                                        </a>
+                                    </li>
+                            </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="header-nav-bar bg-primary">
+            <div class="container-fluid">
+                <div class="header-row">
+                    <div class="header-column">
+                        <div class="header-row justify-content-center">
+                            
+
+<div id="topo"></div>
+
+    <div class="header-nav header-nav-force-light-text justify-content-center py-2 py-lg-3">
+        <div class="header-nav-main header-nav-main-square header-nav-main-text-size-2 header-nav-main-text-weight-600 header-nav-main-dropdown-no-borders header-nav-main-effect-2 header-nav-main-sub-effect-1">
+
+            <nav id="menu-principal" class="collapse">
+                <ul class="nav nav-pills text-uppercase">
+                                <li class="nav-item nav-item-anim-icon">
+                                    <a class="nav-link fs-7" href="/" target="_self">
+                                        P&#xE1;gina Inicial
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle fs-7" href="#" target="_self">
+                                        Pedro Can&#xE1;rio
+                                    </a>
+                                    <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="/pagina/14/historia" target="_self"> Hist&#xF3;ria</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/pagina/119/prefeito-e-vice-prefeito" target="_self"> Prefeito e Vice-Prefeito</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="https://s3.sa-east-1.amazonaws.com/el.com.br-gpp/portalinstitucional/pm_pedro_canario_es/uploads/files/estrutura-organizacional-do-municipio-de-pedro-canario.pdf" target="_blank"> Estrutura Organizacional</a>
+                </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item nav-item-anim-icon">
+                                    <a class="nav-link fs-7" href="/unidades" target="_self">
+                                        Secretarias
+                                    </a>
+                                </li>
+                                <li class="nav-item nav-item-anim-icon">
+                                    <a class="nav-link fs-7" href="https://legislacao.pedrocanario.es.gov.br" target="_blank">
+                                        Legisla&#xE7;&#xE3;o
+                                    </a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle fs-7" href="#" target="_blank">
+                                        Publica&#xE7;&#xF5;es
+                                    </a>
+                                    <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="/noticias" target="_self"> Not&#xED;cias</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/agendas/1/agenda-de-eventos" target="_self"> Eventos</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/galerias" target="_self"> Galerias</a>
+                </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle fs-7" href="#" target="_blank">
+                                        Transpar&#xEA;ncia
+                                    </a>
+                                    <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="#" target="_blank"> LAI - Lei de Acesso a informa&#xE7;&#xE3;o</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#" target="_self"> Relat&#xF3;rios</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#" target="_self"> Pesquisa de Satisfa&#xE7;&#xE3;o</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#" target="_self"> SIC</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#" target="_self"> e-SIC</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="#" target="_self"> Perguntas Frequentes</a>
+                </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle fs-7" href="#" target="_self">
+                                        Servi&#xE7;os
+                                    </a>
+                                    <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="https://pedrocanario-es.portaltp.com.br/consultas/compras/licitacoes.aspx" target="_blank"> Licita&#xE7;&#xF5;es</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="https://pedrocanario-es.portaltp.com.br/consultas/compras/dispensas.aspx" target="_blank"> Dispensas</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="https://pedrocanario-es.portaltp.com.br/consultas/compras/contratos.aspx" target="_blank"> Contratos</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="https://gpi01.cloud.el.com.br/ServerExec/acessoBase/?idPortal=2e4aa995-97f7-452b-8d9b-408b9f5bec8c" target="_blank"> Pedidos de Informa&#xE7;&#xE3;o</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="https://gpi01.cloud.el.com.br/ServerExec/acessoBase/?idPortal=2e4aa995-97f7-452b-8d9b-408b9f5bec8c" target="_blank"> Den&#xFA;ncia</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/pagina/2135/plano-de-acao-do-siafic" target="_self"> Plano de A&#xE7;&#xE3;o do SIAFIC</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="https://cimnorte.com.br/" target="_blank"> CIMNORTE- CONS&#xD3;RCIO P&#xDA;BLICO DE SA&#xDA;DE</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="https://gpi01.cloud.el.com.br/ServerExec/acessoBase/" target="_blank"> GPI</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/pagina/2130/coronavirus-covid-19" target="_self"> COVID-19</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/pagina/2081/licenciamento-ambiental" target="_self"> Licenciamento Ambiental</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="/pagina/2064/codigo-de-posturas" target="_self"> C&#xF3;digo de Posturas</a>
+                </li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle fs-7" href="#" target="_self">
+                                        Processo Seletivo
+                                    </a>
+                                    <ul class="dropdown-menu">
+                <li>
+                    <a class="dropdown-item" href="https://educacao.cloud.el.com.br/es-pedrocanario-pm-processo-seletivo/paginas/candidato" target="_blank"> Portal do Canditato</a>
+                </li>
+                <li>
+                    <a class="dropdown-item" href="https://www.pedrocanario.es.gov.br/repositorios/5/processo-seletivo" target="_self"> Arquivos de Editais</a>
+                </li>
+                                    </ul>
+                                </li>
+                </ul>
+            </nav>
+        </div>
+        <button class="btn header-btn-collapse-nav" data-bs-toggle="collapse"
+                data-bs-target="#menu-principal">
+            <i class="fa-light fa-bars fa-xl"></i>
+        </button>
+    </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</header>
+
+<script>
+    (function () {
+      var header = document.getElementById('header');
+      if (!header) return;
+
+      var sticky = header.querySelector('.header-logo-sticky');
+      var nonSticky = header.querySelector('.header-logo-non-sticky');
+      if (!sticky || !nonSticky) return;
+
+      function sync() {
+        var active = header.classList.contains('sticky-header-active');
+        if (active) {
+          sticky.style.display = '';
+          nonSticky.style.display = 'none';
+        } else {
+          sticky.style.display = 'none';
+          nonSticky.style.display = '';
+        }
+      }
+
+      // roda agora e a cada mudança de layout
+      sync();
+      window.addEventListener('resize', sync, { passive: true });
+      window.addEventListener('scroll', sync, { passive: true });
+    })();
+</script>
+
+
+
+            
+
+<div class="owl-carousel-wrapper">
+    <div class="banner-principal owl-carousel dots-inside dots-horizontal-center show-dots-hover nav-inside nav-inside-plus nav-md nav-font-size-md show-nav-hover nav-style-1 nav-light mb-0" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 1}, '768': {'items': 1}, '979': {'items': 1}, '1199': {'items': 1}}, 'loop': false, 'autoHeight': false, 'margin': 0, 'dots': true, 'dotsVerticalOffset': '-75px', 'nav': true, 'animateIn': 'fadeIn', 'animateOut': 'fadeOut', 'mouseDrag': false, 'touchDrag': false, 'pullDrag': false, 'autoplay': true, 'autoplayTimeout': 9000, 'rewind': true}">
+
+            <!-- Carousel Slide 1 -->
+                <div class="position-relative banner-principal-slide overlay overlay-show overlay-op-8 pt-5" style="background-image: url('https://s3.sa-east-1.amazonaws.com/el.com.br-gpp/portalinstitucional/pm_pedro_canario_es/uploads/b96b8424-3c90-4189-ae2e-c5fd00c197ff_banner_capa.png'); background-size: cover; background-position: center;">
+        <div class="container h-100">
+            <div id="texto-banner" class="d-flex flex-column align-items-center justify-content-center text-center h-100">
+        <h1 class="text-uppercase font-weight-extra-bold text-12 mb-3 appear-animation" data-appear-animation="blurIn" data-appear-animation-delay="500" data-plugin-options="{'minWindowWidth': 0}" style="color: #ffffff">Aqui Come&#xE7;a o Esp&#xED;rito Santo</h1>
+        <h3 class="position-relative text-5 line-height-5 font-weight-semibold px-4 mb-2 appear-animation" data-appear-animation="fadeInDownShorter" data-plugin-options="{'minWindowWidth': 0}" style="color: #ffffff">
+            <span class="position-absolute right-100pct top-50pct transform3dy-n50 opacity-6">
+                <img src="img/slides/slide-title-border-light.png" class="w-auto appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="250" data-plugin-options="{'minWindowWidth': 0}" alt="" />
+            </span>
+            PREFEITURA MUNICIPAL DE PEDRO CAN&#xC1;RIO
+            <span class="position-absolute left-100pct top-50pct transform3dy-n50 opacity-6">
+                <img src="img/slides/slide-title-border-light.png" class="w-auto appear-animation" data-appear-animation="fadeInRightShorter" data-appear-animation-delay="250" data-plugin-options="{'minWindowWidth': 0}" alt="" />
+            </span>
+        </h3>
+            </div>
+        </div>
+                </div>
+    </div>
+</div>
+
+        <main role="main" class="main body-custom-background p-relative" id="conteudo">
+
+            <div class="position-relative z-index-2">
+                
+
+
+<section class="section bg-color-light-scale-4 border-0 m-0 py-lg-5 py-xl-5 py-4">
+    <div class="container">
+        <h3 class="text-color-secondary font-weight-bold text-transform-none text-lg-8 text-md-3 text-center text-lg-start mb-4 pb-1 appear-animation"
+            data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1200">
+            Acesso Rápido
+        </h3>
+        <div class="acesso-rapido-home-principal">
+            
+    <a href="/repositorios/5/processo-seletivo" target="_self" class="appear-animation text-decoration-none custom-card-style-1" data-appear-animation="fadeInUpShorter"
+       data-appear-animation-delay="1600">
+
+            <div class="p-4">
+            <i class="text-color-primary img-fluid fa-3x fa-light fa-address-card"></i>
+            </div>
+        <p style="color: #777777;text-align: center"
+           class="pb-3 px-1 text-capitalize mb-0">
+            Processo Seletivo
+        </p>
+    </a>
+    <a href="https://pedrocanario-es.portaltp.com.br/consultas/compras/licitacoes.aspx" target="_self" class="appear-animation text-decoration-none custom-card-style-1" data-appear-animation="fadeInUpShorter"
+       data-appear-animation-delay="1600">
+
+            <div class="p-4">
+            <i class="text-color-primary img-fluid fa-3x fa-light fa-file-magnifying-glass"></i>
+            </div>
+        <p style="color: #777777;text-align: center"
+           class="pb-3 px-1 text-capitalize mb-0">
+            Licita&#xE7;&#xF5;es e Dispensa de Licita&#xE7;&#xE3;o
+        </p>
+    </a>
+    <a href="https://www.pedrocanario.es.gov.br/repositorios/27/concurso-publico?ordenarPor=Data&amp;crescente=false" target="_self" class="appear-animation text-decoration-none custom-card-style-1" data-appear-animation="fadeInUpShorter"
+       data-appear-animation-delay="1600">
+
+            <div class="p-4">
+            <i class="text-color-primary img-fluid fa-3x fa-light fa-book-open"></i>
+            </div>
+        <p style="color: #777777;text-align: center"
+           class="pb-3 px-1 text-capitalize mb-0">
+            Concurso P&#xFA;blico
+        </p>
+    </a>
+    <a href="https://app.rgsystem.com.br/consulta-externa/pedro-canario/5bc67086-00b2-4312-ab79-16d5d1f6d8b2" target="_blank" class="appear-animation text-decoration-none custom-card-style-1" data-appear-animation="fadeInUpShorter"
+       data-appear-animation-delay="1600">
+
+            <div class="p-4">
+            <i class="text-color-primary img-fluid fa-3x fa-light fa-file-medical"></i>
+            </div>
+        <p style="color: #777777;text-align: center"
+           class="pb-3 px-1 text-capitalize mb-0">
+            Medicamentos Dispon&#xED;veis
+        </p>
+    </a>
+    <a href="/pagina/2081/licenciamento-ambiental" target="_self" class="appear-animation text-decoration-none custom-card-style-1" data-appear-animation="fadeInUpShorter"
+       data-appear-animation-delay="1600">
+
+            <div class="p-4">
+            <i class="text-color-primary img-fluid fa-3x fa-light fa-file-contract"></i>
+            </div>
+        <p style="color: #777777;text-align: center"
+           class="pb-3 px-1 text-capitalize mb-0">
+            Licenciamento Ambiental
+        </p>
+    </a>
+    <a href="https://s3.sa-east-1.amazonaws.com/el.com.br-gpp/portalinstitucional/pm_pedro_canario_es/uploads/5af1af0b-1fab-470c-a7a4-47edfbf024e7_REMUME-Pedro-Canario-2021.pdf" target="_self" class="appear-animation text-decoration-none custom-card-style-1" data-appear-animation="fadeInUpShorter"
+       data-appear-animation-delay="1600">
+
+            <div class="p-4">
+            <i class="text-color-primary img-fluid fa-3x fa-light fa-briefcase-medical"></i>
+            </div>
+        <p style="color: #777777;text-align: center"
+           class="pb-3 px-1 text-capitalize mb-0">
+            REMUME
+        </p>
+    </a>
+    <a href="/pagina/2155/tcas" target="_self" class="appear-animation text-decoration-none custom-card-style-1" data-appear-animation="fadeInUpShorter"
+       data-appear-animation-delay="1600">
+
+            <div class="p-4">
+            <i class="text-color-primary img-fluid fa-3x fa-light fa-newspaper"></i>
+            </div>
+        <p style="color: #777777;text-align: center"
+           class="pb-3 px-1 text-capitalize mb-0">
+            TCA&#x27;s
+        </p>
+    </a>
+    <a href="pagina/2186/cronograma-de-coletas" target="_self" class="appear-animation text-decoration-none custom-card-style-1" data-appear-animation="fadeInUpShorter"
+       data-appear-animation-delay="1600">
+
+            <div class="p-4">
+            <i class="text-color-primary img-fluid fa-3x fa-light fa-trash-can-clock"></i>
+            </div>
+        <p style="color: #777777;text-align: center"
+           class="pb-3 px-1 text-capitalize mb-0">
+            Cronograma de Coletas
+        </p>
+    </a>
+    <a href="/pagina/9/programa-nossa-cidade" target="_self" class="appear-animation text-decoration-none custom-card-style-1" data-appear-animation="fadeInUpShorter"
+       data-appear-animation-delay="1600">
+
+            <div class="p-2">
+                <img src="https://s3.sa-east-1.amazonaws.com/el.com.br-gpp/portalinstitucional/pm_pedro_canario_es/uploads/5eb9d7df-43b6-4ca4-803d-183a75b03111_programa-nossa-cidade-icone.png" class="img-fluid"
+                     style="object-fit: cover; width: 90px; height: 90px;"/>
+            </div>
+        <p style="color: #777777;text-align: center"
+           class="pb-3 px-1 text-capitalize mb-0">
+            Programa Nossa Cidade
+        </p>
+    </a>
+
+
+        </div>
+    </div>
+</section>
+
+<section class="section bg-transparent border-0 py-lg-5 m-0 py-xl-5 py-3">
+    <div class="container">
+        <div class="row align-items-center pb-3 mb-2">
+    <div class="col-lg-9 col-6">
+        <h3 class="text-color-secondary font-weight-bold text-transform-none text-lg-8 text-md-3 mb-0 pb-1 appear-animation"
+            data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1200">
+            Nossas Not&#xED;cias
+        </h3>
+    </div>
+    <div class="col-lg-3 col-6">
+        <div class="d-flex justify-content-end">
+            <a class="btn btn-primary btn-modern font-weight-bold text-1 text-md-3 btn-px-3 py-2 appear-animation" data-appear-animation="fadeInLeftShorter" data-appear-animation-delay="1600" href="/noticias">
+                Todas as Notícias
+            </a>
+        </div>
+    </div>
+</div>
+
+<section class="section border-0 m-0 p-0 bg-transparent" style="overflow: hidden;">
+    <div class="row g-0">
+        <!-- Carrossel de Notícias em Destaque -->
+        <div class="col-xl-8 p-0">
+            <div class="destaque-main h-100 appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1600">
+                <div class="owl-carousel owl-theme nav-inside nav-dark h-100"
+                     data-plugin-options="{'items': 1, 'margin': 2, 'loop': true, 'nav': true, 'dots': true, 'autoplay': true, 'autoplayTimeout': 5000}">
+                        <div class="item">
+                            <a href="/noticias/1098/obra-de-pavimentacao-asfaltica-entre-a-es-209-e-floresta-do-sul-entra-na-reta-final-de-execucao" class="text-decoration-none d-block position-relative">
+                                <img src="https://s3.sa-east-1.amazonaws.com/el.com.br-gpp/portalinstitucional/pm_pedro_canario_es/uploads/fb0ec7d0-1899-4d5b-b332-cbfdd39a7ffb_WhatsApp-Image-2026-11-25-at-10.16.05.jpeg" alt="Capa: Obra de pavimenta&#xE7;&#xE3;o asf&#xE1;ltica entre a ES-209 e Floresta do Sul entra na reta final de execu&#xE7;&#xE3;o" />
+
+                                <div class="position-absolute bottom-0 w-100 p-4 p-md-5" style="background: linear-gradient(transparent, rgba(0,0,0,0.85)); padding-top: 80px !important;">
+                                    <span class="badge bg-tertiary mb-3 text-uppercase font-weight-semibold px-3 py-2" style="font-size: 0.7rem; letter-spacing: 1px;">Destaque</span>
+                                    <h3 class="text-white font-weight-bold mb-2" style="font-size: 1.8rem; line-height: 1.3; text-shadow: 0 2px 10px rgba(0,0,0,0.3);">Obra de pavimenta&#xE7;&#xE3;o asf&#xE1;ltica entre a ES-209 e Floresta do Sul entra na reta final de execu&#xE7;&#xE3;o</h3>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notícias Laterais -->
+        <div class="col-xl-4 p-0 mt-xl-0 mt-4">
+            <div class="h-100 d-flex flex-column appear-animation" style="background: #fff; border-left: 1px solid #e8e8e8;"
+                 data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1800">
+                    <div class="news-item-lateral">
+                        <a href="/noticias/1097/secretaria-de-educacao-publica-edital-de-carga-horaria-especial-para-o-ano-letivo-de-2027" class="stretched-link"></a>
+                        <div class="news-item-bar"></div>
+
+                        <div class="ratio ratio-4x3 flex-shrink-0 mx-1" style="width: 120px;">
+                                <img src="https://s3.sa-east-1.amazonaws.com/el.com.br-gpp/portalinstitucional/pm_pedro_canario_es/uploads/be02ccf2-206d-41bd-8a37-3de972006094_edital-che-publicado-horizontal.png" alt="Secretaria de Educa&#xE7;&#xE3;o publica edital de Carga Hor&#xE1;ria Especial para o ano letivo de 2027" class="object-fit-cover" loading="lazy" />
+                        </div>
+
+                        <div class="mx-1 my-3" style="flex: 1; min-width: 0;">
+                            <h4 class="font-weight-bold text-color-dark mb-1 line-clamp-2" style="font-size: 0.9rem; line-height: 1.2; margin: 0;">
+                                Secretaria de Educa&#xE7;&#xE3;o publica edital de Carga Hor&#xE1;ria Especial para o ano letivo de 2027
+                            </h4>
+
+                                <p class="text-color-grey mb-1 line-clamp-2" style="font-size: 0.78rem; line-height: 1.2;">
+                                    Inscri&#xE7;&#xF5;es para professores efetivos da rede municipal v&#xE3;o at&#xE9; 27 de novembro
+                                </p>
+
+                            <div class="text-color-grey" style="font-size: 0.72rem; margin-top: 1px;">
+                                <i class="far fa-clock me-1"></i>26/11/2026
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-item-lateral">
+                        <a href="/noticias/1096/pedro-canario-desenvolve-acoes-do-decola-paebes-2026-com-atividades-de-comunicacao-nas-escolas" class="stretched-link"></a>
+                        <div class="news-item-bar"></div>
+
+                        <div class="ratio ratio-4x3 flex-shrink-0 mx-1" style="width: 120px;">
+                                <img src="https://s3.sa-east-1.amazonaws.com/el.com.br-gpp/portalinstitucional/pm_pedro_canario_es/uploads/6b05b993-fd52-4c40-8bc2-1a81dd90b18f_PODCAST-JC.jpeg" alt="Pedro Can&#xE1;rio desenvolve a&#xE7;&#xF5;es do Decola PAEBES 2026 com atividades de comunica&#xE7;&#xE3;o nas escolas" class="object-fit-cover" loading="lazy" />
+                        </div>
+
+                        <div class="mx-1 my-3" style="flex: 1; min-width: 0;">
+                            <h4 class="font-weight-bold text-color-dark mb-1 line-clamp-2" style="font-size: 0.9rem; line-height: 1.2; margin: 0;">
+                                Pedro Can&#xE1;rio desenvolve a&#xE7;&#xF5;es do Decola PAEBES 2026 com atividades de comunica&#xE7;&#xE3;o nas escolas
+                            </h4>
+
+
+                            <div class="text-color-grey" style="font-size: 0.72rem; margin-top: 1px;">
+                                <i class="far fa-clock me-1"></i>26/11/2026
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-item-lateral">
+                        <a href="/noticias/1095/pedro-canario-entrega-30-unidades-habitacionais-no-bairro-camata" class="stretched-link"></a>
+                        <div class="news-item-bar"></div>
+
+                        <div class="ratio ratio-4x3 flex-shrink-0 mx-1" style="width: 120px;">
+                                <img src="https://s3.sa-east-1.amazonaws.com/el.com.br-gpp/portalinstitucional/pm_pedro_canario_es/uploads/28f81912-76b3-4bd6-b7d8-c3ffc88b419c_INAUGURA--O-CASA.jpeg" alt="Pedro Can&#xE1;rio entrega 30 unidades habitacionais no bairro Camata" class="object-fit-cover" loading="lazy" />
+                        </div>
+
+                        <div class="mx-1 my-3" style="flex: 1; min-width: 0;">
+                            <h4 class="font-weight-bold text-color-dark mb-1 line-clamp-2" style="font-size: 0.9rem; line-height: 1.2; margin: 0;">
+                                Pedro Can&#xE1;rio entrega 30 unidades habitacionais no bairro Camata
+                            </h4>
+
+
+                            <div class="text-color-grey" style="font-size: 0.72rem; margin-top: 1px;">
+                                <i class="far fa-clock me-1"></i>18/11/2026
+                            </div>
+                        </div>
+                    </div>
+                    <div class="news-item-lateral">
+                        <a href="/noticias/1094/prefeitura-de-pedro-canario-abre-periodo-de-pre-matricula-on-line-para-o-ano-letivo-de-2027" class="stretched-link"></a>
+                        <div class="news-item-bar"></div>
+
+                        <div class="ratio ratio-4x3 flex-shrink-0 mx-1" style="width: 120px;">
+                                <img src="https://s3.sa-east-1.amazonaws.com/el.com.br-gpp/portalinstitucional/pm_pedro_canario_es/uploads/1951b9e1-b2f9-4317-8e30-e6ad6fba6786_PR--MATRICULA-2027.png" alt="Prefeitura de Pedro Can&#xE1;rio abre per&#xED;odo de pr&#xE9;-matr&#xED;cula on-line para o ano letivo de 2027" class="object-fit-cover" loading="lazy" />
+                        </div>
+
+                        <div class="mx-1 my-3" style="flex: 1; min-width: 0;">
+                            <h4 class="font-weight-bold text-color-dark mb-1 line-clamp-2" style="font-size: 0.9rem; line-height: 1.2; margin: 0;">
+                                Prefeitura de Pedro Can&#xE1;rio abre per&#xED;odo de pr&#xE9;-matr&#xED;cula on-line para o ano letivo de 2027
+                            </h4>
+
+
+                            <div class="text-color-grey" style="font-size: 0.72rem; margin-top: 1px;">
+                                <i class="far fa-clock me-1"></i>18/11/2026
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    </div>
+</section>
+
+<section class="section bg-color-light-scale-4 border-0 m-0 py-lg-5 py-xl-5 py-4">
+    <div class="container">
+        
+    <div class="row appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="1200">
+        <div class="col-lg-12">
+            <div class="banner-secundario owl-carousel dots-horizontal-center nav-inside nav-inside-plus nav-md nav-font-size-md show-nav-hover nav-style-1 nav-light mb-0" data-plugin-options="{'responsive': {'0': {'items': 1}, '479': {'items': 1}, '768': {'items': 1}, '979': {'items': 1}, '1199': {'items': 1}}, 'loop': false, 'autoHeight': false, 'margin': 0, 'dots': true, 'dotsVerticalOffset': '-75px', 'nav': true, 'animateIn': 'fadeIn', 'animateOut': 'fadeOut', 'mouseDrag': false, 'touchDrag': false, 'pullDrag': false, 'autoplay': true, 'autoplayTimeout': 9000, 'rewind': true}">
+                    <a class="text-decoration-none img-thumbnail border-0 p-0 h-100" style="object-fit: cover">
+                        <img class="img-fluid border-radius-0" src="https://s3.sa-east-1.amazonaws.com/el.com.br-gpp/portalinstitucional/pm_pedro_canario_es/uploads/b96b8424-3c90-4189-ae2e-c5fd00c197ff_banner_capa.png" alt="" style="height: 100%">
+                    </a>
+            </div>
+        </div>
+    </div>
+
+    </div>
+</section>
+
+
+<section class="section bg-transparent border-0 py-lg-5 m-0 py-xl-5 py-4">
+    <div class="container">
+        <div class="container">
+            <div class="row align-items-end pb-3 mb-2">
+                <div class="col-lg-7 col-xl-8">
+                    <h3 class="text-color-secondary font-weight-bold text-transform-none text-lg-8 text-md-3 text-center text-lg-start mb-3 pb-1 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1200">Encontre o serviço que você precisa</h3>
+                    <p class="text-4 mb-0 appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1400">
+                        Selecione abaixo o seu perfil e confira a lista de serviços que temos disponível para você.
+                    </p>
+                </div>
+            </div>
+            <div class="row appear-animation" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="2000">
+                <div class="col">
+                    <a href="https://gpi01.cloud.el.com.br/ServerExec/acessoBase/?idPortal=dcddf802-39cf-4ac1-9b6f-8ecc91b14882&idFunc=ddbbba34-21e7-41d6-8b8b-a9d08527b425"
+                       target="_blank"
+                       class="text-decoration-none">
+                        <div class="card custom-card-style-1">
+                            <div class="card-body text-center">
+                                <div class="custom-card-style-1-image-wrapper bg-primary rounded-circle d-inline-block mb-3">
+                                    <i class="icon-featured align-self-center fa-light fa-users fs-1"></i>
+                                </div>
+                                <h4 class="custom-card-style-1-title text-color-secondary font-weight-bold mb-2">Sou Cidadão</h4>
+                                <p class="custom-card-style-1-description mb-0">Coleta Seletiva, IPTU, Serviços de Saúde e outros</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="col">
+                    <a href="https://gpi-services.cloud.el.com.br/es-pedrocanario-pm/portal/login" target="_blank" class="text-decoration-none">
+                        <div class="card custom-card-style-1">
+                            <div class="card-body text-center">
+                                <div class="custom-card-style-1-image-wrapper bg-primary rounded-circle d-inline-block mb-3">
+                                    <i class="icon-featured align-self-center fa-light fa-user-tie fs-1"></i>
+                                </div>
+                                <h4 class="custom-card-style-1-title text-color-secondary font-weight-bold mb-2">Sou Servidor</h4>
+                                <p class="custom-card-style-1-description mb-0">Contra cheque, webmail, ponto eletrônico e outros</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col">
+                    <a href="/pagina/2151/servicos-para-empresas" target="_blank" class="text-decoration-none">
+                        <div class="card custom-card-style-1">
+                            <div class="card-body text-center">
+                                <div class="custom-card-style-1-image-wrapper bg-primary rounded-circle d-inline-block mb-3">
+                                    <i class="icon-featured align-self-center fa-light fa-briefcase fs-1"></i>
+                                </div>
+                                <h4 class="custom-card-style-1-title text-color-secondary font-weight-bold mb-2">Para Minha Empresa</h4>
+                                <p class="custom-card-style-1-description mb-0">Alvará online, nota fiscal eletrônica e outros.</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<section>
+    <div class="section section-text-light mt-0 mb-0 bg-color-primary">
+    <div class="container py-4 appear-animation mb-0" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+        <div class="row">
+            <div class="col">
+                <div class="appear-animation d-flex justify-content-between align-items-center" data-appear-animation="fadeInUpShorter" data-appear-animation-delay="200">
+                    <div class="d-flex flex-column">
+                        <h3 class="text-color-light font-weight-bold text-transform-none text-7 mb-1 pb-0 appear-animation"
+                            data-appear-animation="fadeInUpShorter" data-appear-animation-delay="1200">
+                            Receba nossas novidades por e-mail
+                        </h3>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row py-2">
+            <div class="col">
+                <div class=" text-light appear-animation" data-appear-animation="fadeIn" data-appear-animation-delay="300">
+                    <form data-newsletter-manager="formulario" method="post" action="/newsletter/subscribe">
+                        
+                        <div class="row align-items-center">
+                            <input type="hidden" name="TokenRecaptcha" id="TokenRecaptcha" />
+                            <div class="col-12 mb-3 mb-lg-0 col-md">
+                                <input id="Nome" name="Nome" type="text" class="text-3 h-auto w-100 p-3 line-height-1 border-0" placeholder="Nome" />
+                            </div>
+                            <div class="col-12 mb-3 mb-lg-0 col-md">
+                                <input id="Email" name="Email" type="text" class="text-3 h-auto w-100 p-3 line-height-1 border-0" placeholder="Email" />
+                            </div>
+                            <div class="col-12 mb-3 mb-lg-0 col-lg">
+                                <div class="d-grid gap-2">
+                                    <button type="submit" data-newsletter-manager="button-submit-form" class="btn btn-tertiary rounded-0 text-3 mt-4 mb-2 my-md-0 px-5 py-3" data-bs-toggle="tooltip" title="Cadastrar na Newsletter">
+                                        FICAR POR DENTRO
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    <input name="__RequestVerificationToken" type="hidden" value="CfDJ8AQh431_mzJPpyDUspkNVpL8Zdigj2EGEldRhEjIUjU2GZeBZK0tRmThLaKxC6aybzdv9UpMhgqmXtZX3ruZWn0sWfkgJyND3yX3ZV6yytDE9x0oTWg7ry06BwTFYQbpZTGpYElXyDuIHPekwBZrLVY" /></form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</section>
+
+
+
+            </div>
+
+            <div class="patterns opacity-7 position-absolute z-index-1 d-none d-md-block" style="bottom: 10%; right: 15%;">
+                <div data-plugin-float-element
+                     data-plugin-options="{'startPos': 'top', 'speed': 0.1, 'transition': true, 'transitionDuration': 1000, 'isInsideSVG': true}"
+                     style="width: 310px; height: 170px;">
+                    <svg width="100%" height="100%">
+                        <defs>
+                            <pattern id="dots" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+                                <circle fill="#0088cc" cx="1.5" cy="1.5" r="1.5" />
+                            </pattern>
+                        </defs>
+                        <rect x="0" y="0" width="100%" height="100%" fill="url(#dots)" />
+                    </svg>
+                </div>
+            </div>
+
+            <div class="patterns opacity-7 position-absolute animated z-index-1 d-none d-md-block"
+                 style="top: 200px; left: 13%;">
+                <div data-plugin-float-element
+                     data-plugin-options="{'startPos': 'top', 'speed': 0.1, 'transition': true, 'transitionDuration': 1000, 'isInsideSVG': true}"
+                     style="width: 310px; height: 170px;">
+                    <svg width="100%" height="100%">
+                        <defs>
+                            <pattern id="dots2" x="0" y="0" width="18" height="18" patternUnits="userSpaceOnUse">
+                                <circle fill="#CCC" cx="1.5" cy="1.5" r="1.5" />
+                            </pattern>
+                        </defs>
+                        <rect x="0" y="0" width="100%" height="100%" fill="url(#dots2)" />
+                    </svg>
+                </div>
+            </div>
+        </main>
+
+
+
+        
+        
+<div id="rodape"></div>
+<footer id="footer" class="footer-reveal bg-color-secondary border-0 mt-0 d-print-none">
+    <div class="container container-xl-custom pt-5 pb-3">
+        <div class="d-flex flex-lg-row flex-column justify-content-lg-center ">
+            <div class="text-center align-self-center mb-1">
+                <a class="text-decoration-none mx-md-0 me-lg-5" alt="Logo Prefeitura Pedro Canário" href="/">
+                    <img src="/common/imagens/logos/logo-branca.png" class="img-fluid" alt="Logo do Portal Institucional" style="height: 85px;" />
+                </a>
+
+            </div>
+        </div>  
+        <div class="d-flex flex-lg-row flex-column justify-content-lg-center mt-3">
+            <div class="my-lg-0 me-lg-5 my-md-3 align-self-center">
+                <ul class="list list-icons list-icons-lg mb-0 text-center text-lg-start align-self-center">
+                    <li class="d-flex px-0 mb-2">
+                        <span class="text-color-light font-weight-medium text-3-4 w-100">
+                            <i class="fa-light fa-clock fa-xl text-white me-2"></i>
+                            Segunda &#xE0; Sexta de 08h00 &#xE0;s 18h00.
+                        </span>
+                    </li>
+                    <li class="d-flex px-0 mb-2">
+                        <span class="text-color-light font-weight-medium text-3-4 w-100">
+                             <i class="fa-light fa-phone fa-xl text-white me-2"></i>
+                            (27) 3764-3600
+                         </span>
+                     </li>
+
+                    <li class="d-flex px-0 mb-2">
+                        <span class="text-color-light font-weight-medium text-3-4 w-100">
+                            <i class="fa-light fa-envelope fa-xl text-white me-2"></i>
+                            gabinete.prefeito@pedrocanario.es.gov.br
+                        </span>
+                    </li>
+
+                    <li class="d-flex px-0 mb-2">
+                        <span class="text-color-light font-weight-medium text-3-4 w-100">
+                            <i class="fa-light fa-location-dot fa-xl text-white me-2"></i>
+                            Rua S&#xE3;o Paulo n&#xBA; 220 - Bairro Boa Vista
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="align-self-center mt-md-0 mt-4">
+                <ul class="list list-icons list-icons-sm fs-7 justify-content-start text-center text-lg-start">
+                        <li class="mb-0">
+                            <i class="fas fa-angle-right text-color-light font-weight-medium d-none d-lg-block"></i>
+                            <a href="/perguntas-frequentes/3/perguntas-frequentes" target="_self"
+                               class="link-hover-style-1 text-color-light ms-2">Perguntas Frequentes</a>
+                        </li>
+                        <li class="mb-0">
+                            <i class="fas fa-angle-right text-color-light font-weight-medium d-none d-lg-block"></i>
+                            <a href="/fale-conosco" target="_self"
+                               class="link-hover-style-1 text-color-light ms-2">Fale Conosco</a>
+                        </li>
+                        <li class="mb-0">
+                            <i class="fas fa-angle-right text-color-light font-weight-medium d-none d-lg-block"></i>
+                            <a href="/mapa-do-site" target="_blank"
+                               class="link-hover-style-1 text-color-light ms-2">Mapa do Site</a>
+                        </li>
+                        <li class="mb-0">
+                            <i class="fas fa-angle-right text-color-light font-weight-medium d-none d-lg-block"></i>
+                            <a href="/noticias" target="_self"
+                               class="link-hover-style-1 text-color-light ms-2">Not&#xED;cias</a>
+                        </li>
+                </ul>
+            </div>
+        </div>
+        <div class="d-flex flex-lg-row flex-column justify-content-lg-center ">
+            <div class="text-center align-self-center mb-0">
+
+                    <ul class="social-icons social-icons-clean social-icons-big social-icons-icon-light opacity-9">
+                            <li class="social-icons-primary">
+                                <a href="https://www.facebook.com/pedrocanarioes" target="_blank" class="text-6" title="Facebook">
+                                    <i class="fa-brands fa-square-facebook"></i>
+                                </a>
+                            </li>
+                            <li class="social-icons-primary">
+                                <a href="https://www.instagram.com/pedrocanarioes/" target="_blank" class="text-6" title="instagram">
+                                    <i class="fa-brands fa-instagram"></i>
+                                </a>
+                            </li>
+                            <li class="social-icons-primary">
+                                <a href="https://www.youtube.com/prefeituradepedrocanariooficial" target="_blank" class="text-6" title="Youtube">
+                                    <i class="fa-brands fa-youtube"></i>
+                                </a>
+                            </li>
+                    </ul>
+
+            </div>  
+        </div>
+    </div>
+    <div class="pb-2 bg-primary">
+        <div class="container">
+            <div class="row align-items-center h-100">
+                <div class="col-12 col-md-2 text-center text-md-end order-md-2">
+                    <a href="https://www.el.com.br/" target="_blank">
+                        <svg width="50" height="50" xmlns="http://www.w3.org/2000/svg" version="1.1"
+                             xml:space="preserve" viewBox="-10 -10 68 68">
+                        <path class="st0"
+                              d="m32.97209,30.04918c-1.09292,-2.1723 -2.66456,-3.80717 -4.71041,-4.90009s-4.21814,-1.4497 -6.50786,-1.06131c-2.25359,0.37485 -4.15491,1.41358 -5.71301,3.11167c-1.55809,1.69809 -2.50198,3.75297 -2.82715,6.16463l19.75842,-3.3149l0.00001,0zm10.02599,1.91939c0.09935,0.58259 0.1671,1.19228 0.20774,1.82907c0.04065,0.63678 0.07677,1.29615 0.10388,1.97358l-28.8902,4.83686c0.50581,0.98454 1.1426,1.89681 1.90584,2.73682c0.75873,0.8355 1.63939,1.52648 2.62843,2.06843c0.98905,0.54195 2.07294,0.91679 3.24264,1.12905s2.42069,0.20323 3.75749,-0.01807c1.62584,-0.27097 3.20651,-0.82647 4.73751,-1.66197c1.531,-0.8355 2.7594,-1.82004 3.68071,-2.96263l6.64334,4.73751c-2.18585,2.29424 -4.41686,4.02846 -6.68399,5.20267c-2.26714,1.1697 -4.73751,1.98262 -7.40207,2.42972c-2.70973,0.45162 -5.32461,0.37936 -7.84918,-0.23032c-2.52456,-0.60517 -4.7917,-1.61681 -6.81045,-3.03941c-2.01423,-1.41809 -3.71685,-3.202 -5.10783,-5.3472c-1.38647,-2.1452 -2.30327,-4.53428 -2.74134,-7.15819c-0.43807,-2.62843 -0.35227,-5.18009 0.26194,-7.65949s1.65293,-4.72395 3.11619,-6.72464c1.46325,-2.00068 3.27877,-3.69878 5.44655,-5.08977c2.16778,-1.391 4.58395,-2.3123 7.25303,-2.75489c2.54263,-0.42453 5.05816,-0.36581 7.5511,0.18065s4.77363,1.5039 6.84657,2.87231s3.82071,3.1207 5.25236,5.26139c1.43616,2.13165 2.38456,4.59751 2.84973,7.38852"
+                              fill="#FFFFFF" id="svg_22" />
+                        <path class="st0"
+                              d="m53.24536,53.6509c-0.67292,0.31613 -1.43164,0.57356 -2.28069,0.77227c-0.84905,0.1942 -1.72971,0.29807 -2.63747,0.29807c-1.26454,0 -2.4794,-0.1671 -3.64458,-0.50581c-1.16519,-0.3342 -2.18585,-0.88066 -3.05296,-1.63035c-0.87163,-0.74969 -1.56261,-1.72971 -2.07746,-2.93554s-0.77227,-2.66005 -0.77227,-4.35814l0,-40.673l8.71629,0l0,39.18716c0,1.42261 0.28452,2.40262 0.85808,2.93554s1.25551,0.79937 2.04585,0.79937c0.98905,0 1.93746,-0.29807 2.84521,-0.88969l0,7.00013l0,0l0.00001,-0.00001z"
+                              fill="#FFFFFF" id="svg_23" />
+                        </svg>
+                    </a>
+                </div>
+                <div class="col-12 col-md-10 text-center text-md-start order-md-1 mt-2">
+                    <span class="text-white fw-light">
+                        Portal desenvolvido e mantido por <a href="https://www.el.com.br/"
+                                                             class="text-white fw-bold"
+                                                             target="_blank">EL Produções de Software.</a> Todos os direitos reservados.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+    </div>
+
+    <div vw class="enabled">
+        <div vw-access-button class="active"></div>
+        <div vw-plugin-wrapper>
+            <div class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+
+    <script src="/common/js/page_loader.js"></script>
+
+    <!-- Vendor -->
+    <script src="/portal/vendor/plugins/js/plugins.min.js"></script>
+
+    <script src="/common/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script src="/common/vendor/bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.min.js"></script>
+
+    <script src="/common/vendor/pnotify/pnotify.custom.js"></script>
+    <script src="/common/vendor/inputmask/inputmask.min.js"></script>
+
+    <script src="/portal/vendor/jquery.gmap/jquery.gmap.min.js"></script>
+    <script src="/portal/vendor/rs-plugin/js/jquery.themepunch.tools.min.js"></script>
+    <script src="/portal/vendor/rs-plugin/js/jquery.themepunch.revolution.min.js"></script>
+
+
+    <script src="/portal/components/views/home/gdpr-componente-custom.js"></script>
+
+    <!-- Revolution Slider Scripts -->
+    <!-- Theme Base, Components and Settings -->
+    <script src="/portal/js/theme.js"></script>
+    <script src="/custom/js/loading-overlay-custom.js"></script>
+
+    <!-- Demo -->
+
+    <!-- Theme Custom -->
+    <script src="/portal/js/custom.js"></script>
+
+    <!-- Theme Initialization Files -->
+    <script src="/portal/js/theme.init.js"></script>
+
+
+    <!-- Custom Components -->
+    <script src="/portal/js/acessibilidade/acessibilidade.js"></script>
+
+    <script>
+        GDPRComponenteCustom.inicializar();
+        // function carregarScriptsAnalytics() {
+        //     if (GDPRComponenteCustom.cookieAnalyticsAutorizado()) {
+        //         if (typeof (carregarGoogleAnalytics) === 'undefined' && typeof (carregarHotjar) === 'undefined')
+        //         {
+        //             console.log("Carregando Google Analytics");
+        //             console.log("Carregando Hotjar");
+        //         }
+        //         else
+        //         {
+        //             carregarGoogleAnalytics();
+        //             carregarHotjar();
+        //         }
+        //     }
+        // }
+        // carregarScriptsAnalytics();
+    </script>
+
+    <script src="/common/components/managers/message.manager/message.manager.js"></script>
+    <script src="/common/components/managers/ajax.manager/ajax.manager.js"></script>
+
+<script src="/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+<script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+<script>
+    $.validator.methods.range = function (value, element, param) {
+        var globalizedValue = value.replace(",", ".");
+        return this.optional(element) || (globalizedValue >= param[0] && globalizedValue <= param[1]);
+    };
+
+    $.validator.methods.number = function (value, element) {
+        return this.optional(element) || /-?(?:\d+|\d{1,3}(?:[\s\.,]\d{3})+)(?:[\.,]\d+)?$/.test(value);
+    };
+
+    $.validator.methods.date = function (value, element) {
+        var date = value.split("/");
+        return this.optional(element) || !/Invalid|NaN/.test(new Date(date[2], date[1], date[0]).toString());
+    };
+</script>
+    
+    <script src="/common/components/managers/spinner-button.manager/spinner-button.manager.js"></script>
+    <script src="/common/components/managers/modal.manager.js/modal.manager.js"></script>
+    <script src="/portal/components/views/newsletter/newsletter.manager.js"></script>
+    <script src="/portal/components/views/popup/popup-component.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LeK0HksAAAAAJxC7yLjm9vOjb3aH1NIkiNMJGRq"></script>
+
+    <script>
+
+        $('.carousel-patrocinadores').owlCarousel({
+            loop: true,
+            items: 7,
+            autoplay: true
+        });
+
+        newsletterManager.inicializar('6LeK0HksAAAAAJxC7yLjm9vOjb3aH1NIkiNMJGRq');
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".nav-item.dropdown").forEach(function (element) {
+                element.addEventListener("mouseover", function () {
+                    let dropdownToggle = this.querySelector(".dropdown-toggle");
+                    let dropdownMenu = this.querySelector(".dropdown-menu");
+
+                    if (dropdownToggle && dropdownMenu) {
+                        dropdownToggle.classList.add("show");
+                        dropdownMenu.classList.add("show");
+                    }
+                });
+
+                element.addEventListener("mouseleave", function () {
+                    let dropdownToggle = this.querySelector(".dropdown-toggle");
+                    let dropdownMenu = this.querySelector(".dropdown-menu");
+
+                    if (dropdownToggle && dropdownMenu) {
+                        dropdownToggle.classList.remove("show");
+                        dropdownMenu.classList.remove("show");
+                    }
+                });
+            });
+        });
+    </script>
+    <script>
+
+    </script>
+
+
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+
+</body>
+
+</html>

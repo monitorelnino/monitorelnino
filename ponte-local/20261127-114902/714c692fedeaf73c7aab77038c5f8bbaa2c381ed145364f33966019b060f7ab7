@@ -1,0 +1,2181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Thyago Hoffman" />
+<meta name="reply-to" content="hoffmandev@outlook.com" />
+<title>PREFEITURA MUNICIPAL DE IBATIBA - ES</title>
+<meta name="description" content="IBATIBA é um município brasileiro do estado do Espírito Santo. Sua população estimada em 2014 era de 24.913 habitantes
+" />
+
+<meta property="og:title" content="PREFEITURA MUNICIPAL DE IBATIBA - ES" />
+<meta property="og:site_name" content="PREFEITURA MUNICIPAL DE IBATIBA - ES" />
+<meta property="og:url" content="https://ibatiba.es.gov.br/" />
+<meta property="og:type" content="government" />
+<meta property="og:description" content="IBATIBA é um município brasileiro do estado do Espírito..." />
+<meta property="og:image" content="https://ibatiba.es.gov.br/assets/img/logotipo-share.png" />
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PREFEITURA MUNICIPAL DE IBATIBA - ES" />
+<meta name="twitter:description" content="IBATIBA é um município brasileiro do estado do Espírito Santo. Sua população estimada em 2014 era de 24.913 habitantes
+" />
+<meta name="twitter:image" content="https://ibatiba.es.gov.br/assets/img/logotipo-share.png" />
+
+<link rel='shortcut icon' type='image/x-icon' href='https://ibatiba.es.gov.br/assets/img/favicon.ico' />
+<!-- ================================
+Importa o Pre-Loader ================ -->
+<link rel="stylesheet" href="https://ibatiba.es.gov.br/statics/assets/plugins/loaders/loaders.css-master/loaders.css?v=1.15" />
+<!-- ================================ -->
+
+
+<link rel='stylesheet' href='https://ibatiba.es.gov.br/statics/bootstrap/css/bootstrap.min.css?v=1.15' type='text/css' />
+
+<link rel="stylesheet" href="https://ibatiba.es.gov.br/statics/assets/plugins/prettyPhoto/css/prettyPhoto.css?v=1.15" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://ibatiba.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.css?v=1.15" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" type="text/css" media="screen" />
+<link href='https://ibatiba.es.gov.br/statics/frontend/acessibilidade/style_acessibilidade.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/bootflat/css/bootflat.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/font-awesome/css/font-awesome.min.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/css/fonts/fonts.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/validation/css/validationEngine.jquery.min.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/flexisel/css/style.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/bxslider/jquery.bxslider.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/magnific-popup/magnific-popup.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/captionjs/captionjs.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/css/common.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/bootstrap/css/ie10-viewport-bug-workaround.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/select2/dist/css/select2.min.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/datepicker/datepicker.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/css/style_controladoria.css?v=1.15' rel='stylesheet' type='text/css'>
+<script src='https://ibatiba.es.gov.br/statics/assets/js/jquery-1.11.1.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/bootstrap/js/bootstrap.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/bootstrap/js/ie10-viewport-bug-workaround.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/bootflat/js/icheck.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/bootflat/js/jquery.fs.selecter.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/bootflat/js/jquery.fs.stepper.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/jquery.mask.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/jquery.maxlength.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/bxslider/jquery.bxslider.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/flexisel/js/jquery.flexisel.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/validation/js/languages/jquery.validationEngine-pt_BR.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/validation/js/jquery.validationEngine.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/validation/js/contrib/other-validations.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/prettyPhoto/js/jquery.prettyPhoto.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/magnific-popup/jquery.magnific-popup.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/captionjs/jquery.caption.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/frontend/select2/dist/js/select2.full.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/smartmenus/jquery.smartmenus.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/jquery.wheelmenu.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/datepicker/bootstrap-datepicker.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/inputmask-5/jquery.inputmask.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/inputmask-5/inputmask_personalizacao.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/frontend/js/scripts.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/frontend/js/scripts_transparencia.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/frontend/acessibilidade/js_acessibilidade.js?v=1.15'></script>
+<link href='https://unpkg.com/swiper@8/swiper-bundle.min.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/acessibilidade/style_acessibilidade.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/bootflat/css/bootflat.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/font-awesome/css/font-awesome.min.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/css/fonts/fonts.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/validation/css/validationEngine.jquery.min.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/flexisel/css/style.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/bxslider/jquery.bxslider.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/magnific-popup/magnific-popup.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/captionjs/captionjs.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/css/common.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/bootstrap/css/ie10-viewport-bug-workaround.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/select2/dist/css/select2.min.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/assets/plugins/datepicker/datepicker.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/statics/frontend/css/style_controladoria.css?v=1.15' rel='stylesheet' type='text/css'>
+<link href='https://ibatiba.es.gov.br/assets/css/style_site.css?v=1.15' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+  <ul class="skiplist">
+    <li class="skip"><a href="#conteudo" accesskey="2" title="Rolar até o conteúdo">Ir para o conteúdo</a></li>
+  </ul>
+
+
+  <div class="topo1-fundo">
+    <div class="container">
+      <div class="row">
+        <div class="topo1 col-lg-9 col-md-9 col-sm-12 col-xs-12">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <div class="navbar-header">
+                <button type="button" class="submenu-navbar-toggle navbar-toggle collapsed" data-toggle="collapse" data-target="#submenu-navbar" aria-expanded="false" aria-controls="navbar">
+                  <i class="fa fa-lg fa-bars" aria-hidden="true"></i> MENU DESTAQUE
+                </button>
+              </div>
+              <div id="submenu-navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav submenu">
+                  <li class='presentation '><a class='' href='/e-sic' target="_blank" title='Direcionar para e-SIC'> e-SIC</a></li><li class='presentation '><a class='' href='/e-ouv' target="_blank" title='Direcionar para e-OUV'> e-OUV</a></li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para UTILIDADES'>
+                UTILIDADES
+                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/pagina/ler/2075/plantao-de-farmacias' target="_blank" title='Direcionar para Farmácias de Platão'> Farmácias de Platão</a></li><li class='presentation '><a class='' href='/pagina/ler/2089/horario-de-onibus' target="_blank" title='Direcionar para Horário de Ônibus'> Horário de Ônibus</a></li><li class='presentation '><a class='' href='/pagina/ler/2091/hoteis-e-pousadas' target="_blank" title='Direcionar para Hotéis e Pousadas'> Hotéis e Pousadas</a></li><li class='presentation '><a class='' href='/pagina/ler/2092/utilidade-publica' target="_blank" title='Direcionar para Utilidade Pública'> Utilidade Pública</a></li><li class='presentation '><a class='' href='/pagina/ler/2083/disk-luz' target="_blank" title='Direcionar para Disk-Luz'> Disk-Luz</a></li></ul>
+          </li><li class='presentation '><a class='' href='https://ibatiba-es.portaltp.com.br/' target="_blank" title='Direcionar para TRANSPARÊNCIA'> TRANSPARÊNCIA</a></li><li class='presentation '><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao'  title='Direcionar para LEGISLAÇÃO'> LEGISLAÇÃO</a></li><li class='presentation '><a class='' href='http://ibatiba.legislacaocompilada.com.br/Arquivo/Documents/legislacao/image/LC1942020.pdf' target="_blank" title='Direcionar para CÓDIGO TRIBUTÁRIO'> CÓDIGO TRIBUTÁRIO</a></li><li class='presentation '><a class='' href='https://ibatiba-es.portaltp.com.br/api/dadosabertos.aspx'  title='Direcionar para DADOS ABERTOS'> DADOS ABERTOS</a></li>                </ul>
+              </div>
+            </div>
+          </nav>
+        </div>
+
+        <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+          <ul class="btns-acessibilidade text-right list-unstyled list-inline">
+    <li>
+    <a href="https://ibatiba.es.gov.br/sitemap" type="button"  data-toggle="tooltip" data-placement="bottom" data-container="body" title="Acessar mapa do site" class="btn btn-xs"><span class="sr-only">Acessar o mapa do site</span><i class="fa fa-map"></i></a>
+  </li>
+  <li>
+    <button type="button" onclick="fonte('a')" accesskey="3" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Aumentar tamanho da fonte" class="btn btn-xs"><span class="sr-only">Ação para aumentar tamanho da fonte do site</span><i class="fa fa-font" aria-hidden="true"></i><i class="fa fa-plus" aria-hidden="true"></i></button>
+  </li>
+  <li>
+    <button type="button" onclick="fonte('d')" accesskey="4" data-toggle="tooltip" data-placement="bottom" data-container="body" data-title="Diminuir tamanho da fonte" class="btn btn-xs"><span class="sr-only">Ação para diminuir tamanho da fonte do site</span><i class="fa fa-font" aria-hidden="true"></i><i class="fa fa-minus" aria-hidden="true"></i></button>
+  </li>
+  <li>
+    <button type="button" onclick="ativar_contraste()" accesskey="5" data-toggle="tooltip" data-placement="bottom" data-container="body" data-title="Aplicar auto contraste" class="btn btn-xs"><span class="sr-only">Ação para aplicar auto contraste no site</span><i class="fa fa-adjust" aria-hidden="true"></i></button>
+  </li>
+  <li>
+    <a href="https://ibatiba.es.gov.br/acessibilidade" accesskey="6" data-toggle="tooltip" data-placement="bottom" data-container="body" data-title="Acessibilidade do site" class="btn btn-xs"><span class="sr-only">Acessar página sobre acessibilidade do site</span><i class="fa fa-wheelchair" aria-hidden="true"></i></a>
+  </li>
+  <li>
+    <a href="https://ibatiba.es.gov.br/acessibilidade/nvda" accesskey="7" data-toggle="tooltip" data-placement="bottom" data-container="body" data-title="NVDA - Leitor de Tela" class="btn btn-xs"><span class="sr-only">Acessar página sobre NVDA - Leitor de Tela</span><i class="fa fa-assistive-listening-systems" aria-hidden="true"></i></a>
+  </li>
+  <li>
+    <a href="https://ibatiba.es.gov.br/acessibilidade/vlibras" accesskey="8" data-toggle="tooltip" data-placement="bottom" data-container="body" data-title="VLibras - Tradutor de Libras" class="btn btn-xs"><span class="sr-only">Acessar página sobre VLibras - Tradutor de Libras</span><i class="fa fa-sign-language" aria-hidden="true"></i></a>
+  </li>
+  
+    <li>
+    <a href="https://webmail-seguro.com.br/ibatiba.es.gov.br/v2/" data-toggle="tooltip" data-placement="bottom" data-container="body" data-title="Webmail" class="btn btn-xs" target="_blank"><span class="sr-only">Acessar Webmail</span><i class="fa fa-envelope" aria-hidden="true"></i></a>
+  </li>
+  
+  <li>
+    <a href="https://ibatiba.es.gov.br/sistema" accesskey="9" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Intranet" class="btn btn-xs" target="_blank"><span class="sr-only">Acessar Intranet</span><i class="fa fa-lock" aria-hidden="true"></i></a>
+  </li>
+
+  </ul>        </div>
+      </div>
+    </div>
+  </div><!-- /.topo1-fundo -->
+
+  <div class="container">
+    <div class="row topo">
+      <h1 class="col-lg-7 col-md-7 col-sm-7 col-xs-12 topo-logo">
+        <a href="https://ibatiba.es.gov.br/" title="PREFEITURA MUNICIPAL DE IBATIBA - ES" accesskey="1">
+          <img src="https://ibatiba.es.gov.br/assets/img/logo_site.png?v=3" alt="Logotipo de PREFEITURA MUNICIPAL DE IBATIBA - ES" class="img-responsive" aria-hidden="true">
+          <span class="sr-only">PREFEITURA MUNICIPAL DE IBATIBA - ES - Link para página inicial</span>
+        </a>
+      </h1>
+      <div class="col-lg-2 col-md-2 col-sm-2 col-xs-12 rsociais">
+        <ul class="text-right list-unstyled">
+          <li><a href="https://www.youtube.com/channel/UCKL5qGktGyzJACqym7ztAAA" title="Youtube" class="youtube"><i class="fa fa-lg fa-youtube" aria-hidden="true"></i><span class="sr-only">Link externo para Youtube</span></a></li>
+          <li><a href="https://www.facebook.com/prefeituradeibatiba/" title="Facebook" class="facebook"><i class="fa fa-lg fa-facebook" aria-hidden="true"></i><span class="sr-only">Link externo para Facebook</span></a></li>
+          <li><a href="https://twitter.com/pmibatiba" title="Twitter" class="twitter"><i class="fa fa-lg fa-twitter" aria-hidden="true"></i><span class="sr-only">Link externo para Twitter</span></a></li>
+          <li><a href="https://www.instagram.com/prefeituradeibatiba/" title="Instagram" class="instagram"><i class="fa fa-lg fa-instagram" aria-hidden="true"></i><span class="sr-only">Link externo para Instagram</span></a></li>
+        </ul>
+      </div>
+      <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 topo-pesquisa">
+        <form action="https://ibatiba.es.gov.br/busca" method="get" class="form_pesquisa" id="form_pesquisa">
+          <div class="input-group">
+            <label for="input_pesquisa">
+              <input type="text" class="form-control" placeholder="Pesquisar..." name="q" id="input_pesquisa">
+              <span class="sr-only">Termos da busca</span>
+            </label>
+            <label class="input-group-btn" for="btn_pesquisa">
+              <button class="btn btn-default" id="btn_pesquisa" type="submit" title="Clique pesquisar"><i class="fa fa-search" aria-hidden="true"></i><span class="sr-only">Enviar</span></button>
+              <span class="sr-only">Realizar busca</span>
+            </label>
+            <label for="btn_speech">
+              <button class="btn btn-default btn-speech" id="btn_speech" type="button" onclick="startDictation()" title="Clique para falar e pesquisar"><i class="fa fa-microphone" aria-hidden="true"></i><span class="sr-only">Falar para pesquisar</span></button>
+              <span class="sr-only">Falar para pesquisar</span>
+            </label>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <!--/.Logo-->
+
+  <div class="menu-fundo">
+    <div class="container menu">
+      <nav class="navbar">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <i class="fa fa-lg fa-bars" aria-hidden="true"></i> MENU PRINCIPAL
+          </button>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+
+            <li class='dropdown menu-municipio'>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para IBATIBA'>
+                IBATIBA
+                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/pagina/ler/14/historia'  title='Direcionar para HISTÓRIA'> HISTÓRIA</a></li><li class='presentation '><a class='' href='/pagina/ler/105/turismo'  title='Direcionar para TURISMO'> TURISMO</a></li><li class='presentation '><a class='' href='pagina/ler/2282/historia-do-museu-dos-tropeiros'  title='Direcionar para MUSEU DOS TROPEIROS'> MUSEU DOS TROPEIROS</a></li></ul>
+          </li><li class='dropdown menu-institucional'>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para INSTITUCIONAL'>
+                INSTITUCIONAL
+                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/pagina/ler/2139/organograma-municipal'  title='Direcionar para ORGANOGRAMA MUNICIPAL'> ORGANOGRAMA MUNICIPAL</a></li><li class='presentation '><a class='' href='/pagina/ler/2057/a-prefeitura'  title='Direcionar para PREFEITURA'> PREFEITURA</a></li><li class='presentation '><a class='' href='https://ibatiba.es.gov.br//pagina/ler/119/prefeito-e-vice-prefeito'  title='Direcionar para PREFEITO E VICE-PREFEITO'> PREFEITO E VICE-PREFEITO</a></li><li class='presentation '><a class='' href='/secretaria/ler/2/gabinete-do-prefeito'  title='Direcionar para GABINETE DO PREFEITO'> GABINETE DO PREFEITO</a></li><li class='presentation '><a class='' href='/secretaria/ler/3/controladoria-geral-do-municipio'  title='Direcionar para CONTROLADORIA GERAL DO MUNICÍPIO'> CONTROLADORIA GERAL DO MUNICÍPIO</a></li><li class='presentation '><a class='' href='/secretaria/ler/4/procuradoria-geral-da-republica'  title='Direcionar para PROCURADORIA GERAL'> PROCURADORIA GERAL</a></li><li class='presentation '><a class='' href='/secretaria/ler/5/secretaria-de-assistencia-social'  title='Direcionar para SECRETARIA DE ASSISTÊNCIA SOCIAL'> SECRETARIA DE ASSISTÊNCIA SOCIAL</a></li><li class='presentation '><a class='' href='/secretaria/ler/6/secretaria-de-administracao'  title='Direcionar para SECRETARIA DE ADMINISTRAÇÃO'> SECRETARIA DE ADMINISTRAÇÃO</a></li><li class='presentation '><a class='' href='/secretaria/ler/7/secretaria-de-agricultura-industria-e-comercio'  title='Direcionar para SECRETARIA DE AGRICULTURA INDÚSTRIA E COMÉRCIO'> SECRETARIA DE AGRICULTURA INDÚSTRIA E COMÉRCIO</a></li><li class='presentation '><a class='' href='/secretaria/ler/8/secretaria-de-educacao'  title='Direcionar para SECRETARIA DE EDUCAÇÃO'> SECRETARIA DE EDUCAÇÃO</a></li><li class='presentation '><a class='' href='/secretaria/ler/15/secretaria-de-esporte-e-lazer'  title='Direcionar para SECRETARIA DE ESPORTE E LAZER'> SECRETARIA DE ESPORTE E LAZER</a></li><li class='presentation '><a class='' href='/secretaria/ler/9/secretaria-municipal-de-fazenda'  title='Direcionar para SECRETARIA DA FAZENDA'> SECRETARIA DA FAZENDA</a></li><li class='presentation '><a class='' href='/secretaria/ler/10/secretaria-de-interior-e-transportes'  title='Direcionar para SECRETARIA DE INTERIOR E TRANSPORTES'> SECRETARIA DE INTERIOR E TRANSPORTES</a></li><li class='presentation '><a class='' href='/secretaria/ler/11/secretaria-de-meio-ambiente-cultura-e-turismo'  title='Direcionar para SECRETARIA DE MEIO AMBIENTE, CULTURA E TURISMO'> SECRETARIA DE MEIO AMBIENTE, CULTURA E TURISMO</a></li><li class='presentation '><a class='' href='/secretaria/ler/12/secretaria-de-obras-e-servicos-urbanos'  title='Direcionar para SECRETARIA DE OBRAS E SERVIÇOS URBANOS'> SECRETARIA DE OBRAS E SERVIÇOS URBANOS</a></li><li class='presentation '><a class='' href='/secretaria/ler/13/secretaria-municipal-de-saude'  title='Direcionar para SECRETARIA MUNICIPAL DE SAÚDE'> SECRETARIA MUNICIPAL DE SAÚDE</a></li><li class='presentation '><a class='' href='/secretaria/ler/14/organograma-municipal'  title='Direcionar para CONTATOS'> CONTATOS</a></li></ul>
+          </li><li class='dropdown menu-secretaria'>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para LICITAÇÃO'>
+                LICITAÇÃO
+                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=22&fksituacao=&search=&vencedor='  title='Direcionar para LEILÃO'> LEILÃO</a></li><li class='presentation '><a class='' href='https://ibatiba.es.gov.br/documento?tipo=34' target="_blank" title='Direcionar para Editais'> Editais</a></li><li class='presentation '><a class='' href='https://ibatiba-es.portaltp.com.br/consultas/compras/contratos.aspx' target="_blank" title='Direcionar para CONTRATOS'> CONTRATOS</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=28&fksituacao=&search=&vencedor='  title='Direcionar para  ACORDO DE COOPERAÇÃO'>  ACORDO DE COOPERAÇÃO</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=29&fksituacao=&search=&vencedor='  title='Direcionar para CARTA CONVITE'> CARTA CONVITE</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=30&fksituacao=&search=&vencedor='  title='Direcionar para  CHAMADA PÚBLICA'>  CHAMADA PÚBLICA</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=31&fksituacao=&search=&vencedor='  title='Direcionar para COMPRA DIRETA'> COMPRA DIRETA</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=21&fksituacao=&search=&vencedor='  title='Direcionar para CONCORRÊNCIA PÚBLICA'> CONCORRÊNCIA PÚBLICA</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=32&fksituacao=&search=&vencedor='  title='Direcionar para CONVOCAÇÃO'> CONVOCAÇÃO</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=33&fksituacao=&search=&vencedor='  title='Direcionar para CONVOCAÇÃO EMERGENCIAL'> CONVOCAÇÃO EMERGENCIAL</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=23&fksituacao=&search=&vencedor='  title='Direcionar para DISPENSA DE LICITAÇÃO'> DISPENSA DE LICITAÇÃO</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=24&fksituacao=&search=&vencedor='  title='Direcionar para Inexigibilidade'> Inexigibilidade</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=34&fksituacao=&search=&vencedor='  title='Direcionar para LICITAÇÕES'> LICITAÇÕES</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=35&fksituacao=&search=&vencedor='  title='Direcionar para Pregão Presencial'> Pregão Presencial</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=20&fksituacao=&search=&vencedor='  title='Direcionar para Pregão Eletrônico'> Pregão Eletrônico</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=36&fksituacao=&search=&vencedor='  title='Direcionar para Regime Diferenciado de Contratação - RDC'> Regime Diferenciado de Contratação - RDC</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=37&fksituacao=&search=&vencedor='  title='Direcionar para Tomada de Preço'> Tomada de Preço</a></li></ul>
+          </li><li class='dropdown menu-legislacao'>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para LEGISLAÇÃO'>
+                LEGISLAÇÃO
+                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=8&interno=0' target="_blank" title='Direcionar para Leis Orgânica'> Leis Orgânica</a></li><li class='presentation '><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=6' target="_blank" title='Direcionar para Leis Ordinárias'> Leis Ordinárias</a></li><li class='presentation '><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=5' target="_blank" title='Direcionar para Leis Complementares'> Leis Complementares</a></li><li class='presentation '><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=1' target="_blank" title='Direcionar para Decretos'> Decretos</a></li><li class='presentation '><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=7' target="_blank" title='Direcionar para Portarias'> Portarias</a></li><li class='presentation '><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=2' target="_blank" title='Direcionar para Instruções Normativas'> Instruções Normativas</a></li><li class='presentation '><a class='' href='https://ibatiba.legislacaocompilada.com.br/Arquivo/Documents/legislacao/image/LEI%20COMPLEMENTAR%20N%C2%BA.%2038%20-%202009.pdf'  title='Direcionar para Estatuto dos Servidores'> Estatuto dos Servidores</a></li></ul>
+          </li><li class='dropdown menu-publicacoes'>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para PUBLICAÇÕES'>
+                PUBLICAÇÕES
+                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/noticia'  title='Direcionar para Notícias'> Notícias</a></li><li class='presentation '><a class='' href='/pagina/ler/2257/agendas-administrativas'  title='Direcionar para Agenda Oficial'> Agenda Oficial</a></li><li class='presentation '><a class='' href='/pagina/ler/2168/calendario-de-eventos' target="_blank" title='Direcionar para Calendário de Eventos'> Calendário de Eventos</a></li><li class='presentation '><a class='' href='/galeria'  title='Direcionar para Galeria de Fotos'> Galeria de Fotos</a></li><li class='presentation '><a class='' href='/video'  title='Direcionar para Galeria de Vídeos'> Galeria de Vídeos</a></li><li class='presentation '><a class='' href='/pagina/ler/2090/escala-de-medicos-e-odontologos'  title='Direcionar para Escala de Médicos e Odontólogos'> Escala de Médicos e Odontólogos</a></li><li class='presentation '><a class='' href='/pagina/ler/2085/estagio-obrigatorio'  title='Direcionar para Estágio Obrigatório'> Estágio Obrigatório</a></li><li class='presentation '><a class='' href='/transparencia/documento/ver/144/anexos'  title='Direcionar para Ofícios'> Ofícios</a></li></ul>
+          </li><li class='dropdown menu-servico'>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para SERVIÇOS'>
+                SERVIÇOS
+                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/pagina/ler/2081/licenciamento-ambiental'  title='Direcionar para Licenciamento Ambiental'> Licenciamento Ambiental</a></li><li class='presentation '><a class='' href='https://gpi20.cloud.el.com.br/ServerExec/acessoBase/?idPortal=7f9c71c3-5c65-4555-8218-82d25fd5709c' target="_blank" title='Direcionar para Certidão Negativa'> Certidão Negativa</a></li><li class='presentation '><a class='' href='http://iss00.el.com.br:8080/bancario/paginas/sistema/login.xhtml' target="_blank" title='Direcionar para Iss Bancário'> Iss Bancário</a></li><li class='presentation '><a class='' href='https://es-ibatiba-pm-nfs.cloud.el.com.br//paginas/sistema/login.jsf' target="_blank" title='Direcionar para Nota Fiscal Eletrônica'> Nota Fiscal Eletrônica</a></li><li class='presentation '><a class='' href='https://gpi20.cloud.el.com.br/ServerExec/acessoBase/?idPortal=7f9c71c3-5c65-4555-8218-82d25fd5709c' target="_blank" title='Direcionar para Serviços ao cidadão'> Serviços ao cidadão</a></li><li class='presentation '><a class='' href='/documento?tipo=3'  title='Direcionar para Transporte Universitário'> Transporte Universitário</a></li><li class='presentation '><a class='' href='/documento?tipo=4'  title='Direcionar para Plano Municipal de Saneamento Básico'> Plano Municipal de Saneamento Básico</a></li><li class='presentation '><a class='' href='http://ibatiba.legislacaocompilada.com.br/Arquivo/Documents/legislacao/image/LEI%20N%C2%BA.%20517%20-%202008.pdf' target="_blank" title='Direcionar para Plano Diretor Municipal (PDM)'> Plano Diretor Municipal (PDM)</a></li><li class='presentation '><a class='' href='http://ibatiba.legislacaocompilada.com.br/Arquivo/Documents/legislacao/image/LC1942020.pdf' target="_blank" title='Direcionar para CÓDIGO TRIBUTÁRIO'> CÓDIGO TRIBUTÁRIO</a></li><li class='presentation '><a class='' href='/pagina/ler/2075/plantao-de-farmacias'  title='Direcionar para Farmácias de Plantão'> Farmácias de Plantão</a></li><li class='presentation '><a class='' href='/pagina/ler/2089/horario-de-onibus'  title='Direcionar para Horário de Ônibus'> Horário de Ônibus</a></li><li class='presentation '><a class='' href='/pagina/ler/2091/hoteis-e-pousadas'  title='Direcionar para Hotéis e Pousadas'> Hotéis e Pousadas</a></li><li class='presentation '><a class='' href='/pagina/ler/2092/utilidade-publica'  title='Direcionar para Utilidade Pública'> Utilidade Pública</a></li><li class='presentation '><a class='' href='/pagina/ler/2083/disk-luz'  title='Direcionar para Disk-Luz'> Disk-Luz</a></li><li class='presentation '><a class='' href='/pagina/ler/2205/plano-de-contingencia-municipal-'  title='Direcionar para Plano de Contingência Municipal'> Plano de Contingência Municipal</a></li><li class='presentation '><a class='' href='https://ibatiba.aprovalegal.com.br/app/login' target="_blank" title='Direcionar para IBATIBA AprovaLegal'> IBATIBA AprovaLegal</a></li></ul>
+          </li><li class='presentation '><a class='' href='/pagina/ler/2106/coronavirus' target="_blank" title='Direcionar para CORONAVÍRUS'> CORONAVÍRUS</a></li><li class='dropdown menu-comunicacao'>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para ACESSO A INFORMAÇÃO'>
+                ACESSO A INFORMAÇÃO
+                <i class="fa fa-sort-desc" aria-hidden="true"></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='https://ibatiba-es.portaltp.com.br/consultas/documentos.aspx?id=966'  title='Direcionar para Julgamento das Contas do Poder Executivo'> Julgamento das Contas do Poder Executivo</a></li><li class='presentation '><a class='' href='/pagina/ler/2224/projetos-culturais-e-esportivos'  title='Direcionar para Projetos Culturais e Esportivos'> Projetos Culturais e Esportivos</a></li><li class='presentation '><a class='' href='/pagina/ler/2226/audiencias-publicas'  title='Direcionar para Audiências Públicas'> Audiências Públicas</a></li><li class='presentation '><a class='' href='/pagina/ler/2225/consultas-publicas'  title='Direcionar para Consultas Públicas'> Consultas Públicas</a></li><li class='presentation '><a class='' href='/documento?tipo=24'  title='Direcionar para Lei Paulo Gustavo'> Lei Paulo Gustavo</a></li><li class='presentation '><a class='' href='https://ibatiba-es.portaltp.com.br/' target="_blank" title='Direcionar para Portal da Transparência'> Portal da Transparência</a></li><li class='presentation '><a class='' href='/controladoria'  title='Direcionar para Portal da controladoria'> Portal da controladoria</a></li><li class='presentation '><a class='' href='/e-sic'  title='Direcionar para Lei de Acesso a informação'> Lei de Acesso a informação</a></li><li class='presentation '><a class='' href='https://servicos1.cloud.el.com.br/es-ibatiba-pm/portal/'  title='Direcionar para Contracheque'> Contracheque</a></li><li class='presentation '><a class='' href='/documento?tipo=6'  title='Direcionar para Prestação de contas'> Prestação de contas</a></li><li class='presentation '><a class='' href='/e-ouv'  title='Direcionar para Ouvidoria'> Ouvidoria</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=30'  title='Direcionar para Chamamento Público'> Chamamento Público</a></li><li class='presentation '><a class='' href='/documento?tipo=21'  title='Direcionar para Processo Seletivo'> Processo Seletivo</a></li><li class='presentation '><a class='' href='/documento?tipo=1'  title='Direcionar para PROCESSO SELETIVO CONSELHO TUTELAR'> PROCESSO SELETIVO CONSELHO TUTELAR</a></li><li class='presentation '><a class='' href='/documento?tipo=26'  title='Direcionar para Concursos'> Concursos</a></li><li class='presentation '><a class='' href='/documento?tipo=2'  title='Direcionar para Pronaf'> Pronaf</a></li><li class='presentation '><a class='' href='/pagina/ler/2120/lei-aldir-blanc'  title='Direcionar para LEI ALDIR BLANC'> LEI ALDIR BLANC</a></li><li class='presentation '><a class='' href='/pagina/ler/2243/lei-aldir-blanc-no-02'  title='Direcionar para LEI ALDIR BLANC Nº2'> LEI ALDIR BLANC Nº2</a></li><li class='presentation '><a class='' href='/documento?tipo=27'  title='Direcionar para Programa Coinvestimento'> Programa Coinvestimento</a></li></ul>
+          </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+            </div>
+  </div>
+
+
+  
+
+  <div id="conteudo" tabindex="-1"></div>
+  <div class="container ajustar_fonte pagina_site" id="pagina_site">
+    <div class="container ajustar_fonte">
+  <div class="row home-slide home-slides">
+
+          <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+        <div id="slide" class="carousel slide" data-ride="carousel">
+          <ul class="carousel-inner list-unstyled" role="listbox">
+            <li class='item active'>
+                  <a href='https://ibatiba.es.gov.br/noticia/ler/3248/defesa-civil-de-ibatiba-alerta-para-chuvas-intensas-e-ventos-fortes-nesta-quinta-feira-26' title='Defesa Civil de Ibatiba alerta para chuvas intensas e ventos fortes nesta quinta-feira (26)'><img src='/uploads/files/11-26-----ALERTA-DEFESA-CIVIL---FEED.png' alt='Defesa Civil de Ibatiba alerta para chuvas intensas e ventos fortes nesta quinta-feira (26)' /></a>
+                  <p class='carousel-caption slide-caption'>
+                    <a href='https://ibatiba.es.gov.br/noticia/ler/3248/defesa-civil-de-ibatiba-alerta-para-chuvas-intensas-e-ventos-fortes-nesta-quinta-feira-26' title='Defesa Civil de Ibatiba alerta para chuvas intensas e ventos fortes nesta quinta-feira (26)'>
+                      <strong>Defesa Civil de Ibatiba alerta para chuvas intensas e ventos fortes nesta quinta-feira (26)</strong>
+                      <span class='hidden-xs'>A Prefeitura de Ibatiba, por meio da Defesa Civil Municipal, alerta a popula&ccedil;&atilde;o sobre o aviso meteorol&oacute;gico de alto impacto previsto para a tarde e a noite desta quinta-feira, 26 de...</span>
+                    </a>
+                  </p>
+                </li><li class='item '>
+                  <a href='https://ibatiba.es.gov.br/noticia/ler/3247/ibatiba-realizara-3o-encontro-de-formacao-para-monitores-educacionais-e-de-cuidados-especiais' title='Ibatiba realizará 3º Encontro de Formação para Monitores Educacionais e de Cuidados Especiais'><img src='/uploads/files/25_encontromonitoreseducacionaisfeed.png' alt='Ibatiba realizará 3º Encontro de Formação para Monitores Educacionais e de Cuidados Especiais' /></a>
+                  <p class='carousel-caption slide-caption'>
+                    <a href='https://ibatiba.es.gov.br/noticia/ler/3247/ibatiba-realizara-3o-encontro-de-formacao-para-monitores-educacionais-e-de-cuidados-especiais' title='Ibatiba realizará 3º Encontro de Formação para Monitores Educacionais e de Cuidados Especiais'>
+                      <strong>Ibatiba realizará 3º Encontro de Formação para Monitores Educacionais e de Cuidados Especiais</strong>
+                      <span class='hidden-xs'>A Prefeitura Municipal de Ibatiba, por meio da Secretaria Municipal de Educa&ccedil;&atilde;o, realizar&aacute;, no dia 17 de dezembro, o 3&ordm; Encontro de Forma&ccedil;&atilde;o para Monitores Educacionais...</span>
+                    </a>
+                  </p>
+                </li><li class='item '>
+                  <a href='https://ibatiba.es.gov.br/noticia/ler/3246/carteiras-de-identidade-estao-disponiveis-para-retirada-na-casa-do-cidadao-de-ibatiba' title='Carteiras de identidade estão disponíveis para retirada na Casa do Cidadão de Ibatiba'><img src='/uploads/files/25-carteiraidentidadefeed.png' alt='Carteiras de identidade estão disponíveis para retirada na Casa do Cidadão de Ibatiba' /></a>
+                  <p class='carousel-caption slide-caption'>
+                    <a href='https://ibatiba.es.gov.br/noticia/ler/3246/carteiras-de-identidade-estao-disponiveis-para-retirada-na-casa-do-cidadao-de-ibatiba' title='Carteiras de identidade estão disponíveis para retirada na Casa do Cidadão de Ibatiba'>
+                      <strong>Carteiras de identidade estão disponíveis para retirada na Casa do Cidadão de Ibatiba</strong>
+                      <span class='hidden-xs'>A Prefeitura de Ibatiba, por meio da Casa do Cidad&atilde;o, informa &agrave; popula&ccedil;&atilde;o que as carteiras de identidade solicitadas j&aacute; est&atilde;o dispon&iacute;veis para retirada.
+
+Os...</span>
+                    </a>
+                  </p>
+                </li><li class='item '>
+                  <a href='https://ibatiba.es.gov.br/noticia/ler/3245/natal-iluminado-de-ibatiba-tera-apresentacoes-de-corais-e-fanfarra-municipal-neste-fim-de-semana' title='Natal Iluminado de Ibatiba terá apresentações de corais e fanfarra municipal neste fim de semana'><img src='/uploads/files/24_ProgramacaoNatalIluminadoFEED-jpg.jpeg' alt='Natal Iluminado de Ibatiba terá apresentações de corais e fanfarra municipal neste fim de semana' /></a>
+                  <p class='carousel-caption slide-caption'>
+                    <a href='https://ibatiba.es.gov.br/noticia/ler/3245/natal-iluminado-de-ibatiba-tera-apresentacoes-de-corais-e-fanfarra-municipal-neste-fim-de-semana' title='Natal Iluminado de Ibatiba terá apresentações de corais e fanfarra municipal neste fim de semana'>
+                      <strong>Natal Iluminado de Ibatiba terá apresentações de corais e fanfarra municipal neste fim de semana</strong>
+                      <span class='hidden-xs'>A programa&ccedil;&atilde;o do Natal Iluminado Ibatiba 2026 continua neste fim de semana, com apresenta&ccedil;&otilde;es musicais que prometem reunir fam&iacute;lias, valorizar os talentos locais e fortalecer...</span>
+                    </a>
+                  </p>
+                </li><li class='item '>
+                  <a href='https://ibatiba.es.gov.br/noticia/ler/3243/prefeitura-de-ibatiba-orienta-populacao-sobre-prevencao-e-controle-do-caramujo-africano' title='Prefeitura de Ibatiba orienta população sobre prevenção e controle do caramujo-africano'><img src='/uploads/files/24_informacoescaramujo1.png' alt='Prefeitura de Ibatiba orienta população sobre prevenção e controle do caramujo-africano' /></a>
+                  <p class='carousel-caption slide-caption'>
+                    <a href='https://ibatiba.es.gov.br/noticia/ler/3243/prefeitura-de-ibatiba-orienta-populacao-sobre-prevencao-e-controle-do-caramujo-africano' title='Prefeitura de Ibatiba orienta população sobre prevenção e controle do caramujo-africano'>
+                      <strong>Prefeitura de Ibatiba orienta população sobre prevenção e controle do caramujo-africano</strong>
+                      <span class='hidden-xs'>A Prefeitura de Ibatiba, por meio da Secretaria Municipal de Sa&uacute;de e da equipe de Vigil&acirc;ncia Ambiental, refor&ccedil;a as orienta&ccedil;&otilde;es &agrave; popula&ccedil;&atilde;o sobre a...</span>
+                    </a>
+                  </p>
+                </li><li class='item '>
+                  <a href='https://ibatiba.es.gov.br/noticia/ler/3242/prefeitura-de-ibatiba-realiza-acao-de-controle-do-caramujo-africano-no-bairro-novo-horizonte' title='Prefeitura de Ibatiba realiza ação de controle do caramujo-africano no bairro Novo Horizonte'><img src='/uploads/files/24_recolhimentocaramujos1.png' alt='Prefeitura de Ibatiba realiza ação de controle do caramujo-africano no bairro Novo Horizonte' /></a>
+                  <p class='carousel-caption slide-caption'>
+                    <a href='https://ibatiba.es.gov.br/noticia/ler/3242/prefeitura-de-ibatiba-realiza-acao-de-controle-do-caramujo-africano-no-bairro-novo-horizonte' title='Prefeitura de Ibatiba realiza ação de controle do caramujo-africano no bairro Novo Horizonte'>
+                      <strong>Prefeitura de Ibatiba realiza ação de controle do caramujo-africano no bairro Novo Horizonte</strong>
+                      <span class='hidden-xs'>A Prefeitura de Ibatiba, por meio da Secretaria Municipal de Sa&uacute;de e da equipe de Vigil&acirc;ncia Ambiental, realizou, nesta segunda-feira, 23 de novembro, uma a&ccedil;&atilde;o especial de...</span>
+                    </a>
+                  </p>
+                </li>          </ul>
+
+          <a class="left carousel-control" href="#slide" role="button" data-slide="prev" title="Slide anterior"><span class="sr-only">Slide anterior</span></a>
+          <a class="right carousel-control" href="#slide" role="button" data-slide="next" title="Próximo slide"><span class="sr-only">Próximo slide</span></a>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 coluna-slide-destaque">
+        <div class="bxslider-destaque-box">
+          <p class="titulo-secao-linha bxslider-destaque-titulo">
+            <span><i class="list-icon-destaque fa fa-square"></i> DESTAQUES</span>
+            <em></em>
+          </p>
+
+                      <div class="bxSliderDestaque">
+              <ul class="sliderDestaque list-unstyled">
+                <li class='destaque-item'>
+                      <a class='destaque-item-titulo' href='https://ibatiba.es.gov.br/noticia/ler/3240/prefeitura-municipal-de-ibatiba-por-meio-da-secretaria-municipal-de-saude-presta-homenagem-aos-profissionais-que-atuaram-no-atendimento-as-vitimas-de-acidente-com-onibus'>Prefeitura Municipal de Ibatiba, por meio da Secretaria Municipal de Saúde, presta homenagem aos profissionais que atuaram no atendimento às vítimas de acidente com ônibus</a>
+                      <a class='destaque-item-capa' href='https://ibatiba.es.gov.br/noticia/ler/3240/prefeitura-municipal-de-ibatiba-por-meio-da-secretaria-municipal-de-saude-presta-homenagem-aos-profissionais-que-atuaram-no-atendimento-as-vitimas-de-acidente-com-onibus'><img src='/uploads/files/19_HomenagemFEED.png' alt='Prefeitura Municipal de Ibatiba, por meio da Secretaria Municipal de Saúde, presta homenagem aos profissionais que atuaram no atendimento às vítimas de acidente com ônibus'></a>
+                      <a class='destaque-item-chamada' href='https://ibatiba.es.gov.br/noticia/ler/3240/prefeitura-municipal-de-ibatiba-por-meio-da-secretaria-municipal-de-saude-presta-homenagem-aos-profissionais-que-atuaram-no-atendimento-as-vitimas-de-acidente-com-onibus'>
+                        A Prefeitura Municipal de Ibatiba, por meio da Secretaria Municipal de Sa&uacute;de, manifesta seu...
+                      </a>
+                      <div class='row'>
+                      <div class='col-md-12 text-right'>
+                        <a href='https://ibatiba.es.gov.br/noticia/ler/3240/prefeitura-municipal-de-ibatiba-por-meio-da-secretaria-municipal-de-saude-presta-homenagem-aos-profissionais-que-atuaram-no-atendimento-as-vitimas-de-acidente-com-onibus'  class='botao-leia-mais'>
+                          LEIA MAIS <i class='plus-icone-leia-mais fa fa-plus-circle'></i>
+                        </a>
+                      </div>
+                      </div>
+                    </li>
+                    <li class='destaque-item'>
+                      <a class='destaque-item-titulo' href='https://ibatiba.es.gov.br/noticia/ler/3238/prefeitura-de-ibatiba-alerta-populacao-para-risco-de-tempestades-chuvas-intensas-e-ventos-fortes-nos-dias-19-e-20-de-novembro'>Prefeitura de Ibatiba alerta população para risco de tempestades, chuvas intensas e ventos fortes nos dias 19 e 20 de novembro</a>
+                      <a class='destaque-item-capa' href='https://ibatiba.es.gov.br/noticia/ler/3238/prefeitura-de-ibatiba-alerta-populacao-para-risco-de-tempestades-chuvas-intensas-e-ventos-fortes-nos-dias-19-e-20-de-novembro'><img src='/uploads/files/11---19-1.png' alt='Prefeitura de Ibatiba alerta população para risco de tempestades, chuvas intensas e ventos fortes nos dias 19 e 20 de novembro'></a>
+                      <a class='destaque-item-chamada' href='https://ibatiba.es.gov.br/noticia/ler/3238/prefeitura-de-ibatiba-alerta-populacao-para-risco-de-tempestades-chuvas-intensas-e-ventos-fortes-nos-dias-19-e-20-de-novembro'>
+                        A Prefeitura Municipal de Ibatiba informa &agrave; popula&ccedil;&atilde;o que o munic&iacute;pio...
+                      </a>
+                      <div class='row'>
+                      <div class='col-md-12 text-right'>
+                        <a href='https://ibatiba.es.gov.br/noticia/ler/3238/prefeitura-de-ibatiba-alerta-populacao-para-risco-de-tempestades-chuvas-intensas-e-ventos-fortes-nos-dias-19-e-20-de-novembro'  class='botao-leia-mais'>
+                          LEIA MAIS <i class='plus-icone-leia-mais fa fa-plus-circle'></i>
+                        </a>
+                      </div>
+                      </div>
+                    </li>
+                    <li class='destaque-item'>
+                      <a class='destaque-item-titulo' href='https://ibatiba.es.gov.br/noticia/ler/3236/ibatiba-alcanca-83-de-criancas-alfabetizadas-em-2025-e-recebe-placa-de-reconhecimento-pelo-ica'>Ibatiba alcança 83% de crianças alfabetizadas em 2025 e recebe placa de reconhecimento pelo ICA</a>
+                      <a class='destaque-item-capa' href='https://ibatiba.es.gov.br/noticia/ler/3236/ibatiba-alcanca-83-de-criancas-alfabetizadas-em-2025-e-recebe-placa-de-reconhecimento-pelo-ica'><img src='/uploads/files/18_PlacaICA_FEED.png' alt='Ibatiba alcança 83% de crianças alfabetizadas em 2025 e recebe placa de reconhecimento pelo ICA'></a>
+                      <a class='destaque-item-chamada' href='https://ibatiba.es.gov.br/noticia/ler/3236/ibatiba-alcanca-83-de-criancas-alfabetizadas-em-2025-e-recebe-placa-de-reconhecimento-pelo-ica'>
+                        A educa&ccedil;&atilde;o de Ibatiba tem mais um motivo para comemorar. No dia 17 de novembro, a...
+                      </a>
+                      <div class='row'>
+                      <div class='col-md-12 text-right'>
+                        <a href='https://ibatiba.es.gov.br/noticia/ler/3236/ibatiba-alcanca-83-de-criancas-alfabetizadas-em-2025-e-recebe-placa-de-reconhecimento-pelo-ica'  class='botao-leia-mais'>
+                          LEIA MAIS <i class='plus-icone-leia-mais fa fa-plus-circle'></i>
+                        </a>
+                      </div>
+                      </div>
+                    </li>
+                    <li class='destaque-item'>
+                      <a class='destaque-item-titulo' href='https://ibatiba.es.gov.br/noticia/ler/3234/natal-iluminado-de-ibatiba-tera-apresentacao-do-coral-musica-na-rede-neste-sabado-21'>Natal Iluminado de Ibatiba terá apresentação do Coral Música na Rede neste sábado (21)</a>
+                      <a class='destaque-item-capa' href='https://ibatiba.es.gov.br/noticia/ler/3234/natal-iluminado-de-ibatiba-tera-apresentacao-do-coral-musica-na-rede-neste-sabado-21'><img src='/uploads/files/18_ProgramacaoNatalIluminadoFEED.png' alt='Natal Iluminado de Ibatiba terá apresentação do Coral Música na Rede neste sábado (21)'></a>
+                      <a class='destaque-item-chamada' href='https://ibatiba.es.gov.br/noticia/ler/3234/natal-iluminado-de-ibatiba-tera-apresentacao-do-coral-musica-na-rede-neste-sabado-21'>
+                        A programa&ccedil;&atilde;o do Natal Iluminado 2026 de Ibatiba continua com atra&ccedil;&otilde;es...
+                      </a>
+                      <div class='row'>
+                      <div class='col-md-12 text-right'>
+                        <a href='https://ibatiba.es.gov.br/noticia/ler/3234/natal-iluminado-de-ibatiba-tera-apresentacao-do-coral-musica-na-rede-neste-sabado-21'  class='botao-leia-mais'>
+                          LEIA MAIS <i class='plus-icone-leia-mais fa fa-plus-circle'></i>
+                        </a>
+                      </div>
+                      </div>
+                    </li>
+                    
+              </ul>
+
+            </div>
+                  </div>
+      </div>
+      </div><!-- /home-slides -->
+
+    <!-- /Banners -->
+
+  <div class="row">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 btn-home-total">
+      <ul class="list-unstyled">
+
+
+        <li>
+          <a href="https://ibatiba.es.gov.br/e-sic" title="Direcionar para o e-SIC">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/icon-esic.png?v=1.4" alt="Ícone e-SIC" title="Ícone do e-SIC"></span>
+            <span class="btn-home-texto">e-SIC<br>informações ao Cidadão</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://ibatiba.es.gov.br/e-ouv" title="Direcionar para o e-OUV">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/btn-acao.png?v=1.4" alt="Ícone e-OUV" title="Ícone e-OUV"></span>
+            <span class="btn-home-texto">e-OUV<br>Ouvidoria Municipal</span>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://ioes.dio.es.gov.br/dom" title="Direcionar para Processo Seletivo">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/btn-concurso.png" alt="Ícone Processo Seletivo" title="Ícone Processo Seletivo"></span>
+            <span class="btn-home-texto">DIÁRIO<br>OFICIAL</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://ibatiba.es.gov.br/pagina/ler/2221/pdde-municipal" title="Direcionar para o PDDE MUNICIPAL">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/btn-transparencia.png" alt="Ícone Portal da Transparência" title="Ícone PDDE MUNICIPAL"></span>
+            <span class="btn-home-texto">PDDE MUNICIPAL</span>
+          </a>
+        </li>
+        <!-- <li>
+          <a href="https://ibatiba-es.portaltp.com.br/" title="Direcionar para o Portal da Transparência">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/btn-transparencia.png" alt="Ícone Portal da Transparência" title="Ícone Portal da Transparência"></span>
+            <span class="btn-home-texto">PORTAL DA<br>TRÂNSPARENCIA</span>
+          </a>
+        </li> -->
+        <li>
+          <a href="https://ibatiba.legislacaocompilada.com.br/legislacao/" title="Direcionar para Legislação Municipal">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/btn-legislacao.png" alt="Ícone Legislação Municipal" title="Ícone Legislação Municipal"></span>
+            <span class="btn-home-texto">LEGISLAÇÃO<br>MUNICIPAL</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://ibatiba.es.gov.br/licitacao" title="Direcionar para Licitações">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/icon_licitacoes.png?v=1.4" alt="Ícone e-SIC" title="Ícone e-SIC"></span>
+            <span class="btn-home-texto">LICITAÇÕES</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://ibatiba.es.gov.br/secretaria" title="Direcionar para Secretarias">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/bank-building.png?v=1.4" alt="Ícone e-SIC" title="Ícone e-SIC"></span>
+            <span class="btn-home-texto">SECRETARIAS</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://ibatiba.es.gov.br/uploads/files/614b7ed3e2ea34-13450890carta-de-servicos.pdf" target="_blank" title="Direcionar para Carta de Serviços">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/btn-controladoria.png" alt="Ícone e-SIC" title="Ícone e-SIC"></span>
+            <span class="btn-home-texto">CARTA DE SERVIÇOS</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://ibatiba.es.gov.br/pagina/ler/2140/conselhos-municipais" title="Direcionar para Conselhos Municipais">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/btn-acao.png" alt="Ícone de Conselhos Municipais" title="Ícone de Conselhos Municipais"></span>
+            <span class="btn-home-texto">CONSELHOS MUNICIPAIS</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://ibatiba.es.gov.br/pagina/ler/2168/calendario-de-eventos" title="Direcionar para CALENDÁRIO DE EVENTOS">
+            <span class="btn-home-icone" aria-hidden="true"><img class="btn-img" src="https://ibatiba.es.gov.br/assets/img/btn-acao.png" alt="Ícone de Conselhos Municipais" title="Ícone de Conselhos Municipais"></span>
+            <span class="btn-home-texto">CALENDÁRIO DE EVENTOS</span>
+          </a>
+        </li>
+
+        <li class="clearfix"></li>
+      </ul>
+
+    </div>
+  </div><!-- /btn-home-total -->
+
+
+  <div class="row">
+    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 ultimas-noticias">
+      <p class="titulo-secao-linha">
+        <span><i class="list-icon-noticias fa fa-square"></i> ÚLTIMAS NOTÍCIAS</span>
+        <em></em>
+      </p>
+
+      <ul class="list-unstyled">
+        <li class='row'>
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3240/prefeitura-municipal-de-ibatiba-por-meio-da-secretaria-municipal-de-saude-presta-homenagem-aos-profissionais-que-atuaram-no-atendimento-as-vitimas-de-acidente-com-onibus' class='noticia-imagem'>
+                  <img src='/uploads/files/19_HomenagemFEED.png' alt='Prefeitura Municipal de Ibatiba, por meio da Secretaria Municipal de Saúde, presta homenagem aos profissionais que atuaram no atendimento às vítimas de acidente com ônibus' class='img-responsive'>
+                </a>
+              </div>
+              <div class='col-lg-8 col-md-8 col-sm-8 col-xs-12 padL0'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3240/prefeitura-municipal-de-ibatiba-por-meio-da-secretaria-municipal-de-saude-presta-homenagem-aos-profissionais-que-atuaram-no-atendimento-as-vitimas-de-acidente-com-onibus' title='Direcionar para notícia: Prefeitura Municipal de Ibatiba, por meio da Secretaria Municipal de Saúde, presta homenagem aos profissionais que atuaram no atendimento às vítimas de acidente com ônibus'>
+                  <strong>Prefeitura Municipal de Ibatiba, por meio da Secretaria Municipal de Saúde, presta homenagem aos profissionais que atuaram no atendimento às vítimas de acidente com ônibus</strong>
+                  <span>A Prefeitura Municipal de Ibatiba, por meio da Secretaria Municipal de Sa&uacute;de, manifesta seu profundo reconhecimento e gratid&atilde;o a todos os profissionais, equipes e colaboradores que...</span>
+                </a>
+              </div>
+              <div class='col-lg-10 col-md-9 col-sm-8 col-xs-7'>
+            
+              </div>
+              <div class='col-lg-2 col-md-3 col-sm-4 col-xs-5 text-right'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3240/prefeitura-municipal-de-ibatiba-por-meio-da-secretaria-municipal-de-saude-presta-homenagem-aos-profissionais-que-atuaram-no-atendimento-as-vitimas-de-acidente-com-onibus'  class='botao-leia-mais' title='Direcionar para notícias'>
+                  LEIA MAIS <i  class='plus-icone-leia-mais fa fa-plus-circle'></i>
+                </a>
+              </div>
+            </li>
+            <li class='row'>
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3238/prefeitura-de-ibatiba-alerta-populacao-para-risco-de-tempestades-chuvas-intensas-e-ventos-fortes-nos-dias-19-e-20-de-novembro' class='noticia-imagem'>
+                  <img src='/uploads/files/11---19-1.png' alt='Prefeitura de Ibatiba alerta população para risco de tempestades, chuvas intensas e ventos fortes nos dias 19 e 20 de novembro' class='img-responsive'>
+                </a>
+              </div>
+              <div class='col-lg-8 col-md-8 col-sm-8 col-xs-12 padL0'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3238/prefeitura-de-ibatiba-alerta-populacao-para-risco-de-tempestades-chuvas-intensas-e-ventos-fortes-nos-dias-19-e-20-de-novembro' title='Direcionar para notícia: Prefeitura de Ibatiba alerta população para risco de tempestades, chuvas intensas e ventos fortes nos dias 19 e 20 de novembro'>
+                  <strong>Prefeitura de Ibatiba alerta população para risco de tempestades, chuvas intensas e ventos fortes nos dias 19 e 20 de novembro</strong>
+                  <span>A Prefeitura Municipal de Ibatiba informa &agrave; popula&ccedil;&atilde;o que o munic&iacute;pio est&aacute; sob alerta meteorol&oacute;gico devido &agrave; previs&atilde;o de tempestades, chuvas...</span>
+                </a>
+              </div>
+              <div class='col-lg-10 col-md-9 col-sm-8 col-xs-7'>
+            
+              </div>
+              <div class='col-lg-2 col-md-3 col-sm-4 col-xs-5 text-right'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3238/prefeitura-de-ibatiba-alerta-populacao-para-risco-de-tempestades-chuvas-intensas-e-ventos-fortes-nos-dias-19-e-20-de-novembro'  class='botao-leia-mais' title='Direcionar para notícias'>
+                  LEIA MAIS <i  class='plus-icone-leia-mais fa fa-plus-circle'></i>
+                </a>
+              </div>
+            </li>
+            <li class='row'>
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3236/ibatiba-alcanca-83-de-criancas-alfabetizadas-em-2025-e-recebe-placa-de-reconhecimento-pelo-ica' class='noticia-imagem'>
+                  <img src='/uploads/files/18_PlacaICA_FEED.png' alt='Ibatiba alcança 83% de crianças alfabetizadas em 2025 e recebe placa de reconhecimento pelo ICA' class='img-responsive'>
+                </a>
+              </div>
+              <div class='col-lg-8 col-md-8 col-sm-8 col-xs-12 padL0'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3236/ibatiba-alcanca-83-de-criancas-alfabetizadas-em-2025-e-recebe-placa-de-reconhecimento-pelo-ica' title='Direcionar para notícia: Ibatiba alcança 83% de crianças alfabetizadas em 2025 e recebe placa de reconhecimento pelo ICA'>
+                  <strong>Ibatiba alcança 83% de crianças alfabetizadas em 2025 e recebe placa de reconhecimento pelo ICA</strong>
+                  <span>A educa&ccedil;&atilde;o de Ibatiba tem mais um motivo para comemorar. No dia 17 de novembro, a Secretaria Municipal de Educa&ccedil;&atilde;o recebeu a placa de reconhecimento pelo resultado...</span>
+                </a>
+              </div>
+              <div class='col-lg-10 col-md-9 col-sm-8 col-xs-7'>
+            
+              </div>
+              <div class='col-lg-2 col-md-3 col-sm-4 col-xs-5 text-right'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3236/ibatiba-alcanca-83-de-criancas-alfabetizadas-em-2025-e-recebe-placa-de-reconhecimento-pelo-ica'  class='botao-leia-mais' title='Direcionar para notícias'>
+                  LEIA MAIS <i  class='plus-icone-leia-mais fa fa-plus-circle'></i>
+                </a>
+              </div>
+            </li>
+            <li class='row'>
+              <div class='col-lg-4 col-md-4 col-sm-4 col-xs-12'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3234/natal-iluminado-de-ibatiba-tera-apresentacao-do-coral-musica-na-rede-neste-sabado-21' class='noticia-imagem'>
+                  <img src='/uploads/files/18_ProgramacaoNatalIluminadoFEED.png' alt='Natal Iluminado de Ibatiba terá apresentação do Coral Música na Rede neste sábado (21)' class='img-responsive'>
+                </a>
+              </div>
+              <div class='col-lg-8 col-md-8 col-sm-8 col-xs-12 padL0'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3234/natal-iluminado-de-ibatiba-tera-apresentacao-do-coral-musica-na-rede-neste-sabado-21' title='Direcionar para notícia: Natal Iluminado de Ibatiba terá apresentação do Coral Música na Rede neste sábado (21)'>
+                  <strong>Natal Iluminado de Ibatiba terá apresentação do Coral Música na Rede neste sábado (21)</strong>
+                  <span>A programa&ccedil;&atilde;o do Natal Iluminado 2026 de Ibatiba continua com atra&ccedil;&otilde;es que prometem encantar a popula&ccedil;&atilde;o. Neste s&aacute;bado, 21 de novembro, &agrave;s 19h,...</span>
+                </a>
+              </div>
+              <div class='col-lg-10 col-md-9 col-sm-8 col-xs-7'>
+            
+              </div>
+              <div class='col-lg-2 col-md-3 col-sm-4 col-xs-5 text-right'>
+                <a href='https://ibatiba.es.gov.br/noticia/ler/3234/natal-iluminado-de-ibatiba-tera-apresentacao-do-coral-musica-na-rede-neste-sabado-21'  class='botao-leia-mais' title='Direcionar para notícias'>
+                  LEIA MAIS <i  class='plus-icone-leia-mais fa fa-plus-circle'></i>
+                </a>
+              </div>
+            </li>
+            
+      </ul>
+      <p class="text-right linha-veja-mais">
+        <a href="https://ibatiba.es.gov.br/noticia" class="text-left" title="Direcionar para página de notícias"> VEJA TODAS AS NOTÍCIAS <i class="fa fa-plus-circle" aria-hidden="true"></i></a>
+      </p>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 tv-prefeitura" style="padding-bottom: 0px;top: auto;bottom: 10px;">
+      <div class="row-proximos-eventos">
+        <!-- <p class="titulo-secao-linha"> -->
+          <!-- <span><i class="list-icon-agenda fa fa-square"></i> CALENDÁRIO DE EVENTOS</span> -->
+          <!-- <em></em>
+        </p> -->
+        <ul class="list-unstyled">
+                  </ul>
+        <!-- <p class="text-right linha-veja-mais">
+          <a href="https://ibatiba.es.gov.br/agenda" class="text-left" title="Direcionar para página de eventos"> VEJA MAIS EVENTOS <i class="fa fa-plus-circle" aria-hidden="true">&nbsp;</i></a>
+        </p> -->
+
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <p class="titulo-secao-linha">
+            <span><i class="list-icon-governo fa fa-square"></i> GOVERNO</span>
+            <em></em>
+          </p>
+
+          <div class="input-group">
+            <select class="input-bloco-governo form-control" name="secretarias">
+              <option value="">SECRETARIAS</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/2/gabinete-do-prefeito">Gabinete do Prefeito</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/3/controladoria-geral-do-municipio">Controladoria Geral do Município</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/4/procuradoria-geral-do-municipio">Procuradoria Geral do Município</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/5/secretaria-municipal-de-assistencia-social">Secretaria Municipal de Assistência Social</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/6/secretaria-municipal-de-administracao">Secretaria Municipal de Administração</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/7/secretaria-municipal-de-agricultura-industria-e-comercio">Secretaria Municipal de Agricultura, Indústria e Comércio</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/8/secretaria-municipal-de-educacao">Secretaria Municipal de Educação</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/15/secretaria-municipal-de-esporte-e-lazer">Secretaria Municipal de Esporte e Lazer</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/9/secretaria-municipal-da-fazenda">Secretaria Municipal da Fazenda</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/10/secretaria-municipal-de-interior-e-transportes">Secretaria Municipal de Interior e Transportes</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/11/secretaria-municipal-de-meio-ambiente-cultura-e-turismo">Secretaria Municipal de Meio Ambiente, Cultura e Turismo</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/12/secretaria-municipal-de-obras-e-servicos-urbanos">Secretaria Municipal de Obras e Serviços Urbanos</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/13/secretaria-municipal-de-saude">Secretaria Municipal de Saúde</option>
+                              <option value="https://ibatiba.es.gov.br/secretaria/ler/14/contatos">Contatos</option>
+                          </select>
+            <span class="input-group-btn">
+              <button class="icone-input-bloco-governo btn btn-default secretariasClick" type="button"><i class="glyphicon glyphicon-play"></i></button>
+            </span>
+          </div><!-- /input-group -->
+          <br>
+          <div class="input-group">
+            <select class="input-bloco-governo form-control" name="portais">
+              <option value="">PORTAIS</option>
+              <option value="https://ibatiba-es.portaltp.com.br/">TRANSPARÊNCIA</option>
+              <option value="https://ibatiba.es.gov.br/controladoria">CONTROLADORIA</option>
+              <option value="https://ibatiba.es.gov.br/e-ouv">OUVIDORIA</option>
+              <option value="https://ibatiba.es.gov.br/e-sic">SISTEMA DE INFORMAÇÃO</option>
+            </select>
+            <span class="input-group-btn">
+              <button class="icone-input-bloco-governo btn btn-default portaisClick" type="button"><i class="glyphicon glyphicon-play"></i></button>
+            </span>
+          </div><!-- /input-group -->
+
+
+
+        </div>
+      </div>
+
+
+      <div class="row ">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 banners-fixos">
+          <ul>
+
+            <li>
+              <a href="https://es-ibatiba-pm-nfs.cloud.el.com.br//paginas/sistema/login.jsf" class="btn-home-rodape" id="contracheque" title="Direcionar para Nota Fiscal de Serviços">
+                <strong>NOTA FISCAL DE</strong>
+                <span>Serviçõs Eletrônicos</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://servicos.cloud.el.com.br/es-ibatiba-pm/services/" class="btn-home-rodape" id="servico-online" title="Direcionar para Serviços Eletrônicos">
+                <strong>SERVIÇOS ONLINE</strong>
+                <span>Certidões, Emissão de DAM</span>
+              </a>
+            </li>
+            <li>
+              <a href="http://iss00.el.com.br:8080/bancario/paginas/sistema/login.xhtml" class="btn-home-rodape" id="nota-fiscal-eletronicos" title="Direcionar para SISBAN">
+                <strong>SISBAN</strong>
+                <span>SIS Bancário</span>
+              </a>
+            </li>
+            <li>
+              <a href="https://ibatiba.es.gov.br/e-sic" class="btn-home-rodape" id="acesso-informacao" title="Direcionar para o e-SIC">
+                <strong>ACESSO A INFORMAÇÃO</strong>
+                <span>Serviços de Informação ao Cidadão</span>
+              </a>
+            </li>
+            <li>
+              <a class="btn-home-rodape btn-success" href="https://ibatiba.es.gov.br/pagina/ler/2094/condicoes-para-expedicao-de-certificado-de-registro-cadastral" title="Direcionar para o certificado de registro cadastral">
+                <strong>CERTIFICADO DE <br>REGISTRO CADASTRAL</strong>
+                <span>Condições para expedição</span>
+                <i class="fa-3x fa fa-sticky-note"></i>
+              </a>
+            </li>
+
+
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div><!-- /row TV e noticias -->
+
+
+
+  <div class="row">
+    <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <p class="titulo-secao-linha">
+        <span><i class="list-icon-tv fa fa-square"></i> TV PREFEITURA</span>
+        <em></em>
+      </p>
+
+      <div class="videos video-home">
+        
+                  <div class="video-principal">
+                      </div>
+          <div class="video">
+            <a href="<php echo $video_link ?>" title="" class="" title="Direcionar para o vídeo: ">
+              <strong></strong>
+              <span></span>
+            </a>
+                      </div>
+
+        
+        <p class="text-right linha-veja-mais">
+          <a href="" class="text-left" title="Direcionar para página de vídeos"> VEJA MAIS VÍDEOS <i class="fa fa-plus-circle" aria-hidden="true">&nbsp;</i></a>
+        </p>
+      </div>
+
+
+    </div> --><!-- /tv-prefeitura -->
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <p class="titulo-secao-linha">
+        <span><i class="fa fa-square"></i> CONHEÇA A TERRA DOS TROPEIROS</span>
+        <em></em>
+      </p>
+
+      <div class="videos video-home">
+          <div>
+            <a href="https://ibatiba.es.gov.br/pagina/ler/105/turismo" title="CONHEÇA A TERRA DOS TROPEIROS.">
+              <img src="https://ibatiba.es.gov.br/uploads/files/terradostropeiros.jpeg" alt="">
+            </a>
+          </div>
+      </div>
+
+    </div>
+    
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+      <p class="titulo-secao-linha">
+        <span><i class="list-icon-galeria fa fa-square"></i> GALERIA DE FOTOS</span>
+        <em></em>
+      </p>
+
+      <div class="row" style="display:flex; flex-wrap: wrap;">
+
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-30">
+              <div class="galeria-bloco">
+
+                <!-- data galeria-->
+
+                <div class="col-lg-8 col-md-8 col-sm-6 col-md-7 col-xs-7">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-md-5 col-xs-5 text-right fundo-data-foto-galeria">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Prefeitura de Ibatiba convida população a participar de pesquisa sobre Mobilidade Urbana"><span class="data-bloco-galeria">13/11/2026</span></a>
+                </div>
+
+                <!-- foto galeria-->
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-md-12 text-center">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Prefeitura de Ibatiba convida população a participar de pesquisa sobre Mobilidade Urbana"><img class="img-bloco-galeria rounded mx-auto d-block" src="https://ibatiba.es.gov.br/uploads/files/13_PlanoMobilidadeUrbana.png" alt="Prefeitura de Ibatiba convida população a participar de pesquisa sobre Mobilidade Urbana" /></a>
+                </div>
+
+                <!-- title galeria-->
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-md-12 text-center">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Prefeitura de Ibatiba convida população a participar de pesquisa sobre Mobilidade Urbana">
+                    <p class="titulo-bloco-galeria">Prefeitura de Ibatiba convida população a participar de pesquisa sobre Mobilidade Urbana</p>
+                  </a>
+                </div>
+
+
+              </div>
+            </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-30">
+              <div class="galeria-bloco">
+
+                <!-- data galeria-->
+
+                <div class="col-lg-8 col-md-8 col-sm-6 col-md-7 col-xs-7">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-md-5 col-xs-5 text-right fundo-data-foto-galeria">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Prefeitura de Ibatiba divulga lista de ramais para facilitar o atendimento à população"><span class="data-bloco-galeria">11/11/2026</span></a>
+                </div>
+
+                <!-- foto galeria-->
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-md-12 text-center">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Prefeitura de Ibatiba divulga lista de ramais para facilitar o atendimento à população"><img class="img-bloco-galeria rounded mx-auto d-block" src="https://ibatiba.es.gov.br/uploads/files/21_ramaisfeed.png" alt="Prefeitura de Ibatiba divulga lista de ramais para facilitar o atendimento à população" /></a>
+                </div>
+
+                <!-- title galeria-->
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-md-12 text-center">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Prefeitura de Ibatiba divulga lista de ramais para facilitar o atendimento à população">
+                    <p class="titulo-bloco-galeria">Prefeitura de Ibatiba divulga lista de ramais para facilitar o atendimento à população</p>
+                  </a>
+                </div>
+
+
+              </div>
+            </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-30">
+              <div class="galeria-bloco">
+
+                <!-- data galeria-->
+
+                <div class="col-lg-8 col-md-8 col-sm-6 col-md-7 col-xs-7">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-md-5 col-xs-5 text-right fundo-data-foto-galeria">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Ibatiba dá início ao Natal Iluminado 2026 no dia 15 de novembro com Acender das Luzes e desfile de tratores enfeitados"><span class="data-bloco-galeria">11/11/2026</span></a>
+                </div>
+
+                <!-- foto galeria-->
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-md-12 text-center">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Ibatiba dá início ao Natal Iluminado 2026 no dia 15 de novembro com Acender das Luzes e desfile de tratores enfeitados"><img class="img-bloco-galeria rounded mx-auto d-block" src="https://ibatiba.es.gov.br/uploads/files/ARTE-NATAL-ILUMINADO-FEED.png" alt="Ibatiba dá início ao Natal Iluminado 2026 no dia 15 de novembro com Acender das Luzes e desfile de tratores enfeitados" /></a>
+                </div>
+
+                <!-- title galeria-->
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-md-12 text-center">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Ibatiba dá início ao Natal Iluminado 2026 no dia 15 de novembro com Acender das Luzes e desfile de tratores enfeitados">
+                    <p class="titulo-bloco-galeria">Ibatiba dá início ao Natal Iluminado 2026 no dia 15 de novembro com Acender das Luzes e desfile de tratores enfeitados</p>
+                  </a>
+                </div>
+
+
+              </div>
+            </div>
+                      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 p-30">
+              <div class="galeria-bloco">
+
+                <!-- data galeria-->
+
+                <div class="col-lg-8 col-md-8 col-sm-6 col-md-7 col-xs-7">
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-6 col-md-5 col-xs-5 text-right fundo-data-foto-galeria">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Ibatiba garante vaga na final da Copa dos Campeões 50+"><span class="data-bloco-galeria">11/11/2026</span></a>
+                </div>
+
+                <!-- foto galeria-->
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-md-12 text-center">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Ibatiba garante vaga na final da Copa dos Campeões 50+"><img class="img-bloco-galeria rounded mx-auto d-block" src="https://ibatiba.es.gov.br/uploads/files/09_IbatibaFinal_CC50FEED.png" alt="Ibatiba garante vaga na final da Copa dos Campeões 50+" /></a>
+                </div>
+
+                <!-- title galeria-->
+
+                <div class="col-lg-12 col-md-12 col-sm-12 col-md-12 text-center">
+                  <a href="https://ibatiba.es.gov.br/galeria" title="Ibatiba garante vaga na final da Copa dos Campeões 50+">
+                    <p class="titulo-bloco-galeria">Ibatiba garante vaga na final da Copa dos Campeões 50+</p>
+                  </a>
+                </div>
+
+
+              </div>
+            </div>
+                </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12text-center">
+      </div>
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 text-center">
+        <p class="text-right linha-veja-mais">
+          <a href="https://ibatiba.es.gov.br/galeria" class="text-left" title="Direcionar para página de vídeos"> VEJA TODAS AS GALERIAS <i class="fa fa-plus-circle" aria-hidden="true">&nbsp;</i></a>
+        </p>
+      </div>
+
+
+    </div>
+      </div>
+</div><!-- /pagina_site -->
+
+
+
+
+
+  
+  <script>
+    $(document).ready(function() {
+      $("a[rel^='prettyPhoto']").prettyPhoto({
+        theme: 'light_square',
+        social_tools: '',
+              });
+      $.prettyPhoto.open('', '');
+    });
+  </script>
+
+<script>
+  $(".portaisClick").click(function() {
+    $url = $("select[name='portais']").val();
+    if ($url != "") {
+      window.open($url, '_blank');
+    }
+  });
+  $(".secretariasClick").click(function() {
+    $url = $("select[name='secretarias']").val();
+    if ($url != "") {
+      window.open($url, '_blank');
+    }
+  });
+</script>  </div>
+
+
+  
+
+  <div class="rodape-linha1">
+    <div class="container">
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        
+        <div class="row">
+          <div class="col-lg-1 col-md-1 col-sm-1 hidden-xs text-right">
+            <i class="icone-envelope-footer-contato fa fa-envelope" aria-hidden="true"></i>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12">
+            <span class="font-acapanhe-prefeitura"><strong>ACOMPANHE A PREFEITURA </strong> </span>
+            <img class="hidden-sm hidden-xs" alt="Imagem do icone: Barra" src="https://ibatiba.es.gov.br/assets/img/icon-barra.png">
+          </div>
+          <div class="col-lg-2 col-md-2 hidden-sm hidden-xs text-left">
+            <small>Receba novidades sobre assuntos da Prefeitura</small>
+          </div>
+          <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 rodape-form">
+            <form action="https://ibatiba.es.gov.br/home/newsletter_contato_cadastrar" class="form-inline form-rodape validation" id="form_newsletter_contato" enctype="multipart/form-data" method="post" accept-charset="utf-8">
+                    <input type="hidden" name="csrf_site_name" value="2b8f6ef6a4a03df2638d673e697789dc" />
+            <div class="form-group">
+              <label for="newsletter_nome"><input type="text" class="form-control validate[required]" id="newsletter_nome" name="nome" placeholder="Nome completo"><span class="sr-only">Nome</span></label>
+            </div>
+            <div class="form-group">
+              <label for="newsletter_email"><input type="text" class="form-control validate[required,custom[email]]" id="newsletter_email" name="email" placeholder="E-mail"><span class="sr-only">E-mail</span></label>
+            </div>
+            <div class="form-group">
+              <label for="newsletter_telefone"><input type="text" class="form-control" id="newsletter_telefone" name="telefone" placeholder="Telefone"><span class="sr-only">Telefone</span></label>
+            </div>
+            <button type="submit" class="btn btn-default">CADASTRAR</button>
+            </form>          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rodape-linha3">
+    <div class="container">
+      <div class="row">
+        <div class='col-md-3 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>IBATIBA</h5>
+                      <ul><li><a class='' href='/pagina/ler/14/historia'  title='Direcionar para História'>História</a></li><li><a class='' href='/pagina/ler/105/turismo'  title='Direcionar para Turismo'>Turismo</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>INSTITUCIONAL</h5>
+                      <ul><li><a class='' href='/pagina/ler/2057/a-prefeitura'  title='Direcionar para Prefeitura'>Prefeitura</a></li><li><a class='' href='/pagina/ler/119/prefeito-e-vice-prefeito'  title='Direcionar para Prefeito e Vice-Prefeito'>Prefeito e Vice-Prefeito</a></li><li><a class='' href='/secretaria'  title='Direcionar para Secretarias'>Secretarias</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>LICITAÇÃO</h5>
+                      <ul><li><a class='' href='/licitacao?ano=&fkmodalidade=29&fksituacao=&search=&vencedor='  title='Direcionar para Carta Convite'>Carta Convite</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=30&fksituacao=&search=&vencedor='  title='Direcionar para Chamada Pública'>Chamada Pública</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=31&fksituacao=&search=&vencedor='  title='Direcionar para Compra Direta'>Compra Direta</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=21&fksituacao=&search=&vencedor='  title='Direcionar para Concorrência Pública'>Concorrência Pública</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=32&fksituacao=&search=&vencedor='  title='Direcionar para Convocação'>Convocação</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=33&fksituacao=&search=&vencedor='  title='Direcionar para Convocação Emergencial'>Convocação Emergencial</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=23&fksituacao=&search=&vencedor='  title='Direcionar para Dispensa de Licitação'>Dispensa de Licitação</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=24&fksituacao=&search=&vencedor='  title='Direcionar para Inexigibilidade'>Inexigibilidade</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=34&fksituacao=&search=&vencedor='  title='Direcionar para Licitações'>Licitações</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=35&fksituacao=&search=&vencedor='  title='Direcionar para Pregão Presencial'>Pregão Presencial</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=20&fksituacao=&search=&vencedor='  title='Direcionar para Pregão Eletrônico'>Pregão Eletrônico</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=36&fksituacao=&search=&vencedor='  title='Direcionar para Regime Diferenciado de Contratação - RDC'>Regime Diferenciado de Contratação - RDC</a></li></ul>
+                </div>  </div>
+            </div><div class='col-md-3 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>LEGISLAÇÃO</h5>
+                      <ul><li><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=8&interno=0'  title='Direcionar para Legislação Orgânica'>Legislação Orgânica</a></li><li><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=6'  title='Direcionar para Legislação Ordinária'>Legislação Ordinária</a></li><li><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=5'  title='Direcionar para Legislação Complementar'>Legislação Complementar</a></li><li><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=1'  title='Direcionar para Decretos'>Decretos</a></li><li><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=7'  title='Direcionar para Portarias'>Portarias</a></li><li><a class='' href='http://ibatiba.legislacaocompilada.com.br/legislacao/consulta-legislacao.aspx?tipo=2'  title='Direcionar para Instruções Normativas'>Instruções Normativas</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <a href=/pagina/ler/2106/coronavirus><h5>CORONAVÍRUS</h5></a>
+                      <ul></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>ACESSO A INFORMAÇÃO</h5>
+                      <ul><li><a class='' href='https://ibatiba-es.portaltp.com.br/'  title='Direcionar para Portal da Transparência'>Portal da Transparência</a></li><li><a class='' href='https://servicos1.cloud.el.com.br/es-ibatiba-pm/portal/'  title='Direcionar para Portal da controladoria'>Portal da controladoria</a></li><li><a class='' href='/e-sic'  title='Direcionar para Lei de Acesso a informação'>Lei de Acesso a informação</a></li><li><a class='' href='https://servicos1.cloud.el.com.br/es-ibatiba-pm/portal/'  title='Direcionar para Contracheque'>Contracheque</a></li><li><a class='' href='/documento?tipo=6'  title='Direcionar para Prestação de contas'>Prestação de contas</a></li><li><a class='' href='/e-ouv'  title='Direcionar para Ouvidoria'>Ouvidoria</a></li><li><a class='' href='/licitacao?ano=&fkmodalidade=30'  title='Direcionar para Chamamento Público'>Chamamento Público</a></li><li><a class='' href='/documento?tipo=21'  title='Direcionar para Processo Seletivo'>Processo Seletivo</a></li><li><a class='' href='/documento?tipo=1'  title='Direcionar para Processo Seletivo Conselho Tutelar'>Processo Seletivo Conselho Tutelar</a></li><li><a class='' href='/documento?tipo=2'  title='Direcionar para Pronaf'>Pronaf</a></li></ul>
+                </div>  </div>
+            </div><div class='col-md-3 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>SERVIÇOS</h5>
+                      <ul><li><a class='' href='/pagina/ler/2081/licenciamento-ambiental'  title='Direcionar para Licenciamento Ambiental'>Licenciamento Ambiental</a></li><li><a class='' href='https://servicos.cloud.el.com.br/es-ibatiba-pm/services/'  title='Direcionar para Certidão Negativa'>Certidão Negativa</a></li><li><a class='' href='http://iss00.el.com.br:8080/bancario/paginas/sistema/login.xhtml'  title='Direcionar para Iss Bancário'>Iss Bancário</a></li><li><a class='' href='https://es-ibatiba-pm-nfs.cloud.el.com.br//paginas/sistema/login.jsf'  title='Direcionar para Nota Fiscal Eletrônica'>Nota Fiscal Eletrônica</a></li><li><a class='' href='https://servicos.cloud.el.com.br/es-ibatiba-pm/services/'  title='Direcionar para Serviços ao cidadão'>Serviços ao cidadão</a></li><li><a class='' href='//pagina/ler/2131/simi-servico-municipal-de-inspecao-de-ibatiba'  title='Direcionar para SIMI - Serviço de Inspeção Municipal de Ibatiba'>SIMI - Serviço de Inspeção Municipal de Ibatiba</a></li><li><a class='' href='/documento?tipo=3'  title='Direcionar para Transporte Universitário'>Transporte Universitário</a></li><li><a class='' href='/documento?tipo=4'  title='Direcionar para Plano Municipal de Saneamento Básico'>Plano Municipal de Saneamento Básico</a></li><li><a class='' href='http://ibatiba.legislacaocompilada.com.br/Arquivo/Documents/legislacao/image/LEI%20N%C2%BA.%20517%20-%202008.pdf'  title='Direcionar para Plano Diretor Municipal (PDM)'>Plano Diretor Municipal (PDM)</a></li><li><a class='' href='http://ibatiba.legislacaocompilada.com.br/Arquivo/Documents/legislacao/image/LC1942020.pdf'  title='Direcionar para CÓDIGO TRIBUTÁRIO'>CÓDIGO TRIBUTÁRIO</a></li><li><a class='' href='/pagina/ler/2075/plantao-de-farmacias'  title='Direcionar para Farmácias de Plantão'>Farmácias de Plantão</a></li><li><a class='' href='/pagina/ler/2089/horario-de-onibus'  title='Direcionar para Horário de Ônibus'>Horário de Ônibus</a></li><li><a class='' href='/pagina/ler/2091/hoteis-e-pousadas'  title='Direcionar para Hotéis e Pousadas'>Hotéis e Pousadas</a></li><li><a class='' href='/pagina/ler/2092/utilidade-publica'  title='Direcionar para Utilidade Pública'>Utilidade Pública</a></li><li><a class='' href='/pagina/ler/2083/disk-luz'  title='Direcionar para Disk-Luz'>Disk-Luz</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>OUVIDORIA</h5>
+                      <ul><li><a class='' href='/e-sic'  title='Direcionar para e-SIC - Solicitações de Informação'>e-SIC - Solicitações de Informação</a></li><li><a class='' href='/e-ouv/home/formulario/denuncia'  title='Direcionar para Denúncia'>Denúncia</a></li><li><a class='' href='/e-ouv'  title='Direcionar para Elogio, reclamação ou Sugestão'>Elogio, reclamação ou Sugestão</a></li><li><a class='' href='/e-ouv/home/consultar'  title='Direcionar para Consulta Protocolos'>Consulta Protocolos</a></li></ul>
+                </div>  </div>
+            </div><div class='col-md-3 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>PUBLICAÇÕES</h5>
+                      <ul><li><a class='' href='/noticia'  title='Direcionar para Notícias'>Notícias</a></li><li><a class='' href='/agenda/'  title='Direcionar para Agenda Oficial'>Agenda Oficial</a></li><li><a class='' href='/pagina/ler/2168/calendario-de-eventos'  title='Direcionar para Calendário de Eventos'>Calendário de Eventos</a></li><li><a class='' href='/galeria'  title='Direcionar para Galeria de Fotos'>Galeria de Fotos</a></li><li><a class='' href='/video'  title='Direcionar para Galeria de Vídeos'>Galeria de Vídeos</a></li><li><a class='' href='/pagina/ler/104/telefones'  title='Direcionar para Telefones Úteis'>Telefones Úteis</a></li><li><a class='' href='/pagina/ler/2090/escala-de-medicos-e-odontologos'  title='Direcionar para Escala de Médicos e Odontólogos'>Escala de Médicos e Odontólogos</a></li><li><a class='' href='/pagina/ler/2085/estagio-obrigatorio'  title='Direcionar para Estágio Obrigatório'>Estágio Obrigatório</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>ACESSIBILIDADE</h5>
+                      <ul><li><a class='' href='/acessibilidade'  title='Direcionar para Acessibilidade do site'>Acessibilidade do site</a></li><li><a class='' href='/acessibilidade/nvda'  title='Direcionar para NVDA - Leitor de tela'>NVDA - Leitor de tela</a></li><li><a class='' href='/acessibilidade/vlibras'  title='Direcionar para VLIBRAS - Tradutor de libras'>VLIBRAS - Tradutor de libras</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>ÁREA RESTRITA</h5>
+                      <ul><li><a class='' href='/sistema/'  title='Direcionar para Intranet'>Intranet</a></li><li><a class='' href='https://webmail-seguro.com.br/ibatiba.es.gov.br/v2/'  title='Direcionar para Webmail'>Webmail</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <a href=https://radardatransparencia.atricon.org.br/radar-da-transparencia-publica.html><h5>RADAR DA TRANSPARÊNCIA PÚBLICA</h5></a>
+                      <ul></ul>
+                </div>  </div>
+            </div>      </div>
+    </div>
+  </div>
+
+  <div class="rodape-linha2">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+          <div class="rodape-endereco">
+            <strong>Endereço:</strong><br>
+            Rua Salomão Fadlallah, 255 - Centro, 29395-000<br><br>
+          </div>
+          <div class="rodape-endereco">
+            <div>
+              <strong>Horário de Expediente:</strong><br>
+              Seg - Sex, 08h00 às 17h00
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+          <div class="rodape-endereco">
+            <strong>Telefone(s):</strong> <br> 0800 725 5570<br><br><strong>E-mail: </strong><br><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9df2e8ebf4f9f2eff4fcddf4fffce9f4fffcb3f8eeb3faf2ebb3ffef">[email&#160;protected]</a><br>          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="home-localizacao">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3743.5764545369616!2d-41.512563684463466!3d-20.234913953090135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xba3a177aff9d71%3A0xc159087bb81edc1f!2sPrefeitura%20Municipal%20de%20Ibatiba!5e0!3m2!1spt-BR!2sbr!4v1572359152061!5m2!1spt-BR!2sbr" height="450" width="100%" frameborder="0" allowfullscreen=""></iframe>
+  </div>
+
+  <div class="rodape-linha4">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 copyright">
+          Copyright &copy; 2026 Prefeitura Municipal de Ibatiba. Todos os direitos reservados.        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 rodape4-logo">
+          <a href="http://agapeconsultoria.com.br" title="Portal desenvolvido e mantido por Ágape Consultoria"><img src="https://ibatiba.es.gov.br/statics/frontend/img/agape_logo_black.png" alt="Logotipo Ágape Assessoria"><span class="sr-only">Este portal é desenvolvido e mantido por Ágape Consultoria</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Container de Privacidade e Cookies  -->
+
+  <style>
+    /* GOOGLE ANALYTICS */
+
+    .cookies-container {
+      color: #222;
+      position: fixed;
+      bottom: 2rem;
+      z-index: 1000;
+    }
+
+    .card-title {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 21px;
+      line-height: 59%;
+    }
+
+    .card span {
+      font-weight: bold;
+      font-size: 14px;
+    }
+
+    .card-link {
+
+      font-weight: bold;
+      text-decoration: none;
+      color: #2F2F2F;
+    }
+
+    .card-text {
+      font-style: normal;
+      font-weight: normal;
+
+      line-height: 150%;
+      align-items: center;
+      color: #505050;
+
+    }
+
+    .cookies-content {
+      background: white;
+      padding: 1rem 2rem;
+      opacity: 0;
+      transform: translateY(1rem);
+      animation: slideUp 0.5s forwards;
+
+      border-radius: 4px;
+      background: rgba(251, 251, 251, 0.95);
+
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: initial;
+        opacity: initial;
+      }
+    }
+
+    .cookies-pref label {
+      margin-right: 1rem;
+    }
+
+    .cookies-save {
+      grid-column: 2;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: #5C5C5C;
+      color: white;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      padding: 0.8rem 2rem;
+      font-size: 16px;
+    }
+
+    .cookies-save:hover {
+      background: #3b3b3b;
+      transition: .3s;
+    }
+
+    @media (max-width: 500px) {
+      .cookies-content {
+        grid-template-columns: 1fr;
+      }
+
+      .cookies-save {
+        grid-column: 1;
+        grid-row: 3;
+      }
+    }
+  </style>
+
+  <div class="cookies-container col-md-12">
+    <div class="cookies-content col-md-10 col-md-offset-1">
+      <div class="col-md-12">
+        <h2 class="card-title">Política de Privacidade</h2>
+      </div>
+      <div class="col-md-10">
+        <p class="card-text">Utilizamos cookies essenciais e tecnologias semelhantes de acordo com a nossa
+          <a href="/pagina/ler/2133/politica-de-privacidade-e-seguranca" target="_blank" class="card-link">Política de Privacidade</a>
+          e, ao continuar navegando, você concorda com as condições contidas nela.
+        </p>
+                  <input type="hidden" checked data-function="simplecookie" />
+              </div>
+      <div class="text-right col-md-2">
+        <button class="cookies-save card text-right">Continuar</button>
+      </div>
+    </div>
+  </div>
+  <!-- / Container de Privacidade e Cookies  -->
+
+  <!-- Privacidade -->
+  
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function cookies(functions) {
+      const container = document.querySelector('.cookies-container');
+      const save = document.querySelector('.cookies-save');
+      if (!container || !save) return null;
+
+      const localPref = JSON.parse(window.localStorage.getItem('cookies-pref'));
+      if (localPref) activateFunctions(localPref);
+
+      function getFormPref() {
+        return [...document.querySelectorAll('[data-function]')]
+          .filter((el) => el.checked)
+          .map((el) => el.getAttribute('data-function'));
+      }
+
+      function activateFunctions(pref) {
+        pref.forEach((f) => functions[f]());
+        container.style.display = 'none';
+        window.localStorage.setItem('cookies-pref', JSON.stringify(pref));
+      }
+
+      function handleSave() {
+        const pref = getFormPref();
+        activateFunctions(pref);
+      }
+
+      save.addEventListener('click', handleSave);
+    }
+
+    function analytics() {
+
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', '');
+
+      console.log('Função anali..');
+    }
+
+    function simplecookie() {
+      console.log('Política de Privacidade Autorizada');
+    }
+
+    cookies({
+      simplecookie,    });
+  </script>
+
+  <!-- / Privacidade --><script src='https://unpkg.com/swiper@8/swiper-bundle.min.js?v=1.15'></script>
+<!-- <script src='https://ibatiba.es.gov.br/statics/bootstrap/js/bootstrap.min.js?v=1.15'></script> -->
+<script src='https://ibatiba.es.gov.br/statics/assets/js/jquery-1.11.1.min.js?v=1.15'></script>
+<!-- <script src='https://ibatiba.es.gov.br/statics/font-awesome/fontawesome-free-5.15.4-web/js/all.js?v=1.15'></script> -->
+<script src="https://ibatiba.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.js?v=1.15"></script>
+<!-- <script src="statics/frontend/frontend/js/scripts.js?v="></script> -->
+<script src="https://ibatiba.es.gov.br/statics/frontend/js/scripts.js?v=1.15"></script>
+<script src="https://ibatiba.es.gov.br/statics/assets/plugins/prettyPhoto/js/jquery.prettyPhoto.js?v=1.15"></script>
+
+<script src='https://ibatiba.es.gov.br/statics/assets/js/jquery-1.11.1.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/bootstrap/js/bootstrap.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/bootstrap/js/ie10-viewport-bug-workaround.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/bootflat/js/icheck.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/bootflat/js/jquery.fs.selecter.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/bootflat/js/jquery.fs.stepper.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/jquery.mask.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/jquery.maxlength.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/bxslider/jquery.bxslider.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/flexisel/js/jquery.flexisel.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/validation/js/languages/jquery.validationEngine-pt_BR.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/validation/js/jquery.validationEngine.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/validation/js/contrib/other-validations.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/prettyPhoto/js/jquery.prettyPhoto.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/magnific-popup/jquery.magnific-popup.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/captionjs/jquery.caption.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/frontend/select2/dist/js/select2.full.min.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/smartmenus/jquery.smartmenus.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/smartmenus/addons/bootstrap/jquery.smartmenus.bootstrap.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/jquery.wheelmenu.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/datepicker/bootstrap-datepicker.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/datepicker/locales/bootstrap-datepicker.pt-BR.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/inputmask-5/jquery.inputmask.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/assets/plugins/inputmask-5/inputmask_personalizacao.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/frontend/js/scripts.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/frontend/js/scripts_transparencia.js?v=1.15'></script>
+<script src='https://ibatiba.es.gov.br/statics/frontend/acessibilidade/js_acessibilidade.js?v=1.15'></script>
+
+<!-- Script para adicionar abertura em popup em links com a classe "popup" -->
+<script>
+  $(".popup").fancybox({
+    'width': '95%',
+    'height': '90%',
+    'minHeight': '65%',
+    'autoScale': false,
+    'transitionIn': 'none',
+    'transitionOut': 'none',
+    'type': 'iframe'
+  });
+</script>
+
+<!-- Função da Pesquisa no Menu -->
+<script>
+  const BASE_URL = "https://ibatiba.es.gov.br/";
+
+  function fonte(e) {
+    var elements = $('p, h1, h2, h3, h4, h5, h6, a, button, input, i, svg');
+
+    elements.each((index, item) => {
+      let element = $(item);
+      let font = $(element).css('font-size');
+
+      let newFont = e == 'a' ? parseInt(font) + 1 : parseInt(font) - 1;
+
+      element.css('font-size', newFont);
+    })
+  }
+
+  function openSearch(e) { // Função de Botão de Busca
+    if ($('#bloco-logo .form-padrao input').val() != '') {
+      $('#bloco-logo form').submit();
+    } else {
+      let button = document.querySelector('#bloco-logo button.botao-busca');
+      let form = document.querySelector('#bloco-logo .form-padrao');
+      form.classList.toggle('hidden');
+      button.classList.toggle('hidden');
+    }
+  }
+
+  function dataAtualFormatada(e) {
+    let data = new Date(e);
+    let dia = data.getDate();
+    if (dia <= 9) dia = "0" + dia;
+    var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    data = dia + " de " + meses[data.getMonth()] + " de " + data.getFullYear();
+    return data;
+  }
+
+  $(".nav-stacked a").click(function(e) {
+    if ($(this).children('svg').attr('data-icon') == 'plus')
+      $(this).children('svg').attr('data-icon', 'minus')
+    else
+      $(this).children('svg').attr('data-icon', 'plus')
+  });
+
+  $('.dropdown-submenu a.submenu-institucional').on("click", function(e) { // Faz os submenu do submenu funcionar no mobile
+    e.preventDefault();
+    $(this).next('ul').toggle('open');
+    e.stopPropagation();
+  });
+
+  $(document).ready(function() { // Processa depois de carregar a página
+
+    if (typeof funcion_a_comprobar === 'function') {
+      if (typeof number == "undefined" || number == null) {
+        let number = $('.inputmask_tel');
+        number.inputmask({
+          mask: ["+55 (99) 9999-9999", "+55 (99) 9 9999-9999", ],
+          keepStatic: true
+        });
+      }
+
+      if (typeof cpf_cnpj == "undefined" || cpf_cnpj == null) {
+        let cpf_cnpj = $('.inputmask_cpf_cnpj');
+        cpf_cnpj.inputmask({
+          mask: ["[CPF REDIGIDO]", "99.999.999/9999-99", ],
+          keepStatic: true
+        });
+      }
+    }
+
+    $(window).scroll(function() {
+      var scrollTop = $(window).scrollTop();
+      if (scrollTop > 50) {
+        $('#acessibilidade').addClass("navbar-fixed-top");
+      } else {
+        $('#acessibilidade').removeClass("navbar-fixed-top");
+      }
+    });
+
+    var html = document.getElementsByTagName('html')[0];
+    html.style.cssText = '--Primary0: #FCDA00; --Primary2: #D2B800;';
+
+    // Filtro por Pesquisa
+    $('#search-faq').submit(function(e) {
+      e.preventDefault();
+      var request = $.ajax({
+          dataType: "json",
+          url: BASE_URL + `faq/faqs_post/0/8?termos=` + $('#termos').val(),
+          beforeSend() {
+            $('.bloco-tabs ul.nav').html('');
+            $('.bloco-tabs ul.nav').addClass('loader');
+          },
+        })
+        .done(function(msg) {
+          $('.bloco-tabs ul.nav').load();
+          $('.bloco-tabs ul.nav').removeClass('loader');
+          msg.map(item => {
+            $('ul.nav.nav-pills.nav-stacked').append(`
+            <li>
+                <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                <div class="texto collapse" id="${item.id}">
+                    ${item.resposta}
+                </div>
+            </li>
+          `);
+          });
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+
+    });
+
+    // REQUISIÇÃO PARA pegar os dados da API VEREADORES NA DIV DA HOME VIEW
+    // esse metodo vai renderizar toda a div dos vereadores
+    $.get( "https://ibatiba.legislacaocompilada.com.br/api/api/vereador/?v=2&qtd=100", function( data ) {
+
+      let t = JSON.parse(data);
+      let tDados = t.dados;
+
+      $("#vereadores").append(`
+      <div class="row">
+        <div class="col-lg-10 col-lg-offset-1 col-xs-12">
+          <div class="titulo bloco-vertical-middle">
+            <h2> VEREADORES </h2>
+          </div>
+          <div class="d-flex vereadores-lista">
+      `);
+
+      for(var i =0;i < tDados.length; i++){
+          let nomeParte = tDados[i].nome_parlamentar.split(' ');
+          let primeiroNome = nomeParte[0];
+          let segundoNome = (nomeParte[1] != null) ? nomeParte[1] : '';
+          let terceiroNome = (nomeParte[2] != null) ? nomeParte[2] : '';
+
+          let foto = (tDados[i].foto != null) ? tDados[i].foto : "https://ibatiba.es.gov.br/assets/img/sem_foto.png";
+          let link = ( tDados[i].link != null) ?  tDados[i].link :  "vereador.aspx?id="+ tDados[i].ID;
+          
+          document.querySelector(".vereadores-lista").innerHTML += `
+          <div class="vereador-item top2 bot7 text-center">
+                    <a target="_blank" href="${link}" target="_blank" title="Veja mais sobre o vereador(a) ${tDados[i].nome_parlamentar}">
+                      <div class="img-circle">
+                        <img src="${foto}" alt="Foto do vereador(a) ${tDados[i].nome}" width="80px" height="80px" />
+                      </div>
+                      <h3> ${primeiroNome} ${segundoNome} ${terceiroNome}</h3>
+                      <h5>${tDados[i].partido_sigla}</h5>
+                    </a>
+          </div>
+          `;
+                  
+        } 
+        $("#vereadores").append(`
+          </div>
+        </div>
+      </div>
+      `);
+
+    }) 
+
+    $.getJSON("https://ibatiba.legislacaocompilada.com.br/api/api/norma_filtros?v=2", function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.especie_normativa').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+
+      $.getJSON("https://ibatiba.legislacaocompilada.com.br/api/api/proposicao_filtros/?v=2&area=LEG", function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.proposicoes').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+
+
+
+
+
+
+
+    // Filtro por Categoria
+    $('#acesso a').click(function(e) {
+      e.preventDefault();
+      var categoria = $(this).data('categoria');
+      var request = $.ajax({
+          // type: 'POST',
+          // data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `faq/faqs_post/?categoria_id=` + categoria,
+          beforeSend() {
+            $('.bloco-tabs ul.nav').html('');
+            $('.bloco-tabs ul.nav').addClass('loader');
+          },
+        })
+        .done(function(msg) {
+          $('.bloco-tabs ul.nav').removeClass('loader');
+          $('.bloco-tabs ul.nav').load();
+          msg.map(item => {
+            $('ul.nav.nav-pills.nav-stacked').append(`
+              <li>
+                  <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                  <div class="texto collapse" id="${item.id}">
+                      ${item.resposta}
+                  </div>
+              </li>
+            `);
+          });
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+
+    });
+
+    // Função de Load More Notícias
+    var offset_posts = 5
+    $('#load_more_posts').click(function(e) {
+      e.preventDefault();
+      var request = $.ajax({
+          // type: 'GET',
+          // data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `noticia/get_post/${offset_posts}/5`,
+          beforeSend() {
+            $('#load_more_posts').html('Carregando...');
+            $('.loader').removeClass('hidden');
+          },
+        })
+        .done(function(msg) {
+          offset_posts = offset_posts + 5;
+          $('.loader').addClass('hidden');
+          $('#load_more_posts').html('Carregar mais notícias');
+          msg.map(item => {
+            $('.noticias').append(`
+            <a href="${BASE_URL}noticia/ler/${item.id}/${item.titulo.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w-]+/g, '-').toLowerCase()}" title="Notícia: ${item.titulo}">
+              <div class="col-sm-3 col-xs-12 imagem no-padding">
+                  <img src="${item.capa}" alt="${item.titulo}" />
+              </div>
+              <div class="col-sm-9 col-xs-12 texto">
+                  <h2>${item.titulo}</h2>
+                  <p>` + item.chamada.substring(0, 550) + `</p>
+                  <h5>` + dataAtualFormatada(item.publicacao) + `</h5>
+              </div>
+              <hr />
+            </a>
+          `);
+          })
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+    });
+
+    // Função de Load More nos Faqs
+    var offset_faqs = 8
+    $('#load_more_faq').click(function(e) {
+      e.preventDefault();
+
+      var request = $.ajax({
+          dataType: "json",
+          url: BASE_URL + `faq/faqs_post/${offset_faqs}/5`,
+          beforeSend() {
+            $('#load_more_faq').html('Carregando...');
+            $('.loader').removeClass('hidden');
+          },
+        })
+        .done(function(msg) {
+          offset_faqs = offset_faqs + 5;
+          $('.loader').addClass('hidden');
+          $('#load_more_faq').html('Carregar mais perguntas');
+          msg.map(item => {
+            $('ul.nav.nav-pills.nav-stacked').append(`
+              <li>
+                  <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                  <div class="texto collapse" id="${item.id}">
+                      ${item.resposta}
+                  </div>
+              </li>
+            `);
+          })
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+    });
+
+    // Bloco de Vereadores/Atividade Legislativa no Portal Institucional
+    var VereadoresAPI = $('.vereadores-lista').data('vereadoresapi');
+    if (typeof VereadoresAPI !== "undefined" && VereadoresAPI) {
+      $.getJSON(VereadoresAPI + 'api/vereador/?v=2&qtd=100', function(json) { // Lista os Vereadores
+        var bloco_vereadores = $('.vereadores-lista');
+        var parlamentar = $.map(json.dados, function(item) {
+          return bloco_vereadores.append(`
+            <a target="_blank" href="${VereadoresAPI}vereador.aspx?id=${item.ID}" target="_blank" title="Veja mais sobre o vereador(a) ${item.nome_parlamentar}" class="vereador-item">
+              <div class="imagem">
+                  <img src="${item.foto}" alt="Foto do vereador(a) ${item.nome}" />
+              </div>
+              <div class="texto">
+                  <h3>${item.nome}</h3>
+                  <h5>${item.partido_sigla}</h5>
+              </div>
+            </a>
+          `);
+        });
+      });
+      $('.vereadores-lista .loader').hide();
+
+      $.getJSON(VereadoresAPI + 'api/norma_filtros?v=2', function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.especie_normativa').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+
+      $.getJSON(VereadoresAPI + 'api/proposicao_filtros/?v=2&area=LEG', function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.proposicoes').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+
+      $.getJSON(VereadoresAPI + 'api/proposicao_filtros/?v=2&area=ADM', function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.processos_administrativos').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+    }
+
+    var isSomethingTrue = false;
+    $('.openTabs').click(function(e) {
+      e.preventDefault();
+      $('.bloco-tabs').toggle('in');
+      $(this).toggleClass('botao-primary0');
+      if (!isSomethingTrue) {
+        isSomethingTrue = true;
+        $(this).html('Ver menos serviços');
+      } else {
+        isSomethingTrue = false;
+        $(this).html('Ver todos os serviços');
+      }
+    });
+
+    // Função de Load More nos Faqs
+    $('#fotos a').click(function(e) {
+      e.preventDefault();
+      let idGaleria = $(this).data('id');
+
+      //Initial csrf values
+      var data = {};
+      var api_images = [];
+      var api_titles = [];
+      var api_descriptions = [];
+
+      $.ajax({
+          // type: 'POST',
+          data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `galeria/get_galeria_anexos/` + idGaleria,
+        })
+        .done(function(msg) {
+          // console.log(msg);
+          msg.map(item => {
+            api_images.push(item['arquivo']);
+            api_titles.push(item['titulo']);
+            api_descriptions.push(['']);
+          });
+          $.prettyPhoto.open(api_images, api_titles, api_descriptions);
+          $.prettyPhoto.changePage('next');
+          $.prettyPhoto.changePage('previous');
+          $.prettyPhoto.close();
+        })
+        .fail(function(response, status, error) {
+          // console.log(error);
+          $.prettyPhoto.open(BASE_URL + 'assets/img/brasao.jpg', 'Não consegui carregar, tente novamente.', '');
+        });
+    });
+
+    // Auto Contraste Função
+/*
+    $("#acessibilidade_contraste").on("click", function(event) {
+      event.preventDefault();
+
+      $("body").toggleClass("contrast");
+      var logo_menu = document.getElementById('logo-menu');
+      if ($('body').hasClass('contrast')) {
+        if (logo_menu.src == `${BASE_URL}assets/img/logo_site.svg`)
+          logo_menu.src = `${BASE_URL}assets/img/logo_site_branco.svg`;
+        else
+          logo_menu.src = `${BASE_URL}assets/img/logo_site_branco.png`;
+      } else {
+        if (logo_menu.src == `${BASE_URL}assets/img/logo_site_branco.svg`)
+          logo_menu.src = `${BASE_URL}assets/img/logo_site.svg`;
+        else
+          logo_menu.src = `${BASE_URL}assets/img/logo_site.png`;
+      }
+    });
+
+    var Contrast = {
+      storage: 'contrastState',
+      cssClass: 'contrast',
+      currentState: null,
+      check: checkContrast,
+      getState: getContrastState,
+      setState: setContrastState,
+      toogle: toogleContrast,
+      updateView: updateViewContrast
+    };
+
+    toggleContrast = function() {
+      Contrast.toogle();
+    };
+
+    Contrast.check();
+
+    function checkContrast() {
+      this.updateView();
+    }
+
+    function getContrastState() {
+      return localStorage.getItem(this.storage) === 'true';
+    }
+
+    function setContrastState(state) {
+      localStorage.setItem(this.storage, '' + state);
+      this.currentState = state;
+      this.updateView();
+    }
+
+    function updateViewContrast() {
+      var body = document.body;
+      var logo_menu = document.getElementById('logo-menu');
+
+      if (!body) return;
+      if (!logo_menu) return null;
+
+      if (this.currentState === null)
+        this.currentState = this.getState();
+
+      if (this.currentState) {
+        body.classList.add(this.cssClass);
+
+        if (logo_menu.src == 'https://ibatiba.es.gov.br/assets/img/logo_site.svg')
+          logo_menu.src = 'https://ibatiba.es.gov.br/assets/img/logo_site_branco.svg';
+        else
+          logo_menu.src = 'https://ibatiba.es.gov.br/assets/img/logo_site_branco.png';
+      } else {
+        body.classList.remove(this.cssClass);
+
+        if (logo_menu.src == 'https://ibatiba.es.gov.br/assets/img/logo_site_branco.svg' || logo_menu.src == 'https://ibatiba.es.gov.br/assets/img/logo_site.svg')
+          logo_menu.src = 'https://ibatiba.es.gov.br/assets/img/logo_site.svg';
+        else
+          logo_menu.src = 'https://ibatiba.es.gov.br/assets/img/logo_site.png';
+      }
+    }
+
+    function toogleContrast() {
+      this.setState(!this.currentState);
+    }
+
+*/
+    // FIM AUTOCONTRASTE
+
+    // Função do Popup nas fotos
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+    $('a[rel=group]').fancybox();
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+      default_width: 700, //I have tried playing with these values
+      default_height: 500, //I have tried playing with these values
+      theme: 'light_rounded',
+      social_tools: '<a target="_blank" download href="#" class="download_image left btn btn-xs btn-default"><span class="fa fa-download"></span> Baixar Imagem</a>',
+
+      overlay_gallery: false,
+      show_title: false,
+      hideflash: true,
+      iframe_markup: "<iframe src='{path}' width='{width}' height='{height}' frameborder='no' allowfullscreen='true'></iframe>",
+      deeplinking: false
+    });
+
+    $('body').on('click', '.download_image', function() {
+      var foto_download = $('#fullResImage').attr('src');
+      $(this).attr('href', foto_download);
+    });
+
+    $('div.thumbnail').on('click', 'a', function() {
+      var id = $(this).attr('id');
+      if (id.length) {
+        $.ajax({
+          url: BASE_URL + 'galeria/contador_acessos/' + id,
+          type: "post",
+          data: {
+            'id': id
+          }
+        });
+      }
+    });
+
+    // VERIFICA SWIPER
+    if (document.getElementsByClassName('destaques').length !== 0) {
+      var destaques = new Swiper(".destaques", {
+        loop: true,
+        pagination: {
+          el: ".destaques .swiper-pagination",
+          dynamicBullets: true,
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".destaques .swiper-button-next",
+          prevEl: ".destaques .swiper-button-prev",
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('especialidades').length !== 0) {
+      var especialidades = new Swiper(".especialidades", {
+        // slidesPerView: 1,
+        calculateHeight: true,
+        spaceBetween: 20,
+
+        breakpoints: {
+          // 0: {
+          // },
+          // when window width is >= 768px
+          769: {
+            slidesPerGroup: 4,
+            slidesPerView: 2,
+            allowTouchMove: false,
+            grid: {
+              rows: 2,
+            },
+          },
+        },
+
+        // loop: true, // <- causes issues combined with multi row setup!!
+        navigation: {
+          nextEl: ".especialidades .swiper-button-next",
+          prevEl: ".especialidades .swiper-button-prev",
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('galerias').length != 0) {
+      var banners = new Swiper(".galerias", {
+        slidesPerView: 1,
+        autoHeight: true,
+        loop: true,
+        spaceBetween: 10,
+        // effect: "fade",
+
+        breakpoints: {
+          // 0: {
+          // },
+          // when window width is >= 768px
+          769: {
+            slidesPerView: 4,
+          },
+        },
+        navigation: {
+          nextEl: "#galerias .next",
+          prevEl: "#galerias .prev",
+        },
+        pagination: {
+          el: ".galerias .swiper-pagination",
+          clickable: true,
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('banners').length != 0) {
+      var banners = new Swiper(".banners", {
+        slidesPerView: 1,
+        autoHeight: true,
+        loop: true,
+        spaceBetween: 10,
+        // effect: "fade",
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('portais').length != 0) {
+      var portais = new Swiper(".portais", {
+        slidesPerView: 6,
+        spaceBetween: 30,
+        slidesPerGroup: 6,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        navigation: {
+          nextEl: ".portais .swiper-button-next",
+          prevEl: ".portais .swiper-button-prev",
+        },
+      });
+    }
+
+    $('#web-tv #video').carousel({
+      interval: false,
+    });
+
+    // bootstrap-datepicker ---------------------
+    if ($('.bootstrap_datepicker').length) {
+      $('.bootstrap_datepicker').datepicker({
+        format: 'dd/mm/yyyy'
+      });
+    }
+
+    $('#imprimir').click(function() {
+      window.print();
+    });
+  });
+
+      let capa = "https://ibatiba.es.gov.br/uploads/files/whatsapp-image-2026-11-12-at-16-52-21.jpg";    let titulo = "Pesquisa de Mobilidade e Percepção";    let links = "https://forms.gle/X1XKVebz2h4tXgHb6"; // Adicionando links
+    let nothing = '';
+
+        
+    var currentIndex = 0; // Variável para armazenar o índice atual
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+        theme: 'light_square',
+        social_tools: '',
+                  changepicturecallback: function() {
+            currentIndex = $.prettyPhoto.currentImageIndex; // Supondo que essa função exista
+            var html = $('.pp_hoverContainer').css('display','none'  );
+            var html = $('#pp_full_res').html();
+            html = '<a href="https://forms.gle/X1XKVebz2h4tXgHb6" target="_blank" title="Pesquisa de Mobilidade e Percepção">' + html + '</a>';
+            $('#pp_full_res').html(html);
+          }
+              });
+
+    $.prettyPhoto.open(capa, titulo, nothing);
+    $.prettyPhoto.changePage('next');
+    $.prettyPhoto.changePage('previous');
+    $.prettyPhoto.close();
+  
+  function cookies(functions) {
+    const container = document.querySelector('.cookies-container');
+    const save = document.querySelector('.cookies-save');
+    if (!container || !save) return null;
+
+    const localPref = JSON.parse(window.localStorage.getItem('cookies-pref'));
+    if (localPref) activateFunctions(localPref);
+
+    function getFormPref() {
+      return [...document.querySelectorAll('[data-function]')]
+        .filter((el) => el.checked)
+        .map((el) => el.getAttribute('data-function'));
+    }
+
+    function activateFunctions(pref) {
+      pref.forEach((f) => functions[f]());
+      container.style.display = 'none';
+      window.localStorage.setItem('cookies-pref', JSON.stringify(pref));
+    }
+
+    function handleSave() {
+      const pref = getFormPref();
+      activateFunctions(pref);
+    }
+
+    save.addEventListener('click', handleSave);
+  }
+
+  function analytics() {
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', '');
+
+    console.log('Função anali..');
+  }
+
+  function simplecookie() {
+    console.log('Política de Privacidade Autorizada');
+  }
+
+  // ============================================================
+  // Função Frame do Youtube
+  
+
+  
+    var options = {
+      events_source: [
+              ],
+      view: 'month',
+      modal: "#eventos",
+      modal_type: "ajax", // ajax | iframe | template
+      tmpl_path: 'https://ibatiba.es.gov.br/statics/assets/plugins/bootstrapcalendar/tmpls/',
+      tmpl_cache: false,
+      language: 'pt-BR',
+      day: '2026-11-27',
+      onAfterEventsLoad: function(events) {
+        if (!events) {
+          return window.location.href = "/agenda";
+        }
+        $('#cal-slide-content a.event-item').html('teste1');
+        // var list = $('#eventlist');
+        // list.html('');
+
+        // $.each(events, function(key, val) {
+        //   $(document.createElement('li'))
+        //     .html('<a href="' + val.url + '">' + val.title + '</a>')
+        //     .appendTo(list);
+        // });
+      },
+      onAfterViewLoad: function(view) {
+        $('.btn-group button').removeClass('active');
+        $('button[data-calendar-view="' + view + '"]').addClass('active');
+      },
+      classes: {
+        months: {
+          general: 'label'
+        }
+      },
+      // onBeforeEventsLoad: function(next){ // Pos Loader
+      //   console.log("before");
+      //   jQuery(".loading").show(200, function(){
+      //       console.log("Carregando...")
+      //   });
+      //   next();
+      // },
+      onAfterEventsLoad: function(events) {
+        jQuery(".loading").hide();
+      },
+
+      // onAfterViewLoad: function(view) {
+      //   jQuery('h3.current-calendar').text(this.getTitle());
+      //   jQuery('.btn-group button').removeClass('active');
+      //   jQuery('button[data-calendar-view="' + view + '"]').addClass('active');
+      // }
+
+    };
+
+    var calendar = $('#calendar').calendar(options);
+
+    $('.btn-group button[data-calendar-nav]').each(function() {
+      var $this = $(this);
+      $this.click(function() {
+        calendar.navigate($this.data('calendar-nav'));
+      });
+    });
+
+    $('.btn-group button[data-calendar-view]').each(function() {
+      var $this = $(this);
+      $this.click(function() {
+        calendar.view($this.data('calendar-view'));
+      });
+    });
+
+    $('#first_day').change(function() {
+      var value = $(this).val();
+      value = value.length ? parseInt(value) : null;
+      calendar.setOptions({
+        first_day: value
+      });
+      calendar.view();
+    });
+
+    $('#language').change(function() {
+      calendar.setLanguage($(this).val());
+      calendar.view();
+    });
+
+    $('#events-in-modal').change(function() {
+      var val = $(this).is(':checked') ? $(this).val() : null;
+      calendar.setOptions({
+        modal: val
+      });
+    });
+
+    $('#events-modal .modal-header, #events-modal .modal-footer').click(function(e) {
+      //e.preventDefault();
+      //e.stopPropagation();
+    });
+
+  </script>
+
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lekfr8UAAAAADAdAEfiMNQm5XXXJGqe7QU3JPY6"></script>
+  <script text="text/Javascript">
+    $(function() { // Recaptcha no formulário da Newsletter
+      $(".form_recaptcha .bnt_submit_recaptcha").click(function(e) {
+        e.preventDefault();
+        grecaptcha.execute('6Lekfr8UAAAAADAdAEfiMNQm5XXXJGqe7QU3JPY6').then(function(token) {
+          var recaptchaResponse = document.getElementById('recaptcha_token');
+          recaptchaResponse.value = token;
+
+          $('.form_recaptcha').submit();
+        })
+      })
+    });
+
+    // var form = $('#newsletter');
+    // $(form).submit(function(e) { // Função do Formulario newsletter da Home
+    //   e.preventDefault();
+    //   grecaptcha.execute('6Lekfr8UAAAAADAdAEfiMNQm5XXXJGqe7QU3JPY6').then(function(token) {
+    //     // add token value to form
+    //     document.getElementById('g-recaptcha-response').value = token;
+
+    //     $.ajax({
+    //         type: form.attr('method'),
+    //         url: form.attr('action'),
+    //         dataType: 'json',
+    //         data: form.serialize(),
+    //         beforeSend() {
+    //           // console.log('Carregando...');
+    //           $('#newsletter .loader').toggleClass('hidden');
+    //         },
+    //       })
+    //       .success(function(msg) {
+    //         // console.log(msg);
+    //         if (msg == 200) {
+    //           alertify.success('Contato cadastrado com sucesso!');
+    //         } else {
+    //           alertify.error(msg);
+    //         }
+    //         $('#newsletter .loader').toggleClass('hidden');
+    //       })
+    //       .fail(function(request, status, error) {
+    //         // console.log('Status: ', status);
+    //         $('#newsletter .loader').toggleClass('hidden');
+    //       });
+    //   });
+    // });
+  </script>
+
+
+<script>
+  var preloader = document.getElementById('preloader');
+  if (typeof preloader !== "undefined" && preloader) {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        if (document.readyState === "complete") { // Ainda carregando
+          preloader.classList.toggle('loaded')
+          setTimeout(() => {
+            preloader.classList.add('hidden')
+          }, 1000);
+        }
+      }, 3000);
+    });
+  }
+</script>
+
+<noscript>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="alert alert-warning" role="alert">
+      Você precisa habilitar o JavaScript para visualizar este Portal corretamente.
+    </div>
+  </div>
+</noscript>
+</body>
+
+</html>

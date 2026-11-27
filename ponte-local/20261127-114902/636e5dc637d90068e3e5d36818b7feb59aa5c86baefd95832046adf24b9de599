@@ -1,0 +1,2677 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de Taquari</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Taquari.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de Taquari' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://taquari.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://taquari.rs.gov.br/uploads/config/20/borda_sem_bordas.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='354'>
+            <meta property='og:image:height' content='425'>
+            <meta property='og:site_name' content='taquari.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Taquari.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de Taquari'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Taquari.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://taquari.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://taquari.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://taquari.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://taquari.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://taquari.rs.gov.br/site/custom/default/css/color/darkblue.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://taquari.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://taquari.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://taquari.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://taquari.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://taquari.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://taquari.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://taquari.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://taquari.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-JEVXH9WEEK"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-JEVXH9WEEK');
+    });
+</script>
+        <link rel="shortcut icon" href="https://taquari.rs.gov.br/uploads/config/16089/favicon.ico" />    
+	        </head>
+	    <body class="smoothscroll wide home" data-background=""><a href="https://taquari.rs.gov.br/cdn-cgi/content?id=XHeIGcDLIQ6S96ANhm147Tl7fpeWT5MWTI_mt7aWjGA-1795780212.0645003-1.2.1.1-7VK9AJkJU5bUciXWkWu7gvlQBS3.TO3eMgl26VSF6RBFUoZJe83Ysu22EHnmjKEP" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	        <div id="selo">
+            <map name="maplink-selo" class="map-oselo"><area shape="circle" alt="Link da Campanha Transparência" title="Selo da Transparência" coords="57,59,55"  target="_blank" /></map>
+            <img alt="selo transparência" class="img-responsive oselo" usemap="#maplink-selo" title="Selo da Transparência" src="//visaoi.com.br/img/selo-tp-ouro-2025.png" />
+        </div>
+        
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <!-- Cabeçalho -->
+<!--===================================================-->
+<div id="header" class='header08'>
+  <header id="topBar" class="">
+    <div class="container">
+      <!-- Logo -->
+      <div class="col-md-4 col-sm-7 nopadding-left">
+        <!-- Data -->
+                <p class="mb10 mt5"><small class="pl15">Taquari, 27 de novembro de 2026</small></p>
+        <!-- Fim Data -->
+                    <h1 class="client-name nomargin lineh30">
+            <a  class="logo" href="https://taquari.rs.gov.br">
+                <img class="max-height100" src="https://taquari.rs.gov.br/uploads/config/16/logo_taquari.jpg" alt="Logo da Prefeitura"/>            </a>
+            </h1>
+                  </div>
+      <!-- / Logo -->
+
+            <div class="col-md-8 col-sm-5 hidden-xs border-b-2-fff radius-right-20 styleBackgroundLight">
+        <div class="row">
+          <div class="col-md-6 alterate">
+            <div class="box-search-and-weather radius4 m0" title="Temperatura" aria-label="Temperatura" tabindex="0">
+              <!-- Previsão do tempo-->
+                            <div class="weather previsao-topo hidden">
+                <div style="flex:2;"></div>
+                <div class="weather-today">
+                  <i class="m0 fsize32 wi wi-thermometer"></i>
+                </div>
+                <div class="weather-week">
+                  <p class="fontw400 mb0">
+                    <small aria-label="Mínima de">MIN</small> <span class='min-temp'></span>°C
+                  </p>
+				  <span class="sr-only">e</span>
+                  <p class="fontw400 mb0">
+                    <small aria-label="Máxima de">MAX</small> <span class='max-temp'></span>°C
+                  </p>
+                </div>
+              </div>
+                            <!-- /Previsão do tempo-->
+              <!-- Busca -->
+              <div class="search-site" role='search'>
+                <form id="pesquisa" class="search nopadding" method="get" action="https://taquari.rs.gov.br/pesquisa">
+			  		<label for="searchbar-desktop" class="sr-only">Pesquisar no site:</label>
+                  <input title="Procurar no site" id="searchbar-desktop" type="text" class="form-control nomargin" name="q" value="" placeholder="Procurar no site">
+                  <button type="submit" class="fa fa-search search-focus styleColor" title="Pesquisar" aria-label="Pesquisar"></button>
+                </form>
+              </div>
+              <!-- /Busca -->
+            </div>
+          </div>
+
+                        <div class="col-md-6 pt15 hidden-sm">
+                <div class="row">
+                  <div class="owl-carousel" data-plugin-options='{"items":1,"pagination": false, "autoPlay": true}'>
+                                                  <div class="item">
+                                                              <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://taquari.multi24h.com.br/multi24/sistemas/transparencia/?entidade=1" target="_blank" onclick="">
+        <img src='https://taquari.rs.gov.br/uploads/link/16237/imagem_imagem_topo_portal_transparencia.png' alt='' />                                <h2 class="styleColor">Portal da Transparência</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://taquari.multi24h.com.br/multi24/sistemas/portal/" target="_blank" onclick="">
+        <img src='https://taquari.rs.gov.br/uploads/link/16238/imagem_imagem_topo_servicos_cidadao.png' alt='' />                                <h2 class="styleColor">Serviços ao Cidadão</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                            <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="http://www.taquari.rs.gov.br/sic/bcid/41/?servico-de-informacao-ao-cidadao.html" target="_self" onclick="">
+        <img src='https://taquari.rs.gov.br/uploads/link/16239/imagem_imagem_topo_acesso_a_informacao.png' alt='' />                                <h2 class="styleColor">Acesso à Informação</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="/ouvidoria" target="_self" onclick="">
+        <img src='https://taquari.rs.gov.br/uploads/link/16240/imagem_imagem_portal_ouvidoria.png' alt='' />                                <h2 class="styleColor">Ouvidoria</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                          </div>
+                                                        <div class="item">
+                                                              <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://nfse-taquari.multi24h.com.br/" target="_blank" onclick="">
+        <i class='fa fa-angle-right styleColor pl10'></i>                                <h2 class="styleColor">Nota Fiscal Eletrônica</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://taquari.multi24h.com.br/multi24/sistemas/portal/?redirect=certidao_imovel" target="_blank" onclick="">
+        <i class='fa fa-angle-right styleColor pl10'></i>                                <h2 class="styleColor">Certidão de Imóveis</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                            <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://taquari.multi24h.com.br/multi24/sistemas/portal/?redirect=dim" target="_blank" onclick="">
+        <i class='fa fa-angle-right styleColor pl10'></i>                                <h2 class="styleColor">Certidão de Inscrição Municipal - IM</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://taquari.multi24h.com.br/multi24/sistemas/portal/?redirect=solicitacao_itbi" target="_blank" onclick="">
+        <i class='fa fa-angle-right styleColor pl10'></i>                                <h2 class="styleColor">Solicitação de ITBI</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                          </div>
+                                              </div>
+                </div>
+              </div>
+                      </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <!--===================================================-->
+  <header id="topNav" class="">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get"
+            action="https://taquari.rs.gov.br/pesquisa">
+		<label for="searchbar-mobile" class="sr-only">Pesquisar no site:</label>
+        <input title="termo de pesquisa" id="searchbar-mobile" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar" style="min-width:24px;min-height:24px;margin-top: -5px;"></button>
+      </form>
+      <!-- Menu Mobile -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse"> <i class="fa fa-bars"></i></button>
+      <!-- Menu -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li><a href='https://taquari.rs.gov.br'>Início</a></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/3/?dados-do-municipio.html'>Dados do Município</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1009/?mapas-de-taquari.html'>Mapas de Taquari</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1007/?mapa-de-obras.html'>Mapa de Obras</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1010/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1012/?empreendedorrede-simples.html'>Empreendedor/Rede Simples</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1081/?plano-municipal-de-contingencia-2025.html'>Plano Municipal de Contingência 2025</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1015/?fundo-municipal-do-idoso.html'>Fundo Municipal do Idoso</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/galeria-prefeitos/bcid/55/?galeria-de-prefeitos.html'>Galeria de Prefeitos</a></li></ul></div><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Atrações Turísticas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/turismo/id/1005/?restaurantes-hamburguerias-e-pizzarias.html'>Restaurantes, Hamburguerias e Pizzarias</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/turismo/id/4/?hoteis.html'>Hotéis</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/turismo/id/5/?pontos-turisticos.html'>Pontos Turísticos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/turismo/id/1006/?confeitarias-e-cafeterias.html'>Confeitarias e Cafeterias </a></li></ul></div><div class="col-md-3"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1008/?atendimento-medico.html'>Atendimento Médico</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1001/?cadastro-de-projetos.html'>Cadastro de Projetos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1015/?campeonatos-esportivos.html'>Campeonatos Esportivos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1017/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1016/?guia-de-arborizacao-urbana.html'>Guia de Arborização Urbana</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1005/?imprensa.html'>Imprensa</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1003/?iptu.html'>IPTU</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1013/?lista-de-espera---creches.html'>Lista de Espera - Creches</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1010/?medicamentos.html'>Medicamentos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1009/?meio-ambiente.html'>Meio Ambiente</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1002/?nota-fiscal-eletronica.html'>Nota Fiscal Eletrônica</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1012/?telefones-uteis.html'>Telefones Úteis</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/id/1007/?transporte-publico.html'>Transporte Público</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-3"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1002/?secretaria-da-agricultura.html'>Secretaria da Agricultura</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1005/?secretaria-da-fazenda.html'>Secretaria da Fazenda</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1010/?secretaria-da-industria-e-comercio.html'>Secretaria da Indústria e Comércio</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1012/?secretaria-da-saude-e-meio-ambiente.html'>Secretaria da Saúde e Meio Ambiente</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1001/?secretaria-de-administracao-e-recursos-humanos.html'>Secretaria de Administração e Recursos Humanos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1004/?secretaria-de-educacao.html'>Secretaria de Educação</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1006/?secretaria-de-esporte-lazer-cultura-e-turismo.html'>Secretaria de Esporte, Lazer, Cultura e Turismo</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1016/?secretaria-de-esporte-lazer-cultura-e-turismo.html'>Secretaria de Esporte, Lazer, Cultura e Turismo</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1008/?secretaria-de-habitacao-e-assistencia-social.html'>Secretaria de Habitação e Assistência Social</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1011/?secretaria-de-obras-e-servicos-urbanos.html'>Secretaria de Obras e Serviços Urbanos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/secretaria/id/1013/?secretaria-de-planejamento.html'>Secretaria de Planejamento</a></li></ul></div><div class="col-md-3"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/conselho/id/1017/?conselho-municipal-da-educacao.html'>Conselho Municipal da Educação</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/conselho/id/1018/?conselho-municipal-da-pessoa-de-idosa--cmpi.html'>Conselho Municipal da Pessoa de Idosa  (CMPI)</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/conselho/id/1015/?conselho-municipal-de-assistencia-social.html'>Conselho Municipal de Assistência Social</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/conselho/id/1020/?conselho-municipal-de-politica-cultural.html'>Conselho Municipal de Política Cultural</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/conselho/id/1021/?conselho-municipal-de-saude.html'>Conselho Municipal de Saúde</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/conselho/id/1014/?conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-comdica.html'>Conselho Municipal dos Direitos da Criança e do Adolescente (Comdica)</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/conselho/id/1019/?conselho-municipal-do-turismo-de-taquari.html'>Conselho Municipal do Turismo de Taquari</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://taquari.rs.gov.br/uploads/config/20/borda_sem_bordas.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 3653-6200</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />De segunda a sexta-feira, das 8h às 12h e das 13h30min às 16h30min.<br />
+Telefone alternativo (51) 9.9890.7916</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://taquari.rs.gov.br/uploads/config/20/borda_sem_bordas.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 3653-6200</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />De segunda a sexta-feira, das 8h às 12h e das 13h30min às 16h30min.<br />
+Telefone alternativo (51) 9.9890.7916</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-2"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/5/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1018/?adesao-a-ata-de-registro-de-precos.html'>Adesão à Ata de Registro de Preços</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1021/?ami---aviso-de-manifestacao-de-interesse-dispensa.html'>AMI - Aviso de Manifestação de Interesse-Dispensa</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/102/?carta-convite.html'>Carta Convite</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1017/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1004/?chamamento-publico--credenciamento.html'>Chamamento Público / Credenciamento</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1008/?chamamento-publico---lei-130192014.html'>Chamamento Público - Lei 13.019/2014</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1020/?concorrencia-eletronica.html'>Concorrência Eletrônica</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/101/?concorrencia-publica.html'>Concorrência Pública</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1005/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1011/?contratos---lei-130192014.html'>Contratos - Lei 13.019/2014</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/103/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1009/?dispensa---lei-130192014.html'>Dispensa - Lei 13.019/2014</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1013/?edital-de-inexibilidade-03130192018.html'>Edital de Inexibilidade 0313019/2018</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1003/?extratos-contratos-registros-de-precos-e-aditivos.html'>Extratos Contratos, Registros de Preços e Aditivos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/104/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1010/?inexigibilidade---lei-130192014.html'>Inexigibilidade - Lei 13.019/2014</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/105/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1007/?licitacon.html'>Licitacon</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1019/?nova-lei-das-licitacoes---lei-141332021.html'>NOVA LEI DAS LICITAÇÕES - LEI 14.133/2021</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/106/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/107/?pregao-presencial.html'>Pregão Presencial</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1014/?termo-de-colaboracao.html'>Termo de Colaboração</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/1012/?termo-de-fomento.html'>Termo de Fomento</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/licitacao/id/108/?tomada-de-preco.html'>Tomada de Preço</a></li></ul></div><div class="col-md-2"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/concurso/id/1016/?concurso-publico-da-prefeitura-de-taquari-2022.html'>Concurso Público da Prefeitura de Taquari 2022</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/concurso/id/1015/?concurso-publico-prefeitura-de-taquari-2018.html'>Concurso Público Prefeitura de Taquari 2018</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/concurso/id/202/?processo-seletivo.html'>Processo Seletivo</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/concurso/id/1002/?prorrogacao.html'>Prorrogação</a></li></ul></div><div class="col-md-2"><p class="menu-category">Legislação</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1014/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1001/?contrato-corsan.html'>Contrato Corsan</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1009/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/5/?decretos.html'>Decretos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1022/?editais-audiencia-publica.html'>Editais Audiência Pública</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1019/?editais--auxilio-emergencial-cultura.html'>Editais- Auxílio Emergencial Cultura</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1018/?editais-de-notificacao.html'>Editais de Notificação</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1026/?editais-minha-casa-minha-vida---unidades-tinguite.html'>Editais Minha Casa Minha Vida - Unidades Tinguité </a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1016/?editais---pnab---ciclo-1.html'>Editais - PNAB - Ciclo 1</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1034/?editais-pnab---ciclo-2.html'>Editais PNAB - Ciclo 2</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1033/?edital-educacao.html'>Edital educação </a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1039/?edital-pnab-no-012026.html'>EDITAL PNAB Nº 01/2026 </a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1040/?edital-sedac---fac-rs.html'>EDITAL SEDAC - FAC RS </a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1031/?educacao---editais.html'>EDUCAÇÃO - editais</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/6/?lei-organica.html'>Lei Orgânica</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1002/?lei-plano-diretor.html'>Lei Plano Diretor</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/2/?leis.html'>Leis</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1003/?licenca-ambiental.html'>Licença Ambiental</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1004/?ordem-de-servico.html'>Ordem de Serviço</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/11/?portaria.html'>Portaria</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1021/?processo-administrativo-de-reurb-0012022---reurb.html'>Processo Administrativo de REURB 001/2022 - REURB </a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1023/?processo-administrativo-de-reurb-0022023---reurb.html'>Processo Administrativo de REURB 002/2023 - REURB </a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1024/?processo-administrativo-de-reurb-0032023---reurb.html'>Processo Administrativo de REURB 003/2023 - REURB </a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1027/?processo-administrativo-de-reurb-0042023---reurb.html'>Processo Administrativo de REURB 004/2023 - REURB </a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1028/?processo-administrativo-de-reurb-0052024---reurb.html'>Processo Administrativo de REURB 005/2024 - REURB </a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1029/?processo-administrativo-de-reurb-0062024---reurb.html'>Processo Administrativo de REURB 006/2024 - REURB</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1030/?processo-administrativo-de-reurb-0072024.html'>Processo Administrativo de REURB 007/2024</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1036/?processo-administrativo-de-reurb-0092025.html'>Processo Administrativo de Reurb 009/2025</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1035/?processo-administrativo-de-reurb-no-0082025.html'> Processo Administrativo de Reurb nº 008/2025</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1038/?processo-administrativo-de-reurbno0102025.html'>Processo Administrativo de Reurb nº 010/2025</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1012/?repasses-ou-transferencias-convenios-e-parcerias.html'>Repasses ou Transferências (Convênios e Parcerias)</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1025/?termo-de-adesao.html'>Termo de Adesão</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1020/?termo-de-cooperacao.html'>Termo de Cooperação</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/legislacao/id/1017/?termo-de-incentivo.html'>Termo de Incentivo</a></li></ul></div><div class="col-md-2"><p class="menu-category">Convênios e Parcerias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1025/?apae-taquari.html'>Apae Taquari</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1027/?pella-bethania.html'>Pella Bethânia</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1028/?associacao-dos-produtores-rurais-e-proprietarios.html'>Associação dos Produtores Rurais e Proprietários</a></li></ul></div><div class="col-md-2"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://taquari.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>COVID-19</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1033/?decretos.html'>Decretos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1034/?leis.html'>Leis</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1035/?boletim.html'>Boletim</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1036/?dispensas-de-licitacao.html'>Dispensas de Licitação</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1041/?dados-sobre-a--eficiencia-da-vacina.html'>Dados sobre a  eficiência da vacina</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1042/?dados-sobre-a-aplicacao-da-vacina-em-taquari.html'>Dados sobre a aplicação da vacina em Taquari</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1043/?denuncias-sobre-a-vacinacao.html'>Denúncias sobre a Vacinação</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1044/?sobra-de-vacina.html'>Sobra de Vacina</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1045/?plano-de-acao-municipal-de-vacinacao.html'>PLANO DE AÇÃO MUNICIPAL DE VACINAÇÃO</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1046/?calendario-e-locais-de-vacinacao.html'>CALENDÁRIO E LOCAIS DE VACINAÇÃO</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1047/?ordem-grupos-prioritarios.html'>ORDEM GRUPOS PRIORITÁRIOS</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1048/?doses-recebidas-x-aplicadas.html'>DOSES RECEBIDAS X APLICADAS</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1049/?insumos-recebidos-e-adquiridos.html'>INSUMOS RECEBIDOS E ADQUIRIDOS</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://taquari.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-e-respostas.html'>Perguntas e Respostas</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/ordem-servico/bcid/39/?e-sic---pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1020/?relatorios-de-atendimento-e-sic.html'>Relatórios de Atendimento e-SIC</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1024/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1018/?patrimonio.html'>Patrimônio</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1019/?veiculos.html'>Veículos</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1021/?padrao-remuneratorio-de-cargos-e-funcoes.html'>Padrão Remuneratório de Cargos e Funções</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1058/?obras-em-andamento.html'>Obras em Andamento</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1022/?obras-em-andamento.html'>Obras em Andamento</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/1094/?recursos-federais.html'>RECURSOS FEDERAIS</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://taquari.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/ouvidoria/bcid/23/?ouvidoria.html'>Ouvidoria</a></li><li role="menuitem"><a href='https://taquari.rs.gov.br/contato/bcid/1008/?fale-conosco.html'>Fale Conosco</a></li></ul></li></ul></nav>
+      </div>
+    </div>
+  </header>
+  <!--===================================================-->
+  <!-- Fim Menu -->
+</div>
+<!--===================================================-->
+<!-- Fim Cabeçalho -->
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a><!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350">
+                    <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img                         srcset="
+                            https://taquari.rs.gov.br/uploads/banner/54089/thumb_MATRICULAS_ABERTAS_1jpg.jpeg 360w,
+                            https://taquari.rs.gov.br/uploads/banner/54089/mobile_MATRICULAS_ABERTAS_1jpg.jpeg 576w,
+                            https://taquari.rs.gov.br/uploads/banner/54089/original_MATRICULAS_ABERTAS_1jpg.jpeg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Matrículas e rematrículas 2027"
+                    />
+                                        <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4296/?matriculas-e-rematriculas-da-rede-municipal-para-2027-abrem-em-novembro.html" target='_blank' class="linkBannner">
+                        <span class="sr-only">Matrículas e rematrículas 2027</span>
+                    </a>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://taquari.rs.gov.br/uploads/banner/50472/thumb_banner_24jpg.webp 360w,
+                            https://taquari.rs.gov.br/uploads/banner/50472/mobile_banner_24jpg.webp 576w,
+                            https://taquari.rs.gov.br/uploads/banner/50472/original_banner_24jpg.webp 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Selo Ouro Transparência "
+                    />
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://taquari.rs.gov.br/uploads/banner/20366/thumb_Lagoa_Armnia_Natal_2014_Crdito_Cludio_Andrade.jpg 360w,
+                            https://taquari.rs.gov.br/uploads/banner/20366/mobile_Lagoa_Armnia_Natal_2014_Crdito_Cludio_Andrade.jpg 576w,
+                            https://taquari.rs.gov.br/uploads/banner/20366/original_Lagoa_Armnia_Natal_2014_Crdito_Cludio_Andrade.jpg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Taquari é a terra da Lagoa Armênia!"
+                    />
+                                        <div class="container">
+                        <div class="box fullbox">
+                            <p class="similar-h3 subTitle">Taquari é a terra da Lagoa Armênia!</p>
+                                                        <p>Venha conhecer nosso maior ponto turístico! Em dezembro, a Lagoa Armênia é decorada e iluminada e se torna palco de uma extensa programação de Natal. </p>
+                                                        <p><a href="http://www.taquari.rs.gov.br/turismo/visualizar/id/1005/?lagoa-armenia.html" target='_self' class="btn btn-small btn-primary">Confira</a><br />
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://taquari.rs.gov.br/uploads/banner/24256/thumb_Portal_do_Aluno___Banner_Site_Prefeitura_Institucional.jpg 360w,
+                            https://taquari.rs.gov.br/uploads/banner/24256/mobile_Portal_do_Aluno___Banner_Site_Prefeitura_Institucional.jpg 576w,
+                            https://taquari.rs.gov.br/uploads/banner/24256/original_Portal_do_Aluno___Banner_Site_Prefeitura_Institucional.jpg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Portal do Aluno"
+                    />
+                                        <div class="container">
+                        <div class="box fullbox">
+                            <p class="similar-h3 subTitle">Portal do Aluno</p>
+                                                        <p>Acesse aqui o portal para consulta de informações como calendário do ano letivo, horário de aula, histórico escolar, notas, frequência, entre outras. </p>
+                                                        <p><a href="http://portaldoaluno.taquari.rs.gov.br" target='_blank' class="btn btn-small btn-primary">Confira</a><br />
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://taquari.rs.gov.br/uploads/banner/53654/thumb_TABELA_DE_JOGOS_123jpg.jpeg 360w,
+                            https://taquari.rs.gov.br/uploads/banner/53654/mobile_TABELA_DE_JOGOS_123jpg.jpeg 576w,
+                            https://taquari.rs.gov.br/uploads/banner/53654/original_TABELA_DE_JOGOS_123jpg.jpeg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="4ª Copa Sicredi Futsal"
+                    />
+                                        <a href="https://taquari.rs.gov.br/pagina/id/1097/?tabela-de-jogos-4a-copa-sicredi-de-futsal.html" target='_blank' class="linkBannner">
+                        <span class="sr-only">4ª Copa Sicredi Futsal</span>
+                    </a>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: true, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: true        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img loading='lazy' src="https://taquari.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+<div class="pb40 pt40">
+    <div class="container">
+        <div class="row">
+            <!-- NOTÍCIAS E ACESSO RÁPIDO -->
+                        <div class="overflow-hidden col-md-9 mobile-nopadding"><!-- 3 ÚLTIMAS NOTÍCIAS -->
+<section role="group" id="noticia2" class="nopadding" aria-labelledby="noticia2.title">
+	<div class="row">
+		<div class="col-md-12">
+			<h2 class="similar-h4 title" id="noticia2.title"><strong>ÚLTIMAS NOT&Iacute;CIAS</strong></h2>
+		</div>
+	</div>
+<div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": true, "navigation": false, "pagination": true, "progressBar":"false"}'>
+        <div class="item">
+        <div class="col-md-4">
+                        <img class="img-responsive max-height360" src="https://taquari.rs.gov.br/uploads/noticia/54261/media_WhatsApp_Image_2026_11_26_at_154626.jpeg" alt="Taquari mobiliza comunidade para auxiliar famílias atingidas em Tupanciretã" role="presentation">
+                     </div>
+
+        <div class="col-md-8">
+            <h3 class="mb10 similar-h2 lineh32">
+                <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4309/?taquari-mobiliza-comunidade-para-auxiliar-familias-atingidas-em-tupancireta.html">
+                    Taquari mobiliza comunidade para auxiliar famílias atingidas em Tupanciretã                </a>
+            </h3>
+            <p>A arrecadação teve o apoio de igrejas, empresas e voluntários. Na semana passada, duas profissionais da saúde estiveram em Tupanciretã para prestar apoio às famílias atingidas </p>
+        </div>
+    </div>
+        <div class="item">
+        <div class="col-md-4">
+                        <img class="img-responsive max-height360" src="https://taquari.rs.gov.br/uploads/noticia/54258/media_WhatsApp_Image_2026_11_25_at_104631.jpeg" alt="Formalizada a desapropriação de área para construção de 50 moradias pelo MCMV – Re" role="presentation">
+                     </div>
+
+        <div class="col-md-8">
+            <h3 class="mb10 similar-h2 lineh32">
+                <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4308/?formalizada-a-desapropriacao-de-area-para-construcao-de-50-moradias-pelo-mcmv--re.html">
+                    Formalizada a desapropriação de área para construção de 50 moradias pelo MCMV – Re                </a>
+            </h3>
+            <p>Área está localizada no Loteamento Santa Cecília, no bairro Prado, e compreende 25 terrenos</p>
+        </div>
+    </div>
+        <div class="item">
+        <div class="col-md-4">
+                        <img class="img-responsive max-height360" src="https://taquari.rs.gov.br/uploads/noticia/54252/media_WhatsApp_Image_2026_11_23_at_153544.jpeg" alt="Contribuinte tem nova oportunidade para negociar débitos com descontos de até 100% em juros e multas" role="presentation">
+                     </div>
+
+        <div class="col-md-8">
+            <h3 class="mb10 similar-h2 lineh32">
+                <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4307/?contribuinte-tem-nova-oportunidade-para-negociar-debitos-com-descontos-de-ate-100-em-juros-e-multas.html">
+                    Contribuinte tem nova oportunidade para negociar débitos com descontos de até 100% em juros e multas                </a>
+            </h3>
+            <p>É possível quitar dívidas à vista ou parcelar os valores, com condições especiais. Prazo para adesão ao programa termina em 28 de dezembro.</p>
+        </div>
+    </div>
+    </div>
+
+<div class="hidden-xs mb15 other-news">
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4306/?administracao-realizara-audiencia-publica-para--apresentacao-da-proposta-orcamentaria-de-2027.html">
+            <img class="img-responsive max-height200" src="https://taquari.rs.gov.br/uploads/noticia/54249/media_audiencia_123_jpg_1.jpeg" alt="Administração realizará audiência pública para  apresentação da proposta orçamentária de 2027" role="presentation"/>
+        </a>
+        <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4306/?administracao-realizara-audiencia-publica-para--apresentacao-da-proposta-orcamentaria-de-2027.html">
+            <p class="nomargin">Administração realizará audiência pública para  apresentação da proposta orçamentária de 2027</p>
+        </a>
+    </div>
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4305/?naiara-azevedo-sera-a-atracao-nacional-do-34o-natal-acoriano-em-terra-gaucha.html">
+            <img class="img-responsive max-height200" src="https://taquari.rs.gov.br/uploads/noticia/54235/media_1__NAIARAjpg.jpeg" alt="Naiara Azevedo será a atração nacional do 34º Natal Açoriano em Terra Gaúcha" role="presentation"/>
+        </a>
+        <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4305/?naiara-azevedo-sera-a-atracao-nacional-do-34o-natal-acoriano-em-terra-gaucha.html">
+            <p class="nomargin">Naiara Azevedo será a atração nacional do 34º Natal Açoriano em Terra Gaúcha</p>
+        </a>
+    </div>
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4304/?pagamento-do-alvara-de-localizacao-deve-ser-realizado-ate-30-de-novembro.html">
+            <img class="img-responsive max-height200" src="https://taquari.rs.gov.br/uploads/noticia/54226/media_ALVAR_123jpg.jpeg" alt="Pagamento do alvará de localização  deve ser realizado até 30 de novembro" role="presentation"/>
+        </a>
+        <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4304/?pagamento-do-alvara-de-localizacao-deve-ser-realizado-ate-30-de-novembro.html">
+            <p class="nomargin">Pagamento do alvará de localização  deve ser realizado até 30 de novembro</p>
+        </a>
+    </div>
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4303/?ultima-campanha-do-ano-para-coleta-de-vidros-e-eletroeletronicos--sera-realizada-em-3-de-dezembro.html">
+            <img class="img-responsive max-height200" src="https://taquari.rs.gov.br/uploads/noticia/54223/media_recolhimento_de_resduos.jpeg" alt="Última campanha do ano para coleta de vidros e eletroeletrônicos  será realizada em 3 de dezembro" role="presentation"/>
+        </a>
+        <a href="https://taquari.rs.gov.br/noticia/visualizar/id/4303/?ultima-campanha-do-ano-para-coleta-de-vidros-e-eletroeletronicos--sera-realizada-em-3-de-dezembro.html">
+            <p class="nomargin">Última campanha do ano para coleta de vidros e eletroeletrônicos  será realizada em 3 de dezembro</p>
+        </a>
+    </div>
+        <a aria-label="Ver mais notícias" href="https://taquari.rs.gov.br/noticia/?noticias.html" class="btn btn-default pull-right">Mais not&iacute;cias</a>
+</div>
+</section></div>
+                            <div class="col-md-3 mt4-xs"><!-- ACESSO RÁPIDO -->
+<div id="acessoRapido1" class="widget featured-box-minimal owl-carousel-controls">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>ACESSO R&Aacute;PIDO</strong></h2>
+                        <span class="pull-right">
+				<a class="prev" href="javascript:;" aria-label="Anterior" title="Anterior">
+					<i class="mr5 lineh30 fa fa-arrow-left widget-icon" aria-hidden="true">
+						<span class="sr-only">Anterior</span>
+					</i>
+				</a>
+				<a class="next" href="javascript:;" aria-label="Próximo" title="Próximo">
+					<i class="mr5 lineh30 fa fa-arrow-right widget-icon" aria-hidden="true">
+						<span class="sr-only">Próximo</span>
+					</i>
+				</a>
+            </span>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1,"transitionStyle":"goDown" ,"autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="WebMail Prefeitura" href="https://webmail.kinghost.com.br/taquari.rs.gov.br" target="_blank" onclick="">
+                        <i class='fa fa-envelope'></i> WebMail Prefeitura                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Nota Fiscal Eletrônica" href="https://nfse-taquari.multi24h.com.br" target="_blank" onclick="">
+                        <i class='fa fa-calculator'></i> Nota Fiscal Eletrônica                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Des-if" href="http://taquarirs.ereceita.net.br/" target="_blank" onclick="">
+                        <i class='fa fa-bank'></i> Des-if                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Legislação Atualizada" href="http://www.taquari.cespro.com.br/" target="_blank" onclick="">
+                        <i class='fa fa-gavel'></i> Legislação Atualizada                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Espaço do Empreendedor" href="http://www.taquari.rs.gov.br/pagina/id/1012/?espaco-do-empreendedor.html" target="_blank" onclick="">
+                        <i class='fa fa-suitcase'></i> Espaço do Empreendedor                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Decretos" href="http://www.taquari.rs.gov.br/legislacao/id/5/?decretos.html" target="_self" onclick="">
+                        <i class='fa fa-tags'></i> Decretos                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Licitacon" href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:4:::NO::F50500_CD_ORGAO:61300&cs=1779GXy8ID16i_rOfZAjRa01Rrdg" target="_blank" onclick="">
+                        <img loading='lazy' class='mr10 radius25 width35 height35' src='https://taquari.rs.gov.br/uploads/link/27037/imagem_licitacon.jpg' alt='' /> Licitacon                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Licitações" href="http://www.taquari.rs.gov.br/sitemap#d3d9446802a44259755d38e6d163e820" target="_self" onclick="">
+                        <i class='fa fa-bookmark'></i> Licitações                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Contas Públicas" href="http://www.taquari.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html" target="_self" onclick="">
+                        <i class='fa fa-usd'></i> Contas Públicas                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Débitos de IPTU" href="https://taquari.multi24h.com.br/multi24/sistemas/portal/?atalho=consulta-debitos-deslogado&base=1" target="_self" onclick="">
+                        <i class='fa fa-area-chart'></i> Débitos de IPTU                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Certidão de IM" href="https://taquari.multi24h.com.br/multi24/sistemas/portal/?redirect=dim" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Certidão de IM                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Débitos de Empresas" href="https://taquari.multi24h.com.br/multi24/sistemas/portal/?atalho=consulta-debitos-deslogado&base=2" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Débitos de Empresas                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Ouvidoria" href="/ouvidoria" target="_self" onclick="">
+                        <i class='fa fa-comment-o'></i> Ouvidoria                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Portal da Transparência" href="https://taquari.multi24h.com.br/multi24/sistemas/transparencia/?entidade=1" target="_self" onclick="">
+                        <i class='fa fa-at'></i> Portal da Transparência                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="LGPD" href="https://taquari.rs.gov.br/pagina/id/1074/?lei-geral-de-protecao-de-dados-lgpd-na-prefeitur.html" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> LGPD                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Serviços ao Cidadão" href="https://taquari.multi24h.com.br/multi24/sistemas/portal/" target="_self" onclick="">
+                        <i class='fa fa-user'></i> Serviços ao Cidadão                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Acesso à informação" href="http://www.taquari.rs.gov.br/sic/bcid/41/?servico-de-informacao-ao-cidadao.html" target="_self" onclick="">
+                        <i class='fa fa-info'></i> Acesso à informação                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="e-SIC" href="/ordem-servico" target="_self" onclick="">
+                        <i class='fa fa-info'></i> e-SIC                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Política Nacional Aldir Branc" href="https://www.taquari.rs.gov.br/pagina/id/1075/?cultura.html" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Política Nacional Aldir Branc                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Obras em Andamento" href="http://www.taquari.rs.gov.br/pagina/id/1022/?obras-em-andamento.html" target="_self" onclick="">
+                        <i class='fa fa-home'></i> Obras em Andamento                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Telefones e Endereços" href="http://www.taquari.rs.gov.br/setor/servicos" target="_self" onclick="">
+                        <i class='fa fa-phone'></i> Telefones e Endereços                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Telefones Úteis" href="http://www.taquari.rs.gov.br/servico/visualizar/id/1029/?telefones-uteis.html" target="_blank" onclick="">
+                        <i class='fa fa-volume-control-phone'></i> Telefones Úteis                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Imprensa" href="http://www.taquari.rs.gov.br/servico/id/1005/?imprensa.html" target="_self" onclick="">
+                        <i class='fa fa-bullhorn'></i> Imprensa                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Portal do Aluno" href="http://portaldoaluno.taquari.rs.gov.br/" target="_blank" onclick="">
+                        <i class='fa fa-graduation-cap'></i> Portal do Aluno                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Fundo Municipal do Idoso" href="http://www.taquari.rs.gov.br/pagina/id/1015/?fundo-municipal-do-idoso.html" target="_blank" onclick="">
+                        <i class='fa fa-money'></i> Fundo Municipal do Idoso                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Notícias" href="http://www.taquari.rs.gov.br/noticia/bcid/13/?noticias.html" target="_self" onclick="">
+                        <i class='fa fa-newspaper-o'></i> Notícias                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Declaração de Retenção de ISS" href="https://taquari.multi24h.com.br/multi24/sistemas/portal/?redirect=issqn_eletronico" target="_blank" onclick="">
+                        <img loading='lazy' class='mr10 radius25 width35 height35' src='https://taquari.rs.gov.br/uploads/link/38030/imagem_ISS_imposto_sobre_servicos_300x225.jpg' alt='' /> Declaração de Retenção de ISS                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Protocolo" href="https://taquari.multi24h.com.br/multi24/sistemas/portal/?redirect=protocolo_abertura_protocolo" target="_blank" onclick="">
+                        <i class='fa fa-envelope'></i> Protocolo                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Regularização Fundiária" href="https://www.taquari.rs.gov.br/legislacao/id/1021/?regularizacao-fundiaria-urbana---reurb.html" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Regularização Fundiária                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Natal Açoriano em Terra Gaúcha " href="https://www.taquari.rs.gov.br/pagina/id/1076/?natal-acoriano.html" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Natal Açoriano em Terra Gaúcha                     </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Informações ao Servidor" href="https://taquari.multi24h.com.br/multi24/sistemas/portal/?redirect=contracheque" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Informações ao Servidor                    </a>
+                </li>
+                        </ul>
+        </div>
+	        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+                            <!-- /NOTÍCIAS E ACESSO RÁPIDO -->
+        </div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-4 mt4-xs" style="border-right: #C3C3C3 1px dashed;"><!-- LICITAÇÕES -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>LICITA&Ccedil;&Otilde;ES</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">002/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Chamamento Público                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Chamamento Público nº 002/2026" href="https://taquari.rs.gov.br/licitacao/visualizar/id/3987/?chamamento-publico-no-0022026.html">
+                            <p>Chamamento Público nº 002/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            03/12/2026 &agrave;s 14h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">042/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Pregão Eletrônico 042/2026" href="https://taquari.rs.gov.br/licitacao/visualizar/id/3984/?pregao-eletronico-0422026.html">
+                            <p>Pregão Eletrônico 042/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            30/11/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">041/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Pregão Eletrônico 041/2026" href="https://taquari.rs.gov.br/licitacao/visualizar/id/3983/?pregao-eletronico-0412026.html">
+                            <p>Pregão Eletrônico 041/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            27/11/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">019/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência Eletrônica                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Concorrência Eletrônica nº 019/2026" href="https://taquari.rs.gov.br/licitacao/visualizar/id/3985/?concorrencia-eletronica-no-0192026.html">
+                            <p>Concorrência Eletrônica nº 019/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            18/02/2027 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /LICITAÇÕES --></div>
+                <div class="col-md-4" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://taquari.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1018">Adesão à Ata de Registro de Preços</option>
+                                                        <option value="1021">AMI - Aviso de Manifestação de Interesse-Dispensa</option>
+                                                        <option value="102">Carta Convite</option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="1017">Chamamento Público</option>
+                                                        <option value="1004">Chamamento Público / Credenciamento</option>
+                                                        <option value="1008">Chamamento Público - Lei 13.019/2014</option>
+                                                        <option value="1020">Concorrência Eletrônica</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="1005">Contratos</option>
+                                                        <option value="1011">Contratos - Lei 13.019/2014</option>
+                                                        <option value="103">Dispensa de Licitação</option>
+                                                        <option value="1009">Dispensa - Lei 13.019/2014</option>
+                                                        <option value="1013">Edital de Inexibilidade 0313019/2018</option>
+                                                        <option value="1003">Extratos Contratos, Registros de Preços e Aditivos</option>
+                                                        <option value="104">Inexigibilidade</option>
+                                                        <option value="1010">Inexigibilidade - Lei 13.019/2014</option>
+                                                        <option value="105">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="1007">Licitacon</option>
+                                                        <option value="1019">NOVA LEI DAS LICITAÇÕES - LEI 14.133/2021</option>
+                                                        <option value="106">Pregão Eletrônico</option>
+                                                        <option value="107">Pregão Presencial</option>
+                                                        <option value="1014">Termo de Colaboração</option>
+                                                        <option value="1012">Termo de Fomento</option>
+                                                        <option value="108">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://taquari.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="1016">Concurso Público da Prefeitura de Taquari 2022</option>
+                                                        <option value="1015">Concurso Público Prefeitura de Taquari 2018</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="202">Processo Seletivo</option>
+                                                        <option value="1002">Prorrogação</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://taquari.rs.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1014">Chamamento Público</option>
+                                                        <option value="1001">Contrato Corsan</option>
+                                                        <option value="1009">Contratos</option>
+                                                        <option value="5">Decretos</option>
+                                                        <option value="1022">Editais Audiência Pública</option>
+                                                        <option value="1019">Editais- Auxílio Emergencial Cultura</option>
+                                                        <option value="1018">Editais de Notificação</option>
+                                                        <option value="1026">Editais Minha Casa Minha Vida - Unidades Tinguité </option>
+                                                        <option value="1016">Editais - PNAB - Ciclo 1</option>
+                                                        <option value="1034">Editais PNAB - Ciclo 2</option>
+                                                        <option value="1033">Edital educação </option>
+                                                        <option value="1039">EDITAL PNAB Nº 01/2026 </option>
+                                                        <option value="1040">EDITAL SEDAC - FAC RS </option>
+                                                        <option value="1031">EDUCAÇÃO - editais</option>
+                                                        <option value="1">Legislação</option>
+                                                        <option value="6">Lei Orgânica</option>
+                                                        <option value="1002">Lei Plano Diretor</option>
+                                                        <option value="2">Leis</option>
+                                                        <option value="1003">Licença Ambiental</option>
+                                                        <option value="1004">Ordem de Serviço</option>
+                                                        <option value="11">Portaria</option>
+                                                        <option value="1021">Processo Administrativo de REURB 001/2022 - REURB </option>
+                                                        <option value="1023">Processo Administrativo de REURB 002/2023 - REURB </option>
+                                                        <option value="1024">Processo Administrativo de REURB 003/2023 - REURB </option>
+                                                        <option value="1027">Processo Administrativo de REURB 004/2023 - REURB </option>
+                                                        <option value="1028">Processo Administrativo de REURB 005/2024 - REURB </option>
+                                                        <option value="1029">Processo Administrativo de REURB 006/2024 - REURB</option>
+                                                        <option value="1030">Processo Administrativo de REURB 007/2024</option>
+                                                        <option value="1036">Processo Administrativo de Reurb 009/2025</option>
+                                                        <option value="1035"> Processo Administrativo de Reurb nº 008/2025</option>
+                                                        <option value="1038">Processo Administrativo de Reurb nº 010/2025</option>
+                                                        <option value="1012">Repasses ou Transferências (Convênios e Parcerias)</option>
+                                                        <option value="1025">Termo de Adesão</option>
+                                                        <option value="1020">Termo de Cooperação</option>
+                                                        <option value="1017">Termo de Incentivo</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-4 mt4-xs"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://taquari.rs.gov.br/uploads/departamento/35225/thumb_WRF_0423.jpg" class="img-responsive max-height100" alt="Foto do(a) Prefeito: André Luis Barcellos Brito" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://taquari.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>André Luis Barcellos Brito</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6202</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a sexta-feira, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6202                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a sexta-feira, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://taquari.rs.gov.br/uploads/departamento/46938/thumb_WhatsApp_Image_2025_01_24_at_160242.jpeg" class="img-responsive max-height100" alt="Foto do(a) Vice-prefeita: Rosilene Reis dos Santos " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Vice-prefeita</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://taquari.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Rosilene Reis dos Santos </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6202</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a sexta-feira, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6202                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a sexta-feira, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1013/?secretaria-de-planejamento.html">
+                       Secretaria de Planejamento                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://taquari.rs.gov.br/uploads/departamento/34374/thumb_Henrique_Labres_Crditos_Andr_Liziardi.jpg" class="img-responsive max-height100" alt="Foto do(a) Secretário: Henrique Labres " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Planejamento" href="https://taquari.rs.gov.br/secretaria/id/1013/?secretaria-de-planejamento.html">
+                            <span class="similar-h4"><strong>Henrique Labres </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6200</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> De segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6200                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1012/?secretaria-da-saude-e-meio-ambiente.html">
+                       Secretaria da Saúde e Meio Ambiente                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário </small>
+                        <div class="row">
+                          <a title="Secretaria da Saúde e Meio Ambiente" href="https://taquari.rs.gov.br/secretaria/id/1012/?secretaria-da-saude-e-meio-ambiente.html">
+                            <span class="similar-h4"><strong>Luís Henrique Quadros Porto</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6281</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6281                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1010/?secretaria-da-industria-e-comercio.html">
+                       Secretaria da Indústria e Comércio                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Coordenador da Industria e Comércio</small>
+                        <div class="row">
+                          <a title="Secretaria da Indústria e Comércio" href="https://taquari.rs.gov.br/secretaria/id/1010/?secretaria-da-industria-e-comercio.html">
+                            <span class="similar-h4"><strong>Henrique Labres</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6295</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> De segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6295                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1004/?secretaria-de-educacao.html">
+                       Secretaria de Educação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">coordenadora</small>
+                        <div class="row">
+                          <a title="Secretaria de Educação" href="https://taquari.rs.gov.br/secretaria/id/1004/?secretaria-de-educacao.html">
+                            <span class="similar-h4"><strong>Maristel Charão</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6200</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6200                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1006/?secretaria-de-esporte-lazer-cultura-e-turismo.html">
+                       Secretaria de Esporte, Lazer, Cultura e Turismo                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Coordenadora de Cultura e Turismo</small>
+                        <div class="row">
+                          <a title="Secretaria de Esporte, Lazer, Cultura e Turismo" href="https://taquari.rs.gov.br/secretaria/id/1006/?secretaria-de-esporte-lazer-cultura-e-turismo.html">
+                            <span class="similar-h4"><strong>Sabrina Pereira de Freitas</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6200</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> De segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6200                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1016/?secretaria-de-esporte-lazer-cultura-e-turismo.html">
+                       Secretaria de Esporte, Lazer, Cultura e Turismo                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://taquari.rs.gov.br/uploads/departamento/47167/thumb_WhatsApp_Image_2025_02_13_at_153721.jpeg" class="img-responsive max-height100" alt="Foto do(a) Coordenador de Esportes e Lazer: Valter Costa" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Coordenador de Esportes e Lazer</small>
+                        <div class="row">
+                          <a title="Secretaria de Esporte, Lazer, Cultura e Turismo" href="https://taquari.rs.gov.br/secretaria/id/1016/?secretaria-de-esporte-lazer-cultura-e-turismo.html">
+                            <span class="similar-h4"><strong>Valter Costa</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6200</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Das 8h às 12h e das 13h30min às 16h30min                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6200                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Das 8h às 12h e das 13h30min às 16h30min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1002/?secretaria-da-agricultura.html">
+                       Secretaria da Agricultura                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://taquari.rs.gov.br/uploads/departamento/46948/thumb_WhatsApp_Image_2025_01_24_at_152603.jpeg" class="img-responsive max-height100" alt="Foto do(a) Secretário: Clóvis Schenk Bavaresco" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria da Agricultura" href="https://taquari.rs.gov.br/secretaria/id/1002/?secretaria-da-agricultura.html">
+                            <span class="similar-h4"><strong>Clóvis Schenk Bavaresco</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6200</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6200                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1001/?secretaria-de-administracao-e-recursos-humanos.html">
+                       Secretaria de Administração e Recursos Humanos                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Coordenadora da Administração</small>
+                        <div class="row">
+                          <a title="Secretaria de Administração e Recursos Humanos" href="https://taquari.rs.gov.br/secretaria/id/1001/?secretaria-de-administracao-e-recursos-humanos.html">
+                            <span class="similar-h4"><strong>Josiane Pereira Vargas</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6200</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6200                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1008/?secretaria-de-habitacao-e-assistencia-social.html">
+                       Secretaria de Habitação e Assistência Social                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://taquari.rs.gov.br/uploads/departamento/52716/thumb_IMG_9075JPG.jpeg" class="img-responsive max-height100" alt="Foto do(a) Secretário: Cláudio Eilers Bastos" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Habitação e Assistência Social" href="https://taquari.rs.gov.br/secretaria/id/1008/?secretaria-de-habitacao-e-assistencia-social.html">
+                            <span class="similar-h4"><strong>Cláudio Eilers Bastos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  3653-6288</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> D segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  3653-6288                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> D segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1011/?secretaria-de-obras-e-servicos-urbanos.html">
+                       Secretaria de Obras e Serviços Urbanos                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://taquari.rs.gov.br/uploads/departamento/46950/thumb_WhatsApp_Image_2025_01_24_at_153205.jpeg" class="img-responsive max-height100" alt="Foto do(a) Secretário: Renato Scherer da Silva" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Obras e Serviços Urbanos" href="https://taquari.rs.gov.br/secretaria/id/1011/?secretaria-de-obras-e-servicos-urbanos.html">
+                            <span class="similar-h4"><strong>Renato Scherer da Silva</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6258</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> De segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6258                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://taquari.rs.gov.br/secretaria/id/1005/?secretaria-da-fazenda.html">
+                       Secretaria da Fazenda                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://taquari.rs.gov.br/uploads/departamento/16577/thumb_DSC_0048.jpg" class="img-responsive max-height100" alt="Foto do(a) Secretário: Adair Souza" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria da Fazenda" href="https://taquari.rs.gov.br/secretaria/id/1005/?secretaria-da-fazenda.html">
+                            <span class="similar-h4"><strong>Adair Souza</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3653-6200</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3653-6200                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a sexta, das 8h às 12h e das 13h30min às 16h30min.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+<div class="p0 styleContrasteGray">
+    <div class="container">
+        <hr class="half-margins invisible">
+        <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://radardatransparencia.atricon.org.br" target='_blank'>
+                                <img src="https://taquari.rs.gov.br/uploads/banner/51513/original_CLIQUE_AQUI_12345jpg_1.jpeg" class="img-responsive tituloOculto" alt="Botão da Transparência" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.taquari.rs.gov.br/pagina/id/1095/?cartilha-de-orientacao-de-voluntarios.html" target='_blank'>
+                                <img src="https://taquari.rs.gov.br/uploads/banner/51870/original_ORIENTAO_DOS_VOLUNTRIOSjpg_1.jpeg" class="img-responsive tituloOculto" alt="Cadastro Voluntário Defesa Civil " role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://www.taquari.rs.gov.br/pagina/id/1007/?mapa-de-obras.html" target='_self'>
+                                <p class="similar-h4 mb10">Mapa de Obras</p>
+                        <img src="https://taquari.rs.gov.br/uploads/banner/19847/original_Banner_de_Servio___Mapa_Obras.jpg" class="img-responsive" alt="Mapa de Obras" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://nfse.taquari.rs.gov.br/auth/login" target='_blank'>
+                                <p class="similar-h4 mb10">Nota Fiscal Eletrônica </p>
+                        <img src="https://taquari.rs.gov.br/uploads/banner/19891/original_Banner_de_Servio___NFSe_Braso_01.jpg" class="img-responsive" alt="Nota Fiscal Eletrônica " role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href=" https://www.taquari.rs.gov.br/pagina/id/1083/?aplicativo-saude.html" target='_blank'>
+                                <p class="similar-h4 mb10">Aplicativo de Saúde</p>
+                        <img src="https://taquari.rs.gov.br/uploads/banner/48887/original_CLIQUE_AQUI_eaglecare_1.jpg" class="img-responsive" alt="Aplicativo de Saúde" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://www.taquari.rs.gov.br/pagina/id/1012/?espaco-do-empreendedor.html" target='_blank'>
+                                <p class="similar-h4 mb10">Espaço do Empreendedor</p>
+                        <img src="https://taquari.rs.gov.br/uploads/banner/23426/original_Logo_Espao_do_Empreendedor.jpg" class="img-responsive" alt="Espaço do Empreendedor" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://taquarirs.ereceita.net.br/" target='_blank'>
+                                <p class="similar-h4 mb10">Des-if</p>
+                        <img src="https://taquari.rs.gov.br/uploads/banner/24367/original_Banner_Des_if.jpg" class="img-responsive" alt="Des-if" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://nfg.sefaz.rs.gov.br/Cadastro/CadastroNfg_1.aspx" target='_blank'>
+                                <p class="similar-h4 mb10">Nota Fiscal Gaúcha</p>
+                        <img src="https://taquari.rs.gov.br/uploads/banner/10/original_nota_fiscal_gaucha.jpg" class="img-responsive" alt="Nota Fiscal Gaúcha" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.taquari.rs.gov.br/pagina/id/1082/?junta-militar.html" target='_self'>
+                                <img src="https://taquari.rs.gov.br/uploads/banner/47834/original_junta_militar_2_1.png" class="img-responsive tituloOculto" alt="JUNTA DE SERVIÇO MILITAR " role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://taquari.rs.gov.br/pagina/id/1075/?politica-nacional-aldir-blanc-de-fomento-a-cult.html" target='_blank'>
+                                <img src="https://taquari.rs.gov.br/uploads/banner/52896/original_aldir_blancjpg.jpeg" class="img-responsive tituloOculto" alt="Política Nacional Aldir Blanc" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://webmail.taquari.rs.gov.br/" target='_blank'>
+                                <p class="similar-h4 mb10">WebMail Prefeitura</p>
+                        <img src="https://taquari.rs.gov.br/uploads/banner/19848/original_Banner_de_Servio___WebMail_02_01.jpg" class="img-responsive" alt="WebMail Prefeitura" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://portaldoaluno.taquari.rs.gov.br" target='_blank'>
+                                <p class="similar-h4 mb10">Portal do Aluno</p>
+                        <img src="https://taquari.rs.gov.br/uploads/banner/24254/original_Portal_do_Aluno.jpg" class="img-responsive" alt="Portal do Aluno" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.taquari.rs.gov.br/pagina/id/1096/?refis.html" target='_blank'>
+                                <img src="https://taquari.rs.gov.br/uploads/banner/52544/original_refis_sitejpg.jpeg" class="img-responsive tituloOculto" alt="Programa de Recuperação Fiscal" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://taquari.multi24h.com.br/multi24/sistemas/portal/?redirect=protocolo_abertura_protocolo" target='_blank'>
+                                <img src="https://taquari.rs.gov.br/uploads/banner/51254/original_aqyuu677jpg.webp" class="img-responsive tituloOculto" alt="Protocolo online" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.taquari.rs.gov.br/pagina/id/1080/?plano-municipal-de-contingencia-2025.html" target='_blank'>
+                                <img src="https://taquari.rs.gov.br/uploads/banner/47812/original_PLANO_DE_CONTINGNCIA.jpg" class="img-responsive tituloOculto" alt="Plano Municipal de Contingência 2025" role="presentation" />
+                </a>
+            </div>
+    </div>        <hr class="half-margins">
+    </div>
+</div>
+
+
+<div class="pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+                        <div class="col-md-8 mobile-nopadding"><!-- ATRAÇÕES TURÍSTICAS -->
+<h2 class="similar-h4 title"><strong>ATRA&Ccedil;&Otilde;ES TUR&Iacute;STICAS</strong></h2>
+<div class="row tabs nomargin-top atracoes-turisticas">
+    <!-- tabs -->
+    <div class="col-md-3 col-sm-3 featured-box-minimal mobile-nopadding-turismo tab-tur">
+        <ul class="nav nav-tabs nav-stacked">
+                        <li class="active">
+                <a href="#tab_0" data-toggle="tab">Pizzaria Divino Calzone</a>
+            </li>
+                    </ul>
+        <a class="btn btn-block btn-primary btn-atracoes" href="https://taquari.rs.gov.br/turismo/?pontos-turisticos.html">
+            <i class="fa fa-plus"></i>Ver mais
+			<span class="sr-only">
+				Pontos Tur&iacute;sticos
+			</span>
+        </a>
+    </div>
+    <!-- tabs content -->
+    <div class="col-md-9 col-sm-9 nopadding-left">
+        <div class="tab-content div-atracoes">
+                        <div id="tab_0" class="tab-pane active">
+                <h3 class="similar-h4">Pizzaria Divino Calzone</h3>
+                <div class="row">
+                                        <div class="col-md-7 flex-center">
+                        <img class="img-responsive" src="https://taquari.rs.gov.br/uploads/pontoturistico/46520/maior_IMG_20241204_WA0036.jpg" alt="Pizzaria Divino Calzone" />
+                    </div>
+                                        <div class="col-md-5">
+                        Pizzaria Divino Calzone
+"Sabor que acolhe"
+Trabalhamos de Quarta a domingo 19:00 às 23:30
+Ambiente acolhedor
+Espaço Kids
+Servimos Pizzas, Calzones e porções de fritas
+Rodízio em datas específicas
+Mais de 70 sabores entre salgados e doces                        <a href="https://taquari.rs.gov.br/turismo/visualizar/id/1039/?pizzaria-divino-calzone.html" class="btn btn-default btn-sm mt15">
+							Ver atra&ccedil;&atilde;o
+							<span class="sr-only">
+								Pizzaria Divino Calzone							</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+                    </div>
+    </div>
+</div>
+<!-- //// ATRAÇÕES TURÍSTICAS --></div>
+                        <div class="col-md-4 mt4-xs mobile-nopadding"><!-- EVENTOS -->
+<div class="widget featured-box-minimal">
+    <div class="row mb0">
+		<div class="pr15 pl15 mrauto mlauto">
+			<h2 class="similar-h4 title"><strong>&Uacute;LTIMO EVENTO</strong></h2>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<a href="https://taquari.rs.gov.br/evento/visualizar/id/1125/?conferencia-municipal-de-meio-ambiente.html">
+			<p class="lead">Conferência Municipal de Meio Ambiente </p>
+		</a>
+		<p class="nomargin">Conferência Municipal de Meio Ambiente </p>
+	</div>
+
+	<div class="col-md-12 mb15">
+	    		<strong>Local:</strong> Instituto Estadual de Educação Pereira Coruja<br />
+						<strong>In&iacute;cio:</strong> 11/12/2024 &agrave;s 00h<br />
+				<strong>T&eacute;rmino:</strong> 11/02/2025			</div>
+
+	<a href="https://taquari.rs.gov.br/evento/?agenda-de-eventos.html" class="btn btn-default btn-content">
+	    <i class="fa fa-calendar"></i> Agenda completa
+    </a>
+</div>
+<!-- /EVENTOS --></div>
+            			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+        </div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight styleContrasteGray pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mobile-nopadding"><!-- MULTIMIDIA -->
+<h2 class="similar-h4 title"><strong>MULTIM&Iacute;DIA</strong></h2>
+    <ul class="sort-destination isotope multimidia flex-center" style="flex-wrap: wrap;">
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="OFICINA DE PERCUSSÃO E OFICINA ALEGORIAS E ADEREÇOS " class="item-hover" href="https://taquari.rs.gov.br/video/id/1129/?oficina-de-percussao-e-oficina-alegorias-e-aderecos.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-video-camera"></span>
+                            <strong>ASSISTIR</strong> VÍDEO							<span class="sr-only">
+								OFICINA DE PERCUSSÃO E OFICINA ALEGORIAS E ADEREÇOS 							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="//i1.ytimg.com/vi/NqWsu6qy56w/mqdefault.jpg" width="260" height="260" alt="OFICINA DE PERCUSSÃO E OFICINA ALEGORIAS E ADEREÇOS " style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">09/01/2025 - </small>
+                    <small style="display: inline;">Eventos</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">OFICINA DE PERCUSSÃO E OFICINA ALEGORIAS E ADEREÇOS </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="SuperCopa de Vôlei Eugênio Costa" class="item-hover" href="https://taquari.rs.gov.br/galeria/id/1126/?supercopa-de-volei-eugenio-costa.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								SuperCopa de Vôlei Eugênio Costa							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://taquari.rs.gov.br/uploads/midia/46481/media_IMG_7774.jpg" width="260" height="260" alt="SuperCopa de Vôlei Eugênio Costa" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">02/12/2024 - </small>
+                    <small style="display: inline;">Eventos</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">SuperCopa de Vôlei Eugênio Costa</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="1º Festival de Música de Taquari" class="item-hover" href="https://taquari.rs.gov.br/galeria/id/1125/?1o-festival-de-musica-de-taquari.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								1º Festival de Música de Taquari							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://taquari.rs.gov.br/uploads/midia/46286/media_IMG_0757.jpg" width="260" height="260" alt="1º Festival de Música de Taquari" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">22/11/2024 - </small>
+                    <small style="display: inline;">Cultura</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">1º Festival de Música de Taquari</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="8ª Feira do Livro de Taquari " class="item-hover" href="https://taquari.rs.gov.br/galeria/id/1124/?8a-feira-do-livro-de-taquari.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								8ª Feira do Livro de Taquari 							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://taquari.rs.gov.br/uploads/midia/45871/media_IMG_4909.jpg" width="260" height="260" alt="8ª Feira do Livro de Taquari " style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">21/10/2024 - </small>
+                    <small style="display: inline;">Cultura</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">8ª Feira do Livro de Taquari </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        	</ul>
+<!-- /MULTIMIDIA --></div>
+        </div>
+    </div>
+</div>
+
+<div class="pt60 pb60">
+    <div class="container">
+                <div class="col-md-6 mobile-nopadding mt4-xs"><!-- FACEBOOK -->
+<div class="widget appear-animation" data-animation="bounceIn">
+	<div class="fb-page" data-href="https://www.facebook.com/PrefeituraTaquari" data-height="380" data-small-header="true" data-adapt-container-width="true" data-width="10000" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"></div>
+</div>
+<!-- /FACEBOOK --></div>
+                <div class="col-md-6 mobile-nopadding mt4-xs"><!-- CONCURSOS -->
+<div class="widget owl-carousel-controls featured-box-minimal overflow-hidden">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>CONCURSOS</strong></h2>
+                        <span class="pull-right">
+                <a class="prev" href="javascript:;">
+					<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+						<span class="sr-only">Anterior</span>
+					</i>
+				</a>
+                <a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+					<span class="sr-only">Próximo</span>
+				</i></a>
+            </span>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">018/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Processo Seletivo                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL DE PROCESSO SELETIVO SIMPLIFICADO 018/2026." href="https://taquari.rs.gov.br/concurso/visualizar/id/3982/?edital-de-processo-seletivo-simplificado-0182026.html">
+                            <p>EDITAL DE PROCESSO SELETIVO SIMPLIFICADO 018/2026.</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            13/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            31/03/2027                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor"> 017/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Processo Seletivo                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL DE PROCESSO SELETIVO SIMPLIFICADO" href="https://taquari.rs.gov.br/concurso/visualizar/id/3979/?edital-de-processo-seletivo-simplificado.html">
+                            <p>EDITAL DE PROCESSO SELETIVO SIMPLIFICADO</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            11/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            29/05/2027                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">016/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Processo Seletivo                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL DE PROCESSO SELETIVO SIMPLIFICADO 016/2026" href="https://taquari.rs.gov.br/concurso/visualizar/id/3976/?edital-de-processo-seletivo-simplificado-0162026.html">
+                            <p>EDITAL DE PROCESSO SELETIVO SIMPLIFICADO 016/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            09/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            29/05/2027                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <p style="">
+                            Processo Seletivo                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Lista de Homologação das Inscrições " href="https://taquari.rs.gov.br/concurso/visualizar/id/3972/?lista-de-homologacao-das-inscricoes.html">
+                            <p>Lista de Homologação das Inscrições </p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            04/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            31/08/2027                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">013/20226</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Processo Seletivo                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Publicação Preliminar de Inscrição " href="https://taquari.rs.gov.br/concurso/visualizar/id/3965/?publicacao-preliminar-de-inscricao.html">
+                            <p>Publicação Preliminar de Inscrição </p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            29/10/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            31/01/2030                        </p>
+                                                <p class="tags">
+                            <i class="fa fa-bookmark" title="Palavras-chaves"></i>
+                            Lista de Publicação Preliminar de Inscrição do Processo Seletivo Simplificado, conforme Edital nº 01                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">013/20226</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Processo Seletivo - 013/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Processo Seletivo 013/20226" href="https://taquari.rs.gov.br/concurso/visualizar/id/3951/?processo-seletivo-01320226.html">
+                            <p>Processo Seletivo 013/20226</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            15/10/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            31/12/2027                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor"> 001/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Processo Seletivo -  001/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL DE PROCESSO SELETIVO SIMPLIFICADO " href="https://taquari.rs.gov.br/concurso/visualizar/id/3658/?edital-de-processo-seletivo-simplificado.html">
+                            <p>EDITAL DE PROCESSO SELETIVO SIMPLIFICADO </p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            07/01/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            31/12/2026                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">01/2025</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concurso Público da Prefeitura de Taquari 2022                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 01/2025" href="https://taquari.rs.gov.br/concurso/visualizar/id/3363/?edital-no-012025.html">
+                            <p>Edital nº 01/2025</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            09/01/2025                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            09/01/2027                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">05/2024</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concurso Público da Prefeitura de Taquari 2022                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 05/2024" href="https://taquari.rs.gov.br/concurso/visualizar/id/3326/?edital-no-052024.html">
+                            <p>Edital nº 05/2024</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            18/11/2024                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            16/12/2026                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">04/2024</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concurso Público da Prefeitura de Taquari 2022                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 04/2024" href="https://taquari.rs.gov.br/concurso/visualizar/id/3325/?edital-no-042024.html">
+                            <p>Edital nº 04/2024</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            18/11/2024                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            16/12/2026                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /CONCURSOS --></div>
+            </div>
+</div>
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-29.800476, -51.864732],
+                15
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-29.800476, -51.864732],
+                        {alt:'Prefeitura Municipal de Taquari'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de Taquari</strong></p>                <p style="margin: 5px 0px;">Rua Osvaldo Aranha, 1790&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Taquari / RS</p><p style="margin: 5px 0px;">95860-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+<div class="pt60 pb60 visible-xs">
+    <div class="container text-center">
+        <p class="lead">
+    </p>
+<p class="mb0">
+        <img class="img-responsive" src="//visaoi.com.br/img/selo-tp-ouro-2025.png" alt="selo transparência" />
+    </p>
+    </div>
+</div>
+
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer01" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <div class="logo_footer dark col-md-3">
+                                <img alt="Brasão da prefeitura" src="https://taquari.rs.gov.br/uploads/config/20/borda_sem_bordas.png" height="130" class="pull-left logo appear-animation opaco08" data-animation="bounceIn"/>
+                                <p class="block">
+                    <br />Rua Osvaldo Aranha, 1790, Centro<br />
+                    CEP: 95860-000<br /><br />                </p>
+                                <p class="block">
+                                        (51) 3653-6200<br/>
+                                        ouvidoria@taquari.rs.gov.br<br />                </p>
+                                <p class="block">
+                    <strong>Hor&aacute;rios de Atendimento:</strong><br />
+                    De segunda a sexta-feira, das 8h às 12h e das 13h30min às 16h30min.<br />
+Telefone alternativo (51) 9.9890.7916                </p>
+                                <p class="block">
+                    <a href="https://taquari.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/PrefeituraTaquari" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://twitter.com/PrefaTaquari" target="_blank" class="social">
+						<i class="fa fa-twitter">
+							<span class="sr-only">Twitter/X da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://instagram.com/prefeiturataquari" target="_blank" class="social">
+						<i class="fa fa-instagram">
+							<span class="sr-only">Instagram da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://www.youtube.com/channel/UC99nzciLQouD9RM9yIHXdBg" target="_blank" class="social">
+						<i class="fa fa-youtube-square">
+							<span class="sr-only">Youtube da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://taquari.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+                </p>
+            </div>
+
+            <div class="spaced col-md-9 col-sm-9 hidden-sm hidden-xs">
+                            <div class="row">
+                                    <div class="col-md-3">
+                        <p class="similar-h4 mb15">Licita&ccedil;&otilde;es</p>
+						<ul class="list-unstyled nobordered">
+												    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1018/?adesao-a-ata-de-registro-de-precos.html">
+						            <i class="fa fa-angle-right"></i>Adesão à Ata de Registro de Preços					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1021/?ami---aviso-de-manifestacao-de-interesse-dispensa.html">
+						            <i class="fa fa-angle-right"></i>AMI - Aviso de Manifestação de Interesse-Dispensa					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/102/?carta-convite.html">
+						            <i class="fa fa-angle-right"></i>Carta Convite					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/100/?chamada-publica.html">
+						            <i class="fa fa-angle-right"></i>Chamada Pública					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1017/?chamamento-publico.html">
+						            <i class="fa fa-angle-right"></i>Chamamento Público					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1004/?chamamento-publico--credenciamento.html">
+						            <i class="fa fa-angle-right"></i>Chamamento Público / Credenciamento					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1008/?chamamento-publico---lei-130192014.html">
+						            <i class="fa fa-angle-right"></i>Chamamento Público - Lei 13.019/2014					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1020/?concorrencia-eletronica.html">
+						            <i class="fa fa-angle-right"></i>Concorrência Eletrônica					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/101/?concorrencia-publica.html">
+						            <i class="fa fa-angle-right"></i>Concorrência Pública					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1005/?contratos.html">
+						            <i class="fa fa-angle-right"></i>Contratos					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1011/?contratos---lei-130192014.html">
+						            <i class="fa fa-angle-right"></i>Contratos - Lei 13.019/2014					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/103/?dispensa-de-licitacao.html">
+						            <i class="fa fa-angle-right"></i>Dispensa de Licitação					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1009/?dispensa---lei-130192014.html">
+						            <i class="fa fa-angle-right"></i>Dispensa - Lei 13.019/2014					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1003/?extratos-contratos-registros-de-precos-e-aditivos.html">
+						            <i class="fa fa-angle-right"></i>Extratos Contratos, Registros de Preços e Aditivos					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/104/?inexigibilidade.html">
+						            <i class="fa fa-angle-right"></i>Inexigibilidade					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1010/?inexigibilidade---lei-130192014.html">
+						            <i class="fa fa-angle-right"></i>Inexigibilidade - Lei 13.019/2014					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/105/?leilao.html">
+						            <i class="fa fa-angle-right"></i>Leilão					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1019/?nova-lei-das-licitacoes---lei-141332021.html">
+						            <i class="fa fa-angle-right"></i>NOVA LEI DAS LICITAÇÕES - LEI 14.133/2021					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/106/?pregao-eletronico.html">
+						            <i class="fa fa-angle-right"></i>Pregão Eletrônico					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/107/?pregao-presencial.html">
+						            <i class="fa fa-angle-right"></i>Pregão Presencial					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1014/?termo-de-colaboracao.html">
+						            <i class="fa fa-angle-right"></i>Termo de Colaboração					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/1012/?termo-de-fomento.html">
+						            <i class="fa fa-angle-right"></i>Termo de Fomento					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/licitacao/id/108/?tomada-de-preco.html">
+						            <i class="fa fa-angle-right"></i>Tomada de Preço					            </a>
+				            </li>
+					    					    </ul>
+				    </div>
+										<div class="col-md-3">
+					    <p class="similar-h4 mb15">Outras &Aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a href="https://taquari.rs.gov.br/transparencia/?transparencia.html" class="block">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://taquari.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://taquari.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://taquari.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Notícias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://taquari.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://taquari.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://taquari.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+                                        <div class="col-md-6">
+                        <p class="similar-h4 mb15">Secretarias e &Oacute;rg&atilde;os</p>
+                        <ul class="list-unstyled nobordered">
+                            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/gabinete-do-prefeito/?gabinete-do-prefeito.html">
+						            <i class="fa fa-angle-right"></i> Gabinete do Prefeito					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1002/?secretaria-da-agricultura.html">
+						            <i class="fa fa-angle-right"></i> Secretaria da Agricultura					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1005/?secretaria-da-fazenda.html">
+						            <i class="fa fa-angle-right"></i> Secretaria da Fazenda					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1010/?secretaria-da-industria-e-comercio.html">
+						            <i class="fa fa-angle-right"></i> Secretaria da Indústria e Comércio					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1012/?secretaria-da-saude-e-meio-ambiente.html">
+						            <i class="fa fa-angle-right"></i> Secretaria da Saúde e Meio Ambiente					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1001/?secretaria-de-administracao-e-recursos-humanos.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Administração e Recursos Humanos					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1004/?secretaria-de-educacao.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Educação					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1016/?secretaria-de-esporte-lazer-cultura-e-turismo.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Esporte, Lazer, Cultura e Turismo					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1006/?secretaria-de-esporte-lazer-cultura-e-turismo.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Esporte, Lazer, Cultura e Turismo					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1008/?secretaria-de-habitacao-e-assistencia-social.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Habitação e Assistência Social					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1011/?secretaria-de-obras-e-servicos-urbanos.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Obras e Serviços Urbanos					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/secretaria/id/1013/?secretaria-de-planejamento.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Planejamento					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/conselho/id/1017/?conselho-municipal-da-educacao.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal da Educação					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/conselho/id/1018/?conselho-municipal-da-pessoa-de-idosa--cmpi.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal da Pessoa de Idosa  (CMPI)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/conselho/id/1015/?conselho-municipal-de-assistencia-social.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Assistência Social					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/conselho/id/1020/?conselho-municipal-de-politica-cultural.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Política Cultural					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/conselho/id/1021/?conselho-municipal-de-saude.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Saúde					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/conselho/id/1014/?conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-comdica.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal dos Direitos da Criança e do Adolescente (Comdica)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://taquari.rs.gov.br/conselho/id/1019/?conselho-municipal-do-turismo-de-taquari.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal do Turismo de Taquari					            </a>
+				            </li>
+				            			            </ul>
+		            </div>
+		            	            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+        <div class="container text-center fsize12 post-copyright" style="
+            display: flex;
+			flex-direction: column;
+            justify-content: center">
+            <p style="margin:0" id="footer.copyrightTxt">
+				Este site utiliza a ferramenta
+                <a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+					<img src="https://taquari.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+					<span class="sr-only">iPrefeituras</span>
+				</a>.
+			</p>
+			<p style="margin:0" id="footer.copyrightTxt3">
+                Um produto
+                <strong>
+					<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+				</strong>.
+            </p>
+        </div>
+    </div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://taquari.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://taquari.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://taquari.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://taquari.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://taquari.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://taquari.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://taquari.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://taquari.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610e9f56b49caef',t:'MTc5NTc4MDIxMg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610e9f56b49caef',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

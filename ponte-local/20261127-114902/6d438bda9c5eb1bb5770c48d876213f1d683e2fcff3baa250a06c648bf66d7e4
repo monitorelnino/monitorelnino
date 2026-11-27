@@ -1,0 +1,1377 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" style="scroll-behavior:smooth">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Veranópolis</title>
+  <meta name="title" content="Prefeitura Municipal de Veranópolis | Veranópolis">
+<meta name="og:title" content="Prefeitura Municipal de Veranópolis | Veranópolis">
+<meta name="og:site_name" content="Veranópolis">
+<meta name="image" content="">
+<meta name="og:image" content="">
+<meta name="og:image:url" content="">
+<meta name="og:image:secure_url" content="">
+<meta name="keywords" content="prefeitura, municipal, veranopolis">
+<meta name="abstract" content="">
+<meta name="description" content="">
+<meta name="og:description" content="">
+<meta name="og:type" content="website">
+<meta name="csrf-param" content="_csrf-frontend">
+<meta name="csrf-token" content="EWKQXnDUbWe0Ud6QhVfiL4Do6iCLLXXf4ijveKmbxionG9kzQowqHfEc68nyJY4Y-NmjQt9_GZSseKEs4P6HQA==">
+
+<link href="" rel="image_src">
+<link href="/assets/b6297f60/dist/tiny-slider.css?v=1751629854" rel="stylesheet">
+<link href="/assets/8b2d2c78/css/bootstrap.css?v=1751629853" rel="stylesheet">
+<link href="/css/grid.css?v=1751554287" rel="stylesheet">
+<link href="/css/estilos.css?v=1778087711" rel="stylesheet">
+<link href="/css/responsivo.css?v=1769085684" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+<link href="/assets/8ce329b9/style.css?v=1751629854" rel="stylesheet">
+<link href="/assets/5ddfe4be/captcha.css?v=1751629854" rel="stylesheet">
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" defer crossorigin="anonymous"></script>
+<script>var inputmask_7260b05d = {"mask":["[CPF REDIGIDO]","99.999.999\/9999-99"]};</script>
+  <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+  <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.0.0/cookie-consent.js" charset="UTF-8"></script>
+  <script type="text/javascript" charset="UTF-8">
+    document.addEventListener('DOMContentLoaded', function () {
+    cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"pt","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"veranopolis"});
+    });
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script type="text/plain" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-XFTW5NNPKY"></script>
+  <script type="text/plain" cookie-consent="tracking">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XFTW5NNPKY');
+  </script>
+
+  <!-- end of Google Analytics-->
+
+  <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/" rel="nofollow noopener">TermsFeed Policy Generator</a></noscript>
+  <!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+</head>
+
+<body>
+  <script>function dynamikacaptchaw10(){loadCaptcha(grecaptcha, "w10_c", "#loginfrontform-recaptcha", "add061f6-a9be-42be-ae8a-88623218833e")}
+function dynamikacaptchaw12(){loadCaptcha(grecaptcha, "w12_c", "#loginfrontform-recaptcha", "add061f6-a9be-42be-ae8a-88623218833e")}</script>  <header>
+    <div class="barra-superior">
+      <div class="row container-fluid d-block">
+        <div class="col-ce1-12 col-ce2-10 col-ce3-22 col-tb1-22 col-tb2-17 col-pc1-11 col-pc2-10 container-selos ">
+            <img class="selo-transparencia selo-transparencia-2025" src="/images/selo_transparencia_2025.png" alt="Selo Transparência">        </div>
+        <div class="col-ce1-12 col-ce3-12 col-tb1-12 col-tb2-5 col-pc1-5 col-pc2-4 nopadding acessibilidade">
+          <a id="acessibilidade" href="javascript:;" title="Acessibilidade" class="d-inline-block">
+    <i><i class="fa fa-wheelchair"></i> </i>
+</a>
+<a id="aumentarFonte" href="javascript:;" title="Aumentar Fonte" class="d-inline-block">
+    <i><i class="fa fa-plus-circle"></i> </i>
+</a>
+<a id="diminuirFonte" href="javascript:;" title="Diminuir Fonte" class="d-inline-block">
+    <i><i class="fa fa-minus-circle"></i> </i>
+</a>
+<a id="fonteOriginal" href="javascript:;" title="Fonte Original" class="d-inline-block">
+    <i><i class="fa fa-fas fa-font"></i> </i>
+</a>
+<a id="corOriginal" href="javascript:;" title="Cor Original" class="d-inline-block">
+    <i><i class="fa fa-fas fa-circle"></i> </i>
+</a>
+<a id="contraste" href="javascript:;" title="Contraste" class="d-inline-block">
+    <i id="contraste"><i class="fa fa-adjust"></i> </i>
+</a>
+        </div>
+        <div class="container-vazio col-ce1-8  col-tb2-12">
+
+        </div>
+        <div id="busca" class="col-ce1-16 col-ce3-12 col-tb1-12 col-tb2-12 col-pc1-6 col-pc2-7 text-center container-busca">
+          <input type="text" class="form-control" id="#" placeholder="Busca ...">
+          <a id="busca" href="/busca/index"><i class="fa fa-search"></i> </a>        </div>
+        <div id="box-usuario" class="col-ce1-2 col-tb1-2 col-tb2-2 col-pc1-2 col-pc2-2 text-center box-usuario">
+          <div class="usuario-icone">
+            <a class="login" href="/" title="Login" data-toggle="modal" data-target="#modal-cadastro"><i class="far fa-user"></i> </a>          <a class="logado" href="/conta" title="Área do usuário"><i class="fa fa-user"></i> </a> <span class="label-usuario">usuário</span>
+          <a class="logado" href="/conta/logout" title="Logout"><i class="fa fa-sign-out-alt"></i> </a>                    </div>
+        </div>
+      </div>
+    </div>
+    <div id="logo">
+      <div class="row container-fluid">
+        <div id="brasao" class="col-ce1-24 col-tab1-12 col-tb2-6 col-pc1-6 col-pc3-4 text-center nopadding">
+            <div class="img-logo">
+              <a href="/" title="Veranópolis/RS">
+                <h1><img src="/images/logo.png" alt="Veranópolis"></h1>
+              </a>  
+            </div>
+            <div class="nome-logo">
+              <span>Município de</span>
+              <h1>Veranópolis</h1>
+            </div>
+        </div>
+        <div class="col-ce1-24 col-tab1-12 col-tb2-18 col-pc1-18 col-pc3-20 text-right nopadding menu-cel">
+              <!--
+DYNAMIKAWEB YII2 ADAPTIVE MENU BEGIN
+
+author: Rodrigo Dornelles <rodrigo@dynamika.com.br>
+copyright: Dynamika Soluções WEB - 2020
+license: BSD-3
+-->
+<section id="menu" class="dynamika-menu-nav-forest">
+    <ul class="dynamika-menu-ul-forest">
+        <!-- MENU ROOT (cidade) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="" title="Cidade" target="_self">
+        Cidade
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (sobre-veranopolis)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="/covid/vacinacao?dp-2-sort=quantidade&amp;dp-20-sort=quantidade&amp;dp-3-sort=quantidade&amp;dp-5-sort=quantidade&amp;dp-6-sort=-quantidade&amp;page=7"><h3>Sobre Veranópolis</h3></a><!-- H3 -->
+    <!-- P --><p>Conheça nas opções abaixo um pouco mais sobre o município de Veranópolis, localizado na serra gaúcha, há cerca de 150km da capital.</p><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/2" title="Histórico" target="_self">
+        Histórico
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/3" title="Terra da Longevidade" target="_self">
+        Terra da Longevidade
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/7" title="Símbolos Oficiais" target="_self">
+        Símbolos Oficiais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/1" title="Dados do Município" target="_self">
+        Dados do Município
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/11" title="Chefes do Executivo" target="_self">
+        Chefes do Executivo
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/30" title="Política Pública de Privacidade" target="_self">
+        Política Pública de Privacidade
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (conheca-a-cidade)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Conheça a Cidade</h3></a><!-- H3 -->
+    <!-- P --><p>Em Veranópolis você pode conhecer os atrativos culturais da cidade. Venha nos visitar! Saiba mais sobre estes locais nas opções abaixo.</p><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo?TurismoSearch%5Bid%5D=&TurismoSearch%5Bid_turismo_categoria%5D=3&TurismoSearch%5Bq%5D=" title="Onde ficar" target="_self">
+        Onde ficar
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo?TurismoSearch%5Bid%5D=&TurismoSearch%5Bid_turismo_categoria%5D=4&TurismoSearch%5Bq%5D=" title="O que comer" target="_self">
+        O que comer
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo?TurismoSearch%5Bid%5D=&TurismoSearch%5Bid_turismo_categoria%5D=2&TurismoSearch%5Bq%5D=" title="O que fazer" target="_self">
+        O que fazer
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/31" title="Mapa Turístico" target="_self">
+        Mapa Turístico
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/evento" title="Calendário de Eventos" target="_self">
+        Calendário de Eventos
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (secretarias) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="" title="Secretarias" target="_self">
+        Secretarias
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (secretarias-municipais)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Secretarias Municipais</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/4/gabinete-do-prefeito" title="Gabinete do Prefeito" target="_self">
+        Gabinete do Prefeito
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/5/secretaria-de-desenvolvimento-rural" title="Desenvolvimento Rural" target="_self">
+        Desenvolvimento Rural
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/6/secretaria-de-desenvolvimento-social" title="Desenvolvimento Social" target="_self">
+        Desenvolvimento Social
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://veranopolis.rs.gov.br/secretaria/view/7/secretaria-de-educacao-cultura-e-esportes" title="Educação, Cultura e Esportes" target="_self">
+        Educação, Cultura e Esportes
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/8/secretaria-de-financas" title="Finanças" target="_self">
+        Finanças
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/9/secretaria-de-governo-e-inovacao" title="Governo e Inovação" target="_self">
+        Governo e Inovação
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/10/secretaria-de-desenvolvimento-economico" title="Desenvolvimento Econômico" target="_self">
+        Desenvolvimento Econômico
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/11/secretaria-de-infraestrutura-urbana" title="Infraestrutura Urbana" target="_self">
+        Infraestrutura Urbana
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/12/secretaria-de-saude" title="Saúde" target="_self">
+        Saúde
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/13/secretaria-de-turismo-e-lazer" title="Turismo e Lazer" target="_self">
+        Turismo e Lazer
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (estrutura-administrativa)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Estrutura Administrativa</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=5&DepartamentoSearch%5Bq%5D=" title="Agências" target="_self">
+        Agências
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://atos.veranopolis.rs.gov.br/paginas/visualizar-html?formato=consolida&hash=2QLV765TMCKSkhs " title="Norma atualizada" target="_blank">
+        Norma atualizada
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=2&DepartamentoSearch%5Bq%5D=" title="Centros" target="_self">
+        Centros
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=1&DepartamentoSearch%5Bq%5D=" title="Conselhos Municipais" target="_self">
+        Conselhos Municipais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=3&DepartamentoSearch%5Bq%5D=" title="Departamentos" target="_self">
+        Departamentos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=6&DepartamentoSearch%5Bq%5D=" title="Fundos Municipais" target="_self">
+        Fundos Municipais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=4&DepartamentoSearch%5Bq%5D=" title="Órgãos" target="_self">
+        Órgãos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=7&DepartamentoSearch%5Bq%5D=" title="Setores" target="_self">
+        Setores
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (publicacoes) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="" title="Publicações" target="_self">
+        Publicações
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (legislacao)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Legislação</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://atos.veranopolis.rs.gov.br/" title="Atos Oficiais" target="_blank">
+        Atos Oficiais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao?LegislacaoSearch%5Bid_legislacao_categoria%5D=1&LegislacaoSearch%5Bq%5D=" title="Leis Orçamentárias" target="_self">
+        Leis Orçamentárias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao?LegislacaoSearch%5Bid_legislacao_categoria%5D=2&LegislacaoSearch%5Bq%5D=" title="Decretos Executivos" target="_self">
+        Decretos Executivos
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (contratacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Contratações</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao?ContratacaoSearch%5Bid_contratacao_categoria%5D=3&ContratacaoSearch%5Bano%5D=&ContratacaoSearch%5Bq%5D=" title="Concursos Públicos" target="_self">
+        Concursos Públicos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao?ContratacaoSearch%5Bid_contratacao_categoria%5D=6&ContratacaoSearch%5Bano%5D=&ContratacaoSearch%5Bq%5D=" title="Portarias de Nomeação - Efetivos" target="_self">
+        Portarias de Nomeação - Efetivos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao?ContratacaoSearch%5Bid_contratacao_categoria%5D=7&ContratacaoSearch%5Bano%5D=&ContratacaoSearch%5Bq%5D=" title="Documentos para Nomeação - Efetivos" target="_self">
+        Documentos para Nomeação - Efetivos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao?ContratacaoSearch%5Bid_contratacao_categoria%5D=4&ContratacaoSearch%5Bano%5D=&ContratacaoSearch%5Bq%5D=" title="Processos Seletivos Simplificados" target="_self">
+        Processos Seletivos Simplificados
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao?ContratacaoSearch%5Bid_contratacao_categoria%5D=5&ContratacaoSearch%5Bano%5D=&ContratacaoSearch%5Bq%5D=" title="Editais de Convocação - Temporários" target="_self">
+        Editais de Convocação - Temporários
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao?ContratacaoSearch%5Bid_contratacao_categoria%5D=8&ContratacaoSearch%5Bano%5D=&ContratacaoSearch%5Bq%5D=" title="Documentos para Contratação Temporária" target="_self">
+        Documentos para Contratação Temporária
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (transparencia) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="https://veranopolis.oxy.elotech.com.br/portaltransparencia/1" title="Transparência" target="_self">
+        Transparência
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (canais-da-transparencia)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Canais da Transparência</h3></a><!-- H3 -->
+    <!-- P --><p>Informações sobre a aplicação dos recursos públicos da gestão municipal e publicações oficiais.</p><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://veranopolis.oxy.elotech.com.br/portaltransparencia/1/" title="Portal da Transparência" target="_blank">
+        Portal da Transparência
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://atos.veranopolis.rs.gov.br/diario/#/diarios" title="Diário Oficial" target="_blank">
+        Diário Oficial
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://www.estado.rs.gov.br/radar-nacional-de-transparencia-publica" title="Radar da Transparência Pública" target="_blank">
+        Radar da Transparência Pública
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (manifestacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Manifestações</h3></a><!-- H3 -->
+    <!-- P --><p>Canais de manifestação do munícipe para com a administração pública municipal.</p><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://falabr.cgu.gov.br/publico/RS/veranopolis/Manifestacao/RegistrarManifestacao" title="Ouvidoria Geral" target="_blank">
+        Ouvidoria Geral
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://veranopolis.msgestaopublica.app.br:8444/servicosweb/home.jsf" title="Atendimento ao Cidadão" target="_blank">
+        Atendimento ao Cidadão
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (licitacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Licitações</h3></a><!-- H3 -->
+    <!-- P --><p>Acompanhe o andamento dos processos licitatórios executados pelo município.</p><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://veranopolis.oxy.elotech.com.br/portaltransparencia/1/" title="Licitações" target="_blank">
+        Licitações
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Veran%C3%B3polis,&cs=1d1be4_b9TNUIjTBBg9hnBy990h8" title="Licitacon" target="_blank">
+        Licitacon
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:20:::NO:20:F50500_CD_ORGAO:62800&cs=1SotPdp6O8eWFfVID08e63hhdAwU" title="Contratos" target="_blank">
+        Contratos
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (servicos) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="/servico" title="Serviços" target="_self">
+        Serviços
+    </a> 
+    <!-- span -->  <!-- span -->
+</li>
+<!-- MENU ROOT (covid) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Covid" target="_self">
+        Covid
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (numeros)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Números</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid/vacinacao" title="Calendário de Vacinação" target="_self">
+        Calendário de Vacinação
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid" title="Covid em números" target="_self">
+        Covid em números
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid/insumo-recebido" title="Insumos recebidos" target="_self">
+        Insumos recebidos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/unidade-saude" title="Unidades de saúde" target="_self">
+        Unidades de saúde
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid/vacina-recebida" title="Vacinas recebidas" target="_self">
+        Vacinas recebidas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid/vacinometro" title="Vacinômetro" target="_self">
+        Vacinômetro
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (informacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Informações</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/ouvidoria" title="Denúncias de 'fura-fila' - ouvidoria" target="_self">
+        Denúncias de 'fura-fila' - ouvidoria
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://antigo.saude.gov.br/saude-de-a-z/ouvidoria-do-sus" title="Denúncias de 'fura-fila' - ouvidoria do sus" target="_blank">
+        Denúncias de 'fura-fila' - ouvidoria do sus
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid/licitacao" title="Processos de aquisição de insumos" target="_self">
+        Processos de aquisição de insumos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/28" title="Registro de sobras de doses" target="_self">
+        Registro de sobras de doses
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/29" title="Segurança e eficiência das vacinas" target="_self">
+        Segurança e eficiência das vacinas
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (comunicacao) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="" title="Comunicação" target="_self">
+        Comunicação
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (imprensa)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Imprensa</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/noticia" title="Notícias" target="_self">
+        Notícias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/agenda-prefeito" title="Agenda do Prefeito" target="_self">
+        Agenda do Prefeito
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/enquete" title="Enquete" target="_self">
+        Enquete
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (multimidia)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Multimidia</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-foto" title="Galeria de Fotos" target="_self">
+        Galeria de Fotos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-video" title="Galeria de Vídeos" target="_self">
+        Galeria de Vídeos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-audio" title="Galeria de Áudio" target="_self">
+        Galeria de Áudio
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (redes-sociais)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Redes Sociais</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://www.facebook.com/PrefeituraVeranopolis" title="Facebook" target="_blank">
+        Facebook
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://www.instagram.com/veranopolis.rs/" title="Instagram" target="_blank">
+        Instagram
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://www.youtube.com/channel/UCmrRHoYg9B8RBunT4A3F7uA" title="Youtube" target="_blank">
+        Youtube
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (lgpd) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="LGPD" target="_self">
+        LGPD
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (_auto)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/30" title="Política Pública de Privacidade" target="_self">
+        Política Pública de Privacidade
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+    </ul>
+</section>
+<!--
+DYNAMIKAWEB YII2 ADAPTIVE MENU END
+-->              <span data-menu-toggle="menu" class="menu-fechado"><i><i class="fa fa-bars"></i> </i> menu</span>
+        </div>
+      </div>
+    </div>
+    <div>
+    </div>
+  </header>
+
+  <div id="main">
+    
+    <!-- INICIO DO CONTEÚDO -->
+        <main>
+
+   <div id="dtns0">            <a class="banner-capa" href="https://governodigital.veranopolis.rs.gov.br/governo-digital/" target="_blank" style="background-image:url(&#039;/uploads/banner/28450/maior_shcwW7xwrAOuT15y9fo84ChkG9wpzV5g.png&#039;)"><div class="banner-background">
+         <div class="banner-slogan">
+            <div class="frase">
+               <h2 class="text-uppercase"><strong></strong></h2></div>
+         </div>
+      </div></a>         <a class="banner-capa" href="https://governodigital.veranopolis.rs.gov.br/governo-digital/servicos/chamamento-publico-cultural--lei-aldir-blanc" target="_blank" style="background-image:url(&#039;/uploads/banner/28800/maior_Knp-DgYfWg-eley_fP30R8T2299lG__o.png&#039;)"><div class="banner-background">
+         <div class="banner-slogan">
+            <div class="frase">
+               <h2 class="text-uppercase"><strong></strong></h2></div>
+         </div>
+      </div></a>         <a class="banner-capa" href="https://wa.me/555434411477" target="_blank" style="background-image:url(&#039;/uploads/banner/28447/maior_Kzi-Mqf2flspA_x_K-fZvwvaIkdXJD-v.jpg&#039;)"><div class="banner-background">
+         <div class="banner-slogan">
+            <div class="frase">
+               <h2 class="text-uppercase"><strong></strong></h2></div>
+         </div>
+      </div></a>         <a class="banner-capa" href="https://governodigital.veranopolis.rs.gov.br" target="_blank" style="background-image:url(&#039;/uploads/banner/28314/maior_owlNqrsJv18suq85FGYQ60EQvuLjq_Pv.png&#039;)"><div class="banner-background">
+         <div class="banner-slogan">
+            <div class="frase">
+               <h2 class="text-uppercase"><strong>           </strong></h2></div>
+         </div>
+      </div></a>         <a class="banner-capa" href="https://veranopolis.aprova.com.br/home" target="_blank" style="background-image:url(&#039;/uploads/banner/26863/maior_zAUPU2S0DuE3GfWPE0jlTzo9gqpoZsOr.jpg&#039;)"><div class="banner-background">
+         <div class="banner-slogan">
+            <div class="frase">
+               <h2 class="text-uppercase"><strong>Aprova Digital - Veranópolis</strong></h2></div>
+         </div>
+      </div></a>      </div>
+
+<!-- BLOCO SERVICOS -->
+   <section>
+      <div class="container-fluid">
+         <div class="row nomargin">
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://governodigital.veranopolis.rs.gov.br" target="_blank" class="btn-chamada">
+                                             <i class="fa fa-redo"></i>                                           <h3>Protocolos</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://governodigital.veranopolis.rs.gov.br/governo-digital/" target="_blank" class="btn-chamada">
+                                             <i class="fa fa-users"></i>                                           <h3>Atendimento ao Cidadão</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://www.gov.br/empresas-e-negocios/pt-br/empreendedor/servicos-para-mei/nota-fiscal/nota-fiscal-de-servico-eletronica-nfs-e" target="_blank" class="btn-chamada">
+                                             <i class="fa fa-barcode"></i>                                           <h3>Nota Fiscal Eletrônica Nacional</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://veranopolis.oxy.elotech.com.br/cidadao/declaracoes-itbi" target="_blank" class="btn-chamada">
+                                             <i class="fa fa-file-contract"></i>                                           <h3>ITBI</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://veranopolis.oxy.elotech.com.br/iss" target="_self" class="btn-chamada">
+                                             <i class="fa fa-file-invoice"></i>                                           <h3>ISS DIGITAL</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://www.veranopolis.rs.gov.br/departamento/view/43/diretoria-do-meio-ambiente" target="_self" class="btn-chamada">
+                                             <i class="fa fa-leaf"></i>                                           <h3>Diretoria do Meio Ambiente</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://veranopolis.oxy.elotech.com.br/portaltransparencia/1/" target="_blank" class="btn-chamada">
+                                             <i class="fa fa-search"></i>                                           <h3>Portal da Transparência</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href=" https://veranopolis.rs.gov.br/departamento/view/41/ouvidoria" target="_blank" class="btn-chamada">
+                                             <i class="fa fa-volume-up"></i>                                           <h3>Ouvidoria</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://veranopolis.msgestaopublica.app.br:8079/transparencia/" target="_blank" class="btn-chamada">
+                                             <i class="fa fa-business-time"></i>                                           <h3>Licitações</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="/pagina/view/16" target="_self" class="btn-chamada">
+                                             <i class="fa fa-city"></i>                                           <h3>Cidade Resiliente</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="/servico/view/30" target="_self" class="btn-chamada">
+                                             <i class="fa fa-cogs"></i>                                           <h3>Setor Engenharia - Legislação</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://radardatransparencia.atricon.org.br/" target="_blank" class="btn-chamada">
+                                             <i class="fa fa-satellite-dish"></i>                                           <h3>Radar da Transparência</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="/pagina/view/33/livro-veranopolis-125-anos" target="_self" class="btn-chamada">
+                                             <i class="fa fa-book"></i>                                           <h3>Livro Veranópolis 125 Anos</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="http://ecoplan.sysnova.com.br/?pmid=505" target="_blank" class="btn-chamada">
+                                             <i class="fa fa-leaf"></i>                                           <h3>Sistema de Licenciamento Digital</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="/contratacao/view/472" target="_self" class="btn-chamada">
+                                             <i class="fa fa-school"></i>                                           <h3>Concurso Público 2022</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="/departamento?DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=1&DepartamentoSearch%5Bq%5D=" target="_self" class="btn-chamada">
+                                             <i class="fa fa-users"></i>                                           <h3>Conselhos Municipais</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://veranopolis.seletivofacil.com.br/login" target="_blank" class="btn-chamada">
+                                             <i class="fa fa-edit"></i>                                           <h3>Processo Seletivo Fácil</h3>
+                  </a>
+               </div>
+                           <div class="col-ce1-12 col-tb1-8 col-pc1-6 col-pc2-4 nopadding">
+                  <a href="https://veranopolis.rs.gov.br/noticia/view/9564/periodo-das-matriculas-e-rematriculas-da-rede-municipal-de-ensino-de-veranopolis-ano-letivo-de-2026" target="_self" class="btn-chamada">
+                                             <i class="fa fa-book"></i>                                           <h3>Matrículas e Rematrículas - Ano Letivo 2026 - Edital nº 128/2025</h3>
+                  </a>
+               </div>
+                     </div>
+      </div>
+   </section>
+
+<!-- BLOCO NOTÍCIAS -->
+<section id="noticia-capa" class="section-alt bg-verde-claro">
+   <div class="row container-fluid section-padding-fundo">
+      <div class="col-ce1-24">
+         <div class="titulo">
+            <h2>Últimas Notícias</h2>
+            <span class="square"></span>
+         </div>
+      </div>
+               <div class="col-ce1-24 col-tb1-24 col-tb2-12 col-pc2-12">
+                           <a href="/noticia/view/10161/cras-e-fgtassine-orientam-familias-sobre-curriculo-e-entrevistas-de-emprego-em-veranopolis">
+                  <article class="col-ce1-24 nopadding home-noticia-principal">
+                     <img src="/uploads/noticia/28916/media_Tw8MViwcAjvpH-qZ7hFO2unr6uWrLQHW.jpg" width="100%" alt="cras-e-fgtassine-orientam-familias-sobre-curriculo-e-entrevistas-de-emprego-em-veranopolis" title=":: CRAS e FGTAS/Sine orientam famílias sobre currículo e entrevistas de emprego em Veranópolis ::">                     <strong>
+                        <h3>:: CRAS e FGTAS/Sine orientam famílias sobre currículo e entrevistas de emprego em Veranópolis ::</h3>
+                        <span class="tarja"></span>
+                     </strong>
+                  </article>
+               </a>
+                     </div>
+                     <div class="col-ce1-24 col-tb1-24 col-tb2-12 col-pc2-12 noticia-secundaria-menor">
+               <div id="noticia-secundaria" class="row">
+                                       <div class="col-ce1-24 col-ce3-12 col-tb1-12 col-tb2-12 col-pc2-12">
+                        <a href="/noticia/view/10156/dal-pai-assume-vice-presidencia-da-amusuh-e-amplia-representacao-de-veranopolis-no-cenario-nacional" class="d-block">
+                           <div class="home-noticia-secundaria">
+                                                               <img src="/uploads/noticia/28911/media_HdtL6i4i32ONTDAp2IRsprmcGAb56GnU.jpg" width="100%" alt="dal-pai-assume-vice-presidencia-da-amusuh-e-amplia-representacao-de-veranopolis-no-cenario-nacional" title="Dal Pai assume vice-presidência da AMUSUH e amplia representação de Veranópolis no cenário nacional">                                                            <h3>Dal Pai assume vice-presidência da AMUSUH e amplia representação de Veranópolis no cenário nacional</h3>
+                              <div class="tarja"></div>
+                           </div>
+                        </a>
+                     </div>
+                                       <div class="col-ce1-24 col-ce3-12 col-tb1-12 col-tb2-12 col-pc2-12">
+                        <a href="/noticia/view/10159/hoje-tem-coleta-de-lixo-seletivo" class="d-block">
+                           <div class="home-noticia-secundaria">
+                                                               <img src="/uploads/noticia/28914/media_86b3bvj__5_SdMRWTpcLREcoAcaQLVnV.jpg" width="100%" alt="hoje-tem-coleta-de-lixo-seletivo" title="♻️ Hoje tem coleta de lixo seletivo!">                                                            <h3>♻️ Hoje tem coleta de lixo seletivo!</h3>
+                              <div class="tarja"></div>
+                           </div>
+                        </a>
+                     </div>
+                                       <div class="col-ce1-24 col-ce3-12 col-tb1-12 col-tb2-12 col-pc2-12">
+                        <a href="/noticia/view/10158/veranopolis-por-tupancireta" class="d-block">
+                           <div class="home-noticia-secundaria">
+                                                               <img src="/uploads/noticia/28913/media_ukoxSVXw1_-fr_QgtrJmkDUnAj1VzMeh.jpg" width="100%" alt="veranopolis-por-tupancireta" title="🤝 Veranópolis por Tupanciretã">                                                            <h3>🤝 Veranópolis por Tupanciretã</h3>
+                              <div class="tarja"></div>
+                           </div>
+                        </a>
+                     </div>
+                                       <div class="col-ce1-24 col-ce3-12 col-tb1-12 col-tb2-12 col-pc2-12">
+                        <a href="/noticia/view/10157/prefeitura-nos-bairros-tera-edicao-aberta-a-toda-veranopolis-no-sabado-dia-28" class="d-block">
+                           <div class="home-noticia-secundaria">
+                                                               <img src="/uploads/noticia/28912/media_OsPgDTZPPVZ_GjgRnzTbd21lC0TUJgqD.jpg" width="100%" alt="prefeitura-nos-bairros-tera-edicao-aberta-a-toda-veranopolis-no-sabado-dia-28" title="Prefeitura nos Bairros terá edição aberta a toda Veranópolis no sábado, dia 28">                                                            <h3>Prefeitura nos Bairros terá edição aberta a toda Veranópolis no sábado, dia 28</h3>
+                              <div class="tarja"></div>
+                           </div>
+                        </a>
+                     </div>
+                                 </div>
+            </div>
+                  <div class="col-ce1-24 text-center">
+            <br /><a class="btn-padrao" href="/noticia/index">Todas</a>         </div>
+         </div>
+</section>
+
+<!-- BLOCO LICITAÇÕES -->
+<section class="margin-section">
+   <div class="row container-fluid">
+      <div class="col-ce1-24 col-tb2-12">
+         <div class="row">
+            <div class="col-ce1-24">
+               <div class="titulo">
+                  <h2>Secretarias</h2>
+                  <span class="square"></span>
+               </div>
+            </div>
+            <div class="col-ce1-24 text-center box-home-ultimo-bloco">
+               <div id="dtns1">                                 <div class="secretario-capa">
+                     <div class="secretario-capa-dados">
+                        <a href="/secretaria/view/12/saude">
+                           <h4><strong>Saúde</strong></h4>
+                        </a>
+                        <p>
+                                                         Rua Pinheiro Machado, 581 - Veranópolis/RS - CEP 95330-000<br />
+                                                                                    Telefone: (54) 34411458                                                   </p>
+                     </div>
+                                             <div id="w2" class="list-view"><div data-key="1">
+<div class="row nomargin">
+    <div class="col-ce1-24 text-center">
+        <img src="/uploads/pessoa/26838/media_7HPThk1dxyPmGV2ILJf78FSjW1pMy9q-.JPG" alt="Secretária Municipal - Évelin Kasmirscki Ranghetti" title="Secretária Municipal - Évelin Kasmirscki Ranghetti">                <h6 class="nopadding nomargin"><strong>Évelin Kasmirscki Ranghetti</strong></h6>
+        Secretária Municipal        <br /><br />
+    </div>
+</div>
+
+
+        </div></div>                                       </div>
+                                 <div class="secretario-capa">
+                     <div class="secretario-capa-dados">
+                        <a href="/secretaria/view/10/desenvolvimento-economico">
+                           <h4><strong>Desenvolvimento Econômico</strong></h4>
+                        </a>
+                        <p>
+                                                         Rua Alfredo Chaves, 300 - Sala 101 - Centro<br />
+                                                                                    Telefone: (54) 34417859                                                   </p>
+                     </div>
+                                             <div id="w3" class="list-view"><div data-key="1">
+<div class="row nomargin">
+    <div class="col-ce1-24 text-center">
+        <img src="/uploads/pessoa/26836/media_wX34hlaZu5ZDISQ7gYId2zFkULQYQFZn.JPG" alt="Secretário Municipal - João Augusto Fracasso" title="Secretário Municipal - João Augusto Fracasso">                <h6 class="nopadding nomargin"><strong>João Augusto Fracasso</strong></h6>
+        Secretário Municipal        <br /><br />
+    </div>
+</div>
+
+
+        </div></div>                                       </div>
+                                 <div class="secretario-capa">
+                     <div class="secretario-capa-dados">
+                        <a href="/secretaria/view/11/infraestrutura-urbana">
+                           <h4><strong>Infraestrutura Urbana</strong></h4>
+                        </a>
+                        <p>
+                                                         Rua Alfredo Chaves, 366 - Veranópolis/RS - CEP 95330-000<br />
+                                                                                    Telefone: (54) 34411477                                                   </p>
+                     </div>
+                                             <div id="w4" class="list-view"><div data-key="1">
+<div class="row nomargin">
+    <div class="col-ce1-24 text-center">
+        <img src="/uploads/pessoa/26840/media_dzIYGSgch-9D-dOtHb2jijOaaLEMOr1a.JPG" alt="Secretária Municipal - Bruna Favero Pessin" title="Secretária Municipal - Bruna Favero Pessin">                <h6 class="nopadding nomargin"><strong>Bruna Favero Pessin</strong></h6>
+        Secretária Municipal        <br /><br />
+    </div>
+</div>
+
+
+        </div></div>                                       </div>
+                                 <div class="secretario-capa">
+                     <div class="secretario-capa-dados">
+                        <a href="/secretaria/view/7/educacao-cultura-e-esportes">
+                           <h4><strong>Educação, Cultura e Esportes</strong></h4>
+                        </a>
+                        <p>
+                                                         Rua Dr. José Montaury, 181 - Centro - Veranópolis/RS - CEP 95330-000<br />
+                                                                                    Telefone: (54) 34417828                                                   </p>
+                     </div>
+                                             <div id="w5" class="list-view"><div data-key="1">
+<div class="row nomargin">
+    <div class="col-ce1-24 text-center">
+        <img src="/uploads/pessoa/26834/media_Np1D7Jr1HBqSN4Wwbh-qgLMMJhm-k5lm.JPG" alt="Secretária Municipal - Sheila Sinigaglia Facchin" title="Secretária Municipal - Sheila Sinigaglia Facchin">                <h6 class="nopadding nomargin"><strong>Sheila Sinigaglia Facchin</strong></h6>
+        Secretária Municipal        <br /><br />
+    </div>
+</div>
+
+
+        </div></div>                                       </div>
+                                 <div class="secretario-capa">
+                     <div class="secretario-capa-dados">
+                        <a href="/secretaria/view/9/governo-e-inovacao">
+                           <h4><strong>Governo e Inovação</strong></h4>
+                        </a>
+                        <p>
+                                                         Rua Alfredo Chaves, 366 - Veranópolis/RS - CEP 95330-000<br />
+                                                                                    Telefone: (54) 34411477                                                   </p>
+                     </div>
+                                             <div id="w6" class="list-view"><div data-key="1">
+<div class="row nomargin">
+    <div class="col-ce1-24 text-center">
+        <img src="/uploads/pessoa/26783/media_xCkMOXwAebpT264l3rZ0nvij-Unchbbf.jpeg" alt="Secretário Municipal - João Guilherme Mazetto" title="Secretário Municipal - João Guilherme Mazetto">                <h6 class="nopadding nomargin"><strong>João Guilherme Mazetto</strong></h6>
+        Secretário Municipal        <br /><br />
+    </div>
+</div>
+
+
+        </div></div>                                       </div>
+                                 <div class="secretario-capa">
+                     <div class="secretario-capa-dados">
+                        <a href="/secretaria/view/8/financas">
+                           <h4><strong>Finanças</strong></h4>
+                        </a>
+                        <p>
+                                                         Rua Alfredo Chaves, 366 - Veranópolis/RS - CEP 95330-000<br />
+                                                                                    Telefone: (54) 34411477                                                   </p>
+                     </div>
+                                             <div id="w7" class="list-view"><div data-key="1">
+<div class="row nomargin">
+    <div class="col-ce1-24 text-center">
+        <img src="/uploads/pessoa/26839/media_mXRlivBys1rLyekKNK2cTmJVqPQfw22d.JPG" alt="Secretário Municipal - Cesar Salvetti" title="Secretário Municipal - Cesar Salvetti">                <h6 class="nopadding nomargin"><strong>Cesar Salvetti</strong></h6>
+        Secretário Municipal        <br /><br />
+    </div>
+</div>
+
+
+        </div></div>                                       </div>
+                              </div>            </div>
+         </div>
+      </div>
+      <div class="col-ce1-24 col-tb2-12 margin-top-responsiva">
+         <div class="row">
+            <div class="col-ce1-24">
+               <div class="titulo">
+                  <h2>Serviços em Destaque</h2>
+                  <span class="square"></span>
+               </div>
+            </div>
+            <div class="col-ce1-24 text-center">
+                                 <div class="row">
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="https://veranopolis.educarweb.net.br/Login#!/" target="_blank" class="btn-chamada bg-white">
+                                                               <i class="fa fa-redo"></i>                                                             <h3>Portal do Professor</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="/servico/view/12" target="_self" class="btn-chamada bg-white">
+                                                               <i class="fa fa-stamp"></i>                                                             <h3>Solicitação de Alvará</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="https://www.cidadetransparente.com/veranopolis/" target="_blank" class="btn-chamada bg-white">
+                                                               <i class="fa fa-handshake"></i>                                                             <h3>Portal de Convênios</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="/servico/view/25" target="_self" class="btn-chamada bg-white">
+                                                               <i class="fa fa-briefcase"></i>                                                             <h3>Farmácia Pública</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="/documento?DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=4&DocumentoSearch%5Bq%5D=" target="_self" class="btn-chamada bg-white">
+                                                               <i class="fa fa-briefcase"></i>                                                             <h3>Vagas de Emprego FGTAS/Sine</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="https://governodigital.veranopolis.rs.gov.br/governo-digital/" target="_blank" class="btn-chamada bg-white">
+                                                               <i class="fa fa-barcode"></i>                                                             <h3>Contra Cheque</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="/unidade-saude" target="_self" class="btn-chamada bg-white">
+                                                               <i class="fa fa-clinic-medical"></i>                                                             <h3>Unidades de Saúde</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="/servico/view/20" target="_self" class="btn-chamada bg-white">
+                                                               <i class="fa fa-home"></i>                                                             <h3>Habite-se</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="#" target="_self" class="btn-chamada bg-white">
+                                                               <i class="fa fa-wifi"></i>                                                             <h3>Facilita Digital</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="/servico/view/8" target="_self" class="btn-chamada bg-white">
+                                                               <i class="fa fa-edit"></i>                                                             <h3>Cadastro Único</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="https://veranopolis.aprova.com.br/home" target="_self" class="btn-chamada bg-white">
+                                                               <i class="fa fa-check"></i>                                                             <h3>Aprova Digital</h3>
+                           </a>
+                        </div>
+                                             <div class="col-ce1-12 col-pc2-8">
+                           <a href="/pagina/view/26" target="_self" class="btn-chamada bg-white">
+                                                               <i class="fa fa-phone"></i>                                                             <h3>Telefones Úteis</h3>
+                           </a>
+                        </div>
+                                       </div>
+                           </div>
+         </div>
+         <br />
+         <div class="row">
+            <div class="col-ce1-24 text-center">
+               <a class="btn-padrao" href="/servico">Todos</a>            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+<!-- TURISMO -->
+   <section class="bg-amarelo-claro margin-section section-alt">
+      <div class="section-padding-fundo">
+         <div class="row container-fluid">
+            <div class="col-ce1-24">
+               <div class="row">
+                                       <div class="col-ce1-24 col-tb2-8 col-pc2-8 turismo-capa text-center">
+                        <div class="titulo">
+                           <h2>O que fazer</h2>
+                           <span class="square"></span>
+                        </div>
+                                                   <img src="/uploads/turismo/19141/media_0OD0-CHdu0wLyl8TSMTnSMVyksdWUveE.jpg" width="100%" alt="Turismo">                                                <a href="/turismo/view/17/loja-union-destillery-malt-whisky">
+                           <h5><strong>Loja Union Destillery Malt Whisky</strong></h5>
+                        </a>
+                     </div>
+                                                         <div class="col-ce1-24 col-tb2-8 col-pc2-8 turismo-capa text-center">
+                        <div class="titulo">
+                           <h2>Onde ficar</h2>
+                           <span class="square"></span>
+                        </div>
+                                                   <img src="/uploads/turismo/8384/media_N1smL4bDU4Ne2uo3xWjqw4pnscQ6jx6H.jpg" width="100%" alt="Turismo">                                                <a href="/turismo/view/80/hotel-princesa-dos-vales">
+                           <h5><strong>Hotel Princesa dos Vales</strong></h5>
+                        </a>
+                     </div>
+                                                         <div class="col-ce1-24 col-tb2-8 col-pc2-8 turismo-capa text-center">
+                        <div class="titulo">
+                           <h2>O que comer</h2>
+                           <span class="square"></span>
+                        </div>
+                                                   <img src="/uploads/turismo/27070/media_CDN0Vdi8tIEKuZeyvO0LhXTPvmTk8zfK.jpeg" width="100%" alt="Turismo">                                                <a href="/turismo/view/88/big-churras-gastropub">
+                           <h5><strong>Big Churras Gastropub </strong></h5>
+                        </a>
+                     </div>
+                                 </div>
+               <br />
+               <div class="row">
+                  <div class="col-ce1-24 text-center">
+                     <a class="btn-padrao" href="/turismo">Todos pontos turísticos</a>                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+<!-- MULTIMÍDIA -->
+   <section class="margin-section">
+      <div class="row container-fluid">
+         <div class="col-ce1-24 col-tb2-12">
+            <div class="row">
+               <div class="col-ce1-24">
+                  <div class="titulo">
+                     <h2>Veranópolis em Imagens</h2>
+                     <span class="square"></span>
+                  </div>
+               </div>
+                                 <div class="col-ce1-24 multimidia-capa text-center">
+                                             <a href="/midia-foto/view/10/estudantes-de-veranopolis-sao-premiados-na-19-olimpiada-brasileira-de-matematica-das-escolas-publicas-obmep">
+                           <h4><strong>Estudantes de Veranópolis são premiados na 19ª Olimpíada Brasileira de Matemática das Escolas Públicas (OBMEP)</strong></h4>
+                        </a>
+                                                                  <img src="/uploads/midia_foto/27512/media_s0F-JrgZJi4Vcj7rCijWgoor_AKKf3up.jpeg" width="100%" alt="Midia de foto">                                          <br><br><br>
+                     <div class="row">
+                        <div class="col-ce1-24 text-center">
+                           <a class="btn-padrao" href="/midia-foto">Todas Fotos</a>                        </div>
+                     </div>
+                  </div>
+                           </div>
+         </div>
+         <div class="col-ce1-24 col-tb2-12 margin-top-responsiva">
+            <div class="row">
+               <div class="col-ce1-24">
+                  <div class="titulo">
+                     <h2>Ouvidoria</h2>
+                     <span class="square"></span>
+                  </div>
+               </div>
+               <div class="col-ce1-24 text-center">
+                  <br />
+                  <p>Deseja se manifestar com a Prefeitura de Veranopolis? Abra um protocolo deixando seu elogio, reclamação ou sugestão. Você receberá um email com o protocolo de acompanhamento de sua manifestação.</p>
+                  <div class="row nomargin justify-content-center">
+                     <a href="https://falabr.cgu.gov.br/web/home" target="_blank">
+                        <img src="/images/falabr-ouvidoria-ifro.png" width="500px" alt="Midia de foto">                     </a>
+                  </div>
+                  <br />
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+</main>    <!-- FINAL DO CONTEÚDO -->
+  </div>
+
+  <footer>
+    <div class="row container-fluid">
+      <div class="col-ce1-24 col-tb2-10 col-pc1-9 col-pc2-8 col-pc3-7 text-center logo-footer">
+        <img src="/images/logo-footer.png" alt="Veranópolis">        <div id="nome-municipio"><strong>Veranópolis</strong></div>
+        <div id="nome-prefeitura">Rio Grande do Sul</div>
+      </div>
+      <div class="col-ce1-24 col-tb2-14 col-pc1-15 col-pc2-16 col-pc3-17 text-footer">
+        <h5 class="nomargin nopadding"><strong>Prefeitura de Veranópolis</strong></h5>
+<p>Rua Alfredo Chaves, 366 - Bairro Centro - Veranópolis/RS<br />CEP 95330-000</p>
+<p><strong>Atendimento</strong><br />Segunda à Sexta-feira: 8h às 11h30min e 13h às 16h.</p>
+<p><strong>Contato</strong><br />Telefone:  (54) 3441-1477</p>        <hr />
+        <div class="text-right">
+                <a href="https://www.facebook.com/PrefeituraVeranopolis/?_rdr" target="_blank" class="midia-footer">
+          <img src="/images/facebook.png" width="24" alt="Facebook"></a>
+                        <a href="https://www.instagram.com/veranopolis.rs/" target="blank" class="midia-footer">
+          <img src="/images/instagram.png" width="24" alt="Instagram"></a>
+                        <a href="https://www.youtube.com/c/PrefeituradeVeran%C3%B3polisRS" target="_blank" class="midia-footer">
+          <img src="/images/youtube.png" width="24" alt="Youtube"></a>
+                                        <a href="https://falabr.cgu.gov.br/publico/RS/veranopolis/Manifestacao/RegistrarManifestacao" target="_blank" class="btn-padrao bg-cor2"><i class="fa fa-phone"></i> </i>&nbsp;&nbsp;Ouvidoria</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <section class="container-fluid dontPrint">
+    <div class="row">
+        <div class="col-ce1-20 text-left barra-inferior">
+            <small>
+                &copy; Copyright 2026 - Todos os direitos reservados à Prefeitura de Veranópolis/RS
+            </small>
+        </div>
+        <div class="col-ce1-4 barra-inferior">
+            <a href="http://www.dynamika.com.br" target="_blank" title="Dynamika Soluções Web">
+                <img src="/images/selo-dynamika.png" alt="">            </a>
+        </div>
+    </div>
+</section>
+  
+
+<div id="modal-cadastro" class="fade modal" role="dialog" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+
+<div class="row">
+  <div class="col-6">
+    <h4>Login</h4>
+    <span>Informe seus dados para acessar</span><br />
+
+    <ul id="w13" class="nav nav-tabs nav-justified" role="tablist"><li class="nav-item"><a class="nav-link active" href="#w13-tab0" data-toggle="tab" role="tab" aria-controls="w13-tab0" aria-selected="true">CPF/CNPJ</a></li>
+<li class="nav-item"><a class="nav-link" href="#w13-tab1" data-toggle="tab" role="tab" aria-controls="w13-tab1" aria-selected="false">E-mail</a></li></ul>
+<div class="tab-content"><div id="w13-tab0" class="tab-pane active"><form id="w9" class="login-form" action="/conta/login" method="post">
+<input type="hidden" name="_csrf-frontend" value="EWKQXnDUbWe0Ud6QhVfiL4Do6iCLLXXf4ijveKmbxionG9kzQowqHfEc68nyJY4Y-NmjQt9_GZSseKEs4P6HQA=="><div class="form-group field-input-username-cpfcnpj required">
+<label for="input-username-cpfcnpj">CPF ou CNPJ</label>
+<input type="text" id="input-username-cpfcnpj" class="form-control" name="LoginFrontForm[username]" aria-required="true" data-plugin-inputmask="inputmask_7260b05d">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-password required">
+<label for="loginfrontform-password">Senha</label>
+<input type="password" id="loginfrontform-password" class="form-control" name="LoginFrontForm[password]" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-recaptcha required">
+
+<input type="hidden" id="loginfrontform-recaptcha" class="form-control" name="LoginFrontForm[reCaptcha]" aria-required="true"><div id="w10_c" class="captcha-size captcha-center captcha-no-print " data-sitekey="add061f6-a9be-42be-ae8a-88623218833e"></div>
+
+<div class="invalid-feedback"></div>
+</div><button type="submit" class="btn btn-success" name="login-button">Acessar</button></form></div>
+<div id="w13-tab1" class="tab-pane"><form id="w11" class="login-form" action="/conta/login" method="post">
+<input type="hidden" name="_csrf-frontend" value="EWKQXnDUbWe0Ud6QhVfiL4Do6iCLLXXf4ijveKmbxionG9kzQowqHfEc68nyJY4Y-NmjQt9_GZSseKEs4P6HQA=="><div class="form-group field-loginfrontform-username required">
+<label for="loginfrontform-username">E-mail</label>
+<input type="text" id="loginfrontform-username" class="form-control" name="LoginFrontForm[username]" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-password required">
+<label for="loginfrontform-password">Senha</label>
+<input type="password" id="loginfrontform-password" class="form-control" name="LoginFrontForm[password]" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-recaptcha required">
+
+<input type="hidden" id="loginfrontform-recaptcha" class="form-control" name="LoginFrontForm[reCaptcha]" aria-required="true"><div id="w12_c" class="captcha-size captcha-center captcha-no-print " data-sitekey="add061f6-a9be-42be-ae8a-88623218833e"></div>
+
+<div class="invalid-feedback"></div>
+</div><button type="submit" class="btn btn-success" name="login-button">Acessar</button></form></div></div>
+  </div>
+  <div class="col-6">
+    <h4>Cadastro</h4>
+    <p>Faça seu cadastro gratuitamente</p>
+    <br />
+    <a class="btn btn-success" href="/conta/cadastrar?tipo=pf"><i class="fa fa-user-alt"></i> Pessoa Física</a>    <br /><br />
+    <a class="btn btn-info" href="/conta/cadastrar?tipo=pf"><i class="fa fa-building"></i> Pessoa Jurídica</a>  </div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>  <script src="/js/acessibilidade.js?v=1751554287"></script>
+<script src="//www.google.com/recaptcha/api.js?onload=dynamikacaptchaw10&amp;render=explicit"></script>
+<script src="//www.google.com/recaptcha/api.js?onload=dynamikacaptchaw12&amp;render=explicit"></script>
+<script src="/assets/b6297f60/dist/min/tiny-slider.js?v=1751629854"></script>
+<script src="/assets/a65dcce1/jquery.js?v=1751629853"></script>
+<script src="/assets/c1b7ed/yii.js?v=1751629853"></script>
+<script src="/assets/8b2d2c78/js/bootstrap.bundle.js?v=1751629853"></script>
+<script src="/assets/f8219272/sweetalert2.all.min.js?v=1751629853"></script>
+<script src="/js/site.js?v=1751554287"></script>
+<script src="/assets/8ce329b9/script.js?v=1751629854"></script>
+<script src="/assets/95371a9b/jquery.inputmask.js?v=1792780024"></script>
+<script src="/assets/c1b7ed/yii.validation.js?v=1751629853"></script>
+<script src="/assets/5ddfe4be/captcha.js?v=1751629854"></script>
+<script src="/assets/c1b7ed/yii.activeForm.js?v=1751629853"></script>
+<script>const slider_dtns0 = tns({"autoplayButtonOutput":false,"controls":false,"autoplay":true,"autoplayTimeout":5000,"items":1,"container":"#dtns0"});
+const slider_dtns1 = tns({"autoplayButtonOutput":false,"controls":false,"autoplay":true,"autoplayTimeout":5000,"items":1,"nav":false,"container":"#dtns1"});
+document.addEventListener('DOMContentLoaded', async () => {
+    const scriptElementVlibras = document.createElement('script');
+    scriptElementVlibras.type = 'text/javascript';
+    scriptElementVlibras.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+    scriptElementVlibras.addEventListener('load', async () => {
+        await new window.VLibras.Widget('https://vlibras.gov.br/app');
+    });
+
+    await document.body.insertAdjacentHTML('beforeend', `<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>`);
+    await document.head.appendChild(scriptElementVlibras);
+});
+$(function(){
+    $(document).on('submit', '.login-form', function(e){
+        var form = this;
+        e.preventDefault();
+        var postData = new FormData(form);
+
+        $.ajax({
+            url: $(this).prop('action'),
+            type: 'POST',
+            data:  postData,
+            contentType: false,
+            cache: false,
+            processData:false,
+            dataType: 'json',
+            beforeSend: function(){
+                $.LoadingOverlay("show");
+            },
+            success: function(result) {
+                if (result.success) {
+                    $('#modal-cadastro').modal('hide');
+                    swal("Aviso", result.message, "success");
+                    $(form)[0].reset();
+                    document.querySelectorAll('.login').forEach((el) => { el.style.display = "none"})
+                    document.querySelectorAll('.logado').forEach((el) => { el.style.display = "initial"})
+
+                    if(document.login_rastreio){
+                        const click = new Event("click");
+                        document.login_rastreio.dispatchEvent(click);
+                    } else {
+                        setTimeout(() => {
+                            window.location.href = '/conta';
+                        }, 1500);
+                    }
+                    
+                    return true;
+                }
+                swal("Erro", result.message, "error");
+            },
+            error: function(error) {
+                var msg = 'Não foi possível enviar a requisição. Por favor, tente mais tarde.';
+                swal("Erro", msg , "error");
+                console.log(error.responseText);
+            },
+            complete: function() {
+                $.LoadingOverlay("hide");
+            }
+        });
+    });
+});
+</script>
+<script>jQuery(function ($) {
+  document.querySelectorAll('.logado').forEach((el) => { el.style.display = "none"})
+jQuery("#input-username-cpfcnpj").inputmask(inputmask_7260b05d);
+jQuery('#w9').yiiActiveForm([{"id":"input-username-cpfcnpj","name":"username","container":".field-input-username-cpfcnpj","input":"#input-username-cpfcnpj","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022CPF ou CNPJ\u0022 não pode ficar em branco."});}},{"id":"loginfrontform-password","name":"password","container":".field-loginfrontform-password","input":"#loginfrontform-password","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Senha\u0022 não pode ficar em branco."});}},{"id":"loginfrontform-recaptcha","name":"reCaptcha","container":".field-loginfrontform-recaptcha","input":"#loginfrontform-recaptcha","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Verificação\u0022 não pode ficar em branco."});}}], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+jQuery('#w11').yiiActiveForm([{"id":"loginfrontform-username","name":"username","container":".field-loginfrontform-username","input":"#loginfrontform-username","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022E-mail\u0022 não pode ficar em branco."});yii.validation.email(value, messages, {"pattern":/^[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,"fullPattern":/^[^@]*<[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?>$/,"allowName":false,"message":"\u0022E-mail\u0022 não é um endereço de e-mail válido.","enableIDN":false,"skipOnEmpty":1});}},{"id":"loginfrontform-password","name":"password","container":".field-loginfrontform-password","input":"#loginfrontform-password","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Senha\u0022 não pode ficar em branco."});}},{"id":"loginfrontform-recaptcha","name":"reCaptcha","container":".field-loginfrontform-recaptcha","input":"#loginfrontform-recaptcha","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Verificação\u0022 não pode ficar em branco."});}}], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+jQuery('#w13').tab();
+jQuery('#modal-cadastro').modal({"show":false});
+});</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610ea148e74a356',t:'MTc5NTc4MDIxNw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610ea148e74a356',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>

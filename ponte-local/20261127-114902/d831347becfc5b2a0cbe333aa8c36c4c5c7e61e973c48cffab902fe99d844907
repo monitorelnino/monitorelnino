@@ -1,0 +1,2810 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" style="scroll-behavior:smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>Prefeitura Municipal de Ituporanga/SC</title>
+    <meta name="title" content="Prefeitura Municipal de Ituporanga | Prefeitura Municipal de Ituporanga/SC">
+<meta name="og:title" content="Prefeitura Municipal de Ituporanga | Prefeitura Municipal de Ituporanga/SC">
+<meta name="og:site_name" content="Prefeitura Municipal de Ituporanga/SC">
+<meta name="image" content="https://www.ituporanga.sc.gov.br/images/logo-horizontal-azul.png">
+<meta name="og:image" content="https://www.ituporanga.sc.gov.br/images/logo-horizontal-azul.png">
+<meta name="og:image:url" content="https://www.ituporanga.sc.gov.br/images/logo-horizontal-azul.png">
+<meta name="og:image:secure_url" content="https://www.ituporanga.sc.gov.br/images/logo-horizontal-azul.png">
+<meta name="keywords" content="prefeitura, municipal, ituporanga, localizada, alto, vale, itajai, santa, catarina, com, area, territorial, 336, numa, altitude, que">
+<meta name="abstract" content="Localizada no Alto Vale do Itajaí, em Santa Catarina, com área territorial de 336 km², num...">
+<meta name="description" content="Localizada no Alto Vale do Itajaí, em Santa Catarina, com área territorial de 336 km², numa altitude que chega a 830 m acima do nível do mar e temperatura média anual de 17,58ºC, com clima bastante agradável, Ituporanga tem uma população de aproximadamente 25.000 mil habitantes.">
+<meta name="og:description" content="Localizada no Alto Vale do Itajaí, em Santa Catarina, com área territorial de 336 km², numa altitude que chega a 830 m acima do nível do mar e temperatura média anual de 17,58ºC, com clima bastante agradável, Ituporanga tem uma população de aproximadamente 25.000 mil habitantes.">
+<meta name="og:type" content="website">
+<meta name="csrf-param" content="_csrf-frontend">
+<meta name="csrf-token" content="nx5NzaycHCGtaBBvjn6DFmPwgFHiaRa70JgPqEwIe9rXJguC5a5tEcM6Zhi9NdxxM8TqC4EgJtPl2lmQKVxWlA==">
+
+<link href="https://www.ituporanga.sc.gov.br/images/logo-horizontal-azul.png" rel="image_src">
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<link href="/assets/222a2c90/css/banner.css?v=1781112633" rel="stylesheet">
+<link href="/assets/f8f8a60a/css/cards.css?v=1781112634" rel="stylesheet">
+<link href="/assets/c6709976/css/bootstrap.css?v=1781113465" rel="stylesheet">
+<link href="/css/grid.css?v=1781112633" rel="stylesheet">
+<link href="/css/estilos.css?v=1783689874" rel="stylesheet">
+<link href="/css/responsivo.css?v=1781284810" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;family=Syncopate:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=B612:ital,wght@0,400;0,700;1,400;1,700&amp;family=Syncopate:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="/assets/1c9f8b28/css/style.css?v=1755795172" rel="stylesheet">
+<link href="/assets/31ed07b6/style.css?v=1631210132" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons-wind.min.css" rel="stylesheet">
+<link href="/assets/608c52b/css/weather.css?v=1781112634" rel="stylesheet">
+<link href="/assets/af58aed8/captcha.css?v=1640022146" rel="stylesheet">
+<style>.service-duotone-v1 {
+    background: linear-gradient(135deg, var(--dynamic-main), color-mix(in srgb, var(--dynamic-main), black 15%));
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    border-radius: 12px;
+    padding: 25px;
+    text-decoration: none !important;
+    height: 100%;
+    color: #fff;
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.service-duotone-v1::after {
+    content: '';
+    position: absolute;
+    top: -30px; right: -30px;
+    width: 100px; height: 100px;
+    background: color-mix(in srgb, white 15%, transparent);
+    border-radius: 50%;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.service-duotone-v1:hover {
+    transform: translateY(-6px);
+    /* A sombra cresce e brilha com a cor secundária no hover */
+}
+
+.service-duotone-v1:hover::after {
+    transform: scale(2.5); 
+}
+
+.service-duotone-v1-icon {
+    font-size: 32px;
+    margin-bottom: 15px;
+    /* Ícone usa a cor de destaque sólida para chamar atenção */
+    background: var(--dynamic-highlight);
+    color: #ffffff;
+    width: 55px; height: 55px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 2;
+}
+
+.service-duotone-v1-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.3;
+    z-index: 2;
+}</style>
+<style>.card-glass-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    height: 100%;
+    min-height: 400px;
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+    background: #000;
+}
+.card-glass-img {
+    width: 100%;
+    height: 100%;
+}
+.card-glass-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+}
+.card-glass-body {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+.card-glass-blur {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1;
+}
+.card-glass-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    color: #fff;
+}
+.card-glass-title {
+    color: var(--color-text-light, #fff);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    display: block;
+    margin: 0;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+}
+
+.card-glass-wrapper:hover .card-glass-title {
+    color: var(--dynamic-accent);
+}
+
+.card-glass-date {
+    font-size: 0.75rem;
+    opacity: 0.9;
+    color: var(--dynamic-accent);   
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    display: block;
+    font-weight: 600;
+}
+
+/* Hover */
+.card-glass-wrapper:hover .card-glass-img img { transform: scale(1.1); }
+.card-glass-wrapper:hover .card-glass-blur { background: rgba(0, 0, 0, 0.7); }</style>
+<style>.card-lic-status-wrapper {
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    display: flex;
+    text-decoration: none !important;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+    height: 100%;
+    border: 1px solid #eef0f2;
+    color: inherit;
+    padding-right: 10px;
+}
+
+.card-lic-status-wrapper:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    border-color: var(--dynamic-accent);
+}
+
+/* BADGE DE STATUS */
+.lic-status-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 0.7rem;
+    font-weight: 800;
+    padding: 5px 12px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+/* Paleta de Cores de Status */
+.lic-status-green { background: #d1fae5; color: #065f46; border: 1px solid #a7f3d0; }
+.lic-status-blue { background: #dbeafe; color: #1e40af; border: 1px solid #bfdbfe; }
+.lic-status-gray { background: #f3f4f6; color: #374151; border: 1px solid #e5e7eb; }
+.lic-status-red { background: #fee2e2; color: #b91c1c; border: 1px solid #fecaca; }
+.lic-status-orange { background: #ffedd5; color: #c2410c; border: 1px solid #fed7aa; }
+
+/* Coluna Esquerda: Calendário */
+.card-lic-date-box {
+    background-color: color-mix(in srgb, var(--dynamic-accent) 8%, white);
+    width: 100px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-right: 1px solid #eef0f2;
+    padding: 15px 10px;
+    text-align: center;
+    color: var(--dynamic-accent);
+}
+
+.card-lic-day { font-size: 2.2rem; font-weight: 900; line-height: 1; }
+.card-lic-month { font-size: 0.9rem; text-transform: uppercase; font-weight: 800; margin-top: 4px; }
+.card-lic-time { 
+    margin-top: 12px; font-size: 0.8rem; font-weight: 700; 
+    display: flex; align-items: center; gap: 5px;
+    background: #fff; padding: 4px 8px; border-radius: 6px;
+    border: 1px solid #eef0f2;
+}
+
+/* Coluna Direita */
+.card-lic-body {
+    padding: 20px 20px 20px 25px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-lic-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #333;
+    margin: 0 0 8px 0;
+    line-height: 1.4;
+    padding-right: 80px; /* Impede que o título entre embaixo do badge */
+}
+
+.card-lic-meta {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 6px;
+    font-weight: 600;
+}
+.card-lic-meta i { color: var(--dynamic-accent); }
+
+.card-lic-desc { font-size: 0.9rem; color: #666; line-height: 1.6; }
+
+@media (max-width: 768px) {
+    .card-lic-status-wrapper { flex-direction: column; padding: 0; }
+    .card-lic-date-box { width: 100%; flex-direction: row; gap: 15px; border-right: none; border-bottom: 1px solid #eef0f2; }
+    .card-lic-time { margin-top: 0; }
+    .card-lic-title { padding-right: 0; margin-top: 30px; } /* Abaixa o título para não brigar com o badge absolute no mobile */
+}</style>
+<style>.card-sec-inst {
+    background: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #eef0f2;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.card-sec-inst:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-color: var(--dynamic-accent);
+}
+
+.card-sec-inst-body {
+    padding: 25px;
+    flex-grow: 1;
+}
+
+.card-sec-inst-icon {
+    font-size: 2rem;
+    color: var(--dynamic-accent);
+    margin-bottom: 15px;
+    opacity: 0.9;
+}
+
+.card-sec-inst-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #333;
+    margin: 0 0 15px 0;
+    line-height: 1.3;
+}
+
+.card-sec-inst-info {
+    font-size: 0.85rem;
+    color: #666;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.card-sec-inst-info i {
+    margin-top: 3px;
+    color: #adb5bd;
+}
+
+/* Rodapé do Perfil (Secretário) */
+.card-sec-inst-footer {
+    background-color: #f8f9fa;
+    padding: 15px 25px;
+    border-top: 1px solid #eef0f2;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.card-sec-inst-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #ffffff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.card-sec-inst-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-sec-inst-person {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-sec-inst-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 2px;
+}
+
+.card-sec-inst-role {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: var(--dynamic-accent);
+    font-weight: 700;
+}</style>
+<style>.tour-over-wrapper {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    transition: all 0.4s ease;
+    height: 350px; /* Altura fixa para manter o grid perfeito */
+    width: 100%;
+    background: #222;
+}
+
+.tour-over-wrapper:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+}
+
+.tour-over-bg {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s ease;
+    z-index: 1;
+}
+
+.tour-over-wrapper:hover .tour-over-bg {
+    transform: scale(1.1);
+}
+
+/* O gradiente faz o texto branco ficar legível independente da foto */
+.tour-over-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, transparent 100%);
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+}
+
+.tour-over-cat {
+    align-self: flex-start;
+    background: var(--dynamic-accent);
+    color: #ffffff;
+    padding: 6px 14px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.tour-over-content {
+    margin-top: auto;
+    color: #ffffff;
+    transition: transform 0.3s ease;
+}
+
+.tour-over-wrapper:hover .tour-over-content {
+    transform: translateY(-5px);
+}
+
+.tour-over-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin: 0 0 8px 0;
+    line-height: 1.2;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.tour-over-desc {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.85);
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}</style>
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" defer crossorigin="anonymous"></script>
+<script>var inputmask_7260b05d = {"mask":["[CPF REDIGIDO]","99.999.999\/9999-99"]};</script>
+    </head>
+
+<body>
+    <script>function dynamikacaptchaw8(){loadCaptcha(hcaptcha, "w8_c", "#loginfrontform-recaptcha", "asdasd")}
+function dynamikacaptchaw10(){loadCaptcha(hcaptcha, "w10_c", "#loginfrontform-recaptcha", "asdasd")}</script>    <header>
+        <section style="margin-bottom: 0px;" class="dontPrint">
+            <div class="barra-superior">
+                <div class="container-fluid barra-superior-container">
+
+                    <div id="box-usuario">
+                        <div class="usuario-icone">
+                            <a class="login" href="/" title="Fazer Login" data-toggle="modal" data-target="#modal-cadastro"><i class="far fa-user"></i>  Entrar</a>                            <a class="logado" href="/conta" title="Área do usuário"><i class="fa fa-user"></i>  <span id="usuario-text">Usuário</span></a>                            <a class="logado" href="/conta/logout" title="Logout"><i class="fa fa-sign-out-alt"></i>  Sair</a>                                                    </div>
+                    </div>
+
+                    <div class="acessibilidade">
+                        <a id="acessibilidade" href="javascript:;" title="Acessibilidade" class="d-inline-block">
+    <i><i class="fa fa-wheelchair"></i> </i>
+</a>
+<a id="aumentarFonte" href="javascript:;" title="Aumentar Fonte" class="d-inline-block">
+    <i><i class="fa fa-plus-circle"></i> </i>
+</a>
+<a id="diminuirFonte" href="javascript:;" title="Diminuir Fonte" class="d-inline-block">
+    <i><i class="fa fa-minus-circle"></i> </i>
+</a>
+<a id="fonteOriginal" href="javascript:;" title="Fonte Original" class="d-inline-block">
+    <i><i class="fa fa-fas fa-font"></i> </i>
+</a>
+<a id="corOriginal" href="javascript:;" title="Cor Original" class="d-inline-block">
+    <i><i class="fa fa-fas fa-circle"></i> </i>
+</a>
+<a id="contraste" href="javascript:;" title="Contraste" class="d-inline-block">
+    <i id="contraste"><i class="fa fa-adjust"></i> </i>
+</a>
+                        <a href="/site/mapa-site" style="color: white; border-left: 1px solid white" class="ml-3 pl-3">
+                            <i class="fa-solid fa-sitemap" style="font-size: 14px;"></i> Mapa do Site
+                        </a>
+                    </div>
+                    <div>
+                        <div class="column">
+    <div id="dl-menu" class="dynamika-menu-responsivo-wrapper">
+        <button class="dl-trigger"><i><svg class="svg-inline--fa fa-bars fa-w-14" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg><!-- <i class="fa fa-bars"></i> Font Awesome fontawesome.com --> </i> <span>menu</span></button>
+        <ul class="dl-menu">
+            <li>
+    <a href="/" title="Início" target="_self">
+        Início
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Institucional" target="_self">
+        Institucional
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/pagina/view/1/historia" title="História" target="_self">
+        História
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="/documento/view/1/plano-diretor" title="Plano Diretor" target="_self">
+        Plano Diretor
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="/pagina/view/4/galeria-de-prefeitos" title="Galeria de Prefeitos" target="_self">
+        Galeria de Prefeitos
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Turismo" target="_self">
+        Turismo
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/turismo/index?TurismoSearch%5Bq%5D=&TurismoSearch%5Bid_turismo_categoria%5D=5&TurismoSearch%5Bid%5D=" title="Pontos Turísticos" target="_self">
+        Pontos Turísticos
+    </a>
+</li>
+<li>
+    <a href="/turismo/index?TurismoSearch%5Bq%5D=&TurismoSearch%5Bid_turismo_categoria%5D=1&TurismoSearch%5Bid%5D=" title="Gastrônomia" target="_self">
+        Gastrônomia
+    </a>
+</li>
+<li>
+    <a href="/turismo/index?TurismoSearch%5Bq%5D=&TurismoSearch%5Bid_turismo_categoria%5D=3&TurismoSearch%5Bid%5D=" title="Comércio" target="_self">
+        Comércio
+    </a>
+</li>
+<li>
+    <a href="/turismo/index?TurismoSearch%5Bq%5D=&TurismoSearch%5Bid_turismo_categoria%5D=2&TurismoSearch%5Bid%5D=" title="Hotelaria" target="_self">
+        Hotelaria
+    </a>
+</li>
+<li>
+    <a href="/turismo/index?TurismoSearch%5Bq%5D=&TurismoSearch%5Bid_turismo_categoria%5D=4&TurismoSearch%5Bid%5D=" title="Agência de Turismo" target="_self">
+        Agência de Turismo
+    </a>
+</li></ul><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Governo" target="_self">
+        Governo
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="#" title="Secretarias Municipais" target="_self">
+        Secretarias Municipais
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/secretaria/view/14/gabinete-do-prefeito" title="Gabinete do Prefeito" target="_self">
+        Gabinete do Prefeito
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/2/administracao" title="Administração" target="_self">
+        Administração
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/3/agricultura-e-meio-ambiente" title="Agricultura e Meio Ambiente" target="_self">
+        Agricultura e Meio Ambiente
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/4/assistencia-social" title="Assistência Social" target="_self">
+        Assistência Social
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/5/educacao" title="Educação" target="_self">
+        Educação
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/6/fazenda" title="Fazenda" target="_self">
+        Fazenda
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/7/infraestrutura" title="Infraestrutura" target="_self">
+        Infraestrutura
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/8/planejamento-e-gestao" title="Planejamento e Gestão" target="_self">
+        Planejamento e Gestão
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/9/industria-do-comercio-e-de-servicos" title="Indústria do Comércio e de Serviços" target="_self">
+        Indústria do Comércio e de Serviços
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/10/saude" title="Saúde" target="_self">
+        Saúde
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/11/turismo-e-eventos" title="Turismo e Eventos" target="_self">
+        Turismo e Eventos
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/12/urbanismo-e-obras" title="Urbanismo e Obras" target="_self">
+        Urbanismo e Obras
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/13/esporte-e-cultura" title="Esporte e Cultura" target="_self">
+        Esporte e Cultura
+    </a>
+</li>
+<li>
+    <a href="https://ituporanga.sc.gov.br/secretaria/view/15/defesa-civil" title="Defesa Civil" target="_self">
+        Defesa Civil
+    </a>
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Estrutura Administrativa" target="_self">
+        Estrutura Administrativa
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/departamento/index?DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=1" title="Departamentos" target="_self">
+        Departamentos
+    </a>
+</li>
+<li>
+    <a href="/departamento/index?DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=2" title="Procuradorias" target="_self">
+        Procuradorias
+    </a>
+</li>
+<li>
+    <a href="/departamento/index?DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=4" title="Setores" target="_self">
+        Setores
+    </a>
+</li>
+<li>
+    <a href="/departamento/index?DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=3" title="Conselhos" target="_self">
+        Conselhos
+    </a>
+</li></ul><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Serviços" target="_self">
+        Serviços
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="#" title="Cidadão" target="_self">
+        Cidadão
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/servico/view/13/certidao-negativa-contribuinte" title="Certidão Negativa Contribuinte" target="_blank">
+        Certidão Negativa Contribuinte
+    </a>
+</li>
+<li>
+    <a href="/servico/view/14/validacao-certidao-contribuinte" title="Validação Certidão Contribuinte" target="_blank">
+        Validação Certidão Contribuinte
+    </a>
+</li>
+<li>
+    <a href="/servico/view/15/emissao-de-guias-da-fiscalizacao" title="Emissão de Guias da Fiscalização" target="_blank">
+        Emissão de Guias da Fiscalização
+    </a>
+</li>
+<li>
+    <a href="/servico/view/16/emissao-de-guias-contribuicao-de-melhoria" title="Emissão de Guias Contribuição de Melhoria" target="_blank">
+        Emissão de Guias Contribuição de Melhoria
+    </a>
+</li>
+<li>
+    <a href="/servico/view/17/emissao-de-guias-de-obras" title="Emissão de Guias de Obras" target="_self">
+        Emissão de Guias de Obras
+    </a>
+</li>
+<li>
+    <a href="/servico/view/18/emissao-de-guias-divida-ativa" title="Emissão de Guias Divida Ativa" target="_self">
+        Emissão de Guias Divida Ativa
+    </a>
+</li>
+<li>
+    <a href="/servico/view/19/emissao-de-guias-iptu" title="Emissão de Guias IPTU" target="_self">
+        Emissão de Guias IPTU
+    </a>
+</li>
+<li>
+    <a href="/servico/view/20/emissao-de-guias-issalvara" title="Emissão de Guias ISS/Alvará" target="_blank">
+        Emissão de Guias ISS/Alvará
+    </a>
+</li>
+<li>
+    <a href="/servico/view/21/emissao-e-consulta-itbi" title="Emissão e Consulta ITBI" target="_blank">
+        Emissão e Consulta ITBI
+    </a>
+</li>
+<li>
+    <a href="/servico/view/22/emissao-de-guias-receitas-diversas" title="Emissão de Guias Receitas Diversas" target="_self">
+        Emissão de Guias Receitas Diversas
+    </a>
+</li>
+<li>
+    <a href="/servico/view/23/isencao-iptu" title="Isenção IPTU" target="_blank">
+        Isenção IPTU
+    </a>
+</li>
+<li>
+    <a href="/servico/view/24/extrato-de-debito" title="Extrato de Débito" target="_self">
+        Extrato de Débito
+    </a>
+</li>
+<li>
+    <a href="/servico/view/25/extrato-de-pagamento" title="Extrato de Pagamento" target="_self">
+        Extrato de Pagamento
+    </a>
+</li>
+<li>
+    <a href="/servico/view/26/emissao-carne-iptu" title="Emissão Carnê IPTU" target="_self">
+        Emissão Carnê IPTU
+    </a>
+</li>
+<li>
+    <a href="/servico/view/41/codigo-tributario-nacional" title="Código Tributário Nacional" target="_blank">
+        Código Tributário Nacional
+    </a>
+</li>
+<li>
+    <a href="#" title="Nível do Rio" target="_blank">
+        Nível do Rio
+    </a>
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Empresa" target="_self">
+        Empresa
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/servico/view/27/consulta-de-viabilidade" title="Consulta de Viabilidade" target="_blank">
+        Consulta de Viabilidade
+    </a>
+</li>
+<li>
+    <a href="/servico/view/28/acompanhamento-de-protocolo-e-inscricao" title="Acompanhamento de Protocolo e Inscrição" target="_blank">
+        Acompanhamento de Protocolo e Inscrição
+    </a>
+</li>
+<li>
+    <a href="/servico/view/29/formulario-solicitacao-liberalautonomo" title="Formulário Solicitação Liberal/Autônomo" target="_blank">
+        Formulário Solicitação Liberal/Autônomo
+    </a>
+</li>
+<li>
+    <a href="/servico/view/30/declaracao-de-endereco-apenas-para-correspondencia" title="Declaração de Endereço Apenas para Correspondência" target="_self">
+        Declaração de Endereço Apenas para Correspondência
+    </a>
+</li>
+<li>
+    <a href="/servico/view/31/itbi-online" title="ITBI Online" target="_self">
+        ITBI Online
+    </a>
+</li>
+<li>
+    <a href="/servico/view/32/solicitacao-de-acesso-nfe" title="Solicitação de Acesso NFe" target="_self">
+        Solicitação de Acesso NFe
+    </a>
+</li>
+<li>
+    <a href="/servico/view/33/nota-fiscal-eletronica-nfe" title="Nota Fiscal Eletrônica (NFe)" target="_blank">
+        Nota Fiscal Eletrônica (NFe)
+    </a>
+</li>
+<li>
+    <a href="/servico/view/34/declaracao-issqn" title="Declaração ISSQN" target="_blank">
+        Declaração ISSQN
+    </a>
+</li>
+<li>
+    <a href="/servico/view/35/iss-eventual" title="ISS Eventual" target="_self">
+        ISS Eventual
+    </a>
+</li>
+<li>
+    <a href="/servico/view/36/validador-de-xml" title="Validador de XML" target="_self">
+        Validador de XML
+    </a>
+</li>
+<li>
+    <a href="/servico/view/37/regin" title="REGIN" target="_blank">
+        REGIN
+    </a>
+</li>
+<li>
+    <a href="/servico/view/38/legislacao" title="Legislação" target="_self">
+        Legislação
+    </a>
+</li>
+<li>
+    <a href="/servico/view/39/certidao-negativa-de-debito" title="Certidão Negativa de Débito" target="_self">
+        Certidão Negativa de Débito
+    </a>
+</li>
+<li>
+    <a href="/servico/view/40/comprovante-de-inscricao-de-cadastro-municipal" title="Comprovante de Inscrição de Cadastro Municipal" target="_blank">
+        Comprovante de Inscrição de Cadastro Municipal
+    </a>
+</li>
+<li>
+    <a href="/servico/view/42/constituicao-federal" title="Constituição Federal" target="_blank">
+        Constituição Federal
+    </a>
+</li>
+<li>
+    <a href="/servico/view/43/situacao-cadastral-receita" title="Situação Cadastral Receita" target="_self">
+        Situação Cadastral Receita
+    </a>
+</li>
+<li>
+    <a href="/servico/view/44/inscricao-estadual" title="Inscrição Estadual" target="_blank">
+        Inscrição Estadual
+    </a>
+</li>
+<li>
+    <a href="/servico/view/45/simples-nacional" title="Simples Nacional" target="_blank">
+        Simples Nacional
+    </a>
+</li>
+<li>
+    <a href="/servico/view/46/formularios" title="Formularios" target="_self">
+        Formularios
+    </a>
+</li></ul><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Publicações" target="_self">
+        Publicações
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/licitacao" title="Licitações" target="_self">
+        Licitações
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Legislação" target="_self">
+        Legislação
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="http://www.legislacaomunicipal.com/busca_leis.php?municipio=83102640000130" title="Legislação Municipal" target="_blank">
+        Legislação Municipal
+    </a>
+</li>
+<li>
+    <a href="http://www.legislacaomunicipal.com/busca_decretos.php?municipio=83102640000130" title="Decretos Municipais" target="_blank">
+        Decretos Municipais
+    </a>
+</li>
+<li>
+    <a href="http://www.legislacaomunicipal.com/busca_portarias.php?municipio=83102640000130" title="Portarias" target="_blank">
+        Portarias
+    </a>
+</li>
+<li>
+    <a href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=2" title="Projetos de Lei" target="_self">
+        Projetos de Lei
+    </a>
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Documentos Legais" target="_self">
+        Documentos Legais
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=3" title="Áreas de Risco" target="_self">
+        Áreas de Risco
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=7" title="Devoluções Concursos" target="_self">
+        Devoluções Concursos
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=6" title="Formulários" target="_self">
+        Formulários
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=4" title="Perímetros" target="_self">
+        Perímetros
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=1" title="Planos Municipais" target="_self">
+        Planos Municipais
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=2" title="Regulamentos" target="_self">
+        Regulamentos
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=5" title="Requerimentos" target="_self">
+        Requerimentos
+    </a>
+</li></ul><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Transparência" target="_self">
+        Transparência
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="#" title="Publicações" target="_self">
+        Publicações
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="https://ituporanga.atende.net/?pg=transparencia" title="Portal da Transparência" target="_blank">
+        Portal da Transparência
+    </a>
+</li>
+<li>
+    <a href="https://radardatransparencia.atricon.org.br/" title="Radar da Transparência Pública" target="_self">
+        Radar da Transparência Pública
+    </a>
+</li>
+<li>
+    <a href="https://ituporanga.atende.net/transparencia/item/contratos-e-seus-aditivos#conteudo" title="Contratos" target="_blank">
+        Contratos
+    </a>
+</li>
+<li>
+    <a href="https://ituporanga.atende.net/transparencia/grupo/obras-publicas" title="Obras" target="_blank">
+        Obras
+    </a>
+</li>
+<li>
+    <a href="/transparencia" title="Contas Públicas" target="_self">
+        Contas Públicas
+    </a>
+</li>
+<li>
+    <a href="https://ituporanga.atende.net/transparencia/grupo/programas-e-acoes-de-governo" title="Programas e Ações" target="_blank">
+        Programas e Ações
+    </a>
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Canais de Atendimento" target="_self">
+        Canais de Atendimento
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="https://ituporanga.atende.net/#!/tipo/servico/valor/81/padrao/1" title="Acesso à Informação" target="_blank">
+        Acesso à Informação
+    </a>
+</li>
+<li>
+    <a href="https://sistema.ouvidorias.gov.br/publico/SC/Ituporanga/Manifestacao/RegistrarManifestacao" title="Ouvidoria" target="_blank">
+        Ouvidoria
+    </a>
+</li>
+<li>
+    <a href="/faq" title="Perguntas Frequentes" target="_self">
+        Perguntas Frequentes
+    </a>
+</li></ul><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Comunicação" target="_self">
+        Comunicação
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="#" title="Imprensa" target="_self">
+        Imprensa
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/noticia" title="Notícias" target="_self">
+        Notícias
+    </a>
+</li>
+<li>
+    <a href="/evento" title="Agenda de Eventos" target="_self">
+        Agenda de Eventos
+    </a>
+</li>
+<li>
+    <a href="/enquete" title="Enquetes" target="_self">
+        Enquetes
+    </a>
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Multimídia" target="_self">
+        Multimídia
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/midia-foto" title="Galeria de Fotos" target="_self">
+        Galeria de Fotos
+    </a>
+</li>
+<li>
+    <a href="/midia-video" title="Galeria de Vídeos" target="_self">
+        Galeria de Vídeos
+    </a>
+</li>
+<li>
+    <a href="/midia-audio" title="Galeria de Áudios" target="_self">
+        Galeria de Áudios
+    </a>
+</li></ul><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="https://sistema.ouvidorias.gov.br/publico/SC/Ituporanga/Manifestacao/RegistrarManifestacao" title="Ouvidoria" target="_self">
+        Ouvidoria
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+        </ul>
+    </div>
+</div>                    </div>
+
+                </div>
+            </div>
+
+            <div id="header-container">
+                <div class="row container-fluid container-logo">
+
+                    <div id="brasao" class="col-auto nopadding">
+                        <div class="img-logo">
+                            <a href="/" title="Município de Ituporanga" class="logo-link">
+                                <img class="brasao-img" src="/images/logo-horizontal-azul.png" alt="Brasão Ituporanga">                                <!-- <div class="logo-text">
+                                    <h2>PREFEITURA</h2>
+                                    <span>ITUPORANGA</span>
+                                </div> -->
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="col-auto menu-busca-wrapper nopadding">
+
+                        <section class="navbar navbar-expand-lg section-menu">
+
+                            <div class="navbar-nav d-none d-lg-flex">
+                                <!--
+DYNAMIKAWEB YII2 ADAPTIVE MENU BEGIN
+
+author: Rodrigo Dornelles <rodrigo@dynamika.com.br>
+copyright: Dynamika Soluções WEB - 2020
+license: BSD-3
+-->
+<section id="menu" class="dynamika-menu-nav-forest">
+    <ul class="dynamika-menu-ul-forest">
+        <!-- MENU ROOT (inicio) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="/" title="Início" target="_self">
+        Início
+    </a> 
+    <!-- span -->  <!-- span -->
+</li>
+<!-- MENU ROOT (institucional) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Institucional" target="_self">
+        Institucional
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (_auto)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/1/historia" title="História" target="_self">
+        História
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/view/1/plano-diretor" title="Plano Diretor" target="_self">
+        Plano Diretor
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/4/galeria-de-prefeitos" title="Galeria de Prefeitos" target="_self">
+        Galeria de Prefeitos
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (turismo)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Turismo</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?TurismoSearch%5Bq%5D=&TurismoSearch%5Bid_turismo_categoria%5D=5&TurismoSearch%5Bid%5D=" title="Pontos Turísticos" target="_self">
+        Pontos Turísticos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?TurismoSearch%5Bq%5D=&TurismoSearch%5Bid_turismo_categoria%5D=1&TurismoSearch%5Bid%5D=" title="Gastrônomia" target="_self">
+        Gastrônomia
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?TurismoSearch%5Bq%5D=&TurismoSearch%5Bid_turismo_categoria%5D=3&TurismoSearch%5Bid%5D=" title="Comércio" target="_self">
+        Comércio
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?TurismoSearch%5Bq%5D=&TurismoSearch%5Bid_turismo_categoria%5D=2&TurismoSearch%5Bid%5D=" title="Hotelaria" target="_self">
+        Hotelaria
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?TurismoSearch%5Bq%5D=&TurismoSearch%5Bid_turismo_categoria%5D=4&TurismoSearch%5Bid%5D=" title="Agência de Turismo" target="_self">
+        Agência de Turismo
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (governo) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Governo" target="_self">
+        Governo
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (secretarias-municipais)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Secretarias Municipais</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/14/gabinete-do-prefeito" title="Gabinete do Prefeito" target="_self">
+        Gabinete do Prefeito
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/2/administracao" title="Administração" target="_self">
+        Administração
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/3/agricultura-e-meio-ambiente" title="Agricultura e Meio Ambiente" target="_self">
+        Agricultura e Meio Ambiente
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/4/assistencia-social" title="Assistência Social" target="_self">
+        Assistência Social
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/5/educacao" title="Educação" target="_self">
+        Educação
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/6/fazenda" title="Fazenda" target="_self">
+        Fazenda
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/7/infraestrutura" title="Infraestrutura" target="_self">
+        Infraestrutura
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/8/planejamento-e-gestao" title="Planejamento e Gestão" target="_self">
+        Planejamento e Gestão
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/9/industria-do-comercio-e-de-servicos" title="Indústria do Comércio e de Serviços" target="_self">
+        Indústria do Comércio e de Serviços
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/10/saude" title="Saúde" target="_self">
+        Saúde
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/11/turismo-e-eventos" title="Turismo e Eventos" target="_self">
+        Turismo e Eventos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/12/urbanismo-e-obras" title="Urbanismo e Obras" target="_self">
+        Urbanismo e Obras
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/13/esporte-e-cultura" title="Esporte e Cultura" target="_self">
+        Esporte e Cultura
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://ituporanga.sc.gov.br/secretaria/view/15/defesa-civil" title="Defesa Civil" target="_self">
+        Defesa Civil
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (estrutura-administrativa)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Estrutura Administrativa</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=1" title="Departamentos" target="_self">
+        Departamentos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=2" title="Procuradorias" target="_self">
+        Procuradorias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=4" title="Setores" target="_self">
+        Setores
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=3" title="Conselhos" target="_self">
+        Conselhos
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (servicos) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Serviços" target="_self">
+        Serviços
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (cidadao)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Cidadão</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/13/certidao-negativa-contribuinte" title="Certidão Negativa Contribuinte" target="_blank">
+        Certidão Negativa Contribuinte
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/14/validacao-certidao-contribuinte" title="Validação Certidão Contribuinte" target="_blank">
+        Validação Certidão Contribuinte
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/15/emissao-de-guias-da-fiscalizacao" title="Emissão de Guias da Fiscalização" target="_blank">
+        Emissão de Guias da Fiscalização
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/16/emissao-de-guias-contribuicao-de-melhoria" title="Emissão de Guias Contribuição de Melhoria" target="_blank">
+        Emissão de Guias Contribuição de Melhoria
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/17/emissao-de-guias-de-obras" title="Emissão de Guias de Obras" target="_self">
+        Emissão de Guias de Obras
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/18/emissao-de-guias-divida-ativa" title="Emissão de Guias Divida Ativa" target="_self">
+        Emissão de Guias Divida Ativa
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/19/emissao-de-guias-iptu" title="Emissão de Guias IPTU" target="_self">
+        Emissão de Guias IPTU
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/20/emissao-de-guias-issalvara" title="Emissão de Guias ISS/Alvará" target="_blank">
+        Emissão de Guias ISS/Alvará
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/21/emissao-e-consulta-itbi" title="Emissão e Consulta ITBI" target="_blank">
+        Emissão e Consulta ITBI
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/22/emissao-de-guias-receitas-diversas" title="Emissão de Guias Receitas Diversas" target="_self">
+        Emissão de Guias Receitas Diversas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/23/isencao-iptu" title="Isenção IPTU" target="_blank">
+        Isenção IPTU
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/24/extrato-de-debito" title="Extrato de Débito" target="_self">
+        Extrato de Débito
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/25/extrato-de-pagamento" title="Extrato de Pagamento" target="_self">
+        Extrato de Pagamento
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/26/emissao-carne-iptu" title="Emissão Carnê IPTU" target="_self">
+        Emissão Carnê IPTU
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/41/codigo-tributario-nacional" title="Código Tributário Nacional" target="_blank">
+        Código Tributário Nacional
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="#" title="Nível do Rio" target="_blank">
+        Nível do Rio
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (empresa)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Empresa</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/27/consulta-de-viabilidade" title="Consulta de Viabilidade" target="_blank">
+        Consulta de Viabilidade
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/28/acompanhamento-de-protocolo-e-inscricao" title="Acompanhamento de Protocolo e Inscrição" target="_blank">
+        Acompanhamento de Protocolo e Inscrição
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/29/formulario-solicitacao-liberalautonomo" title="Formulário Solicitação Liberal/Autônomo" target="_blank">
+        Formulário Solicitação Liberal/Autônomo
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/30/declaracao-de-endereco-apenas-para-correspondencia" title="Declaração de Endereço Apenas para Correspondência" target="_self">
+        Declaração de Endereço Apenas para Correspondência
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/31/itbi-online" title="ITBI Online" target="_self">
+        ITBI Online
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/32/solicitacao-de-acesso-nfe" title="Solicitação de Acesso NFe" target="_self">
+        Solicitação de Acesso NFe
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/33/nota-fiscal-eletronica-nfe" title="Nota Fiscal Eletrônica (NFe)" target="_blank">
+        Nota Fiscal Eletrônica (NFe)
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/34/declaracao-issqn" title="Declaração ISSQN" target="_blank">
+        Declaração ISSQN
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/35/iss-eventual" title="ISS Eventual" target="_self">
+        ISS Eventual
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/36/validador-de-xml" title="Validador de XML" target="_self">
+        Validador de XML
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/37/regin" title="REGIN" target="_blank">
+        REGIN
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/38/legislacao" title="Legislação" target="_self">
+        Legislação
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/39/certidao-negativa-de-debito" title="Certidão Negativa de Débito" target="_self">
+        Certidão Negativa de Débito
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/40/comprovante-de-inscricao-de-cadastro-municipal" title="Comprovante de Inscrição de Cadastro Municipal" target="_blank">
+        Comprovante de Inscrição de Cadastro Municipal
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/42/constituicao-federal" title="Constituição Federal" target="_blank">
+        Constituição Federal
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/43/situacao-cadastral-receita" title="Situação Cadastral Receita" target="_self">
+        Situação Cadastral Receita
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/44/inscricao-estadual" title="Inscrição Estadual" target="_blank">
+        Inscrição Estadual
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/45/simples-nacional" title="Simples Nacional" target="_blank">
+        Simples Nacional
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (_auto)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/servico/view/46/formularios" title="Formularios" target="_self">
+        Formularios
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (publicacoes) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Publicações" target="_self">
+        Publicações
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (_auto)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao" title="Licitações" target="_self">
+        Licitações
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (legislacao)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Legislação</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="http://www.legislacaomunicipal.com/busca_leis.php?municipio=83102640000130" title="Legislação Municipal" target="_blank">
+        Legislação Municipal
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="http://www.legislacaomunicipal.com/busca_decretos.php?municipio=83102640000130" title="Decretos Municipais" target="_blank">
+        Decretos Municipais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="http://www.legislacaomunicipal.com/busca_portarias.php?municipio=83102640000130" title="Portarias" target="_blank">
+        Portarias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=2" title="Projetos de Lei" target="_self">
+        Projetos de Lei
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (documentos-legais)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Documentos Legais</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=3" title="Áreas de Risco" target="_self">
+        Áreas de Risco
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=7" title="Devoluções Concursos" target="_self">
+        Devoluções Concursos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=6" title="Formulários" target="_self">
+        Formulários
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=4" title="Perímetros" target="_self">
+        Perímetros
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=1" title="Planos Municipais" target="_self">
+        Planos Municipais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=2" title="Regulamentos" target="_self">
+        Regulamentos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=5" title="Requerimentos" target="_self">
+        Requerimentos
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (transparencia) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Transparência" target="_self">
+        Transparência
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (publicacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Publicações</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://ituporanga.atende.net/?pg=transparencia" title="Portal da Transparência" target="_blank">
+        Portal da Transparência
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://radardatransparencia.atricon.org.br/" title="Radar da Transparência Pública" target="_self">
+        Radar da Transparência Pública
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://ituporanga.atende.net/transparencia/item/contratos-e-seus-aditivos#conteudo" title="Contratos" target="_blank">
+        Contratos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://ituporanga.atende.net/transparencia/grupo/obras-publicas" title="Obras" target="_blank">
+        Obras
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/transparencia" title="Contas Públicas" target="_self">
+        Contas Públicas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://ituporanga.atende.net/transparencia/grupo/programas-e-acoes-de-governo" title="Programas e Ações" target="_blank">
+        Programas e Ações
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (canais-de-atendimento)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Canais de Atendimento</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://ituporanga.atende.net/#!/tipo/servico/valor/81/padrao/1" title="Acesso à Informação" target="_blank">
+        Acesso à Informação
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://sistema.ouvidorias.gov.br/publico/SC/Ituporanga/Manifestacao/RegistrarManifestacao" title="Ouvidoria" target="_blank">
+        Ouvidoria
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/faq" title="Perguntas Frequentes" target="_self">
+        Perguntas Frequentes
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (comunicacao) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Comunicação" target="_self">
+        Comunicação
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (imprensa)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Imprensa</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/noticia" title="Notícias" target="_self">
+        Notícias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/evento" title="Agenda de Eventos" target="_self">
+        Agenda de Eventos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/enquete" title="Enquetes" target="_self">
+        Enquetes
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (multimidia)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Multimídia</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-foto" title="Galeria de Fotos" target="_self">
+        Galeria de Fotos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-video" title="Galeria de Vídeos" target="_self">
+        Galeria de Vídeos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-audio" title="Galeria de Áudios" target="_self">
+        Galeria de Áudios
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (ouvidoria) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="https://sistema.ouvidorias.gov.br/publico/SC/Ituporanga/Manifestacao/RegistrarManifestacao" title="Ouvidoria" target="_self">
+        Ouvidoria
+    </a> 
+    <!-- span -->  <!-- span -->
+</li>
+    </ul>
+</section>
+<!--
+DYNAMIKAWEB YII2 ADAPTIVE MENU END
+-->                            </div>
+                        </section>
+
+                        <div class="busca-moderna dontPrint">
+                            <form id="form-busca" action="/busca/index" method="get">
+                            <input type="text" id="busca-input" name="q" placeholder="O que procura?" aria-label="Pesquisar">
+                            <input type="hidden" name="sort" value="relevancia">
+                            <button type="submit" class="btn-busca" title="Buscar">
+                                <i class="fa fa-search"></i>                             </button>
+
+                            </form>                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </header>
+
+    <div id="main">
+        
+        <!-- INICIO DO CONTEÚDO -->
+                <main>
+
+         <section class="bannerContainer" id="banner-topo">
+         
+<div class="hero-slider-wrapper" >
+    <div class="swiper" id="hero-slider-w0">
+        <div class="swiper-wrapper">
+
+                            
+                <div class="swiper-slide">
+
+                    <div class="slide-bg-image"
+                        style="background-image: url('/uploads/banner/5846/maior_UvjbBiQVm2sjNaEs_BrDfoSvU9i3n57j.jpg');"
+                        data-swiper-parallax="50%">
+                    </div>
+
+                    <div class="slide-overlay"></div>
+
+                    <div class="slide-content" data-swiper-parallax="-300">
+
+                        <p class="slide-subtitle">
+                                                    </p>
+
+                                                
+                        
+                    </div>
+                </div>
+            
+        </div>
+
+        <!-- <div class="swiper-pagination"></div> -->
+        <!-- <div class="swiper-button-next" style="color: white;"></div>
+        <div class="swiper-button-prev" style="color: white;"></div> -->
+    </div>
+</div>
+
+      </section>
+   
+<!-- BLOCO LINKS UTEIS -->
+   <section id="link-capa" class="section-padding-fundo bg-light">
+      <div class="container-fluid">
+         
+<div class="carousel-cards-section" style="--carousel-theme-color: var(--color-primary);">
+    
+    
+    <div class="carousel-cards-wrapper">
+        
+        
+        <div class="swiper swiper-grid" id="cards-swiper-w1">
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://defesacivil.ituporanga.sc.gov.br/" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Defesa Civil">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">crisis_alert</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Defesa Civil</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://ituporanga.atende.net/?pg=transparencia" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Portal da Transparência">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">search</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Portal da Transparência</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://diariomunicipal.sc.gov.br/?r=site/portal&q=&id=&categoria=&dataInicial=&dataFinal=&excluiTermos=&codigoEntidade=134" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Diário Oficial">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">newspaper</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Diário Oficial</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://ituporanga.sc.gov.br/pagina/view/6?slug=concurso-publico-2026" target="_self" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Concurso Público 2026">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">edit_document</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Concurso Público 2026</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://sala-do-empreendedor-de-ituporanga.webnode.page/" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Sala do Empreendedor">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">work</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Sala do Empreendedor</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/departamento/view/4?slug=vigilancia-sanitaria" target="_self" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Vigilância Sanitária">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">sanitizer</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Vigilância Sanitária</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/pagina/view/2/coleta-seletiva" target="_self" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Coleta Seletiva">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">recycling</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Coleta Seletiva</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/pagina/view/5" target="_self" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Informações LGPD">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">info</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Informações LGPD</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://docs.google.com/forms/d/e/1FAIpQLSdVamdvWaa_-latVKbP23R4m5hP3CvUNfKySBEIig9eVO64Ag/viewform" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Cadastro de Crianças e Adolescentes TEA">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">diversity_4</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Cadastro de Crianças e Adolescentes TEA</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://drive.google.com/file/d/1Pf9rDYcV4fKc6vdH2xSpi6b0uBCjPUkz/view" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Avaliação do Plano Municipal de Educação">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">analytics</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Avaliação do Plano Municipal de Educação</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/documento/view/6/formulario-para-manifestacao-de-interesse-de-doacao-ao-patrimonio-mobiliario" target="_self" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Doação ao Patrimônio Imobiliário">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">volunteer_activism</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Doação ao Patrimônio Imobiliário</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://www.cloudsoftcam.com.br/SC/ITUPORANGA/upload/2022/04/202204051827291649194049eae850.pdf" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Lei Orgânica">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">gavel</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Lei Orgânica</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="	/pagina/view/8" target="_self" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Balcão Municipal de Empregros">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">badge</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Balcão Municipal de Empregros</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://ituporanga.atende.net/#!/tipo/servico/valor/81/padrao/1" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Acesso à Informação">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">info</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Acesso à Informação</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://falabr.cgu.gov.br/publico/sc/Ituporanga/Manifestacao/RegistrarManifestacao" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Registrar Reclamação">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">report</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Registrar Reclamação</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://listadeespera.saude.sc.gov.br/#/home" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Fila de Espera do SUS">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">hourglass_bottom</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Fila de Espera do SUS</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://nfse-ituporanga.atende.net/autoatendimento/servicos/nfse?redirected=1" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Nota Fiscal">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">note_alt</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Nota Fiscal</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/servico/view/47/matriculas-para-educacao-infantil-integral-creche" target="_self" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Vagas em Creches">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">child_care</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Vagas em Creches</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=2" target="_self" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Projetos de Lei">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">gavel</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Projetos de Lei</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://drive.google.com/drive/folders/1K7DEnZCehqRBG52x8PYJ3-N3-E1Dys_B" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Portal de Convênios">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">check_small</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Portal de Convênios</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://sistema.ouvidorias.gov.br/publico/SC/Ituporanga/Manifestacao/RegistrarManifestacao" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Ouvidoria">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">support_agent</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Ouvidoria</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/documento/view/2/regulamentacao-dos-passeios-publicos" target="_self" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Regulamentação dos Passeios Públicos">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">tour</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Regulamentação dos Passeios Públicos</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=7" target="_self" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Devoluções Concursos">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">replay</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Devoluções Concursos</span>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/pagina/view/3/telefones-uteis" target="_blank" class="service-duotone-v1" style="--dynamic-main: var(--color-primary); --dynamic-highlight: var(--color-secondary);" title="Telefones Úteis">
+    
+            <div class="service-duotone-v1-icon">
+            <span class="material-symbols-outlined">phone</span>
+        </div>
+        
+    <span class="service-duotone-v1-title">Telefones Úteis</span>
+</a>                    </div>
+                            </div>
+            
+                            <div class="swiper-pagination"></div>
+                    </div>
+
+            </div>
+</div>
+
+      </div>
+   </section>
+
+<!-- BLOCO NOTÍCIAS -->
+<section id="noticia-capa" class="margin-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-ce1-24">
+            <div class="titulo-ponto">
+               <h2>Últimas Notícias</h2>
+            </div>
+         </div>
+      </div>
+
+      
+         
+<div class="carousel-cards-section" style="--carousel-theme-color: var(--color-secondary);">
+    
+    
+    <div class="carousel-cards-wrapper">
+        
+        
+        <div class="swiper " id="cards-swiper-w2">
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                        
+<div class="card-glass-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-glass-img">
+        <img src="/uploads/noticia/7479/media_cuLo-iMv2TDwHWTd-CsswLB0oDO4cHxm.jpeg" alt="Prefeitura de Ituporanga divulga lista preliminar de candidatos às 20 moradias populares" loading="lazy">    </div>
+    
+    <div class="card-glass-body">
+        <div class="card-glass-blur"></div>
+        <div class="card-glass-content">
+            <small class="card-glass-date">17/11/2026</small>
+            <a href="/noticia/view/3179/prefeitura-de-ituporanga-divulga-lista-preliminar-de-candidatos-as-20-moradias-populares" class="card-glass-title">
+                Prefeitura de Ituporanga divulga lista preliminar de candidatos às 20 moradias populares            </a>
+        </div>
+    </div>
+</div>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<div class="card-glass-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-glass-img">
+        <img src="/uploads/noticia/7474/media_tiM-OHa3FWoit40gTj9QmsDnnElESQT4.png" alt="Prefeitura de Ituporanga publica edital de matrículas para o ano letivo de 2027" loading="lazy">    </div>
+    
+    <div class="card-glass-body">
+        <div class="card-glass-blur"></div>
+        <div class="card-glass-content">
+            <small class="card-glass-date">11/11/2026</small>
+            <a href="/noticia/view/3178/prefeitura-de-ituporanga-publica-edital-de-matriculas-para-o-ano-letivo-de-2027" class="card-glass-title">
+                Prefeitura de Ituporanga publica edital de matrículas para o ano letivo de 2027            </a>
+        </div>
+    </div>
+</div>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<div class="card-glass-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-glass-img">
+        <img src="/uploads/noticia/7464/media_LdR9XyOpH67H8k_s2jerwaGqatrVa0Fq.jpeg" alt="Três novas caçambas reforçam estrutura de atendimento da Prefeitura de Ituporanga" loading="lazy">    </div>
+    
+    <div class="card-glass-body">
+        <div class="card-glass-blur"></div>
+        <div class="card-glass-content">
+            <small class="card-glass-date">26/10/2026</small>
+            <a href="/noticia/view/3176/tres-novas-cacambas-reforcam-estrutura-de-atendimento-da-prefeitura-de-ituporanga" class="card-glass-title">
+                Três novas caçambas reforçam estrutura de atendimento da Prefeitura de Ituporanga            </a>
+        </div>
+    </div>
+</div>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<div class="card-glass-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-glass-img">
+        <img src="/uploads/noticia/7465/media_qmoHj7mcDUDvjDjkiRFUNn5uyA0_q0yy.jpeg" alt="Prefeitura de Ituporanga abre processo seletivo para contratação de profissionais da Saúde" loading="lazy">    </div>
+    
+    <div class="card-glass-body">
+        <div class="card-glass-blur"></div>
+        <div class="card-glass-content">
+            <small class="card-glass-date">24/10/2026</small>
+            <a href="/noticia/view/3177/prefeitura-de-ituporanga-abre-processo-seletivo-para-contratacao-de-profissionais-da-saude" class="card-glass-title">
+                Prefeitura de Ituporanga abre processo seletivo para contratação de profissionais da Saúde            </a>
+        </div>
+    </div>
+</div>                    </div>
+                            </div>
+            
+                            <div class="swiper-pagination"></div>
+                    </div>
+
+            </div>
+</div>
+
+
+         <div class="row mt-2">
+            <div class="col-ce1-24 text-center">
+               <a class="btn-secondary" href="/noticia/index">Todas as Notícias</a>            </div>
+         </div>
+
+      
+   </div>
+</section>
+
+
+
+<!-- BLOCO SECRETARIAS -->
+   <section class="section-padding-fundo bg-light margin-section">
+      <div class="row container-fluid">
+         <!-- LICITAÇÕES -->
+         <div class="col-ce1-24 col-tb1-12 col-pc2-8">
+            <div class="titulo-lateral">
+               <h2>Próximas Licitações</h2>
+            </div>
+
+            <div class="row nomargin">
+                                                      <div class="col-12 mb-3 box-licitacao">
+                        
+<a href="/licitacao/view/1873/edital-registro-de-precos-n-332026-processo-licitatorio-n-4212026" class="card-lic-status-wrapper" style="--dynamic-accent: var(--color-primary)" data-pjax="0">
+    <span class="lic-status-badge lic-status-green">Aberto</span>
+
+    <div class="card-lic-date-box">
+        <span class="card-lic-day">09</span>
+        <span class="card-lic-month">dez.</span>
+                    <span class="card-lic-time"><i class="fa-regular fa-clock"></i> 09:00</span>
+            </div>
+
+    <div class="card-lic-body">
+        
+                    <div class="card-lic-meta" style="color: var(--dynamic-accent); font-weight: 800; font-size: 0.8rem; text-transform: uppercase;">
+                Processo Nº 2026/421_            </div>
+        
+        <h3 class="card-lic-title">
+            EDITAL - REGISTRO DE PREÇOS Nº 33/2026 PROCESSO LICITATÓRIO Nº 421/2026        </h3>
+
+                    <div class="card-lic-meta">
+                <i class="fa-solid fa-link"></i>
+                <span class="text-truncate" style="max-width: 200px;"> https://bnc.org.br </span>
+            </div>
+        
+                    <div class="card-lic-desc">
+                 CONTRATAÇÃO DE EMPRESA PARA O FORNECIMENTO DE ÁGUA MINERAL ENVASADA DESTINADA A ATENDER AS NECESS...            </div>
+            </div>
+</a>                     </div>
+                  
+                           </div>
+         </div>
+                     <div class="nopadding col-ce1-24 col-tb1-12 col-pc2-16 responsive-margin">
+               <div class="titulo-lateral">
+                  <h2>Secretarias Municipais</h2>
+               </div>
+               <div class="nopadding col-ce1-24 text-center home-secretaria">
+                  
+<div class="carousel-cards-section" style="--carousel-theme-color: var(--color-primary);">
+    
+    
+    <div class="carousel-cards-wrapper">
+        
+        
+        <div class="swiper " id="cards-swiper-w3">
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/13/esporte-e-cultura" class="card-sec-inst" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-inst-body">
+        <div class="card-sec-inst-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+        
+        <h3 class="card-sec-inst-title">
+            Esporte e Cultura        </h3>
+
+        
+            </div>
+
+    <div class="card-sec-inst-footer">
+        <div class="card-sec-inst-avatar">
+            <img src="/images/indisponivel.png" alt=" Edésio Bilck Neto" loading="lazy">        </div>
+        <div class="card-sec-inst-person">
+            <span class="card-sec-inst-name"> Edésio Bilck Neto</span>
+            <span class="card-sec-inst-role">Secretário de Esporte e Eventos</span>
+        </div>
+    </div>
+
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/7/infraestrutura" class="card-sec-inst" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-inst-body">
+        <div class="card-sec-inst-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+        
+        <h3 class="card-sec-inst-title">
+            Infraestrutura        </h3>
+
+        
+            </div>
+
+    <div class="card-sec-inst-footer">
+        <div class="card-sec-inst-avatar">
+            <img src="/images/indisponivel.png" alt="Wilmar Vandresen" loading="lazy">        </div>
+        <div class="card-sec-inst-person">
+            <span class="card-sec-inst-name">Wilmar Vandresen</span>
+            <span class="card-sec-inst-role">Secretário de Infraestrutura</span>
+        </div>
+    </div>
+
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/11/turismo-e-eventos" class="card-sec-inst" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-inst-body">
+        <div class="card-sec-inst-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+        
+        <h3 class="card-sec-inst-title">
+            Turismo e Eventos        </h3>
+
+        
+            </div>
+
+    <div class="card-sec-inst-footer">
+        <div class="card-sec-inst-avatar">
+            <img src="/images/indisponivel.png" alt=" Edésio Bilck Neto" loading="lazy">        </div>
+        <div class="card-sec-inst-person">
+            <span class="card-sec-inst-name"> Edésio Bilck Neto</span>
+            <span class="card-sec-inst-role">Secretário de Turismo e Eventos</span>
+        </div>
+    </div>
+
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/10/saude" class="card-sec-inst" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-inst-body">
+        <div class="card-sec-inst-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+        
+        <h3 class="card-sec-inst-title">
+            Saúde        </h3>
+
+        
+            </div>
+
+    <div class="card-sec-inst-footer">
+        <div class="card-sec-inst-avatar">
+            <img src="/images/indisponivel.png" alt=" Aline de Abreu Postais" loading="lazy">        </div>
+        <div class="card-sec-inst-person">
+            <span class="card-sec-inst-name"> Aline de Abreu Postais</span>
+            <span class="card-sec-inst-role">Secretária da Saúde</span>
+        </div>
+    </div>
+
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/14/gabinete-do-prefeito" class="card-sec-inst" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-inst-body">
+        <div class="card-sec-inst-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+        
+        <h3 class="card-sec-inst-title">
+            Gabinete do Prefeito        </h3>
+
+        
+            </div>
+
+    <div class="card-sec-inst-footer">
+        <div class="card-sec-inst-avatar">
+            <img src="/uploads/pessoa/542/media_13RUcSFp0oqLF-XczkvM42mJzt4BocMu.jpg" alt="Geison Kurtz" loading="lazy">        </div>
+        <div class="card-sec-inst-person">
+            <span class="card-sec-inst-name">Geison Kurtz</span>
+            <span class="card-sec-inst-role">Prefeito</span>
+        </div>
+    </div>
+
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/5/educacao" class="card-sec-inst" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-inst-body">
+        <div class="card-sec-inst-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+        
+        <h3 class="card-sec-inst-title">
+            Educação        </h3>
+
+        
+            </div>
+
+    <div class="card-sec-inst-footer">
+        <div class="card-sec-inst-avatar">
+            <img src="/images/indisponivel.png" alt="Sandra Regina Berns Clasen" loading="lazy">        </div>
+        <div class="card-sec-inst-person">
+            <span class="card-sec-inst-name">Sandra Regina Berns Clasen</span>
+            <span class="card-sec-inst-role">Secretária de Educação</span>
+        </div>
+    </div>
+
+</a>                    </div>
+                            </div>
+            
+                            <div class="swiper-pagination"></div>
+                    </div>
+
+            </div>
+</div>
+
+               </div>
+            </div>
+               </div>
+   </section>
+
+   <section class="container-fluid margin-section py-5">
+      <div class="row nomargin">
+         <div class="nopadding col-ce1-24">
+            <div class="titulo-ponto text-left">
+               <h2>Roteiros Turísticos</h2>
+            </div>
+            <div class="nopadding col-ce1-24 text-center home-secretaria">
+               
+<div class="carousel-cards-section" style="--carousel-theme-color: var(--color-secondary);">
+    
+    
+    <div class="carousel-cards-wrapper">
+        
+        
+        <div class="swiper " id="cards-swiper-w4">
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/turismo/view/49/salto-grande" class="tour-over-wrapper" style="--dynamic-accent: var(--color-secondary)" data-pjax="0">
+    
+    <img class="tour-over-bg" src="/uploads/turismo/528/media_wO69bfMj9VIDDVYBGbp5rB-TOsC0lqFB.jpg" alt="Salto Grande" loading="lazy">    
+    <div class="tour-over-overlay">
+        <span class="tour-over-cat">Pontos Turísticos</span>
+        
+        <div class="tour-over-content">
+            <h3 class="tour-over-title">Salto Grande</h3>
+            
+                            <p class="tour-over-desc">
+                    O Salto Grande, que deu nome a cidade, é a mais importante atração turística. Já estava...                </p>
+                    </div>
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/turismo/view/50/igreja-matriz-santo-estevao" class="tour-over-wrapper" style="--dynamic-accent: var(--color-secondary)" data-pjax="0">
+    
+    <img class="tour-over-bg" src="/uploads/turismo/529/media_7olQ29_fZ6R4DxZ5Y31PQzVb2oruFHkA.jpg" alt="Igreja Matriz, Santo Estevão" loading="lazy">    
+    <div class="tour-over-overlay">
+        <span class="tour-over-cat">Pontos Turísticos</span>
+        
+        <div class="tour-over-content">
+            <h3 class="tour-over-title">Igreja Matriz, Santo Estevão</h3>
+            
+                            <p class="tour-over-desc">
+                    Na época do Vigário Frei Artur, foi iniciada a construção de uma igreja maior, devido a...                </p>
+                    </div>
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/turismo/view/53/gruta-nossa-senhora-de-lurdes" class="tour-over-wrapper" style="--dynamic-accent: var(--color-secondary)" data-pjax="0">
+    
+    <img class="tour-over-bg" src="/uploads/turismo/533/media_YkkdP4x46Ngzirc6Dg9ycF49eRqLURfC.webp" alt="Gruta Nossa Senhora de Lurdes" loading="lazy">    
+    <div class="tour-over-overlay">
+        <span class="tour-over-cat">Pontos Turísticos</span>
+        
+        <div class="tour-over-content">
+            <h3 class="tour-over-title">Gruta Nossa Senhora de Lurdes</h3>
+            
+                            <p class="tour-over-desc">
+                    Um dos pontos turísticos de Ituporanga é a gruta. Ela existe desde 1949, graças aos esf...                </p>
+                    </div>
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/turismo/view/59/portal-monumento-colonizadores" class="tour-over-wrapper" style="--dynamic-accent: var(--color-secondary)" data-pjax="0">
+    
+    <img class="tour-over-bg" src="/uploads/turismo/539/media_GkWKLagyC15GIu-SHW9eWzcxkL_IarjL.jpg" alt="Portal - Monumento Colonizadores" loading="lazy">    
+    <div class="tour-over-overlay">
+        <span class="tour-over-cat">Pontos Turísticos</span>
+        
+        <div class="tour-over-content">
+            <h3 class="tour-over-title">Portal - Monumento Colonizadores</h3>
+            
+                            <p class="tour-over-desc">
+                    Descendentes de alemães, italianos e portugueses, os colonos chegaram a partir de 1912....                </p>
+                    </div>
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/turismo/view/57/parque-nacional-da-cebola" class="tour-over-wrapper" style="--dynamic-accent: var(--color-secondary)" data-pjax="0">
+    
+    <img class="tour-over-bg" src="/uploads/turismo/537/media_9LDO_qfQO0-IVb2AQlii0hlWLE5KaOYo.jpg" alt="Parque Nacional da Cebola" loading="lazy">    
+    <div class="tour-over-overlay">
+        <span class="tour-over-cat">Pontos Turísticos</span>
+        
+        <div class="tour-over-content">
+            <h3 class="tour-over-title">Parque Nacional da Cebola</h3>
+            
+                            <p class="tour-over-desc">
+                    A Festa Nacional da Cebola surgiu diante da necessidade de divulgar o produto cebola e ...                </p>
+                    </div>
+    </div>
+</a>                    </div>
+                            </div>
+            
+                            <div class="swiper-pagination"></div>
+                    </div>
+
+            </div>
+</div>
+
+            </div>
+         </div>
+      </div>
+   </section>
+</main>        <!-- FINAL DO CONTEÚDO -->
+    </div>
+
+    <footer class="site-footer margin-section">
+        <div>
+            <div class="footer-content container-fluid">
+
+                <div class="footer-section brand-section">
+                    <div class="footer-logo d-flex align-items-center">
+                        <a class="mr-3" href="/">
+                            <img src="/images/logo-horizontal-branca.png" alt="Ituporanga - SC">                        </a>
+                        <!-- <h3>Prefeitura Municipal de<br><strong>Ituporanga - SC</strong></h3> -->
+                    </div>
+
+                    <div class="contact-info">
+                                                    <p><i class="fa-solid fa-location-dot"></i> Rua Joaquim Boing, Nº 40, Centro - Ituporanga</p>
+                        
+                                                    <p><i class="fa-solid fa-phone"></i> (47) 3533-1211</p>
+                        
+                        <p><i class="fa-solid fa-envelope"></i> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cea9afaca7a0abbaab8ea7babbbea1bcafa0a9afe0bdade0a9a1b8e0acbc">[email&#160;protected]</a></p>
+
+                                                    <p class="schedule">
+                                <i class="fa-regular fa-clock"></i>
+                                <strong>Atendimento:</strong> Das 07h às 13h                            </p>
+                                            </div>
+
+                    <div class="footer-social">
+                                                    <a href="https://pt-br.facebook.com/ItuporangaSC/" target="_blank" title="Facebook" class="s-fb">
+                                <i class="fa-brands fa-facebook-f"></i>
+                            </a>
+                        
+                                                    <a href="https://www.instagram.com/prefeituraituporanga/" target="_blank" title="Instagram" class="s-insta">
+                                <i class="fa-brands fa-instagram"></i>
+                            </a>
+                        
+                        
+                        
+                        
+                                            </div>
+                </div>
+
+                <div class="footer-section links-section">
+                    <h4>Previsão do tempo</h4>
+                    
+<div class="weather-widget theme-dark background-transparent" role="region" aria-label="Previsão do tempo">
+
+            <div class="weather-current" aria-live="polite">
+
+            <div class="weather-left">
+                <div class="temp">20°C</div>
+                <div class="desc">Nublado</div>
+
+                <div class="desc-sub">
+                    Máx: 25° • Mín: 13°
+                </div>
+            </div>
+
+            <div class="weather-right" aria-hidden="true">
+                <div class="icon-wrap"><i class="wi wi-cloudy current-icon weather-cloudy" style="font-size:38px"></i></div>
+                <div class="wind">Vento: 4.2 km/h</div>
+            </div>
+
+        </div>
+    
+
+
+            <div class="weather-forecast">
+
+            <h4 class="visually-hidden">Próximos dias</h4>
+
+            <div class="forecast-scroll" role="list">
+
+                
+                    
+                    <div class="forecast-item"
+                        role="listitem"
+                        tabindex="0"
+                        data-tooltip="Nublado">
+
+                        <div class="f-date">27/11</div>
+                        <div class="f-icon"><i class="wi wi-cloudy day-icon weather-cloudy" style="font-size:38px"></i></div>
+
+                        <div class="f-temps">
+                            <span class="f-temp-max">25°</span>
+                            <span class="f-temp-min">13°</span>
+                        </div>
+
+                        <div class="f-desc">Nublado</div>
+
+                    </div>
+
+                
+                    
+                    <div class="forecast-item"
+                        role="listitem"
+                        tabindex="0"
+                        data-tooltip="Pancadas de chuva">
+
+                        <div class="f-date">28/11</div>
+                        <div class="f-icon"><i class="wi wi-showers day-icon weather-rainy" style="font-size:38px"></i></div>
+
+                        <div class="f-temps">
+                            <span class="f-temp-max">20°</span>
+                            <span class="f-temp-min">16°</span>
+                        </div>
+
+                        <div class="f-desc">Pancadas de chuva</div>
+
+                    </div>
+
+                
+            </div>
+        </div>
+    
+</div>
+
+
+<style>
+    .visually-hidden {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+    }
+</style>                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="container-fluid d-flex align-items-center" style="justify-content: space-between;">
+                    <div>
+                        <a href="https://webmail.ituporanga.sc.gov.br/" target="_blank" title="Webmail" class="text-white">
+                            <i class="fa fa-envelope"> </i> Webmail
+                        </a>
+                    </div>
+                    <p class="nomargin">&copy; 2026 Prefeitura Municipal de Ituporanga - SC. Todos os direitos reservados.</p>
+                    <div class="col-ce1-4 barra-inferior text-right">
+                        <a href="http://www.dynamika.com.br" target="_blank" title="Dynamika Soluções Web">
+                            <img src="/images/selo-dynamika.png" alt="">                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+        
+
+<div id="modal-cadastro" class="fade modal" role="dialog" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+
+<h5 class="modal-title"><strong>Área do Usuário</strong></h5>
+<hr />
+
+<div class="row justify-content-center">
+    <div id="aba-conta" class="col-12 col-lg-6 text-center">
+        <h5><strong>Login</strong></h5>
+        <p>Se você já possui cadastro no site, baste inserir os dados de acesso nos campos abaixo.</p>
+        <ul id="w11" class="nav nav-tabs nav-justified" role="tablist"><li class="nav-item"><a class="nav-link active" href="#w11-tab0" data-toggle="tab" role="tab" aria-controls="w11-tab0" aria-selected="true">CPF/CNPJ</a></li>
+<li class="nav-item"><a class="nav-link" href="#w11-tab1" data-toggle="tab" role="tab" aria-controls="w11-tab1" aria-selected="false">E-mail</a></li></ul>
+<div class="tab-content"><div id="w11-tab0" class="tab-pane active"><form id="w7" class="login-form" action="/conta/login" method="post">
+<input type="hidden" name="_csrf-frontend" value="nx5NzaycHCGtaBBvjn6DFmPwgFHiaRa70JgPqEwIe9rXJguC5a5tEcM6Zhi9NdxxM8TqC4EgJtPl2lmQKVxWlA=="><div class="form-group field-input-username-cpfcnpj required">
+<label for="input-username-cpfcnpj">CPF ou CNPJ</label>
+<input type="text" id="input-username-cpfcnpj" class="form-control" name="LoginFrontForm[username]" aria-required="true" data-plugin-inputmask="inputmask_7260b05d">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-password required">
+<label for="loginfrontform-password">Senha</label>
+<input type="password" id="loginfrontform-password" class="form-control" name="LoginFrontForm[password]" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-recaptcha">
+<label for="loginfrontform-recaptcha">Verificação</label>
+<input type="hidden" id="loginfrontform-recaptcha" class="form-control" name="LoginFrontForm[reCaptcha]"><div id="w8_c" class="captcha-size captcha-center captcha-no-print " data-sitekey="asdasd"></div>
+
+<div class="invalid-feedback"></div>
+</div><button type="submit" class="btn btn-success" name="login-button">Acessar</button></form></div>
+<div id="w11-tab1" class="tab-pane"><form id="w9" class="login-form" action="/conta/login" method="post">
+<input type="hidden" name="_csrf-frontend" value="nx5NzaycHCGtaBBvjn6DFmPwgFHiaRa70JgPqEwIe9rXJguC5a5tEcM6Zhi9NdxxM8TqC4EgJtPl2lmQKVxWlA=="><div class="form-group field-loginfrontform-username required">
+<label for="loginfrontform-username">E-mail</label>
+<input type="text" id="loginfrontform-username" class="form-control" name="LoginFrontForm[username]" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-password required">
+<label for="loginfrontform-password">Senha</label>
+<input type="password" id="loginfrontform-password" class="form-control" name="LoginFrontForm[password]" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-recaptcha">
+<label for="loginfrontform-recaptcha">Verificação</label>
+<input type="hidden" id="loginfrontform-recaptcha" class="form-control" name="LoginFrontForm[reCaptcha]"><div id="w10_c" class="captcha-size captcha-center captcha-no-print " data-sitekey="asdasd"></div>
+
+<div class="invalid-feedback"></div>
+</div><button type="submit" class="btn btn-success" name="login-button">Acessar</button></form></div></div>    </div>
+    <div class="col-12 col-lg-6 text-center">
+        <h5><strong>Cadastro</strong></h5>
+        <p>Não possui cadastro junto à Prefeitura? Então preencha os dados e nos envie. No próximo acesso basta colocar os dados de usuário e senha.</p>
+        <br />
+        <a class="btn-padrao-conta" href="/conta/cadastrar?tipo=pf"><i class="fa fa-user-alt"></i> <br />Pessoa Física</a>        <a class="btn-padrao-conta" href="/conta/cadastrar?tipo=pj"><i class="fa fa-building"></i> <br />Pessoa Jurídica</a>    </div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/acessibilidade.js?v=1781112633"></script>
+<script src="//js.hcaptcha.com/1/api.js?onload=dynamikacaptchaw8&amp;render=explicit"></script>
+<script src="//js.hcaptcha.com/1/api.js?onload=dynamikacaptchaw10&amp;render=explicit"></script>
+<script src="/assets/54776095/jquery.js?v=1693229950"></script>
+<script src="/assets/5d67b0c5/yii.js?v=1751010173"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/assets/222a2c90/js/banner.js?v=1781112633"></script>
+<script src="/assets/f8f8a60a/js/cards.js?v=1781112634"></script>
+<script src="/assets/c6709976/js/bootstrap.bundle.js?v=1781113465"></script>
+<script src="/assets/26d67cd6/sweetalert2.all.min.js?v=1781113465"></script>
+<script src="/js/site.js?v=1781112633"></script>
+<script src="/assets/1c9f8b28/js/modernizr.custom.js?v=1755795172"></script>
+<script src="/assets/1c9f8b28/js/dlmenu.js?v=1755795172"></script>
+<script src="/assets/1c9f8b28/js/script.js?v=1755795172"></script>
+<script src="/assets/31ed07b6/script.js?v=1631210132"></script>
+<script src="/assets/608c52b/js/weather.js?v=1781112634"></script>
+<script src="/assets/992c435b/jquery.inputmask.js?v=1717147048"></script>
+<script src="/assets/5d67b0c5/yii.validation.js?v=1751010173"></script>
+<script src="/assets/af58aed8/captcha.js?v=1640022146"></script>
+<script src="/assets/5d67b0c5/yii.activeForm.js?v=1751010173"></script>
+<script>document.addEventListener('DOMContentLoaded', async () => {
+    const scriptElementVlibras = document.createElement('script');
+    scriptElementVlibras.type = 'text/javascript';
+    scriptElementVlibras.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+    scriptElementVlibras.addEventListener('load', async () => {
+        await new window.VLibras.Widget('https://vlibras.gov.br/app');
+    });
+
+    await document.body.insertAdjacentHTML('beforeend', `<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>`);
+    await document.head.appendChild(scriptElementVlibras);
+});
+$(function(){
+    $(document).on('submit', '.login-form', function(e){
+        var form = this;
+        e.preventDefault();
+        var postData = new FormData(form);
+
+        $.ajax({
+            url: $(this).prop('action'),
+            type: 'POST',
+            data:  postData,
+            contentType: false,
+            cache: false,
+            processData:false,
+            dataType: 'json',
+            beforeSend: function(){
+                //$.LoadingOverlay("show");
+            },
+            success: function(result) {
+                if (result.success) {
+                    $('#modal-cadastro').modal('hide');
+                    swal("Aviso", result.message, "success");
+                    $(form)[0].reset();
+                    document.querySelectorAll('.login').forEach((el) => { el.style.display = "none"})
+                    document.querySelectorAll('.logado').forEach((el) => { el.style.display = "initial"})
+
+                    if(document.login_rastreio){
+                        const click = new Event("click");
+                        document.login_rastreio.dispatchEvent(click);
+                    } else {
+                        setTimeout(() => {
+                            window.location.href = '/conta';
+                        }, 1500);
+                    }
+                    
+                    return true;
+                }
+                swal("Erro", result.message, "error");
+            },
+            error: function(error) {
+                var msg = 'Não foi possível enviar a requisição. Por favor, tente mais tarde.';
+                swal("Erro", msg , "error");
+                console.log(error.responseText);
+            },
+            complete: function() {
+                //$.LoadingOverlay("hide");
+            }
+        });
+    });
+});
+</script>
+<script>jQuery(function ($) {
+initCarouselBanner('#hero-slider-w0');
+initCarouselCards('#cards-swiper-w1', {"breakpoints":{"320":{"slidesPerView":1,"grid":{"rows":2}},"768":{"slidesPerView":3,"spaceBetween":20,"grid":{"rows":2}},"1024":{"slidesPerView":4,"spaceBetween":10,"grid":{"rows":2}},"1679":{"slidesPerView":5,"spaceBetween":10,"grid":{"rows":2}}},"autoplay":false,"showPagination":true,"showNavigation":false,"rows":2});
+initCarouselCards('#cards-swiper-w2', {"breakpoints":{"640":{"slidesPerView":1.2,"spaceBetween":5},"768":{"slidesPerView":2,"spaceBetween":5},"1024":{"slidesPerView":3,"spaceBetween":15},"1400":{"slidesPerView":4,"spaceBetween":15}},"autoplay":false,"showPagination":true,"showNavigation":false,"rows":1});
+initCarouselCards('#cards-swiper-w3', {"breakpoints":{"640":{"slidesPerView":1,"spaceBetween":15},"1400":{"slidesPerView":2,"spaceBetween":15}},"autoplay":false,"showPagination":true,"showNavigation":false,"rows":1});
+initCarouselCards('#cards-swiper-w4', {"breakpoints":{"640":{"slidesPerView":1,"spaceBetween":15},"1400":{"slidesPerView":4,"spaceBetween":15}},"autoplay":false,"showPagination":true,"showNavigation":false,"rows":1});
+    document.querySelectorAll('.logado').forEach((el) => { el.style.display = "none"})
+jQuery("#input-username-cpfcnpj").inputmask(inputmask_7260b05d);
+jQuery('#w7').yiiActiveForm([{"id":"input-username-cpfcnpj","name":"username","container":".field-input-username-cpfcnpj","input":"#input-username-cpfcnpj","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022CPF ou CNPJ\u0022 não pode ficar em branco."});}},{"id":"loginfrontform-password","name":"password","container":".field-loginfrontform-password","input":"#loginfrontform-password","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Senha\u0022 não pode ficar em branco."});}}], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+jQuery('#w9').yiiActiveForm([{"id":"loginfrontform-username","name":"username","container":".field-loginfrontform-username","input":"#loginfrontform-username","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022E-mail\u0022 não pode ficar em branco."});yii.validation.email(value, messages, {"pattern":/^[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,"fullPattern":/^[^@]*<[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?>$/,"allowName":false,"message":"\u0022E-mail\u0022 não é um endereço de e-mail válido.","enableIDN":false,"skipOnEmpty":1});}},{"id":"loginfrontform-password","name":"password","container":".field-loginfrontform-password","input":"#loginfrontform-password","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Senha\u0022 não pode ficar em branco."});}}], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+jQuery('#w11').tab();
+jQuery('#modal-cadastro').modal({"show":false});
+});</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610f2a73c1164b4',t:'MTc5NTc4MDU2OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610f2a73c1164b4',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>

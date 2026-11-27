@@ -1,0 +1,1865 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Agape Consultoria" />
+<meta name="reply-to" content="" />
+<title>PREFEITURA MUNICIPAL DE JOÃO NEIVA - ES</title>
+<meta name="description" content="JOÃO NEIVA é um município do estado do Espírito Santo, no Brasil. Sua população estimada em 2015, segundo o Instituto Brasileiro de Geografia e..." />
+
+<meta property="og:title" content="PREFEITURA MUNICIPAL DE JOÃO NEIVA - ES" />
+<meta property="og:site_name" content="PREFEITURA MUNICIPAL DE JOÃO NEIVA - ES" />
+<meta property="og:url" content="https://joaoneiva.es.gov.br/" />
+<meta property="og:type" content="government" />
+<meta property="og:description" content="JOÃO NEIVA é um município do estado do Espírito Santo,..." />
+<meta property="og:image" content="https://joaoneiva.es.gov.br/assets/img/logotipo-share.png" />
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PREFEITURA MUNICIPAL DE JOÃO NEIVA - ES" />
+<meta name="twitter:description" content="JOÃO NEIVA é um município do estado do Espírito Santo, no Brasil. Sua população estimada em 2015, segundo o Instituto Brasileiro de Geografia e..." />
+<meta name="twitter:image" content="https://joaoneiva.es.gov.br/assets/img/logotipo-share.png" />
+
+<link rel='shortcut icon' type='image/x-icon' href='https://joaoneiva.es.gov.br/assets/img/favicon.ico' />
+<!-- ================================
+Importa o Pre-Loader ================ -->
+<link rel="stylesheet" href="https://joaoneiva.es.gov.br/statics/assets/plugins/loaders/loaders.css-master/loaders.css?v=1795780603" />
+<!-- ================================ -->
+
+
+<link rel='stylesheet' href='https://joaoneiva.es.gov.br/statics/bootstrap/css/bootstrap.min.css?v=1795780603' type='text/css' />
+
+<link rel="stylesheet" href="https://joaoneiva.es.gov.br/statics/assets/plugins/prettyPhoto/css/prettyPhoto.css?v=1795780603" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://joaoneiva.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.css?v=1795780603" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" type="text/css" media="screen" />
+
+<link href='https://joaoneiva.es.gov.br/statics/font-awesome/font-awesome-7.0.1/css/all.min.css?v=1795780603' rel='stylesheet' type='text/css'>
+<link href='https://joaoneiva.es.gov.br/statics/font-awesome/font-awesome-6.7.2/css/all.min.css?v=1795780603' rel='stylesheet' type='text/css'>
+<link href='https://joaoneiva.es.gov.br/statics/font-awesome/font-awesome-5.15.4/css/all.min.css?v=1795780603' rel='stylesheet' type='text/css'>
+<link href='https://joaoneiva.es.gov.br/statics/font-awesome/css/font-awesome.min.css?v=1795780603' rel='stylesheet' type='text/css'>
+<link href='https://joaoneiva.es.gov.br/statics/frontend/acessibilidade/style_acessibilidade.css?v=1795780603' rel='stylesheet' type='text/css'>
+<script src='https://joaoneiva.es.gov.br/statics/frontend/acessibilidade/js_acessibilidade.js?v=1795780603'></script>
+<link href='https://unpkg.com/swiper@8/swiper-bundle.min.css?v=1795780603' rel='stylesheet' type='text/css'>
+<link href='https://joaoneiva.es.gov.br/statics/assets/plugins/validation/css/validationEngine.jquery.min.css?v=1795780603' rel='stylesheet' type='text/css'>
+<link href='https://joaoneiva.es.gov.br/assets/css/style_site.css?v=1795780603' rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <section>
+    <div id="preloader">
+        <div class="loaders">
+            <div class="preloader">
+                <div class="loader-inner ball-clip-rotate">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- Bloco Acessibilidade -->
+<section>
+    <nav class="navbar navbar-default back-primary2" id="acessibilidade">
+        <div class="container-fluid">
+            <div class="row bloco-middle-center">
+                <div class="col-lg-11 col-xs-12">
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header navbar-right text-right">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" role="button" data-target="#MENU-ACESSIBILIDADE" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-toggle collapsed visible-xs" data-toggle="collapse" data-target="#MENU-ACESSIBILIDADE" aria-expanded="false" title="Menu Acessibilidade">ACESSIBILIDADE</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="MENU-ACESSIBILIDADE">
+                        <ul class="nav navbar-nav col-sm-6">
+                            <li><a class="acessibilidade_fonte" accesskey="4" onClick="fonte('d');" title="Diminuir tamanho da fonte"><span>A<sup>-</sup></span> Diminuir fonte</a>
+                            </li>
+                            <li><a class="acessibilidade_fonte" accesskey="3" onClick="fonte('a');" title="Aumentar tamanho da fonte"><span>A<sup>+</sup></span> Aumentar fonte</a>
+                            </li>
+                            <li><a accesskey="5" onclick="ativar_contraste()" title="Contraste do Site"><span><i class="glyphicon glyphicon-adjust"></i></span> Contraste</a>
+                            </li>
+                            <li><a href="https://joaoneiva.es.gov.br/acessibilidade" accesskey="6" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Acessibilidade do site"><span><img src="https://joaoneiva.es.gov.br/statics/assets/img/acessibilidade/acessibilidade-universal.png" alt="" style="width:12px;"></span> Acessibilidade</a></li>
+
+                            <li><a href="https://joaoneiva.es.gov.br/acessibilidade/nvda" accesskey="7" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Acessibilidade NVDA - Leitor de Tela"><span><i class="fa fa-assistive-listening-systems" aria-hidden="true"></i></span> NVDA - Leitor de Tela</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right col-sm-6">
+                            <li><a href="#bloco-logo" title="Ir para o topo" accesskey="1"><span>1</span> Ir para o topo</a></li>
+                            <li><a href="#pagina_site" title="Ir para o conteúdo" accesskey="2"><span>2</span> Ir para o conteúdo</a></li>
+                            <li><a href="#horarios" title="Ir para o rodapé"><span>3</span> Ir para o rodapé</a></li>
+                            <li class="dropdown">
+                                <a class=" dropdown-toggle submenu-institucional" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Links dos Sistemas"><span><i class="fa fa-chevron-down"></i></span> Sistemas </a>
+                                <ul class="dropdown-menu">
+
+                                                                                                                <li><a href="https://joaoneiva.prefeiturasempapel.com.br/Sistema/Login.aspx?continue=Sistema/default.aspx" target="_blank" title="Ir para Processo Eletrônico">Processo Eletrônico</a></li>
+                                                                                                                <li><a href="https://joaoneiva.prefeiturasempapel.com.br/portal/login.aspx" target="_blank" title="Ir para o Portal do Processo Eletrônico">Portal do Processo Eletrônico</a></li>
+                                                                                                                <li><a href="https://webmail-seguro.com.br/joaoneiva.es.gov.br/" target="_blank" title="Ir para o webmail">Webmail</a></li>
+                                                                            <li><a href="https://joaoneiva.es.gov.br/sistema/" target="_blank" title="Ir para intranet">Intranet</a></li>
+
+                                    <!-- <li><a href="https://joaoneiva.es.gov.br/pagina/popup/2156" target="_blank" title="Ir para LGPD">LGPD</a></li> -->
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+</section>
+<!-- / Bloco Acessibilidade -->
+
+    <!-- Bloco Logo -->
+    <section>
+        <div class="container-fluid hidden-xs" id="bloco-logo">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-sm-12 bloco-vertical-middle justify-content-space-beetween">
+                    <div class="col-sm-4 no-padding">
+                        <a href="https://joaoneiva.es.gov.br/" title="Direcionar para a Home do Site">
+                            <img class="navbar-brand img-responsive" id="logo-menu" src="https://joaoneiva.es.gov.br/assets/img/logo_site.png" alt="LOGO DE PREFEITURA MUNICIPAL DE JOÃO NEIVA - ES" />
+                        </a>
+                    </div>
+                    
+                    <div class="col-sm-8 pad-right-0 bloco-vertical-middle justify-content">
+                        <div class="imagem-selo-cidade">
+                          <img src="https://joaoneiva.es.gov.br/assets/img/Selo-diamante-Joao-Neiva.png" alt="Selo diamante 2024">
+                        </div>
+                        <ul class="d-flex justify-content">
+                            <li class='presentation '><a class='' href='/sitemap'  title='Direcionar para Mapa do Site'> Mapa do Site</a></li><li class='presentation '><a class='' href='https://joaoneiva-es.portaltp.com.br/consultas/repasses.aspx'  title='Direcionar para Parcerias do MROSC'> Parcerias do MROSC</a></li><li class='presentation '><a class='' href='/pagina/ler/2121/assistencia-farmaceutica-'  title='Direcionar para Assistência Farmacêutica'> Assistência Farmacêutica</a></li>                        </ul>
+                        <form class="form-padrao hidden" action="https://joaoneiva.es.gov.br/busca">
+                            <fieldset class="no-padding d-flex no-margin">
+                                <input type="search" class="form-control" name="q" id="q" placeholder="Pesquisar..." />
+                                <span class="input-group-btn d-flex">
+                                    <button class="btn btn-default" type="button" onclick="openSearch()">
+                                      <img style="height:28px" src="https://joaoneiva.es.gov.br/statics/assets/img/lupa.svg" alt="lupa da busca">
+                                    </button>
+                                </span>
+                            </fieldset>
+                        </form>
+                        <button class="btn btn-default img-circle botao-busca back-cinza" type="button" onclick="openSearch()">
+                          <img style="height:28px" src="https://joaoneiva.es.gov.br/statics/assets/img/lupa.svg" alt="lupa da busca">
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Bloco Logo -->
+
+    <!-- Bloco Menu -->
+    <section>
+        <header class="container-fluid" id="bloco-menu">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12">
+                    <nav class="navbar">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar">&nbsp;</span>
+                                <span class="icon-bar">&nbsp;</span>
+                                <span class="icon-bar">&nbsp;</span>
+                            </button>
+                            <a href="https://joaoneiva.es.gov.br/" title="Direcionar para a Home do Site"><img class="navbar-brand visible-xs" src="https://joaoneiva.es.gov.br/assets/img/logo_site.png" alt="Logo de PREFEITURA MUNICIPAL DE JOÃO NEIVA - ES" /></a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="nav navbar-nav">
+                                <li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para JOÃO NEIVA'>
+                
+                JOÃO NEIVA
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/pagina/ler/14/historia' target="_blank" title='Direcionar para História'> História</a></li><li class='presentation '><a class='' href='/pagina/ler/117/hino-municipal' target="_blank" title='Direcionar para Hino Municipal'> Hino Municipal</a></li><li class='presentation '><a class='' href='/pagina/ler/2/simbolos-municipais' target="_blank" title='Direcionar para Símbolos Municipais'> Símbolos Municipais</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para INSTITUCIONAL'>
+                
+                INSTITUCIONAL
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/pagina/ler/119/prefeito-e-vice-prefeito' target="_blank" title='Direcionar para Prefeito e Vice-Prefeito'> Prefeito e Vice-Prefeito</a></li><li class='presentation '><a class='' href='/secretaria' target="_blank" title='Direcionar para Secretarias'> Secretarias</a></li><li class='presentation '><a class='' href='/pagina/ler/2091/autarquias-' target="_blank" title='Direcionar para Autarquias'> Autarquias</a></li><li class='presentation '><a class='' href='/pagina/ler/122/estrutura-organizacional' target="_blank" title='Direcionar para Estrutura Organizacional'> Estrutura Organizacional</a></li></ul>
+          </li><li class='presentation '><a class='' href='/pagina/ler/2236/legislacao'  title='Direcionar para LEGISLAÇÃO'> LEGISLAÇÃO</a></li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para TRANSPARÊNCIA'>
+                
+                TRANSPARÊNCIA
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='https://joaoneiva-es.portaltp.com.br/' target="_blank" title='Direcionar para Portal da Transparência'> Portal da Transparência</a></li><li class='presentation '><a class='' href='/pagina/ler/2210/portal-da-transparencia-saude' target="_blank" title='Direcionar para Portal da Transparência - Saúde'> Portal da Transparência - Saúde</a></li><li class='presentation '><a class='' href='https://ipsjon-es.portaltp.com.br/' target="_blank" title='Direcionar para Portal da Transparência - IPSJON'> Portal da Transparência - IPSJON</a></li><li class='presentation '><a class='' href='/e-sic' target="_blank" title='Direcionar para e-Sic'> e-Sic</a></li><li class='presentation '><a class='' href='/e-ouv' target="_blank" title='Direcionar para e-Ouv'> e-Ouv</a></li><li class='presentation '><a class='' href='pagina/ler/2228/carta-de-servicos'  title='Direcionar para Carta de Serviços'> Carta de Serviços</a></li><li class='presentation '><a class='' href='https://joaoneiva-es.portaltp.com.br/api/dadosabertos.aspx' target="_blank" title='Direcionar para Dados Abertos'> Dados Abertos</a></li><li class='presentation '><a class='' href='/pagina/ler/2157/lai-municipal' target="_blank" title='Direcionar para Lei de Acesso à Informação (LAI)'> Lei de Acesso à Informação (LAI)</a></li><li class='presentation '><a class='' href='/pagina/ler/2217/encarregado-de-dados-pessoais' target="_blank" title='Direcionar para Encarregado de Dados Pessoais'> Encarregado de Dados Pessoais</a></li><li class='presentation '><a class='' href='https://s3.amazonaws.com/el.com.br/portal/uploads/1918/arquivos/9106B7241CBEE434A9A2FA431BD725A5.pdf' target="_blank" title='Direcionar para Conflito de Interesses'> Conflito de Interesses</a></li><li class='presentation '><a class='' href='/pagina/ler/2208/combate-a-corrupcao' target="_blank" title='Direcionar para Combate à Corrupção'> Combate à Corrupção</a></li><li class='presentation '><a class='' href='https://s3.amazonaws.com/el.com.br/portal/uploads/1918/arquivos/D6EBB745FA63AFB4EC76DF133AD53B28.pdf ' target="_blank" title='Direcionar para Proteção ao Denunciante'> Proteção ao Denunciante</a></li><li class='presentation '><a class='' href='https://s3.amazonaws.com/el.com.br/portal/uploads/1918/arquivos/9106B7241CBEE434A9A2FA431BD725A5.pdf' target="_blank" title='Direcionar para Código de Ética Municipal'> Código de Ética Municipal</a></li><li class='presentation '><a class='' href='https://paineldecontrole.tcees.tc.br/municipio/2022/joao-neiva/visaoGeral' target="_blank" title='Direcionar para Sistema CidadES'> Sistema CidadES</a></li><li class='presentation '><a class='' href='https://geoobras.tce.es.gov.br/cidadao/Obras/ObrasConsultar.aspx' target="_blank" title='Direcionar para Sistema Geo-obras'> Sistema Geo-obras</a></li><li class='presentation '><a class='' href='https://ioes.dio.es.gov.br/dom' target="_blank" title='Direcionar para Diário Oficial dos Municípios'> Diário Oficial dos Municípios</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para INFORMAÇÃO'>
+                
+                INFORMAÇÃO
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/documento?tipo=1' target="_blank" title='Direcionar para Concursos'> Concursos</a></li><li class='presentation '><a class='' href='/selecao' target="_blank" title='Direcionar para Processo Seletivo'> Processo Seletivo</a></li><li class='presentation '><a class='' href='/pagina/ler/2390/-conselho-tutelar'  title='Direcionar para Conselho Tutelar'> Conselho Tutelar</a></li><li class='presentation '><a class='' href='/licitacao' target="_blank" title='Direcionar para Licitações'> Licitações</a></li><li class='presentation '><a class='' href='/pagina/ler/2260/pnab-politica-nacional-aldir-blanc'  title='Direcionar para Política Nacional Aldir Blanc (PNAB)'> Política Nacional Aldir Blanc (PNAB)</a></li><li class='presentation '><a class='' href='/pagina/ler/2267/dispensa-de-licitacao'  title='Direcionar para Dispensa de Licitação'> Dispensa de Licitação</a></li><li class='presentation '><a class='' href='/pagina/ler/2125/conselhos-municipais' target="_blank" title='Direcionar para Conselhos Municipais'> Conselhos Municipais</a></li><li class='presentation '><a class='' href='/pagina/ler/2121/assistencia-farmaceutica-' target="_blank" title='Direcionar para Assistência Farmacêutica'> Assistência Farmacêutica</a></li><li class='presentation '><a class='' href='/pagina/ler/2370/regulamento-do-concurso-de-cafe-conilon' target="_blank" title='Direcionar para Regulamento do Concurso de Café Conilon'> Regulamento do Concurso de Café Conilon</a></li><li class='presentation '><a class='' href='/pagina/ler/2372/concurso-ragazza-italia-mia'  title='Direcionar para Concurso Ragazza Italia Mia'> Concurso Ragazza Italia Mia</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para SERVIÇO'>
+                
+                SERVIÇO
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/uploads/filemanager/telefones-alterados_PDF.pdf' target="_blank" title='Direcionar para Canais de Atendimento às Mulheres'> Canais de Atendimento às Mulheres</a></li><li class='presentation '><a class='' href='https://servicos.cloud.el.com.br/es-joaoneiva-pm/services/' target="_blank" title='Direcionar para Serviços Online'> Serviços Online</a></li><li class='presentation '><a class='' href='https://es-joaoneiva-pm-nfs.cloud.el.com.br//paginas/sistema/login.jsf' target="_blank" title='Direcionar para Nota Fiscal Eletrônica'> Nota Fiscal Eletrônica</a></li><li class='presentation '><a class='' href='http://iss00.el.com.br:8080/bancario/paginas/sistema/login.xhtml ' target="_blank" title='Direcionar para ISS Bancário'> ISS Bancário</a></li><li class='presentation '><a class='' href='/pagina/ler/2365/empreendedor' target="_blank" title='Direcionar para Empreendedor'> Empreendedor</a></li><li class='presentation '><a class='' href='/pagina/ler/116/calendario-escolar' target="_blank" title='Direcionar para Calendário Escolar'> Calendário Escolar</a></li><li class='presentation '><a class='' href='/pagina/ler/2187/matricula-e-rematricula-escolar' target="_blank" title='Direcionar para Matrícula e Rematrícula Escolar'> Matrícula e Rematrícula Escolar</a></li><li class='presentation '><a class='' href='/pagina/ler/2368/auxilio-transporte-para-estudantes-do-ifes' target="_blank" title='Direcionar para Auxílio Transporte para Estudantes do IFES'> Auxílio Transporte para Estudantes do IFES</a></li><li class='presentation '><a class='' href='/pagina/ler/2159/perguntas-frequentes' target="_blank" title='Direcionar para Perguntas Frequentes'> Perguntas Frequentes</a></li><li class='presentation '><a class='' href='/pagina/ler/90/cronograma-de-atendimento-de-medicos-da-semsa' target="_blank" title='Direcionar para Cronograma de Atendimento da ESF'> Cronograma de Atendimento da ESF</a></li><li class='presentation '><a class='' href='/pagina/ler/2154/cronograma-de-atendimento-do-crefneiva' target="_blank" title='Direcionar para Cronograma de Atendimento do Crefneiva'> Cronograma de Atendimento do Crefneiva</a></li><li class='presentation '><a class='' href='/pagina/ler/2167/-atendimento-rg' target="_blank" title='Direcionar para Atendimento RG'> Atendimento RG</a></li><li class='presentation '><a class='' href='/pagina/ler/2146/cronograma-do-funcional' target="_blank" title='Direcionar para Cronograma do Funcional'> Cronograma do Funcional</a></li><li class='presentation '><a class='' href='/pagina/ler/2259/servidor' target="_blank" title='Direcionar para Servidor'> Servidor</a></li><li class='presentation '><a class='' href='/pagina/ler/2191/meio-ambiente' target="_blank" title='Direcionar para Meio Ambiente'> Meio Ambiente</a></li><li class='presentation '><a class='' href='https://docs.google.com/forms/d/e/1FAIpQLSdoYe2N-eIRo9bozOk1lRcpxQKVaZcAnMghVE_f5q3Mc_Q7tg/viewform?pli=1'  title='Direcionar para Inscrições do PetJN'> Inscrições do PetJN</a></li><li class='presentation '><a class='' href='/pagina/ler/2109/cronograma-dos-servicos-de-limpeza' target="_blank" title='Direcionar para Cronograma dos Serviços de Limpeza'> Cronograma dos Serviços de Limpeza</a></li><li class='presentation '><a class='' href='https://s3.amazonaws.com/el.com.br/portal/uploads/1918/arquivos/E99AD24DAE5EB6ED2AD164A4CE88320E.pdf' target="_blank" title='Direcionar para Calendário de Feriados e Pontos Facultativos'> Calendário de Feriados e Pontos Facultativos</a></li><li class='presentation '><a class='' href='/pagina/ler/2265/calendario-de-eventos' target="_blank" title='Direcionar para Calendário de Eventos'> Calendário de Eventos</a></li><li class='presentation '><a class='' href='/pagina/ler/2107/vagas-de-emprego'  title='Direcionar para Vagas de Emprego'> Vagas de Emprego</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para DEFESA CIVIL'>
+                
+                DEFESA CIVIL
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='https://docs.google.com/forms/d/e/1FAIpQLSedliWyK9IwveLOUAoFA4JrSmxeNCEC1F85s2nYzwEBbRiSPw/viewform' target="_blank" title='Direcionar para Cadastro de Voluntários'> Cadastro de Voluntários</a></li><li class='presentation '><a class='' href='/pagina/ler/2170/plano-de-contingencia-de-protecao-e-defesa-civil' target="_blank" title='Direcionar para Plano de Contingência de Proteção e Defesa Civil'> Plano de Contingência de Proteção e Defesa Civil</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para COMUNICAÇÃO'>
+                
+                COMUNICAÇÃO
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/noticia' target="_blank" title='Direcionar para Notícias'> Notícias</a></li><li class='presentation '><a class='' href='/pagina/ler/2376/agenda-de-reunioes-dos-gestores' target="_blank" title='Direcionar para Agenda Oficial'> Agenda Oficial</a></li><li class='presentation '><a class='' href='/pagina/ler/104/telefones' target="_blank" title='Direcionar para Telefones Úteis'> Telefones Úteis</a></li><li class='presentation '><a class='' href='/pagina/ler/2229/whatsapp'  title='Direcionar para WhatsApp'> WhatsApp</a></li><li class='presentation '><a class='' href='/pagina/ler/2231/e-mails'  title='Direcionar para E-mails'> E-mails</a></li></ul>
+          </li>                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </section>
+    <!-- / Bloco Menu -->
+
+    
+    
+    <div id="conteudo" tabindex="-1"></div> <!-- /conteudo - acessibilidade -->
+    <div class="ajustar_fonte pagina_site" id="pagina_site">
+
+        <!--Conteúdo-->
+        <!-- Bloco Notícias -->
+<section>
+    <div class="container-fluid top4">
+        <div class="row">
+            <!-- Swiper -->
+            <div class="swiper destaques">
+                <div class="swiper-wrapper">
+                    <a class="swiper-slide" href=https://joaoneiva.es.gov.br/noticia/ler/4205/caminhao-cinema-percorrera-cidades-do-entorno-da-estrada-de-ferro-para-lancar-filmes-feitos-por-moradores title=Notícia: Caminhão-cinema percorrerá cidades do entorno da Estrada de Ferro para lançar filmes feitos por moradores>
+                            <div class="imagem">
+                                <img class="img-responsive" src="https://joaoneiva.es.gov.br/uploads/filemanager/noticias/inventario-da-infancia---cvm-iv---foto---mariana-de-lima-3.jpg" alt="Imagem da notícia: Caminhão-cinema percorrerá cidades do entorno da Estrada de Ferro para lançar filmes feitos por moradores" />
+                            </div>
+                            <div class="texto">
+                                <h4><img src="https://joaoneiva.es.gov.br/assets/img/material-symbols_nest-clock-farsight-analog-outline.svg" alt="Ícone da data" />26 de novembro de 2026</h4>
+                                <h2 class="no-margin">Caminhão-cinema percorrerá cidades do entorno da Estrada de Ferro para lançar filmes feitos por moradores</h2>
+                                
+                            </div>
+                        </a><a class="swiper-slide" href=https://joaoneiva.es.gov.br/noticia/ler/4204/biblioteca-municipal-de-joao-neiva-lanca-projeto-de-palavras-cruzadas-voltado-a-pessoas-com-60-anos-ou-mais title=Notícia: Biblioteca Municipal de João Neiva lança projeto de palavras-cruzadas voltado a pessoas com 60 anos ou mais>
+                            <div class="imagem">
+                                <img class="img-responsive" src="https://joaoneiva.es.gov.br/uploads/filemanager/noticias/img_8622.jpg" alt="Imagem da notícia: Biblioteca Municipal de João Neiva lança projeto de palavras-cruzadas voltado a pessoas com 60 anos ou mais" />
+                            </div>
+                            <div class="texto">
+                                <h4><img src="https://joaoneiva.es.gov.br/assets/img/material-symbols_nest-clock-farsight-analog-outline.svg" alt="Ícone da data" />24 de novembro de 2026</h4>
+                                <h2 class="no-margin">Biblioteca Municipal de João Neiva lança projeto de palavras-cruzadas voltado a pessoas com 60 anos ou mais</h2>
+                                
+                            </div>
+                        </a><a class="swiper-slide" href=https://joaoneiva.es.gov.br/noticia/ler/4202/joao-neiva-mantem-destaque-estadual-em-transparencia-publica-e-alcanca-992-pontos-em-ranking-de-2026 title=Notícia: João Neiva mantém destaque estadual em transparência pública e alcança 99,2 pontos em ranking de 2026>
+                            <div class="imagem">
+                                <img class="img-responsive" src="https://joaoneiva.es.gov.br/uploads/filemanager/noticias/15D5ECFA-2131-448E-BB04-D98ECC410DE7-1.JPG" alt="Imagem da notícia: João Neiva mantém destaque estadual em transparência pública e alcança 99,2 pontos em ranking de 2026" />
+                            </div>
+                            <div class="texto">
+                                <h4><img src="https://joaoneiva.es.gov.br/assets/img/material-symbols_nest-clock-farsight-analog-outline.svg" alt="Ícone da data" />26 de outubro de 2026</h4>
+                                <h2 class="no-margin">João Neiva mantém destaque estadual em transparência pública e alcança 99,2 pontos em ranking de 2026</h2>
+                                
+                            </div>
+                        </a>                </div>
+                <div class="swiper-control">
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <!-- /.Swiper -->
+        </div>
+    </div>
+</section>
+<!--/.Bloco Notícias -->
+
+
+<!-- Bloco Últimas Notícias -->
+ <section>
+    <div class="container-fluid bot3 top4" id="noticias">
+        <div class="row bloco-center">
+            <div class="col-lg-11 col-xs-12">
+                <div class="titulo">
+                    <h2> ÚLTIMAS NOTÍCIAS </h2>
+                </div>
+                <div class="row">
+                                        <div class="col-sm-3 col-xs-12">
+                        <a href="https://joaoneiva.es.gov.br/noticia/ler/4203/prefeitura-de-joao-neiva-abre-cadastro-de-pre-matricula-para-creches-da-rede-municipal-em-2027" class="">
+                            <div class="imagem">
+                                <img class="img-responsive" style="width: 100%; height: 100%" src="https://joaoneiva.es.gov.br/uploads/filemanager/noticias/IMG_8239.jpg" alt="Notícia: Prefeitura de João Neiva abre cadastro de pré-matrícula para creches da rede municipal em 2027" />
+                            </div>
+                            <div class="texto">
+                                <h5><img src="https://joaoneiva.es.gov.br/assets/img/material-symbols_nest-clock-farsight-analog-outline-black.svg" alt="Ícone da data" />09 de novembro de 2026</h5>
+                                <h3>Prefeitura de João Neiva abre cadastro de pré-matrícula para creches da rede municipal em 2027</h3>
+                            </div>
+                        </a>
+                    </div>
+                                        <div class="col-sm-3 col-xs-12">
+                        <a href="https://joaoneiva.es.gov.br/noticia/ler/4201/dia-d-da-vacinacao-antirrabica-sera-neste-sabado-17-em-joao-neiva" class="">
+                            <div class="imagem">
+                                <img class="img-responsive" style="width: 100%; height: 100%" src="https://joaoneiva.es.gov.br/uploads/filemanager/noticias/7-gato-e-cachorro-1-1.%5B1%5D.jpg" alt="Notícia: Dia D da vacinação antirrábica será neste sábado (17) em João Neiva" />
+                            </div>
+                            <div class="texto">
+                                <h5><img src="https://joaoneiva.es.gov.br/assets/img/material-symbols_nest-clock-farsight-analog-outline-black.svg" alt="Ícone da data" />14 de outubro de 2026</h5>
+                                <h3>Dia D da vacinação antirrábica será neste sábado (17) em João Neiva</h3>
+                            </div>
+                        </a>
+                    </div>
+                                        <div class="col-sm-3 col-xs-12">
+                        <a href="https://joaoneiva.es.gov.br/noticia/ler/4200/joao-neiva-realiza-acoes-de-prevencao-a-saude-da-mulher-durante-o-outubro-rosa" class="">
+                            <div class="imagem">
+                                <img class="img-responsive" style="width: 100%; height: 100%" src="https://joaoneiva.es.gov.br/uploads/filemanager/noticias/x-73yd4l-lytziexyiujonhhboebbd5ooq_ntord5_zluz4jgqxthr-sqkyyh_na92m4cdarwteakt1rf2rfqdllut25rx9winnaw5r4nm7e_vfhaoyc6d6f0kwv5zfdsfiqsvu4qqiz73wa_lk7slssnr3dfkabgeeebzywwww3ujc_31ss8yric59jyb_z.jpg" alt="Notícia: João Neiva realiza ações de prevenção à saúde da mulher durante o Outubro Rosa" />
+                            </div>
+                            <div class="texto">
+                                <h5><img src="https://joaoneiva.es.gov.br/assets/img/material-symbols_nest-clock-farsight-analog-outline-black.svg" alt="Ícone da data" />09 de outubro de 2026</h5>
+                                <h3>João Neiva realiza ações de prevenção à saúde da mulher durante o Outubro Rosa</h3>
+                            </div>
+                        </a>
+                    </div>
+                                        <div class="col-sm-3 col-xs-12">
+                        <a href="https://joaoneiva.es.gov.br/noticia/ler/4199/outubro-rosa-tera-aulao-gratuito-e-cafe-da-manha-compartilhado-em-joao-neiva" class="">
+                            <div class="imagem">
+                                <img class="img-responsive" style="width: 100%; height: 100%" src="https://joaoneiva.es.gov.br/uploads/filemanager/noticias/IMG_2028.jpg" alt="Notícia: Outubro Rosa terá aulão gratuito e café da manhã compartilhado em João Neiva" />
+                            </div>
+                            <div class="texto">
+                                <h5><img src="https://joaoneiva.es.gov.br/assets/img/material-symbols_nest-clock-farsight-analog-outline-black.svg" alt="Ícone da data" />09 de outubro de 2026</h5>
+                                <h3>Outubro Rosa terá aulão gratuito e café da manhã compartilhado em João Neiva</h3>
+                            </div>
+                        </a>
+                    </div>
+                                    </div>
+                <div class="row text-center top3">
+                    <a href="https://joaoneiva.es.gov.br/noticias" class="botao botao-primary1" title="VER MAIS NOTÍCIAS">VER MAIS NOTÍCIAS</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.Bloco Últimas Notícias -->
+
+<!-- Bloco Acesso Rápido -->
+<section>
+    <div class="container-fluid bot3 top4">
+        <div class="row bloco-center">
+            <div class="col-lg-11 col-xs-12">
+                <div class="row">
+                    <div class="col-lg-6 col-xs-12" id="imagem-semana">
+                        <div class="titulo">
+                            <h2> IMAGEM DA SEMANA </h2>
+                        </div>
+                                                  <div class="imagem">
+                                                              <img src="https://joaoneiva.es.gov.br/uploads/filemanager/imagem-da-semana/img_8478-1.png" alt="Imagem da semana" class="img-responsive" />
+                          </div>
+                          <h2>Um contraste de cores que chama a atenção e dá um toque especial a esse cenário da zona rural de João Neiva.</h2>
+                                            </div>
+                    <div class="col-lg-6 col-xs-12" id="acesso-rapido">
+                        <div class="titulo">
+                            <h2> ACESSO RÁPIDO </h2>
+                        </div>
+                        <ul class='navbar nav'>
+                  <li>
+                    <a href='https://joaoneiva-es.portaltp.com.br/' title='PORTAL DA TRANSPARÊNCIA' class='bloco-sombra ' target="_blank">
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/portal_da_transparencia_1.png alt='Exibe a foto do item: PORTAL DA TRANSPARÊNCIA' />
+                      <p>PORTAL DA TRANSPARÊNCIA</p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='/licitacao' title='LICITAÇÕES' class='bloco-sombra ' target="_blank">
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/licitacoes_1-1.png alt='Exibe a foto do item: LICITAÇÕES' />
+                      <p>LICITAÇÕES</p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='/pagina/ler/2220/ouvidoria-e-e-sic' title='E-OUV, E-SIC E COMBATE À CORRUPÇÃO' class='bloco-sombra ' target="_blank">
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/ouvidoria-e-sic-1-1.png alt='Exibe a foto do item: E-OUV, E-SIC E COMBATE À CORRUPÇÃO' />
+                      <p>E-OUV, E-SIC E COMBATE À CORRUPÇÃO</p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='/pagina/ler/2233/servicos-online' title='SERVIÇOS ONLINE' class='bloco-sombra ' target="_blank">
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/servicos_online_1-1-1.png alt='Exibe a foto do item: SERVIÇOS ONLINE' />
+                      <p>SERVIÇOS ONLINE</p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='https://es-joaoneiva-pm-nfs.cloud.el.com.br//paginas/sistema/login.jsf' title='NOTA FISCAL ELETRÔNICA' class='bloco-sombra ' >
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/nota_fiscal_eletronica_1.png alt='Exibe a foto do item: NOTA FISCAL ELETRÔNICA' />
+                      <p>NOTA FISCAL ELETRÔNICA</p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='/pagina/ler/2191/meio-ambiente' title='MEIO AMBIENTE ' class='bloco-sombra ' target="_blank">
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/portal-do-meio-ambiente-1-1.png alt='Exibe a foto do item: MEIO AMBIENTE ' />
+                      <p>MEIO AMBIENTE </p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='/pagina/ler/2229/whatsapp' title='CONTATOS' class='bloco-sombra ' >
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/telefones_uteis_1-1-1.png alt='Exibe a foto do item: CONTATOS' />
+                      <p>CONTATOS</p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='/pagina/ler/2068/processo-seletivo-e-concurso-publico' title='PROCESSO SELETIVO E CONCURSO PÚBLICO' class='bloco-sombra ' target="_blank">
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/processo-seletivo-e-concurso-publico-1-1-1.png alt='Exibe a foto do item: PROCESSO SELETIVO E CONCURSO PÚBLICO' />
+                      <p>PROCESSO SELETIVO E CONCURSO PÚBLICO</p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='/uploads/filemanager/pdf/Canais_de_atendimento_s_mulheres.pdf' title='CANAIS DE ATENDIMENTO ÀS MULHERES' class='bloco-sombra ' target="_blank">
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/disque_mulher_2_9.png alt='Exibe a foto do item: CANAIS DE ATENDIMENTO ÀS MULHERES' />
+                      <p>CANAIS DE ATENDIMENTO ÀS MULHERES</p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='/cartaservico' title='CARTA DE SERVIÇOS' class='bloco-sombra ' target="_blank">
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/carta-de-servico-ao-usuario-1-1.png alt='Exibe a foto do item: CARTA DE SERVIÇOS' />
+                      <p>CARTA DE SERVIÇOS</p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='/pagina/ler/2365/empreendedor' title='EMPREENDEDOR' class='bloco-sombra ' target="_blank">
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/cadastro-de-voluntarios-1-1_resized.png alt='Exibe a foto do item: EMPREENDEDOR' />
+                      <p>EMPREENDEDOR</p>
+                    </a>
+                  </li>
+                
+                  <li>
+                    <a href='/cartaservico/servico/servidor/27/protocolo-eletronico' title='PROCESSO ELETRÔNICO' class='bloco-sombra ' target="_blank">
+                      <img src=https://joaoneiva.es.gov.br/uploads/filemanager/Icones/icones-2/processo-eletronico-1.png alt='Exibe a foto do item: PROCESSO ELETRÔNICO' />
+                      <p>PROCESSO ELETRÔNICO</p>
+                    </a>
+                  </li>
+                </ul>                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.Bloco Acesso Rápido -->
+
+<!-- Bloco Informativos -->
+<section>
+    <div class="container-fluid top3 bot3" id="informativo">
+        <div class="row bloco-center">
+            <div class="col-lg-11 col-xs-12">
+                <div class="titulo bloco-vertical-middle">
+                    <h2> INFORMATIVOS </h2>
+                </div>
+                <div class="bloco-informativo top3">
+                                            <a href="/pagina/ler/2126/o-que-fazer-em-joao-neiva" title="O que fazer em João Neiva">
+                            <img class="img-responsive" src="https://joaoneiva.es.gov.br//uploads/filemanager/informativos/jn-2.jpg" alt="O que fazer em João Neiva" />
+                        </a>
+                                            <a href="/pagina/ler/2142/iptu" title="IPTU 2026">
+                            <img class="img-responsive" src="https://joaoneiva.es.gov.br//uploads/filemanager/informativos/chatgpt-image-12-de-mai--de-2026-10_41_03.png" alt="IPTU 2026" />
+                        </a>
+                                            <a href="/pagina/ler/2107/vagas-de-emprego" title="Vagas de emprego">
+                            <img class="img-responsive" src="https://joaoneiva.es.gov.br//uploads/filemanager/informativos/emprego-1.jpg" alt="Vagas de emprego" />
+                        </a>
+                                            <a href="/pagina/ler/2369/coleta-seletiva-e-recolhimento-de-lixo" title="Coleta seletiva e recolhimento de lixo">
+                            <img class="img-responsive" src="https://joaoneiva.es.gov.br//uploads/filemanager/informativos/coleta-2.jpg" alt="Coleta seletiva e recolhimento de lixo" />
+                        </a>
+                                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- /.Bloco Informativos -->
+
+<!-- Bloco Portais Externos -->
+<section>
+    <div class="container-fluid top3 bot3" id="links-externos">
+        <div class="row bloco-center">
+            <div class="col-lg-11 col-xs-12">
+                <div class="titulo bloco-vertical-middle">
+                    <h2> PORTAIS EXTERNOS </h2>
+                </div>
+            </div>
+        </div>
+        <div class="row bloco-center back-cinza">
+            <div class="col-lg-11 col-xs-12">
+                <div class="swiper portais">
+            <div class="swiper-wrapper"><div class="swiper-slide">
+                        <a href="https://ioes.dio.es.gov.br/dom" title="Ir para Diário Oficial" class="acesso-rapido-item">
+                          <img class="img-responsive" src="https://joaoneiva.es.gov.br/uploads/files/acesso-rapido/amunes-fw.png" alt="Diário Oficial" />
+                          <h4>Diário Oficial</h4>
+                        </a>
+                      </div><div class="swiper-slide">
+                        <a href="https://paineldecontrole.tcees.tc.br/municipio/2025/joao-neiva/visaoGeral" title="Ir para CIDADES" class="acesso-rapido-item">
+                          <img class="img-responsive" src="https://joaoneiva.es.gov.br/uploads/files/acesso-rapido/cidades-fw-1.png" alt="CIDADES" />
+                          <h4>CIDADES</h4>
+                        </a>
+                      </div><div class="swiper-slide">
+                        <a href="https://radardatransparencia.atricon.org.br/" title="Ir para Radar da Transparência Pública" class="acesso-rapido-item">
+                          <img class="img-responsive" src="https://joaoneiva.es.gov.br/uploads/filemanager/Ouvidoria/Captura_de_tela_2024-01-29_102227.png" alt="Radar da Transparência Pública" />
+                          <h4>Radar da Transparência Pública</h4>
+                        </a>
+                      </div><div class="swiper-slide">
+                        <a href="https://www.cointernoroeste.com.br/" title="Ir para COINTER " class="acesso-rapido-item">
+                          <img class="img-responsive" src="https://joaoneiva.es.gov.br/uploads/files/acesso-rapido/cointer_logo_horizontal-completo_transparente.png" alt="COINTER " />
+                          <h4>COINTER </h4>
+                        </a>
+                      </div><div class="swiper-slide">
+                        <a href="http://www.consorciopolinorte.com.br/index.php" title="Ir para CIM POLINORTE " class="acesso-rapido-item">
+                          <img class="img-responsive" src="https://joaoneiva.es.gov.br/uploads/files/acesso-rapido/logo4_.png" alt="CIM POLINORTE " />
+                          <h4>CIM POLINORTE </h4>
+                        </a>
+                      </div><div class="swiper-slide">
+                        <a href="https://ipsjon.es.gov.br/" title="Ir para IPSJON" class="acesso-rapido-item">
+                          <img class="img-responsive" src="https://joaoneiva.es.gov.br/uploads/files/acesso-rapido/opcao-logo-1-.png" alt="IPSJON" />
+                          <h4>IPSJON</h4>
+                        </a>
+                      </div></div>
+          <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div></div>            </div>
+        </div>
+    </div>
+</section>
+<!-- /.Bloco Portais Externos -->
+        <!--/.Conteúdo-->
+
+    </div>
+    <!--/.container - pagina_site -->
+
+    
+    <!-- Bloco Newsletter -->
+    <section>
+      <div class="container-fluid bot5 top3" id="bloco-fique-conectado">
+          <div class="row bloco-center">
+            <div class="col-lg-11 col-xs-12 alinhar-redes">
+              <div class="titulo">
+                <h2> REDES SOCIAIS </h2>
+              </div>
+
+              <ul class="redes">
+                                    <li><a target="_blank" href="https://www.youtube.com/channel/UCvEgLi7Sd1OhRhzk5Gk57jw" class="bloco-sombra" title="Link do Youtube"><img src="https://joaoneiva.es.gov.br/statics/assets/img/icone_youtube.svg" alt="Ícone do Youtube" /></a></li>
+                                                      <li><a target="_blank" href="https://www.facebook.com/prefeiturajoaoneiva/" class="bloco-sombra" title="Link do Facebook"><img src="https://joaoneiva.es.gov.br/statics/assets/img/icone_facebook.svg" alt="Ícone do Facebook" /></a></li>
+                                                      <li><a target="_blank" href="https://www.instagram.com/joaoneiva.es/?hl=pt-br" class="bloco-sombra" title="Link do Instagram"><img src="https://joaoneiva.es.gov.br/statics/assets/img/icone_instagram.svg" alt="Ícone do Instagram" /></a></li>
+                                                                                          <li><a target="_blank" href="https://chat.whatsapp.com/GFzkqBHMRqlL6hMWAYojqk" class="bloco-sombra" title="Link do WhatsApp"><img class="img-responsive" src="https://joaoneiva.es.gov.br/statics/assets/img/icone_whatsapp.svg" alt="Ícone do Whatsapp" /></a></li>
+                                                  </ul>
+            </div>
+
+          </div>
+      </div>
+    </section>
+    <!-- <section>
+        <div class="container-fluid bot3 top3" id="bloco-fique-conectado">
+            <div class="row bloco-center">
+                <div class="col-lg-8 col-xs-12">
+                    <form action="https://joaoneiva.es.gov.br/home/newsletter_contato_cadastrar" id="newsletter" class="row bloco-vertical-middle" method="post" accept-charset="utf-8">
+                                                                                                               <input type="hidden" name="csrf_site_name" value="1bdbf55ceee2b39734c371edb6a8db25" />
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" value="6Leug74eAAAAABtQ1gXM_SdwZwJGTMB6GK79nquU" />
+                    <div class="col-sm-7 col-xs-12">
+                        <div class="titulo">
+                            <h2> BOLETIM INFORMATIVO </h2>
+                        </div>
+                        <p>Receba novidades por e-mail ou siga nossas redes sociais</p>
+                        <div class="d-flex gap">
+                            <input type="email" placeholder="Insira aqui seu endereço de e-mail" class="form-control validate[required,custom[email]]" name="email" id="email" required />
+                            <button type="submit" class="botao botao-primary2">Quero Me Increver </button>
+                        </div>
+                    </div>
+                    <div class="col-sm-5 col-xs-12">
+                        <div class="titulo">
+                            <h2> REDES SOCIAIS </h2>
+                        </div>
+                        <ul class="redes">
+                                                        <li><a target="_blank" href="https://www.youtube.com/channel/UCvEgLi7Sd1OhRhzk5Gk57jw" class="bloco-sombra" title="Link do Youtube"><img src="https://joaoneiva.es.gov.br/statics/assets/img/icone_youtube.svg" alt="Ícone do Youtube" /></a></li>
+                                                                                    <li><a target="_blank" href="https://www.facebook.com/prefeiturajoaoneiva/" class="bloco-sombra" title="Link do Facebook"><img src="https://joaoneiva.es.gov.br/statics/assets/img/icone_facebook.svg" alt="Ícone do Facebook" /></a></li>
+                                                                                    <li><a target="_blank" href="https://www.instagram.com/joaoneiva.es/?hl=pt-br" class="bloco-sombra" title="Link do Instagram"><img src="https://joaoneiva.es.gov.br/statics/assets/img/icone_instagram.svg" alt="Ícone do Instagram" /></a></li>
+                                                                                                                                            <li><a target="_blank" href="https://chat.whatsapp.com/GFzkqBHMRqlL6hMWAYojqk" class="bloco-sombra" title="Link do WhatsApp"><img class="img-responsive" src="https://joaoneiva.es.gov.br/statics/assets/img/icone_whatsapp.svg" alt="Ícone do Whatsapp" /></a></li>
+                                                                                </ul>
+                    </div>
+                    </form>                </div>
+            </div>
+        </div>
+    </section> -->
+    <!-- /.Bloco Newsletter -->
+
+    <!-- Bloco Horários -->
+    <section>
+        <div class="container-fluid back-primary0 top3 bot3" id="horarios">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12">
+                    <div class="row">
+                        <div class="col-md-4 col-xs-12">
+                            <h3>Atendimento ao público</h3>
+                            <ul>
+                                <li> Segunda a sexta-feira, de 7 às 11h e 12 às 16h</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <h3>Fale conosco</h3>
+                            <ul>
+                                <li><b>WhatsApp:</b> (27) 99613-1425</li>
+                                <li><b>E-mail:</b> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="acc3d9dac5c8c3dec5cdecc6c3cdc3c2c9c5dacd82c9df82cbc3da82cede">[email&#160;protected]</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                            <h3>Endereço sede</h3>
+                            <ul>
+                                <li>Av. Presidente Vargas, 157 - João Neiva - ES</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Bloco Horários -->
+
+    <!--Rodapé-->
+    <section>
+        <div class="container-fluid back-primary2 bot3 top3" id="rodape">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12">
+                    <div class='col-md-3 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+
+                      <h5> JOÃO NEIVA</h5>
+                      <ul><li><a class='' href='/pagina/ler/14/historia' target="_blank" title='Direcionar para HISTÓRIA'>HISTÓRIA</a></li><li><a class='' href='/pagina/ler/117/hino-municipal' target="_blank" title='Direcionar para HINO MUNICIPAL'>HINO MUNICIPAL</a></li><li><a class='' href='/pagina/ler/2/simbolos-municipais' target="_blank" title='Direcionar para SÍMBOLOS MUNICIPAIS'>SÍMBOLOS MUNICIPAIS</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+
+                      <h5> INSTITUCIONAL</h5>
+                      <ul><li><a class='' href='/pagina/ler/119/gabinete' target="_blank" title='Direcionar para GABINETE'>GABINETE</a></li><li><a class='' href='/secretaria' target="_blank" title='Direcionar para SECRETARIAS'>SECRETARIAS</a></li><li><a class='' href='/pagina/ler/2091/autarquias-' target="_blank" title='Direcionar para AUTARQUIAS'>AUTARQUIAS</a></li><li><a class='' href='/pagina/ler/122/estrutura-organizacional'  title='Direcionar para ESTRUTURA ORGANIZACIONAL'>ESTRUTURA ORGANIZACIONAL</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+
+                      <h5> LEGISLAÇÃO</h5>
+                      <ul><li><a class='' href='/atos-controle/IN' target="_blank" title='Direcionar para INSTRUÇÕES NORMATIVAS'>INSTRUÇÕES NORMATIVAS</a></li><li><a class='' href='/pagina/ler/2092/legislacao-tributaria-municipal' target="_blank" title='Direcionar para LEGISLAÇÃO TRIBUTÁRIA MUNICIPAL'>LEGISLAÇÃO TRIBUTÁRIA MUNICIPAL</a></li><li><a class='' href='https://joaoneiva-es.portaltp.com.br/consultas/institucional/legislacao.aspx' target="_blank" title='Direcionar para LEGISLAÇÃO MUNICIPAL'>LEGISLAÇÃO MUNICIPAL</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+
+                      <a href=/pagina/ler/2232/politica-de-privacidade><h5> Política de Privacidade</h5></a>
+                      <ul></ul>
+                </div>  </div>
+            </div><div class='col-md-3 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+
+                      <h5> INFORMAÇÃO</h5>
+                      <ul><li><a class='' href='/documento?tipo=1' target="_blank" title='Direcionar para CONCURSOS'>CONCURSOS</a></li><li><a class='' href='/selecao' target="_blank" title='Direcionar para PROCESSO SELETIVO'>PROCESSO SELETIVO</a></li><li><a class='' href='/pagina/ler/2125/conselhos-municipais' target="_blank" title='Direcionar para CONSELHOS MUNICIPAIS'>CONSELHOS MUNICIPAIS</a></li><li><a class='' href='/licitacao' target="_blank" title='Direcionar para LICITAÇÃO'>LICITAÇÃO</a></li><li><a class='' href='/pagina/ler/2121/indice-de-cobertura-da-farmacia-basica-municipal' target="_blank" title='Direcionar para ASSISTÊNCIA FARMACÊUTICA'>ASSISTÊNCIA FARMACÊUTICA</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+
+                      <h5> DEFESA CIVIL</h5>
+                      <ul><li><a class='' href='https://docs.google.com/forms/d/e/1FAIpQLSedliWyK9IwveLOUAoFA4JrSmxeNCEC1F85s2nYzwEBbRiSPw/viewform' target="_blank" title='Direcionar para CADASTRO DE VOLUNTÁRIOS'>CADASTRO DE VOLUNTÁRIOS</a></li><li><a class='' href='/pagina/ler/2170/plano-de-contingencia-de-protecao-e-defesa-civil' target="_blank" title='Direcionar para PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL'>PLANO DE CONTINGÊNCIA DE PROTEÇÃO E DEFESA CIVIL</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+
+                      <h5> COMUNICAÇÃO</h5>
+                      <ul><li><a class='' href='/noticia' target="_blank" title='Direcionar para NOTÍCIAS'>NOTÍCIAS</a></li><li><a class='' href='/pagina/ler/2376/agenda-de-reunioes-dos-gestores' target="_blank" title='Direcionar para AGENDA OFICIAL'>AGENDA OFICIAL</a></li><li><a class='' href='/pagina/ler/104/telefones' target="_blank" title='Direcionar para WHATSAPP'>WHATSAPP</a></li><li><a class='' href='/pagina/ler/2231/e-mails'  title='Direcionar para E-MAILS'>E-MAILS</a></li></ul>
+                </div>  </div>
+            </div><div class='col-md-3 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+
+                      <h5> SERVIÇOS</h5>
+                      <ul><li><a class='' href='https://servicos.cloud.el.com.br/es-joaoneiva-pm/services/' target="_blank" title='Direcionar para SERVIÇOS ONLINE'>SERVIÇOS ONLINE</a></li><li><a class='' href='https://es-joaoneiva-pm-nfs.cloud.el.com.br//paginas/sistema/login.jsf' target="_blank" title='Direcionar para NOTA FISCAL ELETRÔNICA'>NOTA FISCAL ELETRÔNICA</a></li><li><a class='' href='/pagina/ler/116/calendario-escolar' target="_blank" title='Direcionar para CALENDÁRIO ESCOLAR'>CALENDÁRIO ESCOLAR</a></li><li><a class='' href='/pagina/ler/2187/matricula-e-rematricula-escolar' target="_blank" title='Direcionar para MATRÍCULA E REMATRÍCULA ESCOLAR'>MATRÍCULA E REMATRÍCULA ESCOLAR</a></li><li><a class='' href='/pagina/ler/2167/-atendimento-rg' target="_blank" title='Direcionar para ATENDIMENTO RG'>ATENDIMENTO RG</a></li><li><a class='' href='/pagina/ler/2159/perguntas-frequentes' target="_blank" title='Direcionar para PERGUNTAS FREQUENTES'>PERGUNTAS FREQUENTES</a></li><li><a class='' href='/pagina/ler/2151/como-se-tornar-um-mei' target="_blank" title='Direcionar para COMO SE TORNAR UM MEI'>COMO SE TORNAR UM MEI</a></li><li><a class='' href='/pagina/ler/90/cronograma-de-atendimento-de-medicos-da-semsa' target="_blank" title='Direcionar para CRONOGRAMA DE ATENDIMENTO DA ESF'>CRONOGRAMA DE ATENDIMENTO DA ESF</a></li><li><a class='' href='/pagina/ler/2154/cronograma-de-atendimento-do-crefneiva' target="_blank" title='Direcionar para CRONOGRAMA DE ATENDIMENTO DO CREFNEIVA'>CRONOGRAMA DE ATENDIMENTO DO CREFNEIVA</a></li><li><a class='' href='/pagina/ler/2146/cronograma-do-funcional' target="_blank" title='Direcionar para CRONOGRAMA DO FUNCIONAL'>CRONOGRAMA DO FUNCIONAL</a></li><li><a class='' href='/pagina/ler/2109/recolhimento-de-lixo' target="_blank" title='Direcionar para CRONOGRAMA DOS SERVIÇOS DE LIMPEZA'>CRONOGRAMA DOS SERVIÇOS DE LIMPEZA</a></li><li><a class='' href='/pagina/ler/2191/portal-do-meio-ambiente' target="_blank" title='Direcionar para PORTAL DO MEIO AMBIENTE'>PORTAL DO MEIO AMBIENTE</a></li><li><a class='' href='/uploads/filemanager/Decreto/ilovepdf_merged_5.pdf' target="_blank" title='Direcionar para CALENDÁRIO DE FERIADOS E PONTOS FACULTATIVOS'>CALENDÁRIO DE FERIADOS E PONTOS FACULTATIVOS</a></li></ul>
+                </div>  </div>
+            </div><div class='col-md-3 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+
+                      <h5> TRANSPARÊNCIA </h5>
+                      <ul><li><a class='' href='https://joaoneiva-es.portaltp.com.br/' target="_blank" title='Direcionar para PORTAL DA TRANSPARÊNCIA'>PORTAL DA TRANSPARÊNCIA</a></li><li><a class='' href='/pagina/ler/2210/portal-da-transparencia-saude' target="_blank" title='Direcionar para PORTAL DA TRANSPARÊNCIA - SAÚDE'>PORTAL DA TRANSPARÊNCIA - SAÚDE</a></li><li><a class='' href='https://ipsjon-es.portaltp.com.br/' target="_blank" title='Direcionar para PORTAL DA TRANSPARÊNCIA IPSJON'>PORTAL DA TRANSPARÊNCIA IPSJON</a></li><li><a class='' href='/e-sic' target="_blank" title='Direcionar para CANAL DE ACESSO À INFORMAÇÃO E-SIC'>CANAL DE ACESSO À INFORMAÇÃO E-SIC</a></li><li><a class='' href='/e-ouv' target="_blank" title='Direcionar para CANAL DA OUVIDORIA E-OUV'>CANAL DA OUVIDORIA E-OUV</a></li><li><a class='' href='https://s3.amazonaws.com/el.com.br/portal/uploads/1918/arquivos/EC87EC3184D25A54DF46CE8851BE3787.pdf' target="_blank" title='Direcionar para LEI DE ACESSO À INFORMAÇÃO (LAI)'>LEI DE ACESSO À INFORMAÇÃO (LAI)</a></li><li><a class='' href='https://joaoneiva-es.portaltp.com.br/api/dadosabertos.aspx' target="_blank" title='Direcionar para PORTAL DE DADOS ABERTOS'>PORTAL DE DADOS ABERTOS</a></li><li><a class='' href='https://s3.amazonaws.com/el.com.br/portal/uploads/1918/arquivos/9106B7241CBEE434A9A2FA431BD725A5.pdf' target="_blank" title='Direcionar para CONFLITO DE INTERESSES'>CONFLITO DE INTERESSES</a></li><li><a class='' href='/e-corrupcao' target="_blank" title='Direcionar para COMBATE À CORRUPÇÃO'>COMBATE À CORRUPÇÃO</a></li><li><a class='' href='https://joaoneiva-es.portaltp.com.br/consultas/documentos.aspx?id=781' target="_blank" title='Direcionar para PROTEÇÃO AO DENUNCIANTE'>PROTEÇÃO AO DENUNCIANTE</a></li><li><a class='' href='https://s3.amazonaws.com/el.com.br/portal/uploads/1918/arquivos/9106B7241CBEE434A9A2FA431BD725A5.pdf' target="_blank" title='Direcionar para CÓDIGO DE ÉTICA MUNICIPAL'>CÓDIGO DE ÉTICA MUNICIPAL</a></li><li><a class='' href='https://paineldecontrole.tcees.tc.br/municipio/2022/joao-neiva/visaoGeral' target="_blank" title='Direcionar para SISTEMA CIDADES'>SISTEMA CIDADES</a></li><li><a class='' href='https://geoobras.tce.es.gov.br/cidadao/Obras/ObrasConsultar.aspx' target="_blank" title='Direcionar para SISTEMA GEO-OBRAS'>SISTEMA GEO-OBRAS</a></li><li><a class='' href='https://ioes.dio.es.gov.br/dom' target="_blank" title='Direcionar para DIÁRIO OFICIAL DOS MUNICÍCIOS'>DIÁRIO OFICIAL DOS MUNICÍCIOS</a></li></ul>
+                </div>  </div>
+            </div>                </div>
+            </div>
+        </div>
+    </section>
+    <!--/.Rodapé-->
+
+    <!-- SubRodapé Ágape -->
+    <section>
+        <div class="container-fluid back-primary1" id="sub-rodape">
+            <div class="row top1 bot1 bloco-middle-center">
+                <div class="col-sm-10 col-xs-12 icon-rodape">
+                    <p>
+                        Copyright © 2023 Prefeitura de João Neiva. Todos os direitos reservados.                    </p>
+                </div>
+                <div class="col-lg-1 col-sm-2 col-xs-12 no-padding">
+                    <a target="_blank" href="https://agapeconsultoria.com.br/" title="Direcionar para o site da Ágape"><img alt="Logo da Ágape" src="https://joaoneiva.es.gov.br/assets/img/logo_empresa.png" class="img-responsive" /></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / SubRodapé Ágape -->
+
+      <!-- Container de Privacidade e Cookies  -->
+
+  <style>
+    /* GOOGLE ANALYTICS */
+
+    .cookies-container {
+      color: #222;
+      position: fixed;
+      bottom: 2rem;
+      z-index: 1000;
+    }
+
+    .card-title {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 21px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+
+    .card-link {
+      font-weight: bold;
+      text-decoration: none;
+      color: #2F2F2F;
+    }
+
+    .card-text {
+      font-style: normal;
+      font-weight: normal;
+
+      line-height: 150%;
+      align-items: center;
+      color: #505050;
+
+    }
+
+    .cookies-content {
+      background: white;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(1rem);
+      animation: slideUp 0.5s forwards;
+      border-radius: 4px;
+      background: rgba(251, 251, 251, 0.95);
+
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: initial;
+        opacity: initial;
+      }
+    }
+
+    .cookies-pref label {
+      margin-right: 1rem;
+    }
+
+    .cookies-save {
+      grid-column: 2;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: var(--Primary0);
+      color: white;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      padding: 0.8rem 2rem;
+      font-size: 16px;
+    }
+
+    .cookies-save:hover {
+      background: var(--Primary2);
+      transition: .3s;
+    }
+
+    @media (max-width: 500px) {
+      .cookies-content {
+        grid-template-columns: 1fr;
+      }
+
+      .cookies-save {
+        grid-column: 1;
+        grid-row: 3;
+      }
+    }
+  </style>
+
+  <div class="cookies-container col-md-12">
+    <div class="cookies-content col-md-10 col-md-offset-1">
+      <div class="col-md-12">
+        <h2 class="card-title">Política de Privacidade</h2>
+      </div>
+      <div class="col-md-10">
+        <p class="card-text">Utilizamos cookies essenciais e tecnologias semelhantes de acordo com a nossa
+          <a href="" target="_blank" class="card-link">Política de Privacidade</a>
+          e, ao continuar navegando, você concorda com as condições contidas nela.
+        </p>
+                  <input type="hidden" checked data-function="simplecookie" />
+              </div>
+      <div class="text-right col-md-2">
+        <button class="cookies-save card text-right">Continuar</button>
+      </div>
+    </div>
+  </div>
+  <!-- / Container de Privacidade e Cookies  -->
+
+  <!-- Privacidade -->
+  
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function cookies(functions) {
+      const clientName = 'https:joaoneiva';
+      const container = document.querySelector('.cookies-container');
+      const save = document.querySelector('.cookies-save');
+      if (!container || !save) return null;
+
+      const localPref = JSON.parse(window.localStorage.getItem('cookies-pref' + clientName));
+      if (localPref) activateFunctions(localPref);
+
+      function getFormPref() {
+        return [...document.querySelectorAll('[data-function]')]
+          .filter((el) => el.checked)
+          .map((el) => el.getAttribute('data-function'));
+      }
+
+      function activateFunctions(pref) {
+        pref.forEach((f) => functions[f]());
+        container.style.display = 'none';
+        window.localStorage.setItem('cookies-pref' + clientName, JSON.stringify(pref));
+      }
+
+      function handleSave() {
+        const pref = getFormPref();
+        activateFunctions(pref);
+      }
+
+      save.addEventListener('click', handleSave);
+    }
+
+    function analytics() {
+
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', '');
+
+      console.log('Função anali..');
+    }
+
+    function simplecookie() {
+      console.log('Política de Privacidade Autorizada');
+    }
+
+    cookies({
+      simplecookie,    });
+  </script>
+
+  <!-- / Privacidade -->
+<div vw class="enabled">
+  <div vw-access-button class="active" accesskey="8"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+</div>
+
+<noscript>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="alert alert-warning" role="alert">
+            Você precisa habilitar o JavaScript para visualizar este Portal corretamente.
+        </div>
+    </div>
+</noscript><script src='https://unpkg.com/swiper@8/swiper-bundle.min.js?v=1795780603'></script>
+<script src='https://joaoneiva.es.gov.br/statics/assets/js/jquery-1.11.1.min.js?v=1795780603'></script>
+<script src='https://joaoneiva.es.gov.br/statics/bootstrap/js/bootstrap.min.js?v=1795780603'></script>
+<!-- <script src='font-awesome/fontawesome-free-5.15.4-web/js/all.js?v='></script> -->
+<script src="https://joaoneiva.es.gov.br/statics/assets/plugins/prettyPhoto/js/jquery.prettyPhoto.js?v=1795780603"></script>
+<script src="https://joaoneiva.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.js?v=1795780603"></script>
+<script src="https://joaoneiva.es.gov.br/statics/assets/plugins/captionjs/jquery.caption.min.js" type="text/javascript"></script>
+
+<script>
+  // método que vai setar o espaçamento das sections do site
+  let codigo = $('.set_container');
+  const container = "container_fluid";
+  codigo.each(function() {
+    var novaDiv = '';
+    switch (container) {
+      case 'container_fluid':
+        novaDiv = `<div class="container-fluid">
+          <div class="row bloco-center">
+            <div class="col-lg-11 col-xs-12">
+              ${$(this).html()}  
+            </div>
+          </div>
+        </div>`;
+        break;
+      case 'container':
+        novaDiv = `<div class="container">
+            ${$(this).html()}
+        </div>`;
+        break;
+        case 'container_1360':
+          novaDiv = `<div class="container_1360">
+            ${$(this).html()}
+          </div>`;
+          break;  
+        default:
+          novaDiv = `<div class="container">
+            ${$(this).html()}
+          </div>`;
+          break;
+    }
+    $(this).html(novaDiv);
+  })
+</script>
+
+<!-- Script para adicionar abertura em popup em links com a classe "popup" -->
+<script>
+    $(".popup").fancybox({
+        'width': '95%',
+        'max-width': '100%',
+        'max-height': '100%',
+        'height': '92%',
+        'autoScale': false,
+        'transitionIn': 'none',
+        'transitionOut': 'none',
+        'type': 'iframe'
+    });
+</script>
+
+<!-- colocar legenda abaixo do texto -->
+<script type="text/javascript">
+	$(function() {
+	  $('.auto-caption img').captionjs({ 'force_dimensions':false, 'is_responsive':false, 'inherit_styles':true });
+	});
+</script>
+
+<!-- Função da Pesquisa no Menu -->
+<script>
+    const BASE_URL = "https://joaoneiva.es.gov.br/";
+
+    function fonte(e) {
+        var elements = $('p, h1, h2, h3, h4, h5, h6, a, button, input, i, svg');
+
+        elements.each((index, item) => {
+            let element = $(item);
+            let font = $(element).css('font-size');
+
+            let newFont = e == 'a' ? parseInt(font) + 1 : parseInt(font) - 1;
+
+            element.css('font-size', newFont);
+        })
+    }
+
+    function openSearch(e) { // Função de Botão de Busca
+        if ($('#bloco-logo .form-padrao input').val() != '') {
+            $('#bloco-logo form').submit();
+        } else {
+            let button = document.querySelector('#bloco-logo button.botao-busca');
+            let form = document.querySelector('#bloco-logo .form-padrao');
+            form.classList.toggle('hidden');
+            button.classList.toggle('hidden');
+        }
+    }
+
+    function dataAtualFormatada(e) {
+        let data = new Date(e);
+        let dia = data.getDate();
+        if (dia <= 9) dia = "0" + dia;
+        var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+        data = dia + " de " + meses[data.getMonth()] + " de " + data.getFullYear();
+        return data;
+    }
+
+    $(".nav-stacked a").click(function(e) {
+        if ($(this).children('svg').attr('data-icon') == 'plus')
+            $(this).children('svg').attr('data-icon', 'minus')
+        else
+            $(this).children('svg').attr('data-icon', 'plus')
+    });
+
+    $('.dropdown-submenu a.submenu-institucional').on("click", function(e) { // Faz os submenu do submenu funcionar no mobile
+        e.preventDefault();
+        $(this).next('ul').toggle('open');
+        e.stopPropagation();
+    });
+
+    $(document).ready(function() { // Processa depois de carregar a página
+
+        if (typeof funcion_a_comprobar === 'function') {
+            if (typeof number == "undefined" || number == null) {
+                let number = $('.inputmask_tel');
+                number.inputmask({
+                    mask: ["+55 (99) 9999-9999", "+55 (99) 9 9999-9999", ],
+                    keepStatic: true
+                });
+            }
+
+            if (typeof cpf_cnpj == "undefined" || cpf_cnpj == null) {
+                let cpf_cnpj = $('.inputmask_cpf_cnpj');
+                cpf_cnpj.inputmask({
+                    mask: ["[CPF REDIGIDO]", "99.999.999/9999-99", ],
+                    keepStatic: true
+                });
+            }
+        }
+
+        $(window).scroll(function() {
+            var scrollTop = $(window).scrollTop();
+            if (scrollTop > 80) {
+                $('#acessibilidade').addClass("navbar-fixed-top");
+            } else {
+                $('#acessibilidade').removeClass("navbar-fixed-top");
+            }
+        });
+
+        var html = document.getElementsByTagName('html')[0];
+        html.style.cssText = '--Primary0: #0D552F; --Primary1: #008031; --Primary2: #008D36;';
+
+
+
+        function removeAcento(text) { // Função que remove assentos
+            text = text.toLowerCase();
+            text = text.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
+            text = text.replace(new RegExp('[ÉÈÊ]', 'gi'), 'e');
+            text = text.replace(new RegExp('[ÍÌÎ]', 'gi'), 'i');
+            text = text.replace(new RegExp('[ÓÒÔÕ]', 'gi'), 'o');
+            text = text.replace(new RegExp('[ÚÙÛ]', 'gi'), 'u');
+            text = text.replace(new RegExp('[Ç]', 'gi'), 'c');
+            return text;
+        }
+
+        // ===================== SERVIÇOS =====================
+
+        // Filtro por Pesquisa
+        function filtra_servicos(value) {
+
+            value = removeAcento(value.toLowerCase());
+
+            setTimeout(() => {
+
+                var bloco_tabs = $('.bloco-tabs ul');
+                // bloco_tabs.hide();
+
+                $(".bloco-tabs ul li").filter(function() {
+                    let item = removeAcento($(this).text().toLowerCase());
+                    $(this).toggle(item.indexOf(value) > -1);
+
+                    if ($(bloco_tabs).is(":hidden")) {
+                        return $('.openTabs').click();
+                    }
+                });
+            }, 500);
+        }
+
+        $("#search-faq #termos").on("keyup", function(e) {
+            var value = e.target.value;
+            filtra_servicos(value);
+        });
+
+        $("#search-faq").on("submit", function(e) {
+            e.preventDefault();
+            var value = $("#search-faq #termos").val();
+            filtra_servicos(value);
+        });
+
+        $('#acesso a').click(function(e) {
+            e.preventDefault();
+            var categoria = $(this).data('categoria');
+            var request = $.ajax({
+                    // type: 'POST',
+                    // data: data,
+                    //dataType tells jQuery to expect JSON response
+                    dataType: "json",
+                    url: BASE_URL + `faq/faqs_post/?categoria_id=` + categoria,
+                    beforeSend() {
+                        $('.bloco-tabs ul.nav').html('');
+                        $('.bloco-tabs ul.nav').addClass('loader');
+                    },
+                })
+                .done(function(msg) {
+                    $('.bloco-tabs ul.nav').removeClass('loader');
+                    $('.bloco-tabs ul.nav').load();
+                    msg.map(item => {
+                        $('ul.nav.nav-pills.nav-stacked').append(`
+              <li>
+                  <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                  <div class="texto collapse" id="${item.id}">
+                      ${item.resposta}
+                  </div>
+              </li>
+            `);
+                    });
+                })
+                .fail(function() {
+                    $('.message').html('Não consegui carregar, tente novamente.');
+                });
+
+        });
+
+        var isSomethingTrue = false;
+        $('.openTabs').click(function(e) {
+            e.preventDefault();
+            $('.bloco-tabs').toggle('in');
+            $(this).toggleClass('botao-primary0');
+            if (!isSomethingTrue) {
+                isSomethingTrue = true;
+                $(this).html('Ver menos serviços');
+            } else {
+                isSomethingTrue = false;
+                $(this).html('Ver todos os serviços');
+            }
+        });
+
+        // ===================== SERVIÇOS =====================
+
+        // Função de Load More Notícias
+        var offset_posts = 5
+        $('#load_more_posts').click(function(e) {
+            e.preventDefault();
+            var request = $.ajax({
+                    // type: 'GET',
+                    // data: data,
+                    //dataType tells jQuery to expect JSON response
+                    dataType: "json",
+                    url: BASE_URL + `noticia/get_post/${offset_posts}/5/`,
+                    beforeSend() {
+                        $('#load_more_posts').html('Carregando...');
+                        $('.loader').removeClass('hidden');
+                    },
+                })
+                .done(function(msg) {
+                    offset_posts = offset_posts + 5;
+                    $('.loader').addClass('hidden');
+                    $('#load_more_posts').html('Carregar mais notícias');
+                    msg.map(item => {
+                        $('.noticias').append(`
+                            <a href="${BASE_URL}noticia/ler/${item.id}/${item.titulo.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w-]+/g, '-').toLowerCase()}" title="Notícia: ${item.titulo}">
+                              <div class="col-xs-12 imagem no-padding">
+                                  <img class="img-responsive" src="${item.capa}" alt="${item.titulo}" />
+                              </div>
+                              <div class="col-xs-12 texto">
+                                  <h2>${item.titulo}</h2>
+                                  <p>` + item.chamada.substring(0, 550) + `</p>
+                                  <h5>` + dataAtualFormatada(item.publicacao) + `</h5>
+                              </div>
+                              <hr />
+                            </a>
+                          `);
+                    })
+                })
+                .fail(function() {
+                    $('.message').html('Não consegui carregar, tente novamente.');
+                });
+        });
+
+        // Função de Load More nos Faqs
+        var offset_faqs = 8
+        $('#load_more_faq').click(function(e) {
+            e.preventDefault();
+
+            var request = $.ajax({
+                    dataType: "json",
+                    url: BASE_URL + `faq/faqs_post/${offset_faqs}/5`,
+                    beforeSend() {
+                        $('#load_more_faq').html('Carregando...');
+                        $('.loader').removeClass('hidden');
+                    },
+                })
+                .done(function(msg) {
+                    offset_faqs = offset_faqs + 5;
+                    $('.loader').addClass('hidden');
+                    $('#load_more_faq').html('Carregar mais perguntas');
+                    msg.map(item => {
+                        $('ul.nav.nav-pills.nav-stacked').append(`
+              <li>
+                  <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                  <div class="texto collapse" id="${item.id}">
+                      ${item.resposta}
+                  </div>
+              </li>
+            `);
+                    })
+                })
+                .fail(function() {
+                    $('.message').html('Não consegui carregar, tente novamente.');
+                });
+        });
+
+        // Bloco de Vereadores/Atividade Legislativa no Portal Institucional
+        var VereadoresAPI = $('.vereadores-lista').data('vereadoresapi');
+        if (typeof VereadoresAPI !== "undefined" && VereadoresAPI) {
+            // alert(VereadoresAPI);
+            $.getJSON(VereadoresAPI + 'api/vereador/?v=2&qtd=100', function(json) { // Lista os Vereadores
+                var bloco_vereadores = $('.vereadores-lista');
+                var parlamentar = $.map(json.dados, function(item) {
+                    var situacoes = ['Licença', 'Suplente', 'Falecido', 'Licenciado para assumir cargo no Executivo'];
+                    if (situacoes.includes(item.situacao)) return;
+
+                    var email = `<h5 class="email"><i class="fas fa-envelope"></i>${item.email}</h5>`;
+                    return bloco_vereadores.append(`
+            <a target="_blank" href="${VereadoresAPI}vereador.aspx?id=${item.ID}" target="_blank" title="Veja mais sobre o vereador(a) ${item.nome_parlamentar}" class="vereador-item">
+              <div class="imagem">
+                  <img src="${item.foto}" alt="Foto do vereador(a) ${item.nome}" />
+              </div>
+              <div class="texto">
+                <h3>${item.nome}</h3>
+                ${email ? email : null}
+                <h5 class="partido">${item.partido_sigla}</h5>
+              </div>
+            </a>
+          `);
+                    // <p>Situação <span>${item.situacao}</span></p>
+                });
+            });
+            $('.vereadores-lista .loader').hide();
+
+        }
+        var ClienteUrlApi = $('#atividade-legislativa').data('clienteurlapi');
+        // console.log(ClienteUrlApi);
+        if (typeof ClienteUrlApi !== "undefined" && ClienteUrlApi) {
+            $.getJSON(ClienteUrlApi + 'api/norma_filtros?v=2', function(json) {
+                var data = $.map(json.tipos, function(item) {
+                    return {
+                        id: item.tipo_id,
+                        text: item.tipo
+                    }
+                });
+                data.unshift({
+                    id: '',
+                    text: ''
+                });
+                return $('.especie_normativa').select2({ // Monta o Select usando Ajax
+                    placeholder: 'Selecione o tipo',
+                    width: '100%',
+                    data: data
+                });
+            });
+
+            $.getJSON(ClienteUrlApi + 'api/proposicao_filtros/?v=2&area=LEG', function(json) {
+                var data = $.map(json.tipos, function(item) {
+                    return {
+                        id: item.tipo_id,
+                        text: item.tipo
+                    }
+                });
+                data.unshift({
+                    id: '',
+                    text: ''
+                });
+                return $('.proposicoes').select2({ // Monta o Select usando Ajax
+                    placeholder: 'Selecione o tipo',
+                    width: '100%',
+                    data: data
+                });
+            });
+
+            $.getJSON(ClienteUrlApi + 'api/proposicao_filtros/?v=2&area=ADM', function(json) {
+                var data = $.map(json.tipos, function(item) {
+                    return {
+                        id: item.tipo_id,
+                        text: item.tipo
+                    }
+                });
+                data.unshift({
+                    id: '',
+                    text: ''
+                });
+                return $('.processos_administrativos').select2({ // Monta o Select usando Ajax
+                    placeholder: 'Selecione o tipo',
+                    width: '100%',
+                    data: data
+                });
+            });
+        }
+
+        // Função de Load More nos Faqs
+        // $('#fotos a:not(.botao)').click(function(e) {
+        $('#fotos .link-popup').click(function(e) {
+            e.preventDefault();
+            let idGaleria = $(this).data('id');
+            let dado = $(this);
+            //Initial csrf values
+            var data = {};
+            var api_images = [];
+            var api_titles = [];
+            var api_descriptions = [];
+
+            $.ajax({
+                    // type: 'POST',
+                    data: data,
+                    //dataType tells jQuery to expect JSON response
+                    dataType: "json",
+                    url: BASE_URL + `galeria/get_galeria_anexos/` + idGaleria,
+                })
+                .done(function(msg) {
+                    if (msg.length === 0) {
+                        api_images.push(dado.context.href);
+                        api_titles.push(dado.context.alt);
+                        api_descriptions.push(['']);
+
+                    } else {
+                        msg.map(item => {
+                            api_images.push(item['arquivo']);
+                            api_titles.push(item['titulo']);
+                            api_descriptions.push(item['titulo']);
+                        });
+
+                    }
+                    $.prettyPhoto.open(api_images, api_titles, api_descriptions);
+                    $.prettyPhoto.changePage('next');
+                    $.prettyPhoto.changePage('previous');
+                    $.prettyPhoto.close();
+
+
+                })
+                .fail(function(response, status, error) {
+                    // console.log(error);
+                    $.prettyPhoto.open(BASE_URL + 'assets/img/brasao.jpg', 'Não consegui carregar, tente novamente.', '');
+                });
+        });
+
+        $('#fotos .galeria').click(function(e) {
+            e.preventDefault();
+            let idGaleria = $(this).data('id');
+            let dado = $(this);
+            //Initial csrf values
+            var data = {};
+            var api_images = [];
+            var api_titles = [];
+            var api_descriptions = [];
+
+            $.ajax({
+                    // type: 'POST',
+                    data: data,
+                    //dataType tells jQuery to expect JSON response
+                    dataType: "json",
+                    url: BASE_URL + `galeria/get_galeria_anexos/` + idGaleria,
+                })
+                .done(function(msg) {
+                    if (msg.length === 0) {
+                        api_images.push(dado.context.href);
+                        api_titles.push(dado.context.alt);
+                        api_descriptions.push(['']);
+
+                    } else {
+                        msg.map(item => {
+                            api_images.push(item['arquivo']);
+                            api_titles.push(item['titulo']);
+                            api_descriptions.push(item['titulo']);
+                        });
+
+                    }
+                    $.prettyPhoto.open(api_images, api_titles, api_descriptions);
+                    $.prettyPhoto.changePage('next');
+                    $.prettyPhoto.changePage('previous');
+                    $.prettyPhoto.close();
+
+
+                })
+                .fail(function(response, status, error) {
+                    // console.log(error);
+                    $.prettyPhoto.open(BASE_URL + 'assets/img/brasao.jpg', 'Não consegui carregar, tente novamente.', '');
+                });
+        });
+
+        // Auto Contraste Função
+        $('#acessibilidade_contraste').on('click', function(event) {
+            event.preventDefault();
+
+            $('body').toggleClass('contrast');
+            $('body').toggleClass('scrollbar-color');
+            $('#acesso-rapido .col-lg-11>.row').toggleClass('scrollbar-color');
+            if ($(this).attr('data-original-title') == 'Aplicar auto contraste') {
+                $(this).attr('data-original-title', 'Remover auto contraste');
+            } else {
+                $(this).attr('data-original-title', 'Aplicar auto contraste');
+            };
+
+
+            var logo_menu = document.getElementById('logo-menu');
+            if (!logo_menu) return null;
+            if (logo_menu.src == 'https://joaoneiva.es.gov.br/assets/img/logo_site_branco.png') logo_menu.src = 'https://joaoneiva.es.gov.br/assets/img/logo_site.png';
+            else logo_menu.src = 'https://joaoneiva.es.gov.br/assets/img/logo_site_branco.png';
+
+        });
+
+        var Contrast = {
+            storage: 'contrastState',
+            cssClass: 'contrast',
+            currentState: null,
+            check: checkContrast,
+            getState: getContrastState,
+            setState: setContrastState,
+            toogle: toogleContrast,
+            updateView: updateViewContrast
+        };
+
+        toggleContrast = function() {
+            Contrast.toogle();
+        };
+
+        Contrast.check();
+
+        function checkContrast() {
+            this.updateView();
+        }
+
+        function getContrastState() {
+            return localStorage.getItem(this.storage) === 'true';
+        }
+
+        function setContrastState(state) {
+            localStorage.setItem(this.storage, '' + state);
+            this.currentState = state;
+            this.updateView();
+        }
+
+        function updateViewContrast() {
+            var body = document.body;
+
+            if (!body) return;
+
+            if (this.currentState === null)
+                this.currentState = this.getState();
+
+            if (this.currentState) {
+                body.classList.add(this.cssClass);
+            } else {
+                body.classList.remove(this.cssClass);
+            }
+        }
+
+        function toogleContrast() {
+            this.setState(!this.currentState);
+        }
+        // FIM AUTOCONTRASTE
+        $('a[rel=group]').fancybox();
+        $("a[rel^='prettyPhoto']").prettyPhoto({
+            default_width: 700, //I have tried playing with these values
+            default_height: 500, //I have tried playing with these values
+            theme: 'light_rounded',
+            social_tools: '<a target="_blank" download href="#" class="download_image left btn btn-xs btn-default"><span class="fa fa-download"></span> Baixar Imagem</a>',
+
+            overlay_gallery: false,
+            show_title: false,
+            hideflash: true,
+            iframe_markup: "<iframe src='{path}' width='{width}' height='{height}' frameborder='no' allowfullscreen='true'></iframe>",
+            deeplinking: false
+        });
+
+        $('body').on('click', '.download_image', function() {
+            var foto_download = $('#fullResImage').attr('src');
+            $(this).attr('href', foto_download);
+        });
+
+        $('div.thumbnail').on('click', 'a', function() {
+            var id = $(this).attr('id');
+            if (id.length) {
+                $.ajax({
+                    url: BASE_URL + 'galeria/contador_acessos/' + id,
+                    type: "post",
+                    data: {
+                        'id': id
+                    }
+                });
+            }
+        });
+
+        // VERIFICA SWIPER
+        if (document.getElementsByClassName('destaques').length !== 0) {
+            var destaques = new Swiper(".destaques", {
+                loop: true,
+                // autoHeight: true,
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".destaques .swiper-pagination",
+                    dynamicBullets: true,
+                    clickable: true,
+                },
+                navigation: {
+                    nextEl: ".destaques .swiper-button-next",
+                    prevEl: ".destaques .swiper-button-prev",
+                },
+            });
+        }
+
+
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 2,
+            spaceBetween: 30,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+        });
+
+
+
+        var swiper = new Swiper('.agendaSwiper', {
+            slidesPerView: 3,
+            direction: getDirection(),
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            on: {
+                resize: function() {
+                    swiper.changeDirection(getDirection());
+                },
+            },
+        });
+
+        function getDirection() {
+            var windowWidth = window.innerWidth;
+            var direction = window.innerWidth <= 760 ? 'vertical' : 'horizontal';
+
+            return direction;
+        }
+        if (document.getElementsByClassName('especialidades').length !== 0) {
+            var especialidades = new Swiper(".especialidades", {
+                // slidesPerView: 1,
+                calculateHeight: true,
+                spaceBetween: 20,
+
+                breakpoints: {
+                    // 0: {
+                    // },
+                    // when window width is >= 768px
+                    769: {
+                        slidesPerGroup: 4,
+                        slidesPerView: 2,
+                        allowTouchMove: false,
+                        grid: {
+                            rows: 2,
+                        },
+                    },
+                },
+
+                // loop: true, // <- causes issues combined with multi row setup!!
+                navigation: {
+                    nextEl: ".especialidades .swiper-button-next",
+                    prevEl: ".especialidades .swiper-button-prev",
+                },
+            });
+        }
+
+        if (document.getElementsByClassName('galerias').length != 0) {
+            var banners = new Swiper(".galerias", {
+                slidesPerView: 1,
+                autoHeight: true,
+                loop: true,
+                spaceBetween: 10,
+                // effect: "fade",
+
+                breakpoints: {
+                    // 0: {
+                    // },
+                    // when window width is >= 768px
+                    769: {
+                        slidesPerView: 4,
+                    },
+                },
+                navigation: {
+                    nextEl: "#galerias .next",
+                    prevEl: "#galerias .prev",
+                },
+                pagination: {
+                    el: ".galerias .swiper-pagination",
+                    clickable: true,
+                },
+            });
+        }
+
+        if (document.getElementsByClassName('banners').length != 0) {
+            var banners = new Swiper(".banners", {
+                slidesPerView: 1,
+                autoHeight: true,
+                loop: true,
+                spaceBetween: 10,
+                // effect: "fade",
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                },
+                navigation: {
+                    nextEl: ".banners .swiper-button-next",
+                    prevEl: ".banners .swiper-button-prev",
+                },
+                pagination: {
+                    el: ".banners .swiper-pagination",
+                    clickable: true,
+                },
+            });
+
+            var estatico = new Swiper(".estatico", {
+                slidesPerView: 1,
+                autoHeight: true,
+                loop: false,
+                spaceBetween: 10,
+                // effect: "fade",
+                autoplay: {
+                    // delay: 3000,
+                    disableOnInteraction: true,
+                },
+                navigation: {
+                    nextEl: ".estatico .swiper-button-next",
+                    prevEl: ".estatico .swiper-button-prev",
+                },
+                pagination: {
+                    el: ".estatico .swiper-pagination",
+                    clickable: true,
+                },
+            });
+        }
+
+        if (document.getElementsByClassName('portais').length != 0) {
+            var portais = new Swiper(".portais", {
+                loop: true,
+                loopFillGroupWithBlank: true,
+                centeredSlides: false,
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        // slidesPerGroup: 1,
+                        // spaceBetween: 0,
+                    },
+                    // when window width is >= 768px
+                    769: {
+                        slidesPerView: 3,
+                        // slidesPerGroup: 1,
+                        spaceBetween: 30,
+                    },
+                    // when window width is >= 992px
+                    993: {
+                        slidesPerView: 6,
+                        // slidesPerGroup: 6,
+                    },
+                },
+                navigation: {
+                    nextEl: ".portais .swiper-button-next",
+                    prevEl: ".portais .swiper-button-prev",
+                },
+            });
+        }
+
+        $('#web-tv #video').carousel({
+            interval: false,
+        });
+
+        // bootstrap-datepicker ---------------------
+        // if (typeof $('.bootstrap_datepicker') !== 'undefined') {
+        //   $('.bootstrap_datepicker').datepicker({
+        //     format: 'dd/mm/yyyy'
+        //   });
+        // }
+
+        $('#imprimir').click(function() {
+            window.print();
+        });
+    });
+
+    
+            $(document).ready(function() {
+            $("a[rel^='prettyPhoto']").prettyPhoto({
+                theme:'light_square',
+                social_tools:'',
+                allow_resize: true,
+                            });
+
+            $.prettyPhoto.open('/uploads/filemanager/popup-homepage/whatsapp-image-2026-11-24-at-08-30-01-1.jpg', '4º ANO CONSECUTIVO SELO DIAMANTE');
+        });
+    
+    function cookies(functions) {
+        const container = document.querySelector('.cookies-container');
+        const save = document.querySelector('.cookies-save');
+        if (!container || !save) return null;
+
+        const localPref = JSON.parse(window.localStorage.getItem('cookies-pref'));
+        if (localPref) activateFunctions(localPref);
+
+        function getFormPref() {
+            return [...document.querySelectorAll('[data-function]')]
+                .filter((el) => el.checked)
+                .map((el) => el.getAttribute('data-function'));
+        }
+
+        function activateFunctions(pref) {
+            pref.forEach((f) => functions[f]());
+            container.style.display = 'none';
+            window.localStorage.setItem('cookies-pref', JSON.stringify(pref));
+        }
+
+        function handleSave() {
+            const pref = getFormPref();
+            activateFunctions(pref);
+        }
+
+        save.addEventListener('click', handleSave);
+    }
+
+    function analytics() {
+
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag('js', new Date());
+
+        gtag('config', '');
+
+        console.log('Função anali..');
+    }
+
+    function simplecookie() {
+        console.log('Política de Privacidade Autorizada');
+    }
+
+    // ============================================================
+    // Função Frame do Youtube
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // 3. This function creates an <iframe> (and YouTube player)
+    //    after the API code downloads.
+    function onYouTubeIframeAPIReady() {
+        var player;
+        // console.log($(this));
+        player = new YT.Player('player', {
+            videoId: 'M7lc1UVf-VE',
+            events: {
+                'onReady': onPlayerReady,
+                // 'onPlaybackQualityChange': onPlayerPlaybackQualityChange,
+                'onStateChange': onPlayerStateChange,
+                // 'onError': onPlayerError
+            }
+        });
+    }
+
+    async function onPlayerReady(event) {
+        event.target.setVolume(100);
+        event.target.playVideo();
+    }
+
+    var done = false;
+
+    async function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+            setTimeout(stopVideo, 6000);
+            done = true;
+        }
+    }
+
+    async function stopVideo() {
+        player.stopVideo();
+    }
+
+    
+
+    </script>
+
+<script src="https://www.google.com/recaptcha/api.js?render=6Leug74eAAAAABtQ1gXM_SdwZwJGTMB6GK79nquU"></script>
+<script text="text/Javascript">
+    $(function() { // Recaptcha no formulário da Newsletter
+        $(".form_recaptcha .bnt_submit_recaptcha").click(function(e) {
+            e.preventDefault();
+            grecaptcha.execute('6Leug74eAAAAABtQ1gXM_SdwZwJGTMB6GK79nquU').then(function(token) {
+                var recaptchaResponse = document.getElementById('recaptcha_token');
+                recaptchaResponse.value = token;
+
+                $('.form_recaptcha').submit();
+            })
+        })
+    });
+
+    // var form = $('#newsletter');
+    // $(form).submit(function(e) { // Função do Formulario newsletter da Home
+    //   e.preventDefault();
+    //   grecaptcha.execute('6Leug74eAAAAABtQ1gXM_SdwZwJGTMB6GK79nquU').then(function(token) {
+    //     // add token value to form
+    //     document.getElementById('g-recaptcha-response').value = token;
+
+    //     $.ajax({
+    //         type: form.attr('method'),
+    //         url: form.attr('action'),
+    //         dataType: 'json',
+    //         data: form.serialize(),
+    //         beforeSend() {
+    //           // console.log('Carregando...');
+    //           $('#newsletter .loader').toggleClass('hidden');
+    //         },
+    //       })
+    //       .success(function(msg) {
+    //         // console.log(msg);
+    //         if (msg == 200) {
+    //           alertify.success('Contato cadastrado com sucesso!');
+    //         } else {
+    //           alertify.error(msg);
+    //         }
+    //         $('#newsletter .loader').toggleClass('hidden');
+    //       })
+    //       .fail(function(request, status, error) {
+    //         // console.log('Status: ', status);
+    //         $('#newsletter .loader').toggleClass('hidden');
+    //       });
+    //   });
+    // });
+</script>
+
+
+
+<script>
+    var preloader = document.getElementById('preloader');
+    if (typeof preloader !== "undefined" && preloader) {
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(() => {
+                // if (document.readyState === "complete") { // Ainda carregando
+                preloader.classList.toggle('loaded')
+                setTimeout(() => {
+                    preloader.classList.add('hidden')
+                }, 1000);
+                // }
+            }, 3000);
+        });
+    }
+</script>
+
+<noscript>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="alert alert-warning" role="alert">
+            Você precisa habilitar o JavaScript para visualizar este Portal corretamente.
+        </div>
+    </div>
+</noscript>
+<script src='https://joaoneiva.es.gov.br/statics/assets/plugins/inputmask-5/jquery.inputmask.js?v=1795780603'></script>
+<script src='https://joaoneiva.es.gov.br/statics/assets/plugins/inputmask-5/inputmask_personalizacao.js?v=1795780603'></script>
+<script src='https://joaoneiva.es.gov.br/statics/assets/plugins/validation/js/languages/jquery.validationEngine-pt_BR.min.js?v=1795780603'></script>
+<script src='https://joaoneiva.es.gov.br/statics/assets/plugins/validation/js/jquery.validationEngine.min.js?v=1795780603'></script>
+<script src='https://joaoneiva.es.gov.br/statics/assets/plugins/validation/js/contrib/other-validations.js?v=1795780603'></script>
+<script src='https://joaoneiva.es.gov.br/statics/assets/js/recaptcha.js?v=1795780603'></script>
+
+</body>
+
+</html>

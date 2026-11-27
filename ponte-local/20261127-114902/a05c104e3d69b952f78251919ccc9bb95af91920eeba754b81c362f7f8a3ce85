@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-website-id="1" data-main-object="website.page(4,)">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="generator" content="Odoo"/>
+        <meta name="description" content="Site Oficial da Prefeitura Municipal de Ariquemes"/>
+            
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Home | ariquemes"/>
+        <meta property="og:site_name" content="ariquemes"/>
+        <meta property="og:url" content="http://ariquemes.ro.gov.br/"/>
+        <meta property="og:image" content="http://ariquemes.ro.gov.br/web/image/website/1/logo?unique=4915c65"/>
+        <meta property="og:description" content="Site Oficial da Prefeitura Municipal de Ariquemes"/>
+            
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:title" content="Home | ariquemes"/>
+        <meta name="twitter:image" content="http://ariquemes.ro.gov.br/web/image/website/1/logo?unique=4915c65"/>
+        <meta name="twitter:description" content="Site Oficial da Prefeitura Municipal de Ariquemes"/>
+        
+        <link rel="canonical" href="https://ariquemes.ro.gov.br/" />
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin=""/>
+        <title> Home | ariquemes </title>
+        <link type="image/x-icon" rel="shortcut icon" href="/web/image/website/1/favicon?unique=f52b608"/>
+        <link rel="preload" href="/web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" crossorigin=""/>
+        <link type="text/css" rel="stylesheet" href="/web/assets/1/b1a3ae5/web.assets_frontend.min.css"/>
+        <script id="web.layout.odooscript" type="text/javascript">
+            var odoo = {
+                csrf_token: "4357dfbb10815ba12fda4e34390f4592a8f12e50o1827316144",
+                debug: "",
+            };
+        </script>
+        <script type="text/javascript">
+            odoo.__session_info__ = {"is_admin": false, "is_system": false, "is_website_user": true, "user_id": false, "is_frontend": true, "profile_session": null, "profile_collectors": null, "profile_params": null, "show_effect": true, "currencies": {"5": {"symbol": "R$", "position": "before", "digits": [69, 2]}, "1": {"symbol": "$", "position": "before", "digits": [69, 2]}}, "bundle_params": {"lang": "en_US", "website_id": 1}, "translationURL": "/website/translations", "cache_hashes": {"translations": "7986ecd94a45ba617340496007da357388179313"}, "geoip_country_code": null, "geoip_phone_code": null, "lang_url_code": "pt_BR"};
+            if (!/(^|;\s)tz=/.test(document.cookie)) {
+                const userTZ = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                document.cookie = `tz=${userTZ}; path=/`;
+            }
+        </script>
+        <script type="text/javascript" defer="defer" src="/web/assets/1/91d581e/web.assets_frontend_minimal.min.js" onerror="__odooAssetError=1"></script>
+        <script type="text/javascript" defer="defer" data-src="/web/assets/1/beb57b5/web.assets_frontend_lazy.min.js" onerror="__odooAssetError=1"></script>
+        
+        
+    </head>
+    <body>
+
+
+
+        <div id="wrapwrap" class="homepage   ">
+                <header id="top" data-anchor="true" data-name="Header" data-extra-items-toggle-aria-label="Botão de itens extras" class="   o_header_standard" style=" ">
+                    
+    <nav data-name="Navbar" aria-label="Main" class="navbar navbar-expand-lg navbar-light o_colored_level o_cc o_header_force_no_radius d-none d-lg-block p-0 shadow-sm ">
+        
+
+            <div id="o_main_nav" class="o_main_nav">
+                <div class="o_header_hide_on_scroll">
+                    <div aria-label="Topo" class="o_header_sales_two_top py-1">
+                        <ul class="navbar-nav container d-grid h-100 px-3 o_grid_header_3_cols">
+                            
+                            
+        <li data-name="Language Selector" class="o_header_language_selector ">
+        
+        
+        </li>
+                            
+                            
+        <li class="d-flex align-items-center">
+                <div data-name="Text" class="s_text_block d-flex align-items-center mx-auto" style="font-size: 16px !important;">
+                <h4 role="heading" level="1" data-original-font-size="24" style="font-size: 24px !important;"><span class="h5-fs" data-original-text-color="rgb(255, 255, 255)" style="color: rgb(255, 255, 255); font-size: 20px !important;" data-original-font-size="20" aioa-magnifier="true">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SIGA-NOS</span></h4>
+                    </div>
+        </li>
+                            
+                            
+        <li class="">
+            <div class="o_header_social_links d-flex align-items-center justify-content-end h-100" style="font-size: 16px !important;">
+                <div class="s_social_media o_not_editable oe_unmovable oe_unremovable" data-snippet="s_social_media" data-name="Social Media" data-original-font-size="16" style="font-size: 16px !important;">
+                    <h5 class="s_social_media_title d-none" role="heading" level="2" data-original-text-color="rgb(255, 255, 255)" style="color: rgb(255, 255, 255); font-size: 20px !important;" data-original-font-size="20" aioa-magnifier="true">Follow us</h5>
+<a href="/website/social/facebook" class="s_social_media_facebook o_nav-link_secondary nav-link m-0 p-0 text-decoration-none" target="_blank" aria-label="​ - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab" data-original-font-size="16" style="font-size: 16px !important;">
+                        <i class="fa fa-facebook fa-stack p-1 o_editable_media text-o-color-3" data-original-text-color="rgb(240, 242, 245)" style="color: rgb(240, 242, 245); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true" contenteditable="false">​</i>
+                    </a>
+<a href="/website/social/instagram" class="s_social_media_instagram o_nav-link_secondary nav-link m-0 p-0 text-decoration-none" target="_blank" aria-label="​ - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab" data-original-font-size="16" style="font-size: 16px !important;">
+                        <i class="fa fa-instagram fa-stack p-1 o_editable_media text-o-color-3" data-original-text-color="rgb(240, 242, 245)" style="color: rgb(240, 242, 245); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true" contenteditable="false">​</i>
+                    </a>
+<a href="/website/social/youtube" class="o_nav-link_secondary nav-link m-0 p-0 text-decoration-none s_social_media_youtube" target="_blank" aria-label="​ - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab" data-original-font-size="16" style="font-size: 16px !important;">
+                        <i class="fa fa-stack p-1 o_editable_media fa-youtube text-o-color-3" data-original-text-color="rgb(240, 242, 245)" style="color: rgb(240, 242, 245); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true" contenteditable="false">​</i>
+                    </a>
+</div>
+            </div>
+        </li>
+                        </ul>
+                    </div>
+                    <div aria-label="Meio" class="container d-flex justify-content-between align-items-center py-1">
+                        
+    <a data-name="Navbar Logo" href="/" class="navbar-brand logo me-4">
+            
+            <span role="img" aria-label="Logo of ariquemes" title="ariquemes"><img src="/web/image/website/1/logo/ariquemes?unique=f52b608" class="img img-fluid" width="95" height="40" alt="ariquemes" loading="lazy"/></span>
+        </a>
+    
+                        <ul class="navbar-nav align-items-center gap-1">
+                            
+        <li class="">
+    <form method="get" class="o_searchbar_form o_wait_lazy_js s_searchbar_input " action="/website/search" data-snippet="s_searchbar_input">
+            <div role="search" class="input-group ">
+        <input type="search" name="search" class="search-query form-control oe_search_box border-0 bg-light rounded-start-pill ps-3 text-bg-light" placeholder="Pesquisar..." data-search-type="all" data-limit="5" data-display-image="true" data-display-description="true" data-display-extra-link="true" data-display-detail="true" data-order-by="name asc"/>
+        <button type="submit" aria-label="Pesquisar" title="Pesquisar" class="btn oe_search_button rounded-end-pill p-3 bg-o-color-3 lh-1">
+            <i class="oi oi-search"></i>
+        </button>
+    </div>
+
+            <input name="order" type="hidden" class="o_search_order_by" style="font-size: 16px !important;" value="name asc"/>
+            
+    
+        </form>
+        </li>
+                            
+                            
+        
+        
+                        </ul>
+                    </div>
+                </div>
+                <div aria-label="Inferior" class="border-top o_border_contrast">
+                    <div class="container d-flex justify-content-between">
+                        
+    <ul id="top_menu" role="menu" class="nav navbar-nav top_menu o_menu_loading mx-auto p-2">
+        
+    
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="/" class="nav-link active">
+            <span>Principal</span>
+        </a>
+    </li>
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="/blog" class="nav-link ">
+            <span>Notícias</span>
+        </a>
+    </li>
+    <li role="presentation" class="nav-item dropdown ">
+        <a data-bs-toggle="dropdown" href="#" role="menuitem" class="nav-link dropdown-toggle   ">
+            <span>Secretarias</span>
+        </a>
+        <ul role="menu" class="dropdown-menu ">
+    <li role="presentation" class="">
+        <a role="menuitem" href="/equipe-de-governo" class="dropdown-item ">
+            <span>Equipe de Governo</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-educacao-1" class="dropdown-item ">
+            <span>Educação - SEMED</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-agricultura-industria-e-comercio" class="dropdown-item ">
+            <span>Agricultura, Indústria e Comércio - SEMAIC</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-desenvolvimento-social" class="dropdown-item ">
+            <span>Desenvolvimento Social - SEMDES</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-fazenda" class="dropdown-item ">
+            <span>Fazenda - SEMFAZ</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/fundacao-de-cultura-esporte-e-turismo" class="dropdown-item ">
+            <span>Cultura, Esporte e Turismo - SEMTEC</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-governo" class="dropdown-item ">
+            <span>Governo - SEMGOV</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-meio-ambiente" class="dropdown-item ">
+            <span>Meio Ambiente - SEMA</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-planejamento-orcamento-e-gestao" class="dropdown-item ">
+            <span>Planejamento, Orçamento e Gestão - SEMPOG</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-saude" class="dropdown-item ">
+            <span>Saúde - SEMSAU</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-seguranca-e-transito" class="dropdown-item ">
+            <span>Segurança e Trânsito - SEMUST</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-obras-e-servicos-publicos" class="dropdown-item ">
+            <span>Obras e Serviços Públicos - SEMOSP</span>
+        </a>
+    </li>
+        </ul>
+        </li>
+    <li role="presentation" class="nav-item dropdown ">
+        <a data-bs-toggle="dropdown" href="#" role="menuitem" class="nav-link dropdown-toggle   ">
+            <span>Outras Unidades</span>
+        </a>
+        <ul role="menu" class="dropdown-menu ">
+    <li role="presentation" class="">
+        <a role="menuitem" href="/casa-dos-conselhos" class="dropdown-item ">
+            <span>Casa dos Conselhos</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/controladoria-geral-do-municipio" class="dropdown-item ">
+            <span>Controladoria Geral do Município</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/instituto-de-previdencia-do-municipio-de-ariquemes" class="dropdown-item ">
+            <span>Instituto de Previdência do Município de Ariquemes</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/sala-do-empreendedor" class="dropdown-item ">
+            <span>Sala do Empreendedor</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/procuradoria-geral-do-municipio" class="dropdown-item ">
+            <span>Procuradoria Geral do Município</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/superintendencia-municipal-de-licitacoes" class="dropdown-item ">
+            <span>Superintendência Municipal de Licitações</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="https://amr.ariquemes.ro.gov.br/" class="dropdown-item ">
+            <span>Agência Municipal de Regulação - AMR</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/ouvidoria" class="dropdown-item ">
+            <span>Ouvidoria Municipal e Diretoria de Transparência (Transparência passiva e ativa)</span>
+        </a>
+    </li>
+        </ul>
+        </li>
+    <li role="presentation" class="nav-item dropdown ">
+        <a data-bs-toggle="dropdown" href="#" role="menuitem" class="nav-link dropdown-toggle   ">
+            <span>Informações</span>
+        </a>
+        <ul role="menu" class="dropdown-menu ">
+    <li role="presentation" class="">
+        <a role="menuitem" href="/ppa-ldo-e-loa" class="dropdown-item ">
+            <span>PPA, LDO e LOA</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/lgpd" class="dropdown-item ">
+            <span>LGPD - Lei Geral de Proteção de Dados</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/modelos-de-documentos" class="dropdown-item ">
+            <span>Modelos de Documentos</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/estrutura-organizacional" class="dropdown-item ">
+            <span>Estrutura Organizacional</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/slides" class="dropdown-item ">
+            <span>Cursos</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/event" class="dropdown-item ">
+            <span>Eventos</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/blog" class="dropdown-item ">
+            <span>Notícias</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/todos-os-servicos" class="dropdown-item ">
+            <span>Todos os Serviços</span>
+        </a>
+    </li>
+        </ul>
+        </li>
+    <li role="presentation" class="nav-item dropdown ">
+        <a data-bs-toggle="dropdown" href="#" role="menuitem" class="nav-link dropdown-toggle   ">
+            <span>Portal Serviços</span>
+        </a>
+        <ul role="menu" class="dropdown-menu ">
+    <li role="presentation" class="">
+        <a role="menuitem" href="/aprova-geral" class="dropdown-item ">
+            <span>Informações</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/aprova-criar-conta" class="dropdown-item ">
+            <span>Criar conta</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/aprova-entrar" class="dropdown-item ">
+            <span>Acessar</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/aprova-peticionar" class="dropdown-item ">
+            <span>Peticionar</span>
+        </a>
+    </li>
+        </ul>
+        </li>
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="/event" class="nav-link ">
+            <span>Eventos</span>
+        </a>
+    </li>
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="https://ariquemes.ro.gov.br/perguntas-frequentes" class="nav-link ">
+            <span>Perguntas Frequentes</span>
+        </a>
+    </li>
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="/turismo-1" class="nav-link ">
+            <span>Turismo</span>
+        </a>
+    </li>
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="/mapa-do-site" class="nav-link ">
+            <span>MAPA DO SITE</span>
+        </a>
+    </li>
+                        
+    </ul>
+                        
+                        <ul class="navbar-nav">
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        
+    </nav>
+    <nav data-name="Navbar" aria-label="Mobile" class="navbar  navbar-light o_colored_level o_cc o_header_mobile d-block d-lg-none shadow-sm px-0 o_header_force_no_radius">
+        
+
+        <div class="o_main_nav container flex-wrap justify-content-between">
+            
+    <a data-name="Navbar Logo" href="/" class="navbar-brand logo ">
+            
+            <span role="img" aria-label="Logo of ariquemes" title="ariquemes"><img src="/web/image/website/1/logo/ariquemes?unique=f52b608" class="img img-fluid" width="95" height="40" alt="ariquemes" loading="lazy"/></span>
+        </a>
+    
+            <ul class="o_header_mobile_buttons_wrap navbar-nav flex-row align-items-center gap-2 mb-0">
+                <li class="o_not_editable" data-original-font-size="16" style="font-size: 16px !important;">
+                    <button class="nav-link btn me-auto p-2 o_not_editable" type="button" data-bs-toggle="offcanvas" data-bs-target="#top_menu_collapse_mobile" aria-controls="top_menu_collapse_mobile" aria-expanded="false" aria-label="Alternar navegação" data-original-font-size="16" style="font-size: 16px !important;">
+                        <span class="navbar-toggler-icon" data-original-bg="rgba(0, 0, 0, 0) url(&#34;data:image/svg+xml,%3csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 30 30&#39;%3e%3cpath stroke=&#39;rgba%280, 0, 0, 0.55%29&#39; stroke-linecap=&#39;round&#39; stroke-miterlimit=&#39;10&#39; stroke-width=&#39;2&#39; d=&#39;M4 7h22M4 15h22M4 23h22&#39;/%3e%3c/svg%3e&#34;) no-repeat scroll 50% 50% / 100% padding-box border-box" aioa-contrast="true" data-original-font-size="16" style="font-size: 16px !important; background-image: url(&#34;data:image/svg+xml,%3csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 30 30&#39;%3e%3cpath stroke=&#39;rgba%280, 0, 0, 0.55%29&#39; stroke-linecap=&#39;round&#39; stroke-miterlimit=&#39;10&#39; stroke-width=&#39;2&#39; d=&#39;M4 7h22M4 15h22M4 23h22&#39;/%3e%3c/svg%3e&#34;);"></span>
+                    </button>
+                </li>
+            </ul>
+            <div id="top_menu_collapse_mobile" class="offcanvas offcanvas-end o_navbar_mobile">
+                <div class="offcanvas-header justify-content-end o_not_editable" style="font-size: 16px !important;">
+                    <button type="button" class="nav-link btn-close" data-bs-dismiss="offcanvas" aria-label="Fechar" data-original-bg="rgba(0, 0, 0, 0) url(&#34;data:image/svg+xml,%3csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 16 16&#39; fill=&#39;%23000&#39;%3e%3cpath d=&#39;M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z&#39;/%3e%3c/svg%3e&#34;) no-repeat scroll 50% 50% / 16px padding-box border-box" aioa-contrast="true" aioa-outline-contrast="true" data-original-font-size="16" style="font-size: 16px !important; background-image: url(&#34;data:image/svg+xml,%3csvg xmlns=&#39;http://www.w3.org/2000/svg&#39; viewBox=&#39;0 0 16 16&#39; fill=&#39;%23000&#39;%3e%3cpath d=&#39;M.293.293a1 1 0 011.414 0L8 6.586 14.293.293a1 1 0 111.414 1.414L9.414 8l6.293 6.293a1 1 0 01-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 01-1.414-1.414L6.586 8 .293 1.707a1 1 0 010-1.414z&#39;/%3e%3c/svg%3e&#34;);"></button>
+                </div>
+                <div class="offcanvas-body d-flex flex-column justify-content-between h-100 w-100">
+                    <ul class="navbar-nav">
+                        
+        <li class="">
+    <form method="get" class="o_searchbar_form o_wait_lazy_js s_searchbar_input " action="/website/search" data-snippet="s_searchbar_input">
+            <div role="search" class="input-group mb-3">
+        <input type="search" name="search" class="search-query form-control oe_search_box border-0 bg-light rounded-start-pill text-bg-light ps-3" placeholder="Pesquisar..." data-search-type="all" data-limit="0" data-display-image="true" data-display-description="true" data-display-extra-link="true" data-display-detail="true" data-order-by="name asc"/>
+        <button type="submit" aria-label="Pesquisar" title="Pesquisar" class="btn oe_search_button rounded-end-pill bg-o-color-3 pe-3">
+            <i class="oi oi-search"></i>
+        </button>
+    </div>
+
+            <input name="order" type="hidden" class="o_search_order_by" style="font-size: 16px !important;" value="name asc"/>
+            
+    
+        </form>
+        </li>
+                        
+    <ul role="menu" class="nav navbar-nav top_menu  text-end">
+        
+
+                            
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="/" class="nav-link active">
+            <span>Principal</span>
+        </a>
+    </li>
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="/blog" class="nav-link ">
+            <span>Notícias</span>
+        </a>
+    </li>
+    <li role="presentation" class="nav-item dropdown ">
+        <a data-bs-toggle="dropdown" href="#" role="menuitem" class="nav-link dropdown-toggle   ">
+            <span>Secretarias</span>
+        </a>
+        <ul role="menu" class="dropdown-menu position-relative rounded-0 o_dropdown_without_offset text-end">
+    <li role="presentation" class="">
+        <a role="menuitem" href="/equipe-de-governo" class="dropdown-item ">
+            <span>Equipe de Governo</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-educacao-1" class="dropdown-item ">
+            <span>Educação - SEMED</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-agricultura-industria-e-comercio" class="dropdown-item ">
+            <span>Agricultura, Indústria e Comércio - SEMAIC</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-desenvolvimento-social" class="dropdown-item ">
+            <span>Desenvolvimento Social - SEMDES</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-fazenda" class="dropdown-item ">
+            <span>Fazenda - SEMFAZ</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/fundacao-de-cultura-esporte-e-turismo" class="dropdown-item ">
+            <span>Cultura, Esporte e Turismo - SEMTEC</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-governo" class="dropdown-item ">
+            <span>Governo - SEMGOV</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-meio-ambiente" class="dropdown-item ">
+            <span>Meio Ambiente - SEMA</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-planejamento-orcamento-e-gestao" class="dropdown-item ">
+            <span>Planejamento, Orçamento e Gestão - SEMPOG</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-saude" class="dropdown-item ">
+            <span>Saúde - SEMSAU</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-seguranca-e-transito" class="dropdown-item ">
+            <span>Segurança e Trânsito - SEMUST</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/secretaria-municipal-de-obras-e-servicos-publicos" class="dropdown-item ">
+            <span>Obras e Serviços Públicos - SEMOSP</span>
+        </a>
+    </li>
+        </ul>
+        </li>
+    <li role="presentation" class="nav-item dropdown ">
+        <a data-bs-toggle="dropdown" href="#" role="menuitem" class="nav-link dropdown-toggle   ">
+            <span>Outras Unidades</span>
+        </a>
+        <ul role="menu" class="dropdown-menu position-relative rounded-0 o_dropdown_without_offset text-end">
+    <li role="presentation" class="">
+        <a role="menuitem" href="/casa-dos-conselhos" class="dropdown-item ">
+            <span>Casa dos Conselhos</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/controladoria-geral-do-municipio" class="dropdown-item ">
+            <span>Controladoria Geral do Município</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/instituto-de-previdencia-do-municipio-de-ariquemes" class="dropdown-item ">
+            <span>Instituto de Previdência do Município de Ariquemes</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/sala-do-empreendedor" class="dropdown-item ">
+            <span>Sala do Empreendedor</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/procuradoria-geral-do-municipio" class="dropdown-item ">
+            <span>Procuradoria Geral do Município</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/superintendencia-municipal-de-licitacoes" class="dropdown-item ">
+            <span>Superintendência Municipal de Licitações</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="https://amr.ariquemes.ro.gov.br/" class="dropdown-item ">
+            <span>Agência Municipal de Regulação - AMR</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/ouvidoria" class="dropdown-item ">
+            <span>Ouvidoria Municipal e Diretoria de Transparência (Transparência passiva e ativa)</span>
+        </a>
+    </li>
+        </ul>
+        </li>
+    <li role="presentation" class="nav-item dropdown ">
+        <a data-bs-toggle="dropdown" href="#" role="menuitem" class="nav-link dropdown-toggle   ">
+            <span>Informações</span>
+        </a>
+        <ul role="menu" class="dropdown-menu position-relative rounded-0 o_dropdown_without_offset text-end">
+    <li role="presentation" class="">
+        <a role="menuitem" href="/ppa-ldo-e-loa" class="dropdown-item ">
+            <span>PPA, LDO e LOA</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/lgpd" class="dropdown-item ">
+            <span>LGPD - Lei Geral de Proteção de Dados</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/modelos-de-documentos" class="dropdown-item ">
+            <span>Modelos de Documentos</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/estrutura-organizacional" class="dropdown-item ">
+            <span>Estrutura Organizacional</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/slides" class="dropdown-item ">
+            <span>Cursos</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/event" class="dropdown-item ">
+            <span>Eventos</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/blog" class="dropdown-item ">
+            <span>Notícias</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/todos-os-servicos" class="dropdown-item ">
+            <span>Todos os Serviços</span>
+        </a>
+    </li>
+        </ul>
+        </li>
+    <li role="presentation" class="nav-item dropdown ">
+        <a data-bs-toggle="dropdown" href="#" role="menuitem" class="nav-link dropdown-toggle   ">
+            <span>Portal Serviços</span>
+        </a>
+        <ul role="menu" class="dropdown-menu position-relative rounded-0 o_dropdown_without_offset text-end">
+    <li role="presentation" class="">
+        <a role="menuitem" href="/aprova-geral" class="dropdown-item ">
+            <span>Informações</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/aprova-criar-conta" class="dropdown-item ">
+            <span>Criar conta</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/aprova-entrar" class="dropdown-item ">
+            <span>Acessar</span>
+        </a>
+    </li>
+    <li role="presentation" class="">
+        <a role="menuitem" href="/aprova-peticionar" class="dropdown-item ">
+            <span>Peticionar</span>
+        </a>
+    </li>
+        </ul>
+        </li>
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="/event" class="nav-link ">
+            <span>Eventos</span>
+        </a>
+    </li>
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="https://ariquemes.ro.gov.br/perguntas-frequentes" class="nav-link ">
+            <span>Perguntas Frequentes</span>
+        </a>
+    </li>
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="/turismo-1" class="nav-link ">
+            <span>Turismo</span>
+        </a>
+    </li>
+    <li role="presentation" class="nav-item">
+        <a role="menuitem" href="/mapa-do-site" class="nav-link ">
+            <span>MAPA DO SITE</span>
+        </a>
+    </li>
+                        
+    </ul>
+                        
+        <li class="">
+                <div data-name="Text" class="s_text_block align-items-end mt-2 border-top pt-2 text-end o_border_contrast" style="font-size: 16px !important;">
+                <h4 role="heading" level="1" data-original-font-size="24" style="font-size: 24px !important;"><span class="h5-fs" data-original-text-color="rgb(255, 255, 255)" style="color: rgb(255, 255, 255); font-size: 20px !important;" data-original-font-size="20" aioa-magnifier="true">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; SIGA-NOS</span></h4>
+                    </div>
+        </li>
+                        
+        <li class="">
+            <div class="o_header_social_links mt-2 border-top pt-2 text-end o_border_contrast" style="font-size: 16px !important;">
+                <div class="s_social_media o_not_editable oe_unmovable oe_unremovable" data-snippet="s_social_media" data-name="Social Media" data-original-font-size="16" style="font-size: 16px !important;">
+                    <h5 class="s_social_media_title d-none" role="heading" level="2" data-original-text-color="rgb(255, 255, 255)" style="color: rgb(255, 255, 255); font-size: 20px !important;" data-original-font-size="20" aioa-magnifier="true">Follow us</h5>
+<a href="/website/social/facebook" class="s_social_media_facebook o_nav-link_secondary nav-link m-0 p-0 text-decoration-none" target="_blank" aria-label="​ - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab" data-original-font-size="16" style="font-size: 16px !important;">
+                        <i class="fa fa-facebook fa-stack p-1 o_editable_media text-o-color-3" data-original-text-color="rgb(240, 242, 245)" style="color: rgb(240, 242, 245); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true" contenteditable="false">​</i>
+                    </a>
+<a href="/website/social/instagram" class="s_social_media_instagram o_nav-link_secondary nav-link m-0 p-0 text-decoration-none" target="_blank" aria-label="​ - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab" data-original-font-size="16" style="font-size: 16px !important;">
+                        <i class="fa fa-instagram fa-stack p-1 o_editable_media text-o-color-3" data-original-text-color="rgb(240, 242, 245)" style="color: rgb(240, 242, 245); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true" contenteditable="false">​</i>
+                    </a>
+<a href="/website/social/youtube" class="o_nav-link_secondary nav-link m-0 p-0 text-decoration-none s_social_media_youtube" target="_blank" aria-label="​ - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab" data-original-font-size="16" style="font-size: 16px !important;">
+                        <i class="fa fa-stack p-1 o_editable_media fa-youtube text-o-color-3" data-original-text-color="rgb(240, 242, 245)" style="color: rgb(240, 242, 245); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true" contenteditable="false">​</i>
+                    </a>
+</div>
+            </div>
+        </li>
+                    </ul>
+                    <ul class="navbar-nav gap-2 mt-3 w-100">
+                        
+                        
+        
+        
+                        
+        <li data-name="Language Selector" class="o_header_language_selector ">
+        
+        
+        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+    
+    </nav>
+    
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">
+        
+        
+        <ol class="breadcrumb">
+            
+                <li class="breadcrumb-item">
+                    <a href="/default-main-menu">
+                    </a>
+                </li>
+            
+            <li class="breadcrumb-item active">Principal</li>
+        </ol>
+                        </div>
+                    </div>
+                </div>
+        </header>
+                <script id="aioa-adawidget" src="https://www.skynettechnologies.com/accessibility/js/all-in-one-accessibility-js-widget-minify.js?colorcode=#FF5733&amp;token=&amp;t=220071&amp;position=bottom_left.aioa-icon-type-1.aioa-default-icon."><head><script id="aioa-adawidget" data-oe-id="3024" data-oe-xpath="/data/xpath/script" data-oe-model="ir.ui.view" data-oe-field="arch" src="https://www.skynettechnologies.com/accessibility/js/all-in-one-accessibility-js-widget-minify.js?colorcode=#FF5733&amp;token=&amp;t=220071&amp;position=bottom_left.aioa-icon-type-1.aioa-default-icon." class=""></script></head></script>
+                <main>
+                    
+        <div id="wrap" class="oe_structure"><section class="s_image_gallery o_colored_level s_custom_snippet pt0 o_cc o_cc2 pb0 o_slideshow s_image_gallery_show_indicators s_image_gallery_indicators_dots" data-vcss="001" data-columns="3" style="overflow: hidden; background-image: none; height: 400px;" data-snippet="s_image_gallery" data-name="Personalizar Galeria de imagens">
+        <div class="container-fluid"><div class="carousel slide" data-bs-ride="carousel" style="margin: 0 12px;" id="slideshow_1795616194273" data-bs-interval="5000"><div class="carousel-inner" style="padding: 0;"><div class="carousel-item" style=""><a href="https://wa.me/556935162127" target="_blank" data-bs-original-title="" title=""><img class="img img-fluid o_we_custom_image" src="/web/image/2881-1511c179/ARTE%20CHATBOT.webp" data-index="0" alt="" data-name="Imagem" data-mimetype="image/webp" data-original-id="2849" data-original-src="/web/image/2849-e564fe6f/ARTE%20CHATBOT.jpg" data-mimetype-before-conversion="image/jpeg" loading="lazy" data-quality="100" style="width: 100% !important;"/></a></div><div class="carousel-item undefined active" style=""><a href="https://contratamaisbrasil.sistema.gov.br/oportunidades/?query=&amp;uf=RO&amp;municipio=Ariquemes&amp;municipio=Ariquemes&amp;categoria=" target="_blank" data-bs-original-title="" title=""><img class="img img-fluid o_we_custom_image" src="/web/image/3748-44fa8052/BANNER%20SITE%20PREFEITURA.jpg.webp" data-index="1" alt="" data-name="Imagem" style="width: 100% !important;" data-mimetype="image/webp" data-original-id="3747" data-original-src="/web/image/3747-c8e154c1/BANNER%20SITE%20PREFEITURA.jpg.jpeg" data-mimetype-before-conversion="image/jpeg" loading="lazy"/></a></div></div><ul class="carousel-indicators"><li class="o_indicators_left text-center d-none" aria-label="Previous" title="Anterior"><i class="oi oi-chevron-left">​</i></li><li data-bs-target="#slideshow_1795616194273" data-bs-slide-to="0" style="background-image: url(/web/image/2881-1511c179/ARTE%20CHATBOT.webp)"></li><li data-bs-target="#slideshow_1795616194273" data-bs-slide-to="1" style="background-image: url(/web/image/3748-44fa8052/BANNER%20SITE%20PREFEITURA.jpg.webp)" class="active" aria-current="true"></li><li class="o_indicators_right text-center d-none" aria-label="Next" title="Próximo"><i class="oi oi-chevron-right">​</i></li></ul><a class="carousel-control-prev o_we_no_overlay o_not_editable" data-bs-slide="prev" aria-label="Previous" title="Anterior" href="#slideshow_1795616194273"><span class="oi oi-chevron-left fa-2x text-white"></span><span class="visually-hidden">Anterior</span></a><a class="carousel-control-next o_we_no_overlay o_not_editable" data-bs-slide="next" aria-label="Next" title="Próximo" href="#slideshow_1795616194273"><span class="oi oi-chevron-right fa-2x text-white"></span><span class="visually-hidden">Próximo</span></a></div></div>
+    </section><section class="s_tabs o_colored_level o_cc o_cc2 pt32 pb0" data-vcss="001" data-snippet="s_tabs" data-name="Abas" style="background-image: none;">
+        <div class="container-fluid">
+            <div class="s_tabs_main">
+                <div class="s_tabs_nav mb-3">
+                    <ul class="nav nav-pills" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link o_default_snippet_text active" id="nav_tabs_link_1729878111409_32" data-bs-toggle="tab" href="#nav_tabs_content_1729878111409_32" role="tab" aria-controls="nav_tabs_content_1729878111409_32" aria-selected="true" aria-label="Toggle dropdown">Cidadão</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link o_default_snippet_text" id="nav_tabs_link_1729878111409_34" data-bs-toggle="tab" href="#nav_tabs_content_1729878111409_34" role="tab" aria-controls="nav_tabs_content_1729878111409_34" aria-selected="false" aria-label="Toggle dropdown">Empresa</a>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <a class="nav-link o_default_snippet_text" id="nav_tabs_link_1729878111409_35" data-bs-toggle="tab" href="#nav_tabs_content_1729878111409_35" role="tab" aria-controls="nav_tabs_content_1729878111409_35" aria-selected="false" aria-label="Toggle dropdown">Servidor</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="s_tabs_content tab-content">
+                    <div class="tab-pane fade active show" id="nav_tabs_content_1729878111409_32" role="tabpanel" aria-labelledby="nav_tabs_link_1729878111409_32">
+                        <div class="oe_structure oe_empty" data-editor-message-default="true" data-editor-message="ARRASTE OS BLOCOS DE CONSTRUÇÃO AQUI" spellcheck="false" data-gramm="false">
+                            <section class="s_text_block" style="background-image: none;" data-name="Texto">
+                                <div class="s_allow_columns container-fluid">
+                                    <p class="o_default_snippet_text"><strong>Principais serviços ao cidadão.</strong></p>
+                                </div>
+                            </section>
+                        <section class="s_references pt0 pb4" data-snippet="s_references" data-name="Referências" style="background-image: none;">
+        <div class="container">
+            
+            <div class="row">
+                
+                
+                
+                
+                
+                
+            <div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="/portal-de-servicos" aria-label="portal de servicos" data-bs-original-title="" title=""><img src="/web/image/3669-69a82036/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252841%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-mimetype="image/svg+xml" data-original-id="3667" data-original-src="/web/image/3667-6d1339f3/MANUAL%20DE%20PROCEDIMENTOS%20%2841%29.png" data-mimetype-before-conversion="image/png" data-resize-width="1920" data-shape="web_editor/geometric/geo_square" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2841%29.svg" data-hover-effect="dolly_zoom" data-shape-colors=";;;;" data-original-mimetype="image/png" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://transparencia.ariquemes.ro.gov.br/transparencia/aplicacoes/publicacao/download.php?id_doc=048574&amp;extencao=PDF" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3673-4ed9ba65/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252843%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="11" data-mimetype="image/svg+xml" data-original-id="3672" data-original-src="/web/image/3672-b21e0b5f/MANUAL%20DE%20PROCEDIMENTOS%20%2843%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2843%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://transparencia.ariquemes.ro.gov.br/novo/executivo" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3675-a00843dd/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252844%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="15" data-mimetype="image/svg+xml" data-original-id="3674" data-original-src="/web/image/3674-c71f5ed7/MANUAL%20DE%20PROCEDIMENTOS%20%2844%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2844%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-color: rgb(255, 255, 255) !important; border-width: 2px !important;"><a aria-label=" - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab" data-bs-original-title="" title="" href="https://novo.ariquemes.ro.gov.br/event"><img src="/web/image/3679-e6c8a51b/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252846%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="19" data-mimetype="image/svg+xml" data-original-id="3678" data-original-src="/web/image/3678-ee89fb08/MANUAL%20DE%20PROCEDIMENTOS%20%2846%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2846%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://novo.ariquemes.ro.gov.br/slides" aria-label=" - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3681-672e7527/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252847%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="3680" data-original-src="/web/image/3680-41311599/MANUAL%20DE%20PROCEDIMENTOS%20%2847%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2847%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="/ppa-ldo-e-loa" aria-label=" - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3685-6cb9da35/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252848%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="3682" data-original-src="/web/image/3682-913ea4b7/MANUAL%20DE%20PROCEDIMENTOS%20%2848%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2848%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://falabr.cgu.gov.br/web/home" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3686-f7897e02/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252850%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="16" data-mimetype="image/svg+xml" data-original-id="3684" data-original-src="/web/image/3684-bc8e5e23/MANUAL%20DE%20PROCEDIMENTOS%20%2850%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2850%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://nfse.ariquemes.ro.gov.br/issweb/home.jsf" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3689-775881df/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252853%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-mimetype="image/svg+xml" data-original-id="3688" data-original-src="/web/image/3688-dac21652/MANUAL%20DE%20PROCEDIMENTOS%20%2853%29.png" data-mimetype-before-conversion="image/png" data-resize-width="1920" data-shape="web_editor/geometric/geo_square" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2853%29.svg" data-hover-effect="dolly_zoom" data-shape-colors=";;;;" data-original-mimetype="image/png" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="16" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://tributos.ariquemes.ro.gov.br/servicosweb/home.jsf" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3693-41cbfe0e/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252856%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover o_we_image_cropped rounded" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="6" data-mimetype="image/svg+xml" data-original-id="3692" data-original-src="/web/image/3692-a6ab9008/MANUAL%20DE%20PROCEDIMENTOS%20%2856%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2856%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="http://www.diariomunicipal.com.br/arom/" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3697-a5c2403e/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252859%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover o_we_image_cropped" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="11" data-mimetype="image/svg+xml" data-original-id="3696" data-original-src="/web/image/3696-8e1d275d/MANUAL%20DE%20PROCEDIMENTOS%20%2859%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2859%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://leis.org/prefeitura/ro/ariquemes" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3702-2d0beb24/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252860%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover o_we_image_cropped" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="3698" data-original-src="/web/image/3698-073a7fe9/MANUAL%20DE%20PROCEDIMENTOS%20%2860%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2860%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://transparencia.ariquemes.ro.gov.br/transparencia/index.php?link=aplicacoes/licitacao/frmlicitacao&amp;id_menu=3&amp;qt_acessos=2783" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3705-0d3d8656/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252861%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="15" data-mimetype="image/svg+xml" data-original-id="3699" data-original-src="/web/image/3699-9e1f2fd0/MANUAL%20DE%20PROCEDIMENTOS%20%2861%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2861%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://xn--cartadeserviosariquemes-89b.my.canva.site/" aria-label=" - opens in new tab" data-bs-original-title="" title="" target="_blank"><img src="/web/image/3704-92f9ed27/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252862%2529.svg" alt="" class="img img-fluid o_we_custom_image mx-auto d-block o_animate_on_hover o_we_image_cropped" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="3700" data-original-src="/web/image/3700-8dcd3ff8/MANUAL%20DE%20PROCEDIMENTOS%20%2862%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2862%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://ariquemes.prematriculaonline.com.br/" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3703-92ff6d65/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252863%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="3701" data-original-src="/web/image/3701-781909ef/MANUAL%20DE%20PROCEDIMENTOS%20%2863%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2863%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://ariquemes.webaluno.app.br/#/login" data-bs-original-title="" title="" target="_blank" aria-label=" - opens in new tab"><img src="/web/image/3721-f14e9713/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252864%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="16" data-mimetype="image/svg+xml" data-original-id="3706" data-original-src="/web/image/3706-a754adfc/MANUAL%20DE%20PROCEDIMENTOS%20%2864%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2864%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://declarante.prf.gov.br/declarante/" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3710-bbb4a786/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252866%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="11" data-mimetype="image/svg+xml" data-original-id="3708" data-original-src="/web/image/3708-2927946d/MANUAL%20DE%20PROCEDIMENTOS%20%2866%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2866%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://transparencia.ariquemes.ro.gov.br/transparencia/aplicacoes/publicacao/download.php?id_doc=050299&amp;extencao=PDF" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3718-a0cfef3a/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252867%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover o_we_image_cropped" style="width: 100% !important;" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="3711" data-original-src="/web/image/3711-af0d638d/MANUAL%20DE%20PROCEDIMENTOS%20%2867%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2867%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title="" href="https://radardatransparencia.atricon.org.br/"><img src="/web/image/3716-bf64d0a2/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252868%2529.svg" alt="" class="img img-fluid o_we_custom_image o_we_image_cropped o_animate_on_hover mx-auto d-block" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="3712" data-original-src="/web/image/3712-1953487e/MANUAL%20DE%20PROCEDIMENTOS%20%2868%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2868%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://ariquemes.ro.gov.br/lista-de-espera-hora-maquina" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/3722-d3e03282/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252869%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover o_we_image_cropped" style="width: 100% !important;" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="12" data-mimetype="image/svg+xml" data-original-id="3713" data-original-src="/web/image/3713-da7c83d2/MANUAL%20DE%20PROCEDIMENTOS%20%2869%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2869%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a title="" data-bs-original-title="" aria-label="- opens in new tab" href="https://ariquemes.gmustwi.com/consultapaciente"><img src="/web/image/3719-f888415f/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252870%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="3714" data-original-src="/web/image/3714-2fc3eda5/MANUAL%20DE%20PROCEDIMENTOS%20%2870%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2870%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a title="" data-bs-original-title="" aria-label="- opens in new tab" href="/coleta-de-lixo"><img src="/web/image/3723-bd43060a/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252871%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="14" data-mimetype="image/svg+xml" data-original-id="3715" data-original-src="/web/image/3715-fbca6974/MANUAL%20DE%20PROCEDIMENTOS%20%2871%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2871%29.svg" loading="lazy"/></a></div><div class="o_colored_level o_cc o_cc2 border col-lg-2" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a title="" data-bs-original-title="" aria-label="- opens in new tab" href="https://7wi.com.br/consulta/RO_Ariquemes/painel_acompanhamento_ambulatorio"><img src="/web/image/3652-b5a9fd51/MANUAL%2520DE%2520PROCEDIMENTOS%2520%252833%2529.svg" alt="" class="img img-fluid mx-auto o_we_custom_image o_animate_on_hover" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="18" data-mimetype="image/svg+xml" data-original-id="3651" data-original-src="/web/image/3651-51c4eef1/MANUAL%20DE%20PROCEDIMENTOS%20%2833%29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/png" data-resize-width="1920" data-file-name="MANUAL%20DE%20PROCEDIMENTOS%20%2833%29.svg" loading="lazy"/></a></div></div>
+        </div>
+    </section></div>
+                    </div>
+                    <div class="tab-pane fade" id="nav_tabs_content_1729878111409_34" role="tabpanel" aria-labelledby="nav_tabs_link_1729878111409_34">
+                        <div class="oe_structure oe_empty" data-editor-message-default="true" data-editor-message="ARRASTE OS BLOCOS DE CONSTRUÇÃO AQUI" data-lt-tmp-id="lt-719353" spellcheck="false" data-gramm="false">
+                            <section class="s_text_block" style="background-image: none;" data-name="Texto">
+                                <div class="container s_allow_columns">
+                                    <p class="o_default_snippet_text"><strong>Principais serviços para empresas.</strong></p>
+                                </div>
+                            </section>
+                        <section class="s_references pb32 pt0" data-snippet="s_references" data-name="Referências" style="background-image: none;">
+        <div class="container">
+            
+            
+            <div class="row">
+                
+                
+                
+                
+                
+                
+            <div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://tributos.ariquemes.ro.gov.br/servicosweb/home.jsf" data-bs-original-title="" title="" target="_blank" aria-label=" - opens in new tab"><img src="/web/image/1342-94e43d34/29.svg" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1315" data-original-src="/web/image/1315-f70b48d7/29.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="29.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://tributos.ariquemes.ro.gov.br/issweb/home.jsf" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzg1IiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgICA8ZGVmcz4KICAgICAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCIgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIHN0eWxlPSJ0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7Ij4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjZmlsdGVyUGF0aCIgZmlsbD0ibm9uZSIvPgogICAgICAgIDwvY2xpcFBhdGg+CiAgICAgICAgPHBhdGggaWQ9ImZpbHRlclBhdGgiIGQ9Ik0gMCAwIEwgMCAxIEwgMSAxIEwgMSAwIEwgMCAwWiI+CiAgICAgICAgPC9wYXRoPgogICAgPC9kZWZzPgogICAgCiAgICA8ZyBjbGlwLXBhdGg9InVybCgjY2xpcC1wYXRoKSI+PGltYWdlIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1JsWVVBQUJYUlVKUVZsQTRXQW9BQUFBd0FBQUFnQUVBeHdBQVNVTkRVTWdCQUFBQUFBSElBQUFBQUFRd0FBQnRiblJ5VWtkQ0lGaFpXaUFINEFBQkFBRUFBQUFBQUFCaFkzTndBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUUFBOXRZQUFRQUFBQURUTFFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWxrWlhOakFBQUE4QUFBQUNSeVdGbGFBQUFCRkFBQUFCUm5XRmxhQUFBQktBQUFBQlJpV0ZsYUFBQUJQQUFBQUJSM2RIQjBBQUFCVUFBQUFCUnlWRkpEQUFBQlpBQUFBQ2huVkZKREFBQUJaQUFBQUNoaVZGSkRBQUFCWkFBQUFDaGpjSEowQUFBQmpBQUFBRHh0YkhWakFBQUFBQUFBQUFFQUFBQU1aVzVWVXdBQUFBZ0FBQUFjQUhNQVVnQkhBRUpZV1ZvZ0FBQUFBQUFBYjZJQUFEajFBQUFEa0ZoWldpQUFBQUFBQUFCaW1RQUF0NFVBQUJqYVdGbGFJQUFBQUFBQUFDU2dBQUFQaEFBQXRzOVlXVm9nQUFBQUFBQUE5dFlBQVFBQUFBRFRMWEJoY21FQUFBQUFBQVFBQUFBQ1ptWUFBUEtuQUFBTldRQUFFOUFBQUFwYkFBQUFBQUFBQUFCdGJIVmpBQUFBQUFBQUFBRUFBQUFNWlc1VlV3QUFBQ0FBQUFBY0FFY0Fid0J2QUdjQWJBQmxBQ0FBU1FCdUFHTUFMZ0FnQURJQU1BQXhBRFpCVEZCSW9SRUFBQUh3Um12Yk5Tbk50dTNBQlJaYWFoa2FMYldIb0xSMlJ3bVdzZzV0Nk9HS1RpQTNHREF3RmpmZEVWeGk3akpwRTlTT2xnbkpqWVpvNlUyUVc4bHRtZUJZY210SGlMYnJjcVNqSkpLSUNTWk4wcG95NldUVVBkSkFxYVdXY2tGdlA4NXIxYlhndnY0WkVST2dULzMvcWY4LzlYK2xSNjk4NktVZFZmT2xydnM2Wm9VdUYrU3B1Z09iemdwVjV0aFU1ZXpaNFVtc1FMWE94TUtTVG9EUzg1a0tIekN5bVV3bWs5MVJkS0gvZ3BCa0oxQ2NxRXBmWmFUa1BHVnR2d04yWnpneUFHeFJ4VnM1SU9zaVdlMTlCcVN0TUFRZ1ZYbEtBYVdJbXhSSjJRWVBoMmRUQUpxOVNGUDZEZEtobVdVRFYzcFRmSWZCeXJCTU9XQzlEMFY3ak5MazBDWXl0eU5WMWdXZ3k0K2l1d0YyV1NGTnNrQUY3dmFsOFFNQW5hR010WldLelBuVFBLTlFGOFowVXBsMkFNb0FyQTloNHFVS0lZaDRDU2hFd3BlVkFOME5LdXVVRVFsQTZ3RGF3cGZOUUNtbUNsQ1E5VGF3Tlh6SkFEbVYrWWJBOUR4UXRNS3dEREFRVEFmQXhMQXNGOHdNWTBsWWxnK216dWdJd3pvQkdnS1JrUXBkTmdQRlNKbTFHSm53YURYQWxsaDVXZjBBeWRDbzNzYk1sWGZSWVB1Y2NlNVdxS08wUStYMzc5emFPU2NTMGxqWjZ1QllER2xrclM5VkRjY3dSb3F2V3A4cCs5UzFPME9sU20xWTFKSHFhRzl2YjErVFNtM2V1bU1naFBOZnYzeEhhTFBaSHJpZ0traFdXTk1HNUt1RVFocXJEN0N0TUs4Tm9FdWgzTGgxYTZLUzFXY2tKRTFPWnlwMlRTeWNpZWVoSjZvMmdDNUpzMndxZUZjNHN4S2dKOVpuSkNTdHA2SWJxczdKMDJiUE9IWDQwQTBmTldyVXFKRmxkOVNaMHlZZTUrZm9pZE1teHJ5TkhEVnExS2poVmU5Q2czNkFMa2xhV1ZIRmFQbGR1dGRjNC9iczNyMTd6M0dibXNsajduL3NmS2NMOXZydGRIa000TkNwL2k3ZDYzV2pwQmw3OSs3ZG0zQVl0dnlWQThCZzM4YVdZUzdIZGI1eENCaDg2NTd6M003RXpIaTRmdS9ldmU5VUlhVU54NFJocFF1VnMzdWV5bThaNXZzbnUrd0Fwam9kOVQrRGVQejVHS01Wdno5d091WURneHY5TGNQclR5VTFBMHcyUnY4Q2ozYzVMZDJQeDIrNXJIVjRkN1RiemNCNzFVaHBseTVWei9KalN3Qkg5dUQ5emM4TXhiL2orSWR5dWgrdnpRN2ZIc1RqWUtOTG53TUxxNS9TVG9sYWRtaW12NTlnL3ZiMmI2ek5EZ0pza3pUdFpmT2ZRUEZsYzVWVE4vQkg0T3hndGpsZjU2M2hFTEQzdjI1WS8rd0h2Q0Z6N2lHQXZoL2ZkT2NyQjhuS2VRYndSK0NKR3FDMDBhVmF4bXZEL1V3WkJFcExaTGJzQS9paVhPOEZkc3ZyOFFmZ2IxY0N0d1Vqcng2dUJENCtRNUtPV3ZwbEk1SUR1SG1FSkkzNy9nS1h1NEdWLzRTUFlqVkFhU2hPckYxUEFuek56MDhCcnBMekY0M3U0RllEOTlZUHdqdkR5dVo3d0Iva2VRWEFYZkk3SWcrSFR0b01YRllMMUxxbVFiWHJpbDhDK1dPOGpkZ0g1SWE3NkZYZ2s2TURld1dZcDllQTg4cm1KdUNERXowOUM3eC9ySytMZ1oyYUM3eFFFNnB0dVgzcjNJUEE3ZDdPQkxoYjd0OEdtQjNVcVlmZ2d5UDFIV0JUMlZ3SXNHZW1CK3RENEJINXpnQXBqUzdDd1pOcXhyaGphOVQzOVJQZzQ5TTlmZGxZNFdHT3NUS29HNEZ0MGlSZ1lHUzVESDhkWVBESktTNW5BRnpuSy9JdWNLNzBPUENOR21FOWo5MVdtOUtLdnd0czgvUTFZNDZIaEhGalVIOEFWa3JxQStZRzhYZm5FNzFwNG43TXdaODNPbnpCK0lxdmhjRGZoa25MZ1owMUlna1VhdE05MGhxQU9kS3JMbGNhNTNrNHcvaHVRSk9BZzNGSmR3QVBCZUZhNzBQbjlCbFF1dDZZWTh6eDlRU3dVZEtZQTBCalRZamtnVkp0dWxjNm9nLzQwMGk5N05KdVhPd2hZZHdZMERyZ1ZVbjZBbENNbG8xRzM3VFhnQjlLdXNDWTd5ZjJFWEN4SkwwRTNGb1RrZ0NabXFWTEFLN1RNeTd6akJVZTVoZ3JneG1XQS82NmJkdTJiVThETEEzZ0dlYzZYOUl4Tit3MUJwdWxjNHpML2JRRFBMTnQyN1p0YndGL3JtNlRIODdFcFVnZXNCc2tMZTdLVnV6bWNSV2tGNEg5WXg5MytheHhsNGR2RzdPRGFjYm5Vd0hJcXgvcHVBY0JIcEJpZzhDUC9UeHZlSjFhelJxSzBCdFhFaUFqYVQ2Vm5MTXFhSklOL1BmUFhJWVBBRzhQZDlzQmZISjBNQnY5ZkRLMnJEVHNSZUIxU1h1QTNEQnZKOXArMHRYc0tvRGU4WG5BYnBDMHZxSm9xQ0RkQTlnN1hIUS93Q3FYdVFCUEs1Q1IvL0xEVmVVeHdrVnJnVDlKdWhQZ01tOUovUDV6UkJXYllsQUV5RWpTa29ycWoxVFMyUDA0TzV3N0NIeDBxY01GKzQzV1lMNEkwR281L3hyb0tZOWYzUEU1Qit0VjRGbEpuejBFZkREUGFleDhTYjhCWHJHY3Z3UndZUlZUMGpEdEJrUEpuYm1LM1o1UUpla2IzblFmNW11M2QvemdsNE1BVHlxWUI0RjNSOG41SnVEUStMSjRGZmJjLzgzTDF2d1c0T3VTZEIvbUwyKzkrdnI3Zm5ld1R6cDlFRmdqNThqN3dQMHVuenpxMmxwRmxIVEpxSHBXeU1nOTNvNzhsZUh4emM4RWMrVDd3R055blFSd1E3bDQzSE9rRWYyZDRkb24zUXh3cG9zZUJ3b1JKNDlmcnlaS090Z050VTVmOHFib1R6MDlPVWJCZkJWZ3FadmVCbjVmYnJ0UGxlT1liaDkvQXY0aTl4VUFYNmxxU2hvWlZXTGo0clZic3IyNVhDNjNLOXUxYnVYMFNHV3AyNXYwK1lmMk9iejN4RVh5N09sSjRNQm5QTndOOExseWFMaHQ5NkJ4NkkzL0dDWDNCYzk5N1BDdngvOU41d0xjNFdHc0RUeGUzWlNFL1BpeUc3T3lLNC92VWpZMXU4eUdldGlFOHk2ZWZjWUlWZU5qem1tNVlFcE1Qa2RQT3YvQ0dTY1BVeTBNUWsyTFlpcnorVjAyUWZldk83dDYvUDgxa0hLUEpQc1krbEFtTXVlc2NsbVd3M011bTkyUzZjcnVIQWgvb3J0aFRWazA3c0M5ZDlPaVJFVHVzUm5YUGp6Z0lWc1h2cVNBVWpra1N6anZUbzVYa0ZQV0R6Z3hNRDlzaVJXQXd0QkZ1M0h1bXFMQXJVVzdIR0NkRmE2a0FOSkROcUVYeCswSkRlMkNYZ2U2b3VISS9KM1pSaWxXQUVweFNXdDI1WWF3aURtd1NEN0h6Vy9yVEo3dFNaRjF0a0ZQTkF4SjJKQnZWQW9nTFdreFE3KzlUdDdqM1RoMlJiMUlpWnhCVHpRRXVRb2dQNzBBbE9LUzFnL2RXdm1NOWVMYTdVMTFXWU51Sy94b0tnSFlBR2xKYWgyeTVmSzdEbzh0M21SdE5VaUhIMXBrNDF5S0c1cTNPUk53MFNFcDM3dTliRGpXbTZ5dEJ2UEREeTJ5bmRJYTJ2bVlIZktmQTdxYm13em8yelRCaTZ4dW8xQWZmbWlSYlpUaVF4UHJOekx5UGI4SElLTXBUbENjNzBXeFBvQ3VFRVNMYkNDdG9kME1zQ3ZpWjF3V3g0eml0Z3ZGdUJkTkxBSE1EVUcwcU1UdXVxRnBzQUU3SVo5eml6Z25wZFVsRjFLZTFHSDBXbFdqYWVrMWJUTkdTckptdWpaSzBaa3paODZjMm5pRXc3U1pNMk5POFprekp5azZjK2JNWVU1SHpMN3Nta3NiM1U1WmRNM3FTMC94RUwvazZsVVhIbFBURkV0WUd0cXRBT3ZrYzZHTjQ4QTZTNUkxdnVXcWg0dkFkbS9XTG9DMktuSEtDNWo3Tmc3WDhiaDJTVk54UFBEaVJaS3ljSlBUQTNDZnBnS2pqSkdkK3pEL3ZNU1k4aktPMmNrT2tVMEhBRDUrc3I2V0RmbEVnSHpFeDJ3Yk05dHF5V01lMk9wTkxVWmZkUmo5WjV5ZlVqQnc2RExwU25qTndScUFDenhFbnNOMXVhVDVIK0g2NFZ6alp6Z1BqSzUxSjZ5ZUg5d0dJeW52ZFhtQTRoSjVyZ2RZNjBQUEE4eXZDaXVnOU0zenY3b3hQOWZwbHF1dnZ2cnFWcWRya3h2M3dmNklqai9BNENuRytmQi9JenpjRFR5NThJSnJldmFObHNhOUM0VmJ6ai8vNXYydzd5UnAvQ0RjYzlHWHYvZm1ldFc0dWp4c0NDcFdCUG9qUGpZRDVKdmtmWUd4d004VVkzdFZ1Qk1la0tTUnc1MU9sN014U3BvRWZGNTZEcjV1YklCNzVIYXFEV21aeDB1NkN6NmFKRWxuZndTM1NmUGdiWmxIMUxvMFFGQXJBVkx5bnJDQjBoVDVYR2MwK05GT3dLNnZCdjhKcjFoeURrUWxhSlZXd2t1U2h2MGRabnU0Q1FhT2RERC9BUnZsZUMrOEpWMEU3NTVvMU5DQTRpVWdIMVFYWU1kOWJBTG9rS04xUVZ1eWJYcFVlaDRveUhjN1FMSWFuQS9zK0lLWHhiTm16WnAxbklmWk1IaWFOT1lUN0RwcE92eGp1SWVuNEVHNTF3TnpuUzRCeHVxWUl2eGp4WWphbHdaSUJSUXRBZDN5SGlrQS9aYkRzanltM2ROWkFIcjhSVXRBdGhyb0lZQ1hwcnM1ZnNucGhzNmZmUUJQU05MVDBDN2RCbmZMdzI3NGpvZkp3SmxPQ1dDaWREWEFYNWJXcnRVRC9iT2tlQWtveENScmM1RmdWL2xvQmxnamN6RSswLzYwSFNoRnE4R291MjNnNE8zRGduRE1IbWVzZ0czU0h2aThsejY0emtNemNKclRaNEZwa2k1L0Y2RDd1QnJWREJSbktRMlFrclNhb090OWRCZ0poMTQvelFHc0FtaXRCdEpaRHg4RWJuSHF2UHp5eXk4L3hjdHp3MlhHU253WVBRdmVHZWJsZGJqWnd5UWc0VFFOYUpTa3NldmVBMTZvVVZjQ0ZCZVdnRUpNVWpxb1h2bk1BQVdaNC9HNVdRRTJHSjNWUWZyY0cxQ3dIRTZYc3pGeGFvR0RzeHkwRGVaZER6K1NsMjN3c0lmWVFWanExQVoyMUpER1BneE1yVTMxQmR4VGtqVEREbWlMbnkxQXpxSFpXMkdORllRS1FGZTEwSGpnMUFCRzZWcjR5MUVPUytIT3AyR3FwMDdZZDdTYjNvRHRUcy9BVHJrTzc0TVZ0VW5OUlpkQ3pGQ2lNK1YzZzNHdG4yNWdsME9zNUtWM3VvTGREdlJXZ1dzU3h1bEFYU0REZndOM09SejlJYS90NHkxNU91MGdQR0FaWTBkTFNXQ1ZjUlZ3dGJTZ2RZUWs2Njl3U1kxU2M5RXBwYUF2TkZyOVpJQUJCeTNvOXdDYm9vRnNBT3dxOEN0Njc3dnBSLzN3bWh5ZWV2VFJSeCs5M2sySkF4eHFNZlFFQjJHZE4yMENldSs0K1o1ZjJ4T2tJOThFZW42NC9sWGdqWWowQS83dm9WdSt1eE0rSEZ1cjFGdzBDckhBMm8wbVA1MEE5UTdTK0NXYmNpNzB4b1BvQUJoZkRaemZtK3JrMk9WQlA0SzNqell1QlRqSHgxSFA0anBCMHVrNVhOODZUWWJ6NERXcVdXb3VBaWtGbmpJc1A2MUcwc1ZzU3VVYzZJMEZzTVJJVk43aW5nUEFSLy9icEtDaWY0TjdqYU9Lc0VjK05ITDFtOGEvSG9wSjByRnIzekgrZXVzeGtqVDU1KzhEQjMvVnFocW01bjYyUjRkSWZpTkZJQmZ4SWxrTCtneTZBMmd4V2lwUGlqU2VjOFpJVmU3dnVldWtZWEtQSnhJbnlIMzRxZWVjZWJScWFSQlNSRU80Q1NqNDBtYUF0ZDZrU05wZ1dmV3E4SWJkREY2aHc4VmdoalFENVB3MTJBQ0xmVWdkUnI5MWVLSmhML1A2NGM1WjZZNUlNT3VCa2o5dE1Pd09QOW9LTVAvdzVLRUg5L1BVWWM3NEluUUZrd0lJSU5xTDJYT1dqd1lqYzNpeUIxNC84ekFuQXhETUdpUG1UMDE1QTU1ZmRxd1g3UUI2ZlMwM21tcmV5Sk5qT253TXFNRUdjc0VzTnhJQnFDbnZBT3hjTjlsdFBZQ3ZUaU5lOHc0dmZSMGJOVElBU1dQTU9MK0xqUVZCcUw3YkJlaUtPbDFyMVB2WkRCUVZZbXl3U3d1bEJodklSNlJvbG1EWEJERXVrL2ZDVnFkMlk3eWZIbUJYaU5FSzJBdVZBVWhLV2tQQVhRRk1MdUl6NHJBeUNLc0ViQWt4VmdMWUhUYVFqMGhhSDFUZW45V0h6NUljMDBiVVJ3SWdHV0xVOWVPZWxLU21Ra0FrZkYySTMzVk9QVUJlUGp1TkdTR0dtdkl1K1lpaCt1WHR2bTgxT24ydE43b0hYUG83NURnZVlLdWZIVURSQ2pQVWxIZEtLbkNyQ096eTFRc01XR3FZdHlyVnNUeGh5WG1UMGU2akhtQ3JRZzAxNVkxOEpEaHRBWmppb3g1Z2kzeFB0NEZDMUVmS1dCNXlxQ2tQck5ZUXpqTTIrV2d6bHZ1cXp3T2s1TjNxQjRyUnNFTk4yZjYwTlJSV1AxQ0tlOXNDMkRFL1orY0ErbU0rMmdBeUNqMkdmZzFBMmxzVzZCdmpMWm9xQWRpdDhtNzFHWW53SjE0Q1NnMmV0Z09VdGk0N3dXWDJsaUtPU2ZsY0NaQlZTSEpCMTRhNndKUUNlTjdUS3NQTTkyeWVJQzNHTlNtZjlRV2pKU1JKMk5BVFhLd0EwT2JGNm5FQitxUnVwNEY1OHJzVm9Gc2hTUmRBY0ZwdEZCczlLSnF4M2FoWDFyQTMxTW52U2dDN0tTUkpBT3dlQW1VQmVxTWVwUHJrVHBjNmgvNjRmRSszalpSQ2o4a1RqQzZqWFZKazh1eGdyelRvaVhxUkZGdXdDeWhsc3dWZ2wzdzM1Z0YyV1dHSHRSMlNVZ0tnejVMcWVobmE1eTF2VWdjZU4vbHF6QU1VR3hSMkxBSklxc3RvbDlUSlVEOGY4eEV2dXBXYS9Fek9BOWp6RkhxMEcyd0E2TFBLZ3Q1R2IxcGtPeFVYeWVleUltWlM0VWQwdCtIWUxrbDF1U0dqdU5xYkptN0o1WFoycjIyUTk5Z21ISk1LUVJUdmRlbXpERVdhVzRhd3k0RHNCRS9CTHV6SE1hbFFSUEZlcDNhVjQxb0g3TXlFSVpuZGcyTnBpVUlTeFh1TlBxc3N0S1JnZ04wMTF3cG96T3FkT09jU0NrMFU3d1dXcTB6cnR6c0ErY3ppRTN3MUpyZVhjTjBVVTRpaStPWnNVdVc3dk4vSnpHMVBYOWsyZS9hczJYUGFPamIxRE9CMXZjTE1JTW85MGxsd0c4cFVxQ1ZGVnZjTmhmMThHQ2FwT2QwZmpOMlRyRmRJSmlseDFjTzdTNTU2dDZkYW81SkNrQktRcmdxTzlTMHRTOXJiNTdXMGpMZmtHZ2svZW9GY3RHb0V1dGk0S3RUWURMQXIyVmExMDdiUkVHcE10S21CM1FvMzE5YUFRa1BJb1hUVnk4OVE2Tm5TWGFwbS9ldGlDa1VqMVh1a1B2WC9wLzcvOVBRQVZsQTRJTDRBQUFDd0ZBQ2RBU3FCQWNnQVBwRklvVTBscENNaUlDZ0FzQklKYVc3aGQyRWJRQW5zQTk5c25JZSsyVGtQZmJKeUh2dGs1RDMyeWNoNzdaT1E5OXNuSWUrMlRrUGZiSnlIdnRrNUQzMnljaDc3Wk9ROTlzbkllKzJUa1BmYkp5SHZ0azVEMzJ5Y2g3N1pPUTk5c25JZSsyVGtQZmJKeUh2dGs1RDMyeWNoNzdaT1E5OXNuSWUrMlRrUGZiSnlIdnRrNUQzMnljaDc3Wk9ROTlzbkllKzJUa1BmYkp5SHZ0azVEMzJ5Y2g3N1ZnQUEvdi9lQ0s4VUFBQUFBQUFBQUFBQSIgaWQ9InNoYXBlSW1hZ2UiIHN0eWxlPSJ0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7IHdpZHRoOiAxMDAlOyBoZWlnaHQ6IDEwMCUiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiLz48L2c+Cjxzdmcgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgICAgICAgICAgIDx1c2UgaWQ9InNoYXBlT3ZlcmxheSIgeGxpbms6aHJlZj0iI2ZpbHRlclBhdGgiIGZpbGw9InJnYigwLDAsMCkiIGZpbGwtb3BhY2l0eT0iMCIgc3R5bGU9InRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjsiLz4KICAgICAgICA8L3N2Zz48ZyBpZD0iaG92ZXJFZmZlY3RzIj4KICAgICAgICAgICAgPGFuaW1hdGVUcmFuc2Zvcm0geGxpbms6aHJlZj0iI3NoYXBlSW1hZ2UiIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgYXR0cmlidXRlVHlwZT0iWE1MIiB0eXBlPSJzY2FsZSIgY2FsY01vZGU9InNwbGluZSIgdmFsdWVzPSIxOzEuMTEiIGtleVRpbWVzPSIwOzEiIGtleVNwbGluZXM9IjAuNSAwIDAuNSAxIiBkdXI9IjAuM3MiIGZpbGw9ImZyZWV6ZSIgcmVwZWF0Q291bnQ9IjEiIGJlZ2luPSJpbmRlZmluaXRlIi8+CiAgICAgICAgICAgIDxhbmltYXRlVHJhbnNmb3JtIHhsaW5rOmhyZWY9IiNjbGlwLXBhdGgiIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgYXR0cmlidXRlVHlwZT0iWE1MIiB0eXBlPSJzY2FsZSIgY2FsY01vZGU9InNwbGluZSIgdmFsdWVzPSIxOzAuOTgiIGtleVRpbWVzPSIwOzEiIGtleVNwbGluZXM9IjAuNSAwIDAuNSAxIiBkdXI9IjAuM3MiIGZpbGw9ImZyZWV6ZSIgcmVwZWF0Q291bnQ9IjEiIGJlZ2luPSJpbmRlZmluaXRlIi8+CiAgICAgICAgICAgIDxhbmltYXRlIHhsaW5rOmhyZWY9IiNzaGFwZU92ZXJsYXkiIGF0dHJpYnV0ZU5hbWU9ImZpbGwtb3BhY2l0eSIgdmFsdWVzPSIwOzAiIGtleVRpbWVzPSIwOzEiIGtleVNwbGluZXM9IjAuNSAwIDAuNSAxIiBkdXI9IjAuM3MiIGZpbGw9ImZyZWV6ZSIgcmVwZWF0Q291bnQ9IjEiIGJlZ2luPSJpbmRlZmluaXRlIi8+CiAgICAgICAgICAgIDxhbmltYXRlVHJhbnNmb3JtIHhsaW5rOmhyZWY9IiNzaGFwZU92ZXJsYXkiIGF0dHJpYnV0ZU5hbWU9InRyYW5zZm9ybSIgYXR0cmlidXRlVHlwZT0iWE1MIiB0eXBlPSJzY2FsZSIgY2FsY01vZGU9InNwbGluZSIgdmFsdWVzPSIxOzAuOTgiIGtleVRpbWVzPSIwOzEiIGtleVNwbGluZXM9IjAuNSAwIDAuNSAxIiBkdXI9IjAuM3MiIGZpbGw9ImZyZWV6ZSIgcmVwZWF0Q291bnQ9IjEiIGJlZ2luPSJpbmRlZmluaXRlIi8+CiAgICAgICAgPC9nPjwvc3ZnPg==" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1303" data-original-src="/web/image/1303-5d1abf1a/10.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="10.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://tributos.ariquemes.ro.gov.br/servicosweb/home.jsf" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzg1IiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgICA8ZGVmcz4KICAgICAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCIgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIHN0eWxlPSJ0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7Ij4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjZmlsdGVyUGF0aCIgZmlsbD0ibm9uZSIvPgogICAgICAgIDwvY2xpcFBhdGg+CiAgICAgICAgPHBhdGggaWQ9ImZpbHRlclBhdGgiIGQ9Ik0gMCAwIEwgMCAxIEwgMSAxIEwgMSAwIEwgMCAwWiI+CiAgICAgICAgPC9wYXRoPgogICAgPC9kZWZzPgogICAgCiAgICA8ZyBjbGlwLXBhdGg9InVybCgjY2xpcC1wYXRoKSI+PGltYWdlIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1Jtd1JBQUJYUlVKUVZsQTRXQW9BQUFBd0FBQUFnQUVBeHdBQVNVTkRVTWdCQUFBQUFBSElBQUFBQUFRd0FBQnRiblJ5VWtkQ0lGaFpXaUFINEFBQkFBRUFBQUFBQUFCaFkzTndBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUUFBOXRZQUFRQUFBQURUTFFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWxrWlhOakFBQUE4QUFBQUNSeVdGbGFBQUFCRkFBQUFCUm5XRmxhQUFBQktBQUFBQlJpV0ZsYUFBQUJQQUFBQUJSM2RIQjBBQUFCVUFBQUFCUnlWRkpEQUFBQlpBQUFBQ2huVkZKREFBQUJaQUFBQUNoaVZGSkRBQUFCWkFBQUFDaGpjSEowQUFBQmpBQUFBRHh0YkhWakFBQUFBQUFBQUFFQUFBQU1aVzVWVXdBQUFBZ0FBQUFjQUhNQVVnQkhBRUpZV1ZvZ0FBQUFBQUFBYjZJQUFEajFBQUFEa0ZoWldpQUFBQUFBQUFCaW1RQUF0NFVBQUJqYVdGbGFJQUFBQUFBQUFDU2dBQUFQaEFBQXRzOVlXVm9nQUFBQUFBQUE5dFlBQVFBQUFBRFRMWEJoY21FQUFBQUFBQVFBQUFBQ1ptWUFBUEtuQUFBTldRQUFFOUFBQUFwYkFBQUFBQUFBQUFCdGJIVmpBQUFBQUFBQUFBRUFBQUFNWlc1VlV3QUFBQ0FBQUFBY0FFY0Fid0J2QUdjQWJBQmxBQ0FBU1FCdUFHTUFMZ0FnQURJQU1BQXhBRFpCVEZCSXVBNEFBQUdnUUd2YklxZjVnVVVickxpN3U3dTdoeHJ1N3U2eXBkaHBrUlIzZDY5alFRT0xhMGpUZzd0RG9HaGozOW45M3YrZjJabmQ2VlNKQ0FsdUl6bVNwTHBlTXpjbXNzdGtSdTRQeEFmL3h3Zi8rYTg0SC93bmFZMzZ2am5xWnJOTkJGd21YeDJSVmV3U0RjbDN4M0s3eEdjK3pHWTd4WTBWdmpjTzJDcDRpbnd4bW45NVVMNURSNU5HOHdSMmtSNG1WbHU3N0NLbnpLeDNzOXRFbnBwSlRYdElTU0o2WTRyaENDT2l5ZmFRclVUMGt5bnlPeEhSaytSMmtJbDhoSDF1Q3NsZkVkSEI1TGFQRXNGOG5ZdG5qdjRKTFBsV3M4UjJqcjdoN3lHRnZ5cHFrdjRFV0xaRjMxbWJ4SzVSV0NxaFh0WTBMWUMwWnlYbDQrd2FueUluOHBvWVFjQlNaSk10US9xQUY2dnJteHhEd2E4dmN4UzJDL1ZVK1VJVWZ4K1Rzb1hCRGRoMkJld2pjaHEvYkhqMzZZOXFkcE9tSnZULzF0bE5NcjR5bnU2MjgrSHk4dzF1d1M3citoZmdaZjhvOEY4dkJ4NG5SMDdnNHdvVkV0aHNCeTdmNnh0RTRWMFRDakdQWWhMYmNnZGVLd3J1MzcyNXEyUG90RDEzNE9lVXE3aWJQMk5pRk5aUExxSWpCU3F2ZzZkdmkydkxxUllhV2xRSWtYUG1rWis3eHZ1YjBBQm1hejFsNGVKcDNjcEt1NkJzZmVXb3pTUkdEZlZxbGNzU1J5WkhmZTJSbXpjVkN3aEErWkxZR2lWVDY2SkpKeDRsdElsWG9kK3MxZXNXalcyYy9NK1VSa2RpcFR6OGFGRng1cUM2MG5zT2s2elNFZkhqRjdnK2h1Z29DaWNJSWE2ekFMZEQxWlIvYTJWdGFjRW9UTzg3RUxSZmkrUVRIc2hTMzYzUC8rZmx3RFh2OVJiMTNGMk5veGVOQ1Q2YjJ5ZzBSSjBxcDBFblZCT2RXVTJWZXhvK2QraWZvd05QY1VvanBGRkNMMXFCMzBsbkVGcXFJdnVvQ1piVURGWlM1NjFtSUZPczBZRmY2bE5NSWxNYjU0SWh1UXpuZTl3QUlZc1c3bnhKRkpsQndjMHdITWNWUkliOWVpc0tBMThzaE9oNUZ3WTZPWkF3VklWYS9vM1hLRGEyaHdmWjlISUExNGpVOWk5ckJMNzNybGxCbXgrajFNOHN6NEYvS1cyRXcwUjBHYmRRMUlKRXh2SUZpRDBPeDN5Q3dGM2JWRE5XWDVhbjRENVhBYzJ1TUs4U0tpUUJBU2hEZ1ZJK0ovVFNTeUpoU29zcUdNZ0xxUjJMVVdVWXp4bk1zNUdlTmNRZkhnV2hKckU0Qno1QTU2b0lDVEMwRlJmT25GY29UZUFsYU41Z1JrcDVpdzc1RGQ2d2lEMEtUaExSb1k5WXpGY3llV0tZSFhLUjBCMEM2dUhqbUI1REM5Mzdjb05oY0xFS1IxSjVsUm92UVEyaFREMERrYmNhUkZoSUlpL1hlOFBGRDN4aXlJeG5aVzlVeGNCUjVyQ2xrZnNWMzZqcEkzYThVcngrYWwrWWxRRUc4ZzNqRWdZVHhsUXpFSGxQUDJJVlk5V1RYRkIwNW5lU3E3TER6RloxZmNiSFk0QVZJZGRzNXpqVFZCWkNKS29mZE9SVitKcU9xVUVObi9IbGpPTUlNOUk0Y0wxRkUxRk1XbS9SSlg4cHMxT0NUOXdyUXFUakdHWkpwL0JMelk1Z2RvaW92SFdSNllENmFGYmVMaTVoSHRReWpFY3d4VHA1K1JSSG9CWVZmOFVrWWdJOVNIWE9sV0lOUVVLSUVBNEgvV1FhQ0tBU28xNEpMYXdJM212Tk5yeURMS012TXJpQnh3Wms4aDR1aThCNkY5T0JPcE45RG1CZHVqdkViWkJCUVhFemFNYThRS1l6TldRUFV4ZklCK1IxaDY4VlFpOS9jZUNHT1cvcCtVRVJPQ2ZuZEI3TVU2VVorN0dTQVNRRmdibThSWThCZlArRk1JUGF6RnNnN2gwaWV1cmd6MlJXQWtVQXRTRy94QXowRXdkdW9QT0dKUndoeVRpUVhtOXN6aWhKMkJLSGQ3Q2JBQW9ZenBreWJwR21mWGtHMUdBSmEzRnllVHNtVm4zSm8rUWEwOGMvSExqQnpydWVOSzNoSFJYVG1xcGNodzRkR21VVENqK3pVOUs1d3Z2YjhBN3lxMDU2bDhDUlFnMFVSTHhRVEh2NFYyQXhzd3k2c1BzVVBqc2RVRmJKYzZhMW56aHdRNTIzdysyQU9ic0hWZVpJWU1WT1pCTUhZdFlvWEVIbUFlakhpM3NOQk5IQmtKZEIvN1ZObXpGUUxzY3poK1hNOTFBSlAxUGVUakI5Y0I1Q282UzlCM2s2UUZNVmYzSGdSanJ2Nmx6MDluUW9mdG9oM1VKcE8wckZDZ3ZrOWJEQW1BN1VVbS9SZUprN1RIWnV4aUxYSzFEb2pkQSthYkNXU01seWpzRlpvZTdPY0oyZDByY3hSL2dJemlteUNNZVlLUFZOaEFwZmtaQWFjM25nTlVNaElTUTFraXkvY3dvdllBYUR3WUhuWXpicE9GRzZNRk9nNTV0Q3dTNW9ubHVRQTU5RFJIM2xxb0Z6RE8vRWN4dFdyQWlKa042bW1HeWdXSVEzb0p1RHQ1cmhKVnIrWXhBMERlTVpER2RNeUhLN29lU0RNeTVVR3BEaDl6SEZJSUw1aW1JQlpBeTFJRllRVVVmcGN0c25XSnh0QTNBYlZsNFRCUjNTY3NvcDhUNk1YL0FQQ1BHUkROMHplZ2RFZDVZbGpESVNrUDF0SkZTUHNDYmJ3SVU2MllSekZ4N00wbDRJWVhwaWJMQzlobzJZMHRwdy84eDdTOTJxejM4QXBHUTNrcUovd04yKy9tM3ZMaU5XWElxbFFnb09ic0t4WExNRlVpYWFzMFZocjFISzM3S1hTd3pvamFuVzJoU0ZVQmZMR013VWN1OU9DRy94a0g3VHpydVZvdjJ6SU5Zd21JWEFhYXM4Q095TGFiQVhIWWFnczVVdUlTdUJ4YTlxQWtxSEwyczRIZDhRVkNGQkhzZGVWOXBJclpKN0pJUUJFanJFYU9ha1ZjS052emh3STl5M25HKzVySzBPYWVNZFh3SGFnVTFVTGZFSWRyUUczSW5oMFlhVC9CNkxjQm9MdEo5cW83RGVFRUpjQVBZYnFNb1BHdHErMW1BdTE5bCs0c0NOY3Q4dzNaeGUwc3RiOEluMnZIS0J5azRCYXBnRFhHOGFjU3NxSFZOeEtaTjNTRUkvaC90UTBrQzRXNyt6cFVOdS9FTEZyZlpBa1AxUVE1N05xbkx5SkxvcC8zRGdocmx2bUV3dUNjSGk4UjFxcXl1eTFMemhoc0RaeUpWQWRrTnVSdkZSbTQrZVBiNTdVYzlDcUtPalV6bGc2YVJnQlVOa25mMVpSU3VwNFFMaUVxaU9VcGFSV2kxL2RQOFdwUklwZE1VZnoxclV4clE1Qyttc3NIMWRsdXc5ZGZidytxRkZCUTQvY2VCR3VXKzVhOW1TR2FOMkY3TEpLcGVjWjRJVndXeEY4T0hvN2tOWi9mQVhCMjZJKzRicTZoMWJQQ0g3MVo1YXBBK2xpR0pDcE9ZOUNSdXVLL0ZEdGdaRFZVc0ZMK1FiMkdUd2NWb1g5enlDK0hqazNZbDVpQjlLYnhlQjc5eXlSTDlSbUlodWFGNXlNMkVxRVUwRVVqL2hPc2xHWVlSWDREOCtlQ1J3TDVBbDZMbTJPUGpFVXpYVCtoQlJpRzJFdDVRcWxiUWtvZzNJdEhmbjhpa3VxSG9ZcVEvRkc5UXVBcS9tMlZaK3dVT1FteDdWNUV1VFQ3bVJhZWxZamdPdnpCMVhiUEdWNWtZYUFnV3k0cExlYXBxQUVvSFh3eHhMeDNvY2VDZ1JoUWVBdCtBMWdMNTNtbnpKVHVOSHJveFJFcXNyYk9GWWtRT3ZUWXFkeEh2cVU5UWRKRjN5T25vbDkzU3FzWjRGMXUwL0xNcUJMMkFGbGVSTnRWZEkvL2hTT08wdVJIUUhIcnZDenc0d0M2bkdjTGxjdzl4d1NlZHlGUkFpdjBzYURtaG50TnQrN2VXTHNOWE5zYVhYTURRMGRBcFUzUzdGbUNLU3UxeDdSVHFYNitjNG1BMWRydEVLa1JicndIRlhoYk1GaDc0UkxBRzVMajR3RVM3RmRFK0ZyakkvVnRuazJ6U0lpTjdtWkNZUWxSR2lsTHdNRTNEL05Gd1M4UnZPNlRZaWVwcVFWN0pxdVc0VHFZbGVDbkdXcURUd00xRlRsVWkveDJEZFV0WEZkeE43ckpDSDlOYkk3OUtEWDRmWG1BMU1uZ1l2ZnVEaEVDTDdZNkxvZmJQbjducy9FRFFtZjB0M2NWWlRCUWNIbnlCNkVSd2M3QVRncncyVG1HVHZLQ0toU3FUMUlyM0V2WnVnRk9NRFQ0bGM4Q3BlL1lDSUN2c0FMNGhxcWJrZ2EvcUo2R0Y1RnBBbXFWeDFkMzFQbXlSVjVhUzZXeUpYTEYxaVdoQ3RVb3EwWkxaQTkxdVJoOVk0Tks4by92OFVpcjhRQ0I5Z0hORkZoeTV5eDNwV2hGcmpIdm9qeFc1Nm5WUW40Z1JSUGlIRVpxSUdhcEZXekFvaTZvaDVLSlJuOWhUZlRzVXIzS1V3NWh1Zm9zaEpvcjVLd2dzVUtGQWdFelJhenFvbFpvaWlmYUlYVVR0ZHNIbUY1a0dpMytscGZMVkl5d1lsWkhhZmJaeG5ndmdIOENRRDNFS3dUZWhibEswWVMwOVRxWitDZllESlJJdUVxRE9SUjBvaFJIK2lnU0pMakx0THI1ZHNNWFJNaUNaRVM0VmFwTFU0Y0tOYytCSnV0Y3FuajFUK2hDOFowMkZJMElGM0JEL0xWM3J1bWZzQ1ZjUTZvcmx1VzYvTnQ1NFU1eWsxUUVZT0ljUnhvbHhDbktUSWRIcmdEemhLTVpsNDJkWVdHaUt0eElFYjVNSTkvUTM0WTRPODEzWm9hV08vQVZVbVZBZThKSHlCcWlMTGE0b3FNbHptZW1CZ1lHQnBJYjRpV3F3QVV0SHpmdjM2N1NmcW93ZHBzL1Z5UEtHSDdtU3BJZEpDSExoeExyd3hFVVdVVXptMEt3cmdISndhb0ZnVUlkd0w5QTNFbDBUNyttby9wUjNSU1JCd0FSaXJpTjJsbDB6UjlHTjVvdmx1RFJvaXJjU0JHK2JDQXlKWXdNNDI4Z1E3V3U2Tmtya3lKcjBjWDZVbG9DL1FSMGh5bStoSGJYTEVVR3hwRldFS1luUHFBQVFjb29neFJKNVdtcFpJSzNIZ2hybndQdEllMjFCTWxoMVFlOERFRmRQR2ZKYmRJd1R2dGZPT1J4dzB5bjBFMGNvVGhZYi9rUHpsclVveUpZZ2VaT1N4am1pTVhub1RYYUc3bm02Smxrai94aHpwOG5IUG4rSFFLNnpaRTBuWXNRQ2ZJYzVSTnpwYUlMbDRiOThMZTBqTU4wVExRV2tndVoyZURyQVk0Uk5pbGtlQmxrai94NXcyU0FqZmZXWGpUNWNIWkJ2WXg3MHdmQVArZ0RJeHBLY0hWVlErd2FLeXhyMUYxQXlQZ2JkRXhiWEJJSUtscnBtbVNPc0ZPb0FUTWVjN2RWRUtQdlRWbXNibS9xUTRsSjNPYkNDZ3M5UHB6Q2hFQnFjMDRyR1llQTJtcmQrNllrTHpWQ0sxMCtuOFNHb0NPNTBWT05jN25kMkFKRTduU0tTSzB6bmEweTdVRnVuWG1CdEEvU3U4NURWNkVMaVlRYytJUk1KQ2h5V0RSem5iN1FlWm1YUXRnbFlzR0ZBSWlqRzNJOEVtbFdWaVBRN2NNQ2NPYW10empyblN0ZGFJRU5uN3pXblcrR2VDM3JlVllqVU8zRUFuN3RIck1lTzZaWjF5V0NvVzQ4Q05kT0lvZUlNbVV0WGxkb0dXaXRVNGNFT2RPQ1NhVGJMUm1OaHh3SS9jQStURGtOT1JwVDVzTlE3Y01DY3VDeDVHUkJFcmV1SlVKMm9jRkFwdEp6dUZpVkVvMEd4emRQeHZBZmJYZ1h1UEhYYmdYbU9ISGJpMzJHSUg3dVhEdHRpQi93VjQyVjhSc2d5cGFiL2dmbW1YWkdiVFlCL0RBbDRSelhEWUxTQ0pQeHNZMTB3cVgzQnJCeHhUUVVCSUpudEZWYW1PMm1QaWc2TWw1VHN5aFVnS250U3pQNmh6empacHRseUp6V0tTWEFxZmU2SXFpMC9aSGpTU2Z2cnlBKzd4Wk0wMmlYb3NPZktJdGpleFBXaFhYUi92NUpuS1p3Ni9FZEdkTWgwbGJoRFI3U2c3aEk2eU4rRVowNzdWNTA1VVBvRkVqWUJvS3QreFFlanhIWTJKNkVGSE04YlBSTFJRaUpiRWIxdFppaWIxVGp1RzR3MlpPT29Ka2ZrVjBjN1VxbWhHUkJIMXNVVW9kWVNaU1VIdVhnVzFWVVhET3VhNGRkZ3RacGpJZFlmZWFHd1hDVWF0TUd2TXlpN3NITDRTemI4N09OblI5OFpjZTRXUERqdEZvQSt6M2dhQnZkZlh2a3NYV3dSNDVNbFRmWFIwRWgvOEh4Lzg1OThWZlBBZkFWWlFPQ0MrQUFBQXNCUUFuUUVxZ1FISUFENlJTS0ZOSmFRaklpQW9BTEFTQ1dsdTRYZGhHMEFKN0FQZmJKeUh2dGs1RDMyeWNoNzdaT1E5OXNuSWUrMlRrUGZiSnlIdnRrNUQzMnljaDc3Wk9ROTlzbkllKzJUa1BmYkp5SHZ0azVEMzJ5Y2g3N1pPUTk5c25JZSsyVGtQZmJKeUh2dGs1RDMyeWNoNzdaT1E5OXNuSWUrMlRrUGZiSnlIdnRrNUQzMnljaDc3Wk9ROTlzbkllKzJUa1BmYkp5SHZ0azVEMzJ5Y2g3N1pPUTk5c25JZSsxWUFBUDcvM2dpdkZBQUFBQUFBQUFBQUFBPT0iIGlkPSJzaGFwZUltYWdlIiBzdHlsZT0idHJhbnNmb3JtLW9yaWdpbjogY2VudGVyOyB3aWR0aDogMTAwJTsgaGVpZ2h0OiAxMDAlIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIi8+PC9nPgo8c3ZnIHZpZXdCb3g9IjAgMCAxIDEiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPgogICAgICAgICAgICA8dXNlIGlkPSJzaGFwZU92ZXJsYXkiIHhsaW5rOmhyZWY9IiNmaWx0ZXJQYXRoIiBmaWxsPSJyZ2IoMCwwLDApIiBmaWxsLW9wYWNpdHk9IjAiIHN0eWxlPSJ0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7Ii8+CiAgICAgICAgPC9zdmc+PGcgaWQ9ImhvdmVyRWZmZWN0cyI+CiAgICAgICAgICAgIDxhbmltYXRlVHJhbnNmb3JtIHhsaW5rOmhyZWY9IiNzaGFwZUltYWdlIiBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIGF0dHJpYnV0ZVR5cGU9IlhNTCIgdHlwZT0ic2NhbGUiIGNhbGNNb2RlPSJzcGxpbmUiIHZhbHVlcz0iMTsxLjExIiBrZXlUaW1lcz0iMDsxIiBrZXlTcGxpbmVzPSIwLjUgMCAwLjUgMSIgZHVyPSIwLjNzIiBmaWxsPSJmcmVlemUiIHJlcGVhdENvdW50PSIxIiBiZWdpbj0iaW5kZWZpbml0ZSIvPgogICAgICAgICAgICA8YW5pbWF0ZVRyYW5zZm9ybSB4bGluazpocmVmPSIjY2xpcC1wYXRoIiBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIGF0dHJpYnV0ZVR5cGU9IlhNTCIgdHlwZT0ic2NhbGUiIGNhbGNNb2RlPSJzcGxpbmUiIHZhbHVlcz0iMTswLjk4IiBrZXlUaW1lcz0iMDsxIiBrZXlTcGxpbmVzPSIwLjUgMCAwLjUgMSIgZHVyPSIwLjNzIiBmaWxsPSJmcmVlemUiIHJlcGVhdENvdW50PSIxIiBiZWdpbj0iaW5kZWZpbml0ZSIvPgogICAgICAgICAgICA8YW5pbWF0ZSB4bGluazpocmVmPSIjc2hhcGVPdmVybGF5IiBhdHRyaWJ1dGVOYW1lPSJmaWxsLW9wYWNpdHkiIHZhbHVlcz0iMDswIiBrZXlUaW1lcz0iMDsxIiBrZXlTcGxpbmVzPSIwLjUgMCAwLjUgMSIgZHVyPSIwLjNzIiBmaWxsPSJmcmVlemUiIHJlcGVhdENvdW50PSIxIiBiZWdpbj0iaW5kZWZpbml0ZSIvPgogICAgICAgICAgICA8YW5pbWF0ZVRyYW5zZm9ybSB4bGluazpocmVmPSIjc2hhcGVPdmVybGF5IiBhdHRyaWJ1dGVOYW1lPSJ0cmFuc2Zvcm0iIGF0dHJpYnV0ZVR5cGU9IlhNTCIgdHlwZT0ic2NhbGUiIGNhbGNNb2RlPSJzcGxpbmUiIHZhbHVlcz0iMTswLjk4IiBrZXlUaW1lcz0iMDsxIiBrZXlTcGxpbmVzPSIwLjUgMCAwLjUgMSIgZHVyPSIwLjNzIiBmaWxsPSJmcmVlemUiIHJlcGVhdENvdW50PSIxIiBiZWdpbj0iaW5kZWZpbml0ZSIvPgogICAgICAgIDwvZz48L3N2Zz4=" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1304" data-original-src="/web/image/1304-86d31990/8.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="8.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://tributos.ariquemes.ro.gov.br/servicosweb/home.jsf" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzg1IiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgICA8ZGVmcz4KICAgICAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCIgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIHN0eWxlPSJ0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7Ij4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjZmlsdGVyUGF0aCIgZmlsbD0ibm9uZSIvPgogICAgICAgIDwvY2xpcFBhdGg+CiAgICAgICAgPHBhdGggaWQ9ImZpbHRlclBhdGgiIGQ9Ik0gMCAwIEwgMCAxIEwgMSAxIEwgMSAwIEwgMCAwWiI+CiAgICAgICAgPC9wYXRoPgogICAgPC9kZWZzPgogICAgCiAgICA8ZyBjbGlwLXBhdGg9InVybCgjY2xpcC1wYXRoKSI+PGltYWdlIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1JoUVVBQUJYUlVKUVZsQTRXQW9BQUFBd0FBQUFnQUVBeHdBQVNVTkRVTWdCQUFBQUFBSElBQUFBQUFRd0FBQnRiblJ5VWtkQ0lGaFpXaUFINEFBQkFBRUFBQUFBQUFCaFkzTndBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUUFBOXRZQUFRQUFBQURUTFFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWxrWlhOakFBQUE4QUFBQUNSeVdGbGFBQUFCRkFBQUFCUm5XRmxhQUFBQktBQUFBQlJpV0ZsYUFBQUJQQUFBQUJSM2RIQjBBQUFCVUFBQUFCUnlWRkpEQUFBQlpBQUFBQ2huVkZKREFBQUJaQUFBQUNoaVZGSkRBQUFCWkFBQUFDaGpjSEowQUFBQmpBQUFBRHh0YkhWakFBQUFBQUFBQUFFQUFBQU1aVzVWVXdBQUFBZ0FBQUFjQUhNQVVnQkhBRUpZV1ZvZ0FBQUFBQUFBYjZJQUFEajFBQUFEa0ZoWldpQUFBQUFBQUFCaW1RQUF0NFVBQUJqYVdGbGFJQUFBQUFBQUFDU2dBQUFQaEFBQXRzOVlXVm9nQUFBQUFBQUE5dFlBQVFBQUFBRFRMWEJoY21FQUFBQUFBQVFBQUFBQ1ptWUFBUEtuQUFBTldRQUFFOUFBQUFwYkFBQUFBQUFBQUFCdGJIVmpBQUFBQUFBQUFBRUFBQUFNWlc1VlV3QUFBQ0FBQUFBY0FFY0Fid0J2QUdjQWJBQmxBQ0FBU1FCdUFHTUFMZ0FnQURJQU1BQXhBRFpCVEZCSVlCRUFBQUh3Z0czYk1xZlp0aDBoazJEQmFkRTdCSGUzNUFtdXdkM2RIa2pEODFSU055VDFVSGRONzZKNWNKY0trdnVtZ3RTTGt6NVlhSk5pSVNRd2tIMlo2empPYzY0NXI4bHdQVXBFUUhEYnlKR2szZ3V6MFoycXE3dy9vRHYrdHp2KzgzOUt1T00vSllhOCtISGE2dysxZE8vTXpvSnNPenU2YzZLMlF0TzhTVzRjVHdiMDdWNFhUaXBQOTc2UmxhbmVuTlA4ci90K2kzcGVBS25hSVBnMUUyT3UxU3JqL25nVHdHTE5NZlF6Z0ZnaU9nK0Q3ZnVwcnU0OWlDZ1Q4RmJWS0JrSzRGVWk4dVVEUnR1V0NGZjN0ektBejdXRlNLNjhmQWRtMnd1dURYSElBRWpUNmpnRVpCTFI4RFJ6YlMrQS9QSnVrcDBXcHBWL0FHQzBLeU44OGNVUGc0VEc4K2JOaTNWbGRBTFF5eTV1dWU0WUNHRHFmeDNnVERqbDh3a3VuekdBTjBiSGdKME90SzJMV3JvNzVnSG9wbU1tSEdqY2dWSXVrbGx3cUtXN1NweHFYZHdlRGoxRll5QXU0a1RPeGNNSlhCNXd3TzNoK0J1ZEFZNzgvOXFFbFNycDFxbTc0VXIyTzNYWklEcm0wcWwwbW0wMjcvcTNybUNwRzBmT1RjNTE0WFhlakF0K3htYWFhOXVpYjZOOGpjWGhsWjcrRThpZkcxcHM4STl1bzB5Yy9UY2lLalZ3WlBXZ2ZGbUtnM3pzRE9HUmtaR1JucUpNUklQMkxhdlpHUWliOHZ3NHpUYmxWV3pkSmI1UmNVZVlUVlFad0xFbzh2d01JSWFJTW9GRFJEUTE2QysrNVNXVFcxcWxVMDVPVGs0RGhZZHpjbktPRXBYTThkZTJFTkdmV2gzbGllZ05vU0JlSUpXZUlxTHRmaFZIRUszTnljbFpwcG5PS1Y4VmNMLy9TQjhWYVdzZzdNbFRsOGRaRm5JaVRNL2ZuajljeUdyeXY1b2FZUWJOV0FONG5vZ3lBR1NtSFlLY2NFOCs4SGxSZUVyOVFyRnB4NnAwWXhXTkdTVUsvMGxVeXU4Ty93Y1IzZFRxcUVoRUh3c0YrNHN4bGxLZU96NGovQ3FPSlBvQ3dBYUZOci9xSkcyeE5SQUJ5ZXNsWmZ5TGxnZnlkUEorYVc2VXV3Rjh6eC9Ec21XdmxlWHdhbEhnS2RuVFRVR0FsRERERkVvZnIyZ2x6YkkxRVBibDZmcjVwbzVYL1BUd1VudWowM1FNUUNzaWVvVGhiY2hpMGdBTUxBcjhCdHc0REZ5dkhCREZkM0VUeS8rZnJPQXRocGYzQnRtaWRKd3Y1NGQzV09aZXNFYWgzYU1nSTFVMkMvcnIwNmVlMjN3VlY4cllHb2hBNUpXNEFKei9Feml2ZVhpUzZQZnZieWMvdVZKOHpPbnl4bENPKzUzRS8yYndKaFRUM2RRTFhDeEJWSG1xdVRZbFRrL08ya0RRUnhVQWU1NEhNQ2NBVklsam1MdUZDb1g3MVE0d3lxSmRwRU9WVkowWklWWG9XYzU2Vm92NUtUZm5TWHNERVlpOFlRQVdyd0NRNEVQMjlEeVRLbzZtbUlPczRVV1RWTTBIa0NJa1ZJNlJLNjQ4NzhaNUhGQVJjTk9IQlEyam80MTFPUlhBby9FODJNN0Q4d21nb0tFNWFyUDA3eUlERzRoQTVLM2lBMkljUDVYaEhJazd0MXlkeUlzQUxwUXdkdVAzRm1IVW83VllEbkVpRUVWVTdKQlJWamtRSW91ZEF0QzhXQlp3cTFZdzBQa0NnTTNtZUl6bDlBeHdJR3pLRTFzd0Q3aFJvY0oxNEhJcHlYb0FoZlZVWGMreDJMN0c0RXhySi9pZHgwUkphcVRrczhQU1NVUlVzNytNb3B2bWswUWZBWGdrR09od0gwdnJiNHdkQU00VUMzQWdBcEEzaFE4TDJZZlJraXpPb0RTNk9vSURsNmtKa0pIdWU0akVPV05sV3RwR1N3UC9qR1JCZmFhYXZEdFcyNUVxSTU3NE1DM3RpVEUxQXVWOUFLL0x2TzhIby9oN3lsUUI3NDhJamhPSEkwM0JQdDc2UUFmQ3JqeXVhK1N5bTh1YTVGYmt2bjJxb1pRMUxLYnR3YWkxZm5kUmRvSXpSYTJTbXN6T2tQcDVOU1lGRklJamMyUllLWmtMb0pscDVCQ0pVMVpsRVBWbkhja200RzhRV1BsYmdRNkVEWG5xMmVJRlVKOG91aEFvcUNqT0N1WUZuYksvQUd3M05sdnE2WlVsa2ZlbVZUWDY0ejh1WlBsWlFoZVRBakE0QnJFc0xsYlhBSGd1Q0JoSnRJVjdVb1ZLbUtDa21LcEFCOEsrdkgvamJjOENEcWdCdnpIekZLUHNWMDVvemUrWHNjdXRHZU1SKy9xSkdJZitrL25iVmh0blVvYjlWYlJDWkN4OHhISElEelBQVmVscnpGTVpROVNZemVrUEtUeGcrTHhsWGd0MElHeks0N3BTWFJaUEE5Z2xmb202emNGZkUxcW9EOFhFK041S0kyZmc5NWxtVzdyTTIrUjJXenkzVjdkdVU5L01GQ3F5R3Rxa3pGWDFBQkhKUjd4elQ5RkNyL0YzQTIwcDM4VGRuS290QzNRZ2JNa1RZMXZJR1RITCs0Wjd5WVpzV2FmdmZxYmdjUnNuQkJ0dE1Od1djRlErTGFyUHFiNXVxRjdOMS9KbWM3MXBkYXNSdml2VFd1RUZOdDZNd2pab05tOTF5ZzRVTld6OUZPaEEySmIzaEQ5NUQ3R1djd0FPK24yWlVZRC90Qlh0L2pDSXlKNGppVHkrekkzTjlDaTkrbnU5d3Q2MWdYVlFhT0VwNXFEZmpobWlMWDZQRzRVRjNNUHl4bVdhNEFOUk1RUTZFSGJsL2FKRm5lKzFMSytPeXZOTUg2TUlQMUZVN3pFeGxSeTdHTWoxcThoKzlMMWlPekdYRjRNZDdycnVkK24wNDBUOEZvQVBsRUQ4Sjl1ZXh2SDhCT0NVRVFhem5MOEhPaEEyNWJYeXYrU2JFTkZrY0RtdTl2UVN1MVlsakNPQ0w0RDNuWHlIWmw3dEVWaXBZUzNsSXhOWVRyd05Fc1dnZVVTTFlGdC9pWHF3WHU4anF1RjNXRmlTVWJRR2RhQ0lMeGQrWnozencwa2tXWVBLMmhzSW0vSmU1RXF0Z3BSWHNZRGRJMWJrdStReEYxWkpuUjlrS2xBVVdRbmdhNDlZLy9kK3oyTy91SzUwR1cwbWcxeWsvS2FLK0JEQWxkSkVOSW9IN2RhMmVmZW4vc1lLenBleERjZWNkTmxLcTBoSjYweWdualJjTHk2YWUrOXJPL01RYlhNZ2JNa0w0NVd3MVNkUEtkQTVPaXU5WU52b3JZZWVYbk1OdlBuTEZVVnFldFd5cWRiUGFpR1RKR0xZTVM3d3RBaHR0OWlxMUdYKzZzeWw2NlBLRFYvMHNZWC83eUg4VWEvQURIeXM2SHNZYlhNZ2JNbnJBcDFIYXhYaHJDTFcxdmNRN2NoQmRQWG9FSk1HU0FJZjh3Qjg3cmY0SE4wSTNNdENrdGptdGVFOGNrRFVKSXhYMVFrcG5xYkE4WHNRbVVYUjlKSVJSR3g5NmFZV213TmhTOTY3Zk14enlpc1BhK1lOSWVHaGF6cCs5UlVVUWNGR2M2OVdEbmN1L1FiS1ZJUmo0THNyTC9LL2pkaGh5YmNzTXIvOHdQa05oM1NkalZrZ0U0K2VHL0lFUnhiNGFpSGpTRVBvdkFIVWJ4MFdYeFRrZlRVMzB1NUEySkFYd2ZuMWZ1M3djWGJ2a1k3NXkxYTV4VWZubnVtK3ZDMDR1R0dVQjRub0lwRFBLVWVzOEJDNUdzOVFLMW91cUV4a0k3bzkzN1I3NzFqZkpBZDlFOXVxUWRmZW5lcDVBcFRIQlY0K01pMTVCcnBSTGJaM2p4WWxyZDRIQ1J1TW9henNxckMybHpqcnBZbk15ZXhGSUxjRTU4WGlnUkRlT0N3V2JxaG91RnRGN3U0cVJQVUFyRlN2bGFDMUdBQlhUek1CZEF2ZGNEQlpWR0NkcTZZcGFpL2o0cG5yUERYT3FhVW81eWJzOFlaeWRDTjRKV1NoVDBRK1Y3ZGJLOG5uQUdvU1VYS29aOWhEay9jREowSWR3dnpmUnh6bmVBVjRSQjdGOWhNcGQ5Y0w3ZmNLVjYvSTRKQUhsVWhFV1lDM1BDZGRGN2xHYlVsUnlibWNCaWpHUnI0blZDUHFwOHU0OGVNRHhZb01EdG5nSDdOcEttb0FEblNxSVA1YmdqL1dhM2tnSWVJUkI4TkttTldySW9ONUcxd1dheUxrV2RNckRSd0oxMFpjLy9tS1c1RVEzd1pha2Jsd3lnYXZUaFRGSWE4amlYKzVaT1YxNEhzTi8rV2dXTk5GNGFUK1Z3RWNrb1YyMWFTVk96OVBqWlY2MGtSaTdLWncwb2JsL2ZhcURUbERBT1RYYzhOd25jZmhib2k5NWZBRTNSWW9raGFJMlZhT2pWcys3OHZyVU92QkRNL3RsMkN4d1EyM2Q3ajA0RzhnM3JYaGpGeU1JWGZHZFpodXd6aGpBK0RWbkRQQ0Vyd2RmMFFRMmVER21hbHUxdysxTkFOdzJ0SDdXc2JGeGNXMnJLR25lT2RwOTA3clVseEhlT3pVZThhMURHTWZMQzZ1UG9tTU95NnVQUkZWaW91TGk0dVExSWlUV3FMaWxCWWpkVFdYTkltTEswblY0blJORnR6UkkrOUpHaFhOeUt4eVdPTE1YbVZEMU4xVDJnaXhqYnhBZm1VZGJ3SzQxOUV4K1ZrdXFuTWZObEpIWTU1VjIzQTRmVnFaMExBNVo0U1FVLzh1RXZEbGdqNUFEaEdOWUVGOUplc0FYQ0NpOW1LaGNwNG9kVjF2SXRnQk5LVjd0ZXM0aXVQMkxxV09haXZyOEhkdnNJcUM5VFZEMXN2VVA3TTFlTEtCM0NqbkVhT2RKTWYrUzgzTTdJZ1VQMzlYZFR4cEQzRVdpakhOczRHaWEzc0FETG1taXNnYndIeW1xTWd1R2RJWXltNjRoazRpRWpyTlo0bjN2NWNOWUpvb01ybGJZenFOM2dIZ0JlWUJBTHZIOTVpK3BhQ0dQVGp5Q3Y5b0RMVE1UVXhNVEl5M0VQTTRXRVBiNU9Ua1Q0REx5Y25KeVJGVTZ4SnY4QjQ5bnJvQS9GV2RLS1lRZUtmM29JVy9wSWFzK2tOdWpWd2dYK3cxMWY4ZTZqZ3ppS2hDQm5DaFBGSFZmR0JKR0crNHBjRFZTa1JsTGdLcnhERnhOOWxrTDlDZVdZVWoyUnJFbnBXNlRnTEhpaXNJTFlPQmMxTFZhOEMxRnVJQXZHYXRNcEhabkpDblgxR2h2OCtETXR1MjFkS2xXd2txMy9NcWNCNytnQml2bFYwSW85RmJYZGFWTjRGSlJPT0FHOVdsU3JzOFg0Z1VJaXFkaStmeTdQSFFlZUJSdTV3QjNwWUszZ2VPRS9VR0xsVXJlamE0V1N0Y01nZkE4ejVrRWdUMnY1MUhDTmdOTENiNkNOaW5LUHBCVE1zN1FBWUZ4aVA3OEpOVTBLNVFROWY0K1BqNFVvS0had0NYcS9sRkxpMEFBeVREQU54RlpYT0JNNVBEaTVJTmJweFBsSVJYZlVDV0k3NTFIeXg4QU93U0tmbC9rQ2FiV2ttMDJWcHdBWkx5RkZDWGFBV09sZmJ6Rkd1ZUJjOFVPd0I4YW8rMkFKcElXZ0ZvUnBUSWNvK09Mem9NT0dqNFlxdWFwZWNDMlJiaUN3aCtKRmg0QTloTDlEbndtWUNuRXB1SnZnRGVDSkRVVnNEOVZQSUtYaWpuSDZtTE9oZmlWa2ZhcGtlVHVOU1JOQWJRZ1lobVhXTEJXeXNFK1ZPQ29Cc1pBS3BLbGdPSUNSYVdBbHVJVmdQckZMWllrMnlkZE5hT0Q1Q1hLUk83MkFsdVgxN0huRm16WnMycUlIV0pKZlIxMkhvYnRBRFFTdElCUUVNV2NOZnpsd0Y4RWVwNEYwQTN5VDRnbDRLRm8yS09YZ2FPS0p5MGpqaFJZUDVUUmNoYUpXT3V0ZnRWM29DMzhoS2N0QTVDdjA5Umlja0RKaSszUWZtYmdCTG1wZ0JlSzRjUi8vZ1dzNVhQaFN4RW5yOHhFOEJVU1RhUS8vbTg4c0VBYngzMGxLZXdySVpqNWRFOEh2RFcwdkE0OEQwcFZjbFJsWjdBdjE1RWFpQlFDbkEyWGY4eVRYcXhVZUNMaTFiT29mYXQyREZnY21peVFPSjg4QmpLdUQ1UDFpSlN4S0VvNXdrYmZnSFlGMFpVUEF2NHZqSlhHejhDcHlPSXlsNEdkcFJpeXBZbm51UENYa1JVN2dpd1JDWGlBdjRBT3RxSGMrUFRRSUVOZlBVNEcydHFRcGxJTkRRaG5FMkZrNWJmV1ZSc2NPTXZtOFVwbzlkQ1l6dVZWMVFrTzh4MzZadFBBYmpRUkFsQ3lFbDc1dE8vQUl4aklZK3gvZlRtazIvc3p1OUJGUDR6VUpEK3pGdW5BRzk3WldMbENmaDdtSjZWNmVucDZWTWtMSDZpbFEzWW9kUXZBREplU3QwTDRJY1NSTS9pL0xLbkYrd0Q4dTRLSVRiNHVWV3Z6VlBiYUNJYUs5UjROeXA3YlVhV2hSVkFIRVh0NFlHR1VzaXpoWXFRVy9PRmpuQ05COVdEdlZRMVo3L3BXM29LMHYxNGhYejQ5NkIwaEgzdEQ2WFQ5VE5WamNkOWFaaUZJcUx3bmhCaGcvTUNqdmZmaGFuOENuOVN1QVowRko3RTdKOC82UittS3VteHJRQkEvcGF1bGc0eGFlTy91d1hnMGpyeEdkWGY0ejFac0swVDZTaC8zUnJYQUJBQ085NnlBNGZRbE4rWmsvUExpb0prM1JVZWhYOGtoQTRiM01vTmpSRkU0eVNQdEladEd2cXhnY28zYmhWZFRITTQxMjdkT0toYzBxcXRXbFVoYlorYWxMRXE4TkR4UmlhNXZiUVFROU41SzNmcTJ5R2JYUFNqN2ZOM1I1UndkZmdKT2N0dG5FaDJzQ2N0YzREclFWYXhnZG5nSXpnc0g3T1RFdGd4blU3YkZKY1V5Z2tSTG14V0JKRW53NFlpVG9zV2V3UzY5WlBsRjVraDkzUjNXTjhBY0MzRzg1ZFMwNEZ1ZWhKOE9hMWxWYmk5aStIc3RySkRvT3VvMlRPTEM2dE83dVVwQmpjUXUwdU85WFFtZ0VmY0h6RUEwaHlqR1lBVUYwbmRyaDZ4RTN2NjdHaERNaFROejRWeVFvSUZVbEpIVHkrMk1qdVIzOVdRREJmRitvQmVWa1hIaHdDaWlHb0NTRFVsd3pVUmRpTWdxdW9ZQ256Tk9yOEhFZ3pKdUMzOEtqSTJlR0MvdEhkM0doc2xjdHFKN2NpUURMZDR0Nk12VTNGN2IvUy9Ubmdjd0NEanlJdzJOOU9weHRiNFFqZkJjQURmMUZZeEtQY1FIRzREM1FRbHovTkVWRGRQZ3RkWjFwS3JhQlAwbUpUYmJ1V3h6TXhjQUtkTnZrOCtnTXpNeksrVGZjNlV1Mmh6cnVvd0xqa05RSXdwbWRLTEFzaVZ0THNmV1Z1cEtPRmEybjhKS0EzZ0krTzhDYUNWY2R4TXV3YjhadnhVZmdUQUUyU3dhTWtGTHJvYTFuSWxrakxQWUN0RDFJb3p0K1hHZEtabUFsanNhb2d6WGtRTTRjVmlYS3UzR2JtYTlxaHAxaEJSNVVPbWY2YVF5Mmw5dmpVNWpZcDNHUFZxcmtuMmRTUDMwOHBHeDVoc2xZVlVUMVZqTXFPajZJNy83WTcvM1BHZi96cHh4MzhJVmxBNElMNEFBQUN3RkFDZEFTcUJBY2dBUHBGSW9VMGxwQ01pSUNnQXNCSUphVzdoZDJFYlFBbnNBOTlzbkllKzJUa1BmYkp5SHZ0azVEMzJ5Y2g3N1pPUTk5c25JZSsyVGtQZmJKeUh2dGs1RDMyeWNoNzdaT1E5OXNuSWUrMlRrUGZiSnlIdnRrNUQzMnljaDc3Wk9ROTlzbkllKzJUa1BmYkp5SHZ0azVEMzJ5Y2g3N1pPUTk5c25JZSsyVGtQZmJKeUh2dGs1RDMyeWNoNzdaT1E5OXNuSWUrMlRrUGZiSnlIdnRrNUQzMnljaDc3VmdBQS92L2VDSzhVQUFBQUFBQUFBQUFBIiBpZD0ic2hhcGVJbWFnZSIgc3R5bGU9InRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjsgd2lkdGg6IDEwMCU7IGhlaWdodDogMTAwJSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIvPjwvZz4KPHN2ZyB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj4KICAgICAgICAgICAgPHVzZSBpZD0ic2hhcGVPdmVybGF5IiB4bGluazpocmVmPSIjZmlsdGVyUGF0aCIgZmlsbD0icmdiKDAsMCwwKSIgZmlsbC1vcGFjaXR5PSIwIiBzdHlsZT0idHJhbnNmb3JtLW9yaWdpbjogY2VudGVyOyIvPgogICAgICAgIDwvc3ZnPjxnIGlkPSJob3ZlckVmZmVjdHMiPgogICAgICAgICAgICA8YW5pbWF0ZVRyYW5zZm9ybSB4bGluazpocmVmPSIjc2hhcGVJbWFnZSIgYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiBhdHRyaWJ1dGVUeXBlPSJYTUwiIHR5cGU9InNjYWxlIiBjYWxjTW9kZT0ic3BsaW5lIiB2YWx1ZXM9IjE7MS4xMSIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICAgICAgPGFuaW1hdGVUcmFuc2Zvcm0geGxpbms6aHJlZj0iI2NsaXAtcGF0aCIgYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiBhdHRyaWJ1dGVUeXBlPSJYTUwiIHR5cGU9InNjYWxlIiBjYWxjTW9kZT0ic3BsaW5lIiB2YWx1ZXM9IjE7MC45OCIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICAgICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3NoYXBlT3ZlcmxheSIgYXR0cmlidXRlTmFtZT0iZmlsbC1vcGFjaXR5IiB2YWx1ZXM9IjA7MCIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICAgICAgPGFuaW1hdGVUcmFuc2Zvcm0geGxpbms6aHJlZj0iI3NoYXBlT3ZlcmxheSIgYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiBhdHRyaWJ1dGVUeXBlPSJYTUwiIHR5cGU9InNjYWxlIiBjYWxjTW9kZT0ic3BsaW5lIiB2YWx1ZXM9IjE7MC45OCIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICA8L2c+PC9zdmc+" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1305" data-original-src="/web/image/1305-2e38d882/9.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="9.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://www.safetyservices.srv.br/portal_im/portal_contribuinte/cadastroContribuinte.php?idpm=107" data-bs-original-title="" title="" aria-label=" - opens in new tab" target="_blank"><img src="/web/image/1393-4356a6bb/23.svg" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1332" data-original-src="/web/image/1332-41f271f1/23.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="23.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://transparencia.ariquemes.ro.gov.br/transparencia/" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzg1IiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgICA8ZGVmcz4KICAgICAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCIgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIHN0eWxlPSJ0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7Ij4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjZmlsdGVyUGF0aCIgZmlsbD0ibm9uZSIvPgogICAgICAgIDwvY2xpcFBhdGg+CiAgICAgICAgPHBhdGggaWQ9ImZpbHRlclBhdGgiIGQ9Ik0gMCAwIEwgMCAxIEwgMSAxIEwgMSAwIEwgMCAwWiI+CiAgICAgICAgPC9wYXRoPgogICAgPC9kZWZzPgogICAgCiAgICA8ZyBjbGlwLXBhdGg9InVybCgjY2xpcC1wYXRoKSI+PGltYWdlIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1JxNFdBQUJYUlVKUVZsQTRXQW9BQUFBd0FBQUFnQUVBeHdBQVNVTkRVTWdCQUFBQUFBSElBQUFBQUFRd0FBQnRiblJ5VWtkQ0lGaFpXaUFINEFBQkFBRUFBQUFBQUFCaFkzTndBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUUFBOXRZQUFRQUFBQURUTFFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWxrWlhOakFBQUE4QUFBQUNSeVdGbGFBQUFCRkFBQUFCUm5XRmxhQUFBQktBQUFBQlJpV0ZsYUFBQUJQQUFBQUJSM2RIQjBBQUFCVUFBQUFCUnlWRkpEQUFBQlpBQUFBQ2huVkZKREFBQUJaQUFBQUNoaVZGSkRBQUFCWkFBQUFDaGpjSEowQUFBQmpBQUFBRHh0YkhWakFBQUFBQUFBQUFFQUFBQU1aVzVWVXdBQUFBZ0FBQUFjQUhNQVVnQkhBRUpZV1ZvZ0FBQUFBQUFBYjZJQUFEajFBQUFEa0ZoWldpQUFBQUFBQUFCaW1RQUF0NFVBQUJqYVdGbGFJQUFBQUFBQUFDU2dBQUFQaEFBQXRzOVlXVm9nQUFBQUFBQUE5dFlBQVFBQUFBRFRMWEJoY21FQUFBQUFBQVFBQUFBQ1ptWUFBUEtuQUFBTldRQUFFOUFBQUFwYkFBQUFBQUFBQUFCdGJIVmpBQUFBQUFBQUFBRUFBQUFNWlc1VlV3QUFBQ0FBQUFBY0FFY0Fid0J2QUdjQWJBQmxBQ0FBU1FCdUFHTUFMZ0FnQURJQU1BQXhBRFpCVEZCSTRBNEFBQUd3aG0zL0lxZlY3ejhiWTBQd0ZOZmd4YVUwMUxIVDRzWGQ2bDZzTFZTbVRnMnBFN1JvVDFucTNvWWE3aTRIZDdld0pMdkp6di8zZnZqUHpHN0lmM3ZtR3hFeEFYVGQvOWY5ZjkzLzEvMy8vNzRRd2pCOGpvWWhoTmNtUkVycFNoa05tN1c2NmVZMnJaczNxbE8xWEtvaHZEUi83WTRQdmpicnU3L1diOSsxZDkvZVBUczJyZmg1MGVUUjl6WXRiWGhoQ2FsVjI0MmV1L3JndVN1aGlHUXdTOGxnYWVWZnZYaHN5OWV2OXFwWEtrbDRXY0pmby9NcnZ4eTlXaUE1dGpJU09ydjI0eUUzbGpTOEtwSFdhc3gzaDhQc0d2Yk1VR3l0Y3l2ZXZydUM0VUVKbytRZDcyNjhhRW0yUld4dFdGcFhEeXdhVUNsQkNHL0pLSFhINUszQmlHUm1GRFl6U3l0MDlJdUJsUk9GbDVUY3lOeWVMNlZrWmx5RHpHeEplWEpPeDVLR1p5VEtQL0Jua0tWa1pseWJ6Q3lsTE5qMVptUERJMHBwazNVc0lwa1oxekt6WkhuNWwvNmxoUWNreWd4ZkU1TE1qR3VjMVlJamI5VDFlVDVHdGRjT1c1S0xBQlRtbkNXWmlSNlAwV0xCWmNrcWlxQWl3NnY2K1QyZDVMdCt5SlhNakNMTHpBVTdIeXJuNGFSMCtTY3NtVkdFbVZuS3crUExlVGJKM1ZiblN5NWFZR1lwajc1UXpxTko2TEVtWHpJemlqWXpzM1hzK1hSUEpySFRpbnhtWmhSMVptYnI2T2pTSGt4QzY5L0RraGs2WkdZK01DTEZjeEcxUGc4eE0vVEl6TmJXZXd6aHNhUy9sY1BNMENVejUvL1czT2V0Rkh2b0dETkRKekozZWpYRFMvRzEyMmhwQmN3c0w0ejFleWlpMnNLUVpJWk9tWm0zZEJEZVNkcmpweTFtYUpabDNxTHFRZy8zOUxidDJiNUpValFKdDQvUFdyTDBzMWU2cDdtcDN0djIzczZ0eXpyVjd4MzFIVTRkSDFNYnUyblZ1M2Z2M21YaWtNamNLRmxETE04OW5xS0hBM0FPL2R6TlRlcUxwK0dZTzdPSzAxQTQ4KzQzSzlwTVJOUi9PWWdqVUplNm1Rc0FiZUpRcVE5Q2tobmFaWTRzYjI1b0JzRFNWSWNiOThMMTVSNHhBSkRUdjVCdWgyMWV5YmhuZE44ckpVTkhNdmhLS2YwZ1lGZi9QS0tNOUl3SkluY1Z6cWQyR0JIM0tpNE1TZFlSbUhuckxkcUl6SnUzK085OEJYY3BTZHVoSG54MzFKQ0pxeFhrVkhPellkN24yUmNVYkNhaXZ0K29LNVg5MzZodjJDV2VBN0Fhd08veHp0ZjlpR1NHbHBuRGsxSjBrVXRFVkcyTE1sTjVFdXJrWkZJSGhRRmd2cHZ4UkpUNGxBU0ErdVRZU1psTXJyc0FDTGNERUtrWTU5Sm5GREJEVjNKVGE2RVR1bDNaUUVSaW43S0lIQjlWOHN0SFFmU3QwcnN3RmdQNFhad0E4RlI4ODdYYnh4cmp5NjhVRXpwSlZnNFNVUXNBaUZSeDh1MERnUHVqZWwwWlhnakZnd0Nlb2l3QWErT2FLUEYyaEJtNlpyWldOdFJLcXZJL0lucGMrWU5jdnFrc2lHcW0wclVRQmdCQUJuVUd3SFhqR1RWZXpWcmpNOE9TZE5KTHlTYWlMR1dTbTU3S2htaHFYUUtRbjE0STN3UFlRWlJ5QmNCTDhVdzhjSjRaK21hWlA2dTgwRWZiVThwTFJQUzlNdEpORStXRWk2bk5XM2Q5NndJQWZFYXhLeHNHTUltSUFnQjJ4ekZSWm5aWWJ5dzN0amFFRGdvKy9tVGhGcWloYWtUMGg5TEhUVTBseDRYTEErVUs0VUVBeUNTaXdRRFFLbzYxM0dCSm5ZSGx4ZnVUdGVCMlBEbjFkbE5kQ2NaZ1ZSVXFoTDhCbkRLSXFFdytnTW54eXpmaXRHVE5XZE5Ma1U3Q3o1RDZ2VExjVFNQbFZIUXYrcWdRcWtvQXMwak5CbkRjRjY5RXlXbTUydVBsRFRWeWFXWkRzcDJodk9xbXE3TFp4ZDdzN0Z3QS94aUZNUjRBcEtWS0FHZ2Z0MnI4WmttRzFwbFBkTk5DZVBqd0FmYzBOTWp4YWVVbk42Ynl1WXZ4Uk04RHdKakMyS1M0bmgydmpNdzlrblVucno3cjAwRXVSWG1URWk3ckpIWW9qN3BMMmdrZ3QxN3NHaURxaXlseEtubndHWXVoT1NzOHU1U0dqTU1BOElIVFlBQ3dxcnFqMnlTQVZiNll2Um9kN28xUEl1MmxrTlNlalB4UlUwUDByTUpqaFUybm9MS1VvcUJaQVBCTXpQWUM0QWFsN0hzcFMrTVRwYytTY1VEdWFxMGovMzZvNjhaMCtjLzkzek1BNU5hTnF1eFpBSGtOWTlRR0FEYVNZMG9RUUY1SnA1bW00NjN4b01hUGxvVHVXUjd0S2pSRUxZT0tXem1jb3FKaEFMQStJVGJURk5PSnZnS0FFVTR1bjRzRG90RzZlR0NkR2VYVEVkMXkybDFvRk1XQWxnSEFpekh4blZSYXVCaXUvQjZmYnQ1cnNmWmdYUnlYcUNVcW41WG5KSCs0a1dKU0x3UWczRHdXSFFIZ2lIQnhRd1JBcEdJY0VrYTdrMUovTElPdkpZdWk5YVJwbWhOalFWUjJ5Q2UvckZtN2JNNGpOY2hsRTlNMHpiWjIxTWMwVFhPQVhZWnBtbVludXc2bWFacDl5ZTFqcG1tYWpZaDZtTzV2alFlZEw4Y0J5TkRVWWtYcy8xbGg5QXpGaFlMcGZ1L0MxOGVLQzVIWnFSNUdQNWJRUDBjKzh6TDZTc2tlWCsrQ2VDQWpzL3plaGRFOU55N2tmK3hsM0gwaEx1UzlsK0paa0hISE1TbTF4OVlWTTVrOFM5RjZweFVQTGp5ZDZHRTBXQmtYVGcweHZBdXE4cldNQjRjNmtZZFo1bU5Mc3VaWXlxM05QQXhSZkZ3d0RrUitya0lrZk9MZlNKV3NyS3lzaW5FdXNkY0ppMWx6VnVqRDR2OVdFdjhDZ095RXVFYWl4VmFwdjV3bkJKRXcvb1dJZWVDWFB3Qm14VGVqOGpjRlVtOHMrVUI3K3BjNkdhZTZFUTA4aTBseFRhUytma1V5YSs3WFd2OVdrbEo4UkVTK2xLUzRSa2FmWTVLaHQ4aTdhYUp3eGdUY0RpRmFFQWdFbHN5YlBDemR4WVBaMmRuL2RlZ1dDQVFXcDluVUNnUSt0bWt4ZmNPaFBUOU5xRWRFM1FLQlFHREozSmZiR1U0ZlpXZG5UM1M0UHhBSUJCWk5IOTNjYmtMQThVRWlXaEFJQkliWlBSc0kzR2xYK3VtZjloemFPSDlnS2xHSlFDQ1FhWmY2YTNaMmRtZDlpQVovVzVMMWRtcEFZaUVGNFBadG9pRHN3NjhJaDEwQTBOcHVMQUJNc21rSkhGU2V0V0RMM1luR3duRnpQYnZLRm9EelNYWWZ3L0d2S3NvUGNNd2lvaUNBUytWdHZnT0cyd3k0Q1B0dFJEY0E2R3ZYSHdCKzBBZWxUZ3V4enBqbFA0MEVGUWxnb2wxTG9BQ1k0aXFVNGVvMkJwQm5BUmY5cm5DNHVNMW9vQURvSGhXMko4WUdNNk1ZSVFISVBBQ3ZSUEVkVUlEOGN2cWd2aWVaV1Z2TU12UmU2Y0txMXJoeDR3Y0JkR25jdUhFRm0wbTFXangrSGppZllQTWVrTVU0N25PRGIxek5CazQycCtTMmsxOGttN3lhR2JjdUJmQ1F6WHBnT3ZDRmk3MDFHM1QvQjhDOWRuL1dWTXM1V1MxZDFjZ0ZMZzVQcFdwUDc2em1ybXdZd1lYQXd4cXA5WXZlK0VqM0JMb0dPd0dvUTdaQllEd1IzUWVncm1JY0ExcHVBdG83clFEUTBjMHlZQ1k1andWeWlTanhCREJQcVFkY3FCREIxVFNublVSVUloZDQwKzRuY2c3aS9HNWd1WER6RVNEdkpHYzNEd0RmOVFDV2E4VC9iSjYrbUxuZ3B4cWlhSFFDMEZpNUV6Z21UR0NPMC9nMXdJNEVGMThDKzhwRVJjdUJyNVNYZ2NYMEp6RFVIUjBIcHNRaTJCbkFRQmZpRlBBanhlUXY0QUgvVmNnYStoQXROekd6dnM0OW1VaEZZellRTEtiTUFMS29CWEFweGVIMW15WHdwSXVSQUk2T1NvekNmeGFZcnV3QkJ0RFR3Qy91N2dBd3hHNURkN1drRFJKK0JvNm1PbVVBZURnbVZTM0l5dlF0OEp3K3FPU2tQR2JXbGZ5ekRoV0JYMSthc2dIQUpDS2lwUE5BWjZKRFFDK0hhYlFBdUZET3liY01BQTRNRTA2bDBtLzdIVUFmSW1vTjVKZW1Xa0JCZVljekw3NitOQXdjOE52Wk43VXIxU0FmZU5YcFRnQWRZaklPV0VjMEF0aXFFWEhiRHFtdksyTVRpb0w5d2tTbE94QXNSdlErOEtYRHAxUWxDSHhDemUwb2JUNER3TEowTzhmMVBpS2FBbVFUMFJiZ2NRZjdRdzBvSmhWb0dwQmJnNzZ4dVJ0QVprdzJBaThRcFVlQXh2cWdVbE9Ea2xsRHpDei9ia1JGNWdXeS9TK3dLak16Y3d5UVY4b3VpK2dsSU5MMFJnZWl6SjhCWUgyaXEyWGxpY2c0RG55VW1abTVDRmpsYmtzYU9ldzExZkoybGFqTU9TQkFTMnh1QmRBaEZnMEEzSmVabWJrVG1LUVJhcnZSMHBROC82aS9TTXp1UEEvWTYxZlNyc0xsU0JmK0k4Q2Z0VndRdGQwR29MZU45Y2Z2WDcxNUs2bnQ0Skl6N0E1M0htR0JPenI5Uk00MjlCaUFPK2ZaMUFid2NDeGVoY3REUWlNcEU2NHdzM2FZWmNIWEdhSklqS2VTSjRDcHltQzQvZDBGRFFEd3FDc3FkUTU0eHlhWFhNNXlneGZzZGhKOUJCd3BHYk9FN2NDV0xCdHhIdmcrRm52ZDRGYU5VTU9mSTFKRDBqclFMNUdLQ1BVRnJOdUk2Q2ZnNkNMMVR5QlN5UVV0QjA3YnRiR2g3Y0RiVVNWZkJOWXZVbmNETzEyVVBBbk1qQmwxQUhEYWhtWURza04wTndINGNaRjZIdmhFSThML1pJNTJtRmxlbVZxYWlnejlDT3d2VHVuNXdBUlNLMG5nYVRjdExjQXV1UDJsZGhuMVh3SFFKNnFlQU5xUzJoOUFjeWZxQi9BOWRodDdxeTNjMExkUWxVYjVRUERsMW5WdWVleWJJUzZtQVRuSnBFNEh6aWJxZzBxOEdkWVJMMnRDUmFqbVZlQWplZ1JBSXh0YUM2eHpRM05jd0hGYllsUkxnTk9HVGFsODRGMFg5Qk53dkxTTmZaYXJPbUVuZWdiT0R6ajVUZ0JMeWJZemdDNGFhZmkzbE5BcnM3UU9Ea291U3ZRY0lOdXZBUGFUL1FzQTZycXBtT053eUdGRlpZcW1SQzR3aCt5emdhT0dpNXBYZ1hreG8zZGMwS001RGlPY09nQVlhcGNTQkJicnd4aDhRVGZNTEMrOFdGcGNPeG1tYVpheG0yQ2FiWlhFQ2FiNXdFdW0yY3VocG1tYXJTalROTHZhVUEvVE5KOGlvcVM3WC8vOCt5L2V2Rk1RRVdXYTVrU25ETk0wbXp2Y2FacG1PblUyelVjVjZtbWFabGthWkRwMkphSUpwcGxtVTlJMFRiT3BEWlVlT2VQYmIrZU1iVWxFcWFacE5xUU9wbW1Xc2FNUnBqbFdIMm5USTVKMUkzUG5WUmZrblRiYklEWERMQXQrYWU0ajd6VGg0Yk9Tb1ZObUxsalZLWUU4MVBUUHd4SWFaV2FPYk91ZFJGNXFtNTJTV1IvTUxDUGJCdnJKUzAxNThqSkRuOHpNa1UyRC9PU3BWdjdDWXRZR004dndtbjdGeUZNMWJ0L0hESjJFc2p1bGtLY3EvQytHOWNITThzcjhsb25rc1ZiL21hTmh4MnVQbVRseTZNME1IM210WFk2NFkxc296TmNXcTdsclI1VVd3bk1aZllVWktxdVNtU05uMXUwcFlNbk1mTzJ3N2ZFUGIwb203OVY0TzJURHpDeWx0RUpuVjAzcDFiQmQxb21JbE14OGpUQ3paT3Z5YjRNckd1UzlDbU5LbUpuQkxLVmxYVDIrL1AzQjlVb2trQzk5OExjbjg2Vms1bXVCV2NwSXp0b0pEWklFZWJGaXdsVnBhNFdPL2oxMVVFTS9rU0FpOHRWODZQdVRCVkpLWnViQ1lHYVcwcnE4N3JVMktlVFYzckdGbWRrNis4L2IzZXVXOUFseUZzbTFCaTQ2YkxHVXJNYUdtVmxLbGhlWGpXdVJacEJubTlwcjhhcFYzNzNUOThaU0NVS1FheUdTSzNkK2UvbXBYRXV4ZGNIT01ueHArOXpoRGRJTVFSNXVRbnI5ZXBYOVBrR0NvaGJDOE5jZjlQN3l3emtXYktLRnpEMjVlZkVUbVdWOFFwQ25uVnJuUDZObi83SDdkTEJBQWpZQVczbm5ENjFlOG1yZlptVU44c1NUeXRaczFlT1JseitZLytXUHZ5M0wvdVdieGRNbmpSNXdXNzBLcVlJOGRKR1FVcnhrbVhJM2xDOWYvb2Iwc3FYUy9Ja0dlZTVDQ01PbEVIVGQvOWY5ZjkzLzEvMS8zYnBXVURnZzJBVUFBREF2QUowQktvRUJ5QUEra1VpZVRDV2tJcUlqTTRoUXNCSUpaVzdoZFQ0QUdjcFlyK3YxRER0WDVrYzhiekQ0ZDVsQkJYcVY4N1RpZjBsK25ud0FmcXowZ1BNQi9Kdjc3KzJYdSsvaFg3a1A4SjZnSDdkOVlYNkFIN0srbXgrM1B3Y2Z1SDZhdWF3ZjRDaVVuS0IzSzVvVmdOd0QzcjlxdllsL1lBUFVYTEtCcUFJUFY5LzFtWWxYMy9XWmlWZmY5Wm1KVjkvcmx6L09NWDVuRnQxZnIrYWZsK1BXWmlWZmY3S2ZkT041dnJwclR5aFYzNkxPZlFiYURBMHdvb0FnOVgzL1dJT2dtVmZtelowYThzM1VCR1Mxc2l1bnc0SXk1MU00RDVtSlY5LzFtWWMwdXBPTWpsUnl1ZzZNcVk0ditXa2dYTTdKd0Q1bUpWOS8xbVljc1JjYWJTQ0wyNitmYnJtNWN5L0hyTXhLdnZ1TWpGOXFQaUN2MTNqVmI2bEZRZ3NycUdqS3pmMW1ZbFgzL1dZUjdZU2lMYUhpdG9saHg4ZXN6RXErLzZ6Q0RNU3J6SEY5U1doWW1hKzNIWFBnYlBGblQ0bWRsN1Jjc29Hb0FnOVgzL29iSXV2eDZ6TVNyNy9yTXhLdnYrc3pFcSsvNnpNU3I3L3JNeEt2ditzekVxZ0FBUDc1NEFBQUFrTnlwWUlzT01oK09VSUhYY2FmTXhiN2xkazB0YnFmRUpjbHNhQjVUM0wvVnhCZWdiaWZUNjBkbHRYZ1p6OXhpL0t1NVEvMTVIV3o5Y3FqUEhIMDM4K2dOTllRU1ZQOXFNRms2RDc0VEM5LzB6RkxmTDVFNlBqT1J3eEovRFpOU1NxMXZXZTJ5OXZyZ2dCcS9hWFZhN3dLR2Q1djZ2cUhlTWtTMk83WDN2aTFrcmp1SVNrNWZnNzJ1Z25WU2w0bTBjZUFPR2hqdDRNY1I4T2xoVXFQK1hESlFzcVFiTCs5dkg5aGVMMzVGTk4vNSt6Z0VJUzVrZEpaNlYvcEZFNE9VdFBUbmJ6K210eUdhaERvM1JJYW5QSk5JenhBOW9PL29mbHYydysrcU9JcDdtRVRaWGpGWERtSHRyeitDRFZFNGxZVG9pVlQ1VlZld0RPbyt4NGUrbnZvNE1WaEp3N0VZRWF6cjZWVUttMVlJZCtVVVAyK3FwVWZQNnpsWGp4MlJmTGtCNWZsU3A5SWhCNnlxamtJSS9ucWFBWXJhZ0NBMjd1L3BzYjU2bkg4ai9ML2t4MlNMeHdXeWIyRkdvK2VKajhjZU9ieWUzNHdVa2QvQm1HVmFuRFZzYjdTVmY3YjdXWkJDTnE5UFd4K3FVcnVVTlZ0ekVta2VHeUpPcUVUY21oaEcrK0NkSCtzaktENjhCTlFORVFrcThlL3ZvS0FsWTVLRFRoNm1zOGVRNG9ZQWVUdk1BZkw3bk5pbi9GNXVtNGhicnBwalU0NzluWVZ5OWdvajh3bmd3RkM4ako2bE4ybldlYkcxSFJ2dWpLV0lMWGdXQUo5cG16dWZpV2FGeC9TVysxZXA3SC80TkUrYk1WUUVsOVZRZEZHYUszQkRVbWdISFRVa3l3ekJNRTFWamlra042aERRL2ZFZnQ3NUcvTi9ocW5GaWRYdjdCMUVVZlBSNU1NQ1hpN1JjQUFXbklFNnp2b2MvZ0JNbWRHUWV1WjR4UHVJY1lxYzM0VWxIZWdwYkJwaTl5cTNUTHdoRk9EYlh6QmZYOWpzVUZNQVNzdEdLQk9FcFdCaDJydU92Q3cxSHlUR01WZmZpVkVON2YvaWJ0WW1jb1ZMUG85WW8vMmtadHJJc3dSa2hMbEFQYmVaWGtmWEZ6YUVnM2ZhUmF0V3pMRnBvV0x5T2NxMWY4eXJFaThWYjY2TVBVZVJpUHBnQzRBejRxcWdEVTBOL3lJZnZLUjlqUzRLaW43WkwrZTFJNTZUVEVIS3hZUU1IVmdJdFF4M0x5VjZuUWxvVmxXOFVJTnRGWk0zLzVFUjJuaHp1KytMNVJqRkwzbzJMRmFHM0s5bWhHZDhUY09teHFTRS9xY0FWbjJKMy9GaDRSY2h6RjVOcGZyaVc0YVRySldydktoWm9uL0VBMnJNUUczaFZoVThqeStMaDlleXppTGlDRFVCbEtvODN3MHB3dlZLT0pDOW43L3doR1lwd1Jac044RXFtczVMMUJIeFFwUjAyVTdoNGNIRDdXYkJxOFNBQUtGRDF5bjhQdEljR2pLRFg3Um1EOEtYQWUwcWpYaWFsOXl0dW1yVzlPSWtlOXRCUGhabHVqSW8yeEp0K3VxLy95Z1AvNU5oLy95VG5saVdTbEFqTWlpRDJUeDRBVko5Q0NLWStBUEtLNjQ3YUFHU05OcDYvODZHYnd4QjIyN0U5QlBmVk4yeldXL05PTm03dCtHRHZPSC82VzV4SkJ6cHl1Vi9DUjhuUDB0ZmFueDI3STVFQU1tcmFxMGtPMHQ4d1M4UEJFNTByL2d2R3M4NFl3azJtem5zMGEwR3ZBcFRPZkc4cXl3MzBocTJLd3BvUXVDdjJ4OXZPdWtGc0xtQjQ5S3gwdHQ0cEJQSGJOZnRLdTNVSTNsVThSQUZGbS9sMk4xM2FmMWZ5UEJVbUNRQUFBQUFBQUFBQUFBIiBpZD0ic2hhcGVJbWFnZSIgc3R5bGU9InRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjsgd2lkdGg6IDEwMCU7IGhlaWdodDogMTAwJSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIvPjwvZz4KPHN2ZyB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj4KICAgICAgICAgICAgPHVzZSBpZD0ic2hhcGVPdmVybGF5IiB4bGluazpocmVmPSIjZmlsdGVyUGF0aCIgZmlsbD0icmdiKDAsMCwwKSIgZmlsbC1vcGFjaXR5PSIwIiBzdHlsZT0idHJhbnNmb3JtLW9yaWdpbjogY2VudGVyOyIvPgogICAgICAgIDwvc3ZnPjxnIGlkPSJob3ZlckVmZmVjdHMiPgogICAgICAgICAgICA8YW5pbWF0ZVRyYW5zZm9ybSB4bGluazpocmVmPSIjc2hhcGVJbWFnZSIgYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiBhdHRyaWJ1dGVUeXBlPSJYTUwiIHR5cGU9InNjYWxlIiBjYWxjTW9kZT0ic3BsaW5lIiB2YWx1ZXM9IjE7MS4xMSIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICAgICAgPGFuaW1hdGVUcmFuc2Zvcm0geGxpbms6aHJlZj0iI2NsaXAtcGF0aCIgYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiBhdHRyaWJ1dGVUeXBlPSJYTUwiIHR5cGU9InNjYWxlIiBjYWxjTW9kZT0ic3BsaW5lIiB2YWx1ZXM9IjE7MC45OCIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICAgICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3NoYXBlT3ZlcmxheSIgYXR0cmlidXRlTmFtZT0iZmlsbC1vcGFjaXR5IiB2YWx1ZXM9IjA7MCIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICAgICAgPGFuaW1hdGVUcmFuc2Zvcm0geGxpbms6aHJlZj0iI3NoYXBlT3ZlcmxheSIgYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiBhdHRyaWJ1dGVUeXBlPSJYTUwiIHR5cGU9InNjYWxlIiBjYWxjTW9kZT0ic3BsaW5lIiB2YWx1ZXM9IjE7MC45OCIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICA8L2c+PC9zdmc+" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1302" data-original-src="/web/image/1302-88a08a18/31.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="31.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://tributos.ariquemes.ro.gov.br/servicosweb/home.jsf" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/1346-b3802fe6/19.svg" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1333" data-original-src="/web/image/1333-9e880a5e/19.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="19.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://www.safetyservices.srv.br/portal_im/portal_contribuinte/cadastroContribuinte.php?idpm=107" data-bs-original-title="" title="" target="_blank" aria-label=" - opens in new tab"><img src="/web/image/1321-a9422fb6/16.svg" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1311" data-original-src="/web/image/1311-c1682c75/16.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="16.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="http://www.diariomunicipal.com.br/arom/" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/1320-cdff8fcd/26.svg" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1309" data-original-src="/web/image/1309-8d370749/26.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="26.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://radar.tce.mt.gov.br/extensions/radar-da-transparencia-publica/panel.html" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/1322-8710835e/21.svg" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1310" data-original-src="/web/image/1310-df609b4d/21.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="21.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="http://transparencia.ariquemes.ro.gov.br/transparencia/index.php?link=aplicacoes/licitacao/frmlicitacao&amp;id_menu=3&amp;qt_acessos=2783" target="_blank" aria-label=" - opens in new tab" data-bs-original-title="" title=""><img src="/web/image/1345-82643c9c/17.svg" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1306" data-original-src="/web/image/1306-4445b622/17.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="17.svg" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://falabr.cgu.gov.br/publico/RO/Ariquemes/Manifestacao/RegistrarManifestacao" target="_blank" data-bs-original-title="" title="" aria-label=" - opens in new tab"><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMzg1IiBoZWlnaHQ9IjIwMCIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgICA8ZGVmcz4KICAgICAgICA8Y2xpcFBhdGggaWQ9ImNsaXAtcGF0aCIgY2xpcFBhdGhVbml0cz0idXNlclNwYWNlT25Vc2UiIHN0eWxlPSJ0cmFuc2Zvcm0tb3JpZ2luOiBjZW50ZXI7Ij4KICAgICAgICAgICAgPHVzZSB4bGluazpocmVmPSIjZmlsdGVyUGF0aCIgZmlsbD0ibm9uZSIvPgogICAgICAgIDwvY2xpcFBhdGg+CiAgICAgICAgPHBhdGggaWQ9ImZpbHRlclBhdGgiIGQ9Ik0gMCAwIEwgMCAxIEwgMSAxIEwgMSAwIEwgMCAwWiI+CiAgICAgICAgPC9wYXRoPgogICAgPC9kZWZzPgogICAgCiAgICA8ZyBjbGlwLXBhdGg9InVybCgjY2xpcC1wYXRoKSI+PGltYWdlIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2Uvd2VicDtiYXNlNjQsVWtsR1JqUWdBQUJYUlVKUVZsQTRXQW9BQUFBd0FBQUFnQUVBeHdBQVNVTkRVTWdCQUFBQUFBSElBQUFBQUFRd0FBQnRiblJ5VWtkQ0lGaFpXaUFINEFBQkFBRUFBQUFBQUFCaFkzTndBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBUUFBOXRZQUFRQUFBQURUTFFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQUFBQWxrWlhOakFBQUE4QUFBQUNSeVdGbGFBQUFCRkFBQUFCUm5XRmxhQUFBQktBQUFBQlJpV0ZsYUFBQUJQQUFBQUJSM2RIQjBBQUFCVUFBQUFCUnlWRkpEQUFBQlpBQUFBQ2huVkZKREFBQUJaQUFBQUNoaVZGSkRBQUFCWkFBQUFDaGpjSEowQUFBQmpBQUFBRHh0YkhWakFBQUFBQUFBQUFFQUFBQU1aVzVWVXdBQUFBZ0FBQUFjQUhNQVVnQkhBRUpZV1ZvZ0FBQUFBQUFBYjZJQUFEajFBQUFEa0ZoWldpQUFBQUFBQUFCaW1RQUF0NFVBQUJqYVdGbGFJQUFBQUFBQUFDU2dBQUFQaEFBQXRzOVlXVm9nQUFBQUFBQUE5dFlBQVFBQUFBRFRMWEJoY21FQUFBQUFBQVFBQUFBQ1ptWUFBUEtuQUFBTldRQUFFOUFBQUFwYkFBQUFBQUFBQUFCdGJIVmpBQUFBQUFBQUFBRUFBQUFNWlc1VlV3QUFBQ0FBQUFBY0FFY0Fid0J2QUdjQWJBQmxBQ0FBU1FCdUFHTUFMZ0FnQURJQU1BQXhBRFpCVEZCSUNoSUFBQUh3aDIzN0x5ZXQvejJRRlRQQUlDTkVpUkJLcUZGU2Y0RkNKUXFXWUtpTVNrdVVXT2dPbWlocytiVnJsS2pabHNyU3B2NE1tcmFwUm9rYU5TcWwwZWJRYkltYWFyYU5UclJSb28yUWFzU29VYU9iSDZFTU9zREVYSCs4MWxyeldqTURlLzFuUkV5QWZPLy83LzMvdmJHTnlmSHI5NkxHTFcvb0k1NTNOWmRQOXBaT3FvdVFnTTF6dlNQRGpKQ2c5ZWtlVVVZYmFyaTVzcXdrWHNzcUdnY1UrcVo1UWhuZEFKMUxmUkxmUnJBRklEemJBL0ozQStHMWtvZ0wrNER3YWQ3UFpxRC9kRW5NUUJ2UTQvZDZGZ1A5T1pLby9nNmcwdU14ZWlBNlh4STNjeGRFczcyZElxQkdFcmtFcVBaMldpR1M0WUovUnY2Q1dXUGNrUzRJLzN6MWI4dzR2V1h0b3BPOWhnQlFMN29EWlIxUjFMYkZyanhNM0gvOStFV2VRZ0ZRb0d2dEFBNGIvZG91L1lTRTNCSDBFTXFCZEQyK1JweTNhQnE1aFlSOWFLUm5jQThNaU43TkFOR21zaFhWQXdxTHRmemdYNmdmM0hMSnBGU0owNVFKTTY5c2lBSnNuK1FoOU9vcEF1aWZMaUtTMGFNMDZaajhDY0RyRjBqY1p6ME04TWtFajZOSEtSRExBcVZYUStxN3dPQzFrcEQ1dTRCMzB6eU5tUUI5WXAyamRHdDRDRGg0dmlUb0QzdUFlejJORXFYV1pybFNIOXUwSWZndVh4SjJ5aDZJL3NqTEtGQktyZEw3bEpteGJRWHVsQVJlQ3Z6Rnl3aDBRMC9Bd21nQnFKV1lwdzVCcjVGSThqSXd4Y01RLzdKbEFiR3NCdWp5eC9ZN1lKVWs5TG5BclY2R3cyS0FYZGtTZXpjYzhpV1dmQXl2ZXlIWllTQTZYMkpQK1E1ZWxRUi9BQTRPOTBCcUFjcEY0d3hnUTZKZEEyUjRJR0dnMjlDeEFDaEx0QXVCMDd5UFRJQXEwVmtFckUyMHM0RmM3eU9nbUZxV0FTc1RiVHB3cnZjaGZVQ2h0emVucytkT0k3NE1KNFlEdzh2UnI2MjBuNzVpaTR6R0tDMG5XU3pxWnNBMHZCdGpiVVBWNVBoWmkxb3NJa1lYUUg5QVJQS2pBSGQ2R1FNdTFRUDlnYmpwcytnV2tZVllyaFdSRnRTSTM2c29COUpkeVVCZEdqZFlpMGk1VlpXSTlGcVE1VlVVQUFXdXBGc3NqSnMraTA0UldXaTFTa1NhTGNJK3J5SUExTHNpTlVDRHhFMnhSYUdJR0IxS2oxOUVjcU9LS1Y2RnRFSWt3eFhKSzVrdjhTUEx1dWtxRkRWUUc0NDBaSWlhMTA1dnFYZ1h5NEFhZDNScmkyL1B3T2lCYUw2bko0VkEvMVJQVHpZRC9hZDVldjV1SUx3MjNvcUFOWWwybG5jZ0dkMEFuVXQ4Y2JVSXVESFJaZ05uZXdTUzBZWWFicTRzTFk0OXd5NjcyUEh5UjRCYkV1MXk0QlN2UUF3emd2YnVESnNTWW44aDBXNEhSbnNHSXRsMUVWMTArUFdGRTYwRGVzVlRURit4dVZjUGJYNDloNER6RWlzYmVNaUZyS0k3SG4yNjd1NlNreDM5SUJnTUJrOTNjRUV3R0F6NlJPWUhnOEhnU0NjL0RBYUR3ZE5FSmdhRHdlQjBpN0ZCNjUvT3prN1Zrbkg1Yng5KytyRjdyem5UMFlpZzVZTDhXWk9HT1JrUkRBYURGemo2MlZYcVdjbkJNaXZtM0YxQXMyRTNKOHMyVTNLQTVzU3FCK1pxdTdSOUNOdDNsZzZ6V3cxUTYrQXJnRXlSbHdBdWQvSXNRSWxJTWNBV2l6d2NmdHQyNC9oWThsNGV4UGFEMVliZEZCd09OUDBpeFdZS3dKZE9qb3VndnBwRU5NNEpBdzJHVFpZNGZRVzRMSkYrQXJ3bm1nUFA0ZnlsZExldVZqWTdHQmtHRGg2bkR6aHd1ODlKV2kzTzM1bWlBOWlXcmVzcUxBY3prNWpNQ1FQMU5qbU81Z0JmVDBpY2NaOENDeldOMlVhczc0OTFhZXhCWUNETmJoRkFrN2dDYjU5b2w5cE1ySjlQMFVQZmVFMS9zMkpkTXBQQ0tGQmxsZWRJTmdIL0hKOG80enFBWjBUenMxaitzN2J5a2Zjc2VONGxlUUVnYVBlRVVxVGxtKzNidTcvNnpvTHRBWnY3c094NXJISlQrM2NLMjFLZEhONis0OU9vQlp2MFRJZ0NPNEczazVvVVJvRktIYU0rQkQ0NUt6SE8zQWw4TmxiVEphaWZ6aE4xOWtjS0JTNWRvV3l5U2QwTmZIdXNsbllSa2VPTFAxQjQydXJNUVdWUG9haW5keWhjNStSTEVSbXhxRWNKcDJtNURqaDhCVUJPVXBPVkFLVWE1T1N2Z1lNVmdmZ2JzeUVDN0QxZE5MY3BBMVBFZXRKWFNydExnUWp3NVhDcitRQi9GWDBpbzVvVVpsdlVBeHcrUjZ3RE81UytsQmhFVG9vQ3pORHlEK0MxVWQ4QXYwMXVVZ3JRcGtGeVBnSFkvL3Q1bytOcDlMeXFmd044TVUwMFp3MHBaV0ovalVLMk8vSWN3QnlyQjVSZnVDSmpQbFgrb293NG9QeFI3QmNvNU1ja1hjb0NIYWNNQVRmSjg4Q0hTVTRxc0k1SnhyZGovVmx2ekRmYTVHenZqZkV6ckRzbWl1NnJBQTZPZFRENmdIS05TNzlVTmxvTSt4d0lqM0pIcmxQQ1BoSEpSejNEd2JCUGxEdGoyNjdNMWJFQjRGUzVHbUJXa3BNcVhXS1UvcCtGeGp1c3NqNUg3NjZ5Vk5IK0p5VWtUbDlWSG5ScDlEZEFqOFc1QUZ2RXBVa0tzMFNrVFBsQ25OWXBMOGFVUFFoOGQ0S09icUJIWlB3ZzhJZGtKN1c2UkVhc2VkK044VDFvM2JGMnBMallwTlE2dWw5cGRrbWVBWmltM0tOYzZwYjBLMFVpOGlmbFpVZGx5bzVZenRzQjhMSm9tQUZRSlNKdHdKY3B5YzVvMENZaU9WZFgxc1ZvTjI0NzhHRmRqSlZYNTRpN2J5aDNPTHBWK1lkYmhZcXBmQWo4ZTRScjI1VHJST1JwNVdsSHhjclhEaUl2dnRUV2p4cVpybU9qTWs5RXlnQXVUSFppTkxtZzBlYll0NEdkSjBxY2R5anJIZDJndk92V3FERFFLU0puQWp3bHJyVXBONG5JczhyRGpncVZmUTRjSHZ5RmFCamVCK3cyUk9RVTViR2tKLzYydUJ2UkJueVJMZkVlVW01M1pDb2Ric21mQVg0b3NrRlo2RjZuY3EySWJGYWVkSFNGOG44YTN2bXg2SmdIOEtTbzd3UDdSaVE5OGJmRjJURXZBN3RQbGJqZnFqemc2QTlLaTJzRnlqcVJUbUJ2bW52OXloSVJlVUI1d1ZHcDhrRnNoMzhrV2pZcGoxeWx2Z0pRbVB3azBCMVhLWTNBL3JNbC9oOVVYblgwa3ZLb2cwY2Q3SEhrMndlOElwbERRSjI0TmhuMUxCRXBWM1k2MnFUOHpjRkFVZEY2Z0ZDS2ptUDJLSTRiandDU2tSMUhkejBKZkROSEVuQ2xFaDdsSUcxQStaV3lRdm1yblJGVmpyZVNKNEdESTRzQmd1NnRVLzZkS2lKQlpTakx5UTdsUGdkZmlrZ2p3RTA2Zms3TWtlT09BUEVMN0FFT1hTaUpPRlhoU2dkTFVNOVFDcFFQN2FZQkhFcTFXUWlRL3ppd0s5VzF3S2ZLMHlJaW93OENtQTV5VVJmR01Hay84TzJQTkd5SmplVkhGOERnWWtuTWQ1VFB4dGtFUGxhNlJNMVd5TFdwVkxhSjdURjdnVnQ3Z0UzaTFxZ20xUE1VYVZUMm4yU1QxcTdzVG90QnJnZDRNeVdtMFFlVUx0dWR5aXRISGNza1FmOURZZHRVaSt5M1VFc3NaTHV5ZlpMRnp3NHFHK3lrRG5oekNNaDNLZTJ5THRRdFlqbGJvZmNjaTR6L1FiMVZZakcyQWR3Y1V4RkFsOWlPSHdRR0p4NWxySlZFSGZhYXdzRVhibG56bTZZSWFtaTQxUXFGQTAvZnNOcHNSZDEzdklNRndCRFFuNkp2MTVZdHo0Y09ZUG5SV0N1cFZ4aHN2VzNOelZ2Mm8rNGNGWlA4ZUJDSW5CN0xWdVVPT3drQnJFdG1zOG9idW5wN2V6czNsNTRXTnpkTDRrNzhUSEg4K1EvRWVuaUw0blRvU25HWXVndkwrMFdmNHgyVHhYWjBwK0o0MzFrU20xUUR2SjNxN0lURFNxNkQvMWJlVGxxQjlYMDQ3UzcxeGNXOWtzaFQzb3ZoL1pQRWZzeHJ6ZzVmSzQ0M1dmMGtIZzdmZjZ3NEhQZHFESDB6UmNlWUx3Qk1aMnNBdmh6dTREU0ZuT1JrckE4VDY4REtPSGhRRXR2MzY2OGQ3THBsaERoTnZYbXZnLzg5UjV6blcvUU5kNi9ubm14eG5yS3ExOEgrZTQ4VExYSzVjdWhzUjY4ckQ0dlRIdVcycEhSYUo1YTdXdXJxNnRvSEZHakpjT3NwU2ZpMGkrNTZycjN6emVmdnZzUW5zWTY4N0k4dmRtejcrMVByVHBWWVUyNHhUZE5jTEE2bm1hWnBGbHBrbVpZYmJsd2V6QlNOS1htM1BmdEc1MXRiZjE4NFdod0dUTk0weTJ6a1d0TTB6VitLQkV6VE5NdEVVamVZcG1sT2QzU3BhWnJtMWNrb1B3elFiK2FJOWN5cUFZRCswOXg1TGlYeFBNUkxvc0JBbVUrY0Jpb2lRSGlhSzJuaUhjOElBKzJaRXV2MEhxQS8wdzBQMmQ4RE5QZ2s5dlEyb00zd3dxcUJWa04wQnJxQlVnL3M5Q2owcFl2ZTA4TVFEbWp3THlpcnJXdW9xeXllNmhIVkFZV2l1eHd3WXpHV05FZXg3N3Z6SkE4b1BRTHRvdDNYRC8yR3M2SWVZb3pXamZkOGxnT0YrcVFjbU84a294bnJjRzl2bndVTUZDZXhNYUZRS0pSbGNlenJvVkRvWkpIelFxSDdMTXBEb2N0RXhvUkNvYTArWlVJb2RJT0kxSWRDT1JabjF2NHJ2UGVkKzg0V1dSb0tyUk9SK2xBbzlNYkxELzFzbU5WWlhWMWRqMWt0RFlYV0hja2FJT3h6SVJPNDA4SHNmb0JJdzlKTUVSSC9uSW9lMURvamFhVURYR3Z4UzRCcEloZkRWb3VIWUxWSU9zQ3ZsU2x3djRpOEJ6T1U5VkVzdDR0Y0Q5VWk4aDdXTFg2TGpVRDBSSXZyb2ZwSTFnL040bVkzdE5yTkRnUFI2Z3h4V3RBTjBHQWt0VmN0L3VySy9va2ExZ0NkMVp1NnVkN1phMDNiaG1Dak1yeVB6K0hhb3dFL1VPSEtadGhsTXlNTWRFMlhHSTA3QWVxVFdBK0h4NHFJL3dBN3RRM0FFN0dOM1FkM0RCT1J1ZU9jelJCWkNYM0tQQ2ovZ2plUEJyS0FFbGNxQUt0QUw5RHFsOWdMbzhESzVMWHBPNHBFNUhJaUQybXIyczEzNThhMEVycUdpMjBNeDhLUUlTS2I0TFJOREdVZkJjeDB6UVQ4Rm5WQW0wOTBGa1loa3AyME5yN0pNeUt5aGVmdjExYjVYL0RXc0ZqK0RCdEUwMVFJaThneGUvaElMb1piamdLeTQwTFUyVUJmdXVnMWdjYWs5Y0N2MmUrVEVmdTU0bEZ0RHhqdlEwa3NiOEppTFhQVHozOFRta1hrNS9CNzhlMW54MUZBSmxEcVNqVkVMWnFCb0dnMk9vRHB5ZXFSTStBaUtlRGdjWTlwZTFRdWhDK1B6WExXQ1JkcHNZek1FcEV0TUUra0FXWWMrU1FDdGE2MFFKZVNBelNLOWp5Z1BsblZ5VWM4SkUveGdqeXVyVTdrZWJqN1JHZC9oeVhhdHVlSnlPZ0RESzc3MWErMndNYWpnQTdvZHNNSXcyYWxBc2pUSjIwUTlpZXRLcjRZc1k4U213dmhWWXNuNEJxN1V3NFNtZW5zQ2JoZHl4MHJsMDRiSmlKU2hIM2Y4Q1BmblVDT0M1Y0FxNVJPNkJFWFZ3REJwSlVIditQUU9KdnA4TFdodkFjRmRySVJ0anBiQVIrbjZaZ2h0bHNkTU8vSU53ZW9jcUVSb3BraTRnZXEzTWdBS3BLV3NadER2Q2cyS1YvQnhqUkp1UUcrSGVjZzhEVTRHN01QR2s0UThWMHdWODhKaHpsMHlvUUpFeWJjQmJWSFB1bUdTSWEyNlVDemlNaE1ZS2tiMGdlTlNVdWVCSmJieVNvZy9NRmU0RFp4SU5mRUlsY0Roei9vT2N4dGV0YkFLNktlRFh2U0ZPdWlJOVFLWUxNdW94M0lVNVlDdWE2MFFudnlLb1REeHp1UW13K2hIcjV6bUtPVWQyT1JWZnV4dkZYUDYxQnFJWi9Bb2lPZnJ3Y28xbVFDTGFLV0FGbXViSWJlWkRUU05CZUpqRGJOVlNKU1lKcmpGWmxVV3ZmczQrdW1pRHJTTkJjcGNwWnBtaGVMeUNyVFBGR1JFNjZwZmVhcDJ5OU9FOGsxell0RVpKVnBubWlWdXNFMEoxb1ZtdWJGa212YW5uR0VrandnT2x0TE1SREppWk9HSlBYLzV6dUJ5QklOWlFBcnhYSXBrT3RLSzdSN09VWWpRTFUvaHZFTkFGVmlQUk1vZHFVUEdyd2M4VGNEN1BudGlRNnkveEFHcURWcy9FQ05HNWxBaGFjalJnM3EwTnZyLy9QOFdSZXN1cjE3Q0NCcWlzTU82SFZqT1JEMGR2elZnMHJNMFVxL2d3b2czNFYyQ1BzOG5SbTk2TzZlWnBjTnRPaWJDOVNKbDFzY0FXaWFWN1o5MENiNnhwcUxPZ0RDaTIya0ViaEVsOUVKVFBkeVNnSDZGb3FJcFAxMGJYbDUrZXJ6UlYwMkFGQnFrd3YwWjJpcUFCckV3eTBGYUVvWG5WbnRBTXV0cEJabzgydFpBb1N6UEp3bEFGV0c2RFVhZ09nbFZ2NGVvQzJnb1NnS3JCVHY5clF3VUNYYWpWcGdJTnRDVGc4RHZiTmk4VlVCMUloMzYrc0Nhc1JGb3dsb055eGtUaGlJUGpMRFNkcTF2UUFOaG9keko5QnF1Q0grTHFETVNuTDdBWWJldnVrQ1pXTHhnOStnVmhyaTNXWkhZU0JUM0QwOUN1RU1LK1AySVd3amtTaTJPNmVLaDlzQXJCQzNLNEFxaTVQYTBSd3A5VzZ5bzlBcHJ2djZJWkl1SWdzR0FMcHVmbXZJd2Y3cUI2SUE5WDZ2cGhvb2NFOUtnWEtSb2lnUVhtdUlqTGx5ZlgxemMvT2Q2ODRSa1p4V2dEYS9OK01iZ0c2SlEvOEFkTWxLZ0k0czBWa1dCYnI4bnN4Q29EUWVwQmE0SVFyVUdhSTNieGZRWm5neE5VQm1YQVNCUWFCS3RPZjBBN1ZlVERkMFNsejZJcWgxNHVMME1GRGt2UVNBcXZpUURxWFZjRU1XQWdPWm5rc3VzQ3hPYW9CZEdlSnVKVkR2dVN3RDVzUkpKMUFpTHZ1NmdlbGVTeW1RRlIvNXdNZmkrbnlnMFdzeGdZejQyQW9VdXlldFFJNEgwN1orUmh6OGVBZytsemdNQXBVZVN4bVcvUTFsK1dOMEdWTVhyVzhhQU5nUUQ5SURmUjVMb05YQ3NxOXQ4NTFyaTRzWHpaMjd1Tmh5ZldWZGEzY1UyNkVwY1ZFQnpQUldSSUlORVJ2WFd5UXVad0tsWG91SWYyRlZSOFNsWGUxQWFYeklBRFI2TDZveHZYQjlUWE5IYnlTV1hWM05OYVh6MDJVWmtCc25yZER0elRoTno4ckt5c3JKeTh2TnlzcnlpYTBKQk9La0JxSmVqK1k2Q0V1Y21rQ0dSOVViTHlWQWxoZlZET0gxTStKaFhGR0xWOVdJMmwrM2ZKcmh3c1JGRmUxWWVsTEJxS0pHT3VvcmxpK1lObm55T0RFbVR4NG52c21USjg5ZFVsN2R0QXY3VnZHa3MydkNWbkhZVVdKNFV5SytoVFhkN29XYnk3TEYydzdNTDYxcDZZbG82ZTlvdUhQcDZlS1pCN0p5OHdwSzdQUHljckxrZS85LzcvL3ZWdzlXVURnZ05Bd0FBTkJFQUowQktvRUJ5QUEra1VpZ1M2V2tQNkdpbE9rVDhCSUpZMjdqUXhTdXpLUFd5Wng5SjV5RmFmeGU0dzFINXJ2Ti8vUTlaMytJLzRIc0Q4d3o5VlAxay9zM1lROHhIN0JmdGI3enYvQTlZWDlnOVFEK3MvNGpyTWZRbTh0ejJTUDdmLzFmMm85cW4vLzV5ai9pdndXOEhmOGZ3dWZLUGtBM0JldzNCQ1BQWEZNbHJrWW10K00xN0wrMnYvLzl5SDlhUC8rcitQMWYrci8xZityLzFmK3JDRTNiV0tRSDNOcVo3VFBhWjdUUGFadEo0bmdVcWpTNlhUL0tzSHNNZnoreXdHK0JvV2xNTzg0eWdzTXUzaldrU1paNUlmaXNJbUovSDZ2L1YvdnhSTmNKZDA0K1JWdXBFVVZ5ZGRaOWtsUy9nbkw4MTBkMml2ek9UcnVnMmhtME0yaGwxbkVtdEhGenlHd01nYkIyYmtoNmVKYmNJY2RRdDhuL3BiaVJDa3pwLzVCd05TQmVVSDg5OTJwVU0yaG0wTTJ2TVgvNGVkcUIwcytTeHBsK2pnUDJvRGZhdHhhcnhQVXRDb25jUTB4YVZBWmJER2ZwVmp1Y2R6anVjZFpjbFpMcytCRXQ4T241RDFESnBxeG5iN1UzTThQalBoZjdKcEx0aEdKL0g2di9WZUhleVVBUUFkaW42TjhMMmJuMDAvM0hhKzBXdW5WY1FLY2tZWTlTamFHYlF6YUdiUXkwZ0Z5eUpIeGliL1pOWHpzT0dzSW5hL1VaVkpVNERlYlA0ZUZRdFdTY2VzSXhQNC9WLzZ2dDNNdHRnNUVPY2xHUGJIdDlxVk1va1hoZDlFdVY3OGdJNnBOelJZTjVmVThsaHUzNnYvVi82di9XQXQ5bk5zRUQ4NDF2T1JRd2VQSzVkTUl2eE5WWi9WLzZ2L1YvNnYvV0xORk8yRVluOGZxLzlYL3EvOVgvcS85WC9xLzlWd0FBL3YrL25BQ3lVRDhFQlZ4elpzWVNNU0JjdDhuaWtDQkpBa2VUb0gwUDBpYkhjaFpnWjB1d1Q2ZW1tbmxvMTFyVnBXd1FiNlhRYldueU4vSStpR2hEQmZwR05IVmYyc0RxTWNWNy9DWGtBbWxRK1dJSnZIenFJVVhOK0dmdWpWaytnWjBkN1dXT1NFRUp3TjZpRTNzN1hwOTJaTXpGbzZmUDZVZ09MRTd4MllUbjJ6QklUMlZBM3hpcGNvSElvc2hWdzg0Mit4Unc5eWlYb2xNVDVzT2ZtcmZkZnJvck1seGN1Rm4zeVFJK0puT29jU3JWYTFrb2RUMG1xTlBHVk5ncEw2WjZtZHYySm1lVUovRFJycU1TUUk5YWw0SldUczFIS3M1cEZUcHhKcHIyVUZSYkVzUDNwcnc1dVFndkZHTzJiS2RPZ1RHUjhSYlpYQmEzdENMVEh5QlR4bTU5RzdJRTZoRDFxWlV5OXYzNmZkTEVFK0c1cXc1cG9WaWpJditwOTVGRmYrbk1qd0N0MVZNQVNqc3hiUjZEYXpLdW1IZ1NLWE9QMVExeko3NWF5MURTUjlKVW44NEU5STBZVFgrVWtZMVk2VUxWTmlFREVqMmxvK0l3eWpxVGUzdDk3dlQ0U2UwdkprenZEQ2tMdVBKT05MUWZLRERLQlZVaWE0eWl1bzJNbnpzd3VTRk0xS2lZcFhGVjA4cmdwL0dUcE83d3J6TjVxUDNKdmhEOTNYT0U0OFpPZGdFV3lYcmFnTktHYnRBeFN3S3dBVGNVWnBRYkhtK2xHcmlYQTlJQkdWV1d4QktEQ1EzNEhrSnIvd0JWTTRaV1c0c29pbkVyVlJVMXp5V0U5ckY1ZmZNZkIyYm5lM2M5UmpWNnlDVWRQczNwM0ZSUG0wSzhXQ3dvV2tFdW9YWEQvTC8vdHdiclg2aDJDQjVxTjZUa2pnRTRpMVZTVEIzM1FXc2pYOGFRTnBpQXZlU1VrblZZdHc4NzVIaHpoTy8ydjdyc1BIT0grZ0MwUWM5R0NiaE9Va2xyVEwrbG9mLzlEaXRva3FWNmR3MjUvRXZURmNoRk9obE5TWXRXenZwR0ROSDJadk5zK0FCSS9hc0lXaTg0RXA2OXA1Q0xXclJpbDVOVk96Qm5KYnlxUkgveGxSNEVvamtLbHdRVk9XMHhYVWdTNnIreHFsalo2c1RLeW9oVFhqb3VwUGN6NWd3V0Y4eE1Ia2hycGhSUGVUTlFhOFIyOGlJTEN3VjhIeXlIWmhVUytPUXJ6czlWR3MwaUxSbThCVklQdXM1RW5iYUhWTnVEZTV3eW5iTU55cm8vMzZwdEZ1RThtNFR2Qnp3cEFTMHVkOUVEVHQzWVBFUllGc3RZMGUxMlB4cG5jdGNrNjZqc3d0ZmgxamZtUWZKMm5CT29qOENCTmd2WE43OTAvNk9oRGdPWGJ4REpwZU1zb1FtSzNJQzVPZ2hCK2tVZmRneHVJRGFyMHlaQjFLN0djbVNYSUIvVmJxU1VRQ0ZTbzdDYUptOFQvRWZlTi8vYk8zQi9NQWFYUTlzdEg1di9EUmw2eG1DK0hGSlB1REpmTHNUcDlyUWovVW40VVZhcGFMN0dIcVRNZ0pUbjN3K1p5SU8rbDJnRVZxclkrMUlJM0ZSR3JTdmhSSDRlUDVYbGh5REJBRmFSc0RvZGNFSmc5ck0zeGsxYjJvaTRCTHZROUdoTnlyVEs4azEzeWdnZmoxWUFBS3BXMTJKbURSUjhzOGVuQUFGSE5tZU1lbDE5Y2ErOXljaVRhcFNUdzNnNytmbmlwTkNoUWZmZ1JNTkRKRUEwTS9WOVVMcDBPQVpTd0Vzam5UdElEcWxRcXZ3VE02M0NGRXRGSXF3OGJYM3JTSmZSWUwyVHpTZVpqRnRJRTZIeGZLd2ZoZU82T2wyRnptZW51TklQS0pReTF3NEpyTWs1aDQ2YXJya3dZS3dQL1NGSElWb2luZ1gySjFCcTR4bGVYQ3NnSE9EOWw0ZzFhWkVzK0pzQTkwVTkvQTM5amFiS1lMUTcvYjdGTFc5dHhLWmdPK1diU3E4R0cvZk1OaE9VVzlhelBGNExVRkpETEdMelhjd1JjakJvTVpOdGZHZGtpY3U3TVVOcUFvR2VvbXZLTVArZTZFRGJ4b3liYlYvZGhab2JqcWRaWmloUTJ1akh2QU0xYXhJWlhHZktsM05xUnpxeE9sWmh4TXdkN01CSXBvaUpudGQ3RkFJd2VKdlB3WlV5V28rY0sraHlua1pXMFM1Vko1eHBQUStxaEJ2Vjh0Q3FWRit4SlpFU3BzbHBlQnVYbjN1c3c2dWY0UCt3cWd5Mm9kL3VBMnRSZ2RmTjJGWE9pMmFMTEM0QnVRS0ZNYzNMZ0pjOUNjMkgrSzF3WnpjdHEzSG9kTXZyRklSMTFBajFPTm1PWnNMMjhoQmZvVEhQL2JIaThvS1ZNOGRyTURxTk1hd291Q2lxanZlbE8zYUV0V0p0UkFWMTJWSGxuQWR0TmprM0tWRzZCYTdVSU1WcWo0ZG1DSHZZZFhiTEh1d3JLQVlGY1Ztc09wT1AwTmNsOGFoUUVERUlJMlJSNitXRXNubVYxL3lVL1Y2RzlzeGN4Mkx3Q2pVeEltQi8zRW9nQXExQUx4NnRnR2NXYURxZEtoYlFyMFh4RU9wZXpSNStjVjV3bzJlNjJqdFBBTHRGRDFWUUFBRmFGVWJDYVhTWUY5SmErdjZlbGdYTDg1RWRNUEhRaGo5bm9ORmZ2dll6SmRxeTdteGZCd3NKSmRlczdxVlllbTQvc1JMUkEzZUxPS0JHa3dIYStPRTYvU3JESk5KNVdXdW9DcG42RDlJK3daMHNIdER3dW1KQlBPQWRBT3lCbzlhNXdoOHQxSDdBcGFsYUNBNmVTR1V0WFRQZDZQeDFRamZQVCtMaXZzeFVWV1hnWWkzK1pzZ3ZsWWxPei9mb1pnUjh5NytTZ05KUTBkemQxWHdZUGxpd0NPclhFV2RhNjQvbnhHMzhqaFkvVDRuYnhtdEpCallKWXp5M0FkRCtQem9uZTdCaURpQUFxaGM5M0l6cFN4YW9tOEZsNldVd0xpa2VvVXM0VFJ2VTVYakx2TmV1QjIyT3hGV0Y2Znd2cjBSTmYrNFRvQUZGVmcwdnUrYUpqSzFEZHFxREdsV1VEUFQrYTRtMmluVHc4M0xhWVJrTEg1c2FXcU4rVUE0azFaOCtXbE9LRGh6T1lxY2VwbUhaUTZGUXlKUmJXUzlyd2xRRWw2dEp1TmQxN296ejRJRU5kdnNvM0tWK2piRmlJV1lSR0YrZWZLMTJrUkxUbGNqTExmT2RPeFZKd0loQVREdGlOeWpOYkM0OWM5Zm02RkJ5OStHcDNvdzFPT3NWOVIvNVBaNFdNY2MwWjNOYlZhSjV4YmI0UkViR3hBclBmNnR5Wi9FUTZ2dzV4Q1BncjF3MHNadk01NS96RUk2M0dCZHpXMkdRd21aNjNUYllPUnhMWEE4M3FzcnBWclVpQVRCckd4SENoWEtwajRPbkxtT1lhY1U1VXNrckNFb1ZWaUVYcXZOd29RVmlCUGVXL2xkTjcwd3AvcXB5b21ibjkyaFBGTjlRVDdXYWFKcmVFSm0rak43L0I1WXpnWEtIN1hRenV2RzkzZktIUkpYaUo5SHp3VElPeVc0RVVHN0laaHdjMmhRandSVHlFR3J3QTV3ZFN1WWc5dEVuVk8ybk50NTZ1TnlOeEZ3cytmYzlWWVNZNzRaOWdDL1lBUjdSUjNqcUQ5TlZNUFZBRnovNDBYN3N2bGtJYkEwWmZNalVlVTU2S2FNRWJYNmtmMzJxbys0RjNzdFBqTjJ6czh3WU5Ca3A1SnRFL05wa09JbnNLK3R6NnFCUm9xUkEvMzdUNXVEZUxaNXJtLzFQKzdBbVd4OUgvdUFSRXQ4Uis4Z013NmVvc1ovdVA5ZVVzZE9XQXdxN0F3eEhnanp5eUxoWHRSblAybzJVa1NIdW9IMXk2TkRtZnhKaS9CaktsV2lSMWhNd3hTYzFpdjYxckdPT1doM2Vnc2dLdHFpSERRdWJNclZheFlCbnJwM3VWTUlZdlZyczE3WmhEdU5Pd1JWOWc2YmxIdTVKQmlqb0p1Vmt2R2dHemViVXlaT0dDWVFyc0RFd2VLV0llZnhxQWNnQjU2TkRTNlRaOFl1K1RLRjJIbUVUK0tBODJHU2JqMTNGYWJ2M3JVUnMzdERDcktqMnMxSzJCM1BvaCttajhhc1hNNHFyd3hOVHNBQUVZNVh6cThkQkxHTkFMOFdtQmdiT0MwUTRMOVEwQmRNeVBoaVk0cVdtdHhZTTd1UUpScnk3ZXU3TVhCT2FaQkc1ZHFxVjRvcmZpWW5kNklFQ1cxYVppajFza3NrL1BsbHZvNkRSdS9XQWZwMXJZM2JnZm1JQ3NpOTJUQ3NnVkUrakdFbDdwaTdkOUZYckl2Wjd2bFhPa1RjZWcweE1abkx6c0w0ZGZ5VnJYZnI2S01BVCtXUnEvTC85MVBsL3JibHVTWENVWUFBQUFBQUFBQUE9IiBpZD0ic2hhcGVJbWFnZSIgc3R5bGU9InRyYW5zZm9ybS1vcmlnaW46IGNlbnRlcjsgd2lkdGg6IDEwMCU7IGhlaWdodDogMTAwJSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSIvPjwvZz4KPHN2ZyB2aWV3Qm94PSIwIDAgMSAxIiBwcmVzZXJ2ZUFzcGVjdFJhdGlvPSJub25lIj4KICAgICAgICAgICAgPHVzZSBpZD0ic2hhcGVPdmVybGF5IiB4bGluazpocmVmPSIjZmlsdGVyUGF0aCIgZmlsbD0icmdiKDAsMCwwKSIgZmlsbC1vcGFjaXR5PSIwIiBzdHlsZT0idHJhbnNmb3JtLW9yaWdpbjogY2VudGVyOyIvPgogICAgICAgIDwvc3ZnPjxnIGlkPSJob3ZlckVmZmVjdHMiPgogICAgICAgICAgICA8YW5pbWF0ZVRyYW5zZm9ybSB4bGluazpocmVmPSIjc2hhcGVJbWFnZSIgYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiBhdHRyaWJ1dGVUeXBlPSJYTUwiIHR5cGU9InNjYWxlIiBjYWxjTW9kZT0ic3BsaW5lIiB2YWx1ZXM9IjE7MS4xMSIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICAgICAgPGFuaW1hdGVUcmFuc2Zvcm0geGxpbms6aHJlZj0iI2NsaXAtcGF0aCIgYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiBhdHRyaWJ1dGVUeXBlPSJYTUwiIHR5cGU9InNjYWxlIiBjYWxjTW9kZT0ic3BsaW5lIiB2YWx1ZXM9IjE7MC45OCIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICAgICAgPGFuaW1hdGUgeGxpbms6aHJlZj0iI3NoYXBlT3ZlcmxheSIgYXR0cmlidXRlTmFtZT0iZmlsbC1vcGFjaXR5IiB2YWx1ZXM9IjA7MCIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICAgICAgPGFuaW1hdGVUcmFuc2Zvcm0geGxpbms6aHJlZj0iI3NoYXBlT3ZlcmxheSIgYXR0cmlidXRlTmFtZT0idHJhbnNmb3JtIiBhdHRyaWJ1dGVUeXBlPSJYTUwiIHR5cGU9InNjYWxlIiBjYWxjTW9kZT0ic3BsaW5lIiB2YWx1ZXM9IjE7MC45OCIga2V5VGltZXM9IjA7MSIga2V5U3BsaW5lcz0iMC41IDAgMC41IDEiIGR1cj0iMC4zcyIgZmlsbD0iZnJlZXplIiByZXBlYXRDb3VudD0iMSIgYmVnaW49ImluZGVmaW5pdGUiLz4KICAgICAgICA8L2c+PC9zdmc+" alt="" class="img img-fluid mx-auto o_animate_on_hover o_we_custom_image" data-shape="web_editor/geometric/geo_square" data-shape-colors=";;;;" data-hover-effect="dolly_zoom" data-hover-effect-color="rgba(0, 0, 0, 0)" data-hover-effect-intensity="20" data-mimetype="image/svg+xml" data-original-id="1301" data-original-src="/web/image/1301-a842fd20/15.png" data-mimetype-before-conversion="image/png" data-original-mimetype="image/webp" data-resize-width="385" data-file-name="15.svg" loading="lazy"/></a></div></div>
+        </div>
+    </section></div>
+                    </div>
+                    <div class="tab-pane fade" id="nav_tabs_content_1729878111409_35" role="tabpanel" aria-labelledby="nav_tabs_link_1729878111409_35">
+                        <div class="oe_structure oe_empty" data-editor-message-default="true" data-editor-message="ARRASTE OS BLOCOS DE CONSTRUÇÃO AQUI" data-lt-tmp-id="lt-556255" spellcheck="false" data-gramm="false">
+                            <section class="s_text_block pb0" style="background-image: none;" data-name="Texto">
+                                <div class="container s_allow_columns">
+                                    <p class="o_default_snippet_text"><strong>Principais serviços&nbsp;para servidores públicos.</strong></p>
+                                </div>
+                            </section>
+                        <section class="s_references pb32 pt0" data-snippet="s_references" data-name="Referências" style="background-image: none;">
+        <div class="container">
+            
+            
+            <div class="row">
+                
+                
+                
+                
+                
+                
+            <div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border pb16" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://eproc.ariquemes.ro.gov.br/" target="_blank" data-bs-original-title="" title="" aria-label=" - opens in new tab"><img src="/web/image/1350-a5388c78/EPROC.webp" alt="" class="img img-fluid mx-auto o_we_custom_image" data-mimetype="image/webp" data-original-id="1337" data-original-src="/web/image/1337-c54fa353/EPROC.png" data-mimetype-before-conversion="image/png" data-resize-width="385" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://ariquemes.aprova.com.br/" target="_blank" data-bs-original-title="" title="" aria-label=" - opens in new tab"><img src="/web/image/1348-b07fe7d7/APROVA.webp" alt="" class="img img-fluid mx-auto o_we_custom_image" data-mimetype="image/webp" data-original-id="1338" data-original-src="/web/image/1338-dd0aed95/APROVA.png" data-mimetype-before-conversion="image/png" data-resize-width="385" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://servidor.ariquemes.ro.gov.br/sipweb/trabalhador/login/login.xhtml" target="_blank" aria-label=" - opens in new tab"><img src="/web/image/1349-262d7842/24.webp" alt="" class="img img-fluid mx-auto o_we_custom_image" data-mimetype="image/webp" data-original-id="1334" data-original-src="/web/image/1334-4dee538a/24.png" data-mimetype-before-conversion="image/png" data-resize-width="385" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://servidor.ariquemes.ro.gov.br/sipweb/login.xhtml" target="_blank" aria-label=" - opens in new tab"><img src="/web/image/1351-d901659d/25.webp" alt="" class="img img-fluid mx-auto o_we_custom_image" data-mimetype="image/webp" data-original-id="1335" data-original-src="/web/image/1335-de576340/25.png" data-mimetype-before-conversion="image/png" data-resize-width="385" loading="lazy"/></a></div><div class="o_colored_level col-lg-2 o_cc o_cc2 col-6 border" style="border-width: 2px !important; border-color: rgb(255, 255, 255) !important;"><a href="https://ariquemes.mpweb.com.br/" target="_blank" aria-label=" - opens in new tab"><img src="/web/image/1336-7a703cbe/27.png" alt="" class="img img-fluid mx-auto o_we_custom_image" loading="lazy" data-mimetype="image/png" data-original-id="1336" data-original-src="/web/image/1336-7a703cbe/27.png" data-mimetype-before-conversion="image/png"/></a></div></div>
+        </div>
+    </section></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section><section class="s_text_block o_colored_level pb0 pt8 o_cc o_cc2" data-snippet="s_text_block" data-name="Texto" style="background-image: none;">
+        <div class="s_allow_columns container">
+            <p style="text-align: right;">​<a class="btn btn-primary" href="/todos-os-servicos" data-bs-original-title="" title="" role="button" tabindex="0" id="d575" aria-label="+ Serviços">+ Serviços</a><strong><span style="font-size: 1.125rem;"></span></strong></p></div>
+    </section><section class="s_text_block o_colored_level o_cc o_cc5 pb0 pt16" data-snippet="s_text_block" data-name="Texto" style="background-image: none;">
+        <div class="s_allow_columns container">
+            <p class="o_default_snippet_text"><strong><span style="font-size: 1.75rem;">ÚLTIMAS NOTÍCIAS</span></strong></p>
+        </div>
+    </section><section data-snippet="s_blog_posts" class="s_blog_posts s_dynamic_snippet_blog_posts s_blog_posts_effect_marley s_dynamic o_colored_level o_cc o_cc2 pt0 pb0 s_blog_post_card o_dynamic_empty" data-name="Publicações de blog" data-filter-by-blog-id="-1" data-number-of-records="6" data-filter-id="2" data-template-key="website_blog.dynamic_filter_template_blog_post_card" data-number-of-elements="3" style="background-image: none;">
+            <div class="o_not_editable container">
+                <div class="css_non_editable_mode_hidden">
+                    <div class="missing_option_warning alert alert-info rounded-0 fade show d-none d-print-none o_default_snippet_text">
+                        Seu bloco de código dinâmico será exibido aqui... Esta mensagem é exibida porque você não forneceu um filtro e um modelo a ser utilizado. <br/>
+                    </div>
+                </div>
+                <div class="dynamic_snippet_template"></div>
+            </div>
+        </section><section class="s_text_block o_colored_level pb0 o_cc o_cc2 pt0" data-snippet="s_text_block" data-name="Texto" style="background-image: none;">
+        <div class="s_allow_columns container">
+            <p style="text-align: right;">​<a class="btn btn-primary" href="/blog" data-bs-original-title="" title="" aria-label="+ Notícias">+ Notícias</a><strong><span style="font-size: 1.125rem;"></span></strong></p></div>
+    </section><section class="s_title o_colored_level s_custom_snippet o_cc o_cc5 pt16 pb4" data-vcss="001" data-snippet="s_title" data-name="Personalizar Título" style="background-image: none;">
+        <div class="s_allow_columns container">
+            <h6 class="o_default_snippet_text" style="text-align: left;" role="heading" level="2"><span style="font-size: 1.75rem;"><b>ENQUETES E PESQUISA DE SATISFAÇÃO</b></span><br/></h6>
+        </div>
+    </section><section class="s_call_to_action pt48 o_colored_level pb0 o_cc o_cc2" data-snippet="s_call_to_action" data-name="Chamada à ação" style="background-image: none;">
+        <div class="container">
+            <div class="row o_grid_mode" data-row-count="5">
+                <div class="o_colored_level o_grid_item g-height-3 g-col-lg-12 col-lg-12" style="grid-area: 1 / 1 / 4 / 13; z-index: 1;">
+                    <h3 class="o_default_snippet_text" style="text-align: center;"><b class="o_default_snippet_text">
+Pesquisa de satisfação de usuários
+
+</b><br/></h3>
+                    <p class="o_default_snippet_text" style="text-align: center;">
+Olá Ariquemense, este questionário visa sua avaliação referente aos&nbsp;</p><p class="o_default_snippet_text" style="text-align: center;">serviços oferecidos pela Administração Municipal. Vamos lá?
+
+</p><p style="text-align: right;"><a class="btn btn-primary s_custom_snippet" href="https://forms.cloud.microsoft/Pages/AnalysisPage.aspx?AnalyzerToken=GD5xf5C09eMNeJWbCUp8c9l3pDUgzAtl&amp;id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAYAAGjw9nFUNk8yMjY5SU5TMDM3R1FNQzdNS0VLOFQ5Ni4u" data-bs-original-title="" title="">VEJA AQUI O RESULTADO DA PESQUISA EM TEMPO REAL</a></p>
+                </div>
+                
+            <div class="o_colored_level o_grid_item g-height-2 g-col-lg-4 col-lg-4" style="z-index: 2; grid-area: 4 / 5 / 6 / 9;">
+                    <p style="text-align: center;">
+                        <a class="o_anim_fade_in o_animate btn btn-custom btn-lg o_visible" href="/enquetes" data-bs-original-title="" title="" style="border-width: 1px; border-style: solid; color: rgb(0, 255, 0); background-color: rgb(231, 148, 57);" target="_blank"><strong><font class="text-o-color-5">Iniciar A</font>​​​​<font class="text-o-color-5">gora</font></strong></a>
+                    </p>
+                </div></div>
+        </div>
+    </section><section class="s_title o_colored_level o_cc o_cc5 pb16 pt16" data-vcss="001" data-snippet="s_title" data-name="Título" style="background-image: none;">
+        <div class="s_allow_columns container">
+            <h6 class="o_default_snippet_text" style="text-align: left;" role="heading" level="2"><span style="font-size: 1.75rem;"><b>CONHEÇA NOSSAS REDES SOCIAIS</b></span><br/></h6>
+        </div>
+    </section><section class="s_instagram_page o_colored_level pt0 pb0 o_cc o_cc2" data-instagram-page="prefeituraariquemes" data-snippet="s_instagram_page" data-name="Página do Instagram" style="position: relative; background-image: none;">
+        <div class="o_instagram_container o_not_editable container">
+            
+        </div>
+    </section><section class="s_text_block o_colored_level pb0 pt16 o_cc o_cc5" data-snippet="s_text_block" data-name="Texto" style="background-image: none;">
+        <div class="s_allow_columns container">
+            <p class="o_default_snippet_text"><strong><span style="font-size: 1.75rem;">CONHEÇA ARIQUEMES</span></strong><br/></p>
+        </div>
+    </section><section class="s_text_image o_colored_level o_cc o_cc2 pb56 pt4" data-snippet="s_text_image" data-name="Texto - imagem" style="background-image: none;">
+        <div class="container">
+            <div class="row o_grid_mode" data-row-count="7" style="gap: 10px;">
+                
+                
+            <div class="o_grid_item o_grid_item_image o_colored_level g-height-7 g-col-lg-6 col-lg-6" style="z-index: 2; grid-area: 1 / 7 / 8 / 13;"><a href="/turismo-1"><img src="/web/image/3195-e866638e/ARIQUEMES%20-%20MAPA%20ILUSTRADO%20P%C3%81G%2001.webp" alt="" class="img img-fluid mx-auto o_we_custom_image" data-mimetype="image/webp" data-original-id="3191" data-original-src="/web/image/3191-ef7d8a6b/ARIQUEMES%20-%20MAPA%20ILUSTRADO%20P%C3%81G%2001.jpg" data-mimetype-before-conversion="image/jpeg" data-resize-width="690" loading="lazy"/></a></div><div class="o_colored_level o_grid_item border rounded g-col-lg-6 g-height-7 col-lg-6" style="z-index: 1; grid-area: 1 / 1 / 8 / 7; border-radius: 5px !important;">
+                    
+                    <p style="text-align: justify;"><br/></p><p style="text-align: justify;"><b><font class="text-black">Ariquemes</font></b><font class="text-black">&nbsp;é um&nbsp;município&nbsp;</font><a title="" data-bs-original-title="" id="60a9" tabindex="0" role="button" aria-label="brasileiro"><font class="text-black">brasileiro</font></a><font class="text-black">&nbsp;do&nbsp;</font><a title="" data-bs-original-title="" id="8b7e" tabindex="0" role="button" aria-label="estado"><font class="text-black">estado</font></a><font class="text-black">&nbsp;de&nbsp;Rondônia&nbsp;e cidade principal do&nbsp;</font><a id="da38" tabindex="0" role="button" aria-label="Vale do Jamari"><font class="text-black">Vale do Jamari</font></a><font class="text-black">. Fundado em 21 de novembro de 1977, seu nome é uma homenagem a tribo extinta de indígenas&nbsp;<i>Arikeme</i>, habitantes originais dessa região, estes índios falavam o&nbsp;<i>txapakura</i>, pertencente ao tronco linguístico&nbsp;</font><a id="a04d" tabindex="0" role="button" aria-label="tupi"><font class="text-black">tupi</font></a><font class="text-black">. Ariquemes é a terceira maior cidade do estado de Rondônia e também um dos maiores pólos de educação superior da região.</font></p><p style="text-align: justify;"><br/></p><p style="text-align: justify;"><br/></p>
+                    <p><a href="/turismo-1" class="btn btn-secondary" data-bs-original-title="" title="" role="button" tabindex="0" id="d865" aria-label="Saiba mais">Saiba mais</a></p>
+                </div></div>
+        </div>
+    </section></div>
+    
+        <div id="o_shared_blocks" class="oe_unremovable" style="font-size: 16px !important;"></div>
+                </main>
+                <footer id="bottom" data-anchor="true" data-name="Footer" class="o_footer o_colored_level o_cc ">
+                    <div id="footer" class="oe_structure oe_structure_solo" style="font-size: 16px !important;">
+            <section class="s_text_block pt0 pb16" data-snippet="s_text_block" data-name="Text" style="background-image: none; font-size: 16px !important;" data-original-font-size="16">
+                <div class="container" data-original-font-size="16" style="font-size: 16px !important;">
+                    <div class="row o_grid_mode" data-row-count="6" data-original-font-size="16" style="font-size: 16px !important;">
+                        
+                        
+                        
+                        
+                    <div class="o_colored_level o_grid_item g-col-lg-2 g-height-4 o_grid_item_image offset-lg-0 col-6 offset-3 col-lg-2" style="z-index: 5; grid-area: 1 / 1 / 5 / 3; font-size: 16px !important;" data-original-font-size="16"><a href="/" class="o_footer_logo logo" data-bs-original-title="" title="" aria-label="" data-original-font-size="16" style="font-size: 16px !important;">
+                                <img src="/web/image/773-dfb18e39/BRAS%C3%83O%202.webp" alt="" class="img-fluid img o_we_custom_image" data-mimetype="image/webp" data-original-id="766" data-original-src="/web/image/766-32893b83/BRAS%C3%83O%202.png" data-mimetype-before-conversion="image/png" data-resize-width="500" loading="lazy"/></a>&nbsp;</div><div class="o_colored_level o_grid_item g-height-2 g-col-lg-2 col-lg-2" style="z-index: 1; grid-area: 5 / 1 / 7 / 3; font-size: 16px !important;" data-original-font-size="16">
+                            
+                            <h4 style="text-align: center; color: rgb(255, 255, 255); font-size: 24px !important;" role="heading" level="2" data-original-text-color="rgb(255, 255, 255)" data-original-font-size="24" aioa-magnifier="true">PREFEITURA&nbsp;</h4><h4 style="text-align: center; color: rgb(255, 255, 255); font-size: 24px !important;" role="heading" level="2" data-original-text-color="rgb(255, 255, 255)" data-original-font-size="24" aioa-magnifier="true">DE ARIQUEMES</h4></div><div class="o_grid_item o_grid_item_image o_colored_level g-height-5 g-col-lg-2 col-lg-2 o_grid_item_image_contain d-lg-block d-none o_snippet_mobile_invisible" style="z-index: 6; grid-area: 2 / 11 / 7 / 13; font-size: 16px !important;" data-original-font-size="16" data-invisible="1"><img src="/web/image/2631-fb39d1de/Design%20sem%20nome%20%2818%29.webp" alt="" class="img img-fluid o_we_custom_image mx-auto d-block" data-mimetype="image/webp" data-original-id="2629" data-original-src="/web/image/2629-ed6813eb/Design%20sem%20nome%20%2818%29.png" data-mimetype-before-conversion="image/png" data-resize-width="500" data-quality="98" loading="lazy" style="min-height: 1px;"/></div><div class="o_colored_level o_grid_item g-height-5 g-col-lg-8 col-lg-8" style="z-index: 1; grid-area: 2 / 3 / 7 / 11; font-size: 16px !important;" data-original-font-size="16"><p><a class="s_custom_snippet btn btn-primary" href="/mapa-do-site" data-bs-original-title="" title="">CLIQUE AQUI PARA ACESSAR O MAPA DO SITE OFICIAL DA PREFEITURA DE ARIQUEMES</a><br/></p><p style="text-align: justify; color: rgb(255, 255, 255); font-size: 16px !important;" role="heading" level="2" data-original-text-color="rgb(255, 255, 255)" data-original-font-size="16" aioa-magnifier="true">
+<b data-original-text-color="rgb(255, 255, 255)" style="color: rgb(255, 255, 255); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true">Gestor Responsável:&nbsp;</b>Carla Gonçalves Rezende</p><p style="text-align: justify; color: rgb(255, 255, 255); font-size: 16px !important;" role="heading" level="2" data-original-text-color="rgb(255, 255, 255)" data-original-font-size="16" aioa-magnifier="true"><b data-original-text-color="rgb(255, 255, 255)" style="color: rgb(255, 255, 255); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true">Cargo Responsável:&nbsp;</b>Prefeito&nbsp;</p><p style="text-align: justify; color: rgb(255, 255, 255); font-size: 16px !important;" role="heading" level="2" data-original-text-color="rgb(255, 255, 255)" data-original-font-size="16" aioa-magnifier="true"><b data-original-text-color="rgb(255, 255, 255)" style="color: rgb(255, 255, 255); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true">Contato:&nbsp;</b>(69) 3516 - 2000</p><p style="text-align: justify; color: rgb(255, 255, 255); font-size: 16px !important;" role="heading" level="2" data-original-text-color="rgb(255, 255, 255)" data-original-font-size="16" aioa-magnifier="true"><b data-original-text-color="rgb(255, 255, 255)" style="color: rgb(255, 255, 255); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true">Horário:&nbsp;
+Segunda a sexta-feira: das 07h30 às 13h30
+
+</b></p><p style="text-align: justify; color: rgb(255, 255, 255); font-size: 16px !important;" role="heading" level="2" data-original-text-color="rgb(255, 255, 255)" data-original-font-size="16" aioa-magnifier="true"><b data-original-text-color="rgb(255, 255, 255)" style="color: rgb(255, 255, 255); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true">Endereço:&nbsp;</b>Av. Tancredo Neves, 2166 - St. Institucional, Ariquemes - RO, 76872-854 - Ariquemes - RO</p><p style="text-align: justify; color: rgb(255, 255, 255); font-size: 16px !important;" role="heading" level="2" data-original-text-color="rgb(255, 255, 255)" data-original-font-size="16" aioa-magnifier="true"><b>CNPJ:&nbsp;
+04.104.816/0001-16</b>
+
+</p></div></div>
+                </div>
+            </section><section class="s_text_block pt0 pb0" data-snippet="s_text_block" data-name="Text" style="background-image: none; font-size: 16px !important;" data-original-font-size="16">
+                <div class="container" data-original-font-size="16" style="font-size: 16px !important;">
+                    <div class="row o_grid_mode" data-row-count="-Infinity" data-original-font-size="16" style="font-size: 16px !important;">
+                        
+                        
+                        
+                        
+                    </div>
+                </div>
+            </section>
+            
+            <section class="s_text_block" data-snippet="s_text_block" data-name="Text" style="background-image: none; font-size: 16px !important;" data-original-font-size="16">
+                <div class="container" data-original-font-size="16" style="font-size: 16px !important;">
+                    <div class="row o_grid_mode" data-row-count="-Infinity" data-original-font-size="16" style="font-size: 16px !important;">
+                        
+                        
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div id="o_footer_scrolltop_wrapper" class="container h-0 d-flex align-items-center justify-content-center" style="font-size: 16px !important;">
+            <a id="o_footer_scrolltop" role="button" href="#top" title="" class="btn btn-primary rounded-circle d-flex align-items-center justify-content-center" data-bs-original-title="Rolagem para o topo" aria-label="​" data-original-bg="rgb(20, 30, 46)" aioa-contrast="true" aioa-outline-contrast="true" data-original-font-size="16" style="font-size: 16px !important;">
+                <span class="oi fa-1x oi-chevron-up" data-original-text-color="rgba(255, 255, 255, 0.5)" style="color: rgba(255, 255, 255, 0.5); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true" contenteditable="false">​</span>
+            </a>
+        </div>
+                </footer>
+        <div id="website_cookies_bar" class="s_popup o_snippet_invisible o_no_save d-none" data-name="Cookies Bar" data-vcss="001" data-invisible="1" style="font-size: 16px !important;">
+            <div class="modal s_popup_bottom s_popup_no_backdrop o_cookies_discrete modal_shown" data-show-after="500" data-display="afterDelay" data-consents-duration="999" data-bs-focus="false" data-bs-backdrop="false" data-bs-keyboard="false" tabindex="-1" style="display: none; font-size: 16px !important;" aria-hidden="true" data-original-font-size="16">
+                <div class="modal-dialog d-flex s_popup_size_full" data-original-font-size="16" style="font-size: 16px !important;">
+                    <div class="modal-content oe_structure" data-original-bg="rgba(0, 0, 0, 0)" aioa-contrast="true" data-original-font-size="16" style="font-size: 16px !important;">
+                        
+                        <section class="o_colored_level o_cc o_cc1" data-original-bg="rgb(255, 255, 255)" aioa-contrast="true" data-original-font-size="16" style="font-size: 16px !important;">
+                            <div class="container" data-original-font-size="16" style="font-size: 16px !important;">
+                                <div class="row" data-original-font-size="16" style="font-size: 16px !important;">
+                                    <div class="col-lg-8 pt16" data-original-font-size="16" style="font-size: 16px !important;">
+                                        <p data-original-font-size="16" style="font-size: 16px !important;">
+                                            <span class="pe-1" data-original-text-color="rgb(33, 37, 41)" style="color: rgb(33, 37, 41); font-size: 16px !important;" data-original-font-size="16" aioa-magnifier="true">Utilizamos cookies para fornecer uma melhor experiência de usuário neste site.</span>
+                                            <a href="/cookie-policy" class="o_cookies_bar_text_policy btn btn-link btn-sm px-0" aria-label="Política de Cookies" data-original-text-color="rgb(2, 96, 235)" style="color: rgb(2, 96, 235); font-size: 12px !important;" data-original-font-size="12" aioa-magnifier="true">Política de Cookies</a>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-4 text-end pt16 pb16" data-original-font-size="16" style="font-size: 16px !important;">
+                                        <a href="#" id="cookies-consent-essential" role="button" class="js_close_popup btn btn-outline-primary rounded-circle btn-sm px-2" tabindex="0" aria-label="Somente essenciais" data-original-text-color="rgb(110, 168, 254)" style="color: rgb(110, 168, 254); font-size: 12px !important;" data-original-font-size="12" aioa-magnifier="true">Somente essenciais</a>
+                                        <a href="#" id="cookies-consent-all" role="button" class="js_close_popup btn btn-outline-primary rounded-circle btn-sm" tabindex="0" aria-label="Aceito" data-original-text-color="rgb(110, 168, 254)" style="color: rgb(110, 168, 254); font-size: 12px !important;" data-original-font-size="12" aioa-magnifier="true">Aceito</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
+            </div>
+        
+        <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610e84c494391f8',t:'MTc5NTc4MDE0NA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610e84c494391f8',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,1847 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Poder Executivo Balneário Pinhal</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Poder Executivo Balneário Pinhal.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Poder Executivo Balneário Pinhal' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://balneariopinhal.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://balneariopinhal.rs.gov.br/uploads/config/16025/pinhallitoral.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='300'>
+            <meta property='og:image:height' content='328'>
+            <meta property='og:site_name' content='balneariopinhal.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Poder Executivo Balneário Pinhal.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Poder Executivo Balneário Pinhal'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Poder Executivo Balneário Pinhal.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://balneariopinhal.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://balneariopinhal.rs.gov.br/site/custom/default/css/color/blue.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://balneariopinhal.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://balneariopinhal.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://balneariopinhal.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://balneariopinhal.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://balneariopinhal.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://balneariopinhal.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://balneariopinhal.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-RNVY2449CK"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-RNVY2449CK');
+    });
+</script>
+        <link rel="shortcut icon" href="https://balneariopinhal.rs.gov.br/uploads/config/18/favicon.ico" />    
+	    <style>
+    #topNav  {
+        background-color: #00AEEF
+}
+@media (min-width: 991px) {
+    #topNav ul.nav>li a {
+        color: white;
+        font-weight: 500;
+    }
+}
+
+div#blog.row {
+	li[role="menuitem"]:has(a[title="Fale Conosco"]) {
+		display: none;
+	}
+}
+</style>
+<script>
+window.cameraLink = "https://youtube.com/live/D3wOPiAXRf0?feature=share";
+</script>    </head>
+	    <body class="smoothscroll wide home5_bal_pinhal_2" data-background=""><a href="https://balneariopinhal.rs.gov.br/cdn-cgi/content?id=OQFij6RA3oxmbv.0vjijDr4.zk9KYoXpHFvrO8Ssefk-1795780282.1050534-1.2.1.1-BijL7GhIz7li.x5ZwpVVdNjiuobzw9eCey7bss0wssG3nTo8G_HHP_yvW0JwldnZ" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <div id="header" class='header02' role='banner'>
+  <!-- Top Bar -->
+  <header id="topBar" style="min-height: unset">
+    <div class="container">
+      <div class="fsize13 margin-top10 mobile-margin-top25 hide_mobile text-right pull-right">
+                  <p style="margin: 0 0 10px">Balneário Pinhal, 27 de novembro de 2026.</p>
+
+                    <div class="hidden-xs hidden-sm btn-toolbar mb0" role="toolbar">
+              <div class="btn-group btn-group-lg pull-right">
+                                      <a href="http://45.181.135.34:22800/PortalContribuinteJavaEnvironment/servlet/com.tche.portalcontribuinte.whome" target="_blank" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-home fsize15'></i> IPTU</a>
+                                        <a href="https://balneariopinhal.rs.gov.br/pagina/id/1044/?vigilancia-sanitaria.html" target="_self" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-exclamation-triangle fsize15'></i> Denúncia Vigilância Sanitária</a>
+                                        <a href="/servico" target="_self" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-users fsize15'></i> Serviço ao Cidadão</a>
+                                        <a href="https://balneariopinhal.rs.gov.br/ouvidoria" target="_blank" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-phone fsize15'></i> Ouvidoria</a>
+                                        <a href="http://45.181.135.34:22800/PortalContribuinteJavaEnvironment/com.tche.portalcontribuinte.whome" target="_blank" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-user fsize15'></i> Portal do Contribuinte</a>
+                                  </div>
+            </div>
+            
+        <div class="pull-right hidden-xs hidden-sm" style="
+          position: relative;
+          width: 225px;" role='search'>
+          <!-- Pesquisa -->
+          <form id="pesquisa" class="search nopadding" method="get" action="https://balneariopinhal.rs.gov.br/pesquisa">
+			<label for="searchbar-desktop" class="sr-only">Pesquisar:</label>
+            <input id="searchbar-desktop" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site" style="
+              margin: 0;
+              margin-top: 5px;
+            ">
+            <button type="submit" class="fa fa-search search-focus" title="Pesquisar" aria-label="Pesquisar"></button>
+          </form>
+          <!-- /Pesquisa -->
+        </div>
+
+                <div class="weather-topo styleBackgroundLight pull-right text-left previsao-topo hidden" style="margin-top: 5px">
+          <div class="row">
+            <div class="col-md-3 col-xs-3 nopadding mt5 text-center">
+              <i class="icone-temp m0 fsize25"></i>
+            </div>
+            <div class="col-md-9 col-xs-9">
+              <p class="nomargin"><strong>Balneário Pinhal</strong></p>
+              <p class="nomargin">
+                <span class='min-temp'></span>&deg;C&nbsp;<small>MIN</small> <span class='max-temp'></span>&deg;C&nbsp;<small>MAX</small>
+              </p>
+            </div>
+          </div>
+        </div>
+              </div>
+
+      <!-- Logo -->
+
+                
+          <a class="logo" href="https://balneariopinhal.rs.gov.br">
+            <span class="client-name nomargin lineh30 appear-animation" data-animation="fadeInLeft" style="
+              margin: 22px 0 !important;
+            ">
+              <img class="appear-animation max-height100" src="https://balneariopinhal.rs.gov.br/uploads/config/24922/VERSAO_TAG_AZUL_38x_8.png" alt="Logo da Prefeitura" data-animation="fadeInLeft" />            </span>
+          </a>
+              </div>
+  </header>
+  <!-- /Top Bar -->
+
+  <!-- Top Nav -->
+  <header id="topNav">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get" action="https://balneariopinhal.rs.gov.br/pesquisa" role='search'>
+		<label for="searchbar-mobile" class="sr-only">Pesquisar:</label>
+        <input id="searchbar-mobile" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar"></button>
+      </form>
+      <!-- /Pesquisa -->
+
+      <!-- Mobile Menu Button -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <!-- Top Nav -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li><a href='https://balneariopinhal.rs.gov.br'>Início</a></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/3/?dados-do-municipio.html'>Dados do Município</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/1001/?hino-municipal.html'>Hino Municipal</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/1004/?mapas-oficiais.html'>Mapas Oficiais</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/1003/?plano-diretor.html'>Plano Diretor</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Atrações Turísticas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/turismo/id/5/?pontos-turisticos.html'>Pontos Turísticos</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/turismo/id/1007/?curiosidades.html'>Curiosidades</a></li></ul></div><div class="col-md-3"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/servico/id/1/?servicos-ao-empreendedor.html'>Serviços ao Empreendedor</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/servico/id/3/?servicos-ao-estudante.html'>Serviços ao Estudante</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://balneariopinhal.rs.gov.br/uploads/config/16025/pinhallitoral.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 2103-6929</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />De segunda a sexta-feira das: 08h às 14h15min </p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-3"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/1004/?procuradoria-geral-do-municipio.html'>Procuradoria Geral do Município</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/105/?secretaria-municipal-de-administracao-e-recursos-humanos.html'>Secretaria Municipal de Administração e Recursos Humanos</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/1001/?secretaria-municipal-de-desenvolvimento-economico-e-turismo.html'>Secretaria Municipal de Desenvolvimento Econômico e Turismo</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/1002/?secretaria-municipal-de-desenvolvimento-social-cidadania-e-habitacao.html'>Secretaria Municipal de Desenvolvimento Social, Cidadania e Habitação</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/110/?secretaria-municipal-de-educacao-e-cultura.html'>Secretaria Municipal de Educação e Cultura</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/1013/?secretaria-municipal-de-esporte-e-juventude.html'>Secretaria Municipal de Esporte e Juventude</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/106/?secretaria-municipal-de-financas.html'>Secretaria Municipal de Finanças</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/115/?secretaria-municipal-de-meio-ambiente-agricultura-pecuaria-e-pesca.html'>Secretaria Municipal de Meio Ambiente, Agricultura, Pecuária e Pesca</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/116/?secretaria-municipal-de-obras-e-infraestrutura.html'>Secretaria Municipal de Obras e Infraestrutura</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/1011/?secretaria-municipal-de-planejamento-e-captacao-de-recursos.html'>Secretaria Municipal de Planejamento e Captação de Recursos</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/114/?secretaria-municipal-de-saude.html'>Secretaria Municipal de Saúde</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/secretaria/id/1007/?secretaria-municipal-de-servicos-urbanos-limpeza-transito-e-transporte.html'>Secretaria Municipal de Serviços Urbanos, Limpeza, Trânsito e Transporte</a></li></ul></div><div class="col-md-3"><p class="menu-category">Subsecretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/subsecretaria/id/1006/?departamento-de-cadastro.html'>Departamento de Cadastro</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/subsecretaria/id/1015/?departamento-de-comunicacao.html'>Departamento de Comunicação</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/subsecretaria/id/1019/?departamento-de-iluminacao-publica.html'>Departamento de Iluminação Pública</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/subsecretaria/id/118/?departamento-de-transito.html'>Departamento de Trânsito</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/subsecretaria/id/1018/?departamento-e-centro-de-referencia-da-mulher.html'>Departamento e Centro de Referência da Mulher </a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/subsecretaria/id/1005/?departamento-tributario.html'>Departamento Tributário</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/subsecretaria/id/1017/?junta-de-servico-militar-jsm-148.html'>Junta de Serviço Militar (JSM 148) </a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/subsecretaria/id/1008/?servico-de-inspecao-municipal.html'>Serviço de Inspeção Municipal</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/subsecretaria/id/1016/?vigilancia-sanitaria.html'>Vigilância Sanitária</a></li></ul></div><div class="col-md-3"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/conselho/id/1020/?conselho-cacsfundeb.html'>Conselho CACS/FUNDEB</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/conselho/id/120/?conselho-da-pessoa-idosa.html'>Conselho da Pessoa Idosa</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/conselho/id/119/?conselho-municipal-de-educacao.html'>Conselho Municipal de Educação</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/conselho/id/1009/?conselho-tutelar.html'>Conselho Tutelar</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://balneariopinhal.rs.gov.br/uploads/config/16025/pinhallitoral.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 2103-6929</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />De segunda a sexta-feira das: 08h às 14h15min </p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-2"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/5/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/licitacao/id/110/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/licitacao/id/101/?concorrencia-publica.html'>Concorrência Pública</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/licitacao/id/102/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/licitacao/id/1009/?plano-de-contratacoes-anuais.html'>Plano de Contratações Anuais</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/licitacao/id/107/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/licitacao/id/108/?pregao-presencial.html'>Pregão Presencial</a></li></ul></div><div class="col-md-2"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/concurso/id/1006/?convocacoes-2025.html'>Convocações 2025</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/concurso/id/1007/?posse-2025.html'>Posse 2025</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/concurso/id/202/?processo-seletivo.html'>Processo Seletivo</a></li></ul></div><div class="col-md-2"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.cespro.com.br/' target='_blank'>Legislação</a></li></ul></div><div class="col-md-2"><p class="menu-category">Processo Seletivo</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='/concurso/id/202/?processo-seletivo.html' target='_blank'>Processo Seletivo</a></li></ul></div><div class="col-md-2"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html'>Diário Oficial</a></li><li role="menuitem"><a href='http://www1.tce.rs.gov.br/aplicprod/f?p=50500:4:::NO::F50500_CD_ORGAO:85400&cs=1Kdz0BYeNX2w2irl6GcV1bycLtKo' target='_blank'>LicitaCon</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocinios</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-e-respostas.html'>Perguntas e Respostas</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/ordem-servico/bcid/39/?e-sic---pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/1016/?relatorio-anual-de-gestao.html'>Relatório Anual de Gestão</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/1007/?veiculos---patrimonio.html'>Veículos - Patrimônio</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/1008/?imoveis---patrimonio.html'>Imóveis - Patrimônio</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/1009/?acompanhamento-programas-e-projetos.html'>Acompanhamento: Programas e Projetos</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/1011/?instrumentos-de-gestao-fiscal.html'>Instrumentos de Gestão Fiscal</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/1012/?cargos-e-salario.html'>Cargos e Salário</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Servidores</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://balneariopinhal.rs.gov.br/pagina/id/1005/?contra-cheque.html'>Contra Cheque</a></li></ul></li></ul></nav>
+      </div>
+      <!-- /Top Nav -->
+    </div>
+  </header>
+  <!-- /Top Nav -->
+</div>
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a> <!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350" style="
+            width: 100% !important;
+            height: auto;
+            aspect-ratio: 96 / 25;">
+                    <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://balneariopinhal.rs.gov.br/uploads/banner/25394/original_Banner_Pr_do_Sol_no_Balnerio_Pinhal_Site_da_Prefeitura.jpg');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://balneariopinhal.rs.gov.br/uploads/banner/26559/original_SALA_DO_EMPREENDEDOR___capa_site.webp');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://balneariopinhal.rs.gov.br/uploads/banner/24917/original_002.jpg');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://balneariopinhal.rs.gov.br/uploads/banner/26844/original_PROJETO_ACERVO_banner_site.png');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                        <a title="Projeto Pró-Vida" href="https://forms.gle/q3dUZZDXeMng8pvp8" target='_blank' class="linkBannner"></a>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://balneariopinhal.rs.gov.br/uploads/banner/25392/original_Banner_Tnel_Verde_Site_da_Prefeitura.jpg');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://balneariopinhal.rs.gov.br/uploads/banner/25968/original_FEIRA_DA_AGRICULTURA_FAMILIAR_capa_site.png');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://balneariopinhal.rs.gov.br/uploads/banner/25395/original_Banner_Praia___Site_da_Prefeitura.jpg');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: true, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: true        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+
+<div class="p0 styleContrasteGray">
+    <div class="container">
+        <!--<hr class="half-margins invisible"> -->
+        <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 6}'>
+        <div class="col-md-12 text-left">
+                <a href="https://nfse.tcheinfo.com.br/balneariopinhal-rs" target='_blank'>
+                                <img src="https://balneariopinhal.rs.gov.br/uploads/banner/25188/original_Nota_Fiscal_Eletrnica___PNG.png" class="img-responsive tituloOculto" alt="(Link) NFS-e" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://45.181.135.34:22800/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" target='_blank'>
+                                <img src="https://balneariopinhal.rs.gov.br/uploads/banner/25186/original_Portal_da_Transparncia___PNG.png" class="img-responsive tituloOculto" alt="(Link) Portal da Transparência" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://45.181.135.34:22800/PortalContribuinteJavaEnvironment/servlet/com.tche.portalcontribuinte.whome" target='_blank'>
+                                <img src="https://balneariopinhal.rs.gov.br/uploads/banner/25184/original_Portal_do_Contribuinte___PNG.png" class="img-responsive tituloOculto" alt="(Link) Portal do Contribuinte" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://balneariopinhal.rs.gov.br/sic" target='_blank'>
+                                <img src="https://balneariopinhal.rs.gov.br/uploads/banner/25185/original_Acesso__Informao___PNG.png" class="img-responsive tituloOculto" alt="(Link) Acesso à informação" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://balneariopinhal.1doc.com.br/atendimento" target='_blank'>
+                                <img src="https://balneariopinhal.rs.gov.br/uploads/banner/25189/original_Protocolo_Online___PNG.png" class="img-responsive tituloOculto" alt="(Link) Protocolo Online" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://45.181.135.34:22800/PortalContribuinteJavaEnvironment/servlet/com.tche.portalcontribuinte.whome" target='_blank'>
+                                <img src="https://balneariopinhal.rs.gov.br/uploads/banner/25187/original_IPTU_E_ALVAR_DIGITAL_2025___PNG.png" class="img-responsive tituloOculto" alt="(Link) IPTU e Alvará Digital 2025" role="presentation" />
+                </a>
+            </div>
+    </div>        <hr class="half-margins">
+    </div>
+</div>
+<div class="pb40 pt40">
+    <div class="container">
+      <!-- NOTÍCIAS E ACESSO RÁPIDO -->
+            <div class="overflow-hidden col-md-9 mobile-nopadding"><!-- NOTÍCIAS Acessiveis -->
+<section role="group" id="noticia4" aria-labelledby="noticia4.title" class="nopadding">
+    <div class="row">
+    <div class="col-md-12">
+        <h2 class="similar-h4 title" id="noticia4.title"><strong>ÚLTIMAS NOT&Iacute;CIAS</strong></h2>
+    </div>
+                        <article class="col-md-4">
+                    <a  href="https://balneariopinhal.rs.gov.br/noticia/visualizar/id/2167/?balneario-pinhal-participa-de-intercambio-sobre-desenvolvimento-economico-em-minas-gerais.html"
+                    aria-labelledby="noticia4.0">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://balneariopinhal.rs.gov.br/uploads/noticia/27100/media_Prancheta_1.png" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.0">
+						Balneário Pinhal participa de intercâmbio sobre desenvolvimento econômico em Minas Gerais					</h3>
+    			</a>
+    		</article>
+        	                <article class="col-md-4">
+                    <a  href="https://balneariopinhal.rs.gov.br/noticia/visualizar/id/2166/?ibge-abre-inscricoes-para-vagas-de-recenseador-com-oportunidades-para-balneario-pinhal-e-regiao.html"
+                    aria-labelledby="noticia4.1">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://balneariopinhal.rs.gov.br/uploads/noticia/27071/media_PHOTO_2026_11_09_10_45_39_2.jpg" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.1">
+						IBGE abre inscrições para vagas de recenseador com oportunidades para Balneário Pinhal e região					</h3>
+    			</a>
+    		</article>
+        	                <article class="col-md-4">
+                    <a  href="https://balneariopinhal.rs.gov.br/noticia/visualizar/id/2165/?balneario-pinhal-inaugura-hub-educacao-neste-sabado-com-novas-oportunidades-de-aprendizagem.html"
+                    aria-labelledby="noticia4.2">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://balneariopinhal.rs.gov.br/uploads/noticia/27068/media_HUB_EDUCACAO_post_1_1.png" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.2">
+						Balneário Pinhal inaugura HUB Educação neste sábado com novas oportunidades de aprendizagem 					</h3>
+    			</a>
+    		</article>
+        	    </div>
+
+        <div class="other-news hidden-xs col-md-12">
+        <div class="row">
+
+                        <a  href="https://balneariopinhal.rs.gov.br/noticia/visualizar/id/2164/?balneario-pinhal-realiza-1o-festival-da-pessoa-idosa.html"
+                aria-labelledby="noticia4m.3">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://balneariopinhal.rs.gov.br/uploads/noticia/27058/media_FESTIVAL_PESSOA_IDOSA_1.png" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">11/11/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.3">Balneário Pinhal realiza 1º Festival da Pessoa Idosa</h3>
+                    </div>
+                </article>
+            </a>
+                        <a  href="https://balneariopinhal.rs.gov.br/noticia/visualizar/id/2163/?balneario-pinhal-firma-convenio-com-nota-fiscal-gaucha-e-passa-a-oferecer-sorteios-mensais-de-premio.html"
+                aria-labelledby="noticia4m.4">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://balneariopinhal.rs.gov.br/uploads/noticia/27042/media_NFG_NOVO_CONVENIO.png" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">04/11/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.4">Balneário Pinhal firma convênio com Nota Fiscal Gaúcha e passa a oferecer sorteios mensais de prêmio</h3>
+                    </div>
+                </article>
+            </a>
+                        <a  href="https://balneariopinhal.rs.gov.br/noticia/visualizar/id/2162/?balneario-pinhal-sediara-o-i-seminario-de-educacao-fiscal-do-litoral-norte-no-dia-13-de-novembro.html"
+                aria-labelledby="noticia4m.5">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://balneariopinhal.rs.gov.br/uploads/noticia/27024/media_SEMINARIO_EDUCACAO_FISCAL_01.png" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">26/10/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.5">Balneário Pinhal sediará o I Seminário de Educação Fiscal do Litoral Norte no dia 13 de novembro</h3>
+                    </div>
+                </article>
+            </a>
+                    </div>
+    </div>
+    <a aria-label="Ver mais notícias"
+        href="https://balneariopinhal.rs.gov.br/noticia/?noticias.html"
+        class="btn btn-default btn-content featured-box-minimal"><i class="fa fa-newspaper-o"></i> Mais not&iacute;cias</a>
+</section></div>
+            <div class="col-md-3 mt4-xs mobile-nopadding mobile-margin-top25"><!-- ACESSO RÁPIDO -->
+<div id="acessoRapido1" class="widget featured-box-minimal owl-carousel-controls">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>ACESSO R&Aacute;PIDO</strong></h2>
+                        <span class="pull-right">
+				<a class="prev" href="javascript:;" aria-label="Anterior" title="Anterior">
+					<i class="mr5 lineh30 fa fa-arrow-left widget-icon" aria-hidden="true">
+						<span class="sr-only">Anterior</span>
+					</i>
+				</a>
+				<a class="next" href="javascript:;" aria-label="Próximo" title="Próximo">
+					<i class="mr5 lineh30 fa fa-arrow-right widget-icon" aria-hidden="true">
+						<span class="sr-only">Próximo</span>
+					</i>
+				</a>
+            </span>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1,"transitionStyle":"goDown" ,"autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Whatsapp" href="https://wa.me/message/N4W3YUQG445NH1" target="_blank" onclick="">
+                        <i class='fa fa-whatsapp'></i> Whatsapp                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Instagram" href="https://www.instagram.com/balneariopinhalrs/" target="_blank" onclick="">
+                        <i class='fa fa-instagram'></i> Instagram                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Facebook" href="https://www.facebook.com/PrefeituraBP" target="_blank" onclick="">
+                        <i class='fa fa-facebook-official'></i> Facebook                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Viabilidade" href="https://portalservicos.jucisrs.rs.gov.br/auth/realms/Portalservicos/protocol/openid-connect/auth?response_type=code&client_id=portalexterno&redirect_uri=https%3A%2F%2Fportalservicos.jucisrs.rs.gov.br%2FPortal%2Fpages%2Fprincipal.jsf&state=223532%2F76aa5ce1-d566-4d63-bcd1-7ead132d41ba&login=true" target="_blank" onclick="">
+                        <i class='fa fa-check-square'></i> Viabilidade                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Ouvidoria" href="/ouvidoria" target="_self" onclick="">
+                        <i class='fa fa-bullhorn'></i> Ouvidoria                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Contra Cheque" href="http://45.181.135.34:22800/CchJavaEnvironment/servlet/com.tche.cch.wcontracheque" target="_blank" onclick="">
+                        <i class='fa fa-bank'></i> Contra Cheque                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Legislação" href="http://balneariopinhal.cespro.com.br/" target="_blank" onclick="">
+                        <i class='fa fa-newspaper-o'></i> Legislação                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Licitações" href="/licitacao" target="_self" onclick="">
+                        <i class='fa fa-gavel'></i> Licitações                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Concursos" href="/concurso/id/200/?concurso.html" target="_self" onclick="">
+                        <i class='fa fa-users'></i> Concursos                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Serviços" href="/servico" target="_self" onclick="">
+                        <i class='fa fa-university'></i> Serviços                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Contas Públicas" href="/contas-publicas" target="_self" onclick="">
+                        <i class='fa fa-book'></i> Contas Públicas                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Perguntas Frequentes" href="/perguntas-respostas" target="_self" onclick="">
+                        <i class='fa fa-question'></i> Perguntas Frequentes                    </a>
+                </li>
+                        </ul>
+        </div>
+	        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+            <!-- /NOTÍCIAS E ACESSO RÁPIDO -->
+    </div>
+</div>
+
+<div class="pt40 pb40" id="camera-livestream-section">
+    <div class="container">
+        <div class="col-md-12">
+            <div id="youtube-livestream-container" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+                <iframe id="youtube-livestream-iframe" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" src="" allowfullscreen="" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" loading="lazy"></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" async>
+(async function() {
+    // if (typeof window.cameraLink !== 'undefined' && window.cameraLink) {
+        //get the url scrapping "http://lisa/~eduardo/ip/html/video/id/1005/?tetse.html" (#conteudo .embed-responsive > iframe[href])
+        const scrapUrl = 'https://balneariopinhal.rs.gov.br/video/id/10/?live-da-camera-1.html';
+        var youtubeUrl = await fetch(scrapUrl)
+            .then(response => response.text())
+            .then(html => {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(html, 'text/html');
+                var iframe = doc.querySelector('#conteudo .embed-responsive > iframe');
+                if (iframe) {
+                    return iframe.src;
+                } else {
+                    return null;
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching YouTube URL:', error);
+                return null;
+            });
+        if (!youtubeUrl) {
+            document.getElementById('camera-livestream-section').style.display = 'none';
+            return;
+        }
+
+        // Extract video ID from various YouTube URL formats
+        var videoId = '';
+        
+        if (youtubeUrl.includes('youtube.com/embed/')) {
+            videoId = youtubeUrl.split('youtube.com/embed/')[1].split('?')[0];
+        } else if (youtubeUrl.includes('youtube.com/live/')) {
+            videoId = youtubeUrl.split('youtube.com/live/')[1].split('?')[0];
+        } else if (youtubeUrl.includes('youtube.com/watch?v=')) {
+            videoId = youtubeUrl.split('v=')[1].split('&')[0];
+        } else if (youtubeUrl.includes('youtu.be/')) {
+            videoId = youtubeUrl.split('youtu.be/')[1].split('?')[0];
+        }
+
+        console.log('Fetched YouTube URL:', youtubeUrl);
+        console.log('Extracted video ID:', videoId);
+
+        if (videoId) {
+            var iframeUrl = 'https://www.youtube.com/embed/' + videoId + '?autoplay=0&rel=0';
+            document.getElementById('youtube-livestream-iframe').src = iframeUrl;
+            document.getElementById('camera-livestream-section').style.display = 'block';
+        } else {
+            document.getElementById('camera-livestream-section').style.display = 'none';
+        }
+    // } else {
+    //     document.getElementById('camera-livestream-section').style.display = 'none';
+    // }
+})();
+</script>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- LICITAÇÕES -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>LICITA&Ccedil;&Otilde;ES</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">0016/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência Pública                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Pavimentação em piso intertravado de concreto" href="https://balneariopinhal.rs.gov.br/licitacao/visualizar/id/3537/?pavimentacao-em-piso-intertravado-de-concreto.html">
+                            <p>Pavimentação em piso intertravado de concreto</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            09/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">0040/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Aquisição de Materiais Elétricos - RETIFICADO" href="https://balneariopinhal.rs.gov.br/licitacao/visualizar/id/3533/?aquisicao-de-materiais-eletricos---retificado.html">
+                            <p>Aquisição de Materiais Elétricos - RETIFICADO</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            07/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">0042/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Materiais para campanhas de  vacinação" href="https://balneariopinhal.rs.gov.br/licitacao/visualizar/id/3534/?materiais-para-campanhas-de--vacinacao.html">
+                            <p>Materiais para campanhas de  vacinação</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            02/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">0015/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência Pública                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Pavimentação com blocos intertravados de concreto" href="https://balneariopinhal.rs.gov.br/licitacao/visualizar/id/3531/?pavimentacao-com-blocos-intertravados-de-concreto.html">
+                            <p>Pavimentação com blocos intertravados de concreto</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            27/11/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">VII 2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Chamamento Público                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Programa Municipal de Pavimentação Comunitária" href="https://balneariopinhal.rs.gov.br/licitacao/visualizar/id/3456/?programa-municipal-de-pavimentacao-comunitaria.html">
+                            <p>Programa Municipal de Pavimentação Comunitária</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            27/03/2027 &agrave;s 08h30min                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">0038/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Inexigibilidade                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Credenciamento de atendimento fisioterápico" href="https://balneariopinhal.rs.gov.br/licitacao/visualizar/id/3450/?credenciamento-de-atendimento-fisioterapico.html">
+                            <p>Credenciamento de atendimento fisioterápico</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            11/03/2027 &agrave;s 17h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">0002/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Chamamento Público                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Credenciamento atendimento fisioterápico" href="https://balneariopinhal.rs.gov.br/licitacao/visualizar/id/3449/?credenciamento-atendimento-fisioterapico.html">
+                            <p>Credenciamento atendimento fisioterápico</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            11/03/2027 &agrave;s 17h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /LICITAÇÕES --></div>
+                <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://balneariopinhal.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="102">Contratos</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="1009">Plano de Contratações Anuais</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://balneariopinhal.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="1006">Convocações 2025</option>
+                                                        <option value="1007">Posse 2025</option>
+                                                        <option value="202">Processo Seletivo</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                    <div class="col-md-4 mobile-nopadding mobile-margin-top25"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/24912/thumb_CEZAR.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Prefeito Municipal: Luiz Cezar Danelli Furini" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito Municipal</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://balneariopinhal.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Luiz Cezar Danelli Furini</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das: <br />
+08:00hs às 14:15hs<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/25208/thumb_maior_Pedro_Gonalves_77.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Chefe de Gabinete: Luis Carlos Rosa Lopes" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Chefe de Gabinete</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://balneariopinhal.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Luis Carlos Rosa Lopes</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das: <br />
+08:00hs às 14:15hs<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/116/?secretaria-municipal-de-obras-e-infraestrutura.html">
+                       Secretaria Municipal de Obras e Infraestrutura                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/25238/thumb_Nei_da_Obras.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal: João Sidnei Gonçalves Roldão" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Obras e Infraestrutura" href="https://balneariopinhal.rs.gov.br/secretaria/id/116/?secretaria-municipal-de-obras-e-infraestrutura.html">
+                            <span class="similar-h4"><strong>João Sidnei Gonçalves Roldão</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/1011/?secretaria-municipal-de-planejamento-e-captacao-de-recursos.html">
+                       Secretaria Municipal de Planejamento e Captação de Recursos                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/24914/thumb_JORGE.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Jorge Luis de Souza Fonseca" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Planejamento e Captação de Recursos" href="https://balneariopinhal.rs.gov.br/secretaria/id/1011/?secretaria-municipal-de-planejamento-e-captacao-de-recursos.html">
+                            <span class="similar-h4"><strong>Jorge Luis de Souza Fonseca</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/110/?secretaria-municipal-de-educacao-e-cultura.html">
+                       Secretaria Municipal de Educação e Cultura                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/25285/thumb_Fabiano_Campos.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal: Fabiano dos Santos de Campos" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Educação e Cultura" href="https://balneariopinhal.rs.gov.br/secretaria/id/110/?secretaria-municipal-de-educacao-e-cultura.html">
+                            <span class="similar-h4"><strong>Fabiano dos Santos de Campos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6931                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/114/?secretaria-municipal-de-saude.html">
+                       Secretaria Municipal de Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/26152/thumb_WhatsApp_Image_2025_11_12_at_183624_1.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal: Tiago Barreto dos Santos" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Saúde" href="https://balneariopinhal.rs.gov.br/secretaria/id/114/?secretaria-municipal-de-saude.html">
+                            <span class="similar-h4"><strong>Tiago Barreto dos Santos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6930                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/1013/?secretaria-municipal-de-esporte-e-juventude.html">
+                       Secretaria Municipal de Esporte e Juventude                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/25202/thumb_Bira_Kreceski.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal: Bira Kreceski " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Esporte e Juventude" href="https://balneariopinhal.rs.gov.br/secretaria/id/1013/?secretaria-municipal-de-esporte-e-juventude.html">
+                            <span class="similar-h4"><strong>Bira Kreceski </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/1004/?procuradoria-geral-do-municipio.html">
+                       Procuradoria Geral do Município                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/25172/thumb_PHOTO_2025_01_17_17_18_51.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Procurador Geral: Larson Gabriel Lubini Berner" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Procurador Geral</small>
+                        <div class="row">
+                          <a title="Procuradoria Geral do Município" href="https://balneariopinhal.rs.gov.br/secretaria/id/1004/?procuradoria-geral-do-municipio.html">
+                            <span class="similar-h4"><strong>Larson Gabriel Lubini Berner</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/1007/?secretaria-municipal-de-servicos-urbanos-limpeza-transito-e-transporte.html">
+                       Secretaria Municipal de Serviços Urbanos, Limpeza, Trânsito e Transporte                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretario Municipal</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Serviços Urbanos, Limpeza, Trânsito e Transporte" href="https://balneariopinhal.rs.gov.br/secretaria/id/1007/?secretaria-municipal-de-servicos-urbanos-limpeza-transito-e-transporte.html">
+                            <span class="similar-h4"><strong>Rafael Santos da Cruz</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/115/?secretaria-municipal-de-meio-ambiente-agricultura-pecuaria-e-pesca.html">
+                       Secretaria Municipal de Meio Ambiente, Agricultura, Pecuária e Pesca                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/24913/thumb_PHOTO_2025_01_02_12_25_47.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal: Eduardo Carvalho Konnecke" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Meio Ambiente, Agricultura, Pecuária e Pesca" href="https://balneariopinhal.rs.gov.br/secretaria/id/115/?secretaria-municipal-de-meio-ambiente-agricultura-pecuaria-e-pesca.html">
+                            <span class="similar-h4"><strong>Eduardo Carvalho Konnecke</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/106/?secretaria-municipal-de-financas.html">
+                       Secretaria Municipal de Finanças                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/24934/thumb_PHOTO_2025_01_08_09_51_41.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal: Daniel Andre Foschera" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Finanças" href="https://balneariopinhal.rs.gov.br/secretaria/id/106/?secretaria-municipal-de-financas.html">
+                            <span class="similar-h4"><strong>Daniel Andre Foschera</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/105/?secretaria-municipal-de-administracao-e-recursos-humanos.html">
+                       Secretaria Municipal de Administração e Recursos Humanos                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/25176/thumb_272807488_221008683490092_376988084202077687_n.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Delmar Antônio Kunrath" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Administração e Recursos Humanos" href="https://balneariopinhal.rs.gov.br/secretaria/id/105/?secretaria-municipal-de-administracao-e-recursos-humanos.html">
+                            <span class="similar-h4"><strong>Delmar Antônio Kunrath</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/1001/?secretaria-municipal-de-desenvolvimento-economico-e-turismo.html">
+                       Secretaria Municipal de Desenvolvimento Econômico e Turismo                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/25177/thumb_Mari.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária Municipal: Mari Luce Padilha dos Santos" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária Municipal</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Desenvolvimento Econômico e Turismo" href="https://balneariopinhal.rs.gov.br/secretaria/id/1001/?secretaria-municipal-de-desenvolvimento-economico-e-turismo.html">
+                            <span class="similar-h4"><strong>Mari Luce Padilha dos Santos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6944                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://balneariopinhal.rs.gov.br/secretaria/id/1002/?secretaria-municipal-de-desenvolvimento-social-cidadania-e-habitacao.html">
+                       Secretaria Municipal de Desenvolvimento Social, Cidadania e Habitação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://balneariopinhal.rs.gov.br/uploads/departamento/24932/thumb_PHOTO_2025_01_13_09_31_20.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária Municipal: Carine Martins dos Santos" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária Municipal</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Desenvolvimento Social, Cidadania e Habitação" href="https://balneariopinhal.rs.gov.br/secretaria/id/1002/?secretaria-municipal-de-desenvolvimento-social-cidadania-e-habitacao.html">
+                            <span class="similar-h4"><strong>Carine Martins dos Santos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 2103-6929                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda a sexta-feira das<br />
+08h às 14h15min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+                </div>
+</div>
+
+
+
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-30.257273, -50.238989],
+                18
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-30.257273, -50.238989],
+                        {alt:'Poder Executivo Balneário Pinhal'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Poder Executivo Balneário Pinhal</strong></p>                <p style="margin: 5px 0px;">Av. Itália, 3100&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Balneário Pinhal / RS</p><p style="margin: 5px 0px;">95599-000</p></div>');markerArray.push(marker)});</script>
+
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer02" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <!-- endereço e redes sociais -->
+            <div class="spaced col-md-4 col-sm-4">
+                                <p>
+                    Av. Itália, 3100, Centro<br />
+                    CEP: 95599-000<br />                    imprensa@balneariopinhal.rs.gov.br<br />                </p>
+                                    <p class="similar-h3">(51) 2103-6929</p>
+                                <p>De segunda a sexta-feira das: 08h às 14h15min </p>
+                				<p class="block">
+					<a href="https://balneariopinhal.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/prefeituramunicipalbalneariopinhal" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://balneariopinhal.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+				</p>
+            </div>
+            <!-- /endereço e redes sociais -->
+
+            <!-- col #2 -->
+            <div class="spaced col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="col-md-5 col-sm-4 hidden-xs hide-line-last-new">
+                        <p class="similar-h4">&Uacute;ltimas not&iacute;cias</p>
+                                                <ul class="list-unstyled">
+                                                        <li>
+                                <a class="block"
+                                href="https://balneariopinhal.rs.gov.br/noticia/visualizar/id/2167/?balneario-pinhal-participa-de-intercambio-sobre-desenvolvimento-economico-em-minas-gerais.html">
+                                    Balneário Pinhal participa de intercâmbio sobre desenvolvimento econômico em Minas Gerais                                </a>
+                                <small>26/11/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://balneariopinhal.rs.gov.br/noticia/visualizar/id/2166/?ibge-abre-inscricoes-para-vagas-de-recenseador-com-oportunidades-para-balneario-pinhal-e-regiao.html">
+                                    IBGE abre inscrições para vagas de recenseador com oportunidades para Balneário Pinhal e região                                </a>
+                                <small>12/11/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://balneariopinhal.rs.gov.br/noticia/visualizar/id/2165/?balneario-pinhal-inaugura-hub-educacao-neste-sabado-com-novas-oportunidades-de-aprendizagem.html">
+                                    Balneário Pinhal inaugura HUB Educação neste sábado com novas oportunidades de aprendizagem                                 </a>
+                                <small>12/11/2026</small>
+                            </li>
+                                                    </ul>
+                                            </div>
+
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <p class="similar-h4">Outras &aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a class="block" href="https://balneariopinhal.rs.gov.br/transparencia/?transparencia.html">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://balneariopinhal.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://balneariopinhal.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://balneariopinhal.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Not&iacute;cias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://balneariopinhal.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://balneariopinhal.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://balneariopinhal.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                                                <!-- brasão -->
+                        <p class="text-center">
+                            <img alt="Brasão da prefeitura" src="https://balneariopinhal.rs.gov.br/uploads/config/16025/pinhallitoral.png" class="logo img-responsive appear-animation opaco08" data-animation="bounceIn"/>
+                        </p>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+	<div class="container text-center fsize12 post-copyright" style="
+		display: flex;
+		flex-direction: column;
+		justify-content: center">
+		<p style="margin:0" id="footer.copyrightTxt">
+			Este site utiliza a ferramenta
+			<a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+				<img src="https://balneariopinhal.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+				<span class="sr-only">iPrefeituras</span>
+			</a>.
+		</p>
+		<p style="margin:0" id="footer.copyrightTxt3">
+			Um produto
+			<strong>
+				<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+			</strong>.
+		</p>
+	</div>
+</div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://balneariopinhal.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://balneariopinhal.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://balneariopinhal.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://balneariopinhal.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://balneariopinhal.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610ebab28e2e6c8',t:'MTc5NTc4MDI4Mg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610ebab28e2e6c8',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

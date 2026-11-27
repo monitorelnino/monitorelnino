@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Thyago Hoffman" />
+<meta name="reply-to" content="hoffmandev@outlook.com" />
+<title>Prefeitura de Marataízes - ES</title>
+<meta name="description" content="Praias, lagoas, ilhas, esportes náuticos e de areia, a gastronomia local, monumentos históricos, turistas felizes e muito sol, são predicados..." />
+
+<meta property="og:title" content="Prefeitura de Marataízes - ES" />
+<meta property="og:site_name" content="Prefeitura de Marataízes - ES" />
+<meta property="og:url" content="https://marataizes.es.gov.br/" />
+<meta property="og:type" content="government" />
+<meta property="og:description" content="Praias, lagoas, ilhas, esportes náuticos e de areia, a..." />
+<meta property="og:image" content="https://marataizes.es.gov.br/assets/img/logotipo-share.png" />
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Prefeitura de Marataízes - ES" />
+<meta name="twitter:description" content="Praias, lagoas, ilhas, esportes náuticos e de areia, a gastronomia local, monumentos históricos, turistas felizes e muito sol, são predicados..." />
+<meta name="twitter:image" content="https://marataizes.es.gov.br/assets/img/logotipo-share.png" />
+
+<link rel='shortcut icon' type='image/x-icon' href='https://marataizes.es.gov.br/assets/img/favicon.ico' />
+<!-- ================================
+Importa o Pre-Loader ================ -->
+<link rel="stylesheet" href="https://marataizes.es.gov.br/statics/assets/plugins/loaders/loaders.css-master/loaders.css?v=1795780118" />
+<!-- ================================ -->
+
+
+<link rel='stylesheet' href='https://marataizes.es.gov.br/statics/bootstrap/css/bootstrap.min.css?v=1795780118' type='text/css' />
+
+<link rel="stylesheet" href="https://marataizes.es.gov.br/statics/assets/plugins/prettyPhoto/css/prettyPhoto.css?v=1795780118" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://marataizes.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.css?v=1795780118" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" type="text/css" media="screen" />
+<link href='https://marataizes.es.gov.br/statics/frontend/acessibilidade/style_acessibilidade.css?v=1795780118' rel='stylesheet' type='text/css'>
+<script src='https://marataizes.es.gov.br/statics/frontend/acessibilidade/js_acessibilidade.js?v=1795780118'></script>
+<link href='https://unpkg.com/swiper@8/swiper-bundle.min.css?v=1795780118' rel='stylesheet' type='text/css'>
+<link href='https://marataizes.es.gov.br/assets/css/style_site.css?v=1795780118' rel='stylesheet' type='text/css'>
+<link href='https://marataizes.es.gov.br/statics/frontend/select2/dist/css/select2.min.css?v=1795780118' rel='stylesheet' type='text/css'>
+<link href='https://marataizes.es.gov.br/statics/assets/plugins/alertify/css/alertify.min.css?v=1795780118' rel='stylesheet' type='text/css'>
+    <style>
+#destaques .imagem {
+    height: auto !important;
+}
+
+    </style>
+</head>
+
+<body>
+    <!-- Bloco Acessibilidade -->
+<section>
+  <nav class="navbar navbar-default back-primary2" id="acessibilidade">
+    <div class="container-fluid">
+      <div class="row bloco-middle-center">
+        <div class="col-lg-11 col-xs-12">
+
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header navbar-right text-right">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" role="button" data-target="#MENU-ACESSIBILIDADE" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-toggle collapsed visible-xs" data-toggle="collapse" data-target="#MENU-ACESSIBILIDADE" aria-expanded="false" title="Menu Acessibilidade">ACESSIBILIDADE</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse no-padding" id="MENU-ACESSIBILIDADE">
+            <ul class="nav navbar-nav col-sm-6">
+              <li><a class="acessibilidade_fonte" accesskey="4" onClick="fonte('d');" title="Diminuir tamanho da fonte"><span>A<sup>-</sup></span> Diminuir fonte</a>
+              </li>
+              <li><a class="acessibilidade_fonte" accesskey="3" onClick="fonte('a');" title="Aumentar tamanho da fonte"><span>A<sup>+</sup></span> Aumentar fonte</a>
+              </li>
+              <li><a accesskey="5" onclick="ativar_contraste()" title="Contraste do Site"><span><i class="glyphicon glyphicon-adjust"></i></span> Contraste</a>
+              </li>
+              <li><a href="https://marataizes.es.gov.br/acessibilidade" accesskey="6" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Acessibilidade do site"><span><i class="fa fa-wheelchair">&nbsp;</i></span> Acessibilidade</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right col-sm-6">
+              <li><a href="#bloco-logo" title="Ir para o topo" accesskey="1"><span>1</span> Ir para o topo</a></li>
+              <li><a href="#pagina_site" title="Ir para o conteúdo" accesskey="2"><span>2</span> Ir para o conteúdo</a></li>
+              <li><a href="#horarios" title="Ir para o rodapé" accesskey="3"><span>3</span> Ir para o rodapé</a></li>
+              <li class="dropdown">
+                <a class=" dropdown-toggle submenu-institucional" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Links dos Sistemas"><span><i class="fa fa-chevron-down"></i></span> Sistemas </a>
+                <ul class="dropdown-menu">
+
+                                      <li><a href="https://marataizes.nopapercloud.com.br/Sistema/Login.aspx" target="_blank" accesskey="2" title="Ir para Sistema NoPaper">Sistema NoPaper</a></li>
+                                                        <li><a href="https://marataizes.nopapercloud.com.br/portal/login.aspx?continue=default.aspx" target="_blank" accesskey="2" title="Ir para Processo Eletrônico">Processo Eletrônico</a></li>
+                                                        <li><a href="https://webmail-seguro.com.br/marataizes.es.gov.br/v2/" target="_blank" title="Ir para o webmail">Webmail</a></li>
+                                    <li><a href="https://marataizes.es.gov.br/sistema/" target="_blank" accesskey="2" title="Ir para intranet">Intranet</a></li>
+                </ul>
+              </li>
+            </ul>
+          </div><!-- /.navbar-collapse -->
+
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </nav>
+</section>
+<!-- / Bloco Acessibilidade -->
+    <!-- Bloco Logo -->
+    <section>
+        <div class="container-fluid hidden-xs" id="bloco-logo">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-sm-12 bloco-vertical-middle no-padding">
+                    <div class="col-sm-3">
+                        <a href="https://marataizes.es.gov.br/" title="Direcionar para a Home do Site"><img id="logo-menu" class="img-responsive" src="https://marataizes.es.gov.br/assets/img/logo_site.png" alt="LOGO DE Prefeitura de Marataízes - ES" /></a>
+                    </div>
+                    <ul class="col-lg-6 col-sm-5">
+                        <li class='presentation '><a class='' href='/transparencia/api/download'  title='Direcionar para Dados Abertos'>  Dados Abertos</a></li><li class='presentation '><a class='' href='/e-ouv'  title='Direcionar para e-Ouv'>  e-Ouv</a></li><li class='presentation '><a class='' href='/e-sic'  title='Direcionar para e-SIC'>  e-SIC</a></li><li class='presentation '><a class='' href='/cartaservico/servico/cidadao'  title='Direcionar para Carta de Serviços'>  Carta de Serviços</a></li><li class='presentation '><a class='' href='/pagina/ler/1176/atos-da-procuradoria'  title='Direcionar para Procuradoria'>  Procuradoria</a></li><li class='presentation '><a class='' href='/controladoria'  title='Direcionar para Controladoria'>  Controladoria</a></li><li class='presentation '><a class='' href='/sitemap' target="_blank" title='Direcionar para Mapa do Site'>  Mapa do Site</a></li><li class='presentation '><a class='' href='/faq' target="_blank" title='Direcionar para FAQ'>  FAQ</a></li>                    </ul>
+                    <form class="col-lg-3 col-sm-4 pad-left-0" action="https://marataizes.es.gov.br/busca">
+                        <div class="no-padding d-flex no-margin form-padrao">
+                            <input type="text" class="form-control" name="q" id="q" placeholder="Faça sua busca aqui" />
+                            <span class="input-group-btn d-flex">
+                                <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Bloco Logo -->
+
+    <!-- Bloco Menu -->
+    <section>
+        <header class="container-fluid" id="bloco-menu">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12">
+                    <nav class="navbar">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="https://marataizes.es.gov.br/" title="Direcionar para a Home do Site"><img class="navbar-brand visible-xs" src="https://marataizes.es.gov.br/assets/img/logo_site.png" alt="Logo de Prefeitura de Marataízes - ES" /></a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="nav navbar-nav">
+                                <li class='presentation '><a class='' href='#'  title='Direcionar para PÁGINA INICIAL'>  PÁGINA INICIAL</a></li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para A PREFEITURA'>
+                
+                A PREFEITURA
+                <i class='fas fa-chevron-down'></i>
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='/pagina/ler/1000/apresentacao'  title='Direcionar para Apresentação'>  Apresentação</a></li><li class='presentation '><a class='' href='/pagina/ler/1001/aspectos_gerais'  title='Direcionar para Aspectos Gerais'>  Aspectos Gerais</a></li><li class='presentation '><a class='' href='/pagina/ler/1002/perfil_historico'  title='Direcionar para Perfil Histórico'>  Perfil Histórico</a></li><li class='presentation '><a class='' href='/pagina/ler/1003/simbolos_oficiais'  title='Direcionar para Símbolos Oficiais'>  Símbolos Oficiais</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para PROCON'>
+                
+                PROCON
+                <i class='fas fa-chevron-down'></i>
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='/pagina/ler/1020/procon-home'  title='Direcionar para Home'>  Home</a></li><li class='presentation '><a class='' href='/pagina/ler/1016/procon-servicos'  title='Direcionar para Serviços'>  Serviços</a></li><li class='presentation '><a class='' href='/pagina/ler/1017/procon-legislacao'  title='Direcionar para Legislação'>  Legislação</a></li><li class='presentation '><a class='' href='/pagina/ler/1018/procon-condecon'  title='Direcionar para Condecon'>  Condecon</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para INSTITUCIONAL'>
+                
+                INSTITUCIONAL
+                <i class='fas fa-chevron-down'></i>
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='/pagina/ler/1011/prefeito'  title='Direcionar para Prefeito'>  Prefeito</a></li><li class='presentation '><a class='' href='/pagina/ler/1012/vice-prefeito'  title='Direcionar para Vice-Prefeito'>  Vice-Prefeito</a></li><li class='presentation '><a class='' href='/transparencia/rh/organograma'  title='Direcionar para Estrutura Organizacional'>  Estrutura Organizacional</a></li><li class='presentation '><a class='' href='/pagina/ler/1143/perguntas-e-respostas-mais-frequentes'  title='Direcionar para Perguntas e Respostas Mais Frequentes'>  Perguntas e Respostas Mais Frequentes</a></li></ul>
+          </li><li class='presentation '><a class='' href='/secretaria'  title='Direcionar para SECRETARIAS'>  SECRETARIAS</a></li><li class='presentation '><a class='' href='/pagina/ler/1006/guia'  title='Direcionar para TURISMO'>  TURISMO</a></li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para LEGISLAÇÃO'>
+                
+                LEGISLAÇÃO
+                <i class='fas fa-chevron-down'></i>
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='/pagina/ler/1178/enunciados-da-procuradoria-geral-do-municipio'  title='Direcionar para Enunciados PGM'>  Enunciados PGM</a></li><li class='presentation '><a class='' href='http://marataizes.legislacaocompilada.com.br/legislacao/norma.aspx?id=1077' target="_blank" title='Direcionar para Lei Orgânica'>  Lei Orgânica</a></li><li class='presentation '><a class='' href='/controladoria/legislacao/index/IN' target="_blank" title='Direcionar para Instruções Normativas'>  Instruções Normativas</a></li><li class='presentation '><a class='' href='http://marataizes.legislacaocompilada.com.br ' target="_blank" title='Direcionar para Legislação Municipal'>  Legislação Municipal</a></li><li class='presentation '><a class='' href='https://www.al.es.gov.br/' target="_blank" title='Direcionar para Legislação Estadual'>  Legislação Estadual</a></li><li class='presentation '><a class='' href='http://www4.planalto.gov.br/legislacao' target="_blank" title='Direcionar para Legislação Federal'>  Legislação Federal</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para TRANSPARÊNCIA'>
+                
+                TRANSPARÊNCIA
+                <i class='fas fa-chevron-down'></i>
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='/transparencia' target="_blank" title='Direcionar para Portal da Transparência'>  Portal da Transparência</a></li><li class='dropdown-submenu '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para Compras e Licitações'>
+                
+                Compras e Licitações
+                
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='/transparencia/documento?tipo=50'  title='Direcionar para RELAÇÃO DE FISCAIS DE CONTRATOS'>  RELAÇÃO DE FISCAIS DE CONTRATOS</a></li><li class='presentation '><a class='' href='/transparencia/licitacao' target="_blank" title='Direcionar para Licitações'>  Licitações</a></li><li class='presentation '><a class='' href='/transparencia/ata' target="_blank" title='Direcionar para Atas de Registro de Preço'>  Atas de Registro de Preço</a></li><li class='presentation '><a class='' href='/transparencia/contrato' target="_blank" title='Direcionar para Contratos'>  Contratos</a></li><li class='presentation '><a class='' href='/transparencia/licitacao?csrf_site_name=6613c7f534fd7c7ce65c8168a4a81a01&ano=&fkmodalidade=16&fksituacao=&search=&vencedor=' target="_blank" title='Direcionar para Adesão de Ata de Registro de Preço'>  Adesão de Ata de Registro de Preço</a></li></ul>
+          </li><li class='dropdown-submenu '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para Captação de Recursos e Convênios'>
+                
+                Captação de Recursos e Convênios
+                
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='/controladoria/pagina/ler/1207/recursos-recebidos-convenios-emendas-parlamentares-emendas-pix-fundo-a-fundo-e-transferencias' target="_blank" title='Direcionar para Convênios e Transparências Recebidas'>  Convênios e Transparências Recebidas</a></li></ul>
+          </li><li class='presentation '><a class='' href='/transparencia/documento?tipo=13' target="_blank" title='Direcionar para Concursos'>  Concursos</a></li><li class='presentation '><a class='' href='/transparencia/documento?tipo=28'  title='Direcionar para Conselhos Municipais'>  Conselhos Municipais</a></li><li class='presentation '><a class='' href='/transparencia/documento?tipo=27' target="_blank" title='Direcionar para Parcerias Celebradas'>  Parcerias Celebradas</a></li><li class='presentation '><a class='' href='/pagina/ler/1036/relacao-de-documentos-para-cadastro-de-fornecedores' target="_blank" title='Direcionar para Documentos para Cadastro de Fornecedores'>  Documentos para Cadastro de Fornecedores</a></li><li class='presentation '><a class='' href='/transparencia/documento?documento_tipo=24' target="_blank" title='Direcionar para PDM - Plano Diretor Municipal'>  PDM - Plano Diretor Municipal</a></li><li class='presentation '><a class='' href='/pagina/ler/1008/tcas-residuos-solidos' target="_blank" title='Direcionar para TCA's - Resíduos Sólidos'>  TCA's - Resíduos Sólidos</a></li><li class='presentation '><a class='' href='/transparencia/documento?tipo=32' target="_blank" title='Direcionar para OSS - Organização Social de Saúde'>  OSS - Organização Social de Saúde</a></li><li class='dropdown-submenu '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para Patrimônio'>
+                
+                Patrimônio
+                
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='/transparencia/patrimonio?tipo_bem=2' target="_blank" title='Direcionar para Frota'>  Frota</a></li><li class='presentation '><a class='' href='/transparencia/patrimonio?tipo_bem=1' target="_blank" title='Direcionar para Bens Imóveis'>  Bens Imóveis</a></li><li class='presentation '><a class='' href='/transparencia/patrimonio?tipo_bem=3' target="_blank" title='Direcionar para Bens Móveis'>  Bens Móveis</a></li><li class='presentation '><a class='' href='/transparencia/patrimonio?tipo_bem=4' target="_blank" title='Direcionar para Outros Bens'>  Outros Bens</a></li></ul>
+          </li><li class='dropdown-submenu '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para PPA/LDO/LOA'>
+                
+                PPA/LDO/LOA
+                
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='/controladoria/pagina/ler/74/plano-plurianual-ppa'  title='Direcionar para Plano Plurianual (PPA)'>  Plano Plurianual (PPA)</a></li><li class='presentation '><a class='' href='/controladoria/pagina/ler/76/lei-de-diretrizes-orcamentarias-ldo'  title='Direcionar para Lei de Diretrizes Orçamentárias (LDO)'>  Lei de Diretrizes Orçamentárias (LDO)</a></li><li class='presentation '><a class='' href='/transparencia/documento?tipo=12'  title='Direcionar para Lei Orçamentária Anual (LOA)'>  Lei Orçamentária Anual (LOA)</a></li><li class='presentation '><a class='' href='/transparencia/documento?tipo=38'  title='Direcionar para Participação Popular: PPA/LDO/LOA'>  Participação Popular: PPA/LDO/LOA</a></li><li class='presentation '><a class='' href='/transparencia/documento?tipo=39'  title='Direcionar para Audiências Públicas Realizadas'>  Audiências Públicas Realizadas</a></li></ul>
+          </li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para COMUNICAÇÃO'>
+                
+                COMUNICAÇÃO
+                <i class='fas fa-chevron-down'></i>
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='/noticia'  title='Direcionar para Notícias'>  Notícias</a></li><li class='presentation '><a class='' href='/agenda'  title='Direcionar para Agenda do Prefeito'>  Agenda do Prefeito</a></li><li class='presentation '><a class='' href='/galeria'  title='Direcionar para Fotos e Vídeos'>  Fotos e Vídeos</a></li><li class='presentation '><a class='' href='/uploads/files/documentos/contatosprefeituramarataizes.pdf'  title='Direcionar para Telefones'>  Telefones</a></li><li class='presentation '><a class='' href='/pagina/ler/1006/guia'  title='Direcionar para Guia Turístico'>  Guia Turístico</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para PROCESSOS'>
+                
+                PROCESSOS
+                <i class='fas fa-chevron-down'></i>
+              </a>
+              <ul class='dropdown-menu' ><li class='presentation '><a class='' href='https://marataizes.nopapercloud.com.br/' target="_blank" title='Direcionar para Consulta de Processos'>  Consulta de Processos</a></li><li class='presentation '><a class='' href='https://marataizes.nopapercloud.com.br/Sistema/Login.aspx' target="_blank" title='Direcionar para Interno'>  Interno</a></li><li class='presentation '><a class='' href='/uploads/filemanager/Manual%20Sistema/Manual%20-%20PM%20Marata%C3%ADzes.pdf'  title='Direcionar para Manual do Sistema'>  Manual do Sistema</a></li><li class='presentation '><a class='' href='https://marataizes.nopapercloud.com.br/portal/login.aspx' target="_blank" title='Direcionar para Abrir Processo'>  Abrir Processo</a></li></ul>
+          </li><li class='presentation '><a class='' href='https://edocs.es.gov.br' target="_blank" title='Direcionar para PROTOCOLO ELETRÔNICO E-DOCS'>  PROTOCOLO ELETRÔNICO E-DOCS</a></li>                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </section>
+    <!-- / Bloco Menu -->
+
+
+
+    <div class="container-fluid">
+      <div class="row bloco-center">
+        <div class="col-lg-11 col-xs-12">
+                  </div>
+      </div>
+    </div>
+
+
+    
+
+    <div id="conteudo" tabindex="-1"></div> <!-- /conteudo - acessibilidade -->
+    <div class="ajustar_fonte pagina_site" id="pagina_site">
+
+        <!--Conteúdo-->
+        <!-- Bloco Acesso Rápido -->
+<section>
+            <div class="container-fluid top3" id="acesso-rapido">
+              <div class="row bloco-middle-center">
+                <div class="col-lg-11 col-xs-12">
+                  <div class="titulo bloco-vertical-middle">
+                      <h2> Acesso Rápido </h2>
+                  </div>
+                  <div class="row"><div class="col-md-2 col-sm-4 col-xs-6 bot2">
+                      <a class="acesso-rapido-item bloco-sombra " href="/pagina/ler/1073/sala-do-empreendedor" title="Sala do Empreendedor">
+
+                        <div>
+                          <img src=https://marataizes.es.gov.br//uploads/files/flat-color-icons_negocios.png alt='Exibe a foto do item: Sala do Empreendedor' />
+                        </div>
+                        <p>Sala do Empreendedor</p>
+
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 bot2">
+                      <a class="acesso-rapido-item bloco-sombra " href="/diario_oficial" title="Diário Oficial">
+
+                        <div>
+                          <img src=https://marataizes.es.gov.br//uploads/filemanager/images/images/jornal%201.png alt='Exibe a foto do item: Diário Oficial' />
+                        </div>
+                        <p>Diário Oficial</p>
+
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 bot2">
+                      <a class="acesso-rapido-item bloco-sombra " href="/e-ouv/home/formulario/denuncia" title="Denúncia de Corrupção (Anônima)">
+
+                        <div>
+                          <img src=https://marataizes.es.gov.br//uploads/filemanager/images/images/flat-color-icons_document.png alt='Exibe a foto do item: Denúncia de Corrupção (Anônima)' />
+                        </div>
+                        <p>Denúncia de Corrupção (Anônima)</p>
+
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 bot2">
+                      <a class="acesso-rapido-item bloco-sombra " href="/pagina/ler/1205/servicos-online" title="Serviços Online">
+
+                        <div>
+                          <img src=https://marataizes.es.gov.br//uploads/filemanager/images/images/flat-color-icons_multiple-devices.png alt='Exibe a foto do item: Serviços Online' />
+                        </div>
+                        <p>Serviços Online</p>
+
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 bot2">
+                      <a class="acesso-rapido-item bloco-sombra " href="/selecao" title="Processo Seletivo">
+
+                        <div>
+                          <img src=https://marataizes.es.gov.br//uploads/filemanager/images/images/flat-color-icons_view-details.png alt='Exibe a foto do item: Processo Seletivo' />
+                        </div>
+                        <p>Processo Seletivo</p>
+
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 bot2">
+                      <a class="acesso-rapido-item bloco-sombra " href="/pagina/ler/1204/processo-eletronico" title="Processo Eletrônico">
+
+                        <div>
+                          <img src=https://marataizes.es.gov.br//uploads/files/processo.png alt='Exibe a foto do item: Processo Eletrônico' />
+                        </div>
+                        <p>Processo Eletrônico</p>
+
+                      </a>
+                    </div></div>
+                </div>
+              </div>
+            </div>
+          </section><!-- / Bloco Acesso Rápido -->
+
+<!--Bloco Slide-->
+  <section>
+    <div class="container-fluid top4" id="slide">
+      <div class="row bloco-center">
+        <!-- Bloco Notícias Destaque -->
+        <div class="col-md-6 col-xs-12" id="destaques">
+          <div class="titulo bloco-vertical-middle">
+            <h2> Nossos Destaques</h2>
+          </div>
+
+
+          <a href="https://marataizes.es.gov.br/noticia/ler/5748/encontro-fortalece-empreendorismo-e-profissionalizao-do-turismo-em-maratazes" title="Direciona para a notícia: Encontro fortalece empreendorismo e profissionalização do turismo em Marataízes">
+            <div class="bloco-sombra imagem">
+              <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/mignone-/screenshot_20261126-185901_galeria.png" alt="Foto da notícia: Encontro fortalece empreendorismo e profissionalização do turismo em Marataízes" />
+            </div>
+            <h5 class="text-muted">26 de novembro de 2026</h5>
+            <h2>Encontro fortalece empreendorismo e profissionalização do turismo em Marataízes</h2>
+          </a>
+        </div>
+
+        <!-- Bloco Banners Home -->
+        <div class="col-lg-5 col-md-6 col-xs-12" id="subdestaques">
+          <div class="titulo bloco-vertical-middle">
+            <h2> Últimas Notícias </h2>
+          </div>
+          <div>
+                          <a href="https://marataizes.es.gov.br/noticia/ler/5747/maratazes-garante-verba-extra-do-fundeb-para-a-educao-no-binio-2027-2028" class="d-flex bot4">
+                <div class="col-xs-5 no-padding imagem">
+                  <img alt="NOTÍCIA: Marataízes garante verba extra do FUNDEB para a Educação no biênio 2027/2028" src="https://marataizes.es.gov.br//uploads/files/mignone-/img_51ddf196-5dc5-43de-b8b4-fd9a1cc4042b.jpg" class="img-responsive" />
+                </div>
+                <div class="col-xs-8 texto pad-right-0">
+                  <h5 class="text-muted">26 de novembro de 2026</h5>
+                  <h4>Marataízes garante verba extra do FUNDEB para a Educação no biênio 2027/2028</h4>
+                </div>
+              </a>
+                          <a href="https://marataizes.es.gov.br/noticia/ler/5746/nova-cana-sediou-o-20-mutiro-maratazes-em-ao" class="d-flex bot4">
+                <div class="col-xs-5 no-padding imagem">
+                  <img alt="NOTÍCIA: Nova Canaã sediou o 20º mutirão Marataízes em Ação" src="https://marataizes.es.gov.br//uploads/files/mignone-/img-20261126-wa0028.jpg" class="img-responsive" />
+                </div>
+                <div class="col-xs-8 texto pad-right-0">
+                  <h5 class="text-muted">26 de novembro de 2026</h5>
+                  <h4>Nova Canaã sediou o 20º mutirão Marataízes em Ação</h4>
+                </div>
+              </a>
+                          <a href="https://marataizes.es.gov.br/noticia/ler/5745/prefeito-visita-obra-de-uma-das-vias-que-ajudaro-a-desafogar-o-trnsito-em-maratazes" class="d-flex bot4">
+                <div class="col-xs-5 no-padding imagem">
+                  <img alt="NOTÍCIA: Prefeito visita obra de uma das vias que ajudarão a desafogar o trânsito em Marataízes" src="https://marataizes.es.gov.br//uploads/files/mignone-/img-20261125-wa0066.jpg" class="img-responsive" />
+                </div>
+                <div class="col-xs-8 texto pad-right-0">
+                  <h5 class="text-muted">25 de novembro de 2026</h5>
+                  <h4>Prefeito visita obra de uma das vias que ajudarão a desafogar o trânsito em Marataízes</h4>
+                </div>
+              </a>
+                      </div>
+          <div class="text-right">
+            <a href="https://marataizes.es.gov.br/noticias" class="botao botao-primary0" title="Leia mais notícias">Mais notícias</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!--/.Bloco Slide -->
+
+  <!-- Bloco Banner -->
+  <section>
+    <div class="container-fluid top3 bot3">
+      <div class="row bloco-center">
+        <div class="col-lg-11 col-xs-12">
+          <!-- Swiper -->
+          <div class="swiper banners">
+            <div class="swiper-wrapper">
+                              <div class="swiper-slide">
+                  <a href="/pagina/ler/1234/eleio-de-servidores-para-a-comisso-de-avaliao-de-desempenho-e-estgio-probatrio" title="Banner: Eleição de Servidores para a Comissão de Avaliação de Desempenho e Estágio Probatório">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/banners-site/design-sem-nome-22.png" alt="Eleição de Servidores para a Comissão de Avaliação de Desempenho e Estágio Probatório" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="https://app.rgsystem.com.br/consulta-externa/marataizes/2be50c4707444b048275393ca5bec098" title="Banner: Abastecimentos de Medicamentos">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/banner-e-paginas/banner-semus-abastecimentos-de-medicamentos-2.jpg" alt="Abastecimentos de Medicamentos" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="/pagina/ler/1238/comisso-gestora-de-elaborao-do-pme-2027-2037" title="Banner: Comissão Gestora de Elaboração do PME">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/banners-site/gemini_generated_image_wte66pwte66pwte6.jpg" alt="Comissão Gestora de Elaboração do PME" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="/transparencia/documento/ver/3481/detalhes" title="Banner: CHAMAMENTO PÚBLICO - SECRETARIA MUNICIPAL PESCA E AQUICULTURA">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/comunicacao/banner/chamamento-pesca1.png" alt="CHAMAMENTO PÚBLICO - SECRETARIA MUNICIPAL PESCA E AQUICULTURA" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="/pagina/ler/1183/servico-de-inspecao-municipal-sim" title="Banner: Serviço de inspeção Municipal">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/sim/banner-sim.png" alt="Serviço de inspeção Municipal" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="/pagina/ler/1079/projeto-de-gestao-da-orla-maritima" title="Banner: GESTÃO DA ORLA MARÍTIMA">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/banner-siteorla.png" alt="GESTÃO DA ORLA MARÍTIMA" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="https://sistemas.el.com.br/es-marataizes-pm" title="Banner: CONECTADOS">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/banner-conectados.png" alt="CONECTADOS" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="/pagina/ler/1184/cultura" title="Banner: CULTURA">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/cultura.jpg" alt="CULTURA" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="/pagina/ler/1172/vagas-de-emprego" title="Banner: Vagas de Emprego">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/vagas-de-emprego.png" alt="Vagas de Emprego" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="/pagina/ler/1066/licenciamento-ambiental" title="Banner: LICENCIAMENTO AMBIENTAL">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/licenciamento.jpg" alt="LICENCIAMENTO AMBIENTAL" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="https://www.acecurriculos.com.br/curriculos/candidato/cdlmarataizes/cadastro" title="Banner: Currículos">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/balcao-de-empregos-banner.png" alt="Currículos" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="https://wa.me/552835206715" title="Banner: WHATSAPP DA OUVIDORIA MUNICIPAL">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/controle-interno/whatsapp-image-2026-04-27-at-5-15-28-pm.jpg" alt="WHATSAPP DA OUVIDORIA MUNICIPAL" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="https://marataizes.captarsuas.com.br/CarteiraAutista/CaCadastroSolicitacoesCadExterno" title="Banner: Carteira de identificação ">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/hjjj-/whatsapp-image-2025-04-09-at-17-32-21.jpg" alt="Carteira de identificação " />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="/uploads/documento/20250821130550-decreto-n-no-3618-2025-codigo-de-etica.pdf" title="Banner: CÓDIGO DE ÉTICA E REGULAMENTAÇÃO DE CONFLITO DE INTERESSES">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/paginas/whatsapp-image-2025-08-21-at-1-03-59-pm.jpg" alt="CÓDIGO DE ÉTICA E REGULAMENTAÇÃO DE CONFLITO DE INTERESSES" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="/cartaservico/servico/cidadao/72/denuncias-sobre-trabalho-infantil" title="Banner: DIGA  NÃO AO TRABALHO INFANTIL">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/marataizes/inserir-um-titulo.png" alt="DIGA  NÃO AO TRABALHO INFANTIL" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="/uploads/files/sti_guia_turistico/marata.png" title="Banner: Logo guia turistico">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/sti_guia_turistico/marata.png" alt="Logo guia turistico" />
+                  </a>
+                </div>
+                              <div class="swiper-slide">
+                  <a href="https://www.marataizes.es.gov.br/transparencia/documento?tipo=117" title="Banner: Comitê Gestor da Primeira Infância">
+                    <img class="img-responsive" src="https://marataizes.es.gov.br//uploads/files/banners-site/comite-gestor-da-primeira-infancia.png" alt="Comitê Gestor da Primeira Infância" />
+                  </a>
+                </div>
+                          </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+            <!-- <div class="swiper-pagination"></div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- /.Bloco Banner -->
+
+<!-- Bloco Carta de Serviços -->
+<section>
+  <div class="container-fluid top3 bot3">
+    <div class="row bloco-center">
+      <div class="col-lg-11 col-xs-12" id="carta-servico">
+        <div class="titulo bloco-vertical-middle justify-content-center">
+          <h2>Encontre o serviço que você precisa</h2>
+        </div>
+        <div class="text-center">
+          <p>Selecione acima o seu perfil e confira a lista de serviços que temos disponível para você.</p>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12">
+            <a target="_blank" href="https://marataizes.es.gov.br/carta-de-servico/servico/cidadao" class="acesso-rapido-item bloco-sombra d-flex" title="Direciona para a carta de serviços do cidadão">
+              <div>
+                <h3>Sou cidadão</h3>
+                <p>Coleta Seletiva, IPTU, Serviços de Saúde e outros</p>
+              </div>
+              <div>
+                <img src="https://marataizes.es.gov.br/assets/img/carta-servico-cidadao.svg" alt="Icone da Carta de Serviço do Cidadão" title="Ir para Carta de Serviços do Cidadão" />
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12">
+            <a target="_blank" href="https://marataizes.es.gov.br/carta-de-servico/servico/servidor" class="acesso-rapido-item bloco-sombra d-flex" title="Direciona para a carta de serviços do cidadão">
+              <div>
+                <h3>Sou servidor</h3>
+                <p>Contra cheque, webmail, ponto eletrônico e outros</p>
+              </div>
+              <div>
+                <img src="https://marataizes.es.gov.br/assets/img/carta-servico-servidor.svg" alt="Icone da Carta de Serviço do Cidadão" title="Ir para Carta de Serviços do Cidadão" />
+              </div>
+            </a>
+          </div>
+          <div class="col-md-4 col-md-offset-0 col-sm-10 col-sm-offset-1 col-xs-12">
+            <a target="_blank" href="https://marataizes.es.gov.br/carta-de-servico/servico/empresa" class="acesso-rapido-item bloco-sombra d-flex" title="Direciona para a carta de serviços do cidadão">
+              <div>
+                <h3>Para minha empresa</h3>
+                <p>Alvará online, nota fiscal eletrônica e outros.</p>
+              </div>
+              <div>
+                <img src="https://marataizes.es.gov.br/assets/img/carta-servico-empresa.svg" alt="Icone da Carta de Serviço do Cidadão" title="Ir para Carta de Serviços do Cidadão" />
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="row text-center top3">
+          <a target="_blank" href="https://marataizes.es.gov.br/cartaservico" class="botao botao-primary0" title="Leia mais Sobre Carta de Serviços">Saiba mais</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- /.Bloco Carta de Serviços -->        <!--/.Conteúdo-->
+
+    </div>
+    <!--/.container - pagina_site -->
+
+            <!-- Bloco Banner -->
+        <section>
+            <div class="container-fluid top3">
+                <div class="row bloco-center">
+                    <div class="col-lg-11 col-xs-12">
+                        <!-- Swiper -->
+                        <div class="swiper banners">
+                            <div class="swiper-wrapper">
+                                                                    <div class="swiper-slide">
+                                        <a href="/pagina/ler/1218/portal-da-educacao" title="Banner: PORTAL DA EDUCAÇÃO">
+                                            <img class="img-responsive" src="https://marataizes.es.gov.br/uploads/files/planejamento/pme/whatsapp-image-2026-07-14-at-15-37-19.jpg" alt="PORTAL DA EDUCAÇÃO" />
+                                        </a>
+                                    </div>
+                                                                    <div class="swiper-slide">
+                                        <a href="/pagina/ler/1220/portal-planejamento" title="Banner: PORTAL DO PLANEJAMENTO">
+                                            <img class="img-responsive" src="https://marataizes.es.gov.br/uploads/files/planejamento/whatsapp-image-2026-07-09-at-16-57-25.jpg" alt="PORTAL DO PLANEJAMENTO" />
+                                        </a>
+                                    </div>
+                                                                    <div class="swiper-slide">
+                                        <a href="/noticia/ler/5348/a-importancia-de-registrar-a-comunicacao-de-acidente-de-trabalho-cat-" title="Banner: Comunicação de Acidente de Trabalho (CAT)">
+                                            <img class="img-responsive" src="https://marataizes.es.gov.br/uploads/files/obras-02/banner-barra-site-12.png" alt="Comunicação de Acidente de Trabalho (CAT)" />
+                                        </a>
+                                    </div>
+                                                                    <div class="swiper-slide">
+                                        <a href="/noticia/ler/5072/pesquisa-de-satisfacao" title="Banner: Pesquisa de satisfação ">
+                                            <img class="img-responsive" src="https://marataizes.es.gov.br/uploads/files/meio-ambiente/banner-barra-site-10.png" alt="Pesquisa de satisfação " />
+                                        </a>
+                                    </div>
+                                                                    <div class="swiper-slide">
+                                        <a href="https://docs.google.com/forms/d/1gRVyraMOtnroydOE0hgoY5QQ1QI3-MoCqKjZlE2eClc/edit" title="Banner: PRÊMIO “ÁGUAS DE MARATAÍZES”">
+                                            <img class="img-responsive" src="https://marataizes.es.gov.br/uploads/files/meio-ambiente/banner-barra-site-9.png" alt="PRÊMIO “ÁGUAS DE MARATAÍZES”" />
+                                        </a>
+                                    </div>
+                                                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                            <!-- <div class="swiper-pagination"></div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.Bloco Banner -->
+    
+    <!-- Bloco Newsletter -->
+    <section>
+        <div class="container-fluid bot3 top4 back-cinza" id="bloco-fique-conectado">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12">
+                    <div class="titulo">
+                        <h2> Boletim Informativo </h2>
+                    </div>
+                    <p>Receba novidades por e-mail ou siga nossas redes sociais</p>
+                    <form action="https://marataizes.es.gov.br/home/newsletter_contato_cadastrar2" id="newsletter" class="row bloco-vertical-middle" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_site_name" value="0f9d1ff43d6aba13365aef9ac2802516" />                                                                                   
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" />
+                    <!-- <div class="col-md-2 col-sm-4 col-xs-12">
+                        <input type="text" placeholder="Insira seu nome" class="form-control validate[required]" name="nome" id="nome" />
+                    </div> -->
+                    <!-- <div class="col-sm-2 col-xs-12 top1">
+                                    <input required placeholder="Insira seu telefone" class="form-control" name="telefone" />
+                                </div> -->
+                    <div class="col-md-4 col-sm-4 col-xs-12">
+                        <input type="email" placeholder="Insira aqui seu endereço de e-mail" class="form-control validate[required,custom[email]]" name="email" id="email" required />
+                    </div>
+                    <div class="col-md-3 col-sm-4 col-xs-12">
+                        <button type="submit" class="botao botao-primary0">QUERO ME INSCREVER <div class="loader hidden"></div></button>
+                    </div>
+                    <div class="col-md-3 col-md-offset-2 col-xs-12">
+                        <ul class="redes">
+                                                            <li><a target="_blank" href="https://www.youtube.com/PrefeituradeMarataizes1" class="bloco-sombra" title="Link do Youtube"><img src="https://marataizes.es.gov.br/assets/img/icone_youtube.svg" alt="Ícone do Youtube" /></a></li>
+                                                                                        <li><a target="_blank" href="https://www.facebook.com/prefeituramarataizes/" class="bloco-sombra" title="Link do Facebook"><img src="https://marataizes.es.gov.br/assets/img/icone_facebook.svg" alt="Ícone do Facebook" /></a></li>
+                                                                                        <li><a target="_blank" href="https://www.instagram.com/prefeiturademarataizes/" class="bloco-sombra" title="Link do Instagram"><img src="https://marataizes.es.gov.br/assets/img/icone_instagram.svg" alt="Ícone do Instagram" /></a></li>
+                                                                                                                                                                    </ul>
+                    </div>
+                    </form>                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.Bloco Newsletter -->
+
+    <!-- Bloco Horários -->
+    <section>
+        <div class="container-fluid back-primary0 top3 bot3" id="horarios">
+            <div class="row bloco-center">
+                <div class="col-sm-6 col-xs-12">
+                    <h3>Horário de funcionamento</h3>
+                    <p>De 08h00 às 17:30. 
+<br />
+</p>
+                    <!-- <h3>E-mail</h3> -->
+                    <!-- <h4>no.reply@marataizes.es.gov.br</h4> -->
+                    <!-- <h3>Sessões Plenárias</h3> -->
+                    <!-- <h4>Sessões</h4> -->
+                    <h3>Telefone</h3>
+                    <p>(28) 3520 6710</p>
+                    <h3>Endereço</h3>
+                    <p>Av. Rubens Rangel, n° 411 - Cidade Nova - Marataízes/ES - CEP: 29345000</p>
+
+                    <!-- <div class="row no-margin">
+                    <h3>Redes Sociais</h3>
+                </div>
+
+                <ul class="redes">
+                                            <li><a target="_blank" href="https://www.instagram.com/prefeiturademarataizes/" class="bloco-sombra"><img src="https://marataizes.es.gov.br/assets/img/icone_instagram.svg" alt="Ícone do Instagram" /></a></li>
+                                                                <li><a target="_blank" href="https://www.facebook.com/prefeituramarataizes/" class="bloco-sombra"><img src="https://marataizes.es.gov.br/assets/img/icone_facebook.svg" alt="Ícone do Facebook" /></a></li>
+                                                                                    <li><a target="_blank" href="https://www.youtube.com/PrefeituradeMarataizes1" class="bloco-sombra"><img src="https://marataizes.es.gov.br/assets/img/icone_youtube.svg" alt="Ícone do Youtube" /></a></li>
+                                    </ul> -->
+                </div>
+                <div class="col-lg-5 col-sm-6 col-xs-12">
+                    <h3>Localização</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3723.875690330199!2d-40.82244428452054!3d-21.037659379138077!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb93ae10f6f5c71%3A0x4a8bdd69ecefa4c0!2sAv.%20Rubens%20Rangel%2C%20411%20-%20Alto%20Lagoa%20Funda%2C%20Marata%C3%ADzes%20-%20ES%2C%2029345-000!5e0!3m2!1spt-BR!2sbr!4v1647453880821!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Bloco Horários -->
+
+    <!--Rodapé-->
+    <section>
+        <div class="container-fluid back-primary2 bot3 top3" id="rodape">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12">
+                    <div class='col-md-4 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>TRANSPARÊNCIA</h5>
+                      <ul><li><a class='' href='/transparencia/documento?tipo=10' target="_blank" title='Direcionar para Balanço'>Balanço</a></li><li><a class='' href='/transparencia/ata' target="_blank" title='Direcionar para Atas de Registro de Preço'>Atas de Registro de Preço</a></li><li><a class='' href='/transparencia/documento?tipo=13' target="_blank" title='Direcionar para Concursos'>Concursos</a></li><li><a class='' href='/transparencia/contrato' target="_blank" title='Direcionar para Contratos'>Contratos</a></li><li><a class='' href='/transparencia/documento?tipo=1' target="_blank" title='Direcionar para Convênios'>Convênios</a></li><li><a class='' href='/pagina/ler/1036/relacao-de-documentos-para-cadastro-de-fornecedores' target="_blank" title='Direcionar para Documentos para Cadastro de Fornecedores'>Documentos para Cadastro de Fornecedores</a></li><li><a class='' href='/controladoria/grafico/execucao_orcamentaria' target="_blank" title='Direcionar para Execução Orçamentária'>Execução Orçamentária</a></li><li><a class='' href='/transparencia/documento?tipo=16' target="_blank" title='Direcionar para Finanças'>Finanças</a></li><li><a class='' href='/controladoria/pagina/ler/76/lei-de-diretrizes-orcamentarias-ldo' target="_blank" title='Direcionar para Lei de Diretrizes Orçamentárias - LDO'>Lei de Diretrizes Orçamentárias - LDO</a></li><li><a class='' href='/transparencia/licitacao' target="_blank" title='Direcionar para Licitações'>Licitações</a></li><li><a class='' href='/transparencia/documento?tipo=12'  title='Direcionar para LOA - Lei Orçamentária Anual'>LOA - Lei Orçamentária Anual</a></li><li><a class='' href='/controladoria/pagina/ler/74/plano-plurianual-ppa' target="_blank" title='Direcionar para Plano Plurianual - PPA'>Plano Plurianual - PPA</a></li><li><a class='' href='/transparencia/documento?documento_tipo=24' target="_blank" title='Direcionar para PDM - Plano Diretor Municipal'>PDM - Plano Diretor Municipal</a></li><li><a class='' href='/transparencia' target="_blank" title='Direcionar para Portal da Transparência'>Portal da Transparência</a></li><li><a class='' href='/controladoria/pagina/ler/72/relatorio-de-gestao-fiscal-rgf' target="_blank" title='Direcionar para Relatório de Gestão Fiscal (RGF)'>Relatório de Gestão Fiscal (RGF)</a></li><li><a class='' href='/controladoria/pagina/ler/75/relatorio-resumido-da-execucao-orcamentaria' target="_blank" title='Direcionar para Relatório Resumido da Execução Orçamentária - RREO'>Relatório Resumido da Execução Orçamentária - RREO</a></li><li><a class='' href='/pagina/ler/1008/tcas-residuos-solidos' target="_blank" title='Direcionar para TCA's - Resíduos Sólidos'>TCA's - Resíduos Sólidos</a></li><li><a class='' href='/documento?tipo=32' target="_blank" title='Direcionar para OSS - Organização Social de Saúde'>OSS - Organização Social de Saúde</a></li></ul>
+                </div>  </div>
+            </div><div class='col-md-4 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>SERVIÇOS</h5>
+                      <ul><li><a class='' href='https://dte.marataizes.es.gov.br/#/login ' target="_blank" title='Direcionar para Domicilío Tributário Eletrônico'>Domicilío Tributário Eletrônico</a></li><li><a class='' href='/uploads/files/declaracao-de-operacoes-tributaveis-dot-vaf.pdf'  title='Direcionar para Declaração de Operações Tributáveis (DOT)'>Declaração de Operações Tributáveis (DOT)</a></li><li><a class='' href='https://es-marataizes-pm-nfs.cloud.el.com.br/' target="_blank" title='Direcionar para Nota Fiscal de Serviços Eletrônica'>Nota Fiscal de Serviços Eletrônica</a></li><li><a class='' href='https://gpi30.cloud.el.com.br/ServerExec/acessoBase/?idPortal=1da1b2da-a6b4-498b-942f-b69b33e69bf1' target="_blank" title='Direcionar para Serviço Online (Certidão, Emissão de DAM)'>Serviço Online (Certidão, Emissão de DAM)</a></li><li><a class='' href='http://iss00.el.com.br:8080/bancario/paginas/sistema/login.xhtml' target="_blank" title='Direcionar para Sistema de ISS Bancário'>Sistema de ISS Bancário</a></li><li><a class='' href='/diario_oficial' target="_blank" title='Direcionar para Diário Oficial'>Diário Oficial</a></li><li><a class='' href='/uploads/files/documentos/contatosprefeituramarataizes.pdf' target="_blank" title='Direcionar para Telefones'>Telefones</a></li><li><a class='' href='https://servicos.cloud.el.com.br/es-marataizes-pm/portal/'  title='Direcionar para Contracheque Prefeitura'>Contracheque Prefeitura</a></li><li><a class='' href='https://servicos.cloud.el.com.br/es-marataizes-saude/portal/'  title='Direcionar para Contracheque Saúde'>Contracheque Saúde</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <a href=/diario_oficial><h5>DIÁRIO OFICIAL</h5></a>
+                      <ul></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>MARATAÍZES</h5>
+                      <ul><li><a class='' href='/pagina/ler/1000/apresentacao'  title='Direcionar para Apresentação'>Apresentação</a></li><li><a class='' href='/pagina/ler/1001/aspectos_gerais'  title='Direcionar para Aspectos Gerais'>Aspectos Gerais</a></li><li><a class='' href='/pagina/ler/1002/perfil_historico'  title='Direcionar para Perfil Histórico'>Perfil Histórico</a></li><li><a class='' href='/pagina/ler/1003/simbolos_oficiais'  title='Direcionar para Símbolos Oficiais'>Símbolos Oficiais</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>PROCON</h5>
+                      <ul><li><a class='' href='/pagina/ler/1020/procon-home' target="_blank" title='Direcionar para Home'>Home</a></li><li><a class='' href='/pagina/ler/1016/procon-servicos' target="_blank" title='Direcionar para Serviços'>Serviços</a></li><li><a class='' href='/pagina/ler/1017/procon-legislacao' target="_blank" title='Direcionar para Legislação'>Legislação</a></li><li><a class='' href='/pagina/ler/1018/procon-condecon' target="_blank" title='Direcionar para Condecon'>Condecon</a></li></ul>
+                </div>  </div>
+            </div><div class='col-md-4 col-sm-6 col-xs-12'>
+              <div class='row'><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>COMUNICAÇÃO</h5>
+                      <ul><li><a class='' href='/agenda'  title='Direcionar para Agenda do Prefeito'>Agenda do Prefeito</a></li><li><a class='' href='/noticia'  title='Direcionar para Notícias'>Notícias</a></li><li><a class='' href='/uploads/files/documentos/contatosprefeituramarataizes.pdf'  title='Direcionar para Telefones'>Telefones</a></li><li><a class='' href='/pagina/ler/1006/guia'  title='Direcionar para Portal de Turismo'>Portal de Turismo</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <a href=/secretaria><h5>SECRETARIAS</h5></a>
+                      <ul></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>OUVIDORIA</h5>
+                      <ul><li><a class='' href='/e-sic' target="_blank" title='Direcionar para e-OUV - Central de Ouvidoria Municipal'>e-OUV - Central de Ouvidoria Municipal</a></li><li><a class='' href='/ouvidoria' target="_blank" title='Direcionar para Denúncias'>Denúncias</a></li><li><a class='' href='/ouvidoria' target="_blank" title='Direcionar para Elogio, Reclamação ou Sugestão'>Elogio, Reclamação ou Sugestão</a></li><li><a class='' href='/ouvidoria' target="_blank" title='Direcionar para Consultar Protocolo'>Consultar Protocolo</a></li></ul>
+                </div><div class='col-xs-12 mt-3 bord-left'>
+                      <h5>INSTITUCIONAL</h5>
+                      <ul><li><a class='' href='/pagina/ler/1011/prefeito'  title='Direcionar para Prefeito'>Prefeito</a></li><li><a class='' href='/pagina/ler/1012/vice-prefeito'  title='Direcionar para Vice-Prefeito'>Vice-Prefeito</a></li><li><a class='' href='/pagina/ler/1004/estrutura-organizacional'  title='Direcionar para Estrutura Organizacional'>Estrutura Organizacional</a></li></ul>
+                </div>  </div>
+            </div>                </div>
+            </div>
+        </div>
+    </section>
+    <!--/.Rodapé-->
+
+    <!-- SubRodapé Ágape -->
+    <section>
+        <div class="container-fluid back-primary0" id="sub-rodape">
+            <div class="row top1 bot1 bloco-middle-center">
+                <div class="col-sm-10 col-xs-12 icon-rodape">
+                    <p>
+                         Copyright © Prefeitura Municipal de Marataízes - ES. Todos os direitos reservados.                    </p>
+                </div>
+                <div class="col-lg-1 col-sm-2 col-xs-12 no-padding">
+                    <a target="_blank" href="" title="Direcionar para o site da "><img alt="Logo da " src="https://marataizes.es.gov.br/assets/img/logo_empresa.png" class="img-responsive" /></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / SubRodapé Ágape -->
+
+    <script src='https://marataizes.es.gov.br/statics/assets/js/jquery-1.11.1.min.js?v=1795780118'></script>
+<script src='https://marataizes.es.gov.br/statics/bootstrap/js/bootstrap.min.js?v=1795780118'></script>
+<script src='https://marataizes.es.gov.br/statics/font-awesome/fontawesome-free-5.15.4-web/js/all.js?v=1795780118'></script>
+<script src="https://marataizes.es.gov.br/statics/assets/plugins/prettyPhoto/js/jquery.prettyPhoto.js?v=1795780118"></script>
+<script src="https://marataizes.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.js?v=1795780118"></script>
+
+<script src='https://marataizes.es.gov.br/statics/frontend/select2/dist/js/select2.full.min.js?v=1795780118'></script>
+<script src='https://marataizes.es.gov.br/statics/assets/plugins/alertify/alertify.min.js?v=1795780118'></script>
+
+<!-- Script para adicionar abertura em popup em links com a classe "popup" -->
+<script>
+  $(".popup").fancybox({
+    'width': '95%',
+    'height': '90%',
+    'minHeight': '90%',
+    'autoScale': false,
+    'transitionIn': 'none',
+    'transitionOut': 'none',
+    'type': 'iframe'
+  });
+</script>
+
+<!-- Função da Pesquisa no Menu -->
+<script>
+  const BASE_URL = "https://marataizes.es.gov.br/";
+
+  function fonte(e) {
+    var elements = $('p, h1, h2, h3, h4, h5, h6, a, button, input, i, svg');
+
+    elements.each((index, item) => {
+      let element = $(item);
+      let font = $(element).css('font-size');
+
+      let newFont = e == 'a' ? parseInt(font) + 1 : parseInt(font) - 1;
+
+      element.css('font-size', newFont);
+    })
+  }
+
+  function openSearch(e) { // Função de Botão de Busca
+    if ($('#bloco-logo .form-padrao input').val() != '') {
+      $('#bloco-logo form').submit();
+    } else {
+      let button = document.querySelector('#bloco-logo button.botao-busca');
+      let form = document.querySelector('#bloco-logo .form-padrao');
+      form.classList.toggle('hidden');
+      button.classList.toggle('hidden');
+    }
+  }
+
+  function dataAtualFormatada(e) {
+    let data = new Date(e);
+    let dia = data.getDate();
+    if (dia <= 9) dia = "0" + dia;
+    var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    data = dia + " de " + meses[data.getMonth()] + " de " + data.getFullYear();
+    return data;
+  }
+
+  $(".nav-stacked a").click(function(e) {
+    if ($(this).children('svg').attr('data-icon') == 'plus')
+      $(this).children('svg').attr('data-icon', 'minus')
+    else
+      $(this).children('svg').attr('data-icon', 'plus')
+  });
+
+  $('.dropdown-submenu a.submenu-institucional').on("click", function(e) { // Faz os submenu do submenu funcionar no mobile
+    e.preventDefault();
+    $(this).next('ul').toggle('open');
+    e.stopPropagation();
+  });
+
+  function removeAcento(text) { // Função que remove assentos
+    text = text.toLowerCase();
+    text = text.replace(new RegExp('[ÁÀÂÃ]', 'gi'), 'a');
+    text = text.replace(new RegExp('[ÉÈÊ]', 'gi'), 'e');
+    text = text.replace(new RegExp('[ÍÌÎ]', 'gi'), 'i');
+    text = text.replace(new RegExp('[ÓÒÔÕ]', 'gi'), 'o');
+    text = text.replace(new RegExp('[ÚÙÛ]', 'gi'), 'u');
+    text = text.replace(new RegExp('[Ç]', 'gi'), 'c');
+    return text;
+  }
+
+
+
+  $(document).ready(function() { // Processa depois de carregar a página
+
+    $(window).scroll(function() {
+      var scrollTop = $(window).scrollTop();
+      if (scrollTop > 50) {
+        $('#acessibilidade').addClass("navbar-fixed-top");
+      } else {
+        $('#acessibilidade').removeClass("navbar-fixed-top");
+      }
+    });
+
+    var html = document.getElementsByTagName('html')[0];
+    html.style.cssText = '--Primary0: #075687; --Primary1: #054972; --Primary2: #004066';
+
+    // Filtro por Pesquisa
+    // $('#search-faq').submit(function(e) {
+    //   e.preventDefault();
+    //   var request = $.ajax({
+    //       dataType: "json",
+    //       url: BASE_URL + `faq/faqs_post/0/8?termos=` + $('#termos').val(),
+    //       beforeSend() {
+    //         $('.bloco-tabs ul.nav').html('');
+    //         $('.bloco-tabs ul.nav').addClass('loader');
+    //       },
+    //     })
+    //     .done(function(msg) {
+    //       $('.bloco-tabs ul.nav').load();
+    //       $('.bloco-tabs ul.nav').removeClass('loader');
+    //       msg.map(item => {
+    //         $('ul.nav.nav-pills.nav-stacked').append(`
+    //         <li>
+    //             <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+    //             <div class="texto collapse" id="${item.id}">
+    //                 ${item.resposta}
+    //             </div>
+    //         </li>
+    //       `);
+    //       });
+    //     })
+    //     .fail(function() {
+    //       $('.message').html('Não consegui carregar, tente novamente.');
+    //     });
+
+    // });
+
+
+    // Filtro por Pesquisa
+    function filtra_servicos(value) {
+
+
+      value = removeAcento(value.toLowerCase());
+
+      setTimeout(() => {
+
+        var bloco_tabs = $('.bloco-tabs ul');
+
+        // bloco_tabs.hide();
+        $('.mais_buscados div').filter(function() {
+          let item = removeAcento($(this).text().toLowerCase());
+          $(this).toggle(item.indexOf(value) > -1);
+        });
+
+
+        $('.em_destaque div').filter(function() {
+          let item = removeAcento($(this).text().toLowerCase());
+          $(this).toggle(item.indexOf(value) > -1);
+        });
+
+        $(".bloco-tabs ul li").filter(function() {
+          let item = removeAcento($(this).text().toLowerCase());
+
+          $(this).toggle(item.indexOf(value) > -1);
+
+          if ($(bloco_tabs).is(":hidden")) {
+            return $('.openTabs').click();
+          }
+        });
+      }, 500);
+    }
+
+    $("#search-faq #termos").on("keyup", function(e) {
+      var value = e.target.value;
+      filtra_servicos(value);
+    });
+
+    $("#search-faq").on("submit", function(e) {
+
+      e.preventDefault();
+      var value = $("#search-faq #termos").val();
+
+      filtra_servicos(value);
+    });
+
+    // Filtro por Categoria
+    $('#acesso a').click(function(e) {
+      e.preventDefault();
+      var categoria = $(this).data('categoria');
+      var request = $.ajax({
+          // type: 'POST',
+          // data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `faq/faqs_post/?categoria_id=` + categoria,
+          beforeSend() {
+            $('.bloco-tabs ul.nav').html('');
+            $('.bloco-tabs ul.nav').addClass('loader');
+          },
+        })
+        .done(function(msg) {
+          $('.bloco-tabs ul.nav').removeClass('loader');
+          $('.bloco-tabs ul.nav').load();
+          msg.map(item => {
+            $('ul.nav.nav-pills.nav-stacked').append(`
+              <li>
+                  <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                  <div class="texto collapse" id="${item.id}">
+                      ${item.resposta}
+                  </div>
+              </li>
+            `);
+          });
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+
+    });
+
+    // Função de Load More Notícias
+    var offset_posts = 5
+    $('#load_more_posts').click(function(e) {
+      e.preventDefault();
+      var request = $.ajax({
+          // type: 'GET',
+          // data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `noticia/get_post/${offset_posts}/5`,
+          beforeSend() {
+            $('#load_more_posts').html('Carregando...');
+            $('.loader').removeClass('hidden');
+          },
+        })
+        .done(function(msg) {
+          offset_posts = offset_posts + 5;
+          $('.loader').addClass('hidden');
+          $('#load_more_posts').html('Carregar mais notícias');
+          msg.map(item => {
+            $('.noticias').append(`
+            <div class="col-md-12" style="padding: 10px 0;">
+              <a href="${BASE_URL}noticia/ler/${item.id}/${item.titulo.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w-]+/g, '-').toLowerCase()}" title="Notícia: ${item.titulo}">
+                <div class="col-sm-3 col-xs-12 imagem no-padding">
+                    <img src="${item.capa}" alt="${item.titulo}" style="height: 200px"  />
+                </div>
+                <div class="col-sm-9 col-xs-12 texto">
+                    <h2>${item.titulo}</h2>
+                    <p>` + item.chamada.substring(0, 550) + `</p>
+                    <h5>` + dataAtualFormatada(item.publicacao) + `</h5>
+                </div>
+                <hr />
+              </a>
+            </div>
+          `);
+          })
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+    });
+
+    // Função de Load More nos Faqs
+    var offset_faqs = 8
+    $('#load_more_faq').click(function(e) {
+      e.preventDefault();
+
+      var request = $.ajax({
+          dataType: "json",
+          url: BASE_URL + `faq/faqs_post/${offset_faqs}/5`,
+          beforeSend() {
+            $('#load_more_faq').html('Carregando...');
+            $('.loader').removeClass('hidden');
+          },
+        })
+        .done(function(msg) {
+          offset_faqs = offset_faqs + 5;
+          $('.loader').addClass('hidden');
+          $('#load_more_faq').html('Carregar mais perguntas');
+          msg.map(item => {
+            $('ul.nav.nav-pills.nav-stacked').append(`
+              <li>
+                  <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                  <div class="texto collapse" id="${item.id}">
+                      ${item.resposta}
+                  </div>
+              </li>
+            `);
+          })
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+    });
+
+    var isSomethingTrue = false;
+    $('.openTabs').click(function(e) {
+      e.preventDefault();
+      $('.bloco-tabs').toggle('in');
+      $(this).toggleClass('botao-primary0');
+      if (!isSomethingTrue) {
+        isSomethingTrue = true;
+        $(this).html('Ver menos serviços');
+      } else {
+        isSomethingTrue = false;
+        $(this).html('Ver todos os serviços');
+      }
+    });
+
+
+    // Função de Load More nos Faqs
+    $('#fotos a').click(function(e) {
+      e.preventDefault();
+      let idGaleria = $(this).data('id');
+
+      //Initial csrf values
+      var csrfName = 'csrf_site_name';
+      var csrfHash = '0f9d1ff43d6aba13365aef9ac2802516';
+      var data = {};
+      data[csrfName] = csrfHash;
+      var api_images = [];
+      var api_titles = [];
+      var api_descriptions = [];
+
+      $.ajax({
+          // type: 'POST',
+          data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `galeria/get_galeria_anexos/` + idGaleria,
+        })
+        .done(function(msg) {
+          msg.map(item => {
+            api_images.push(item['arquivo']);
+            api_titles.push(item['titulo']);
+            api_descriptions.push(['']);
+          });
+          $.prettyPhoto.open(api_images, api_titles, api_descriptions);
+          $.prettyPhoto.changePage('next');
+          $.prettyPhoto.changePage('previous');
+          $.prettyPhoto.close();
+        })
+        .fail(function() {
+          $.prettyPhoto.open(BASE_URL + 'assets/img/brasao.jpg', 'Não consegui carregar, tente novamente.', '');
+        });
+    });
+
+    // Auto Contraste Função
+    var Contrast = {
+      storage: 'contrastState',
+      cssClass: 'contrast',
+      currentState: null,
+      check: checkContrast,
+      getState: getContrastState,
+      setState: setContrastState,
+      toogle: toogleContrast,
+      updateView: updateViewContrast
+    };
+
+    toggleContrast = function() {
+      Contrast.toogle();
+    };
+
+    Contrast.check();
+
+    function checkContrast() {
+      this.updateView();
+    }
+
+    function getContrastState() {
+      return localStorage.getItem(this.storage) === 'true';
+    }
+
+    function setContrastState(state) {
+      localStorage.setItem(this.storage, '' + state);
+      this.currentState = state;
+      this.updateView();
+    }
+
+    function updateViewContrast() {
+      var body = document.body;
+      var logo_menu = document.getElementById('logo-menu');
+
+      if (!body) return;
+      if (!logo_menu) return null;
+
+      if (this.currentState === null)
+        this.currentState = this.getState();
+
+      if (this.currentState) {
+        body.classList.add(this.cssClass);
+
+        if (logo_menu.src == 'https://marataizes.es.gov.br/assets/img/logo_site.svg')
+          logo_menu.src = 'https://marataizes.es.gov.br/assets/img/logo_site_branco.svg';
+        else
+          logo_menu.src = 'https://marataizes.es.gov.br/assets/img/logo_site_branco.png';
+      } else {
+        body.classList.remove(this.cssClass);
+
+        if (logo_menu.src == 'https://marataizes.es.gov.br/assets/img/logo_site_branco.svg' || logo_menu.src == 'https://marataizes.es.gov.br/assets/img/logo_site.svg')
+          logo_menu.src = 'https://marataizes.es.gov.br/assets/img/logo_site.svg';
+        else
+          logo_menu.src = 'https://marataizes.es.gov.br/assets/img/logo_site.png';
+      }
+    }
+
+    function toogleContrast() {
+      this.setState(!this.currentState);
+    }
+    // FIM AUTOCONTRASTE
+
+    // Função do Popup nas fotos
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+    $('a[rel=group]').fancybox();
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+      default_width: 700, //I have tried playing with these values
+      default_height: 500, //I have tried playing with these values
+      theme: 'light_rounded',
+      social_tools: '<a target="_blank" download href="#" class="download_image left btn btn-xs btn-default"><span class="fa fa-download"></span> Baixar Imagem</a>',
+
+      overlay_gallery: false,
+      show_title: false,
+      hideflash: true,
+      iframe_markup: "<iframe src='{path}' width='{width}' height='{height}' frameborder='no' allowfullscreen='true'></iframe>",
+      deeplinking: false
+    });
+
+    $('body').on('click', '.download_image', function() {
+      var foto_download = $('#fullResImage').attr('src');
+      $(this).attr('href', foto_download);
+    });
+
+    $('div.thumbnail').on('click', 'a', function() {
+      var id = $(this).attr('id');
+      if (id.length) {
+        $.ajax({
+          url: BASE_URL + 'galeria/contador_acessos/' + id,
+          type: "post",
+          data: {
+            'id': id
+          }
+        });
+      }
+    });
+
+    // VERIFICA SWIPER
+    if (document.getElementsByClassName('destaques').length !== 0) {
+      var destaques = new Swiper(".destaques", {
+        loop: true,
+        pagination: {
+          el: ".destaques .swiper-pagination",
+          dynamicBullets: true,
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".destaques .swiper-button-next",
+          prevEl: ".destaques .swiper-button-prev",
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('especialidades').length !== 0) {
+      var especialidades = new Swiper(".especialidades", {
+        // slidesPerView: 1,
+        calculateHeight: true,
+        spaceBetween: 20,
+
+        breakpoints: {
+          // 0: {
+          // },
+          // when window width is >= 768px
+          769: {
+            slidesPerGroup: 4,
+            slidesPerView: 2,
+            allowTouchMove: false,
+            grid: {
+              rows: 2,
+            },
+          },
+        },
+
+        // loop: true, // <- causes issues combined with multi row setup!!
+        navigation: {
+          nextEl: ".especialidades .swiper-button-next",
+          prevEl: ".especialidades .swiper-button-prev",
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('galerias').length != 0) {
+      var banners = new Swiper(".galerias", {
+        slidesPerView: 1,
+        autoHeight: true,
+        loop: true,
+        spaceBetween: 10,
+        // effect: "fade",
+
+        breakpoints: {
+          // 0: {
+          // },
+          // when window width is >= 768px
+          769: {
+            slidesPerView: 4,
+          },
+        },
+        navigation: {
+          nextEl: "#galerias .next",
+          prevEl: "#galerias .prev",
+        },
+        pagination: {
+          el: ".galerias .swiper-pagination",
+          clickable: true,
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('banners').length != 0) {
+      var banners = new Swiper(".banners", {
+        slidesPerView: 1,
+        autoHeight: true,
+        loop: true,
+        spaceBetween: 10,
+        // effect: "fade",
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    }
+
+    $('#web-tv #video').carousel({
+      interval: false,
+    });
+  });
+
+      let capa = [];    let titulo = [];    let nothing = '';
+
+            capa.push("https://marataizes.es.gov.br/uploads/files/teste/Post-Seminario-Municipal-Dezembro-Vermelho_PMM.png");
+        titulo.push("SEMINÁRIO MUNICIPAL DEZEMBRO VERMELHO 2026");
+            capa.push("https://marataizes.es.gov.br/uploads/files/banners-site/whatsapp-image-2026-11-22-at-10-03-43.jpg");
+        titulo.push("Convite para Eleição dos Servidores");
+    
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+      theme: 'light_square',
+      social_tools: '',
+          });
+    $.prettyPhoto.open(capa, titulo, nothing);
+    $.prettyPhoto.changePage('next');
+    $.prettyPhoto.changePage('previous');
+    $.prettyPhoto.close();
+  
+  function cookies(functions) {
+    const container = document.querySelector('.cookies-container');
+    const save = document.querySelector('.cookies-save');
+    if (!container || !save) return null;
+
+    const localPref = JSON.parse(window.localStorage.getItem('cookies-pref'));
+    if (localPref) activateFunctions(localPref);
+
+    function getFormPref() {
+      return [...document.querySelectorAll('[data-function]')]
+        .filter((el) => el.checked)
+        .map((el) => el.getAttribute('data-function'));
+    }
+
+    function activateFunctions(pref) {
+      pref.forEach((f) => functions[f]());
+      container.style.display = 'none';
+      window.localStorage.setItem('cookies-pref', JSON.stringify(pref));
+    }
+
+    function handleSave() {
+      const pref = getFormPref();
+      activateFunctions(pref);
+    }
+
+    save.addEventListener('click', handleSave);
+  }
+
+  function analytics() {
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-MRXYHQW9CE');
+
+    console.log('Função anali..');
+  }
+
+  function simplecookie() {
+    console.log('Política de Privacidade Autorizada');
+  }
+
+  // ============================================================
+  // Função Frame do Youtube
+  
+
+  </script>
+
+  <script src="https://www.google.com/recaptcha/api.js?render=6LcBSrAeAAAAALyMxRp_yjRsmSLYrwZm_WkPh5l9"></script>
+  <script text="text/Javascript">
+    $(function() { // Recaptcha no formulário da Newsletter
+      $(".form_recaptcha .bnt_submit_recaptcha").click(function(e) {
+        e.preventDefault();
+        grecaptcha.execute('6LcBSrAeAAAAALyMxRp_yjRsmSLYrwZm_WkPh5l9').then(function(token) {
+          var recaptchaResponse = document.getElementById('recaptcha_token');
+          recaptchaResponse.value = token;
+
+          $('.form_recaptcha').submit();
+        })
+      })
+    });
+
+    var form = $('#newsletter');
+    $(form).submit(function(e) { // Função do Formulario newsletter da Home
+      e.preventDefault();
+      grecaptcha.execute('6LcBSrAeAAAAALyMxRp_yjRsmSLYrwZm_WkPh5l9').then(function(token) {
+        // add token value to form
+        document.getElementById('g-recaptcha-response').value = token;
+
+        $.ajax({
+            type: form.attr('method'),
+            url: form.attr('action'),
+            dataType: 'json',
+            data: form.serialize(),
+            beforeSend() {
+              // console.log('Carregando...');
+              $('#newsletter .loader').toggleClass('hidden');
+            },
+          })
+          .success(function(msg) {
+            // console.log(msg);
+            if (msg == 200) {
+              alertify.success('Contato cadastrado com sucesso!');
+            } else {
+              alertify.error(msg);
+            }
+            $('#newsletter .loader').toggleClass('hidden');
+          })
+          .fail(function(request, status, error) {
+            // console.log('Status: ', status);
+            $('#newsletter .loader').toggleClass('hidden');
+          });
+      });
+    });
+  </script>
+
+
+<noscript>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="alert alert-warning" role="alert">
+      Você precisa habilitar o JavaScript para visualizar este Portal corretamente.
+    </div>
+  </div>
+</noscript><script src='https://unpkg.com/swiper@8/swiper-bundle.min.js?v=1795780118'></script>
+<script src='https://marataizes.es.gov.br/statics/frontend/select2/dist/js/select2.full.min.js?v=1795780118'></script>
+<script src='https://marataizes.es.gov.br/statics/assets/plugins/alertify/alertify.min.js?v=1795780118'></script>
+  <!-- Container de Privacidade e Cookies  -->
+
+  <style>
+    /* GOOGLE ANALYTICS */
+
+    .cookies-container {
+      color: #222;
+      position: fixed;
+      bottom: 2rem;
+      z-index: 1000;
+    }
+
+    .card-title {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 21px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+
+    .card-link {
+      font-weight: bold;
+      text-decoration: none;
+      color: #2F2F2F;
+    }
+
+    .card-text {
+      font-style: normal;
+      font-weight: normal;
+
+      line-height: 150%;
+      align-items: center;
+      color: #505050;
+
+    }
+
+    .cookies-content {
+      background: white;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(1rem);
+      animation: slideUp 0.5s forwards;
+      border-radius: 4px;
+      background: rgba(251, 251, 251, 0.95);
+
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: initial;
+        opacity: initial;
+      }
+    }
+
+    .cookies-pref label {
+      margin-right: 1rem;
+    }
+
+    .cookies-save {
+      grid-column: 2;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: var(--Primary0);
+      color: white;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      padding: 0.8rem 2rem;
+      font-size: 16px;
+    }
+
+    .cookies-save:hover {
+      background: var(--Primary2);
+      transition: .3s;
+    }
+
+    @media (max-width: 500px) {
+      .cookies-content {
+        grid-template-columns: 1fr;
+      }
+
+      .cookies-save {
+        grid-column: 1;
+        grid-row: 3;
+      }
+    }
+  </style>
+
+  <div class="cookies-container col-md-12">
+    <div class="cookies-content col-md-10 col-md-offset-1">
+      <div class="col-md-12">
+        <h2 class="card-title">Política de Privacidade</h2>
+      </div>
+      <div class="col-md-10">
+        <p class="card-text">Utilizamos cookies essenciais e tecnologias semelhantes de acordo com a nossa
+          <a href=" /pagina/ler/1177/politica-de-privacidade-e-seguranca	" target="_blank" class="card-link">Política de Privacidade</a>
+          e, ao continuar navegando, você concorda com as condições contidas nela.
+        </p>
+                  <input type="hidden" checked data-function="analytics" />
+              </div>
+      <div class="text-right col-md-2">
+        <button class="cookies-save card text-right">Continuar</button>
+      </div>
+    </div>
+  </div>
+  <!-- / Container de Privacidade e Cookies  -->
+
+  <!-- Privacidade -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MRXYHQW9CE"></script>
+  <script type="text/javascript">
+    // Google Analytics
+    function cookies(functions) {
+      const container = document.querySelector('.cookies-container');
+      const save = document.querySelector('.cookies-save');
+      if (!container || !save) return null;
+
+      const localPref = JSON.parse(window.localStorage.getItem('cookies-pref'));
+      console.log(localPref);
+      if (localPref) activateFunctions(localPref);
+
+      function getFormPref() {
+        return [...document.querySelectorAll('[data-function]')]
+          .filter((el) => el.checked)
+          .map((el) => el.getAttribute('data-function'));
+      }
+
+      function activateFunctions(pref) {
+        pref.forEach((f) => functions[f]());
+        container.style.display = 'none';
+        window.localStorage.setItem('cookies-pref', JSON.stringify(pref));
+      }
+
+      function handleSave() {
+        const pref = getFormPref();
+        activateFunctions(pref);
+      }
+
+      save.addEventListener('click', handleSave);
+    }
+
+    function analytics() {
+
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', 'UA-133079946-1');
+
+      console.log('Função analytics..');
+    }
+
+    cookies({
+      analytics,
+    });
+  </script>
+
+  <!-- / Privacidade --><div vw class="enabled">
+    <div vw-access-button class="active" accesskey="8"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<noscript>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="alert alert-warning" role="alert">
+            Você precisa habilitar o JavaScript para visualizar este Portal corretamente.
+        </div>
+    </div>
+</noscript>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610e8e39bcaf156',t:'MTc5NTc4MDE2OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610e8e39bcaf156',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>

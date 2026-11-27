@@ -1,0 +1,1061 @@
+<!DOCTYPE HTML>
+
+<html lang="pt-br">
+
+<head><meta charset="UTF-8"><script>if(navigator.userAgent.match(/MSIE|Internet Explorer/i)||navigator.userAgent.match(/Trident\/7\..*?rv:11/i)){var href=document.location.href;if(!href.match(/[?&]nowprocket/)){if(href.indexOf("?")==-1){if(href.indexOf("#")==-1){document.location.href=href+"?nowprocket=1"}else{document.location.href=href.replace("#","?nowprocket=1#")}}else{if(href.indexOf("#")==-1){document.location.href=href+"&nowprocket=1"}else{document.location.href=href.replace("#","&nowprocket=1#")}}}}</script><script>class RocketLazyLoadScripts{constructor(){this.v="1.2.4",this.triggerEvents=["keydown","mousedown","mousemove","touchmove","touchstart","touchend","wheel"],this.userEventHandler=this._triggerListener.bind(this),this.touchStartHandler=this._onTouchStart.bind(this),this.touchMoveHandler=this._onTouchMove.bind(this),this.touchEndHandler=this._onTouchEnd.bind(this),this.clickHandler=this._onClick.bind(this),this.interceptedClicks=[],window.addEventListener("pageshow",t=>{this.persisted=t.persisted}),window.addEventListener("DOMContentLoaded",()=>{this._preconnect3rdParties()}),this.delayedScripts={normal:[],async:[],defer:[]},this.trash=[],this.allJQueries=[]}_addUserInteractionListener(t){if(document.hidden){t._triggerListener();return}this.triggerEvents.forEach(e=>window.addEventListener(e,t.userEventHandler,{passive:!0})),window.addEventListener("touchstart",t.touchStartHandler,{passive:!0}),window.addEventListener("mousedown",t.touchStartHandler),document.addEventListener("visibilitychange",t.userEventHandler)}_removeUserInteractionListener(){this.triggerEvents.forEach(t=>window.removeEventListener(t,this.userEventHandler,{passive:!0})),document.removeEventListener("visibilitychange",this.userEventHandler)}_onTouchStart(t){"HTML"!==t.target.tagName&&(window.addEventListener("touchend",this.touchEndHandler),window.addEventListener("mouseup",this.touchEndHandler),window.addEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.addEventListener("mousemove",this.touchMoveHandler),t.target.addEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"onclick","rocket-onclick"),this._pendingClickStarted())}_onTouchMove(t){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler),t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this._pendingClickFinished()}_onTouchEnd(){window.removeEventListener("touchend",this.touchEndHandler),window.removeEventListener("mouseup",this.touchEndHandler),window.removeEventListener("touchmove",this.touchMoveHandler,{passive:!0}),window.removeEventListener("mousemove",this.touchMoveHandler)}_onClick(t){t.target.removeEventListener("click",this.clickHandler),this._renameDOMAttribute(t.target,"rocket-onclick","onclick"),this.interceptedClicks.push(t),t.preventDefault(),t.stopPropagation(),t.stopImmediatePropagation(),this._pendingClickFinished()}_replayClicks(){window.removeEventListener("touchstart",this.touchStartHandler,{passive:!0}),window.removeEventListener("mousedown",this.touchStartHandler),this.interceptedClicks.forEach(t=>{t.target.dispatchEvent(new MouseEvent("click",{view:t.view,bubbles:!0,cancelable:!0}))})}_waitForPendingClicks(){return new Promise(t=>{this._isClickPending?this._pendingClickFinished=t:t()})}_pendingClickStarted(){this._isClickPending=!0}_pendingClickFinished(){this._isClickPending=!1}_renameDOMAttribute(t,e,r){t.hasAttribute&&t.hasAttribute(e)&&(event.target.setAttribute(r,event.target.getAttribute(e)),event.target.removeAttribute(e))}_triggerListener(){this._removeUserInteractionListener(this),"loading"===document.readyState?document.addEventListener("DOMContentLoaded",this._loadEverythingNow.bind(this)):this._loadEverythingNow()}_preconnect3rdParties(){let t=[];document.querySelectorAll("script[type=rocketlazyloadscript][data-rocket-src]").forEach(e=>{let r=e.getAttribute("data-rocket-src");if(r&&0!==r.indexOf("data:")){0===r.indexOf("//")&&(r=location.protocol+r);try{let i=new URL(r).origin;i!==location.origin&&t.push({src:i,crossOrigin:e.crossOrigin||"module"===e.getAttribute("data-rocket-type")})}catch(n){}}}),t=[...new Map(t.map(t=>[JSON.stringify(t),t])).values()],this._batchInjectResourceHints(t,"preconnect")}async _loadEverythingNow(){this.lastBreath=Date.now(),this._delayEventListeners(),this._delayJQueryReady(this),this._handleDocumentWrite(),this._registerAllDelayedScripts(),this._preloadAllScripts(),await this._loadScriptsFromList(this.delayedScripts.normal),await this._loadScriptsFromList(this.delayedScripts.defer),await this._loadScriptsFromList(this.delayedScripts.async);try{await this._triggerDOMContentLoaded(),await this._pendingWebpackRequests(this),await this._triggerWindowLoad()}catch(t){console.error(t)}window.dispatchEvent(new Event("rocket-allScriptsLoaded")),this._waitForPendingClicks().then(()=>{this._replayClicks()}),this._emptyTrash()}_registerAllDelayedScripts(){document.querySelectorAll("script[type=rocketlazyloadscript]").forEach(t=>{t.hasAttribute("data-rocket-src")?t.hasAttribute("async")&&!1!==t.async?this.delayedScripts.async.push(t):t.hasAttribute("defer")&&!1!==t.defer||"module"===t.getAttribute("data-rocket-type")?this.delayedScripts.defer.push(t):this.delayedScripts.normal.push(t):this.delayedScripts.normal.push(t)})}async _transformScript(t){if(await this._littleBreath(),!0===t.noModule&&"noModule"in HTMLScriptElement.prototype){t.setAttribute("data-rocket-status","skipped");return}return new Promise(navigator.userAgent.indexOf("Firefox/")>0||""===navigator.vendor?e=>{let r=document.createElement("script");[...t.attributes].forEach(t=>{let e=t.nodeName;"type"!==e&&("data-rocket-type"===e&&(e="type"),"data-rocket-src"===e&&(e="src"),r.setAttribute(e,t.nodeValue))}),t.text&&(r.text=t.text),r.hasAttribute("src")?(r.addEventListener("load",e),r.addEventListener("error",e)):(r.text=t.text,e());try{t.parentNode.replaceChild(r,t)}catch(i){e()}}:e=>{function r(){t.setAttribute("data-rocket-status","failed"),e()}try{let i=t.getAttribute("data-rocket-type"),n=t.getAttribute("data-rocket-src");i?(t.type=i,t.removeAttribute("data-rocket-type")):t.removeAttribute("type"),t.addEventListener("load",function r(){t.setAttribute("data-rocket-status","executed"),e()}),t.addEventListener("error",r),n?(t.removeAttribute("data-rocket-src"),t.src=n):t.src="data:text/javascript;base64,"+window.btoa(unescape(encodeURIComponent(t.text)))}catch(s){r()}})}async _loadScriptsFromList(t){let e=t.shift();return e&&e.isConnected?(await this._transformScript(e),this._loadScriptsFromList(t)):Promise.resolve()}_preloadAllScripts(){this._batchInjectResourceHints([...this.delayedScripts.normal,...this.delayedScripts.defer,...this.delayedScripts.async],"preload")}_batchInjectResourceHints(t,e){var r=document.createDocumentFragment();t.forEach(t=>{let i=t.getAttribute&&t.getAttribute("data-rocket-src")||t.src;if(i){let n=document.createElement("link");n.href=i,n.rel=e,"preconnect"!==e&&(n.as="script"),t.getAttribute&&"module"===t.getAttribute("data-rocket-type")&&(n.crossOrigin=!0),t.crossOrigin&&(n.crossOrigin=t.crossOrigin),t.integrity&&(n.integrity=t.integrity),r.appendChild(n),this.trash.push(n)}}),document.head.appendChild(r)}_delayEventListeners(){let t={};function e(e,r){!function e(r){!t[r]&&(t[r]={originalFunctions:{add:r.addEventListener,remove:r.removeEventListener},eventsToRewrite:[]},r.addEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.add.apply(r,arguments)},r.removeEventListener=function(){arguments[0]=i(arguments[0]),t[r].originalFunctions.remove.apply(r,arguments)});function i(e){return t[r].eventsToRewrite.indexOf(e)>=0?"rocket-"+e:e}}(e),t[e].eventsToRewrite.push(r)}function r(t,e){let r=t[e];Object.defineProperty(t,e,{get:()=>r||function(){},set(i){t["rocket"+e]=r=i}})}e(document,"DOMContentLoaded"),e(window,"DOMContentLoaded"),e(window,"load"),e(window,"pageshow"),e(document,"readystatechange"),r(document,"onreadystatechange"),r(window,"onload"),r(window,"onpageshow")}_delayJQueryReady(t){let e;function r(t){return t.split(" ").map(t=>"load"===t||0===t.indexOf("load.")?"rocket-jquery-load":t).join(" ")}function i(i){if(i&&i.fn&&!t.allJQueries.includes(i)){i.fn.ready=i.fn.init.prototype.ready=function(e){return t.domReadyFired?e.bind(document)(i):document.addEventListener("rocket-DOMContentLoaded",()=>e.bind(document)(i)),i([])};let n=i.fn.on;i.fn.on=i.fn.init.prototype.on=function(){return this[0]===window&&("string"==typeof arguments[0]||arguments[0]instanceof String?arguments[0]=r(arguments[0]):"object"==typeof arguments[0]&&Object.keys(arguments[0]).forEach(t=>{let e=arguments[0][t];delete arguments[0][t],arguments[0][r(t)]=e})),n.apply(this,arguments),this},t.allJQueries.push(i)}e=i}i(window.jQuery),Object.defineProperty(window,"jQuery",{get:()=>e,set(t){i(t)}})}async _pendingWebpackRequests(t){let e=document.querySelector("script[data-webpack]");async function r(){return new Promise(t=>{e.addEventListener("load",t),e.addEventListener("error",t)})}e&&(await r(),await t._requestAnimFrame(),await t._pendingWebpackRequests(t))}async _triggerDOMContentLoaded(){this.domReadyFired=!0,await this._littleBreath(),document.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),window.dispatchEvent(new Event("rocket-DOMContentLoaded")),await this._littleBreath(),document.dispatchEvent(new Event("rocket-readystatechange")),await this._littleBreath(),document.rocketonreadystatechange&&document.rocketonreadystatechange()}async _triggerWindowLoad(){await this._littleBreath(),window.dispatchEvent(new Event("rocket-load")),await this._littleBreath(),window.rocketonload&&window.rocketonload(),await this._littleBreath(),this.allJQueries.forEach(t=>t(window).trigger("rocket-jquery-load")),await this._littleBreath();let t=new Event("rocket-pageshow");t.persisted=this.persisted,window.dispatchEvent(t),await this._littleBreath(),window.rocketonpageshow&&window.rocketonpageshow({persisted:this.persisted})}_handleDocumentWrite(){let t=new Map;document.write=document.writeln=function(e){let r=document.currentScript;r||console.error("WPRocket unable to document.write this: "+e);let i=document.createRange(),n=r.parentElement,s=t.get(r);void 0===s&&(s=r.nextSibling,t.set(r,s));let a=document.createDocumentFragment();i.setStart(a,0),a.appendChild(i.createContextualFragment(e)),n.insertBefore(a,s)}}async _littleBreath(){Date.now()-this.lastBreath>45&&(await this._requestAnimFrame(),this.lastBreath=Date.now())}async _requestAnimFrame(){return document.hidden?new Promise(t=>setTimeout(t)):new Promise(t=>requestAnimationFrame(t))}_emptyTrash(){this.trash.forEach(t=>t.remove())}static run(){let t=new RocketLazyLoadScripts;t._addUserInteractionListener(t)}}RocketLazyLoadScripts.run();</script>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+    <title>
+        Home | Prefeitura de Guarapuava | Guarapuava - Paraná    </title>
+<!-- HTML 5 Old IE Browsers -->
+<!--[if lt IE 9]>
+<script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta property="og:title"  content="Home" >
+<link rel="pingback" href="https://guarapuava.pr.gov.br/xmlrpc.php" />
+
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="57x57" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/favicon-16x16.png">
+<link rel="manifest" href="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/favicon/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<meta name="google-site-verification" content="sCzEHnE-ce5HQojO9BQs-xst5JreRLNBEGGSYY4HyKo" />
+<link data-minify="1" rel="stylesheet" type="text/css" href="https://guarapuava.pr.gov.br/wp-content/cache/min/1/wp-content/themes/prefeitura/assets/css/1613756303888-style.min.css?ver=1787066283">
+<style>
+.icon-fallback-img .icon-fontsize {
+    background-image: url('https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/fonts/SVG/icon-fontsize.svg');
+}
+
+.icon-fallback-img .icon-contrast {
+    background-image: url('https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/fonts/SVG/icon-contrast.svg');
+}
+
+.icon-fallback-img .icon-saturation {
+    background-image: url('https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/fonts/SVG/icon-saturation.svg');
+}
+
+</style>
+<script type="rocketlazyloadscript">TEMPLATE_URL = 'https://guarapuava.pr.gov.br/wp-content/themes/prefeitura';</script>
+<!-- Google Tag Manager -->
+<script type="rocketlazyloadscript">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-5FX6C2M');</script>
+<!-- End Google Tag Manager --><style>
+#error-page
+ {
+    display: contents;
+}
+</style>
+
+</head>
+
+<body class="">
+
+	<!-- Google Tag Manager (noscript) -->
+
+	<noscript>
+
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FX6C2M" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+
+	</noscript>
+
+	<!-- End Google Tag Manager (noscript) -->
+
+	<header>
+
+		<nav class="header-top">
+
+			<div class="container">
+				<ul>			
+			
+					<li>
+
+						<a href="https://guarapuava.atende.net/autoatendimento/servicos/extrato-do-contribuinte" target="_blank">EMISSÃO GERAL DE GUIAS</a>
+
+					</li>
+
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Serviços <span class="caret"></span></a>
+
+                        <ul class="dropdown-menu">
+
+                            <li><a href="https://guarapuava.pr.gov.br/servicos-empresa/">Serviços para Empresas</a></li>
+
+                            <li><a href="https://guarapuava.pr.gov.br/servicos-comunidade/">Serviços para a Comunidade</a></li>
+
+                            <li><a href="https://guarapuava.atende.net/autoatendimento/servicos/carta-de-servicos">Carta de Serviços ao Usuário</a></li>						
+
+							<!--<li><a href="https://guarapuava.pr.gov.br/servicos/protocolo-web/">Protocolo Web</a></li>-->
+
+                        </ul>
+
+                    </li>
+                    <li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guarapuava Digital <span class="caret"></span></a>
+
+                        <ul class="dropdown-menu">
+
+                            <li><a href="https://guarapuava.pr.gov.br/servicos/ouvidoria-sugestoes-dicas-e-reclamacoes/" target="_blank">Ouvidoria</a></li>
+
+							<li><a href="https://guarapuava.atende.net/autoatendimento/servicos/emissao-de-processo-digital" target="_blank">Protocolo Web</a></li>
+
+							<li><a href="http://www.geoguarapuava.com.br" target="_blank">GeoGuarapuava</a></li>
+							<li><a href="https://leismunicipais.com.br/a/pr/g/guarapuava/decreto/2020/815/8144/decreto-n-8144-2020" target="_blank">Ato Normativo</a></li>
+
+							
+
+                        </ul>
+
+                    </li>
+					
+					
+
+					<li class="dropdown">
+
+                        <a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Transparência<span class="caret"></span></a>
+
+                        <ul class="dropdown-menu">
+
+                            <li><a href="https://guarapuava.atende.net/?pg=transparencia#!/" target="_blank">Portal da Transparência</a></li>
+
+                            <li><a href="https://guarapuava.atende.net/cidadao/acesso-informacao" target="_blank">Acesso à Informação</a></li>
+                            <li><a href="https://radardatransparencia.atricon.org.br/" target="_blank">Radar de Transparência</a></li>
+
+							<li><a href="https://guarapuava.pr.gov.br/portal-covid-19/" target="_blank">COVID-19</a></li>
+
+                        </ul>
+
+                    </li>
+					<li>
+
+						<a href="https://guarapuava.atende.net/subportal/servidores" target="_blank" >Portal do Servidor</a>
+
+					</li>
+				   
+                    
+            <!--        <li>
+                   <form role="search" method="get" id="searchform" class="searchform" action="https://guarapuava.pr.gov.br/">
+				<div>
+					<label class="screen-reader-text" for="s">Pesquisar por:</label>
+					<input type="text" value="" name="s" id="s" />
+					<input type="submit" id="searchsubmit" value="Pesquisar" />
+				</div>
+			<input type="hidden" name="id" value="188015" /></form>                    </li>
+                    
+-->
+
+					<li class="dropdown">
+
+						<a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contato <span class="caret"></span></a>
+
+                        <ul class="dropdown-menu">
+
+                            <li><a href="https://pmg.pr.gov.br/ramais/" target="_blank">Lista de Telefones</a></li>
+
+							<li><a href="https://guarapuava.pr.gov.br/contato/">Telefones Principais</a></li>
+
+                        </ul>
+
+					</li>
+					<li class="hidden-xs">
+
+						<form action="https://guarapuava.pr.gov.br/pesquisa/" method="GET" style="display: inline">
+
+							<input type="text" name="busca" id="" placeholder="Faça uma busca" />
+
+							<button type="submit"  style="vertical-align: middle;"></button>
+
+						</form>
+
+					</li>
+
+				</ul>
+
+			</div>
+
+		</nav>
+
+		<nav class="navbar navbar-default">
+
+			<div class="container">
+
+				<div class="navbar-header">
+
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu-collapse" aria-expanded="false">
+
+						<span class="sr-only">Toggle navigation</span>
+
+						<span class="icon-bar"></span>
+
+						<span class="icon-bar"></span>
+
+						<span class="icon-bar"></span>
+
+					</button>
+
+					<!-- <div class="logo">-->
+
+				<div>
+
+						<h1>
+
+							<a href="https://guarapuava.pr.gov.br">
+
+
+
+								<!--<picture><source srcset="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/logo_atendimento_bandeira.png.webp"  type="image/webp"><img width="250" height="64" src="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/logo_atendimento_bandeira.png" alt="Prefeitura de Guarapuava" data-eio="p" /></picture>-->
+
+								<picture><source srcset="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/logo_prefeitura.png.webp"  type="image/webp"><img width="250" height="64" src="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/logo_prefeitura.png" alt="Prefeitura de Guarapuava" data-eio="p" /></picture>
+
+							</a>
+
+						</h1>
+
+					</div>
+
+				</div>
+
+				<div class="header collapse navbar-collapse col-md-10 col-sm-10 col-xs-10" id="menu-collapse">
+
+					<div class="menu col-md-12 col-sm-12 col-xs-12">
+
+						<ul class="nav navbar-nav">
+
+							<li class="dropdown">
+
+								<a href="#" class="dropdown-toggle active" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Administração <span class="caret"></span></a>
+
+								<ul class="dropdown-menu">
+
+									<li><a href="https://guarapuava.pr.gov.br/administracao-direta/">Administração Direta</a></li>
+
+									<li><a href="https://guarapuava.pr.gov.br/administracao-indireta/">Administração Indireta</a></li>
+
+									<li><a href="https://guarapuava.pr.gov.br/portal-conselhos-municipais/">Conselhos Municipais</a></li>
+
+									<li><a href="https://guarapuava.atende.net/transparencia/item/pac-plano-anual-de-contratacoes" target="_blank">Plano Anual de Contratações</a></li>
+
+									<li><a href="https://concidade.guarapuava.pr.gov.br/concidade/pages/" target="_blank">Plano Diretor</a></li>
+									
+									<li><a href="https://guarapuava.pr.gov.br/identidade-institucional/" target="_blank">Identidade Institucional</a></li>
+
+								</ul>
+
+							</li>
+
+							<li><a href="https://guarapuava.pr.gov.br/midias/">Mídias</a></li>
+
+							<li><a href="https://guarapuava.pr.gov.br/boletins-oficiais/">Boletins Oficiais</a></li>
+							
+							<li><a href="https://leismunicipais.com.br/prefeitura/pr/guarapuava" target="_blank">Legislação</a></li>
+							
+							<li class="dropdown">
+
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Editais <span class="caret"></span></a>
+
+									<ul class="dropdown-menu">
+
+											<!--<li><a href="/portal-da-transparencia/licitacoes/">Editais de Licitação</a></li>-->
+
+											<li><a href="https://guarapuava.atende.net/autoatendimento/servicos/consulta-de-licitacoes/detalhar/1" target="_blank">Editais de Licitação</a></li>
+
+											<li><a href="/servicos/concursos-2/">Editais de Concurso</a></li>
+
+											<li><a href="https://www.guarapuava.pr.gov.br/pss-cis5rs/">Editais CIS5RS</a></li>
+									</ul>
+							</li>
+							<!--<li>
+								<a href="https://guarapuava.triagem.institutolaura.org/" target="_blank">
+
+								<img src="https://www.guarapuava.pr.gov.br/wp-content/uploads/2018/11/PGU_Saude_SaraFone_Transp.png" width="15" height="15"/> Assistente Sara</a>
+
+							</li>							-->
+							<li class="visible-xs">
+
+								<form action="https://guarapuava.pr.gov.br/pesquisa/" method="GET">
+
+									<input type="text" name="busca" placeholder="Faça uma busca">
+
+								</form>
+
+							</li>
+
+						</ul>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</nav>
+
+	
+<style>
+.icon-fallback-img .icon-fontsize {
+    background-image: url(https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/fonts/SVG/icon-fontsize.svg);
+}
+
+.icon-fallback-img .icon-contrast {
+    background-image: url(https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/fonts/SVG/icon-contrast.svg);
+}
+
+.icon-fallback-img .icon-saturation {
+    background-image: url(https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/fonts/SVG/icon-saturation.svg);
+}
+
+</style>
+</header><section class="banner margin-menu">
+    <div id="banner-home" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+                            <li data-target="#banner-home"
+                    data-slide-to="0" class="active"></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="1" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="2" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="3" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="4" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="5" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="6" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="7" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="8" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="9" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="10" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="11" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="12" ></li>
+                            <li data-target="#banner-home"
+                    data-slide-to="13" ></li>
+                    </ol>
+        <div class="carousel-inner" role="listbox">
+                            <a href="https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/Boletim-Oficial-3545-1.pdf#" class="item active"
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/guara.jpg');"></a>
+                            <a href="https://wa.me/5542984270618#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/06/DEFESA-1.jpg');"></a>
+                            <a href="https://guarapuava.estacionelegal.com.br/#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/06/banner-estar_1920x729.jpg');"></a>
+                            <a href="https://secom-guarapuava.github.io/mais.negocios/#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/05/negocios_banner_1920x729-1.png');"></a>
+                            <a href="#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/05/banner_valores-1.png');"></a>
+                            <a href="https://guarapuava.pr.gov.br/administracao-direta/educacao/licitacao-transporte-escolar/#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/05/DISPENSA-DE-LICITAÇÃO-1600X499.jpg.jpeg');"></a>
+                            <a href="https://secom-guarapuava.github.io/upa-ubs/#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/05/BANNER-SITE-UBS-UPA.jpg-1.jpeg');"></a>
+                            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfg5-1o-vVRrO6PWKFuEo5Ytf60k_5Iq694ZXcvBeq_7UfSbQ/viewform#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/04/plano-diretor_banner_1920x729.png');"></a>
+                            <a href="https://guarapuava.atende.net/autoatendimento/servicos/guias-divida-ativa/#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/01/BANNER-SITE-CONTRIBUINTE-2.jpg');"></a>
+                            <a href="https://guarapuava.pr.gov.br/noticias/prefeitura-de-guarapuava-e-secretaria-de-saude-alertam-a-populacao-para-atualizacao-do-cadastro-no-sus/#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2025/11/1920x729-sus.jpg');"></a>
+                            <a href="https://guarapuava.pr.gov.br/noticias/castrapet-prefeitura-de-guarapuava-inicia-cadastros-para-castracoes-gratuitas-de-caes-e-gatos-com-novo-formato-de-atendimento/#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2025/11/castrapet_banner_1920x729.jpg');"></a>
+                            <a href="https://guarapuava.atende.net/cidadao/pagina/servicos-online-tributacao#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2021/12/WhatsApp-Image-2021-12-15-at-15.29.32.jpeg');"></a>
+                            <a href="https://guarapuava.pr.gov.br/servicos/chamada-publica-01-2025/#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2025/09/BANNER.jpg');"></a>
+                            <a href="https://guarapuava.pr.gov.br/loa-2027/#" class="item "
+                   style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/09/LOA-2026.jpg');"></a>
+                    </div>
+                    <a class="left carousel-control" href="#banner-home" role="button" data-slide="prev">
+                <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#banner-home" role="button" data-slide="next">
+                <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
+            </div>
+</section>
+<section class="noticias-home listagem">
+    <div class="container">
+        <h3>Notícias</h3>
+        <div class="row">
+                        <div class="destaque col-md-5 col-sm-5 hidden-xs">
+                <a href="https://guarapuava.pr.gov.br/noticias/projeto-aprovado-abre-caminho-para-que-cerca-de-mil-familias-regularizem-a-propriedade-de-seus-terrenos-em-guarapuav/">
+                    <span class="thumbnail" style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-26-at-16.57.52-1024x577.jpeg');"></span>
+                </a>
+
+                <div class="conteudo">
+                    <span class="data">26/11/2026</span>
+                    <a href="https://guarapuava.pr.gov.br/noticias/projeto-aprovado-abre-caminho-para-que-cerca-de-mil-familias-regularizem-a-propriedade-de-seus-terrenos-em-guarapuav/">
+                        <h2>Projeto aprovado abre caminho para que cerca de mil famílias regularizem a propriedade de seus terrenos em Guarapuava</h2>
+                    </a>
+                </div>
+                <a href="https://guarapuava.pr.gov.br/noticias/projeto-aprovado-abre-caminho-para-que-cerca-de-mil-familias-regularizem-a-propriedade-de-seus-terrenos-em-guarapuav/" class="mais">
+                    <span></span>
+                </a>
+            </div>
+            <div class="itens col-md-7 col-sm-7">
+                                    <div class="item hidden visible-xs">
+                        <a href="https://guarapuava.pr.gov.br/noticias/projeto-aprovado-abre-caminho-para-que-cerca-de-mil-familias-regularizem-a-propriedade-de-seus-terrenos-em-guarapuav/">
+                            <span class="thumbnail" style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-26-at-16.57.52-300x169.jpeg');"></span>
+                        </a>
+
+                        <div class="conteudo">
+                            <a href="https://guarapuava.pr.gov.br/noticias/projeto-aprovado-abre-caminho-para-que-cerca-de-mil-familias-regularizem-a-propriedade-de-seus-terrenos-em-guarapuav/">
+                                <h2>Projeto aprovado abre caminho para que cerca de mil famílias regularizem a propriedade de seus terrenos em Guarapuava</h2>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="item ">
+                        <a href="https://guarapuava.pr.gov.br/noticias/novos-produtos-turisticos-ampliam-as-possibilidades-de-conhecer-guarapuava/">
+                            <span class="thumbnail" style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/IMG_9697-e1795721646151-300x172.jpg');"></span>
+                        </a>
+
+                        <div class="conteudo">
+                            <a href="https://guarapuava.pr.gov.br/noticias/novos-produtos-turisticos-ampliam-as-possibilidades-de-conhecer-guarapuava/">
+                                <h2>Novos produtos turísticos ampliam as possibilidades de conhecer Guarapuava</h2>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="item ">
+                        <a href="https://guarapuava.pr.gov.br/noticias/agencia-do-trabalhador-de-guarapuava-lidera-contratacoes-na-regional-e-fica-em-7o-lugar-no-parana/">
+                            <span class="thumbnail" style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/IMG_0615-300x200.jpg');"></span>
+                        </a>
+
+                        <div class="conteudo">
+                            <a href="https://guarapuava.pr.gov.br/noticias/agencia-do-trabalhador-de-guarapuava-lidera-contratacoes-na-regional-e-fica-em-7o-lugar-no-parana/">
+                                <h2>Agência do Trabalhador de Guarapuava lidera contratações na Regional e fica em 7º lugar no Paraná</h2>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="item ">
+                        <a href="https://guarapuava.pr.gov.br/noticias/caravana-de-natal-da-coca-cola-encantou-familias-e-iluminou-as-ruas-de-guarapuava/">
+                            <span class="thumbnail" style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-24-at-21.41.39-300x225.jpeg');"></span>
+                        </a>
+
+                        <div class="conteudo">
+                            <a href="https://guarapuava.pr.gov.br/noticias/caravana-de-natal-da-coca-cola-encantou-familias-e-iluminou-as-ruas-de-guarapuava/">
+                                <h2>Caravana de Natal da Coca-Cola encantou famílias e iluminou as ruas de Guarapuava</h2>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="item ">
+                        <a href="https://guarapuava.pr.gov.br/noticias/acao-do-poupatempo-leva-atendimento-para-a-casa-da-leitura-e-facilita-acesso-a-nova-carteira-de-identidade-nacional/">
+                            <span class="thumbnail" style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/WhatsApp-Image-2026-11-24-at-16.14.56-1-e1795607369878-300x205.jpeg');"></span>
+                        </a>
+
+                        <div class="conteudo">
+                            <a href="https://guarapuava.pr.gov.br/noticias/acao-do-poupatempo-leva-atendimento-para-a-casa-da-leitura-e-facilita-acesso-a-nova-carteira-de-identidade-nacional/">
+                                <h2>Ação do Poupatempo leva atendimento para a Casa da Leitura no Distrito da Palmeirinha e facilita acesso à nova Carteira de Identidade Nacional</h2>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="item ">
+                        <a href="https://guarapuava.pr.gov.br/noticias/guarapuava-e-reconhecida-pelo-parana-por-acoes-voltadas-a-valorizacao-da-pessoa-idosa/">
+                            <span class="thumbnail" style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/2588fdc6-3819-48ef-937d-c225ebefb125-1-e1795559971364-300x201.jpg');"></span>
+                        </a>
+
+                        <div class="conteudo">
+                            <a href="https://guarapuava.pr.gov.br/noticias/guarapuava-e-reconhecida-pelo-parana-por-acoes-voltadas-a-valorizacao-da-pessoa-idosa/">
+                                <h2>Guarapuava é reconhecida pelo Paraná por ações voltadas à valorização da pessoa idosa</h2>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="item ">
+                        <a href="https://guarapuava.pr.gov.br/noticias/uma-rede-preparada-pode-mudar-historias-guarapuava-fortalece-atendimento-e-protecao-as-mulheres/">
+                            <span class="thumbnail" style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/CAPACITACAO-MARIA-DA-PENHA-1-300x169.jpg');"></span>
+                        </a>
+
+                        <div class="conteudo">
+                            <a href="https://guarapuava.pr.gov.br/noticias/uma-rede-preparada-pode-mudar-historias-guarapuava-fortalece-atendimento-e-protecao-as-mulheres/">
+                                <h2>Uma rede preparada pode mudar histórias: Guarapuava fortalece atendimento e proteção às mulheres</h2>
+                            </a>
+                        </div>
+                    </div>
+                                    <div class="item ">
+                        <a href="https://guarapuava.pr.gov.br/noticias/professores-da-rede-municipal-participam-de-seminario-de-encerramento-do-pro-leei-2026/">
+                            <span class="thumbnail" style="background-image: url('https://guarapuava.pr.gov.br/wp-content/uploads/2026/11/pro-leei-encerramento-6-300x225.jpg');"></span>
+                        </a>
+
+                        <div class="conteudo">
+                            <a href="https://guarapuava.pr.gov.br/noticias/professores-da-rede-municipal-participam-de-seminario-de-encerramento-do-pro-leei-2026/">
+                                <h2>Professores da rede municipal participam de seminário de encerramento do Pro-LEEI 2026 </h2>
+                            </a>
+                        </div>
+                    </div>
+                            </div>
+        </div>
+        <div class="ver-todas">
+            <a href="https://guarapuava.pr.gov.br/noticias/"><span></span> Ver todas as notícias</a>
+        </div>
+    </div>
+</section>
+<section class="banner parallax banner-historia">
+        <span href="#" class="item"
+              style="background-image: url('https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/home-historia.jpg');"></span>
+
+    <div class="conteudo">
+        <div class="container">
+            <h3>Conheça Guarapuava</h3>
+            <p>História, fatos e utilidades para você amar essa cidade da mesma forma que nós a amamos</p>
+            <a href="https://guarapuava.pr.gov.br/conheca-guarapuava/">Saiba Mais</a>
+        </div>
+    </div>
+</section>
+
+<section class="servicos-home" id="servicos">
+    <div class="descricao">
+        <div class="container">
+            <h3>Serviços</h3>
+
+            <p><p>Resumo sobre os serviços</p>
+</p>
+
+            <div class="row">
+                <div class="col-xs-6">
+                    <a href="#servicos-home-1" class="item btn-collapse" role="button" data-toggle="collapse"
+                       aria-expanded="false" aria-controls="servicos-home-1">
+                        <span>Serviços para empresa</span>
+                    </a>
+                </div>
+                <div class="col-xs-6">
+                    <a href="#servicos-home-2" class="item btn-collapse collapsed" role="button"
+                       data-toggle="collapse" aria-expanded="false" aria-controls="servicos-home-2">
+                        <span>Serviços para comunidade</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-servicos">
+        <div class="container">
+            <div class="collapse in" id="servicos-home-1">
+                <div class="itens">
+                                            <div class="item">
+														<a href="https://guarapuava.atende.net/autoatendimento/servicos/acesso-ao-sistema-fiscal-web-novo/detalhar/1" target="_blank">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-2.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-2.png"
+                                     alt="Acesso NFS-E/DEISS" data-eio="p"></picture>
+                                <p>Acesso NFS-E/DEISS</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+														<a href="https://guarapuava.pr.gov.br/servicos-empresa/alvara-taxas/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-4.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-4.png"
+                                     alt="Alvará/Taxas" data-eio="p"></picture>
+                                <p>Alvará/Taxas</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+														<a href="https://guarapuava.atende.net/cidadao" target="_blank">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-10.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-10.png"
+                                     alt="Atende.net (Portal de Serviços)" data-eio="p"></picture>
+                                <p>Atende.net (Portal de Serviços)</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+														<a href="https://guarapuava.atende.net/autoatendimento/servicos/certidao-negativa-de-debitos/detalhar/1" target="_blank">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-5.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-5.png"
+                                     alt="Certidão Negativa de Débito" data-eio="p"></picture>
+                                <p>Certidão Negativa de Débito</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+														<a href="https://guarapuava.pr.gov.br/wp-content/uploads/2025/12/Novos-itens.xlsx" target="_blank">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2020/08/icone_Analise-de-Projetos.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2020/08/icone_Analise-de-Projetos.png"
+                                     alt="DESDOBRAMENTO DOS SUBITENS PARA NFS-e." data-eio="p"></picture>
+                                <p>DESDOBRAMENTO DOS SUBITENS PARA NFS-e.</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+														<a href="https://guarapuava.atende.net/autoatendimento/servicos/extrato-do-contribuinte" target="_blank">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-2.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-2.png"
+                                     alt="Emissão Geral de Guias" data-eio="p"></picture>
+                                <p>Emissão Geral de Guias</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+														<a href="http://www.geoguarapuava.com.br/" target="_blank">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2023/07/Asset-2Geopuava.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2023/07/Asset-2Geopuava.png"
+                                     alt="Geo Guarapuava" data-eio="p"></picture>
+                                <p>Geo Guarapuava</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+														<a href="https://guarapuava.pr.gov.br/servicos-empresa/locais-de-incidencia-issqn/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2020/03/iconePortalCidadao.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2020/03/iconePortalCidadao.png"
+                                     alt="Locais de Incidência ISSQN" data-eio="p"></picture>
+                                <p>Locais de Incidência ISSQN</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+														<a href="https://guarapuava.pr.gov.br/servicos-empresa/sim-poa-sisbi/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2023/08/Ícone-SIM-POA.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2023/08/Ícone-SIM-POA.png"
+                                     alt="SIM/POA SISBI" data-eio="p"></picture>
+                                <p>SIM/POA SISBI</p>
+                            </a>
+                        </div>
+                    
+                </div>
+            </div>
+            <div class="collapse" id="servicos-home-2">
+                <div class="itens">
+                                            <div class="item">
+                            								<a href="https://guarapuava.atende.net" target="_blank">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-10.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-10.png"
+                                     alt="Atende.net (Portal de Serviços)" data-eio="p"></picture>
+                                <p>Atende.net (Portal de Serviços)</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/banco-de-projetos/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2020/04/icone-AR-CIDADAO.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2020/04/icone-AR-CIDADAO.png"
+                                     alt="Banco de Projetos" data-eio="p"></picture>
+                                <p>Banco de Projetos</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.atende.net/autoatendimento/servicos/certidao-negativa-de-debitos/detalhar/1" target="_blank">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-5.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-5.png"
+                                     alt="Certidão Negativa de Débito" data-eio="p"></picture>
+                                <p>Certidão Negativa de Débito</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/chamamento-subvencao-social/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2024/07/Icone-subvencao-social.png.webp"  type="image/webp"><img width="1080" height="1019" src="https://guarapuava.pr.gov.br/wp-content/uploads/2024/07/Icone-subvencao-social.png"
+                                     alt="Chamamento Subvenção Social" data-eio="p"></picture>
+                                <p>Chamamento Subvenção Social</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/cultura-viva/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2024/10/Cultura-Viva.png.webp"  type="image/webp"><img width="608" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2024/10/Cultura-Viva.png"
+                                     alt="Cultura Viva" data-eio="p"></picture>
+                                <p>Cultura Viva</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/cultura-viva-2026/">
+							                                <img src=""
+                                     alt="Cultura Viva 2026">
+                                <p>Cultura Viva 2026</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/coleta-seletiva-e-ecopontos/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2021/04/Botao_-_Programa_Jogue_Certo-01.png.webp"  type="image/webp"><img width="506" height="506" src="https://guarapuava.pr.gov.br/wp-content/uploads/2021/04/Botao_-_Programa_Jogue_Certo-01.png"
+                                     alt="Ecopontos" data-eio="p"></picture>
+                                <p>Ecopontos</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/editais-da-cultura/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2020/04/icone-AR-CIDADAO.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2020/04/icone-AR-CIDADAO.png"
+                                     alt="Editais da Cultura" data-eio="p"></picture>
+                                <p>Editais da Cultura</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.atende.net/autoatendimento/servicos/extrato-do-contribuinte" target="_blank">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-2.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-2.png"
+                                     alt="Emissão Geral de Guias" data-eio="p"></picture>
+                                <p>Emissão Geral de Guias</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/iluminacao-publica/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2020/02/iconeIluminacaoPublica.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2020/02/iconeIluminacaoPublica.png"
+                                     alt="Iluminação Pública" data-eio="p"></picture>
+                                <p>Iluminação Pública</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/iss-obras/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-3.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-3.png"
+                                     alt="ISS Construção" data-eio="p"></picture>
+                                <p>ISS Construção</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://alistamento.eb.mil.br/" target="_blank">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2023/07/Asset-4Soldado-OFC.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2023/07/Asset-4Soldado-OFC.png"
+                                     alt="Junta Militar" data-eio="p"></picture>
+                                <p>Junta Militar</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/paulogustavo/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2024/05/Lei-Paulo-Gustavo.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2024/05/Lei-Paulo-Gustavo.png"
+                                     alt="Lei Paulo Gustavo" data-eio="p"></picture>
+                                <p>Lei Paulo Gustavo</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/lei-paulo-gustavo-2024/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2024/05/Lei-Paulo-Gustavo.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2024/05/Lei-Paulo-Gustavo.png"
+                                     alt="Lei Paulo Gustavo 2024" data-eio="p"></picture>
+                                <p>Lei Paulo Gustavo 2024</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/politica-nacional-aldir-blanc-pnab/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2024/05/Aldir-Blanc.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2024/05/Aldir-Blanc.png"
+                                     alt="Política Nacional Aldir Blanc (PNAB)" data-eio="p"></picture>
+                                <p>Política Nacional Aldir Blanc (PNAB)</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/politica-nacional-aldir-blanc-pnab-2025/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2025/06/Aldir-Blanc-150x150-1.png.webp"  type="image/webp"><img width="150" height="150" src="https://guarapuava.pr.gov.br/wp-content/uploads/2025/06/Aldir-Blanc-150x150-1.png"
+                                     alt="Política Nacional Aldir Blanc (PNAB) - 2025" data-eio="p"></picture>
+                                <p>Política Nacional Aldir Blanc (PNAB) - 2025</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/politica-nacional-aldir-blanc-pnab-2026/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2025/06/Aldir-Blanc-150x150-1.png.webp"  type="image/webp"><img width="150" height="150" src="https://guarapuava.pr.gov.br/wp-content/uploads/2025/06/Aldir-Blanc-150x150-1.png"
+                                     alt="Política Nacional Aldir Blanc (PNAB) – 2026" data-eio="p"></picture>
+                                <p>Política Nacional Aldir Blanc (PNAB) – 2026</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/porteira-adentro/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2021/09/icon-servicos-10.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2021/09/icon-servicos-10.png"
+                                     alt="Porteira Adentro" data-eio="p"></picture>
+                                <p>Porteira Adentro</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/solicitacao-isencao-imunidade/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2021/09/icon-servicos-10.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2021/09/icon-servicos-10.png"
+                                     alt="Solicitação de Isenção/Imunidade e Documentos Necessários" data-eio="p"></picture>
+                                <p>Solicitação de Isenção/Imunidade e Documentos Necessários</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/tabela-de-ufm/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-6.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-6.png"
+                                     alt="Tabela de UFM" data-eio="p"></picture>
+                                <p>Tabela de UFM</p>
+                            </a>
+                        </div>
+                                            <div class="item">
+                            								<a href="https://guarapuava.pr.gov.br/servicos-comunidade/taxas/">
+							                                <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-4.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-servicos-4.png"
+                                     alt="Taxas" data-eio="p"></picture>
+                                <p>Taxas</p>
+                            </a>
+                        </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="box-outros">
+        <div class="container">
+            <div class="itens">
+                                    <div class="item">
+                         								<a href="https://guarapuava.pr.gov.br/servicos/agencia-do-empreendedor/">
+							                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-outros-4.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-outros-4.png"
+                                 alt="Agência do Empreendedor" data-eio="p"></picture>
+
+                            <p>Agência do Empreendedor</p>
+                        </a>
+                    </div>
+                                    <div class="item">
+                         								<a href="https://guarapuava.pr.gov.br/servicos/agencia-do-trabalhador/">
+							                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-outros-6.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-outros-6.png"
+                                 alt="Agência do Trabalhador" data-eio="p"></picture>
+
+                            <p>Agência do Trabalhador</p>
+                        </a>
+                    </div>
+                                    <div class="item">
+                         								<a href="https://guarapuava.pr.gov.br/servicos/banco-de-projetos-cmdi/">
+							                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2023/07/Asset-1CMDPI.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2023/07/Asset-1CMDPI.png"
+                                 alt="Banco de Projetos CMDPI" data-eio="p"></picture>
+
+                            <p>Banco de Projetos CMDPI</p>
+                        </a>
+                    </div>
+                                    <div class="item">
+                         								<a href="https://guarapuava.pr.gov.br/servicos/banco-de-projetos-comdica/">
+							                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2019/12/icone_banco_de_projetos-01-01-1.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2019/12/icone_banco_de_projetos-01-01-1.png"
+                                 alt="Banco de Projetos COMDICA" data-eio="p"></picture>
+
+                            <p>Banco de Projetos COMDICA</p>
+                        </a>
+                    </div>
+                                    <div class="item">
+                         								<a href="https://guarapuava.pr.gov.br/servicos/carteirinha-do-autista/">
+							                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2020/02/icone-Carteirinha-do-Autista.png.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2020/02/icone-Carteirinha-do-Autista.png"
+                                 alt="Carteirinha do Autista" data-eio="p"></picture>
+
+                            <p>Carteirinha do Autista</p>
+                        </a>
+                    </div>
+                                    <div class="item">
+                         								<a href="https://guarapuava.pr.gov.br/servicos/obituario/">
+							                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2022/04/icon_obituario.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2022/04/icon_obituario.png"
+                                 alt="Obituário" data-eio="p"></picture>
+
+                            <p>Obituário</p>
+                        </a>
+                    </div>
+                                    <div class="item">
+                         								<a href="https://guarapuava.pr.gov.br/servicos/ouvidoria-sugestoes-dicas-e-reclamacoes/">
+							                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-outros-9.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/07/icon-outros-9.png"
+                                 alt="Ouvidoria: Sugestões, Dicas e Reclamações" data-eio="p"></picture>
+
+                            <p>Ouvidoria: Sugestões, Dicas e Reclamações</p>
+                        </a>
+                    </div>
+                                    <div class="item">
+                         								<a href="https://guarapuava.atende.net/subportal/servidores" target="_blank">
+							                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2017/06/icon-outros-7.png.webp"  type="image/webp"><img width="84" height="84" src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/06/icon-outros-7.png"
+                                 alt="Portal do Servidor" data-eio="p"></picture>
+
+                            <p>Portal do Servidor</p>
+                        </a>
+                    </div>
+                                    <div class="item">
+                         								<a href="https://guarapuava.pr.gov.br/servicos/procon-digital/">
+							                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/uploads/2021/05/icone-procon.jpg.webp"  type="image/webp"><img width="1080" height="1080" src="https://guarapuava.pr.gov.br/wp-content/uploads/2021/05/icone-procon.jpg"
+                                 alt="PROCON Digital" data-eio="p"></picture>
+
+                            <p>PROCON Digital</p>
+                        </a>
+                    </div>
+                            </div>
+        </div>
+    </div>
+</section>
+<!-- audio -->
+    <audio id="home-play-sound" class="home-play-sound" controls loop>
+        <source src="https://guarapuava.pr.gov.br/wp-content/uploads/2017/06/Hino-guarapuava.mp3">
+    </audio>
+    <script type="rocketlazyloadscript" data-rocket-type="text/javascript">window.addEventListener('DOMContentLoaded', function() {
+        /* $(document).ready(function () {
+             var audioplayer = document.getElementById("home-play-sound");
+             $(".btn-audio-on").click(function () {
+                 audioplayer.pause();
+                 $(".btn-audio-on").hide();
+                 $(".btn-audio-off").show();
+             });
+             $(".btn-audio-off").click(function () {
+                 audioplayer.play();
+                 $(".btn-audio-off").hide();
+                 $(".btn-audio-on").show();
+             });
+         });
+         //opções menu habilitar/desabilitar audio
+         $(".header-top .container ul").append(
+             $("<li></li>").append($("<button class=\"btn-audio-on\" ></button>")).append($("<button class=\"btn-audio-off\" style=\"display: none\"></button>"))
+         );*/
+    });</script>
+<footer>
+    <div class="scroll-top">
+        <a href="javascript:void(0);">
+            <span class="glyphicon">&#xe113;</span>
+        </a>
+    </div>
+    <div class="menu" id="menu-rodape">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-3">
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                                                    <li class="nav-item active">
+                                <a id="footer-menu-tab-0" data-toggle="tab" href="#footer-menu-0" role="tab" aria-controls="footer-menu-0" aria-selected="true">Administração</a>
+                            </li>
+                                                    <li class="nav-item ">
+                                <a id="footer-menu-tab-1" data-toggle="tab" href="#footer-menu-1" role="tab" aria-controls="footer-menu-1" aria-selected="true">Mídias e Documentos</a>
+                            </li>
+                                                    <li class="nav-item ">
+                                <a id="footer-menu-tab-2" data-toggle="tab" href="#footer-menu-2" role="tab" aria-controls="footer-menu-2" aria-selected="true">Serviços Gerais</a>
+                            </li>
+                                                    <li class="nav-item ">
+                                <a id="footer-menu-tab-3" data-toggle="tab" href="#footer-menu-3" role="tab" aria-controls="footer-menu-3" aria-selected="true">Serviços para Empresa</a>
+                            </li>
+                                                    <li class="nav-item ">
+                                <a id="footer-menu-tab-4" data-toggle="tab" href="#footer-menu-4" role="tab" aria-controls="footer-menu-4" aria-selected="true">Serviços para Comunidade</a>
+                            </li>
+                                            </ul>
+                </div>
+                <div class="col-xs-12 col-sm-8 col-sm-offset-1">
+                    <div class="tab-content" id="myTabContent">
+                                                    <div class="tab-pane fade active in" id="footer-menu-0" role="tabpanel" aria-labelledby="footer-menu-tab-0">
+                                <nav>
+                                    <ul>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/prefeito-municipal/" target="">Prefeito Municipal</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/vice-prefeito/" target="">Vice-Prefeito</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/administracao/" target="">Administração</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/agricultura/" target="">Agricultura</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/assistencia-social/" target="">Assistência e Desenvolvimento Social</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/ciencia-tecnologia-e-inovacao/" target="">Ciência, tecnologia e inovação</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/comunicacao/" target="">Comunicação</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/cultura/" target="">Cultura</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/educacao/" target="">Educação</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/esporte-e-recreacao/" target="">Esportes e Recreação</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/financas/" target="">Finanças</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/habitacao/" target="">Habitação</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/desenvolvimento-economico-e-inovacao/" target="">Desenvolvimento Econômico </a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/meio-ambiente/" target="">Meio Ambiente</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/ouvidoria-geral/" target="">Ouvidoria Geral</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/planejamento-e-urbanismo/" target="">Planejamento e Urbanismo</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/politicas-publicas-para-mulheres/" target="">Políticas Públicas Para Mulheres</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/procuradoria/" target="">Procuradoria</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/saude/" target="">Saúde</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/secretaria-executiva/" target="">Secretaria Executiva</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/obras/" target="">Obras</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/transito-e-transporte/" target="">Trânsito e Transporte</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-direta/turismo/" target="">Turismo </a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-indireta/guarapuava-prev/" target="">Guarapuava Prev</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-indireta/surg/" target="">Surg</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-indireta/fundacao-proteger/" target="">Fundação Proteger</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/administracao-indireta/procon/" target="">Procon</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                                                    <div class="tab-pane fade " id="footer-menu-1" role="tabpanel" aria-labelledby="footer-menu-tab-1">
+                                <nav>
+                                    <ul>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/midias/" target="">Mídias</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/boletins-oficiais/" target="">Boletins Oficias</a></li>
+                                                                                    <li><a href="https://pmg.pr.gov.br/legislacao/" target="_blank">Legislação</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/portal-da-transparencia/licitacoes/" target="">Editais de Licitação</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos/concursos-2/" target="">Editais de Concurso</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/portal-da-transparencia/" target="">Transparência</a></li>
+                                                                                    <li><a href="" target=""></a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/portal-da-transparencia/relatorios-e-publicacoes/" target="">Relatórios e Publicações</a></li>
+                                                                                    <li><a href="" target=""></a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                                                    <div class="tab-pane fade " id="footer-menu-2" role="tabpanel" aria-labelledby="footer-menu-tab-2">
+                                <nav>
+                                    <ul>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos/agencia-do-empreendedor/" target="">Agência do empreendedor</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos/agencia-do-trabalhador/" target="">Agência do Trabalhador</a></li>
+                                                                                    <li><a href="https://guarapuava.pr.gov.br/servicos/banco-de-projetos-cmdi/" target="">Banco de Projetos CMDPI</a></li>
+                                                                                    <li><a href="https://guarapuava.pr.gov.br/servicos/banco-de-projetos-comdica/" target="">Banco de Projetos COMDICA</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos/carteirinha-do-autista/" target="">Carteirinha do Autista</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos/obituario/" target="">Obituário</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos/ouvidoria-sugestoes-dicas-e-reclamacoes/" target="">Ouvidoria: Sugestões, Dicas e Reclamações</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos/portal-servidor/" target="">Portal do Servidor</a></li>
+                                                                                    <li><a href="https://guarapuava.pr.gov.br/servicos/procon-digital/" target="">PROCON Digital</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                                                    <div class="tab-pane fade " id="footer-menu-3" role="tabpanel" aria-labelledby="footer-menu-tab-3">
+                                <nav>
+                                    <ul>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-empresa/acesso-nfs-edeiss/" target="">Acesso NFS-E/DEISS</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-empresa/alvara-taxas/" target="">Alvará/Taxas</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-empresa/certidao-negativa-de-debito/" target="">Certidão Negativa de Débito</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-empresa/geracao-de-iss-deiss/" target="">Declaração ISS/DEISS</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-empresa/iss-fixo/" target="">ISS Fixo</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-empresa/protocolo-web/" target="">Protocolo Web</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                                                    <div class="tab-pane fade " id="footer-menu-4" role="tabpanel" aria-labelledby="footer-menu-tab-4">
+                                <nav>
+                                    <ul>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-comunidade/certidao-negativa-de-debito/" target="">Certidão negativa de Débito</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-comunidade/emissao-de-segunda-via/" target="">Guias de Recolhimento</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-comunidade/iluminacao-publica/" target="">Iluminação Pública</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-comunidade/iss-obras/" target="">ISS Construção</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-comunidade/negativa-de-itbi/" target="">Negativa de ITBI</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-comunidade/protocolo-web/" target="">Protocolo Web</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-comunidade/tabela-de-ufm/" target="">Tabela de UFM</a></li>
+                                                                                    <li><a href="https://www.guarapuava.pr.gov.br/servicos-comunidade/taxas/" target="">Taxas</a></li>
+                                                                            </ul>
+                                </nav>
+                            </div>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="container">
+            <div class="box">
+                <div class="social col-xs-12 col-sm-4 col-md-3">
+                    <h5>Siga-nos</h5>
+                                                                <a target="_blank" href="https://www.instagram.com/guarapuava_pref/">
+                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/social-instagram.png.webp"  type="image/webp"><img width="64" height="64" src="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/social-instagram.png" alt="Instagram" data-eio="p"></picture>
+                        </a>
+                                                                <a target="_blank" href="https://www.facebook.com/PrefeituraGuarapuava/">
+                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/social-facebook.png.webp"  type="image/webp"><img width="64" height="64" src="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/social-facebook.png" alt="Facebook" data-eio="p"></picture>
+                        </a>
+                                                                <a target="_blank" href="https://t.me/prefeituradeguarapuava">
+                            <picture><source srcset="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/social-telegram.png.webp"  type="image/webp"><img width="64" height="64" src="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/imgs/social-telegram.png" alt="Twitter" data-eio="p"></picture>
+                        </a>
+                                    </div>
+                <div class="contato-info col-xs-12 col-sm-8 col-md-9">
+                    <h5>Contato</h5>
+                    <div class="info row">
+                        <div class="col-xs-12 col-sm-4 col-md-3">
+								<span class="item cidade">
+									<a href="tel:4231421000">42 3142-1000</a>
+								</span>
+                        </div>
+                        <div class="col-xs-12 col-sm-8 col-md-5">
+								<span class="item telefone">
+								Rua Brigadeiro Rocha, 2777, Centro | 85010-210 | Guarapuava – Pr								</span>
+                        </div>
+                        <div class="col-xs-12 col-md-4">
+								<span class="item email">
+								Horário de atendimento: 13h - 17h
+								<!-- Atendimento presencial suspenso -->
+								</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="k13">
+        <div class="container">
+            <a href="https://k13.com.br/" target="_blank"></a>
+        </div>
+    </div>
+</footer>
+
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/lib/jquery-3.2.1.min.js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://guarapuava.pr.gov.br/wp-content/cache/min/1/wp-content/themes/prefeitura/assets/lib/fancybox/source/jquery.fancybox.pack.js?ver=1787066283" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/lib/bootstrap.min.js" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://guarapuava.pr.gov.br/wp-content/cache/min/1/wp-content/themes/prefeitura/assets/a11y-toolbar-accessible/lib/js/a11y-toolbar.js?ver=1787066283" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://guarapuava.pr.gov.br/wp-content/cache/min/1/wp-content/themes/prefeitura/assets/a11y-toolbar-accessible/lib/js/modernizr.fontface-generatedcontent.js?ver=1787066283" defer></script>
+<script type="rocketlazyloadscript" data-minify="1" data-rocket-type="text/javascript" data-rocket-src="https://guarapuava.pr.gov.br/wp-content/cache/min/1/wp-content/themes/prefeitura/assets/a11y-toolbar-accessible/lib/js/afontgarde.js?ver=1787066283" defer></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="https://guarapuava.pr.gov.br/wp-content/themes/prefeitura/assets/js/1613756303888-scripts.min.js" defer></script>
+<script type="rocketlazyloadscript" data-rocket-src='https://www.google.com/recaptcha/api.js'></script>
+<script type="rocketlazyloadscript" data-rocket-type="text/javascript" data-rocket-src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5e5f9f8436f220ce" defer></script>
+
+<script type="rocketlazyloadscript">
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610e85959187b75',t:'MTc5NTc4MDE0Ng=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610e85959187b75',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+
+<!-- This website is like a Rocket, isn't it? Performance optimized by WP Rocket. Learn more: https://wp-rocket.me - Debug: cached@1795777514 -->

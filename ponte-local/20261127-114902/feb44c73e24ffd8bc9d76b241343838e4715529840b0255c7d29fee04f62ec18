@@ -1,0 +1,2150 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de São Jerônimo</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de São Jerônimo.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de São Jerônimo' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://saojeronimo.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://saojeronimo.rs.gov.br/uploads/config/30501/sao_je.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='500'>
+            <meta property='og:image:height' content='641'>
+            <meta property='og:site_name' content='saojeronimo.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de São Jerônimo.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de São Jerônimo'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de São Jerônimo.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://saojeronimo.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://saojeronimo.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://saojeronimo.rs.gov.br/site/custom/default/css/color/c_saogeronimo.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://saojeronimo.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://saojeronimo.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://saojeronimo.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://saojeronimo.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://saojeronimo.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://saojeronimo.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://saojeronimo.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://saojeronimo.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-4TJZF529WB"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-4TJZF529WB');
+    });
+</script>
+        <link rel="shortcut icon" href="https://saojeronimo.rs.gov.br/uploads/config/30511/icone.ico" />    
+	    <style>
+.header05 #topBar .logo img {
+    height: auto;
+    width: 400px;
+}
+
+        .data-container {
+            background-color: #d3d3d3; /* Cinza claro */
+            padding: 10px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+</style>
+
+    </head>
+	    <body class="smoothscroll wide home5_teutonia2" data-background=""><a href="https://saojeronimo.rs.gov.br/cdn-cgi/content?id=oIg7ACn.aSSMKUMht7w4jAwb6LCjRj8ygkcUOUiwvBs-1795780231.2420661-1.2.1.1-94rQbDVG1gLsR6HdXH9xqgfwvX_vvL0sD5o5Dp4Z2APemEYmIBoxgJE7q31lG7Qy" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	        <div id="selo">
+            <map name="maplink-selo" class="map-oselo"><area shape="circle" alt="Link da Campanha Transparência" title="Selo da Transparência" coords="57,59,55" href="https://radardatransparencia.atricon.org.br/painel-6/#q=S%C3%A3o%20Jer%C3%B4nimo&e=4678" target="_blank" /></map>
+            <img alt="selo transparência" class="img-responsive oselo" usemap="#maplink-selo" title="Selo da Transparência" src="//visaoi.com.br/img/selo-tp-prata-2026.png" />
+        </div>
+        
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <div id="header" class='header05' role='banner'>
+  <!-- Top Bar -->
+  <!-- class="sticky" for sticky menu -->
+  <header id="topBar">
+    <div style="background-color:rgb(var(--color-primary))">
+    <div class="container">
+                    <div class="pull-left fsize13 hide_mobile" style="height: 40px;">
+              <div class="block text-right">
+                  <p style="line-height: 38px; color: #fff">São Jerônimo, 27 de novembro de 2026.</p>
+              </div>
+          </div>
+      </div>
+    </div>
+    <div class="container">
+      <!-- previsão do tempo -->
+      <div class="col-sm-4 col-md-4">
+                <div class="hidden-xs col-md-6 styleBackgroundLight nopadding previsao-topo hidden" style="border-radius: 0 0 0 20px;border-right:#ddd 3px solid;float:right;">
+          <div class="hidden-sm col-md-offset-1 col-md-3 nopadding-right mt20">
+            <i class="icone-temp m0 fsize25"></i>
+          </div>
+          <div class="col-md-8">
+            <p class="mt10 mb10"><strong><span class='min-temp'></span>&deg;C&nbsp;</strong><small>MIN</small> <strong><span class='max-temp'></span>&deg;C&nbsp;</strong><small>MAX</small></p>
+          </div>
+        </div>
+                <div class="col-md-12 hidden-xs hidden-sm mt5 nopadding-right" role='search'>
+          <form id="pesquisa" class="search nopadding" method="get" action="https://saojeronimo.rs.gov.br/pesquisa">
+			<label for="searchbar-desktop" class="sr-only">Pesquisar:</label>
+            <input id="searchbar-desktop" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+            <button type="submit" class="btn btn-default text-center search-focus" title="Pesquisar" aria-label="Pesquisar"><i class="fa fa-search pr0 styleColor"></i></button>
+          </form>
+        </div>
+      </div>
+
+      <!-- logo -->
+      <div class="col-xs-offset-2 col-xs-7 col-sm-offset-0 col-sm-4 col-md-offset-0 col-md-4 text-center">
+                      <h1 class="nomargin appear-animation" data-animation="fadeInLeft">
+              <a class="logo" href="https://saojeronimo.rs.gov.br">
+                  <img class="img-responsive" src="https://saojeronimo.rs.gov.br/uploads/config/30897/Carto_de_Visita_Tatuador.png" alt="Logo da Prefeitura" />              </a>
+            </h1>
+                  </div>
+
+      <!-- links cabeçalho -->
+                <div class="col-sm-4 featured-box-minimal hidden-xs hidden-sm">
+                              <div class="col-md-6 text-center m8h0 mb0">
+                  <a href="https://transparencia.betha.cloud/#/hxYoKDV5KXWMsm61pHa6Aw==" target="_blank" onclick=""><i class='fa fa-search'></i>                    <p class="nomargin elipsis similar-h5 fontw300">Portal da Transparência</p>
+                  </a>
+                </div>
+                                <div class="col-md-6 text-center m8h0 mb0">
+                  <a href="https://e-gov.betha.com.br/e-nota/login.faces" target="_blank" onclick=""><i class='fa fa-dollar'></i>                    <p class="nomargin elipsis similar-h5 fontw300">e-NOTA</p>
+                  </a>
+                </div>
+                                <div class="col-md-6 text-center m8h0 mb0">
+                  <a href="/ouvidoria" target="_self" onclick=""><i class='fa fa-headphones'></i>                    <p class="nomargin elipsis similar-h5 fontw300">Ouvidoria</p>
+                  </a>
+                </div>
+                                <div class="col-md-6 text-center m8h0 mb0">
+                  <a href="https://webmail.saojeronimo.rs.gov.br/" target="_blank" onclick=""><i class='fa fa-envelope'></i>                    <p class="nomargin elipsis similar-h5 fontw300">Webmail</p>
+                  </a>
+                </div>
+                                <div class="col-md-6 text-center m8h0 mb0">
+                  <a href="https://leismunicipais.com.br/prefeitura/rs/saojeronimo" target="_blank" onclick=""><i class='fa fa-gavel'></i>                    <p class="nomargin elipsis similar-h5 fontw300">Leis Municipais</p>
+                  </a>
+                </div>
+                          </div>
+              </div>
+  </header>
+  <!-- /Top Bar -->
+
+  <!-- Top Nav -->
+  <header id="topNav">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm" method="get" action="https://saojeronimo.rs.gov.br/pesquisa" role='search'>
+	  	<label for="searchbar-mobile" class="sr-only">Pesquisar:</label>
+        <input id="searchbar-mobile" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar">
+        <button type="submit" class="fa fa-search search-focus" title="Pesquisar" aria-label="Pesquisar"></button>
+      </form>
+      <!-- /Pesquisa -->
+
+      <!-- Mobile Menu Button -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <!-- Top Nav -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li><a href='https://saojeronimo.rs.gov.br'>Início</a></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/3/?dados-do-municipio.html'>Dados do Município</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1003/?estrutura.html'>Estrutura</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1051/?travessia-sao-jeronimo-x-triunfo.html'>Travessia São Jerônimo x Triunfo</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1097/?mapa-municipio-sao-jeronimo.html'>Mapa Município São Jerônimo</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-4"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/servico/id/1/?servicos-ao-empreendedor.html'>Serviços ao Empreendedor</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/servico/id/4/?servicos-ao-servidor-publico.html'>Serviços ao Servidor Público</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://saojeronimo.rs.gov.br/uploads/config/30501/sao_je.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51)  9 9521-6325</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 9:00 às 12:00 e das 13:00 às 16:00</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-2"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-2"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/1025/?chefe-de-gabinete.html'>Chefe de Gabinete </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/105/?secretaria-de-infraestrutura-e-administracao.html'>Secretaria de Infraestrutura e Administração</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/111/?secretaria-do-esporte-lazer-cultura-e-turismo.html'>Secretaria do Esporte, Lazer, Cultura e Turismo</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/109/?secretaria-do-planejamento-desenvolvimento-economico-e-mobilidade-urbana.html'>Secretaria do Planejamento, Desenvolvimento Econômico e Mobilidade Urbana </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/106/?secretaria-municipal-da-fazenda.html'>Secretaria Municipal da Fazenda</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/114/?secretaria-municipal-da-saude.html'>Secretaria Municipal da Saúde</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/115/?secretaria-municipal-de-agricultura.html'> Secretaria Municipal de Agricultura</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/1004/?secretaria-municipal-de-assistencia-social.html'>Secretaria Municipal de Assistência Social</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/1003/?secretaria-municipal-de-defesa-civil.html'>Secretaria Municipal de Defesa Civil </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/110/?secretaria-municipal-de-educacao.html'>Secretaria Municipal de Educação</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/1024/?secretaria-municipal-de-governo.html'>Secretaria Municipal de Governo</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/1026/?secretaria-municipal-de-meio-ambiente-e-protecao-e-bem-estar-animal.html'>Secretaria Municipal de Meio Ambiente e Proteção e Bem Estar Animal</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/116/?secretaria-municipal-de-obras--saneamento-e-servicos-urbanos.html'>Secretaria Municipal de Obras , Saneamento e Serviços Urbanos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/secretaria/id/1001/?secretaria-municipal-do-interior.html'>Secretaria Municipal do Interior</a></li></ul></div><div class="col-md-2"><p class="menu-category">Subsecretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/subsecretaria/id/118/?departamento-de-transito.html'>Departamento de Trânsito</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/subsecretaria/id/1023/?ouvidoria.html'>Ouvidoria</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/subsecretaria/id/1006/?procuradoria.html'>Procuradoria </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/subsecretaria/id/1020/?unidade-de-controle-interno.html'>Unidade de Controle Interno</a></li></ul></div><div class="col-md-2"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1012/?conselho-de-alimentacao-escolar.html'>Conselho de Alimentação Escolar </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1029/?conselho-do-fundeb.html'>Conselho do FUNDEB</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1009/?conselho-municipal-de-assistencia-social.html'>Conselho Municipal de Assistência Social</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1008/?conselho-municipal-de-defesa-do-meio-ambiente.html'>Conselho Municipal de Defesa do Meio Ambiente </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1013/?conselho-municipal-de-politicas-culturais.html'>Conselho Municipal de Políticas Culturais </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1007/?conselho-municipal-de-saude.html'>Conselho Municipal de Saúde</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1015/?conselho-municipal-de-transito.html'>Conselho Municipal de Transito</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1028/?conselho-municipal-de-turismo.html'>Conselho Municipal de Turismo</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1014/?conselho-municipal-direitos-da-crianca-e-do-adolescente.html'>Conselho Municipal Direitos da Criança e do Adolescente</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1011/?conselho-municipal-do-idoso.html'>Conselho Municipal do Idoso</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/conselho/id/1010/?conselho-tutelar.html'>Conselho Tutelar</a></li></ul></div><div class="col-md-2"><p class="menu-category">Outros Departamentos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/departamento/id/1017/?coordenacao-de-licitacoes-e-contratos.html'>Coordenação de Licitações e Contratos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/departamento/id/1027/?junta-militar.html'>Junta Militar </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/departamento/id/1018/?recursos-humanos---rh.html'>Recursos Humanos - RH</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://saojeronimo.rs.gov.br/uploads/config/30501/sao_je.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51)  9 9521-6325</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 9:00 às 12:00 e das 13:00 às 16:00</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/5/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/1003/?adesao.html'>Adesão</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/1008/?aviso-de-contratacao-direta.html'>Aviso de contratação Direta</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/1001/?cadastro-de-fornecedor.html'>Cadastro de Fornecedor</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/110/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/1010/?compra-compartilhada.html'>Compra Compartilhada</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/1012/?concorrencia-eletronica.html'>Concorrência Eletrônica</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/101/?concorrencia-publica.html'>Concorrência Pública</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/103/?convite.html'>Convite</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/1005/?impedidos-de-contratar-com-o-municipio.html'>Impedidos de Contratar com o Município</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/107/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/108/?pregao-presencial.html'>Pregão Presencial</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/licitacao/id/109/?tomada-de-precos.html'>Tomada de Preços</a></li></ul></div><div class="col-md-3"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/concurso/id/1006/?agencia-comunitaria-correios.html'>Agência Comunitária Correios</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/concurso/id/1007/?consulta-publica.html'>Consulta Pública</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/concurso/id/1004/?eleicao-conselho-tutelar.html'>Eleição Conselho Tutelar</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/concurso/id/202/?processo-seletivo.html'>Processo Seletivo</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/concurso/id/1009/?selecao-e-indicacao-diretores-escolas.html'>Seleção e indicação Diretores Escolas</a></li></ul></div><div class="col-md-3"><p class="menu-category">Legislação</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/1003/?avisos.html'>Avisos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/1008/?covid-19.html'>COVID-19</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/5/?decretos.html'>Decretos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/1007/?edital-de-patrocinio.html'>Edital de Patrocínio</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/1001/?ldo.html'>LDO</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/6/?lei-organica.html'>Lei Orgânica</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/1002/?loa.html'>LOA</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/1009/?plano-de-combate-dengue.html'>Plano de Combate Dengue</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/8/?plano-diretor---pddi.html'>Plano Diretor - PDDI</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/1004/?plano-gestao-residuos-solidos.html'>Plano Gestão Resíduos Sólidos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/1011/?plano-municipal-de-educacao.html'>Plano Municipal de Educação </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/1006/?plano-municipal-saude.html'>Plano Municipal Saúde </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/10/?plano-plurianual.html'>Plano Plurianual </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/11/?portarias.html'>Portarias</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/legislacao/id/1010/?regulamentacao-nova-lei-licitacoes.html'>Regulamentação Nova Lei Licitações</a></li></ul></div><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html'>Diário Oficial</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://portal.tce.rs.gov.br/aplicprod/f?p=50500:25:::NO:25,RIR:F50500_CD_ORGAO:58400&cs=1Gk5XtGAA1u0NkKTpm-QboFGugns' target='_blank'>Contratos até 2024</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://transparencia.betha.cloud/#/hxYoKDV5KXWMsm61pHa6Aw==' target='_blank'>Portal da Transparência</a></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Páginas Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1025/?patrimonio.html'>Patrimônio</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1026/?diarias.html'>Diárias</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1027/?servidores.html'>Servidores</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1031/?coronavirus.html'>Coronavírus</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1032/?revisao-do-plano-diretor.html'>Revisão do Plano Diretor</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1078/?ufm---unidade-fiscal-do-municipio.html'>UFM - Unidade Fiscal do Município </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1086/?inscritos-divida-ativa.html'>Inscritos Divida Ativa</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1089/?e--sic---pedido-de-informacoes.html'>e- SIC - Pedido de informações </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1090/?incentivos-fiscais.html'>Incentivos Fiscais </a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1106/?pessoas-terceirizadas.html'>Pessoas Terceirizadas</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1112/?acordos-sem-transferencia-de-recursos.html'>Acordos sem Transferência de Recursos</a></li></ul></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-frequentes.html'>Perguntas Frequentes</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>RPPS</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1005/?apresentacao.html'>Apresentação</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1007/?atas-comite-de-investimentos.html'>Atas Comitê de Investimentos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1021/?atas-conselho-municipal-de-previdencia.html'>Atas Conselho Municipal de Previdência</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1009/?autorizacao-de-aplicacao-de-resgate.html'>Autorização de Aplicação de Resgate</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1050/?avaliacao-atuarial.html'>Avaliação Atuarial</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1058/?eleicoes-2022.html'>Eleições 2022</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1012/?fale-com-o-rpps.html'>Fale com o RPPS</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1015/?legislacao-do-rpps.html'>Legislação do RPPS</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1049/?livro-caixa.html'>Livro Caixa</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1016/?politica-de-investimentos.html'>Política de Investimentos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1023/?relatorios-dair.html'>Relatórios DAIR</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1019/?relatorios-dipr.html'>Relatórios DIPR</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1022/?relatorios-dpin.html'>Relatórios DPIN</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1024/?relatorios-draa.html'>Relatórios DRAA</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1020/?credenciamento-de-instituicoes-financeiras.html'>Credenciamento de Instituições Financeiras</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1029/?calendario-de-reunioes-comites-de-investimentos.html'>Calendário de Reuniões Comitês de Investimentos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1030/?relatorios-de-acompanhamento-investimentos.html'>Relatórios de Acompanhamento Investimentos</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/pagina/id/1081/?eleicoes-2024.html'>Eleições 2024</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://saojeronimo.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li></ul></li></ul></nav>
+      </div>
+      <!-- /Top Nav -->
+    </div>
+  </header>
+  <!-- /Top Nav -->
+</div>
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a> <!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350" style="
+            width: 100% !important;
+            height: auto;
+            aspect-ratio: 96 / 25;">
+                    <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://saojeronimo.rs.gov.br/uploads/banner/34450/original_123_456_7890.webp');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://saojeronimo.rs.gov.br/uploads/banner/36604/original_Banner_site_.png');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://saojeronimo.rs.gov.br/uploads/banner/35786/original_BANNER_SITE_PREFEITURA.webp');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://saojeronimo.rs.gov.br/uploads/banner/30893/original_Dengue___Gazeta_Mineira_1920_x_500_px.png');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://saojeronimo.rs.gov.br/uploads/banner/35608/original_Banner_site_.webp');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://saojeronimo.rs.gov.br/uploads/banner/37437/original_Tributos.png');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: true, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: true        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img src="https://saojeronimo.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+ 
+
+            <div class="p0 styleContrasteGray">
+                <div class="container">
+                    <hr class="half-margins invisible">
+                    <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://linktr.ee/prefeiturasaojeronimo" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30900/original_10.png" class="img-responsive tituloOculto" alt="Redes Sociais " role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.saojeronimo.rs.leg.br/" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30903/original_SO_JERNIMO_1.png" class="img-responsive tituloOculto" alt="Lesgislativo" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="/diario-oficial" target='_self'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/15/original_11.png" class="img-responsive tituloOculto" alt="Diário Oficial" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://drive.google.com/file/d/1BbnIIlpYL1RkZ0np_pgv2STzalbTl70P/view?usp=sharing" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30899/original_9.png" class="img-responsive tituloOculto" alt="Alistamento Militar" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://nfg.sefaz.rs.gov.br/site/index.aspx" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30889/original_6.png" class="img-responsive tituloOculto" alt="Nota Fiscal Gaúcha" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://paineis.tcers.tc.br/extensions/licitacon/mapa.html" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30901/original_1.png" class="img-responsive tituloOculto" alt="LicitaOBRAS" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.gov.br/cultura/pt-br/assuntos/lei-paulo-gustavo" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30890/original_2.png" class="img-responsive tituloOculto" alt="Lei Paulo Gustavo" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://radardatransparencia.atricon.org.br/" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30888/original_5.png" class="img-responsive tituloOculto" alt="Radar Nacional de Transparência Pública" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://pncp.gov.br/app/editais?q=sao%20jeronimo&pagina=1" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30956/original_SO_JERNIMO_2.png" class="img-responsive tituloOculto" alt="Portal Nacional de contratações Publicas" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://saojeronimo.rs.gov.br/pagina/id/1085/?lgbd.html" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30921/original_7.png" class="img-responsive tituloOculto" alt="LGPD" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::::::" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/10/original_8.png" class="img-responsive tituloOculto" alt="Licitacon" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.gov.br/cultura/pt-br/assuntos/politica-nacional-aldir-blanc" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30898/original_3.png" class="img-responsive tituloOculto" alt="Lei Aldir Blanc" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://minhafolha.betha.cloud/" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30902/original_4.png" class="img-responsive tituloOculto" alt="Portal do Servidor" role="presentation" />
+                </a>
+            </div>
+    </div>                    <hr class="half-margins">
+                </div>
+            </div>
+            <div class="pb40 pt40">
+    <div class="container">
+        <!-- NOTÍCIAS -->
+        <div class="overflow-hidden col-md-12col-md-12 mobile-nopadding"><section id="box-noticias" class="nopadding">
+    <div class="container">
+        <header class="text-center">
+            <h2>Últimas notícias</h2>
+            <div class="divider half-margins onepage center"><!-- lines divider --></div>
+        </header>
+                <div class="row">
+            <div class="col-md-12">
+                <div class="row mb25 appear-animation" data-animation="bounceIn">
+                    <div class="col-md-12">
+                        <div class="col-md-6" style="
+							display: flex;
+							justify-content: center;
+						">
+                            <img class="img-responsive" src="https://saojeronimo.rs.gov.br/uploads/noticia/37832/media_Modelo_Post_SITE.png" alt="Imagem ilustrativa da notícia: São Jerônimo realiza eleição do CACS-FUNDEB para o mandato 2027–2030" style="max-height: 500px;"  role="presentation">
+                        </div>
+                        <div class="col-md-6">
+                                                        <small>26/11/2026</small>
+                            <h3>São Jerônimo realiza eleição do CACS-FUNDEB para o mandato 2027–2030</h3>
+                            <p>A Secretaria Municipal de Educação de São Jerônimo sediou, nos dias 25 e 26 de novembro, reuniões para a organização e composição do Conselho de Acompanhamento e Controle Social do Fundeb (CACS-FUNDEB), que atuará no mandato de 2027 a 2030.</p>
+                            <p><a href="https://saojeronimo.rs.gov.br/noticia/visualizar/id/1498/?sao-jeronimo-realiza-eleicao-do-cacs-fundeb-para-o-mandato-20272030.html" class="btn btn-default btn-sm" role="button">Ler mais</a></p>
+                        </div>
+                    </div>
+                </div>
+                                <hr class="clearfix mb15 mt15 visible-xs-block visible-sm-block">
+                <div class="row">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInLeftBig" data-animation-delay="500">
+                        <img class="img-responsive" src="https://saojeronimo.rs.gov.br/uploads/noticia/37828/media_Modelo_Post_SITE.png" alt="Imagem ilustrativa da notícia: São Jerônimo conquista 1º lugar estadual em Segurança Pública no Prêmio Band Cidades Excelentes" role="presentation">
+                                                <small>26/11/2026</small><br/>
+                        <a href="https://saojeronimo.rs.gov.br/noticia/visualizar/id/1496/?sao-jeronimo-conquista-1o-lugar-estadual-em-seguranca-publica-no-premio-band-cidades-excelentes.html" class="h4">São Jerônimo conquista 1º lugar estadual em Segurança Pública no Prêmio Band Cidades Excelentes</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInDownBig" data-animation-delay="0">
+                        <img class="img-responsive" src="https://saojeronimo.rs.gov.br/uploads/noticia/37830/media_Modelo_Post_SITE_1.png" alt="Imagem ilustrativa da notícia: São Jerônimo é habilitado à complementação do Fundeb para 2027" role="presentation">
+                                                <small>25/11/2026</small><br/>
+                        <a href="https://saojeronimo.rs.gov.br/noticia/visualizar/id/1497/?sao-jeronimo-e-habilitado-a-complementacao-do-fundeb-para-2027.html" class="h4">São Jerônimo é habilitado à complementação do Fundeb para 2027</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="clearfix visible-sm-block"></div>
+                    <hr class="clearfix mb15 mt15 visible-sm-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInUpBig" data-animation-delay="0">
+                        <img class="img-responsive" src="https://saojeronimo.rs.gov.br/uploads/noticia/37783/media_Modelo_Post_SITE.png" alt="Imagem ilustrativa da notícia: ATENÇÃO, PAIS E RESPONSÁVEIS! " role="presentation">
+                                                <small>19/11/2026</small><br/>
+                        <a href="https://saojeronimo.rs.gov.br/noticia/visualizar/id/1495/?atencao-pais-e-responsaveis.html" class="h4">ATENÇÃO, PAIS E RESPONSÁVEIS! </a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInRightBig" data-animation-delay="500">
+                        <img class="img-responsive" src="https://saojeronimo.rs.gov.br/uploads/noticia/37771/media_8.png" alt="Imagem ilustrativa da notícia: NOTA OFICIAL" role="presentation">
+                                                <small>17/11/2026</small><br/>
+                        <a href="https://saojeronimo.rs.gov.br/noticia/visualizar/id/1494/?nota-oficial.html" class="h4">NOTA OFICIAL</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="clearfix visible-sm-block"></div>
+                    <hr class="clearfix mb15 mt15 visible-sm-block">
+                                    </div>
+                                <div class="row text-center ">
+                    <a class="btn btn-primary" href="https://saojeronimo.rs.gov.br/noticia">Ver todas as Notícias</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section></div>
+        <!-- /NOTÍCIAS -->
+    </div>
+</div>
+<div class="pb40 pt40 styleBackgroundLight">
+    <div class="container">
+        <div class="row">
+            <!-- NOTÍCIAS -->
+            <div class="overflow-hidden col-md-12 mobile-nopadding"><div id="acessoRapidoHorizontal" class="row">
+    <div class="col-md-12"><h2 class="similar-h4 title"><strong>Acesso Rápido</strong></h2></div>
+    <div class="owl-carousel banner-servicos" data-plugin-options='{"navigation": true, "pagination": false,"items": 1}'>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="e-Nota" href="/servico/visualizar/id/1003/?e-nota.html" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-dollar'></i>                        <span class="block">e-Nota</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="DESIF" href="https://saojeronimo.desif.masper.net/sistema/contribuinte/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">DESIF</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Alvará" href="https://e-gov.betha.com.br/cdweb/resource.faces?params=Q5asm-mWnWyGMzlXSF2cUQ==" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-address-card-o'></i>                        <span class="block">Alvará</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Emissão de Guias e Certidões" href="https://e-gov.betha.com.br/cdweb/03114-496/contribuinte/main.faces" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-file-o'></i>                        <span class="block">Emissão de Guias e Certidões</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Ordem Cron. Pagamentos" href="https://www.dropbox.com/scl/fi/z7q8uqfwgrabszpnfi06x/ORDEM-CRONOLOGICA-2025.xlsx?rlkey=87j9a6hqk27kpaaet05b0vkvb&st=01d6s9wx&dl=0" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-database'></i>                        <span class="block">Ordem Cron. Pagamentos</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Certidão Negativa" href="https://e-gov.betha.com.br/cdweb/resource.faces?params=Q5asm-mWnWyGg0G7Jl9rPA==" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-id-card-o'></i>                        <span class="block">Certidão Negativa</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Validar Documentos" href="https://e-gov.betha.com.br/cidadaoweb3/resource.faces?params=Q5asm-mWnWwouhu8wHME_Q==" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-paste'></i>                        <span class="block">Validar Documentos</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Livro Eletrônico ISS" href="https://e-gov.betha.com.br/livroeletronico2/02022-014/login.faces" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-book'></i>                        <span class="block">Livro Eletrônico ISS</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Legislação" href="https://leis.org/prefeitura/rs/sao-jeronimo" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-balance-scale'></i>                        <span class="block">Legislação</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Licitações" href="/licitacao" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-legal'></i>                        <span class="block">Licitações</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Concursos" href="/concurso" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-handshake-o'></i>                        <span class="block">Concursos</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="e-SIC" href="https://saojeronimo.rs.gov.br/pagina/id/1089/?e--sic---pedido-de-informacoes.html" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-male'></i>                        <span class="block">e-SIC</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Manual Implantação Parklets" href="https://saojeronimo.rs.gov.br/uploads/noticia/17244/Manual_Parklets.pdf" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-file-pdf-o'></i>                        <span class="block">Manual Implantação Parklets</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Ordem Cronológica - Suspensão" href="https://www.saojeronimo.rs.gov.br/pagina/id/1072/?ordem-cronologica---suspensao.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-money'></i>                        <span class="block">Ordem Cronológica - Suspensão</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Lista Espera Serviços de Máquinas" href="https://www.saojeronimo.rs.gov.br/pagina/id/1073/?lista-espera-servicos-de-maquinas.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-clock-o'></i>                        <span class="block">Lista Espera Serviços de Máquinas</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Radar da Transparência Pública" href="https://radardatransparencia.atricon.org.br/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-line-chart'></i>                        <span class="block">Radar da Transparência Pública</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Remume + Medicamentos Farmácia SUS " href="https://saojeronimo.rs.gov.br/pagina/id/1084/?saude.html" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-medkit'></i>                        <span class="block">Remume + Medicamentos Farmácia SUS </span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Emendas PIX" href="https://paineis.tcers.tc.br/extensions/ControleSocial-TransferenciasEspeciais/emendaspix.html" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-arrow-circle-o-right'></i>                        <span class="block">Emendas PIX</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Lei de Acesso à Informação" href="https://saojeronimo.rs.gov.br/pagina/id/1087/?lei-de-acesso-a-informacao.html" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-legal'></i>                        <span class="block">Lei de Acesso à Informação</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="REFAZ 2025" href="https://saojeronimo.rs.gov.br/pagina/id/1088/?refis-2025.html" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-bank'></i>                        <span class="block">REFAZ 2025</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Educação" href="https://www.saojeronimo.rs.gov.br/pagina/id/1103/?educacao.html" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-graduation-cap'></i>                        <span class="block">Educação</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Emendas " href="https://www.saojeronimo.rs.gov.br/pagina/id/1110/?emendas.html" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-money'></i>                        <span class="block">Emendas </span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Cadastro Vagas Em Creche" href="https://www.saojeronimo.rs.gov.br/pagina/id/1113/?vagas-em-creche.html" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-paperclip'></i>                        <span class="block">Cadastro Vagas Em Creche</span>
+                    </div>
+                </a>
+            </div>
+            </div>
+        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+            <!-- /NOTÍCIAS -->
+        </div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+
+<!--             <div class="p0 styleContrasteGray">
+                <div class="container">
+                    <hr class="half-margins invisible">
+                    <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://radardatransparencia.atricon.org.br/" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30888/original_5.png" class="img-responsive tituloOculto" alt="Radar Nacional de Transparência Pública" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.gov.br/cultura/pt-br/assuntos/lei-paulo-gustavo" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30890/original_2.png" class="img-responsive tituloOculto" alt="Lei Paulo Gustavo" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://paineis.tcers.tc.br/extensions/licitacon/mapa.html" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30901/original_1.png" class="img-responsive tituloOculto" alt="LicitaOBRAS" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://saojeronimo.rs.gov.br/pagina/id/1085/?lgbd.html" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30921/original_7.png" class="img-responsive tituloOculto" alt="LGPD" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.gov.br/cultura/pt-br/assuntos/politica-nacional-aldir-blanc" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30898/original_3.png" class="img-responsive tituloOculto" alt="Lei Aldir Blanc" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="/diario-oficial" target='_self'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/15/original_11.png" class="img-responsive tituloOculto" alt="Diário Oficial" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://pncp.gov.br/app/editais?q=sao%20jeronimo&pagina=1" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30956/original_SO_JERNIMO_2.png" class="img-responsive tituloOculto" alt="Portal Nacional de contratações Publicas" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://minhafolha.betha.cloud/" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30902/original_4.png" class="img-responsive tituloOculto" alt="Portal do Servidor" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::::::" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/10/original_8.png" class="img-responsive tituloOculto" alt="Licitacon" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://drive.google.com/file/d/1BbnIIlpYL1RkZ0np_pgv2STzalbTl70P/view?usp=sharing" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30899/original_9.png" class="img-responsive tituloOculto" alt="Alistamento Militar" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://linktr.ee/prefeiturasaojeronimo" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30900/original_10.png" class="img-responsive tituloOculto" alt="Redes Sociais " role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://nfg.sefaz.rs.gov.br/site/index.aspx" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30889/original_6.png" class="img-responsive tituloOculto" alt="Nota Fiscal Gaúcha" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.saojeronimo.rs.leg.br/" target='_blank'>
+                                <img src="https://saojeronimo.rs.gov.br/uploads/banner/30903/original_SO_JERNIMO_1.png" class="img-responsive tituloOculto" alt="Lesgislativo" role="presentation" />
+                </a>
+            </div>
+    </div>                    <hr class="half-margins">
+                </div>
+            </div>
+             -->
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- LICITAÇÕES -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>LICITA&Ccedil;&Otilde;ES</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <p style="">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO/SRP Nº 087/2026" href="https://saojeronimo.rs.gov.br/licitacao/visualizar/id/4905/?pregao-eletronicosrp-no-0872026.html">
+                            <p>PREGÃO ELETRÔNICO/SRP Nº 087/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            14/12/2026 &agrave;s 10h                        </p>
+                                                <p class="tags">
+                            <i class="fa fa-bookmark" title="Palavras-chaves"></i>
+                            Registro de preços para locação de banheiros químicos para os eventos do município.                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <p style="">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO Nº 086/2026" href="https://saojeronimo.rs.gov.br/licitacao/visualizar/id/4904/?pregao-eletronico-no-0862026.html">
+                            <p>PREGÃO ELETRÔNICO Nº 086/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            09/12/2026 &agrave;s 10h                        </p>
+                                                <p class="tags">
+                            <i class="fa fa-bookmark" title="Palavras-chaves"></i>
+                            Aquisição de máquinas, implementos e equipamentos agrícolas                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <p style="">
+                            Concorrência Eletrônica                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="CONCORRÊNCIA ELETRÔNICA Nº 022/2026" href="https://saojeronimo.rs.gov.br/licitacao/visualizar/id/4900/?concorrencia-eletronica-no-0222026.html">
+                            <p>CONCORRÊNCIA ELETRÔNICA Nº 022/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            27/11/2026 &agrave;s 10h                        </p>
+                                                <p class="tags">
+                            <i class="fa fa-bookmark" title="Palavras-chaves"></i>
+                            Pavimentação em blocos de concreto intertravado na Rua Frederico Lisboa Fanfa                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /LICITAÇÕES --></div>
+                
+        <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://saojeronimo.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1003">Adesão</option>
+                                                        <option value="1008">Aviso de contratação Direta</option>
+                                                        <option value="1001">Cadastro de Fornecedor</option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="1010">Compra Compartilhada</option>
+                                                        <option value="1012">Concorrência Eletrônica</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="103">Convite</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="1005">Impedidos de Contratar com o Município</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="109">Tomada de Preços</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://saojeronimo.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1006">Agência Comunitária Correios</option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="1007">Consulta Pública</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="1004">Eleição Conselho Tutelar</option>
+                                                        <option value="202">Processo Seletivo</option>
+                                                        <option value="1009">Seleção e indicação Diretores Escolas</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://saojeronimo.rs.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1003">Avisos</option>
+                                                        <option value="1008">COVID-19</option>
+                                                        <option value="5">Decretos</option>
+                                                        <option value="1007">Edital de Patrocínio</option>
+                                                        <option value="1001">LDO</option>
+                                                        <option value="1">Legislação</option>
+                                                        <option value="6">Lei Orgânica</option>
+                                                        <option value="1002">LOA</option>
+                                                        <option value="1009">Plano de Combate Dengue</option>
+                                                        <option value="8">Plano Diretor - PDDI</option>
+                                                        <option value="1004">Plano Gestão Resíduos Sólidos</option>
+                                                        <option value="1011">Plano Municipal de Educação </option>
+                                                        <option value="1006">Plano Municipal Saúde </option>
+                                                        <option value="10">Plano Plurianual </option>
+                                                        <option value="11">Portarias</option>
+                                                        <option value="1010">Regulamentação Nova Lei Licitações</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-4 mobile-nopadding mobile-margin-top25"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/30010/thumb_julio.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Prefeito: Júlio Cesar Prates Cunha " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://saojeronimo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Júlio Cesar Prates Cunha </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99521-6325                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda – Terça – Quinta – Sexta<br />
+9h às 12h e das 13h às 16h<br />
+Quartas-feiras: Expediente Interno<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/30011/thumb_pico.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Vice-prefeito: Filipe Almeida Pico" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Vice-prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://saojeronimo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Filipe Almeida Pico</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99521-6325                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda – Terça – Quinta – Sexta<br />
+9h às 12h e das 13h às 16h<br />
+Quartas-feiras: Expediente Interno<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/1004/?secretaria-municipal-de-assistencia-social.html">
+                       Secretaria Municipal de Assistência Social                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/30525/thumb_rafaela.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária Municipal de Assistência Social : Rafaella Razek Cunha" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária Municipal de Assistência Social </small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Assistência Social" href="https://saojeronimo.rs.gov.br/secretaria/id/1004/?secretaria-municipal-de-assistencia-social.html">
+                            <span class="similar-h4"><strong>Rafaella Razek Cunha</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 9965-6610                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/1024/?secretaria-municipal-de-governo.html">
+                       Secretaria Municipal de Governo                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/31655/thumb_PERFIL_SITE_PREFEITURA.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal de Governo: PETRONIO JOSE WEBER" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal de Governo</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Governo" href="https://saojeronimo.rs.gov.br/secretaria/id/1024/?secretaria-municipal-de-governo.html">
+                            <span class="similar-h4"><strong>PETRONIO JOSE WEBER</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99521-6325                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/1025/?chefe-de-gabinete.html">
+                       Chefe de Gabinete                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/31659/thumb_marcelo.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Chefe de Gabinete do Prefeito Julião: Marcelo Farias " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Chefe de Gabinete do Prefeito Julião</small>
+                        <div class="row">
+                          <a title="Chefe de Gabinete " href="https://saojeronimo.rs.gov.br/secretaria/id/1025/?chefe-de-gabinete.html">
+                            <span class="similar-h4"><strong>Marcelo Farias </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9521-6325                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/110/?secretaria-municipal-de-educacao.html">
+                       Secretaria Municipal de Educação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/14235/thumb_Cpia_de_Design_sem_nome.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Maria Nazaré Dias Dornelles" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Educação" href="https://saojeronimo.rs.gov.br/secretaria/id/110/?secretaria-municipal-de-educacao.html">
+                            <span class="similar-h4"><strong>Maria Nazaré Dias Dornelles</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9610-6510                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/114/?secretaria-municipal-da-saude.html">
+                       Secretaria Municipal da Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/30024/thumb_kenia.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária Municipal de Saúde: Kenia Becker Guimarães " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária Municipal de Saúde</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal da Saúde" href="https://saojeronimo.rs.gov.br/secretaria/id/114/?secretaria-municipal-da-saude.html">
+                            <span class="similar-h4"><strong>Kenia Becker Guimarães </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9795-9904                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a Sexta - das 09h ás 12h e das 13h ás 16h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/1001/?secretaria-municipal-do-interior.html">
+                       Secretaria Municipal do Interior                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/30097/thumb_leomar.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário : Leomar Martins de Souza " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário </small>
+                        <div class="row">
+                          <a title="Secretaria Municipal do Interior" href="https://saojeronimo.rs.gov.br/secretaria/id/1001/?secretaria-municipal-do-interior.html">
+                            <span class="similar-h4"><strong>Leomar Martins de Souza </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99589-7334                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/105/?secretaria-de-infraestrutura-e-administracao.html">
+                       Secretaria de Infraestrutura e Administração                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/36822/thumb_PERFIL_SITE_PREFEITURA_2.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Rafael dos Santos Pereira" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Infraestrutura e Administração" href="https://saojeronimo.rs.gov.br/secretaria/id/105/?secretaria-de-infraestrutura-e-administracao.html">
+                            <span class="similar-h4"><strong>Rafael dos Santos Pereira</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9521-6325                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/1003/?secretaria-municipal-de-defesa-civil.html">
+                       Secretaria Municipal de Defesa Civil                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/30527/thumb_Isaac.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Isaac leites de oliveira" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Defesa Civil " href="https://saojeronimo.rs.gov.br/secretaria/id/1003/?secretaria-municipal-de-defesa-civil.html">
+                            <span class="similar-h4"><strong>Isaac leites de oliveira</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9941-5905                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00<br />
+24 HORAS - FONE: (51) 997951417 - ISAAC LEITES ( SECRÉTARIO )                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/115/?secretaria-municipal-de-agricultura.html">
+                        Secretaria Municipal de Agricultura                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/30530/thumb_daniel.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Daniel Teixeira Ramos " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title=" Secretaria Municipal de Agricultura" href="https://saojeronimo.rs.gov.br/secretaria/id/115/?secretaria-municipal-de-agricultura.html">
+                            <span class="similar-h4"><strong>Daniel Teixeira Ramos </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 98057-0349                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/106/?secretaria-municipal-da-fazenda.html">
+                       Secretaria Municipal da Fazenda                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal da Fazenda" href="https://saojeronimo.rs.gov.br/secretaria/id/106/?secretaria-municipal-da-fazenda.html">
+                            <span class="similar-h4"><strong>Maria Conceição dos Santos  Chaves</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9822-1963                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/109/?secretaria-do-planejamento-desenvolvimento-economico-e-mobilidade-urbana.html">
+                       Secretaria do Planejamento, Desenvolvimento Econômico e Mobilidade Urbana                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário </small>
+                        <div class="row">
+                          <a title="Secretaria do Planejamento, Desenvolvimento Econômico e Mobilidade Urbana " href="https://saojeronimo.rs.gov.br/secretaria/id/109/?secretaria-do-planejamento-desenvolvimento-economico-e-mobilidade-urbana.html">
+                            <span class="similar-h4"><strong>Aguardando Nomeação</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9576-5288                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/116/?secretaria-municipal-de-obras--saneamento-e-servicos-urbanos.html">
+                       Secretaria Municipal de Obras , Saneamento e Serviços Urbanos                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/31057/thumb_PERFIL_SITE_PREFEITURA.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Danilo Silva" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Obras , Saneamento e Serviços Urbanos" href="https://saojeronimo.rs.gov.br/secretaria/id/116/?secretaria-municipal-de-obras--saneamento-e-servicos-urbanos.html">
+                            <span class="similar-h4"><strong>Danilo Silva</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9808-5222                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/111/?secretaria-do-esporte-lazer-cultura-e-turismo.html">
+                       Secretaria do Esporte, Lazer, Cultura e Turismo                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/37499/thumb_PERFIL_SITE_PREFEITURA.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Leonardo Dias Gonçalves " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria do Esporte, Lazer, Cultura e Turismo" href="https://saojeronimo.rs.gov.br/secretaria/id/111/?secretaria-do-esporte-lazer-cultura-e-turismo.html">
+                            <span class="similar-h4"><strong>Leonardo Dias Gonçalves </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9521-6325                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://saojeronimo.rs.gov.br/secretaria/id/1026/?secretaria-municipal-de-meio-ambiente-e-protecao-e-bem-estar-animal.html">
+                       Secretaria Municipal de Meio Ambiente e Proteção e Bem Estar Animal                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://saojeronimo.rs.gov.br/uploads/departamento/31812/thumb_PERFIL_SITE_PREFEITURA.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária Municipal: Leidimirian Chananeco" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária Municipal</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Meio Ambiente e Proteção e Bem Estar Animal" href="https://saojeronimo.rs.gov.br/secretaria/id/1026/?secretaria-municipal-de-meio-ambiente-e-protecao-e-bem-estar-animal.html">
+                            <span class="similar-h4"><strong>Leidimirian Chananeco</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99698-0218                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 9:00 às 12:00 e das 13:00 às 16:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+
+<div class="pt60 pb60">
+    <div class="container">
+      <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+            <div class="col-md-12 mobile-nopadding"><!-- EVENTOS -->
+<div class="widget featured-box-minimal">
+    <div class="row mb0">
+		<div class="pr15 pl15 mrauto mlauto">
+			<h2 class="similar-h4 title"><strong>&Uacute;LTIMO EVENTO</strong></h2>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<a href="https://saojeronimo.rs.gov.br/evento/visualizar/id/1006/?festival-brasa-e-prosa-integra-a-programacao-do-verao-alegre-sao-jeronimo.html">
+			<p class="lead">Festival Brasa e Prosa integra a programação do Verão Alegre São Jerônimo</p>
+		</a>
+		<p class="nomargin">De 9 a 11 de janeiro, a Praia do Encontro será palco do Festival Brasa e Prosa, um dos grandes destaques do Verão Alegre São Jerônimo, reunindo gastronomia, cultura, esporte e lazer para toda a comunidade.</p>
+	</div>
+
+	<div class="col-md-12 mb15">
+	    		<strong>Local:</strong> Praia do Encontro<br />
+						<strong>In&iacute;cio:</strong> 09/01/2026 &agrave;s 07h<br />
+				<strong>T&eacute;rmino:</strong> 11/01/2026 &agrave;s 22h			</div>
+
+	<a href="https://saojeronimo.rs.gov.br/evento/?agenda-de-eventos.html" class="btn btn-default btn-content">
+	    <i class="fa fa-calendar"></i> Agenda completa
+    </a>
+</div>
+<!-- /EVENTOS --></div>
+      			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+    </div>
+</div>
+
+<div class="styleBackgroundLight styleContrasteGray pt60 pb60">
+    <div class="container">
+      <div class="col-md-12 mobile-nopadding">
+        <!-- MULTIMIDIA -->
+<h2 class="similar-h4 title"><strong>MULTIM&Iacute;DIA</strong></h2>
+    <ul class="sort-destination isotope multimidia flex-center" style="flex-wrap: wrap;">
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title=" Festival de Artes Cênicas 2026" class="item-hover" href="https://saojeronimo.rs.gov.br/galeria/id/1014/?festival-de-artes-cenicas-2026.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								 Festival de Artes Cênicas 2026							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://saojeronimo.rs.gov.br/uploads/midia/37292/media_WhatsApp_Image_2026_09_22_at_151236.jpeg" width="260" height="260" alt=" Festival de Artes Cênicas 2026" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">19/09/2026 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;"> Festival de Artes Cênicas 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Final do Campeonato Praiano de Futebol de Sete – Verão Alegre São Jéo! 2026" class="item-hover" href="https://saojeronimo.rs.gov.br/galeria/id/1013/?final-do-campeonato-praiano-de-futebol-de-sete--verao-alegre-sao-jeo-2026.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Final do Campeonato Praiano de Futebol de Sete – Verão Alegre São Jéo! 2026							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://saojeronimo.rs.gov.br/uploads/midia/35749/media_IMG_9967JPG.webp" width="260" height="260" alt="Final do Campeonato Praiano de Futebol de Sete – Verão Alegre São Jéo! 2026" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">01/04/2026 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Final do Campeonato Praiano de Futebol de Sete – Verão Alegre São Jéo! 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="3º Etapa Motonáutica 28,1 de março 2026" class="item-hover" href="https://saojeronimo.rs.gov.br/galeria/id/1012/?3o-etapa-motonautica-281-de-marco-2026.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								3º Etapa Motonáutica 28,1 de março 2026							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://saojeronimo.rs.gov.br/uploads/midia/35284/media_DSC_0315_58.webp" width="260" height="260" alt="3º Etapa Motonáutica 28,1 de março 2026" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">02/03/2026 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">3º Etapa Motonáutica 28,1 de março 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Carnaval 2026" class="item-hover" href="https://saojeronimo.rs.gov.br/galeria/id/1011/?carnaval-2026.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Carnaval 2026							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://saojeronimo.rs.gov.br/uploads/midia/34592/media_DSC_0005_3.webp" width="260" height="260" alt="Carnaval 2026" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">24/02/2026 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Carnaval 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        	</ul>
+<!-- /MULTIMIDIA -->      </div>
+    </div>
+</div>
+
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-29.959154, -51.723169],
+                15
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-29.959154, -51.723169],
+                        {alt:'Prefeitura Municipal de São Jerônimo'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de São Jerônimo</strong></p>                <p style="margin: 5px 0px;">Rua Cel. Soares de Carvalho, 558 / 2º andar&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">São Jerônimo / RS</p><p style="margin: 5px 0px;">96700-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+<div class="pt60 pb60 visible-xs">
+    <div class="container text-center">
+        <p class="lead">
+    </p>
+<p class="mb0">
+        <a href="https://radardatransparencia.atricon.org.br/painel-6/#q=S%C3%A3o%20Jer%C3%B4nimo&e=4678" target="_blank">
+        <img class="img-responsive" src="//visaoi.com.br/img/selo-tp-prata-2026.png" alt="selo transparência" />
+    </a>
+    </p>    </div>
+</div>
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer02" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <!-- endereço e redes sociais -->
+            <div class="spaced col-md-4 col-sm-4">
+                                <p>
+                    Rua Cel. Soares de Carvalho, 558, Centro<br />
+                    CEP: 96700-000<br />                    infraestrutura@saojeronimo.rs.gov.br<br />                </p>
+                                    <p class="similar-h3">(51)  9 9521-6325</p>
+                                <p><strong>Segunda à Sexta:</strong> 9:00 às 12:00 e das 13:00 às 16:00</p>
+                				<p class="block">
+					<a href="https://saojeronimo.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/prefeituradesaojeronimo" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://instagram.com/prefeiturasaojeronimo/" target="_blank" class="social">
+						<i class="fa fa-instagram">
+							<span class="sr-only">Instagram da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://saojeronimo.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+				</p>
+            </div>
+            <!-- /endereço e redes sociais -->
+
+            <!-- col #2 -->
+            <div class="spaced col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="col-md-5 col-sm-4 hidden-xs hide-line-last-new">
+                        <p class="similar-h4">&Uacute;ltimas not&iacute;cias</p>
+                                                <ul class="list-unstyled">
+                                                        <li>
+                                <a class="block"
+                                href="https://saojeronimo.rs.gov.br/noticia/visualizar/id/1498/?sao-jeronimo-realiza-eleicao-do-cacs-fundeb-para-o-mandato-20272030.html">
+                                    São Jerônimo realiza eleição do CACS-FUNDEB para o mandato 2027–2030                                </a>
+                                <small>26/11/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://saojeronimo.rs.gov.br/noticia/visualizar/id/1496/?sao-jeronimo-conquista-1o-lugar-estadual-em-seguranca-publica-no-premio-band-cidades-excelentes.html">
+                                    São Jerônimo conquista 1º lugar estadual em Segurança Pública no Prêmio Band Cidades Excelentes                                </a>
+                                <small>26/11/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://saojeronimo.rs.gov.br/noticia/visualizar/id/1497/?sao-jeronimo-e-habilitado-a-complementacao-do-fundeb-para-2027.html">
+                                    São Jerônimo é habilitado à complementação do Fundeb para 2027                                </a>
+                                <small>25/11/2026</small>
+                            </li>
+                                                    </ul>
+                                            </div>
+
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <p class="similar-h4">Outras &aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a class="block" href="https://saojeronimo.rs.gov.br/transparencia/?transparencia.html">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://saojeronimo.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://saojeronimo.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://saojeronimo.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Not&iacute;cias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://saojeronimo.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://saojeronimo.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://saojeronimo.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                                                <!-- brasão -->
+                        <p class="text-center">
+                            <img alt="Brasão da prefeitura" src="https://saojeronimo.rs.gov.br/uploads/config/30501/sao_je.png" class="logo img-responsive appear-animation opaco08" data-animation="bounceIn"/>
+                        </p>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+	<div class="container text-center fsize12 post-copyright" style="
+		display: flex;
+		flex-direction: column;
+		justify-content: center">
+		<p style="margin:0" id="footer.copyrightTxt">
+			Este site utiliza a ferramenta
+			<a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+				<img src="https://saojeronimo.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+				<span class="sr-only">iPrefeituras</span>
+			</a>.
+		</p>
+		<p style="margin:0" id="footer.copyrightTxt3">
+			Um produto
+			<strong>
+				<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+			</strong>.
+		</p>
+	</div>
+</div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://saojeronimo.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://saojeronimo.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://saojeronimo.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://saojeronimo.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://saojeronimo.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610ea6d4eaadd50',t:'MTc5NTc4MDIzMQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610ea6d4eaadd50',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

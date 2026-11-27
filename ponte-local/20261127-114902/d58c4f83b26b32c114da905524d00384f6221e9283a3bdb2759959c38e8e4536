@@ -1,0 +1,1789 @@
+
+<!doctype html>
+<html>
+    <head>
+            <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefeitura Municipal de Candói - PR</title>
+
+    <link rel="shortcut icon" href="/imagens/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/imagens/favicon.ico" type="image/x-icon">
+
+    <meta name="generator" content="">
+    <meta name="description" content="Prefeitura Municipal de Candói - PR">
+    <meta name="abstract" content="Prefeitura Municipal de Candói - PR">
+    <meta name="keywords" content="Prefeitura Municipal de Candói - PR">
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://candoi.pr.gov.br/" rel="canonical">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/variaveis.css" rel="stylesheet">
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="/js/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/js/owlcarousel/assets/owl.theme.default.min.css">
+
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+
+    <!-- Css Stylo Geral -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/modules/topo.css" rel="stylesheet">
+    <link href="/css/modules/responsive.css" rel="stylesheet">
+    <link href="/css/modules/home-servicos.css" rel="stylesheet">
+    <link href="/css/modules/footer.css" rel="stylesheet">
+
+    <link href="/css/front/default.header.acessibilidade.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
+
+
+    <link href="/css/front/default.header.acessibilidade.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/modules/barra-titulos-internas.css" type="text/css" rel="stylesheet">
+
+    <link href="/css/front/modulos/noticias.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/obras.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/secretarias.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/licitacao.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/gabinete.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/turismo.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/faq.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/contato.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/concursos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/entidades.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/legislacao.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/chamamento.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/termo.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/parceria.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/atos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/boletins.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.obras.css" type="text/css" rel="stylesheet">
+
+    <link href="/header/assets/header.css" type="text/css" rel="stylesheet">
+    <link href="/footer/assets/footer.css" type="text/css" rel="stylesheet">
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="/js/newsite/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/js/newsite/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/newsite/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/newsite/mdb.min.js"></script>
+
+    <!-- javascript -->
+    <script src="/js/owlcarousel/owl.carousel.js"></script>
+
+    <script src="/js/open-search/open-search.js" type="text/javascript"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/bootstrap/dist/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
+
+    <script src="/js/menu.js" type="text/javascript"></script>
+    
+    <link href="/js/slider-pro-master/css/slider-pro.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/slider-pro-master/js/jquery.sliderPro.js" type="text/javascript"></script>
+    <link href="/js/slider-pro-master/css/examples.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Mensagem deslizante de mensagens -->
+    <script type="text/javascript" src="/js/jquery-sliding-message/jquery.slidingmessage.js"></script>
+    <script type="text/javascript" src="/js/jquery-sliding-message/showMsg.js"></script>
+    <script type="text/javascript" src="/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="/js/jquery.form.js"></script>
+    <script src="/js/acessibilidade/acessibilidade.jquery.js" type="text/javascript"></script>
+    <!-- Fim Mensagem deslizante de mensagens -->
+    
+    <script type="text/javascript">
+        $(function(){   
+             var nav = $('#menuHeader');   
+             $(window).scroll(function () { 
+                 if ($(this).scrollTop() > 30) { 
+                     nav.addClass("menu-fixo");
+                 } else { 
+                     nav.removeClass("menu-fixo");
+                 } 
+             });  
+         });
+     </script>
+
+    <!-- Script Geral -->
+
+    <script type="text/javascript">
+        var popOverSettings = {
+            container: 'body',
+            html: true,
+            selector: '.checksum-info',
+            trigger: 'focus'
+        };
+        $(document).ready(function ($) {
+            "use strict";
+            /*-------------------------------------------------*/
+            /* =  Search animation
+             /*-------------------------------------------------*/
+            var searchToggle = $('.open-search-link'),
+                inputAnime = $(".formulario-busca"),
+                body = $('body');
+
+            searchToggle.on('click', function (event) {
+                event.preventDefault();
+
+                if (inputAnime.hasClass('active')) {
+                    inputAnime.addClass('active');
+                } else {
+                    inputAnime.removeClass('active');
+                }
+            });
+
+            body.on('click', function () {
+                inputAnime.removeClass('active');
+            });
+
+            var elemBinds = $('.open-search-link, .formulario-busca');
+            elemBinds.bind('click', function (e) {
+                e.stopPropagation();
+            });
+
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
+        });
+
+        $(document).ready(function () {
+            $('#banner-principal-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('.servicos').owlCarousel({
+                loop: false,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#secretarias-home').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#banner-noticias-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#noticias-home').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#mais-noticias-home').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#banner-fino-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-licitacoes').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 10000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-obras').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 10000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#home-turismo').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 13000,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-video').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#galeria-home').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 2
+                    }
+                }
+            });
+            $('#eventos-home').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: false,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            $('#concursos-home').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#vagas-home').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#galeria-imagens-noticiaview').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            $('.acessoRapido').owlCarousel({
+                loop: true,
+                margin: 7,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 3
+                    },
+                    1200: {
+                        items: 7
+                    }
+                }
+            });
+            $('#veja-mais').owlCarousel({
+                loop: true,
+                margin: 5,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    },
+                    1200: {
+                        items: 1
+                    }
+                }
+            });
+            $('#noticias').owlCarousel({
+                loop: false,
+                margin: 0,
+                nav: false,
+                dots: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('.pagina-transparencia').owlCarousel({
+                loop: false,
+                margin: 0,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            
+            $('body').popover(popOverSettings);
+            
+            wow = new WOW({
+                boxClass: 'wow', // default
+                animateClass: 'animated', // default
+                offset: 0, // default
+                mobile: true, // default
+                live: true // default
+            });
+            wow.init();
+        });
+    </script>
+    <!-- Script Geral -->
+
+    <!-- Window Locker -->
+    <script type="text/javascript" src="/js/spin/spin.min.js"></script>
+    <script type="text/javascript" src="/js/spin/spin-windowlock/spin-windowlock.js"></script>
+    <!-- /Window Locker -->
+
+    <script type="text/javascript" src="/js/plenus/popup-init.js"></script>
+
+    <style>
+        .wow {
+            visibility: hidden;
+        }
+    </style>
+     
+        <!--<link href="/js/calendario/zabuto_calendar.css" rel="stylesheet" type="text/css"/>
+        <script src="/js/calendario/zabuto_calendar.js"></script>-->
+    </head>
+        
+    <body><a href="https://candoi.pr.gov.br/cdn-cgi/content?id=fXShFozvtvNHX9FWgAPVCP6b3wwbUNookQkhFeM2hXs-1795780280.5873094-1.2.1.1-d23H6qUN12ZYr4FLjHJjaiAy45k9c0Mx53QX8g_FmyZtraxeJBrtdN2iwOPDSNAi" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <div class="container-fluid">
+    <!-- Exibido em resolução mobile (< 1200px) -->
+    <div class="row d-lg-none"><header id="menuMobile" class="col-12">
+    <div class="row">
+        <div class="col-12">
+            <div class="pull-left">
+                <a href="/" alt="Ir para página inicial">
+                    <img src="/imagens/logoPequena.png" class="logo-mobile img-fluid">
+                </a>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn-menu-mobile" data-toggle="collapse" data-target="#collapseMenuMobile" aria-expanded="false" aria-controls="collapseMenuMobile">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+            </div>
+            <div class="pull-right d-none">
+                <button type="button" class="btn-menu-mobile" data-toggle="collapse" data-target="#collapseAcessibilidadeMobile" aria-expanded="false" aria-controls="collapseAcessibilidadeMobile">
+                    <i class="fa fa-fw fa-wheelchair"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="collapse" id="collapseAcessibilidadeMobile">
+        <div class="row caixa-acessibilidade">
+            <h4 class="col-12 text-center">
+                <span class="fa fa-wheelchair" aria-hidden="true"></span>
+                <span>Opções de acessibilidade</span>
+            </h4>
+            <nav class="col-12">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="fontBigger">
+                            <span class="fa fw-fa fa-search-plus" aria-hidden="true"></span>
+                            <span>Aumentar fonte</span>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="fontSmaller">
+                            <span class="fa fw-fa fa-search-minus" aria-hidden="true"></span>
+                            <span>Reduzir fonte</span>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="toggleContrast">
+                            <span class="fa fw-fa fa-adjust" aria-hidden="true"></span>
+                            <span>Alto contraste</span>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="reset">
+                            <span class="fa fw-fa fa-refresh" aria-hidden="true"></span>
+                            <span>Desfazer opções</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="collapse" id="collapseMenuMobile">
+        <div class="row">
+            <nav class="col-12">
+                <ul><li><a href="/" target="_self" class="link-submenu">Início</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-154" aria-expanded="false" aria-controls="mob-submenu-clps-154">Município<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-154"><ul><li><a href="/pagina/375_Historia-do-Municipio.html" target="_self" class="link-submenu">História do Município</a></li><li><a href="/pagina/406_Simbolos.html" target="_self" class="link-submenu">Símbolos</a></li><li><a href="/pagina/411_Galeria-de-Prefeitos.html" target="_self" class="link-submenu">Galeria de Prefeitos</a></li><li><a href="https://www.camaracandoi.pr.gov.br/" target="_self" class="link-submenu">Câmara Municipal</a></li><li><a href="/pagina/494_Obras-Publicas.html" target="_self" class="link-submenu">Obras Publicas</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-157" aria-expanded="false" aria-controls="mob-submenu-clps-157">Prefeitura<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-157"><ul><li><a href="/secretarias/" target="_self" class="link-submenu">Secretarias</a></li><li><a href="/pagina/488_Atos-Normativos.html" target="_blank" class="link-submenu">Atos Normativos</a></li><li><a href="/pagina/373_Audiencias-Publicas.html" target="_self" class="link-submenu">Audiências Públicas</a></li><li><a href="/pagina/665_Plano-Plurianual-PPA.html" target="_self" class="link-submenu">Plano Plurianual – PPA</a></li><li><a href="/pagina/664_Legislacao-Tributaria.html" target="_self" class="link-submenu">Legislação Tributária</a></li><li><a href="/pagina/495_LGPD-Lei-Geral-de-Protecao-de-Dados.html" target="_self" class="link-submenu">LGPD - Lei Geral de Proteção de Dados</a></li><li><a href="/gabinete" target="_self" class="link-submenu">Gabinete do Prefeito</a></li><li><a href="/pagina/524_Pesquisas-de-Satisfacao.html" target="_self" class="link-submenu">Pesquisas de Satisfação</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-232" aria-expanded="false" aria-controls="mob-submenu-clps-232">Informações Institucionais<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-232"><ul><li><a href="/pagina/428_Registro-das-Competencias.html" target="_self" class="link-submenu">Registro das Competências</a></li><li><a href="/pagina/425_Organograma.html" target="_self" class="link-submenu">Organograma</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-212" aria-expanded="false" aria-controls="mob-submenu-clps-212">Conselhos Municipais<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-212"><ul><li><a href="/pagina/627_Conselho-Municipal-de-Assistencia-Social-CMAS.html" target="_self" class="link-submenu">Conselho Municipal de Assistência Social - CMAS</a></li><li><a href="/pagina/337_CACS-FUNDEB.html" target="_self" class="link-submenu">CACS - FUNDEB</a></li><li><a href="/pagina/529_Conselho-Municipal-dos-Direitos-da-Mulher.html" target="_self" class="link-submenu">Conselho Municipal dos Direitos da Mulher</a></li><li><a href="/pagina/431_Conselhos-Municipal-de-Educacao.html" target="_self" class="link-submenu">Conselhos Municipal de Educação</a></li><li><a href="/pagina/610_Conselho-Municipal-de-Saude.html" target="_self" class="link-submenu">Conselho Municipal de Saúde</a></li></ul></div></li><li><a href="/pagina/387_Recomendacoes-Administrativas.html" target="_self" class="link-submenu">Recomendações Administrativas</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-165" aria-expanded="false" aria-controls="mob-submenu-clps-165">Cidadão<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-165"><ul><li><a href="https://candoi.1doc.com.br/b.php?pg=o/wp" target="_self" class="link-submenu">Protocolo Online</a></li><li><a href="https://www.candoi.pr.gov.br/paginas-centralizadas/7_Servicos-Online.html" target="_blank" class="link-submenu">Serviços Online</a></li><li><a href="/pagina/439_Vagas-de-Emprego.html" target="_self" class="link-submenu">Vagas de Emprego</a></li><li><a href="/chamamento" target="_self" class="link-submenu">Chamamento Público</a></li><li><a href="/pagina/516_Carta-de-Servicos-ao-Usuario.html" target="_self" class="link-submenu">Carta de Serviços ao Usuário</a></li><li><a href="https://candoipr.equiplano.com.br:7007/contribuinte/#/" target="_blank" class="link-submenu">Portal do Contribuinte</a></li><li><a href="/pagina/606_Defesa-Civil.html" target="_self" class="link-submenu">Defesa Civil</a></li><li><a href="https://www.candoi.pr.gov.br/paginas-centralizadas/23_Servico-de-Informacao-SIC.html" target="_self" class="link-submenu">Serviço de Informação - SIC</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-166" aria-expanded="false" aria-controls="mob-submenu-clps-166">Empresa<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-166"><ul><li><a href="/licitacao/" target="_self" class="link-submenu">Licitações</a></li><li><a href="/chamamento" target="_self" class="link-submenu">Chamamento Público</a></li><li><a href="https://candoi.1doc.com.br/b.php?pg=o/wp" target="_self" class="link-submenu">Protocolo Online</a></li><li><a href="https://portal-prefeitura-candoi.equiplano.cloud/relatorio/prestacao-contas/instrucao-normativa-tce/extrato-movimentacao-por-fornecedor" target="_blank" class="link-submenu">Extrato por Fornecedor</a></li><li><a href="https://portal-prefeitura-candoi.equiplano.cloud/relatorio/licitacao-contrato/contrato/contratos-atas-de-registro-de-preco-por-contrato" target="_blank" class="link-submenu">Contratos / Atas</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-181" aria-expanded="false" aria-controls="mob-submenu-clps-181">Certidões<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-181"><ul><li><a href="https://candoipr.equiplano.com.br:7007/contribuinte/#/stmCertidaoNegativa/certidaoNegativa" target="_self" class="link-submenu">Negativa de Débitos</a></li><li><a href="https://candoipr.equiplano.com.br:7007/contribuinte/#/stmCertidaoCadastroMunicipal/certidaoCadastroMunicipal" target="_self" class="link-submenu">De Inscrição Municipal</a></li><li><a href="https://candoipr.equiplano.com.br:7007/contribuinte/#/stmCertidao/validacaoCertidao" target="_self" class="link-submenu">Validação de Certidão</a></li></ul></div></li><li><a href="https://www.esnfs.com.br/" target="_self" class="link-submenu">Nota Fiscal Eletrônica</a></li><li><a href="https://app2.pr.sebrae.com.br/sala-digital/consultar-sala" target="_blank" class="link-submenu">Sala do Empreendedor</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-8" aria-expanded="false" aria-controls="mob-submenu-clps-8">Imprensa<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-8"><ul><li><a href="/noticias/" target="_self" class="link-submenu">Notícias</a></li><li><a href="http://www.diariomunicipal.com.br/amp/" target="_blank" class="link-submenu">Órgão Oficial</a></li><li><a href="https://www.candoi.pr.gov.br/agenda/" target="_self" class="link-submenu">Agenda de Eventos</a></li><li><a href="/galeria-fotos/" target="_self" class="link-submenu">Galeria de Fotos</a></li><li><a href="/videos/" target="_self" class="link-submenu">Vídeos</a></li><li><a href="https://www.candoi.pr.gov.br/publicacoes/" target="_self" class="link-submenu">Publicações</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-226" aria-expanded="false" aria-controls="mob-submenu-clps-226">Projetos<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-226"><ul><li><a href="/pagina/655_CANTA-CANTU-2026.html" target="_self" class="link-submenu">CANTA CANTU 2026</a></li><li><a href="/pagina/638_Programa-Candoi-Mais-Credito.html" target="_self" class="link-submenu">Programa Candói Mais Crédito</a></li><li><a href="/pagina/632_PROJETO-OFICINAS-CULTURAIS.html" target="_self" class="link-submenu">PROJETO OFICINAS CULTURAIS</a></li><li><a href="/pagina/631_PROJETO-MODERNIZACAO-DA-BIBLIOTECA-ELIZABETE-KARAM-ELIAS.html" target="_self" class="link-submenu">PROJETO MODERNIZAÇÃO DA BIBLIOTECA ELIZABETE KARAM ELIAS</a></li><li><a href="/pagina/623_Festival-Regional-de-Interpretacao-de-Musica-Sertaneja.html" target="_self" class="link-submenu">Festival Regional de Interpretação de Música Sertaneja</a></li><li><a href="/pagina/624_Canta-Candoi.html" target="_self" class="link-submenu">Canta Candói</a></li><li><a href="/paginas-centralizadas/17_Politica-Nacional-Aldir-Blanc-PNAB.html" target="_self" class="link-submenu">Politica Nacional Aldir Blanc (PNAB)</a></li><li><a href="/pagina/590_Banda-Talentos-da-Terra.html" target="_self" class="link-submenu">Banda Talentos da Terra</a></li><li><a href="https://candoi.pr.gov.br/paginas-centralizadas/14_Cadastro-Cultural-Lei-Paulo-Gustavo-2023.html" target="_self" class="link-submenu">Lei Paulo Gustavo</a></li><li><a href="https://www.candoi.pr.gov.br/paginas-centralizadas/13_Sistema-COMPLIANCE.html" target="_self" class="link-submenu">Compliance</a></li><li><a href="/pagina/466_Plano-de-Acoes-e-Investimento-PAI.html" target="_self" class="link-submenu">Plano de Ações e Investimento (PAI)</a></li><li><a href="https://www.candoi.pr.gov.br/paginas-centralizadas/12_Plano-de-Governo.html" target="_self" class="link-submenu">Plano de Governo</a></li><li><a href="/paginas-centralizadas/5_Programa-Campo-Forte.html" target="_self" class="link-submenu">Campo Forte</a></li><li><a href="/paginas-centralizadas/6_Internet-Gratuita.html" target="_self" class="link-submenu">Internet Gratuita</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-241" aria-expanded="false" aria-controls="mob-submenu-clps-241">Parcerias<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-241"><ul><li><a href="https://www.candoi.pr.gov.br/chamamento/" target="_self" class="link-submenu">Chamamento Publico</a></li><li><a href="https://www.candoi.pr.gov.br/parceria/" target="_self" class="link-submenu">Parcerias</a></li></ul></div></li><li><a href="https://candoipr.equiplano.com.br:7007/contribuinte/#/" target="_blank" class="link-submenu">Portal do Contribuinte</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-13" aria-expanded="false" aria-controls="mob-submenu-clps-13">Contato<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-13"><ul><li><a href="/contato/" target="_self" class="link-submenu">Fale Conosco</a></li><li><a href="/localizacao/" target="_self" class="link-submenu">Localização</a></li><li><a href="/uploads/pagina/arquivos/ENDERECOS-OFICIAIS-2021.pdf" target="_self" class="link-submenu">Endereços e Contatos</a></li><li><a href="/pagina/336_Atendimento.html" target="_self" class="link-submenu">Atendimento</a></li></ul></div></li><li><a href="/faq" target="_self" class="link-submenu">Perguntas Frequentes</a></li><li><a href="/pagina/473_Compliance.html" target="_self" class="link-submenu">Compliance</a></li><li><a href="https://candoi.1doc.com.br/b.php?pg=o/login&n=3" target="_self" class="link-submenu">Protocolo (Interno)</a></li></ul>            </nav>
+        </div>
+    </div>
+</header>
+</div>
+    <!-- Exibido em resolução desktop (> 1200px) -->
+    <div class="row d-none d-lg-block"><div class="barra-acessibilidade" id="barra-acessibilidade">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="nome">
+                    <div class="icone"><span class="fa fa-wheelchair" aria-hidden="true"></span></div>
+                    Acessibilidade
+                </div>
+                <div class="fontes">
+                    <div class="alterar" id="increaseFont">A+</div>
+                    <div class="alterar" id="decreaseFont">A-</div>
+                </div>
+                <div class="contraste">
+                    <div class="alterar" id="changeColorAcess">Contraste</div>
+                </div>
+                <div class="contraste">
+					<div class="alterar" id="resetFont" id="changeColorDefault"><i class="fa fa-refresh" aria-hidden="true"></i> 
+					Retornar acessibilidade
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-topo-info">
+    <div class="container">
+        <div class="topo-info-box">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                <!--<div class="clima-topo">
+                        <div id="climatempo-icon-container">
+                            <a id="clima-tempo-link" href="https://www.cptec.inpe.br/previsao-tempo/ms/jaraguari" target="_blank">
+                                <span class="clima-title">Previsão do Tempo</span> 
+                                <img class="clima-img" src="/imagens/icontempo/cl.png" id="climatempo-icon" alt=""/>
+                                <span class="clima-temp" id="climatempo-temperatura-container"></span>
+                            </a>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="col-lg-9 col-md-12 col-sm-12">
+                    <ul class="list-menu-topo">
+                        <li class="mapasite">
+                            <a href="/pagina/430_Mapa-do-Site.html" title="Mapa do Site">
+                                <i class="fa fa-sitemap"></i> 
+                                <!-- <img src="/uploads/diagrama.png" alt="Diagrama"> -->
+                                <div class="descricao">
+                                    Mapa do Site
+                                </div>
+                            </a>
+                        </li>
+                        <li class="acessibilidade">
+                            <a href="#" id="acessibilidade" title="Acessibilidade">
+                                <i class="fa fa-wheelchair"></i> 
+                                <div class="descricao">
+                                    Acessibilidade
+                                </div>
+                            </a>
+                        </li>
+                        <li class="ouvidoria">
+                            <a href="https://www.candoi.pr.gov.br/pagina/625_Ouvidoria.html" title="Ouvidoria">
+                                <i class="fa fa-comments"></i> 
+                                <div class="descricao">
+                                    Ouvidoria
+                                </div>
+                            </a>
+                        </li>
+                        <li class="acessoinfo">
+                            <a href="https://candoi.1doc.com.br/b.php?pg=o/central_servicos&tab=categoria&filter=01JK93NH4J3AQZ0RWWS5AJ4YAZ" title="Acesso a Informação">
+                                <i class="fa fa-info-circle"></i> 
+                                <div class="descricao">
+                                    Acesso à Informação
+                                </div>
+                            </a>
+                        </li>
+                        <li class="portaltransp">
+                            <a href="https://www.candoi.pr.gov.br/portalTransparencia/" title="Portal da Tranparência">
+                                <i class="fa fa-search"></i> 
+                                <div class="descricao">
+                                    Portal da Transparência
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-topo-logo">
+    <div class="container">
+        <div class="topo-logo-box">
+            <div class="row">
+                <div class="col-lg-6 col-md-12 col-sm-12 logo-topo">
+                    <a href="/" title="Prefeitura Municipal de Candoí">
+                        <img src="/uploads/siteDescricao/logoprincipal.png" class="img-fluid" />
+                    </a>
+                    <a href="https://www.rededecontrole.gov.br/verifique-adesao-pnpc/" title="PNPC">
+                        <img src="/uploads/siteDescricao/PNPC.png" class="img-fluid">
+                    </a>
+                    <a href="https://radardatransparencia.atricon.org.br/" target=_blank title="Radar Tranparência">
+                        <img src="/uploads/siteDescricao/radar_transparencia.png" class="img-fluid">
+                    </a>
+                    <a>
+                        <img src="/uploads/siteDescricao/transparencia.png" class="img-fluid">
+                    </a>
+                    
+                </div>
+                <div class="col-6  -none d-xl-block d-lg-block d-md-none d-xl-none">
+                    <div class="row">
+
+                        <!--<div class="col-lg-12 col-md-12 col-sm-12">
+                            <ul class="list-menu-topo">
+                                <li class="acessibilidade">
+                                    <a href="#" id="acessibilidade" title="Acessibilidade">
+                                        <i class="fa fa-wheelchair"></i> Acessibilidade
+                                    </a>
+                                </li>
+                                <li class="ouvidoria">
+                                    <a href="https://www.candoi.pr.gov.br/pagina/625_Ouvidoria.html" title="Ouvidoria">
+                                        <i class="fa fa-comments"></i> Ouvidoria
+                                    </a>
+                                </li>
+                                <li class="acessoinfo">
+                                    <a href="https://candoi.1doc.com.br/b.php?pg=o/central_servicos&tab=categoria&filter=01JK93NH4J3AQZ0RWWS5AJ4YAZ" title="Acesso a Informação">
+                                        <i class="fa fa-info-circle"></i> &nbsp;Acesso à Informação
+                                    </a>
+                                </li>
+                                <li class="portaltransp">
+                                    <a href="https://www.candoi.pr.gov.br/portalTransparencia/"
+                                       title="Portal da Tranparência">
+                                       <i class="fa fa-search"></i> &nbsp;Portal da Transparência
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>-->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="telefone-topo">
+                                (42) 3638-8000 
+                                <div class="icon">
+                                    <i class="fa fa-fw fa-phone"></i> 
+                                    <div class="marcador"></div>
+                                </div>
+                            </div>
+                            <div class="atendimento-topo">
+                                Segunda à Sexta, das 08:00 às 12:00 - 13:00 às 17:00                                <div class="icon">
+                                    <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
+                                    <div class="marcador"></div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="placeholderMenuDesktop" class="container-fluid"><!-- Deixe isso aqui, vlw --></div>
+<header id="menuDesktopFixo" class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="caixa-logo">
+				<a href="/" title="Prefeitura Municipal de Candoí">
+					<img src="/imagens/logoPequena.png" class="logo-pequena">
+				</a>
+			</div>
+			<div class="caixa-links">
+				<nav>
+					<ul class="top-level"><li><a href="/" target="_self">Início</a></li><li><a role="button" id="desk-menu-ddown-154" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Município <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-154"><li class=""><a href="/pagina/375_Historia-do-Municipio.html" target="_self" class="dropdown-item">História do Município</a></li><li class=""><a href="/pagina/406_Simbolos.html" target="_self" class="dropdown-item">Símbolos</a></li><li class=""><a href="/pagina/411_Galeria-de-Prefeitos.html" target="_self" class="dropdown-item">Galeria de Prefeitos</a></li><li class=""><a href="https://www.camaracandoi.pr.gov.br/" target="_self" class="dropdown-item">Câmara Municipal</a></li><li class=""><a href="/pagina/494_Obras-Publicas.html" target="_self" class="dropdown-item">Obras Publicas</a></li></ul></li><li><a role="button" id="desk-menu-ddown-157" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prefeitura <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-157"><li class=""><a href="/secretarias/" target="_self" class="dropdown-item">Secretarias</a></li><li class=""><a href="/pagina/488_Atos-Normativos.html" target="_blank" class="dropdown-item">Atos Normativos</a></li><li class=""><a href="/pagina/373_Audiencias-Publicas.html" target="_self" class="dropdown-item">Audiências Públicas</a></li><li class=""><a href="/pagina/665_Plano-Plurianual-PPA.html" target="_self" class="dropdown-item">Plano Plurianual – PPA</a></li><li class=""><a href="/pagina/664_Legislacao-Tributaria.html" target="_self" class="dropdown-item">Legislação Tributária</a></li><li class=""><a href="/pagina/495_LGPD-Lei-Geral-de-Protecao-de-Dados.html" target="_self" class="dropdown-item">LGPD - Lei Geral de Proteção de Dados</a></li><li class=""><a href="/gabinete" target="_self" class="dropdown-item">Gabinete do Prefeito</a></li><li class=""><a href="/pagina/524_Pesquisas-de-Satisfacao.html" target="_self" class="dropdown-item">Pesquisas de Satisfação</a></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-232" class="dropdown-item">Informações Institucionais</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-232"><li class=""><a href="/pagina/428_Registro-das-Competencias.html" target="_self" class="dropdown-item">Registro das Competências</a></li><li class=""><a href="/pagina/425_Organograma.html" target="_self" class="dropdown-item">Organograma</a></li></ul></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-212" class="dropdown-item">Conselhos Municipais</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-212"><li class=""><a href="/pagina/627_Conselho-Municipal-de-Assistencia-Social-CMAS.html" target="_self" class="dropdown-item">Conselho Municipal de Assistência Social - CMAS</a></li><li class=""><a href="/pagina/337_CACS-FUNDEB.html" target="_self" class="dropdown-item">CACS - FUNDEB</a></li><li class=""><a href="/pagina/529_Conselho-Municipal-dos-Direitos-da-Mulher.html" target="_self" class="dropdown-item">Conselho Municipal dos Direitos da Mulher</a></li><li class=""><a href="/pagina/431_Conselhos-Municipal-de-Educacao.html" target="_self" class="dropdown-item">Conselhos Municipal de Educação</a></li><li class=""><a href="/pagina/610_Conselho-Municipal-de-Saude.html" target="_self" class="dropdown-item">Conselho Municipal de Saúde</a></li></ul></li><li class=""><a href="/pagina/387_Recomendacoes-Administrativas.html" target="_self" class="dropdown-item">Recomendações Administrativas</a></li></ul></li><li><a role="button" id="desk-menu-ddown-165" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cidadão <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-165"><li class=""><a href="https://candoi.1doc.com.br/b.php?pg=o/wp" target="_self" class="dropdown-item">Protocolo Online</a></li><li class=""><a href="https://www.candoi.pr.gov.br/paginas-centralizadas/7_Servicos-Online.html" target="_blank" class="dropdown-item">Serviços Online</a></li><li class=""><a href="/pagina/439_Vagas-de-Emprego.html" target="_self" class="dropdown-item">Vagas de Emprego</a></li><li class=""><a href="/chamamento" target="_self" class="dropdown-item">Chamamento Público</a></li><li class=""><a href="/pagina/516_Carta-de-Servicos-ao-Usuario.html" target="_self" class="dropdown-item">Carta de Serviços ao Usuário</a></li><li class=""><a href="https://candoipr.equiplano.com.br:7007/contribuinte/#/" target="_blank" class="dropdown-item">Portal do Contribuinte</a></li><li class=""><a href="/pagina/606_Defesa-Civil.html" target="_self" class="dropdown-item">Defesa Civil</a></li><li class=""><a href="https://www.candoi.pr.gov.br/paginas-centralizadas/23_Servico-de-Informacao-SIC.html" target="_self" class="dropdown-item">Serviço de Informação - SIC</a></li></ul></li><li><a role="button" id="desk-menu-ddown-166" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Empresa <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-166"><li class=""><a href="/licitacao/" target="_self" class="dropdown-item">Licitações</a></li><li class=""><a href="/chamamento" target="_self" class="dropdown-item">Chamamento Público</a></li><li class=""><a href="https://candoi.1doc.com.br/b.php?pg=o/wp" target="_self" class="dropdown-item">Protocolo Online</a></li><li class=""><a href="https://portal-prefeitura-candoi.equiplano.cloud/relatorio/prestacao-contas/instrucao-normativa-tce/extrato-movimentacao-por-fornecedor" target="_blank" class="dropdown-item">Extrato por Fornecedor</a></li><li class=""><a href="https://portal-prefeitura-candoi.equiplano.cloud/relatorio/licitacao-contrato/contrato/contratos-atas-de-registro-de-preco-por-contrato" target="_blank" class="dropdown-item">Contratos / Atas</a></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-181" class="dropdown-item">Certidões</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-181"><li class=""><a href="https://candoipr.equiplano.com.br:7007/contribuinte/#/stmCertidaoNegativa/certidaoNegativa" target="_self" class="dropdown-item">Negativa de Débitos</a></li><li class=""><a href="https://candoipr.equiplano.com.br:7007/contribuinte/#/stmCertidaoCadastroMunicipal/certidaoCadastroMunicipal" target="_self" class="dropdown-item">De Inscrição Municipal</a></li><li class=""><a href="https://candoipr.equiplano.com.br:7007/contribuinte/#/stmCertidao/validacaoCertidao" target="_self" class="dropdown-item">Validação de Certidão</a></li></ul></li><li class=""><a href="https://www.esnfs.com.br/" target="_self" class="dropdown-item">Nota Fiscal Eletrônica</a></li><li class=""><a href="https://app2.pr.sebrae.com.br/sala-digital/consultar-sala" target="_blank" class="dropdown-item">Sala do Empreendedor</a></li></ul></li><li><a role="button" id="desk-menu-ddown-8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Imprensa <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-8"><li class=""><a href="/noticias/" target="_self" class="dropdown-item">Notícias</a></li><li class=""><a href="http://www.diariomunicipal.com.br/amp/" target="_blank" class="dropdown-item">Órgão Oficial</a></li><li class=""><a href="https://www.candoi.pr.gov.br/agenda/" target="_self" class="dropdown-item">Agenda de Eventos</a></li><li class=""><a href="/galeria-fotos/" target="_self" class="dropdown-item">Galeria de Fotos</a></li><li class=""><a href="/videos/" target="_self" class="dropdown-item">Vídeos</a></li><li class=""><a href="https://www.candoi.pr.gov.br/publicacoes/" target="_self" class="dropdown-item">Publicações</a></li></ul></li><li><a role="button" id="desk-menu-ddown-226" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Projetos <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-226"><li class=""><a href="/pagina/655_CANTA-CANTU-2026.html" target="_self" class="dropdown-item">CANTA CANTU 2026</a></li><li class=""><a href="/pagina/638_Programa-Candoi-Mais-Credito.html" target="_self" class="dropdown-item">Programa Candói Mais Crédito</a></li><li class=""><a href="/pagina/632_PROJETO-OFICINAS-CULTURAIS.html" target="_self" class="dropdown-item">PROJETO OFICINAS CULTURAIS</a></li><li class=""><a href="/pagina/631_PROJETO-MODERNIZACAO-DA-BIBLIOTECA-ELIZABETE-KARAM-ELIAS.html" target="_self" class="dropdown-item">PROJETO MODERNIZAÇÃO DA BIBLIOTECA ELIZABETE KARAM ELIAS</a></li><li class=""><a href="/pagina/623_Festival-Regional-de-Interpretacao-de-Musica-Sertaneja.html" target="_self" class="dropdown-item">Festival Regional de Interpretação de Música Sertaneja</a></li><li class=""><a href="/pagina/624_Canta-Candoi.html" target="_self" class="dropdown-item">Canta Candói</a></li><li class=""><a href="/paginas-centralizadas/17_Politica-Nacional-Aldir-Blanc-PNAB.html" target="_self" class="dropdown-item">Politica Nacional Aldir Blanc (PNAB)</a></li><li class=""><a href="/pagina/590_Banda-Talentos-da-Terra.html" target="_self" class="dropdown-item">Banda Talentos da Terra</a></li><li class=""><a href="https://candoi.pr.gov.br/paginas-centralizadas/14_Cadastro-Cultural-Lei-Paulo-Gustavo-2023.html" target="_self" class="dropdown-item">Lei Paulo Gustavo</a></li><li class=""><a href="https://www.candoi.pr.gov.br/paginas-centralizadas/13_Sistema-COMPLIANCE.html" target="_self" class="dropdown-item">Compliance</a></li><li class=""><a href="/pagina/466_Plano-de-Acoes-e-Investimento-PAI.html" target="_self" class="dropdown-item">Plano de Ações e Investimento (PAI)</a></li><li class=""><a href="https://www.candoi.pr.gov.br/paginas-centralizadas/12_Plano-de-Governo.html" target="_self" class="dropdown-item">Plano de Governo</a></li><li class=""><a href="/paginas-centralizadas/5_Programa-Campo-Forte.html" target="_self" class="dropdown-item">Campo Forte</a></li><li class=""><a href="/paginas-centralizadas/6_Internet-Gratuita.html" target="_self" class="dropdown-item">Internet Gratuita</a></li></ul></li><li><a role="button" id="desk-menu-ddown-241" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Parcerias <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-241"><li class=""><a href="https://www.candoi.pr.gov.br/chamamento/" target="_self" class="dropdown-item">Chamamento Publico</a></li><li class=""><a href="https://www.candoi.pr.gov.br/parceria/" target="_self" class="dropdown-item">Parcerias</a></li></ul></li><li><a href="https://candoipr.equiplano.com.br:7007/contribuinte/#/" target="_blank">Portal do Contribuinte</a></li><li><a role="button" id="desk-menu-ddown-13" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contato <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-13"><li class=""><a href="/contato/" target="_self" class="dropdown-item">Fale Conosco</a></li><li class=""><a href="/localizacao/" target="_self" class="dropdown-item">Localização</a></li><li class=""><a href="/uploads/pagina/arquivos/ENDERECOS-OFICIAIS-2021.pdf" target="_self" class="dropdown-item">Endereços e Contatos</a></li><li class=""><a href="/pagina/336_Atendimento.html" target="_self" class="dropdown-item">Atendimento</a></li></ul></li><li><a href="/faq" target="_self">Perguntas Frequentes</a></li><li><a href="/pagina/473_Compliance.html" target="_self">Compliance</a></li><li><a href="https://candoi.1doc.com.br/b.php?pg=o/login&n=3" target="_self">Protocolo (Interno)</a></li><li class="open-search-link"><a role="button" id="btnOpenSearchDesktop"><i class="fa fa-search"></i></a></li></ul>				</nav>
+			</div>
+			<div class="col-12 atendimento">
+				<form class="formulario-busca" method="GET" id="form_pesquisar_home" action="/busca/">
+					<input type="search" placeholder="Pesquisar" name="q"/>
+					<button type="submit">
+						<i class="fa fa-search"></i>
+					</button>
+					<div class="overlay"></div>
+				</form>
+			</div>
+		</div>
+	</div>
+</header>
+</div>
+</div>
+
+<div class="menu-lateral-flutuante">
+    <ul>
+                <li>
+            <a href="https://www.facebook.com/prefeituracandoi/" title="Facebook"><i class="fa fa-facebook"></i></a>
+        </li>
+                                <li>
+            <a href="https://www.instagram.com/prefeituracandoi?igsh=YnNsZHMxeTRia3I5" title="Instagram"><i class="fa fa-instagram"></i></a>
+        </li>
+                    </ul>
+</div>
+
+<script type="text/javascript" src="/header/assets/header.js"></script>        <div class="container-fluid" style="padding-left: 0px; padding-right: 0px;">
+    <div class="row no-gutters">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 wow fadeInLeft">
+            <div id="banner-home-mobile" class="d-sm-block d-md-block d-lg-none d-xl-none">
+                <!-- Banners Slider -->
+<section>
+    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+        </ol>
+        <!--/.Indicators-->
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+                <a href="">
+                <img class="d-block w-100" src="/uploads/banner/candoi-segue-avancando-na-educacao-800-x-600-px.png" alt="EDUCAÇÃO">
+                </a>
+            </div>
+            <!--/First slide-->
+        </div>
+        <!--/.Slides-->
+        <!--Controls-->
+        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
+    </div>
+</section>
+<!--/.Banners Slider-->            </div>
+
+            <div id="banner-home" class="d-none d-sm-none d-md-none d-lg-block d-xl-block">
+                <!-- Banners Slider -->
+<section>
+    <div id="banner-principal-home" class="owl-carousel owl-theme">
+        <div class="item">
+            <a href="">
+                <img class="d-block w-100" src="/uploads/banner/candoi-segue-avancando-na-educacao-800-x-600-px-1920-x-370-px.png" alt="EDUCAÇÃO" />
+            </a>
+        </div>
+    </div>
+</section>
+<!--/.Banners Slider-->            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-menu-acesso-informacao">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="owl-carousel owl-theme acessoRapido">
+    <div class="item">
+        <a href="/pagina/478_Servico-de-Inspecao-Municipal-SIMPOA.html"  target="_blank"  title="SIM/POA">
+        <div class="bloco">
+            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+            <div class="texto">
+                SIM/POA
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://docs.google.com/spreadsheets/d/1yiqJVJKrhPCx9GI29jIbejQULgUbD0ZN/edit?usp=sharing&amp;ouid=114560665626153007380&amp;rtpof=true&amp;sd=true"  target="_blank"  title="Compras Públicas">
+        <div class="bloco">
+            <i class="fa fa-line-chart" aria-hidden="true"></i>
+            <div class="texto">
+                Compras Públicas
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://www.candoi.pr.gov.br/paginas-centralizadas/15_PCA-Plano-de-Compras-Anual.html"  target="_blank"  title="PCA">
+        <div class="bloco">
+            <i class="fa fa-window-maximize" aria-hidden="true"></i>
+            <div class="texto">
+                PCA
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://www.esnfs.com.br/"  target="_blank"  title="Nota Fiscal Eletrônica">
+        <div class="bloco">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            <div class="texto">
+                Nota Fiscal Eletrônica
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://candoi-saudetransparente.ids.inf.br/saudetransparente/"  target="_blank"  title="Portal Saúde Transparente">
+        <div class="bloco">
+            <i class="fa fa-heartbeat" aria-hidden="true"></i>
+            <div class="texto">
+                Portal Saúde Transparente
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://candoi.pr.gov.br/pagina/491_pagina.html"  target="_blank"  title="Tabela VTN">
+        <div class="bloco">
+            <i class="fa fa-comments" aria-hidden="true"></i>
+            <div class="texto">
+                Tabela VTN
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href=" /pagina/459_Iluminacao-Publica.html"  title="Iluminação Publica">
+        <div class="bloco">
+            <i class="fa fa-wrench" aria-hidden="true"></i>
+            <div class="texto">
+                Iluminação Publica
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/pagina/462_TESTE-RD.html"  target="_blank"  title="Audiência Pública - PAI">
+        <div class="bloco">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            <div class="texto">
+                Audiência Pública - PAI
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-base">
+    <div class="container">
+        <div class="row wow fadeInUp">
+            <!-- Notícias Principais -->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 wow fadeInLeft">
+                <h2 class="titulo">
+                    <a href="/noticias/" title="Notícias">
+                        <div class="icone">
+                            <i class="fa fa-newspaper-o"></i>
+                            <span></span>
+                        </div>
+                        Notícias 
+                    </a>
+                </h2>
+                <div class="noticias-principais">
+                    <div id="noticias-home" class="owl-carousel owl-theme noticias">
+                            <div class="item">
+        <a href="/noticiasView/?id=1764" title="Audiência Pública da Lei Orçamentária Anual (LOA) 2027">
+            <div class="bloco">
+                <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_divulgacao-do-pss-de-professores-1080-x-1350-px-800-x-600-px-800-x-500-px.png')" >
+
+                </div>
+                <div class="base">
+                    <div class="descricao">
+                        <div class="secretaria">
+                            Geral
+                            <span><i class="fa fa-clock-o" aria-hidden="true"></i> 14/08/2026</span>
+                        </div>
+                        <div class="titulo">
+                            Audiência Pública da Lei Orçamentária Anual (LOA) 2027
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/noticiasView/?id=1763" title="Candói sedia semifinal do InovaCantu e garante vaga na grande final">
+            <div class="bloco">
+                <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_design-sem-nome-1_(752).png')" >
+
+                </div>
+                <div class="base">
+                    <div class="descricao">
+                        <div class="secretaria">
+                            Geral
+                            <span><i class="fa fa-clock-o" aria-hidden="true"></i> 13/08/2026</span>
+                        </div>
+                        <div class="titulo">
+                            Candói sedia semifinal do InovaCantu e garante vaga na grande final
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/noticiasView/?id=1762" title="Programa Campo Forte: Candói Desenvolvido 2026">
+            <div class="bloco">
+                <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_inscricoes-campo-forte-26-800-x-600-px.png')" >
+
+                </div>
+                <div class="base">
+                    <div class="descricao">
+                        <div class="secretaria">
+                            Geral
+                            <span><i class="fa fa-clock-o" aria-hidden="true"></i> 13/08/2026</span>
+                        </div>
+                        <div class="titulo">
+                            Programa Campo Forte: Candói Desenvolvido 2026
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+                       </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 wow fadeInLeft">
+                <h2 class="titulo">
+                    <a href="/servicos/" title="Acesso Rápido">
+                        <div class="icone">
+                            <i class="fa fa-newspaper-o"></i>
+                            <span></span>
+                        </div>
+                        Acesso Rápido 
+                    </a>
+                </h2>
+                <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Geral">
+        <a href="#tb0" class="nav-link active"
+           id="tab0" data-toggle="tab" role="tab" aria-controls="home"
+           aria-selected="true">Geral</a>
+    </li>
+    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Servidor">
+        <a href="#tb1" class="nav-link "
+           id="tab1" data-toggle="tab" role="tab" aria-controls="home"
+           aria-selected="true">Servidor</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="tb0" role="tabpanel" aria-labelledby="tab0">
+        <div class="owl-carousel owl-theme servicos">
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="/licitacao/" target="" title="Licitações">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-gavel" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Licitações
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://candoi.1doc.com.br/b.php?pg=o/wp" target="" title="Protocolo Geral">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-chain-broken" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Protocolo Geral
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://www.candoi.pr.gov.br/portalTransparencia/" target="_blank" title="Portal da Transparência">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-search" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Portal da Transparência
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://www.youtube.com/channel/UCpsVNnNlK3-zYs_C3EUqwng" target="" title="Licitações ao Vivo">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-desktop" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Licitações ao Vivo
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="/paginas-centralizadas/7_Servicos-Online.html" target="" title="Serviços Online">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-hand-pointer-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Serviços Online
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="/contato/" target="" title="Contato">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Contato
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://candoi.pr.gov.br/pagina/480_Informacoes-Educacionais.html" target="" title="Educação">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-book" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Educação
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="/concursos/" target="" title="Concurso e Teste Seletivo">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-address-book-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Concurso e Teste Seletivo
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://leismunicipais.com.br/prefeitura/pr/candoi" target="_blank" title="Leis Municipais">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-balance-scale" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Leis Municipais
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="/pagina/478_Servico-de-Inspecao-Municipal-SIMPOA.html" target="_blank" title="SIM/POA">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa " aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        SIM/POA
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://docs.google.com/spreadsheets/d/1yiqJVJKrhPCx9GI29jIbejQULgUbD0ZN/edit?usp=sharing&amp;ouid=114560665626153007380&amp;rtpof=true&amp;sd=true" target="_blank" title="Compras Públicas">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-line-chart" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Compras Públicas
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://www.candoi.pr.gov.br/paginas-centralizadas/15_PCA-Plano-de-Compras-Anual.html" target="_blank" title="PCA">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-window-maximize" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        PCA
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade show " id="tb1" role="tabpanel" aria-labelledby="tab1">
+        <div class="owl-carousel owl-theme servicos">
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://candoipr.equiplano.com.br:7007/esportal/esportalprincipal.index.logic?l=true" target="_blank" title="Contracheque">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Contracheque
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://webmail.candoi.pr.gov.br/" target="_blank" title="Webmail">
+                                <div class="bloco" style="background: #18478D" >
+                                    <div class="icone">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Webmail
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-cinza-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="titulo">
+                    <a href="/noticias/" title="Mais Notícias ">
+                        <div class="icone">
+                            <i class="fa fa-newspaper-o"></i>
+                            <span></span>
+                        </div>
+                        Mais Notícias 
+                    </a>
+                </h2>
+                <div class="noticias-principais">
+                    <div id="mais-noticias-home" class="owl-carousel owl-theme noticias">
+                        
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1761" title="Secretaria de Saúde de Candói reforça a importância da Campanha de Multivacinação 2026">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_campanha-de-800-x-600-px.png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 13/08/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Secretaria de Saúde de Candói reforça a importância da Campanha de Multivacinação 2026
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1760" title="Educação de Candói avança no IDEB e reforça compromisso com a qualidade do ensino">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_candoi-segue-avancando-na-educacao-800-x-600-px.png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 13/08/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Educação de Candói avança no IDEB e reforça compromisso com a qualidade do ensino
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1758" title="A 2ª Conferência Municipal de Cultura foi realizada no Centro do Idoso e contou com a partici...">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_design-sem-nome_(789).png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 18/05/2026</span>
+                            </div>
+                            <div class="titulo">
+                                A 2ª Conferência Municipal de Cultura foi realizada no Centro do Idoso e contou com a partici...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1757" title="Prefeitura de Candói convida a população para Audiência Pública de Avaliação das Metas F...">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_convite-audiencia-publica-de-avaliacao-de-metas-fiscais-do-1o-quadrimestre-de-2026-o-prefeito-do-municipio-de-candoi-torna-publico-e-convida-as-autoridades-os-representantes-de-classes-e-a-socied.png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 11/05/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Prefeitura de Candói convida a população para Audiência Pública de Avaliação das Metas F...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1756" title="Prefeitura de Candói convida população para audiência pública da LDO 2027">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_ldo2027.png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 14/04/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Prefeitura de Candói convida população para audiência pública da LDO 2027
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1755" title="Programa Bons Olhos Paraná">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_bons-olhos-parana.png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 13/04/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Programa Bons Olhos Paraná
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1754" title="28° Festival Canta Candói">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_canta-candoi.png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 13/04/2026</span>
+                            </div>
+                            <div class="titulo">
+                                28° Festival Canta Candói
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1753" title="Prefeitura de Candói abre inscrições para Concurso Público – Edital nº 001/2026">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_concurso.png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 13/04/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Prefeitura de Candói abre inscrições para Concurso Público – Edital nº 001/2026
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1752" title="Dia de Campo – Pecuária de Corte reúne produtores e fortalece o setor em Candói">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_dia-de-campo.png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 10/04/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Dia de Campo – Pecuária de Corte reúne produtores e fortalece o setor em Candói
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1750" title="3º Grupo de Combate ao Tabagismo inicia na UBS Paz">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_design-sem-nome-8_(541).png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 13/03/2026</span>
+                            </div>
+                            <div class="titulo">
+                                3º Grupo de Combate ao Tabagismo inicia na UBS Paz
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1749" title="Propriedade rural de Candói recebe certificação de livre de brucelose e tuberculose animal.">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_design-sem-nome-31_(881).png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 07/03/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Propriedade rural de Candói recebe certificação de livre de brucelose e tuberculose animal.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=1748" title="Atendimento em Unidade de Saúde ou Pronto-Socorro em Candói">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_design-sem-nome-3_(195).png')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 05/03/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Atendimento em Unidade de Saúde ou Pronto-Socorro em Candói
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+        
+
+<footer>
+    <div class="caixa-principal container">
+        <div class="row">
+            <div class="col-12 col-lg-4 col-xl-6">
+                <div class="caixa-logo">
+                    <img src="/imagens/logoRodape.png">
+
+                    <div class="footer-barra02">
+                        <ul>
+                                                            <li>
+                                    <a href="https://www.facebook.com/prefeituracandoi/" title="Facebbok"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                                                                                                                    <li>
+                                    <a href="https://www.instagram.com/prefeituracandoi?igsh=YnNsZHMxeTRia3I5" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                </li>
+                                                                                </ul>
+                    </div>
+                </div>
+                <div class="caixa-botoes">
+                    <ul class="row">
+                        <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="/contato" class="link-btn">
+                                <i class="fa fa-fw fa-pencil-square-o" aria-hidden="true"></i>
+                                <span>Contato</span>
+                            </a>
+                        </li>
+                        <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="/localizacao" class="link-btn">
+                                <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i>
+                                <span>Localização</span>
+                            </a>
+                        </li>
+                        <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="/faq" class="link-btn">
+                                <i class="fa fa-fw fa-question-circle" aria-hidden="true"></i>
+                                <span>Dúvidas</span>
+                            </a>
+                        </li>
+
+                                                <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="http://webmail.candoi.pr.gov.br" target="_blank" class="link-btn">
+                                <i class="fa fa-fw fa-envelope" aria-hidden="true"></i>
+                                <span>Webmail</span>
+                            </a>
+                        </li>
+                                            </ul>
+                </div>
+            </div>
+            <div class="caixa-contatos col-12 col-lg-8 col-xl-6">
+                                <div class="info-contato endereco">
+                    <div class="icone"><i class="fa fa-fw fa-map" aria-hidden="true"></i></div>
+                    <div class="texto">
+                        <span>Av. XV de Novembro</span>
+                        <span>1761</span>
+                                                <span> - Cacique Candói</span>
+                                                                        <br>
+                        <span>CEP&nbsp;85140-000</span>
+                                                                        <br>
+                        <span>Candói - PR</span>
+                                            </div>
+                </div>
+                
+                                <div class="info-contato telefone">
+                    <div class="icone"><i class="fa fa-fw fa-phone" aria-hidden="true"></i></div>
+                    <div class="texto"><span>(42) 3638-8000</span></div>
+                </div>
+                
+                                <div class="info-contato telefone">
+                    <div class="icone"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></div>
+                    <div class="texto"><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="c8aba7a5bda6a1aba9aba9a788aba9a6aca7a1e6b8bae6afa7bee6aaba">[email&#160;protected]</a></span></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row caixa-copyright">
+        <div class="col-12">
+            <span>2026</span>
+            <span> &copy; </span>
+            <span>Prefeitura Municipal de Candoí</span>
+            <span> &bullet; </span>
+            <a href="https://plenusgestaopublica.com.br/" target="_blank" title="Plenus Gestão Pública">
+                <span>Desenvolvido por: </span>
+                <img src="/imagens/plenus.png" class="img-fluid">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+   <div vw-plugin-wrapper>
+       <div class="vw-plugin-top-wrapper"></div>
+   </div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+ new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+
+<!-- Banner LGPD -->
+<div class="banner-lgpd-consent-container">
+    <div class="banner-lgpd-consent">
+        <div class="banner-lgpd-consent__column">
+            Utilizamos cookies essenciais e tecnologias semelhantes de acordo com a nossa &nbsp;<a href="/pagina/457_LGPD-Politica-de-Privacidade.html">Política de Privacidade</a>&nbsp; e, ao continuar navegando, você concorda com estas condições.
+        </div>
+        <div class="banner-lgpd-consent__column">
+            <button class="btn btn-warning" id="bt-lgpd">Concordo</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setCookie(name, value, duration) {
+        var cookie = name + "=" + escape(value) +
+        ((duration) ? "; expires=" + duration.toGMTString() : "");
+
+        document.cookie = cookie;
+    }
+    function getCookie(name) {
+        var cookies = document.cookie;
+        var prefix = name + "=";
+        var begin = cookies.indexOf("; " + prefix);
+
+        if (begin == -1) {
+
+            begin = cookies.indexOf(prefix);
+
+            if (begin != 0) {
+                return null;
+            }
+
+        } else {
+            begin += 2;
+        }
+
+        var end = cookies.indexOf(";", begin);
+
+        if (end == -1) {
+            end = cookies.length;                        
+        }
+
+        return unescape(cookies.substring(begin + prefix.length, end));
+    }
+        
+    $( "#bt-lgpd" ).click(function() {
+        var data = new Date(2090,0,01);
+        setCookie('banner_lgpd', '1', data);
+        
+        if(getCookie('banner_lgpd') == '1'){
+            $('.banner-lgpd-consent-container').hide();
+        }
+    });
+    
+    if(getCookie('banner_lgpd') == '1'){
+        $('.banner-lgpd-consent-container').hide();
+    }
+    
+    
+</script>
+<!-- Banner LGPD -->  
+        <script src="/js/calendario/calendario.home.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Selecionar secretaria
+                $('#formSecretaria').on('change', function () {
+                    $(this).submit();
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function ($) {
+                $('#example5').sliderPro({
+                    width: 670,
+                    height: 326,
+                    orientation: 'vertical',
+                    loop: false,
+                    arrows: true,
+                    buttons: false,
+                    thumbnailsPosition: 'right',
+                    thumbnailPointer: true,
+                    thumbnailWidth: 290,
+                    breakpoints: {
+                        800: {
+                            thumbnailsPosition: 'bottom',
+                            thumbnailWidth: 270,
+                            thumbnailHeight: 100
+                        },
+                        500: {
+                            thumbnailsPosition: 'bottom',
+                            thumbnailWidth: 120,
+                            thumbnailHeight: 50
+                        }
+                    }
+                });
+            });
+        </script>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610eba1ad606396',t:'MTc5NTc4MDI4MA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610eba1ad606396',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
+

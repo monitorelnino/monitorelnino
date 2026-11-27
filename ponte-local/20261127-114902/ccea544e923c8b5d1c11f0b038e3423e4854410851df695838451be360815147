@@ -1,0 +1,1985 @@
+
+
+
+
+<!doctype html>
+<html>
+    <head>
+            <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefeitura Municipal de Mallet - PR</title>
+
+    <link rel="shortcut icon" href="/imagens/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/imagens/favicon.ico" type="image/x-icon">
+
+    <meta name="generator" content="">
+    <meta name="description" content="Prefeitura Municipal de Mallet - PR">
+    <meta name="abstract" content="Prefeitura Municipal de Mallet - PR">
+    <meta name="keywords" content="Prefeitura Municipal de Mallet - PR">
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://mallet.pr.gov.br/" rel="canonical">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/variaveis.css" rel="stylesheet">
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="/js/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/js/owlcarousel/assets/owl.theme.default.min.css">
+
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+
+    <!-- Css Stylo Geral -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/modules/topo.css" rel="stylesheet">
+    <link href="/css/modules/responsive.css" rel="stylesheet">
+    <link href="/css/modules/home-servicos.css" rel="stylesheet">
+    <link href="/css/modules/footer.css" rel="stylesheet">
+
+    <link href="/css/front/default.header.acessibilidade.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
+
+
+    <link href="/css/front/default.header.acessibilidade.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/modules/barra-titulos-internas.css" type="text/css" rel="stylesheet">
+
+    <link href="/css/front/modulos/noticias.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/obras.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/secretarias.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/licitacao.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/gabinete.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/turismo.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/faq.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/contato.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/concursos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/entidades.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/legislacao.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/parceria.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/termo.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/chamamento.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/atos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/boletins.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.obras.css" type="text/css" rel="stylesheet">
+
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="/js/newsite/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/js/newsite/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/newsite/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/newsite/mdb.min.js"></script>
+
+    <!-- javascript -->
+    <script src="/js/owlcarousel/owl.carousel.js"></script>
+
+    <script src="/js/open-search/open-search.js" type="text/javascript"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/bootstrap/dist/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
+
+    <script src="/js/menu.js" type="text/javascript"></script>
+    
+    <link href="/js/slider-pro-master/css/slider-pro.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/slider-pro-master/js/jquery.sliderPro.js" type="text/javascript"></script>
+    <link href="/js/slider-pro-master/css/examples.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Mensagem deslizante de mensagens -->
+    <script type="text/javascript" src="/js/jquery-sliding-message/jquery.slidingmessage.js"></script>
+    <script type="text/javascript" src="/js/jquery-sliding-message/showMsg.js"></script>
+    <script type="text/javascript" src="/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="/js/jquery.form.js"></script>
+    <script src="/js/acessibilidade/acessibilidade.jquery.js" type="text/javascript"></script>
+    <!-- Fim Mensagem deslizante de mensagens -->
+
+    <script src="/js/jquery.fittext.js" type="text/javascript"></script>
+    
+
+    <!-- Script Geral -->
+    <script>
+        window.onscroll = function () {
+            myFunction();
+        };
+
+        function myFunction() {
+            if (document.body.scrollTop > 160 || document.documentElement.scrollTop > 160) {
+                document.getElementById("logoPequena").className = "logoPequenaEfeito";
+                document.getElementById("menu-topo").className = "navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top navbarCor";
+            } else {
+                document.getElementById("logoPequena").className = "";
+                document.getElementById("menu-topo").className = "navbar navbar-expand-lg navbar-dark scrolling-navbar";
+            }
+        }
+    </script>
+
+    <script type="text/javascript">
+        var popOverSettings = {
+            container: 'body',
+            html: true,
+            selector: '.checksum-info',
+            trigger: 'focus'
+        };
+        $(document).ready(function ($) {
+            "use strict";
+            /*-------------------------------------------------*/
+            /* =  Search animation
+             /*-------------------------------------------------*/
+            var searchToggle = $('.open-search'),
+                inputAnime = $(".formulario-busca"),
+                body = $('body');
+
+            searchToggle.on('click', function (event) {
+                event.preventDefault();
+
+                if (inputAnime.hasClass('active')) {
+                    inputAnime.addClass('active');
+                } else {
+                    inputAnime.removeClass('active');
+                }
+            });
+
+            body.on('click', function () {
+                inputAnime.removeClass('active');
+            });
+
+            var elemBinds = $('.open-search, .formulario-busca');
+            elemBinds.bind('click', function (e) {
+                e.stopPropagation();
+            });
+
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
+        });
+
+        $(document).ready(function () {
+            $('.servicos').owlCarousel({
+                loop: false,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#secretarias-home').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#banner-noticias-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 2
+                    }
+                }
+            });
+            $('.noticias-home').owlCarousel({
+                loop: false,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 2
+                    }
+                }
+            });
+            $('#mais-noticias-home').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#banner-fino-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-licitacoes').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 10000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-obras').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 10000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#home-turismo').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 13000,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#videos-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#galeria-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 2
+                    }
+                }
+            });
+            $('#eventos-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: false,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#concursos-home').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#galeria-imagens-noticiaview').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            $('.acessoRapido').owlCarousel({
+                loop: true,
+                margin: 5,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    },
+                    1200: {
+                        items: 12
+                    }
+                }
+            });
+            $('#veja-mais').owlCarousel({
+                loop: true,
+                margin: 5,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    },
+                    1200: {
+                        items: 1
+                    }
+                }
+            });
+            $('#noticias').owlCarousel({
+                loop: false,
+                margin: 0,
+                nav: false,
+                dots: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('.pagina-transparencia').owlCarousel({
+                loop: false,
+                margin: 0,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            
+            $('body').popover(popOverSettings);
+            
+            wow = new WOW({
+                boxClass: 'wow', // default
+                animateClass: 'animated', // default
+                offset: 0, // default
+                mobile: true, // default
+                live: true // default
+            });
+            wow.init();
+        });
+    </script>
+    <!-- Script Geral -->
+
+    <!-- Window Locker -->
+    <script type="text/javascript" src="/js/spin/spin.min.js"></script>
+    <script type="text/javascript" src="/js/spin/spin-windowlock/spin-windowlock.js"></script>
+    <!-- /Window Locker -->
+
+    <script type="text/javascript" src="/js/plenus/popup-init.js"></script>
+
+    <style>
+        .wow {
+            visibility: hidden;
+        }
+    </style>
+     
+        <!--<link href="/js/calendario/zabuto_calendar.css" rel="stylesheet" type="text/css"/>
+        <script src="/js/calendario/zabuto_calendar.js"></script>-->
+    </head>
+        
+    <body>
+        
+<div class="barra-acessibilidade hidden-xs" id="barra-acessibilidade">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="nome">
+                    <div class="icone"><span class="fa fa-wheelchair" aria-hidden="true"></span></div>
+                    Acessibilidade
+                </div>
+                <div class="fontes">
+                    <div class="alterar" id="increaseFont">A+</div>
+                    <div class="alterar" id="decreaseFont">A-</div>
+                </div>
+                <div class="contraste">
+                    <div class="alterar" id="changeColorAcess">Contraste</div>
+                </div>
+                <div class="contraste">
+                    <div class="alterar" id="resetFont" id="changeColorDefault"><i class="fa fa-refresh"
+                                                                                   aria-hidden="true"></i> Retornar
+                        acessibilidade
+                    </div>
+                </div>
+                <div class="texto">
+                    <div class="alterar">
+                        <a href="#conteudo">
+                            Ir para o conteúdo  <span class="link">Alt+1</span>
+                        </a>
+                        <a href="#menu-topo">
+                            Ir para o menu  <span class="link">Alt+2</span>
+                        </a>
+                        <a href="#topo">
+                            Ir para o topo  <span class="link">Alt+3</span>
+                        </a>
+                        <a href="#rodape">
+                            Ir para o rodapé  <span class="link">Alt+4</span>
+                        </a>
+                        Controle de Zoom  <span class="link">Ctrl +/-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-topo-info d-none d-xl-block d-lg-block d-md-none d-xl-none">
+    <div class="container">
+        <div class="topo-info-box">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <ul class="list-menu-topo">
+                        <li class="acessibilidade">
+                            <a href="#" class="open-search">
+                                <i class="fa fa-search"></i> 
+                                <div class="descricao">
+                                    Busca
+                                </div>
+                            </a>
+                            
+                            <form class="formulario-busca" method="GET" id="form_pesquisar_home" action="/busca/">
+                                <input type="search" placeholder="Pesquisar" name="q"/>
+                                <button type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                <div class="overlay"></div>
+                            </form>
+                            
+                        </li>
+                        <li class="acessibilidade">
+                            <a href="#" id="acessibilidade" title="Acessibilidade">
+                                <i class="fa fa-wheelchair"></i> 
+                                <div class="descricao">
+                                    Acessibilidade
+                                </div>
+                            </a>
+                        </li>
+                        <li class="ouvidoria">
+                            <a href="https://mallet.pr.gov.br/pagina/410_Ouvidoria-Municipal.html" title="Ouvidoria">
+                                <i class="fa fa-comments"></i> 
+                                <div class="descricao">
+                                    Ouvidoria
+                                </div>
+                            </a>
+                        </li>
+                        <li class="acessoinfo">
+                            <a href="https://mallet.pr.gov.br/pagina/529_Servico-de-Informacao-ao-Cidadao-e-sic.html" title="Acesso a Informação">
+                                <i class="fa fa-info-circle"></i> 
+                                <div class="descricao">
+                                    Acesso à Informação
+                                </div>
+                            </a>
+                        </li>
+                        <li class="portaltransp">
+                            <a href="https://transparencia.betha.cloud/#/B-MPv_bGQauE33z7jzhwpA==" title="Portal da Tranparência">
+                                <i class="fa fa-search"></i> 
+                                <div class="descricao">
+                                    Portal da Transparência
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-topo-logo">
+    <div class="container">
+        <div class="topo-logo-box">
+            <div class="row">
+                <div class="col-lg-5 col-md-12 col-sm-12 logo-topo">
+                    <a href="/" title="Prefeitura Municipal de Mallet">
+                        <img src="/uploads/siteDescricao/logoprincipal_(180).png" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col-7 d-none d-xl-block d-lg-block d-md-none d-xl-none">
+                    <div class="row">
+                        <!--<div class="col-lg-12 col-md-12 col-sm-12">
+                            <ul class="list-menu-topo">
+                                <li class="acessibilidade">
+                                    <a href="#" id="acessibilidade" title="Acessibilidade">
+                                        <i class="fa fa-wheelchair"></i> Acessibilidade
+                                    </a>
+                                </li>
+                                <li class="ouvidoria">
+                                    <a href="http://mallet.pr.gov.br/pagina/410_Ouvidoria-Municipal.html" title="Ouvidoria">
+                                        <i class="fa fa-comments"></i> Ouvidoria
+                                    </a>
+                                </li>
+                                <li class="acessoinfo">
+                                    <a href="https://mallet.pr.gov.br/pagina/529_Servico-de-Informacao-ao-Cidadao-e-sic.html" title="Acesso a Informação">
+                                        <i class="fa fa-info-circle"></i> &nbsp;Acesso à Informação
+                                    </a>
+                                </li>
+                                <li class="portaltransp">
+                                    <a href="https://transparencia.betha.cloud/#/B-MPv_bGQauE33z7jzhwpA=="
+                                       title="Portal da Tranparência">
+                                       <i class="fa fa-search"></i> &nbsp;Portal da Transparência
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>-->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="informacoes-topo">
+                                        <div class="icon">
+                                            <i class="fa fa-phone"></i> 
+                                            <div class="marcador"></div>
+                                        </div>
+                                        0800 542 1204 
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                    <div class="informacoes-topo">
+                                        <div class="icon">
+                                            <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                            <div class="marcador"></div>
+                                        </div>
+                                        Seg à Sex - 08:00h às 12:00h e <BR> 13:00h às 17:00h                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Navbar -->
+<nav id="menu-topo" class="navbar navbar-expand-lg navbar-dark scrolling-navbar">
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row" style="width: 100%;">
+
+            <!-- Navbar brand -->
+            <div id="logoPequena"><img src="/imagens/logoPequena.png" class="img-fluid"/></div>
+            <a class="navbar-brand d-lg-none" href="#"><img src="/imagens/logoPequena.png" class="img-fluid"/></a>
+
+            <!-- Collapse button -->
+            <button class="navbar-toggler ml-auto hidden-sm-up float-xs-right" type="button" data-toggle="collapse"
+                    data-target="#basicExampleNav" aria-controls="basicExampleNav"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Collapsible content -->
+            <div class="collapse navbar-collapse" id="basicExampleNav">
+                <!-- Links -->
+                
+<ul class="navbar-nav mr-auto">
+<li id="63" class="nav-item"> <a href="/" class="nav-link">Início</a></li>
+<li class="nav-item dropdown" id="154">
+<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Município
+<span class="caret"></span>
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="227" class="nav-item"> <a href="/pagina/327_Agencia-do-Trabalhador.html" class="dropdown-item">Agência do Trabalhador</a></li>
+<li id="283" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/459_Base-Cartografica.html" class="dropdown-item">Base Cartográfica</a></li>
+<li id="329" class="dropdown-submenu">
+<a class="dropdown-item">
+Calendários
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="322" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/672_Calendario-de-eventos-2026.html" class="dropdown-item">Eventos</a></li>
+<li id="314" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/674_Calendario-de-feriados-e-recessos-2026.html" class="dropdown-item">Feriados e recessos</a></li>
+
+</ul>
+</li>
+<li id="292" class="nav-item"> <a href="https://www.detran.pr.gov.br/servicos/Veiculo/Idosos-e-pessoas-com-deficiencia/Emitir-credencial-de-estacionamento-para-idoso-gzNE4aoO" target="_blank"  class="dropdown-item">Cartão Credencial para vagas especiais</a></li>
+<li id="279" class="dropdown-submenu">
+<a class="dropdown-item">
+Cultura Turismo
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="255" class="nav-item"> <a href="/pagina/344_Chale-do-Produtor.html" class="dropdown-item">Chalé do Produtor</a></li>
+<li id="253" class="nav-item"> <a href="/pagina/346_Festas-do-Municipio.html" class="dropdown-item">Festas do Município</a></li>
+<li id="252" class="nav-item"> <a href="/pagina/347_Grupos-Folcloricos.html" class="dropdown-item">Grupos Folclóricos</a></li>
+<li id="258" class="nav-item"> <a href="/pagina/357_Hino-bandeira.html" class="dropdown-item">Hino / bandeira</a></li>
+<li id="155" class="nav-item"> <a href="https://mallet.pr.gov.br/noticiasView/?id=434" class="dropdown-item">História do Município</a></li>
+<li id="251" class="nav-item"> <a href="/pagina/348_Hoteis.html" class="dropdown-item">Hotéis</a></li>
+<li id="250" class="nav-item"> <a href="/pagina/349_Igreja-Sao-Miguel-Arcanjo.html" class="dropdown-item">Igreja São Miguel Arcanjo</a></li>
+<li id="248" class="nav-item"> <a href="/pagina/351_Lendas.html" class="dropdown-item">Lendas</a></li>
+<li id="335" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/737_Manual-de-Identidade-Visual.html" class="dropdown-item">Manual de identidade visual</a></li>
+
+</ul>
+</li>
+<li id="226" class="nav-item"> <a href="/pagina/326_Conselho-Tutelar.html" class="dropdown-item">Conselho Tutelar</a></li>
+<li id="254" class="nav-item"> <a href="/pagina/345_CRAS.html" class="dropdown-item">CRAS</a></li>
+<li id="328" class="nav-item"> <a href="https://mallet.pr.gov.br/noticiasView/?id=455" class="dropdown-item">CEPs atualizados</a></li>
+<li id="308" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/455_Diario-Oficial-do-Municipio.html" class="dropdown-item">Diário Oficial</a></li>
+<li id="295" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/710_Municipio-Escala-de-funcionarios-da-Secretaria-Municipal-de-Saude-2026.html" class="dropdown-item">Escala de profissionais da Saúde</a></li>
+<li id="228" class="nav-item"> <a href="/pagina/328_Escolas-e-CMEIs.html" class="dropdown-item">Escolas e CMEIs</a></li>
+<li id="330" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/676_Gestao-Municipal-de-Residuos-Solidos.html" class="dropdown-item">Gestão Municipal de Resíduos Sólidos</a></li>
+<li id="320" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/588_Iluminacao-publica.html" class="dropdown-item">Iluminação pública</a></li>
+<li id="249" class="nav-item"> <a href="/pagina/350_Junta-Militar.html" class="dropdown-item">Junta Militar</a></li>
+<li id="296" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/484_Plano-Diretor-Municipal-de-Mallet.html" class="dropdown-item">Plano Diretor</a></li>
+<li id="327" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/661_Qualidade-da-agua.html" class="dropdown-item">Qualidade da água</a></li>
+<li id="247" class="nav-item"> <a href="/pagina/352_Unidades-de-Saude.html" class="dropdown-item">Unidades de Saúde</a></li>
+<li id="246" class="nav-item"> <a href="/pagina/353_Tributacao.html" class="dropdown-item">Tributação</a></li>
+<li id="229" class="nav-item"> <a href="/pagina/330_Sala-do-Empreendedor.html" class="dropdown-item">Sala do Empreendedor</a></li>
+<li id="245" class="nav-item"> <a href="/pagina/354_Sede-Distrital.html" class="dropdown-item">Sede Distrital</a></li>
+
+</ul>
+</li>
+<li class="nav-item dropdown" id="157">
+<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Prefeitura
+<span class="caret"></span>
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="272" class="dropdown-submenu">
+<a class="dropdown-item">
+Acesso à Informação
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="307" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/516_Cronograma-de-Planejamento-e-Execucao-de-Adequacao-no-Patrimonio-Publico-Municip.html" class="dropdown-item">Adequação do Patrimônio Público</a></li>
+<li id="306" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/380_Anexos-Contabeis.html" class="dropdown-item">Anexos Contábeis (Art. 16 inc II - IN 54/2011- TCE)</a></li>
+<li id="260" class="nav-item"> <a href="/pagina/359_Conselhos-Municipais.html" class="dropdown-item">Conselhos Municipais</a></li>
+<li id="286" class="dropdown-submenu">
+<a class="dropdown-item">
+Convênios, Contratos e Termos
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="287" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/462_Prefeitura-Acesso-a-Informacao-Convenios-Contratos-e-Termos-Ativos.html" class="dropdown-item">Ativos</a></li>
+<li id="288" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/465_Prefeitura-Acesso-a-Informacao-Convenios-Contratos-e-Termos-Encerrados.html" class="dropdown-item">Encerrados</a></li>
+
+</ul>
+</li>
+<li id="305" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/515_Consulta-de-obras-municipais.html" class="dropdown-item">Consulta de obras municipais</a></li>
+<li id="310" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/518_Diarias.html" class="dropdown-item">Diárias</a></li>
+<li id="313" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/526_Acesso-a-Informacao-Emendas-Parlamentares.html" class="dropdown-item">Emendas Parlamentares</a></li>
+<li id="332" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/697_Incentivos-relacionados-a-projetos-culturais-e-esportivos.html" class="dropdown-item">Incentivos relacionados a projetos culturais e esportivos</a></li>
+<li id="271" class="nav-item"> <a href="/pagina/450_Lei-Aldir-Blanc-Auxilio.html" class="dropdown-item">Lei Aldir Blanc - Auxílio</a></li>
+<li id="302" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/505_Lei-Paulo-Gustavo.html" class="dropdown-item">Lei Paulo Gustavo</a></li>
+<li id="268" class="nav-item"> <a href="/pagina/420_Prefeitura-LOA-LDO.html" class="dropdown-item">LOA / LDO</a></li>
+<li id="304" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/514_Estrutura-Organizacional-Organograma.html" class="dropdown-item">Estrutura Organizacional (Organograma)</a></li>
+<li id="337" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/737_Manual-de-Identidade-Visual.html" class="dropdown-item">Manual de Identidade Visual</a></li>
+<li id="312" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/523_Politica-de-privacidade-e-protecao-de-dados.html" class="dropdown-item">Política de privacidade e proteção de dados</a></li>
+<li id="261" class="nav-item"> <a href="/pagina/378_Acesso-a-Informacao-Portal-de-Transparencia.html" class="dropdown-item">Portal de transparência</a></li>
+<li id="273" class="dropdown-submenu">
+<a class="dropdown-item">
+Prestação de Contas Anuais
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="275" class="nav-item"> <a href="/pagina/458_Prefeitura-Acesso-a-Informacao-Prestacao-de-Contas-Anuais-Analise-pelo-Pod.html" class="dropdown-item">Análise pelo Poder Legislativo</a></li>
+<li id="274" class="nav-item"> <a href="/pagina/457_Prefeitura-Acesso-a-Informacao-Prestacao-de-Contas-Anuais-Analise-pelo-Tri.html" class="dropdown-item">Análise pelo Tribunal de Contas</a></li>
+<li id="333" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/703_Relatorios-de-Gestao.html" class="dropdown-item">Relatórios de Gestão</a></li>
+
+</ul>
+</li>
+<li id="269" class="nav-item"> <a href="/pagina/433_Prefeitura-Plano-Plurianual.html" class="dropdown-item">Plano Plurianual</a></li>
+<li id="270" class="nav-item"> <a href="/pagina/437_Planos-Municipais.html" class="dropdown-item">Planos Municipais</a></li>
+<li id="289" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/473_Prefeitura-Acesso-a-Informacao-Recomendacoes-Administrativas.html" class="dropdown-item">Recomendações Administrativas</a></li>
+<li id="319" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/578_Restos-a-pagar.html" class="dropdown-item">Restos a pagar</a></li>
+
+</ul>
+</li>
+<li id="256" class="nav-item"> <a href="/pagina/355_Autoridades.html" class="dropdown-item">Autoridades</a></li>
+<li id="284" class="nav-item"> <a href="/pagina/409_Assistencia-farmaceutica.html" class="dropdown-item">Assistência farmaceutica</a></li>
+<li id="301" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/500_Beneficio-tributario-Desoneracoes-concedidas.html" class="dropdown-item">Benefício Tributário</a></li>
+<li id="323" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/695_Boletins-da-Saude-2026.html" class="dropdown-item">Boletins da Saúde</a></li>
+<li id="317" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/567_Prefeitura-Carta-de-servicos-ao-usuario.html" class="dropdown-item">Carta de serviços ao usuário</a></li>
+<li id="137" class="nav-item"> <a href="/concursos" class="dropdown-item">Concursos / Processos Seletivos</a></li>
+<li id="281" class="dropdown-submenu">
+<a class="dropdown-item">
+Documentos para download
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="257" class="nav-item"> <a href="/pagina/356_Planejamento.html" class="dropdown-item">Planejamento</a></li>
+<li id="259" class="nav-item"> <a href="/pagina/377_Tributacao.html" class="dropdown-item">Tributação</a></li>
+<li id="315" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/550_Licitacao.html" class="dropdown-item">Licitação</a></li>
+<li id="336" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/737_Manual-de-Identidade-Visual.html" class="dropdown-item">Manual de Identidade Visual</a></li>
+<li id="326" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/684_Documentos-para-download-Tramite-interno.html" class="dropdown-item">Trâmite interno</a></li>
+
+</ul>
+</li>
+<li id="22" class="nav-item"> <a href="/legislacao/" class="dropdown-item">Legislação</a></li>
+<li id="167" class="nav-item"> <a href="/licitacao/" class="dropdown-item">Licitações</a></li>
+<li id="285" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/795_Merenda-Escolar-Novembro-2026.html" class="dropdown-item">Merenda escolar</a></li>
+<li id="303" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/562_Plano-de-Arborizacao-Urbana.html" class="dropdown-item">Plano de Arborização Urbana</a></li>
+<li id="244" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/477_Central-de-servicos-online.html" class="dropdown-item">Serviços online</a></li>
+<li id="278" class="nav-item"> <a href="https://minhafolha.betha.cloud/" target="_blank"  class="dropdown-item">Servidor Público</a></li>
+<li id="316" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/566_Terceirizados.html" class="dropdown-item">Servidores terceirizados</a></li>
+<li id="293" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/475_Setor-de-Habitacao.html" class="dropdown-item">Setor de Habitação</a></li>
+<li id="321" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/601_SIMPOA-Servico-de-Inspecao-Municipal-de-Produtos-de-Origem-Animal.html" class="dropdown-item">SIM/POA</a></li>
+<li id="263" class="nav-item"> <a href="/pagina/382_Transparencia-Educacao.html" class="dropdown-item">Transparência Educação</a></li>
+<li id="297" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/490_Prefeitura-Transparencia-Saude.html" class="dropdown-item">Transparência Saúde</a></li>
+
+</ul>
+</li>
+<li class="nav-item dropdown" id="164">
+<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Secretarias
+<span class="caret"></span>
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="232" class="nav-item"> <a href="/pagina/332_Administracao.html" class="dropdown-item">Administração</a></li>
+<li id="233" class="nav-item"> <a href="/pagina/333_Agropecuaria-e-Abastecimento.html" class="dropdown-item">Agropecuária e Abastecimento</a></li>
+<li id="234" class="nav-item"> <a href="/pagina/334_Cultura-e-Turismo.html" class="dropdown-item">Cultura e Turismo</a></li>
+<li id="243" class="nav-item"> <a href="/pagina/335_Educacao.html" class="dropdown-item">Educação</a></li>
+<li id="242" class="nav-item"> <a href="/pagina/336_Esportes.html" class="dropdown-item">Esportes</a></li>
+<li id="241" class="nav-item"> <a href="/pagina/337_Familia-e-Desenvolvimento-Social.html" class="dropdown-item">Família e Desenvolvimento Social</a></li>
+<li id="240" class="nav-item"> <a href="/pagina/338_Fazenda.html" class="dropdown-item">Fazenda</a></li>
+<li id="239" class="nav-item"> <a href="/pagina/339_Industria-e-Comercio.html" class="dropdown-item">Indústria e Comércio</a></li>
+<li id="238" class="nav-item"> <a href="/pagina/340_Meio-Ambiente-e-Recursos-Hidricos.html" class="dropdown-item">Meio Ambiente e Recursos Hídricos</a></li>
+<li id="237" class="nav-item"> <a href="/pagina/341_Obras-e-Servicos-Publicos.html" class="dropdown-item">Obras e Serviços Públicos</a></li>
+<li id="236" class="nav-item"> <a href="/pagina/342_Planejamento.html" class="dropdown-item">Planejamento</a></li>
+<li id="334" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/728_Secretaria-Municipal-de-Relacoes-Institucionais-e-Governamentais.html" class="dropdown-item">Relações Institucionais e Governamentais</a></li>
+<li id="235" class="nav-item"> <a href="/pagina/343_Saude.html" class="dropdown-item">Saúde</a></li>
+<li id="318" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/571_UCI-Unidade-de-Controle-Interno.html" class="dropdown-item">UCI - Unidade de Controle Interno</a></li>
+
+</ul>
+</li>
+<li class="nav-item dropdown" id="280">
+<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+COVID-19
+<span class="caret"></span>
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="299" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/403_Boletins-COVID-19.html" class="dropdown-item">Boletins</a></li>
+<li id="262" class="nav-item"> <a href="/pagina/400_Informacoes-Gerais.html" class="dropdown-item">Informações Gerais</a></li>
+<li id="264" class="dropdown-submenu">
+<a class="dropdown-item">
+Vacinas COVID-19
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="265" class="nav-item"> <a href="/pagina/417_Bula-das-vacinas.html" class="dropdown-item">Bula das vacinas</a></li>
+<li id="276" class="nav-item"> <a href="/pagina/460_Vacinas-COVID-19-Publicacoes-Gerais.html" class="dropdown-item">Publicações Gerais</a></li>
+<li id="277" class="nav-item"> <a href="/pagina/461_Vacinas-COVID-19-Quantitativo-de-vacinas-recebidas.html" class="dropdown-item">Quantitativo de vacinas recebidas</a></li>
+<li id="266" class="nav-item"> <a href="/pagina/418_Salas-de-Vacinacao.html" class="dropdown-item">Salas de Vacinação</a></li>
+<li id="267" class="nav-item"> <a href="/pagina/419_Vacinometro.html" class="dropdown-item">Vacinômetro</a></li>
+
+</ul>
+</li>
+
+</ul>
+</li>
+<li class="nav-item dropdown" id="13">
+<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+Contato
+<span class="caret"></span>
+</a>
+
+<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" role="menu">
+<li id="133" class="nav-item"> <a href="/contato/" class="dropdown-item">Fale Conosco</a></li>
+<li id="131" class="nav-item"> <a href="/localizacao/" class="dropdown-item">Localização</a></li>
+<li id="132" class="nav-item"> <a href="/faq" class="dropdown-item">Perguntas Frequentes</a></li>
+<li id="331" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/685_Questionario-de-satisfacao.html" class="dropdown-item">Pesquisa de satisfação</a></li>
+<li id="311" class="nav-item"> <a href="https://mallet.pr.gov.br/pagina/485_Solicitacao-de-informacoes.html" class="dropdown-item">Solicitação de informações</a></li>
+
+</ul>
+</li>
+<li id="222" class="nav-item"> <a href="https://webmail.mallet.pr.gov.br" target="_blank"  class="nav-link">Webmail</a></li>
+
+</ul>
+                <!-- Links -->
+            </div>
+            <!-- Collapsible content -->
+
+        </div>
+    </div>
+</nav>
+<!-- Navbar -->
+
+
+<div class="menu-lateral-flutuante">
+    <ul>
+                <li>
+            <a href="https://www.facebook.com/profile.php?id=100085194067271" title="Facebook"><i class="fa fa-facebook"></i></a>
+        </li>
+                                <li>
+            <a href="https://www.instagram.com/prefeituramalletpr/" title="Instagram"><i class="fa fa-instagram"></i></a>
+        </li>
+                    </ul>
+</div>
+
+        <!-- BANNERS -->
+<!-- Banners Slider -->
+<section>
+    <div id="carousel-example-1z" class="carousel slide carousel-fade" data-ride="carousel">
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+                <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel-example-1z" data-slide-to="0" class=""></li>
+                <li data-target="#carousel-example-1z" data-slide-to="0" class=""></li>
+                <li data-target="#carousel-example-1z" data-slide-to="0" class=""></li>
+        </ol>
+        <!--/.Indicators-->
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item active">
+                <a href="">
+                <img class="d-block w-100" src="/uploads/banner/capa10.jpg" alt="capa parque">
+                </a>
+            </div>
+            <!--/First slide-->
+            <!--First slide-->
+            <div class="carousel-item ">
+                <a href="">
+                <img class="d-block w-100" src="/uploads/banner/01_(178).jpg" alt="topo 01">
+                </a>
+            </div>
+            <!--/First slide-->
+            <!--First slide-->
+            <div class="carousel-item ">
+                <a href="">
+                <img class="d-block w-100" src="/uploads/banner/kiwi-site-2-novo.jpg" alt="kiwi">
+                </a>
+            </div>
+            <!--/First slide-->
+            <!--First slide-->
+            <div class="carousel-item ">
+                <a href="">
+                <img class="d-block w-100" src="/uploads/banner/111-anos-site.jpg" alt="banner 02">
+                </a>
+            </div>
+            <!--/First slide-->
+        </div>
+        <!--/.Slides-->
+        <!--Controls-->
+        <a class="carousel-control-prev" data-target="#carousel-example-1z" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" data-target="#carousel-example-1z" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
+    </div>
+</section>
+<!--/.Banners Slider--><!-- END BANNERS -->
+
+<!--<div class="barra">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div id="banner-noticias-home" class="owl-carousel owl-theme noticias">
+                    <div class="item">
+                        <img src="/imagens/banner02.jpg" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>-->
+
+<div class="barra barra-menu-acesso-informacao">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="owl-carousel owl-theme acessoRapido">
+    <div class="item">
+        <a href="https://transparencia.betha.cloud/#/B-MPv_bGQauE33z7jzhwpA=="  target="_blank"  title="Portal da Transparência">
+        <div class="bloco">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <div class="texto">
+                Portal da Transparência
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://minhafolha.betha.cloud/"  title="Servidor Público">
+        <div class="bloco">
+            <i class="fa fa-child" aria-hidden="true"></i>
+            <div class="texto">
+                Servidor Público
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/pagina/410_Ouvidoria-Municipal.html"  target="_blank"  title="Ouvidoria">
+        <div class="bloco">
+            <i class="fa fa-commenting-o" aria-hidden="true"></i>
+            <div class="texto">
+                Ouvidoria
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/licitacao/"  title="Licitações">
+        <div class="bloco">
+            <i class="fa fa-gavel" aria-hidden="true"></i>
+            <div class="texto">
+                Licitações
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://mallet.pr.gov.br/pagina/477_Central-de-servicos-online.html"  title="Serviços online">
+        <div class="bloco">
+            <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <div class="texto">
+                Serviços online
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/pagina/412_Protocolo-online.html"  title="Protocolo online">
+        <div class="bloco">
+            <i class="fa fa-files-o" aria-hidden="true"></i>
+            <div class="texto">
+                Protocolo online
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://mallet.pr.gov.br/concursos/"  title="Concursos / Processos Seletivos">
+        <div class="bloco">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            <div class="texto">
+                Concursos / Processos Seletivos
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://mallet.pr.gov.br/pagina/619_Plantao-Ambulancia.html"  title="Plantão Ambulância">
+        <div class="bloco">
+            <i class="fa fa-ambulance" aria-hidden="true"></i>
+            <div class="texto">
+                Plantão Ambulância
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://mallet.pr.gov.br/pagina/677_Plantao-Farmacia.html"  title="Plantão Farmácia">
+        <div class="bloco">
+            <i class="fa fa-plus-square" aria-hidden="true"></i>
+            <div class="texto">
+                Plantão Farmácia
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://mallet.pr.gov.br/pagina/685_Questionario-de-satisfacao.html"  title="Pesquisa de Satisfação">
+        <div class="bloco">
+            <i class="fa fa-question" aria-hidden="true"></i>
+            <div class="texto">
+                Pesquisa de Satisfação
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-base">
+    <div class="container">
+        <div class="row wow">
+            <div class="col-xl-9 col-lg-12 col-md-12 col-sm-12">
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                                            <h2 class="titulo">
+                            <a href="/noticias/" title="Notícias">
+                                Notícias
+                                <div class="icone">
+                                    <i class="fa fa-newspaper-o"></i>
+                                    <span></span>
+                                </div>
+                            </a>
+                        </h2>
+
+                        <div class="noticias-principais">
+                            <div class="owl-carousel owl-theme noticias-home">
+                                <div class="item">
+    <a href="/noticiasView/?id=549" title="Fique atento ao prazo de entrega de notas fiscais de compras e serviços">
+        <div class="bloco">
+            <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_thumb800x500capanf11.jpg')">
+            </div>
+            <div class="base">
+                <div class="descricao">
+                    <span class="categoria">Geral</span>
+                    <div class="secretaria">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i> 12/11/2026
+                    </div>
+                    <div class="titulo">
+                        Fique atento ao prazo de entrega de notas fiscais de compras e serviços
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/noticiasView/?id=548" title="Declaração de atualização vacinal para matrícula e rematrícula escolar">
+        <div class="bloco">
+            <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_capa2_(100).jpg')">
+            </div>
+            <div class="base">
+                <div class="descricao">
+                    <span class="categoria">Saúde</span>
+                    <div class="secretaria">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i> 11/11/2026
+                    </div>
+                    <div class="titulo">
+                        Declaração de atualização vacinal para matrícula e rematrícula escolar
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/noticiasView/?id=547" title="Chamamento 2027 - CMEIs">
+        <div class="bloco">
+            <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_captura-de-tela-2026-11-09-111725.png')">
+            </div>
+            <div class="base">
+                <div class="descricao">
+                    <span class="categoria">Educação, Cultura e Esportes</span>
+                    <div class="secretaria">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i> 09/11/2026
+                    </div>
+                    <div class="titulo">
+                        Chamamento 2027 - CMEIs
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/noticiasView/?id=545" title="Matrículas e rematrículas 2027">
+        <div class="bloco">
+            <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_capa_(979).jpg')">
+            </div>
+            <div class="base">
+                <div class="descricao">
+                    <span class="categoria">Educação, Cultura e Esportes</span>
+                    <div class="secretaria">
+                        <i class="fa fa-clock-o" aria-hidden="true"></i> 06/11/2026
+                    </div>
+                    <div class="titulo">
+                        Matrículas e rematrículas 2027
+                    </div>
+                </div>
+            </div>
+        </div>
+    </a>
+</div>
+                            </div>
+                        </div>
+
+                                                    <h2 class="titulo">
+                                <a href="/noticias/" title="Notícias">
+                                    Mais Notícias
+                                    <div class="icone">
+                                        <i class="fa fa-newspaper-o"></i>
+                                        <span></span>
+                                    </div>
+                                </a>
+                            </h2>
+                            <div class="noticias-principais">
+                                <div id="mais-noticias-home" class="owl-carousel owl-theme noticias">
+                                    
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=544" title="Alerta importante sobre o desenquadramento de MEIs pela Receita Federal">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_capa_(510).jpg')" >
+                        <span class="categoria">Geral</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 04/11/2026
+                            </div>
+                            <div class="titulo">
+                                Alerta importante sobre o desenquadramento de MEIs pela Receita Federal
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=543" title="Prefeitura adota o Emissor Nacional para emissão de NFS-e a partir de 1º de novembro">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_capa01_(447).jpg')" >
+                        <span class="categoria">Geral</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 30/10/2026
+                            </div>
+                            <div class="titulo">
+                                Prefeitura adota o Emissor Nacional para emissão de NFS-e a partir de 1º de novembro
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=536" title="Mallet 114 anos - Uma história que merece ser celebrada">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_capa_(515).jpg')" >
+                        <span class="categoria">Geral</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 11/09/2026
+                            </div>
+                            <div class="titulo">
+                                Mallet 114 anos - Uma história que merece ser celebrada
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=535" title="Lista de Crianças aguardando vaga nos CMEIs Anjo da Guarda e Pingo de Gente, para setembro de 2026.">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_thumb800x500thumb800x500cmei85427111511150911111114461111.jpg')" >
+                        <span class="categoria">Educação, Cultura e Esportes</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 10/09/2026
+                            </div>
+                            <div class="titulo">
+                                Lista de Crianças aguardando vaga nos CMEIs Anjo da Guarda e Pingo de Gente, para setembro de 2026.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=530" title="Serviço Militar - Inspeção de Saúde">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_capam_(406).jpg')" >
+                        <span class="categoria">Geral</span>
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                <i class="fa fa-clock-o" aria-hidden="true"></i> 19/08/2026
+                            </div>
+                            <div class="titulo">
+                                Serviço Militar - Inspeção de Saúde
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+                                </div>
+                            </div>
+                                                            </div>
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <div class="container">
+                        <div class="row wow fadeInUp">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                    <h2 class="titulo">
+                                        <a href="/licitacao/" title="Licitações">
+                                            Licitações
+                                            <div class="icone">
+                                                <i class="fa fa-gavel"></i>
+                                                <span></span>
+                                            </div>
+                                        </a>
+                                    </h2>
+                                    <div id="home-licitacoes" class="box-licitacoes owl-carousel owl-theme">
+                                        
+<div class="item">
+    <a href="/licitacaoView/?id=389" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Pregão Eletrônico</span>
+                0051/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                08/12/2026 10:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Contratação de empresa especializada para realizar o fornecimento de 01 (uma) van escolar nova, de 11 (onze) lugares sendo 10 (dez) passageiros e 01 (um) motorista, para reposição da frota da Secretaria Municipal de Educação.
+
+            </p>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/licitacaoView/?id=388" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Pregão Eletrônico</span>
+                0050/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                02/12/2026 10:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Aquisição de equipamentos destinados à estruturação do Museu Digital do Município de Mallet/PR e à produção audiovisual e de podcasts.
+
+            </p>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/licitacaoView/?id=390" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Concorrência Pública</span>
+                0018/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                07/12/2026 10:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Contratação de empresa especializada para construção de Unidade de Saúde da família Porte II.
+
+            </p>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/licitacaoView/?id=365" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Edital de Credenciamento</span>
+                0004/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                22/09/2026 08:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Credenciamento de pessoa física para prestação de serviço de Leiloeiro Oficial para realização de Leilões Públicos, visando a venda de bens inservíveis do Município de Mallet/PR, incluindo nesta contratação o levantamento dos bens, a avaliação, a elaboração e publicação do edital, a divulgação (propaganda e marketing) do leilão, a realização do leilão, bem como, todos os procedimentos decorrentes do mesmo, obedecidas às especificações e normas constantes do Edital.
+
+            </p>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/licitacaoView/?id=353" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Edital de Credenciamento</span>
+                0003/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                06/07/2026 08:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Credenciamento de empresa especializada para prestação de serviços médicos especializados para atender na Atenção Básica em Saúde para suprir a demanda da Secretaria Municipal de Saúde.
+
+PRAZO PARA IMPUGNAÇÃO/ESCLARECIMENTO: até às 23h59min do dia 30 de junho de 2026.
+
+INÍCIO DO RECEBIMENTO DOS PEDIDOS DE CREDENCIAMENTO: a partir das 08h00min de 06 de julho de 2026.
+
+FIM DO RECEBIMENTO DOS PEDIDOS DE CREDENCIAMENTO: até às 17h00min do dia 06 de julho de 2027.
+
+            </p>
+        </div>
+    </a>
+</div>
+<div class="item">
+    <a href="/licitacaoView/?id=332" >
+        <div class="box-licitacoes">
+            <h4>
+                <span>Edital de Credenciamento</span>
+                0002/2026
+            </h4>
+            <div class="box-status">
+                <span>Status: </span> <span class="status aberto">Aberta</span>
+            </div>
+            <div class="box-datahora">
+                <span>Data de abertura:</span>
+                12/03/2026 08:00
+            </div>
+            <p>
+                <span>Objeto: </span>
+                Chamamento público para credenciamento de instituições financeiras públicas ou privadas, objetivando processo de credenciamento visando a prestação de serviços bancários para arrecadação de tributos municipais, impostos, taxas, dívida ativa, contribuição de melhorias e demais receitas municipais, através de Documento de Arrecadação Municipal - DAM, com código de barras em padrão FEBRABAN, por intermédio de suas agências, postos de atendimento bancários e canais eletrônicos, com prestação de contas por...
+            </p>
+        </div>
+    </a>
+</div>
+                                    </div>
+                                                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                            <h2 class="titulo">
+                                <a>
+                                    <i class="fa fa-facebook-official"></i> Facebook <span></span>
+                                </a>
+                            </h2>
+                        </div>
+                        <div class="col-xl-10 col-lg-12 col-md-12 col-sm-12">
+                            <div id="fb-root"></div>
+                            <script>(function (d, s, id) {
+                                    var js, fjs = d.getElementsByTagName(s)[0];
+                                    if (d.getElementById(id))
+                                        return;
+                                    js = d.createElement(s);
+                                    js.id = id;
+                                    js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.1&appId=1684557354891601&autoLogAppEvents=1';
+                                    fjs.parentNode.insertBefore(js, fjs);
+                                }(document, 'script', 'facebook-jssdk'));</script>
+                            <div class="fb-page" data-href="https://www.facebook.com/profile.php?id=100085194067271"
+                                 data-tabs="timeline" data-width="415" data-height="240" data-small-header="false"
+                                 data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                                <blockquote cite="https://www.facebook.com/profile.php?id=100085194067271"
+                                            class="fb-xfbml-parse-ignore"><a
+                                        href="https://www.facebook.com/profile.php?id=100085194067271"></a></blockquote>
+                            </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-12 col-md-12 col-sm-12">
+                            <div class="container">
+                                <div class="row social-home">
+                                                                            <div class="col-12 facebook">
+                                            <a href="https://www.facebook.com/profile.php?id=100085194067271" target="_blank"
+                                               title="Facebbok">
+                                                <i class="fa fa-facebook" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                                                                                                                                    <div class="col-12 instagram">
+                                            <a href="https://www.instagram.com/prefeituramalletpr/" target="_blank"
+                                               title="Instagram">
+                                                <i class="fa fa-instagram" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
+                                                                                                        </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+            <div class="col-xl-3 col-lg-12 col-md-12 col-sm-12">
+                <h2 class="titulo">
+                    <a href="/" title="Veja Mais">
+                        Veja Mais
+                        <div class="icone">
+                            <i class="fa fa-plus-circle"></i>
+                            <span></span>
+                        </div>
+                    </a>
+                </h2>
+
+                <div id="veja-mais" class="owl-carousel owl-theme noticias">
+                                            <div class="item">
+                                                            <div class="bloco">
+                                    <a href="/noticiasView/?id=4" class="programas-bt">
+                                        <img src="/uploads/banner/teste1.gif"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="https://mallet.pr.gov.br/pagina/497_Familia-acolhedora.html" class="programas-bt">
+                                        <img src="/uploads/banner/bannerfa.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="https://radardatransparencia.atricon.org.br/" class="programas-bt">
+                                        <img src="/uploads/banner/radar.gif"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="/licitacao/" class="programas-bt">
+                                        <img src="/uploads/banner/licita.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="/pagina/455_Diario-Oficial-do-Municipio.html" class="programas-bt">
+                                        <img src="/uploads/banner/diariooficial.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="/pagina/477_Central-de-servicos-online.html" class="programas-bt">
+                                        <img src="/uploads/banner/bnservicos.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="/pagina/410_Ouvidoria-Municipal.html" class="programas-bt">
+                                        <img src="/uploads/banner/05.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="https://transparencia.betha.cloud/#/B-MPv_bGQauE33z7jzhwpA==" class="programas-bt">
+                                        <img src="/uploads/banner/bnfly.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="https://esus.mallet.pr.gov.br" class="programas-bt">
+                                        <img src="/uploads/banner/02_(395).jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="https://e-gov.betha.com.br/" class="programas-bt">
+                                        <img src="/uploads/banner/03.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="https://leismunicipais.com.br/prefeitura/pr/mallet" class="programas-bt">
+                                        <img src="/uploads/banner/08.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="http://saude.cloud.betha.com.br/" class="programas-bt">
+                                        <img src="/uploads/banner/09.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="https://mallet.pr.gov.br/pagina/480_Termos-de-Fomento.html" class="programas-bt">
+                                        <img src="/uploads/banner/bnconvenios.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="https://mallet.pr.gov.br/pagina/490_Prefeitura-Transparencia-Saude.html" class="programas-bt">
+                                        <img src="/uploads/banner/bannersaude.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="https://mallet.pr.gov.br/pagina/529_Servico-de-Informacao-ao-Cidadao-e-sic.html" class="programas-bt">
+                                        <img src="/uploads/banner/e-sic.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                    </div>
+                                            <div class="item">
+                                                            <div class="bloco">
+                                    <a href="https://mallet.pr.gov.br/pagina/382_Transparencia-Educacao.html" class="programas-bt">
+                                        <img src="/uploads/banner/logo-sme-mallet-800.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                            <div class="bloco">
+                                    <a href="https://mallet.pr.gov.br/noticiasView/?id=450" class="programas-bt">
+                                        <img src="/uploads/banner/selobaner4.jpg"
+                                             class="img-fluid"/>
+                                    </a>
+                                </div>
+                                                    </div>
+                                    </div>
+            </div>            
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid barra-servicos-full">
+    <div class="row">
+        <div class="col-md-4 nopadding legislacao-bg-home">
+            <a href="/licitacao/">
+                <div class="bloco-servicos-home rgba-azul" style="height: 250px;">
+                    <div align="center">
+                        <img src="/imagens/licictacoes-home.png" alt=""/>
+                    </div>
+                    <h2 class="heading-md">Licitações</h2>
+                    <p class="no-margin-bottom hidden-sm">Participe da licitações vigentes da prefeitura.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 nopadding transparencia-bg-home">
+            <a href="https://transparencia.betha.cloud/#/B-MPv_bGQauE33z7jzhwpA==" target="new">
+                <div class="bloco-servicos-home rgba-verde content-sm" style="height: 250px;">
+                    <img src="/imagens/transparencia-home.png" alt=""/>
+                    <h2 class="heading-md">Portal da Transparência</h2>
+                    <p class="no-margin-bottom hidden-sm hidden-md">Veja onde o dinheiro público está sendo
+                        utilizado.</p>
+                </div>
+            </a>
+        </div>
+        <div class="col-md-4 nopadding licitacoes-bg-home">
+            <a href="/legislacao//">
+                <div class="bloco-servicos-home rgba-verdeAgua content-sm" style="height: 250px;">
+                    <img src="/imagens/legislacao-home.png" alt=""/>
+                    <h2 class="heading-md">Legislação</h2>
+                    <p class="no-margin-bottom hidden-sm"> Tenha acesso às leis municipais.</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-base">
+
+
+    </div>
+
+
+
+<div class="barra barra-base">
+    <div class="container">
+        <div class="row">
+            <!-- Galeria de Fotos -->
+                        <!-- Fim Galeria de Fotos -->            
+        </div>
+    </div>
+</div>
+
+<!-- Bloco de Turismo -->
+<!-- Fim Bloco de Turismo -->        
+
+<footer id="rodape">
+    <div class="overlay"></div>
+    <div class="footer-barra01">
+        <div class="container" >
+            <div class="row">
+                
+                <div class="col-lg-3 col-md-12 col-sm-12">
+    <div class="menu">
+        <h4>A Prefeitura</h4>
+        <ul>
+                <li><a href="/gabinete">Gabinete do Prefeito</a></li>
+                <li><a href="/legislacao">Legislação</a></li>
+                <li><a href="https://mallet.pr.gov.br/licitacao/">Licitações</a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-lg-3 col-md-12 col-sm-12">
+    <div class="menu">
+        <h4>Cidadão</h4>
+        <ul>
+                <li><a href="/concursos">Concursos</a></li>
+                <li><a href="https://mallet.pr.gov.br/pagina/410_Ouvidoria-Municipal.html">Ouvidoria</a></li>
+                <li><a href="https://transparencia.betha.cloud/#/B-MPv_bGQauE33z7jzhwpA==">Portal da Transparência</a></li>
+                <li><a href="https://mallet.pr.gov.br/pagina/411_Servicos-online.html">Serviços online</a></li>
+        </ul>
+    </div>
+</div>
+<div class="col-lg-3 col-md-12 col-sm-12">
+    <div class="menu">
+        <h4>Contatos</h4>
+        <ul>
+                <li><a href="/contato">Fale Conosco</a></li>
+                <li><a href="/localizacao">Localização</a></li>
+        </ul>
+    </div>
+</div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="footer-barra02">
+        <div class="container" >
+            <div class="row">
+                <div class="col-lg-5 col-md-12 col-sm-12">
+                    <a href="#"><img src="/imagens/logoRodape.png" /></a>
+
+                    <ul>
+                                                <li>
+                            <a href="https://www.facebook.com/profile.php?id=100085194067271" title="Facebbok"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        </li> 
+                                                                                                <li>
+                            <a href="https://www.instagram.com/prefeituramalletpr/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                        </li> 
+                                                                                                <li>
+                            <a href="http://webmail.mallet.pr.gov.br" title="WebMail"><i class="fa fa-envelope" aria-hidden="true"></i></a>
+                        </li> 
+                                            </ul>
+
+                </div>
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                    <div class="menu">
+                        <a href="/contato/" class="btn bt-rodape" title="Contato">
+                            <i class="fa fa-pencil-square-o" aria-hidden="true"></i> &nbsp;Contato
+                        </a>
+                        <a href="/localizacao/" class="btn bt-rodape" title="Localização">
+                            <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;Localização
+                        </a>
+                        <a href="/faq/" class="btn bt-rodape" title="Perguntas Frequentes">
+                            <i class="fa fa-question-circle" aria-hidden="true"></i> &nbsp;Perguntas Frequentes
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 col-sm-12">
+                    <div class="menu">
+                        <h4>Localização</h4>
+                        <div class="texto">
+                            Rua XV de Novembro – Sul, 28 SE - Centro <br />
+                            Mallet-PR <br/>
+                            Cep: 84571-310 <br/>
+                        </div>
+                        <div class="texto contato-rodape">
+                                                            <i class="fa fa-phone" aria-hidden="true"></i> &nbsp;0800 542 1204 <br />
+                                                                                        <i class="fa fa-envelope" aria-hidden="true"></i> &nbsp;<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="503d313c3c3524103d313c3c35247e20227e373f267e3222">[email&#160;protected]</a> <br/>
+                                                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-barra03">
+        <div class="container" >
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12 copyright">
+                    2026 © Prefeitura Municipal de Mallet | Desenvolvido por: 
+                    <a href="https://www.plenusgestaopublica.com.br/" title="Plenus Gestão Pública"><img src="/imagens/plenus.png" class="img-fluid" /></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+  new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>
+
+<!-- Banner LGPD -->
+<div class="banner-lgpd-consent-container">
+    <div class="banner-lgpd-consent">
+        <div class="banner-lgpd-consent__column">
+            Utilizamos cookies essenciais e tecnologias semelhantes de acordo com a nossa &nbsp;<a href="/pagina/326_LGPD-Politica-de-Privacidade.html">Política de Privacidade</a>&nbsp; e, ao continuar navegando, você concorda com estas condições.
+        </div>
+        <div class="banner-lgpd-consent__column">
+            <button class="btn btn-warning" id="bt-lgpd">Concordo</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function setCookie(name, value, duration) {
+        var cookie = name + "=" + escape(value) +
+        ((duration) ? "; expires=" + duration.toGMTString() : "");
+
+        document.cookie = cookie;
+    }
+    function getCookie(name) {
+        var cookies = document.cookie;
+        var prefix = name + "=";
+        var begin = cookies.indexOf("; " + prefix);
+
+        if (begin == -1) {
+
+            begin = cookies.indexOf(prefix);
+
+            if (begin != 0) {
+                return null;
+            }
+
+        } else {
+            begin += 2;
+        }
+
+        var end = cookies.indexOf(";", begin);
+
+        if (end == -1) {
+            end = cookies.length;                        
+        }
+
+        return unescape(cookies.substring(begin + prefix.length, end));
+    }
+        
+    $( "#bt-lgpd" ).click(function() {
+        var data = new Date(2090,0,01);
+        setCookie('banner_lgpd', '1', data);
+        
+        if(getCookie('banner_lgpd') == '1'){
+            $('.banner-lgpd-consent-container').hide();
+        }
+    });
+    
+    if(getCookie('banner_lgpd') == '1'){
+        $('.banner-lgpd-consent-container').hide();
+    }
+    
+    
+</script>
+<!-- Banner LGPD -->
+  
+        <script src="/js/calendario/calendario.home.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Selecionar secretaria
+                $('#formSecretaria').on('change', function () {
+                    $(this).submit();
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function ($) {
+                $('#example5').sliderPro({
+                    width: 670,
+                    height: 326,
+                    orientation: 'vertical',
+                    loop: false,
+                    arrows: true,
+                    buttons: false,
+                    thumbnailsPosition: 'right',
+                    thumbnailPointer: true,
+                    thumbnailWidth: 290,
+                    breakpoints: {
+                        800: {
+                            thumbnailsPosition: 'bottom',
+                            thumbnailWidth: 270,
+                            thumbnailHeight: 100
+                        },
+                        500: {
+                            thumbnailsPosition: 'bottom',
+                            thumbnailWidth: 120,
+                            thumbnailHeight: 50
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
+

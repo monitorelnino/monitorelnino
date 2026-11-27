@@ -1,0 +1,2199 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>P&#xE1;gina Inicial - Portal Oficial da Prefeitura de Alto Paraíso - RO</title>
+
+    <!-- 🏛️ FAVICON & ÍCONES DA ABA DO NAVEGADOR (BRASÃO OFICIAL) 🏛️ -->
+    <link rel="icon" type="image/png" href="/img/brasao_altoparaiso.png" />
+    <link rel="shortcut icon" type="image/png" href="/img/brasao_altoparaiso.png" />
+    <link rel="apple-touch-icon" href="/img/brasao_altoparaiso.png" />
+
+    <!-- 🔍 SEO & METADADOS GOVERNAMENTAIS 🔍 -->
+    <meta name="description" content="Portal Oficial da Prefeitura Municipal de Alto Para&#xED;so - Rond&#xF4;nia. Acesso a servi&#xE7;os p&#xFA;blicos, not&#xED;cias oficiais, editais, Portal da Transpar&#xEA;ncia, Ouvidoria Fala.BR e e-SIC." />
+    <meta name="keywords" content="Prefeitura de Alto Para&#xED;so, Alto Para&#xED;so RO, Rond&#xF4;nia, Transpar&#xEA;ncia Municipal, Ouvidoria, e-SIC, Di&#xE1;rio Oficial, IPTU, Not&#xED;cias Oficiais, Servi&#xE7;os P&#xFA;blicos" />
+    <meta name="author" content="Prefeitura Municipal de Alto Paraíso - RO" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="theme-color" content="#091e3a" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- 🌐 Open Graph / Facebook / WhatsApp 🌐 -->
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="P&#xE1;gina Inicial - Prefeitura de Alto Paraíso - RO" />
+    <meta property="og:description" content="Portal Oficial da Prefeitura Municipal de Alto Para&#xED;so - Rond&#xF4;nia. Transpar&#xEA;ncia, not&#xED;cias, servi&#xE7;os e cidadania." />
+    <meta property="og:url" content="http://www.altoparaiso.ro.gov.br/" />
+    <meta property="og:site_name" content="Prefeitura Municipal de Alto Paraíso - RO" />
+    <meta property="og:image" content="http://www.altoparaiso.ro.gov.br/img/brasao_altoparaiso.png" />
+    <meta property="og:image:alt" content="Brasão Oficial do Município de Alto Paraíso - RO" />
+
+    <!-- 🐦 Twitter Cards 🐦 -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="P&#xE1;gina Inicial - Prefeitura de Alto Paraíso - RO" />
+    <meta name="twitter:description" content="Portal Oficial da Prefeitura Municipal de Alto Para&#xED;so - Rond&#xF4;nia. Transpar&#xEA;ncia, not&#xED;cias e servi&#xE7;os." />
+    <meta name="twitter:image" content="http://www.altoparaiso.ro.gov.br/img/brasao_altoparaiso.png" />
+
+    <!-- 🏷️ Schema.org Structured Data (JSON-LD) 🏷️ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "GovernmentOrganization",
+      "name": "Prefeitura Municipal de Alto Paraíso",
+      "alternateName": "Prefeitura de Alto Paraíso - RO",
+      "url": "https://altoparaiso.ro.gov.br",
+      "logo": "https://altoparaiso.ro.gov.br/img/brasao_altoparaiso.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Marechal Cândido Rondon, 3031 - Centro",
+        "addressLocality": "Alto Paraíso",
+        "addressRegion": "RO",
+        "postalCode": "76862-000",
+        "addressCountry": "BR"
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+55-69-3534-2101",
+        "contactType": "customer service",
+        "areaServed": "BR",
+        "availableLanguage": ["Portuguese"]
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Portal Oficial da Prefeitura de Alto Paraíso - RO",
+      "url": "https://altoparaiso.ro.gov.br",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://altoparaiso.ro.gov.br/noticias?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      "itemListElement": [
+        {
+          "@type": "SiteNavigationElement",
+          "position": 1,
+          "name": "Notícias e Comunicados Oficiais",
+          "description": "Acompanhe as últimas notícias, comunicados oficiais, obras e ações da Prefeitura de Alto Paraíso.",
+          "url": "https://altoparaiso.ro.gov.br/noticias"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 2,
+          "name": "Portal da Transparência",
+          "description": "Receitas, despesas, contratos, licitações, folha de pagamento e prestação de contas públicas.",
+          "url": "https://transparencia.altoparaiso.ro.gov.br/"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 3,
+          "name": "Serviços ao Cidadão & IPTU",
+          "description": "Emissão de guias, IPTU, certidões negativas, notas fiscais e autoatendimento online.",
+          "url": "https://altoparaiso.ro.gov.br/servicos"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 4,
+          "name": "Vídeos e Mídias Oficiais",
+          "description": "Transmissões ao vivo, audiências públicas e coberturas audiovisuais de Alto Paraíso.",
+          "url": "https://altoparaiso.ro.gov.br/videos"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 5,
+          "name": "Fotos e Coberturas de Eventos",
+          "description": "Galeria oficial de fotos e eventos do município de Alto Paraíso - RO.",
+          "url": "https://altoparaiso.ro.gov.br/fotos"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 6,
+          "name": "Ouvidoria Fala.BR & e-SIC",
+          "description": "Canal oficial para manifestações, solicitações, sugestões e acesso à informação.",
+          "url": "https://falabr.cgu.gov.br/web/home?modoOuvidoria=1"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 7,
+          "name": "Mapa do Site",
+          "description": "Guia de navegação completo com todas as secretarias e serviços do portal.",
+          "url": "https://altoparaiso.ro.gov.br/mapadosite"
+        }
+      ]
+    }
+    </script>
+
+    <!-- ⚡ OTIMIZAÇÕES DE REDE E CARREGAMENTO DE FONTES (LCP / FCP) ⚡ -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://vlibras.gov.br">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@500;600;700;800;900&display=swap">
+    <link rel="stylesheet" href="/css/site.css?v=1RUT0_-6He6g_j8KPEKJWFPwhRJuL6MHvynYazHBYR4" />
+    <link rel="stylesheet" href="/css/accessibility.css?v=aDD9_IbxU-6F2MZr8TsoZSJPWfhD7Un_XgbiXZsx5bk" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- 🎨 BRANDING KIT OFICIAL DINÂMICO DO PORTAL 🎨 -->
+    <style id="ap-dynamic-theme-vars">
+        :root {
+            --portal-primary: #0c2340;
+            --portal-primary-dark: #07172c;
+            --portal-accent: #0284c7;
+            --portal-secondary: #0284c7;
+            --portal-accent-hover: #0369a1;
+            --portal-secondary-hover: #0369a1;
+            --portal-accent-gold: #d97706;
+            --portal-accent-green: #059669;
+            --portal-bg: #f8fafc;
+            --portal-footer-bg: #0c2340;
+            --portal-topbar-bg: #071526;
+            --portal-text-title: #0c2340;
+            --portal-text-main: #1e293b;
+            --portal-text-muted: #64748b;
+        }
+        body { background-color: var(--portal-bg, #f8fafc) !important; color: var(--portal-text-main, #1e293b); }
+        .gov-topbar { background: var(--portal-topbar-bg, #071526) !important; }
+        .val-brand-title { color: var(--portal-primary, #0c2340) !important; }
+        .val-brand-sub { color: var(--portal-accent, #0284c7) !important; }
+        .val-section-title { color: var(--portal-text-title, #0c2340) !important; }
+        .btn-val-primary { background: var(--portal-accent, #0284c7) !important; }
+        .btn-val-primary:hover { background: var(--portal-accent-hover, #0369a1) !important; }
+        .btn-val-outline:hover { border-color: var(--portal-accent, #0284c7) !important; color: var(--portal-accent, #0284c7) !important; }
+        .val-card-title { color: var(--portal-text-title, #0c2340) !important; }
+        .val-news-featured-title { color: var(--portal-text-title, #0c2340); }
+        .val-news-featured-card:hover .val-news-featured-title { color: var(--portal-accent, #0284c7) !important; }
+        .ap-official-footer {
+            background: var(--portal-footer-bg, #0c2340) !important;
+            background: linear-gradient(180deg, var(--portal-footer-bg, #0c2340) 0%, var(--portal-primary-dark, #07172c) 100%) !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- ♿ Atalho de Acessibilidade: Pular para o Conteúdo Principal ♿ -->
+    <a b-ernffg1v26 href="#main-content" class="ap-skip-link" accesskey="1">Ir para o conteúdo principal [Alt + 1]</a>
+
+    <!-- 🏛️ BARRA GOVERNAMENTAL SUPERIOR DE ACESSIBILIDADE E TRANSPARÊNCIA 🏛️ -->
+    <div b-ernffg1v26 class="gov-topbar">
+        <div b-ernffg1v26 class="container">
+            <div b-ernffg1v26 class="gov-topbar-inner">
+                <!-- Links de Transparência e Ouvidoria -->
+                <div b-ernffg1v26 class="gov-topbar-left">
+                    <a b-ernffg1v26 href="https://falabr.cgu.gov.br/web/home?modoOuvidoria=1&ouvidoriaInterna=false" target="_blank" rel="noopener noreferrer" class="gov-topbar-link" title="Ouvidoria Fala.BR">
+                        <span b-ernffg1v26 class="gov-topbar-badge-eouv">e-Ouv</span>
+                        <span b-ernffg1v26>Ouvidoria</span>
+                    </a>
+                    <span b-ernffg1v26 class="gov-topbar-sep">|</span>
+                    <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/novo/EXECUTIVO/acesso-a-informacao/2026/27/esic?perPage=10&page=1" target="_blank" rel="noopener noreferrer" class="gov-topbar-link" title="Serviço de Informação ao Cidadão - e-SIC">
+                        <i b-ernffg1v26 class="bi bi-info-circle-fill gov-topbar-icon-esic"></i>
+                        <span b-ernffg1v26>e-SIC</span>
+                    </a>
+                    <span b-ernffg1v26 class="gov-topbar-sep">|</span>
+                    <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/novo" target="_blank" rel="noopener noreferrer" class="gov-topbar-link" title="Portal da Transparência de Alto Paraíso">
+                        <i b-ernffg1v26 class="bi bi-shield-check" style="color: #38bdf8;"></i>
+                        <span b-ernffg1v26>Portal Transparência</span>
+                    </a>
+                    <span b-ernffg1v26 class="gov-topbar-sep gov-topbar-sep-opt">|</span>
+                    <a b-ernffg1v26 href="https://www.diariomunicipal.com.br/arom/" target="_blank" rel="noopener noreferrer" class="gov-topbar-link gov-topbar-opt" title="Diário Oficial dos Municípios de Rondônia (AROM)">
+                        <i b-ernffg1v26 class="bi bi-journal-text"></i>
+                        <span b-ernffg1v26>Diário Oficial</span>
+                    </a>
+                </div>
+
+                <!-- Ferramentas Rápidas e Acesso à Acessibilidade -->
+                <div b-ernffg1v26 class="gov-topbar-right">
+                    <div b-ernffg1v26 class="gov-topbar-font-resizer" title="Ajuste Rápido de Fonte">
+                        <button b-ernffg1v26 type="button" class="gov-topbar-tool-btn" onclick="window.GovAcc.alterarPasso('tamanhoFonte', -10)" title="Diminuir Fonte (A-)" aria-label="Diminuir Fonte">A-</button>
+                        <button b-ernffg1v26 type="button" class="gov-topbar-tool-btn" onclick="window.GovAcc.redefinirFonte()" title="Tamanho Padrão (A)" aria-label="Tamanho Normal da Fonte">A</button>
+                        <button b-ernffg1v26 type="button" class="gov-topbar-tool-btn" onclick="window.GovAcc.alterarPasso('tamanhoFonte', 10)" title="Aumentar Fonte (A+)" aria-label="Aumentar Fonte">A+</button>
+                    </div>
+                    <span b-ernffg1v26 class="gov-topbar-sep">|</span>
+                    <button b-ernffg1v26 type="button" class="gov-topbar-tool-btn" onclick="window.GovAcc.toggle('altoContraste')" title="Alternar Alto Contraste" aria-label="Alternar Alto Contraste">
+                        <i b-ernffg1v26 class="bi bi-circle-half"></i> <span b-ernffg1v26 class="gov-topbar-btn-text">Contraste</span>
+                    </button>
+                    <span b-ernffg1v26 class="gov-topbar-sep">|</span>
+                    <button b-ernffg1v26 type="button" class="gov-topbar-acc-btn" id="apAccessibilityBtn" tabindex="1" onclick="window.GovAcc.toggleModal()" title="Abrir Menu Completo de Acessibilidade (Ctrl + Shift + A)" aria-label="Acessar Acessibilidade">
+                        <i b-ernffg1v26 class="bi bi-universal-access"></i>
+                        <span b-ernffg1v26 class="gov-topbar-acc-text">Acessibilidade</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 🏛️ HEADER PRINCIPAL COM BUSCA INTELIGENTE E MENU MOBILE 🏛️ -->
+    <header b-ernffg1v26 class="val-header">
+        <div b-ernffg1v26 class="container">
+            <div b-ernffg1v26 class="val-header-main">
+                <div b-ernffg1v26 class="val-header-brand-row">
+                    <a b-ernffg1v26 href="/" class="val-brand" title="Prefeitura de Alto Para&#xED;so">
+                        <div b-ernffg1v26 class="val-crest has-img">
+                                <img b-ernffg1v26 src="/uploads/brasao/brasao_topo_20261007_3b67c7f55849424181696be5a99a6f47.webp" alt="Prefeitura de Alto Para&#xED;so" />
+                        </div>
+                        <div b-ernffg1v26>
+                            <div b-ernffg1v26 class="val-brand-title">Prefeitura de Alto Para&#xED;so</div>
+                            <div b-ernffg1v26 class="val-brand-sub">ESTADO DE ROND&#xD4;NIA</div>
+                        </div>
+                    </a>
+
+                    <!-- Botão 3 Riscos Limpo no Mobile (Sem Card / Sem Fundo) -->
+                    <button b-ernffg1v26 type="button" class="ap-clean-burger-btn" id="apMobileToggleBtn" onclick="toggleMenuMobile()" aria-label="Abrir Menu de Navegação" aria-expanded="false">
+                        <i b-ernffg1v26 class="bi bi-list" id="apMobileToggleIcon"></i>
+                    </button>
+                </div>
+
+                <!-- Campo de Busca Inteligente com Autocomplete Dropdown & Atalho [ / ] -->
+                <form method="get" action="/busca" onsubmit="return handleTopSearchSubmit(event)" class="val-search-form">
+                    <div b-ernffg1v26 class="val-search-box" id="portalSearchWrapper">
+                        <input b-ernffg1v26 type="text" name="q" class="val-search-input" id="portalSearchInput" value="" placeholder="O que você está procurando? (Ex: IPTU, NFS-e, Leis...)" autocomplete="off" oninput="onSearchInput(this.value)" onkeydown="onSearchKeyDown(event)" onfocus="onSearchFocus()" />
+                        <button b-ernffg1v26 type="submit" class="val-search-btn" title="Pesquisar"><i b-ernffg1v26 class="bi bi-search"></i></button>
+
+                        <!-- Dropdown Flutuante de Sugestões Instantâneas -->
+                        <div b-ernffg1v26 id="portalSearchDropdown" class="ap-search-autocomplete-dropdown" style="display: none;"></div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </header>
+
+    <!-- ⚪ BARRA DE MENU OFICIAL (HORIZONTAL NO DESKTOP / EXPANSÍVEL NO MOBILE) ⚪ -->
+    <nav b-ernffg1v26 class="ap-top-navbar" id="nav-menu">
+        <div b-ernffg1v26 class="container">
+            <!-- Lista de Menus (Colapsável no Mobile com animação suave) -->
+            <div b-ernffg1v26 class="ap-nav-collapse" id="apNavCollapse">
+                <ul b-ernffg1v26 class="ap-menu-list">
+                            <li b-ernffg1v26 class="ap-menu-item">
+                                <a b-ernffg1v26 href="/"  class="ap-menu-link" tabindex="0">Inicio</a>
+                            </li>
+                            <li b-ernffg1v26 class="ap-menu-item">
+                                <a b-ernffg1v26 href="/mapadosite"  class="ap-menu-link" tabindex="0">Mapa do Site</a>
+                            </li>
+                            <li b-ernffg1v26 class="ap-menu-item ap-has-dropdown ">
+                                <a b-ernffg1v26 class="ap-menu-link" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false" tabindex="0" onclick="toggleSubmenuMobile(this)" onkeydown="handleMenuKeyDown(event, this)">
+                                    <span b-ernffg1v26>Alto Para&#xED;so</span>
+                                    <i b-ernffg1v26 class="bi bi-caret-down-fill ap-caret"></i>
+                                </a>
+                                <div b-ernffg1v26 class="ap-dropdown-menu " role="menu">
+                                        <a b-ernffg1v26 href="/historia" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-pie-chart"></i> 
+                                            <span b-ernffg1v26>Dados do Munic&#xED;pio</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/comochegar" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-signpost-2"></i> 
+                                            <span b-ernffg1v26>Como Chegar</span>
+                                        </a>
+                                </div>
+                            </li>
+                            <li b-ernffg1v26 class="ap-menu-item ap-has-dropdown ap-is-megamenu">
+                                <a b-ernffg1v26 class="ap-menu-link" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false" tabindex="0" onclick="toggleSubmenuMobile(this)" onkeydown="handleMenuKeyDown(event, this)">
+                                    <span b-ernffg1v26>Prefeitura</span>
+                                    <i b-ernffg1v26 class="bi bi-caret-down-fill ap-caret"></i>
+                                </a>
+                                <div b-ernffg1v26 class="ap-dropdown-menu ap-megamenu-grid" role="menu">
+                                        <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estruturas/31?exercicio=2026&amp;page=1&amp;perPage=10" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-diagram-3"></i> 
+                                            <span b-ernffg1v26>Estrutura Organizacional</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/transparencia/aplicacoes/publicacao/download.php?id_doc=000021&amp;extencao=PDF" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-book"></i> 
+                                            <span b-ernffg1v26>Lei Org&#xE2;nica do Munic&#xED;pio</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/novo/EXECUTIVO/publicacoes/grupos/2026/10" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-journal-text"></i> 
+                                            <span b-ernffg1v26>Leis Municipais</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/transparencia/aplicacoes/publicacao/download.php?id_doc=008590&amp;extencao=PDF" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-map"></i> 
+                                            <span b-ernffg1v26>Plano Diretor</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://selectgov.altoparaiso.ro.gov.br/" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-person-check"></i> 
+                                            <span b-ernffg1v26>Teste Seletivo (Novo)</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/transparencia/aplicacoes/testeseletivo/" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-archive"></i> 
+                                            <span b-ernffg1v26>Teste Seletivo (Antigo)</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://sie.altoparaiso.ro.gov.br/sieweb/" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-mortarboard"></i> 
+                                            <span b-ernffg1v26>SIE Web - Educa&#xE7;&#xE3;o</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="/politicadeprivacidade" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-shield-lock"></i> 
+                                            <span b-ernffg1v26>Pol&#xED;tica de Privacidade</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/uploads/docs/planta-mapa-alto-paraiso-ro.pdf" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-geo-alt"></i> 
+                                            <span b-ernffg1v26>Planta / Mapa de Alto Para&#xED;so RO</span>
+                                        </a>
+                                </div>
+                            </li>
+                            <li b-ernffg1v26 class="ap-menu-item ap-has-dropdown ap-is-megamenu">
+                                <a b-ernffg1v26 class="ap-menu-link" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false" tabindex="0" onclick="toggleSubmenuMobile(this)" onkeydown="handleMenuKeyDown(event, this)">
+                                    <span b-ernffg1v26>Secretarias</span>
+                                    <i b-ernffg1v26 class="bi bi-caret-down-fill ap-caret"></i>
+                                </a>
+                                <div b-ernffg1v26 class="ap-dropdown-menu ap-megamenu-grid" role="menu">
+                                        <a b-ernffg1v26 href="/secretarias" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-diagram-3-fill"></i> 
+                                            <span b-ernffg1v26>Todas as Secretarias (Vis&#xE3;o Geral)</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/semsau" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-heart-pulse-fill"></i> 
+                                            <span b-ernffg1v26>Secretaria de Sa&#xFA;de (SEMSAU)</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/semed" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-mortarboard-fill"></i> 
+                                            <span b-ernffg1v26>Secretaria de Educa&#xE7;&#xE3;o (SEMED)</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/semosp" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-tools"></i> 
+                                            <span b-ernffg1v26>Secretaria de Obras e Servi&#xE7;os P&#xFA;blicos (SEMOSP)</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/semtur" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-trophy-fill"></i> 
+                                            <span b-ernffg1v26>Secretaria de Turismo, Cultura, Esporte e Lazer (SEMTUR)</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/semplan" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-graph-up-arrow"></i> 
+                                            <span b-ernffg1v26>Secretaria de Planejamento</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/sema" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-tree-fill"></i> 
+                                            <span b-ernffg1v26>Secretaria de Meio Ambiente (SEMA)</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/semagri" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-flower1"></i> 
+                                            <span b-ernffg1v26>Secretaria de Agricultura (SEMAGRI)</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/semaf" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-cash-coin"></i> 
+                                            <span b-ernffg1v26>Secretaria de Administra&#xE7;&#xE3;o e Finan&#xE7;as (SEMAF)</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/semtas" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-people-fill"></i> 
+                                            <span b-ernffg1v26>Secretaria de Assist&#xEA;ncia Social (SEMTAS)</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/semgov" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-bank2"></i> 
+                                            <span b-ernffg1v26>Secretaria Municipal de Governo</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/cgm" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-shield-check"></i> 
+                                            <span b-ernffg1v26>Controladoria Geral do Munic&#xED;pio (CGM)</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/secretarias/detalhes/ouvid" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-megaphone-fill"></i> 
+                                            <span b-ernffg1v26>Ouvidoria Municipal (e-Ouv)</span>
+                                        </a>
+                                </div>
+                            </li>
+                            <li b-ernffg1v26 class="ap-menu-item ap-has-dropdown ap-is-megamenu">
+                                <a b-ernffg1v26 class="ap-menu-link" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false" tabindex="0" onclick="toggleSubmenuMobile(this)" onkeydown="handleMenuKeyDown(event, this)">
+                                    <span b-ernffg1v26>Cidad&#xE3;o</span>
+                                    <i b-ernffg1v26 class="bi bi-caret-down-fill ap-caret"></i>
+                                </a>
+                                <div b-ernffg1v26 class="ap-dropdown-menu ap-megamenu-grid" role="menu">
+                                        <a b-ernffg1v26 href="https://falabr.cgu.gov.br/web/home?modoOuvidoria=1&amp;ouvidoriaInterna=false" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-headset"></i> 
+                                            <span b-ernffg1v26>Ouvidoria</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://app.altoparaiso.ro.gov.br/servicosweb" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-cash-coin"></i> 
+                                            <span b-ernffg1v26>Tributos Online</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-pie-chart"></i> 
+                                            <span b-ernffg1v26>Portal da Transpar&#xEA;ncia</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/novo/EXECUTIVO/publicacoes/documentos/2026/10?grupo=101&amp;perPage=10&amp;page=1" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-people"></i> 
+                                            <span b-ernffg1v26>Benefici&#xE1;rios de Bolsa Fam&#xED;lia</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="/uploads/docs/carta-de-servicos-ao-cidadao-alto-paraiso-ro.pdf" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-list-check"></i> 
+                                            <span b-ernffg1v26>Carta de Servi&#xE7;os ao Cidad&#xE3;o</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/processoeletronico" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-laptop"></i> 
+                                            <span b-ernffg1v26>eProc - Processo Eletr&#xF4;nico</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/transparencia/servicos/" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-file-earmark-text"></i> 
+                                            <span b-ernffg1v26>Requerimentos e Declara&#xE7;&#xF5;es</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://app.altoparaiso.ro.gov.br/servicosweb" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-receipt"></i> 
+                                            <span b-ernffg1v26>IPTU Online</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                </div>
+                            </li>
+                            <li b-ernffg1v26 class="ap-menu-item ap-has-dropdown ">
+                                <a b-ernffg1v26 class="ap-menu-link" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false" tabindex="0" onclick="toggleSubmenuMobile(this)" onkeydown="handleMenuKeyDown(event, this)">
+                                    <span b-ernffg1v26>Empresa</span>
+                                    <i b-ernffg1v26 class="bi bi-caret-down-fill ap-caret"></i>
+                                </a>
+                                <div b-ernffg1v26 class="ap-dropdown-menu " role="menu">
+                                        <a b-ernffg1v26 href="https://www.nfse.gov.br/EmissorNacional" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-chevron-right"></i> 
+                                            <span b-ernffg1v26>Portal de Gest&#xE3;o NFS-e - Contribuinte</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://app.altoparaiso.ro.gov.br/issweb" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-receipt"></i> 
+                                            <span b-ernffg1v26>Nota Fiscal de Servi&#xE7;o</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/novo/EXECUTIVO/compras-licitacoes/licitacoes/2026/3?perPage=10&amp;page=1" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-folder2-open"></i> 
+                                            <span b-ernffg1v26>Licita&#xE7;&#xF5;es</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/novo/EXECUTIVO/compras-licitacoes/licitacoes/2026/3?perPage=10&amp;page=1" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-file-earmark-pdf"></i> 
+                                            <span b-ernffg1v26>Editais das Licita&#xE7;&#xF5;es</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="/salaempreendedor" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-shop"></i> 
+                                            <span b-ernffg1v26>Sala do Empreendedor</span>
+                                        </a>
+                                </div>
+                            </li>
+                            <li b-ernffg1v26 class="ap-menu-item ap-has-dropdown ">
+                                <a b-ernffg1v26 class="ap-menu-link" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false" tabindex="0" onclick="toggleSubmenuMobile(this)" onkeydown="handleMenuKeyDown(event, this)">
+                                    <span b-ernffg1v26>Servidor</span>
+                                    <i b-ernffg1v26 class="bi bi-caret-down-fill ap-caret"></i>
+                                </a>
+                                <div b-ernffg1v26 class="ap-dropdown-menu " role="menu">
+                                        <a b-ernffg1v26 href="https://holerite.altoparaiso.ro.gov.br/sipweb" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-wallet2"></i> 
+                                            <span b-ernffg1v26>Contracheque</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                        <a b-ernffg1v26 href="https://mail.zoho.com/" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                            <i b-ernffg1v26 class="bi bi-envelope-at"></i> 
+                                            <span b-ernffg1v26>E-mail institucional</span>
+ <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; margin-left: auto;"></i>                                         </a>
+                                </div>
+                            </li>
+                            <li b-ernffg1v26 class="ap-menu-item ap-has-dropdown ">
+                                <a b-ernffg1v26 class="ap-menu-link" href="javascript:void(0)" role="button" aria-haspopup="true" aria-expanded="false" tabindex="0" onclick="toggleSubmenuMobile(this)" onkeydown="handleMenuKeyDown(event, this)">
+                                    <span b-ernffg1v26>M&#xED;dias</span>
+                                    <i b-ernffg1v26 class="bi bi-caret-down-fill ap-caret"></i>
+                                </a>
+                                <div b-ernffg1v26 class="ap-dropdown-menu " role="menu">
+                                        <a b-ernffg1v26 href="/noticias" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-newspaper"></i> 
+                                            <span b-ernffg1v26>Not&#xED;cias</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/noticias/eventos" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-camera-fill"></i> 
+                                            <span b-ernffg1v26>Fotos e Eventos</span>
+                                        </a>
+                                        <a b-ernffg1v26 href="/videos" role="menuitem" tabindex="0" onkeydown="handleSubmenuItemKeyDown(event, this)" >
+                                            <i b-ernffg1v26 class="bi bi-camera-fill"></i> 
+                                            <span b-ernffg1v26>Videos</span>
+                                        </a>
+                                </div>
+                            </li>
+                            <li b-ernffg1v26 class="ap-menu-item">
+                                <a b-ernffg1v26 href="/contato"  class="ap-menu-link" tabindex="0">Contatos</a>
+                            </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Conteúdo Principal -->
+    <main b-ernffg1v26 id="main-content" class="main-content">
+        <div b-ernffg1v26 class="container">
+            <!-- 🖨️ CABEÇALHO TIMBRADO OFICIAL DE IMPRESSÃO (Visível exclusivamente na impressão) 🖨️ -->
+            <div b-ernffg1v26 class="val-print-header">
+                <div b-ernffg1v26 class="val-print-header-brand">
+                    <img b-ernffg1v26 src="/uploads/brasao/brasao_topo_20261007_3b67c7f55849424181696be5a99a6f47.webp" alt="Brasão Oficial de Alto Paraíso" class="val-print-header-logo" onerror="this.style.display='none'" />
+                    <div b-ernffg1v26 class="val-print-header-text">
+                        <h1 b-ernffg1v26>Prefeitura Municipal de Alto Paraíso</h1>
+                        <p b-ernffg1v26>Estado de Rondônia • Portal Oficial da Administração Pública</p>
+                    </div>
+                </div>
+                <div b-ernffg1v26 class="val-print-header-meta">
+                    <div b-ernffg1v26><strong b-ernffg1v26>Documento / Página:</strong> P&#xE1;gina Inicial</div>
+                    <div b-ernffg1v26><strong b-ernffg1v26>Data/Hora de Emissão:</strong> 27/11/2026 11:51</div>
+                    <div b-ernffg1v26><strong b-ernffg1v26>Fonte Oficial:</strong> altoparaiso.ro.gov.br</div>
+                </div>
+            </div>
+
+            
+<!-- 🖼️ HERO SLIDER DINÂMICO 🖼️ -->
+    <div class="val-hero-slider" id="valHeroSlider" aria-label="Destaques Institucionais">
+            <div class="val-slide active" id="valSlide0">
+                    <!-- 🎨 Tipo 1: Arte Gráfica / Banner Pronto (Desktop + Mobile Responsivo) -->
+                    <a href="#"  class="val-slide-arte has-custom-mobile" aria-label="Novo Destaque Municipal">
+                        <picture class="val-slide-picture">
+                                <source media="(max-width: 768px)" srcset="/uploads/banners/banner_20261013_3075df8d50c347689bf28b9232aeec6d.webp" />
+                            <img src="/uploads/banners/banner_20261013_99e6d54697054b88867b427f424846a0.webp" alt="Novo Destaque Municipal" class="val-slide-img-custom-mobile" decoding="async" fetchpriority=&quot;high&quot; />
+                        </picture>
+                    </a>
+            </div>
+            <div class="val-slide " id="valSlide1">
+                    <!-- 🎨 Tipo 1: Arte Gráfica / Banner Pronto (Desktop + Mobile Responsivo) -->
+                    <a href="#"  class="val-slide-arte has-custom-mobile" aria-label="Novo Destaque Municipal">
+                        <picture class="val-slide-picture">
+                                <source media="(max-width: 768px)" srcset="/uploads/banners/banner_20261008_a3081b3c459244a3ac84b86e1c4b05f8.webp" />
+                            <img src="/uploads/banners/banner_20261008_40134c23145044b9860a27739fcff2ec.webp" alt="Novo Destaque Municipal" class="val-slide-img-custom-mobile" decoding="async" loading=&quot;lazy&quot; />
+                        </picture>
+                    </a>
+            </div>
+            <div class="val-slide " id="valSlide2">
+                    <!-- 🎨 Tipo 1: Arte Gráfica / Banner Pronto (Desktop + Mobile Responsivo) -->
+                    <a href="#"  class="val-slide-arte has-custom-mobile" aria-label="">
+                        <picture class="val-slide-picture">
+                                <source media="(max-width: 768px)" srcset="/uploads/banners/banner_20261019_532b3c54e1704b9690349da2a6357a5b.webp" />
+                            <img src="/uploads/banners/banner_20261019_2bc60741cba54e97821ada20b7a17ffe.webp" alt="" class="val-slide-img-custom-mobile" decoding="async" loading=&quot;lazy&quot; />
+                        </picture>
+                    </a>
+            </div>
+            <div class="val-slide " id="valSlide3">
+                    <!-- 🎨 Tipo 1: Arte Gráfica / Banner Pronto (Desktop + Mobile Responsivo) -->
+                    <a href="https://www.nfse.gov.br/EmissorNacional"  class="val-slide-arte has-custom-mobile" aria-label="Novo Destaque Municipal">
+                        <picture class="val-slide-picture">
+                                <source media="(max-width: 768px)" srcset="/uploads/banners/banner_20261027_c6bbd944d7b84629a80fbc1b0bb2c995.webp" />
+                            <img src="/uploads/banners/banner_20261027_f7ea3792dee745e69247489126d2621c.webp" alt="Novo Destaque Municipal" class="val-slide-img-custom-mobile" decoding="async" loading=&quot;lazy&quot; />
+                        </picture>
+                    </a>
+            </div>
+            <div class="val-slide " id="valSlide4">
+                    <!-- 🎨 Tipo 1: Arte Gráfica / Banner Pronto (Desktop + Mobile Responsivo) -->
+                    <a href="#"  class="val-slide-arte is-desktop-fallback" aria-label="Novo Destaque Municipal">
+                        <picture class="val-slide-picture">
+                            <img src="/uploads/banners/banner_20261106_852e94aa374f48de9f15f06557d648c4.webp" alt="Novo Destaque Municipal" class="val-slide-img-desktop-fallback" decoding="async" loading=&quot;lazy&quot; />
+                        </picture>
+                    </a>
+            </div>
+
+            <!-- ⏳ Barra de Progresso Discreta do Tempo do Slide -->
+            <div class="val-slider-progress-track" aria-hidden="true">
+                <div class="val-slider-progress-bar" id="valSliderProgressBar"></div>
+            </div>
+            <!-- Indicadores de Navegação Discretos com Mini-Setas -->
+            <div class="val-slider-nav" role="tablist" aria-label="Controle de Slides">
+                <button type="button" class="val-slider-nav-mini-btn" onclick="prevValSlide(true)" aria-label="Slide anterior" title="Anterior">
+                    <i class="bi bi-chevron-left" aria-hidden="true"></i>
+                </button>
+                    <div class="val-slider-dot active" onclick="goToValSlide(0)" role="tab" aria-label="Ir para slide 1"></div>
+                    <div class="val-slider-dot " onclick="goToValSlide(1)" role="tab" aria-label="Ir para slide 2"></div>
+                    <div class="val-slider-dot " onclick="goToValSlide(2)" role="tab" aria-label="Ir para slide 3"></div>
+                    <div class="val-slider-dot " onclick="goToValSlide(3)" role="tab" aria-label="Ir para slide 4"></div>
+                    <div class="val-slider-dot " onclick="goToValSlide(4)" role="tab" aria-label="Ir para slide 5"></div>
+                <button type="button" class="val-slider-nav-mini-btn" onclick="nextValSlide(true)" aria-label="Próximo slide" title="Próximo">
+                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+            </div>
+    </div>
+
+<!-- ⚡ SERVIÇOS EM DESTAQUE (CARDS DINÂMICOS COM CORES SUAVES) ⚡ -->
+<div class="val-section-title">
+    <i class="bi bi-bookmark-star-fill" style="color: #0284c7;"></i> Serviços em Destaque
+</div>
+<div class="val-section-sub">Acesso direto aos principais sistemas e serviços municipais de Alto Paraíso - RO</div>
+
+<div class="val-services-grid">
+        <a href="/processoeletronico"  class="val-card">
+            <div class="val-card-icon" style="background: #e0f2fe; color: #0284c7;">
+                <i class="bi bi-laptop"></i>
+            </div>
+            <div>
+                <div class="val-card-title">
+                    eProc Processos                 </div>
+                <div class="val-card-desc">Protocolo eletr&#xF4;nico, abertura e consulta de processos municipais.</div>
+            </div>
+        </a>
+        <a href="https://app.altoparaiso.ro.gov.br/servicosweb/home.jsf" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-card">
+            <div class="val-card-icon" style="background: #dcfce7; color: #16a34a;">
+                <i class="bi bi-pie-chart"></i>
+            </div>
+            <div>
+                <div class="val-card-title">
+                    IPTU Online  <i class="bi bi-box-arrow-up-right" style="font-size: 12px; color: var(--portal-text-light);"></i>                 </div>
+                <div class="val-card-desc">Emiss&#xE3;o de guias, 2&#xAA; via e consulta de d&#xE9;bitos do IPTU.</div>
+            </div>
+        </a>
+        <a href="https://app.altoparaiso.ro.gov.br/issweb/paginas/login" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-card">
+            <div class="val-card-icon" style="background: #ffedd5; color: #ea580c;">
+                <i class="bi bi-house-door"></i>
+            </div>
+            <div>
+                <div class="val-card-title">
+                    Nota Fiscal (NFS-e)  <i class="bi bi-box-arrow-up-right" style="font-size: 12px; color: var(--portal-text-light);"></i>                 </div>
+                <div class="val-card-desc">Emiss&#xE3;o e consulta de notas fiscais de servi&#xE7;o eletr&#xF4;nicas MUNICIPAL.</div>
+            </div>
+        </a>
+        <a href="https://www.nfse.gov.br/EmissorNacional" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-card">
+            <div class="val-card-icon" style="background: #e0f2fe; color: #0284c7;">
+                <i class="bi bi-house-door"></i>
+            </div>
+            <div>
+                <div class="val-card-title">
+                    Portal de Gest&#xE3;o NFS-e - Contribuinte  <i class="bi bi-box-arrow-up-right" style="font-size: 12px; color: var(--portal-text-light);"></i>                 </div>
+                <div class="val-card-desc">Emissor Nacional de notas fiscais de servi&#xE7;o eletr&#xF4;nicas NOVO.</div>
+            </div>
+        </a>
+        <a href="https://transparencia.altoparaiso.ro.gov.br/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-card">
+            <div class="val-card-icon" style="background: #f3e8ff; color: #9333ea;">
+                <i class="bi bi-pie-chart"></i>
+            </div>
+            <div>
+                <div class="val-card-title">
+                    Transpar&#xEA;ncia  <i class="bi bi-box-arrow-up-right" style="font-size: 12px; color: var(--portal-text-light);"></i>                 </div>
+                <div class="val-card-desc">Acompanhe receitas, despesas, contratos e contas p&#xFA;blicas.</div>
+            </div>
+        </a>
+        <a href="https://transparencia.altoparaiso.ro.gov.br/transparencia/index.php?link=aplicacoes/licitacao/frmlicitacao&amp;id_menu=1" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-card">
+            <div class="val-card-icon" style="background: #fef9c3; color: #ca8a04;">
+                <i class="bi bi-folder2-open"></i>
+            </div>
+            <div>
+                <div class="val-card-title">
+                    Licita&#xE7;&#xF5;es &amp; Compras  <i class="bi bi-box-arrow-up-right" style="font-size: 12px; color: var(--portal-text-light);"></i>                 </div>
+                <div class="val-card-desc">Acesse editais, preg&#xF5;es, atas e contratos vigentes.</div>
+            </div>
+        </a>
+        <a href="https://app.altoparaiso.ro.gov.br/servicosweb/home.jsf" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-card">
+            <div class="val-card-icon" style="background: #fee2e2; color: #dc2626;">
+                <i class="bi bi-shield-check"></i>
+            </div>
+            <div>
+                <div class="val-card-title">
+                    Certid&#xE3;o CND  <i class="bi bi-box-arrow-up-right" style="font-size: 12px; color: var(--portal-text-light);"></i>                 </div>
+                <div class="val-card-desc">Emiss&#xE3;o e valida&#xE7;&#xE3;o de Certid&#xF5;es Negativas de D&#xE9;bitos.</div>
+            </div>
+        </a>
+        <a href="https://transparencia.altoparaiso.ro.gov.br/novo/EXECUTIVO/acesso-a-informacao/2026/27/esic" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-card">
+            <div class="val-card-icon" style="background: #dcfce7; color: #16a34a;">
+                <i class="bi bi-headset"></i>
+            </div>
+            <div>
+                <div class="val-card-title">
+                    e-SIC / Informa&#xE7;&#xE3;o  <i class="bi bi-box-arrow-up-right" style="font-size: 12px; color: var(--portal-text-light);"></i>                 </div>
+                <div class="val-card-desc">Sistema Eletr&#xF4;nico do Servi&#xE7;o de Informa&#xE7;&#xE3;o ao Cidad&#xE3;o da Transpar&#xEA;ncia.</div>
+            </div>
+        </a>
+        <a href="/servicos"  class="val-card">
+            <div class="val-card-icon" style="background: #f1f5f9; color: #475569;">
+                <i class="bi bi-grid"></i>
+            </div>
+            <div>
+                <div class="val-card-title">
+                    Todos os Servi&#xE7;os                 </div>
+                <div class="val-card-desc">Guia e cat&#xE1;logo completo de servi&#xE7;os ao cidad&#xE3;o.</div>
+            </div>
+        </a>
+</div>
+
+<!-- 🏷️ ABAS INTERATIVAS POR PÚBLICO-ALVO DINÂMICAS 🏷️ -->
+    <div class="val-tabs-container">
+        <div style="font-family: var(--portal-font-title); font-size: 20px; font-weight: 800; color: var(--portal-primary); margin-bottom: 6px;">
+            <i class="bi bi-ui-checks-grid" style="color: #0284c7;"></i> Navegação por Categorias
+        </div>
+        <div style="font-size: 14px; color: var(--portal-text-muted); margin-bottom: 20px;">Selecione o seu perfil de atendimento para encontrar os serviços rapidamente:</div>
+
+        <div class="val-tabs-nav">
+                <button class="val-tab-btn active" onclick="switchValTab('cidadao')">
+                    <i class="bi bi-person-fill"></i> Cidad&#xE3;o
+                </button>
+                <button class="val-tab-btn " onclick="switchValTab('secretarias')">
+                    <i class="bi bi-bank2"></i> Secretarias
+                </button>
+                <button class="val-tab-btn " onclick="switchValTab('empresa')">
+                    <i class="bi bi-briefcase-fill"></i> Empresa
+                </button>
+                <button class="val-tab-btn " onclick="switchValTab('educacao')">
+                    <i class="bi bi-mortarboard-fill"></i> Educa&#xE7;&#xE3;o
+                </button>
+                <button class="val-tab-btn " onclick="switchValTab('servidor')">
+                    <i class="bi bi-person-badge-fill"></i> Servidor
+                </button>
+        </div>
+
+            <div class="val-tab-content active" id="valTab-cidadao">
+                <div class="val-tab-grid">
+                        <a href="/processoeletronico" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-laptop"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Peticionar Processos (eProc)  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Abertura e protocolo eletr&#xF4;nico de processos municipais.</div>
+                            </div>
+                        </a>
+                        <a href="https://app.altoparaiso.ro.gov.br/servicosweb/home.jsf" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-house-door"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    IPTU  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Emiss&#xE3;o de guias, 2&#xAA; via do carn&#xEA; e consulta de d&#xE9;bitos.</div>
+                            </div>
+                        </a>
+                        <a href="https://app.altoparaiso.ro.gov.br/servicosweb/home.jsf" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-shield-check"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Certid&#xE3;o Negativa Municipal  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Emiss&#xE3;o e valida&#xE7;&#xE3;o de Certid&#xE3;o Negativa de D&#xE9;bitos (CND).</div>
+                            </div>
+                        </a>
+                        <a href="https://transparencia.altoparaiso.ro.gov.br/transparencia/index.php?link=aplicacoes/publicacao/frmpublicacao&amp;grupo=&amp;nomeaplicacao=publicacao" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-journal-text"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Leis Municipais  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Consulta a leis, decretos, portarias e legisla&#xE7;&#xE3;o municipal.</div>
+                            </div>
+                        </a>
+                        <a href="https://app.altoparaiso.ro.gov.br/servicosweb" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-person-badge"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Contribuinte  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Portal de autosservi&#xE7;o e consultas do contribuinte.</div>
+                            </div>
+                        </a>
+                        <a href="https://falabr.cgu.gov.br/web/home?modoOuvidoria=1&amp;ouvidoriaInterna=false" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-headset"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Ouvidoria  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Canal oficial Fala.BR para solicita&#xE7;&#xF5;es, den&#xFA;ncias e elogios.</div>
+                            </div>
+                        </a>
+                        <a href="https://transparencia.altoparaiso.ro.gov.br/transparencia/aplicacoes/publicacao/seccao.php?grupo=105" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-people-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Benefici&#xE1;rios Programas Sociais  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Consulta da lista de benefici&#xE1;rios de programas sociais.</div>
+                            </div>
+                        </a>
+                        <a href="/uploads/docs/carta-de-servicos-ao-cidadao-alto-paraiso-ro.pdf" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-card-checklist"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Carta de Servi&#xE7;os ao Cidad&#xE3;o  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Guia completo com requisitos, prazos e locais de atendimento.</div>
+                            </div>
+                        </a>
+                        <a href="https://selectgov.altoparaiso.ro.gov.br/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-person-check"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Teste Seletivo  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Editais, inscri&#xE7;&#xF5;es e resultados de processos seletivos p&#xFA;blicos.</div>
+                            </div>
+                        </a>
+                        <a href="https://laboratorio.altoparaiso.ro.gov.br/consultapacientelaboratorio/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-file-earmark-medical"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Resultados de Exames do Laborat&#xF3;rio  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Consulta e emiss&#xE3;o online de laudos e resultados de exames.</div>
+                            </div>
+                        </a>
+                        <a href="https://7wi.com.br/consulta/RO_Alto_Paraiso/estoque" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-capsule"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Estoque de Medicamentos  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Consulta em tempo real da disponibilidade de rem&#xE9;dios na rede.</div>
+                            </div>
+                        </a>
+                        <a href="https://unidadesdeatendimento.altoparaiso.ro.gov.br/consulta/RO Alto Paraiso/painel acompanhamento unidades" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-activity"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Painel de Atendimento Hospitalar (Tempo Real) - UBS  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Acompanhamento da fila e fluxo de atendimento nas Unidades B&#xE1;sicas.</div>
+                            </div>
+                        </a>
+                        <a href="https://unidadesdeatendimento.altoparaiso.ro.gov.br/consulta/RO Alto Paraiso/painel acompanhamento ambulatorio" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-hospital"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Painel de Atendimento Hospitalar (Tempo Real) - HPP  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Acompanhamento do tempo de espera e consultas no Hospital/Ambulat&#xF3;rio.</div>
+                            </div>
+                        </a>
+                        <a href="/contato"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-file-person"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Contatos                                 </div>
+                                <div class="val-tab-item-desc">Lista oficial de telefones, canais de WhatsApp e e-mails de todas as secretarias, postos de sa&#xFA;de e departamentos da Prefeitura.</div>
+                            </div>
+                        </a>
+                </div>
+            </div>
+            <div class="val-tab-content " id="valTab-secretarias">
+                <div class="val-tab-grid">
+                        <a href="/secretarias/detalhes/semsau"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-heart-pulse-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Secretaria Municipal de Sa&#xFA;de (SEMSAU)                                 </div>
+                                <div class="val-tab-item-desc">Aten&#xE7;&#xE3;o b&#xE1;sica, vigil&#xE2;ncia epidemiol&#xF3;gica e postos de sa&#xFA;de.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/semed"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-mortarboard-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Secretaria Municipal de Educa&#xE7;&#xE3;o (SEMED)                                 </div>
+                                <div class="val-tab-item-desc">Escolas municipais, creches, transporte e merenda escolar.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/semosp"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-tools"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Secretaria de Obras e Servi&#xE7;os P&#xFA;blicos (SEMOSP)                                 </div>
+                                <div class="val-tab-item-desc">Estradas vicinais, pontes, pavimenta&#xE7;&#xE3;o e ilumina&#xE7;&#xE3;o p&#xFA;blica.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/semtur"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-trophy-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Secretaria de Turismo, Cultura, Esporte e Lazer (SEMTUR)                                 </div>
+                                <div class="val-tab-item-desc">Eventos tradicionais, Corrida de Jericos e campeonatos municipais.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/semplan"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-graph-up-arrow"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Secretaria Municipal de Planejamento                                 </div>
+                                <div class="val-tab-item-desc">Conv&#xEA;nios, capta&#xE7;&#xE3;o de recursos e regulariza&#xE7;&#xE3;o fundi&#xE1;ria.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/sema"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-tree-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Secretaria Municipal de Meio Ambiente (SEMA)                                 </div>
+                                <div class="val-tab-item-desc">Licenciamento ambiental, arboriza&#xE7;&#xE3;o e fiscaliza&#xE7;&#xE3;o.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/semagri"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-flower1"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Secretaria de Agricultura, Ind&#xFA;stria e Com&#xE9;rcio (SEMAGRI)                                 </div>
+                                <div class="val-tab-item-desc">Apoio ao produtor rural, patrulha mecanizada e feiras.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/semaf"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-cash-coin"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Secretaria Municipal de Administra&#xE7;&#xE3;o e Finan&#xE7;as (SEMAF)                                 </div>
+                                <div class="val-tab-item-desc">Recursos humanos, compras, tesouraria e tributos.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/semtas"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-people-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Secretaria Municipal do Trabalho e Assist&#xEA;ncia Social (SEMTAS)                                 </div>
+                                <div class="val-tab-item-desc">CRAS, Cadastro &#xDA;nico, programas sociais e qualifica&#xE7;&#xE3;o.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/semgov"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-bank2"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Secretaria Municipal de Governo                                 </div>
+                                <div class="val-tab-item-desc">Gabinete do Prefeito, atos oficiais e rela&#xE7;&#xF5;es p&#xFA;blicas.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/cgm"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-shield-check"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Controladoria Geral do Munic&#xED;pio (CGM)                                 </div>
+                                <div class="val-tab-item-desc">Auditoria interna, fiscaliza&#xE7;&#xE3;o de despesas e LRF.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias/detalhes/ouvid"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-megaphone-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Ouvidoria Municipal (e-Ouv)                                 </div>
+                                <div class="val-tab-item-desc">Canal de manifesta&#xE7;&#xF5;es, sugest&#xF5;es, elogios e den&#xFA;ncias.</div>
+                            </div>
+                        </a>
+                        <a href="/pagina/portal-da-transparencia"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-file-earmark-bar-graph-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Portal da Transpar&#xEA;ncia &amp; LAI                                 </div>
+                                <div class="val-tab-item-desc">Presta&#xE7;&#xE3;o de contas, dados abertos e publicidade ativa.</div>
+                            </div>
+                        </a>
+                        <a href="/pagina/sic-presencial"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-info-circle-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    SIC Presencial (Informa&#xE7;&#xE3;o ao Cidad&#xE3;o)                                 </div>
+                                <div class="val-tab-item-desc">Balc&#xE3;o presencial de atendimento para pedidos de informa&#xE7;&#xE3;o.</div>
+                            </div>
+                        </a>
+                        <a href="/secretarias"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-diagram-3-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Estrutura Geral de Secretarias                                 </div>
+                                <div class="val-tab-item-desc">Painel completo de todos os &#xF3;rg&#xE3;os e pastas do munic&#xED;pio.</div>
+                            </div>
+                        </a>
+                </div>
+            </div>
+            <div class="val-tab-content " id="valTab-empresa">
+                <div class="val-tab-grid">
+                        <a href="https://app.altoparaiso.ro.gov.br/servicosweb/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-receipt-cutoff"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    2&#xAA; via de d&#xE9;bitos  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Emiss&#xE3;o de 2&#xAA; via de boletos, tributos e parcelamentos.</div>
+                            </div>
+                        </a>
+                        <a href="https://app.altoparaiso.ro.gov.br/issweb/paginas/login" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-receipt-cutoff"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Nota Fiscal de Servi&#xE7;os  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Acesso ao ISSWeb para emiss&#xE3;o e gest&#xE3;o de NFS-e.</div>
+                            </div>
+                        </a>
+                        <a href="https://app.altoparaiso.ro.gov.br/servicosweb/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-shield-check"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Certid&#xE3;o Negativa  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Emiss&#xE3;o de Certid&#xE3;o Negativa de D&#xE9;bitos para empresas.</div>
+                            </div>
+                        </a>
+                        <a href="https://app.altoparaiso.ro.gov.br/servicosweb/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-building"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Mobili&#xE1;rios  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Consulta e certid&#xF5;es do cadastro mobili&#xE1;rio empresarial.</div>
+                            </div>
+                        </a>
+                        <a href="https://app.altoparaiso.ro.gov.br/servicosweb/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-houses"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Imobili&#xE1;rio  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Consulta de cadastro imobili&#xE1;rio, certid&#xF5;es e averba&#xE7;&#xF5;es.</div>
+                            </div>
+                        </a>
+                        <a href="https://transparencia.altoparaiso.ro.gov.br/transparencia/index.php?link=aplicacoes/licitacao/frmlicitacao&amp;id_menu=1" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-folder2-open"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Licita&#xE7;&#xF5;es  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Editais, avisos de licita&#xE7;&#xE3;o, preg&#xF5;es e resultados.</div>
+                            </div>
+                        </a>
+                        <a href="http://www.diariomunicipal.com.br/arom/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-newspaper"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Di&#xE1;rio do Munic&#xED;pio  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Publica&#xE7;&#xF5;es oficiais di&#xE1;rias no Di&#xE1;rio da AROM.</div>
+                            </div>
+                        </a>
+                        <a href="https://app.altoparaiso.ro.gov.br/servicosweb/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-patch-check"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Autentica&#xE7;&#xE3;o de Documentos  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Valida&#xE7;&#xE3;o de autenticidade de certid&#xF5;es e documentos emitidos.</div>
+                            </div>
+                        </a>
+                        <a href="https://transparencia.altoparaiso.ro.gov.br/transparencia/aplicacoes/publicacao/download.php?id_doc=008590&amp;extencao=PDF" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-map"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Plano Diretor  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Documento oficial das diretrizes de desenvolvimento urbano.</div>
+                            </div>
+                        </a>
+                        <a href="/uploads/docs/planta-mapa-alto-paraiso-ro.pdf" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-geo-alt"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Planta / Mapa de Alto Para&#xED;so RO  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Download da planta e mapa cartogr&#xE1;fico oficial do munic&#xED;pio.</div>
+                            </div>
+                        </a>
+                </div>
+            </div>
+            <div class="val-tab-content " id="valTab-educacao">
+                <div class="val-tab-grid">
+                        <a href="https://centraldevagas.defensoria.ro.def.br/portal/ro/alto_paraiso" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-mortarboard-fill"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Matr&#xED;culas Creche  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Inscri&#xE7;&#xF5;es e acompanhamento da Central de Vagas em Creches.</div>
+                            </div>
+                        </a>
+                        <a href="https://sie.altoparaiso.ro.gov.br/sieweb/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-book-half"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    SIE Web - Portal da Educa&#xE7;&#xE3;o  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Sistema Integrado de Gest&#xE3;o Escolar e Acad&#xEA;mica de Alto Para&#xED;so.</div>
+                            </div>
+                        </a>
+                        <a href="/noticias"  class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-person-workspace"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Busca Ativa Escolar                                 </div>
+                                <div class="val-tab-item-desc">Programa municipal Fora da Escola N&#xE3;o Pode.</div>
+                            </div>
+                        </a>
+                </div>
+            </div>
+            <div class="val-tab-content " id="valTab-servidor">
+                <div class="val-tab-grid">
+                        <a href="https://holerite.altoparaiso.ro.gov.br/sipweb" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-wallet2"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Contra-Cheque Online  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Emiss&#xE3;o de holerites e comprovantes de pagamento.</div>
+                            </div>
+                        </a>
+                        <a href="https://mail.zoho.com/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-envelope-at"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    E-mail Institucional  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Acesso direto &#xE0; caixa de correio eletr&#xF4;nico corporativo.</div>
+                            </div>
+                        </a>
+                        <a href="http://www.diariomunicipal.com.br/arom/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot; class="val-tab-item">
+                            <div class="val-tab-item-icon"><i class="bi bi-newspaper"></i></div>
+                            <div>
+                                <div class="val-tab-item-title">
+                                    Di&#xE1;rio Oficial dos Munic&#xED;pios  <i class="bi bi-box-arrow-up-right" style="font-size: 11px; color: var(--portal-text-light);"></i>                                 </div>
+                                <div class="val-tab-item-desc">Publica&#xE7;&#xF5;es legais, portarias e atos do executivo.</div>
+                            </div>
+                        </a>
+                </div>
+            </div>
+    </div>
+
+<!-- 📸 FOTOS, VÍDEOS E EVENTOS OFICIAIS (MULTIMÍDIA) 📸 -->
+    <div style="margin-bottom: 56px;">
+        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+            <div>
+                <div class="val-section-title" style="margin-bottom: 4px;">
+                    <i class="bi bi-camera-reels-fill" style="color: #0284c7;"></i> Fotos, Vídeos & Eventos
+                </div>
+                <div class="val-section-sub" style="margin-bottom: 0;">Veja as fotos, vídeos e coberturas dos principais eventos e acontecimentos de Alto Paraíso</div>
+            </div>
+            <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                <a href="/noticias/Videos" class="btn-val btn-val-outline" style="font-size: 13px; padding: 8px 16px; border-color: #ef4444; color: #ef4444;">
+                    <i class="bi bi-play-circle-fill"></i> Vídeos
+                </a>
+                <a href="/noticias/Eventos" class="btn-val btn-val-outline" style="font-size: 13px; padding: 8px 16px;">
+                    Ver Todos <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="ap-eventos-grid">
+                <a href="/noticias/detalhes/palestra-sobre-o-novembro-azul-no-cras-conscientizacao-e-cuidado-com-a-saude-do-homem-6b06e2d0c76d164b925b0be8" class="ap-evento-card" title="Palestra sobre o Novembro Azul no CRAS: Conscientiza&#xE7;&#xE3;o e cuidado com a sa&#xFA;de do homem">
+                    <div class="ap-evento-card-img-wrapper" style="position: relative;">
+                            <img src="/uploads/galerias/galeria_20261125_b3b4139a8de34d8091601111b272d512.webp" alt="Palestra sobre o Novembro Azul no CRAS: Conscientiza&#xE7;&#xE3;o e cuidado com a sa&#xFA;de do homem" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                            <div class="ap-evento-placeholder" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #0b3b60 0%, #1e5c8a 100%); align-items: center; justify-content: center; flex-direction: column; color: #fff; padding: 16px; text-align: center;">
+                                <i class="bi bi-images" style="font-size: 32px; opacity: 0.7; margin-bottom: 8px;"></i>
+                                <span style="font-size: 13px; font-weight: 600; line-height: 1.3; opacity: 0.95;">Palestra sobre o Novembro Azul no CRAS: Conscientiza&#xE7;&#xE3;o e cuidado com a sa&#xFA;de do homem</span>
+                            </div>
+                        
+                            <span class="ap-evento-badge-fotos">
+                                <i class="bi bi-images"></i> 24 fotos
+                            </span>
+                    </div>
+                    <div class="ap-evento-card-body">
+                        <h3 class="ap-evento-title">Palestra sobre o Novembro Azul no CRAS: Conscientiza&#xE7;&#xE3;o e cuidado com a sa&#xFA;de do homem</h3>
+                        <div class="ap-evento-date">
+                            <i class="bi bi-calendar3"></i> 19/11/2026
+                        </div>
+                    </div>
+                </a>
+                <a href="/noticias/detalhes/projeto-pomar-da-justica-6af32f4fda735d521434d112" class="ap-evento-card" title="Projeto Pomar da Justi&#xE7;a">
+                    <div class="ap-evento-card-img-wrapper" style="position: relative;">
+                            <img src="/uploads/galerias/galeria_20261110_2b2e0600e36e441dbe2b52ceaa39b7ff.webp" alt="Projeto Pomar da Justi&#xE7;a" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                            <div class="ap-evento-placeholder" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #0b3b60 0%, #1e5c8a 100%); align-items: center; justify-content: center; flex-direction: column; color: #fff; padding: 16px; text-align: center;">
+                                <i class="bi bi-images" style="font-size: 32px; opacity: 0.7; margin-bottom: 8px;"></i>
+                                <span style="font-size: 13px; font-weight: 600; line-height: 1.3; opacity: 0.95;">Projeto Pomar da Justi&#xE7;a</span>
+                            </div>
+                        
+                            <span class="ap-evento-badge-fotos">
+                                <i class="bi bi-images"></i> 55 fotos
+                            </span>
+                    </div>
+                    <div class="ap-evento-card-body">
+                        <h3 class="ap-evento-title">Projeto Pomar da Justi&#xE7;a</h3>
+                        <div class="ap-evento-date">
+                            <i class="bi bi-calendar3"></i> 06/11/2026
+                        </div>
+                    </div>
+                </a>
+                <a href="/noticias/detalhes/feliz-dia-do-servidor-6ae22481da735d521434d111" class="ap-evento-card" title="Feliz dia do servidor!">
+                    <div class="ap-evento-card-img-wrapper" style="position: relative;">
+                            <img src="/uploads/galerias/galeria_20261028_4b698ae1c7174d828efdefd2205b3ec8.webp" alt="Feliz dia do servidor!" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                            <div class="ap-evento-placeholder" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #0b3b60 0%, #1e5c8a 100%); align-items: center; justify-content: center; flex-direction: column; color: #fff; padding: 16px; text-align: center;">
+                                <i class="bi bi-images" style="font-size: 32px; opacity: 0.7; margin-bottom: 8px;"></i>
+                                <span style="font-size: 13px; font-weight: 600; line-height: 1.3; opacity: 0.95;">Feliz dia do servidor!</span>
+                            </div>
+                        
+                            <span class="ap-evento-badge-fotos">
+                                <i class="bi bi-images"></i> 81 fotos
+                            </span>
+                    </div>
+                    <div class="ap-evento-card-body">
+                        <h3 class="ap-evento-title">Feliz dia do servidor!</h3>
+                        <div class="ap-evento-date">
+                            <i class="bi bi-calendar3"></i> 28/10/2026
+                        </div>
+                    </div>
+                </a>
+                <a href="/noticias/detalhes/dia-das-criancas-6ace2ae2da735d521434d10f" class="ap-evento-card" title="Dia das Crian&#xE7;as">
+                    <div class="ap-evento-card-img-wrapper" style="position: relative;">
+                            <img src="/uploads/galerias/galeria_20261013_36aa6e36e981409c9bbca394e33e0d7d.webp" alt="Dia das Crian&#xE7;as" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                            <div class="ap-evento-placeholder" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #0b3b60 0%, #1e5c8a 100%); align-items: center; justify-content: center; flex-direction: column; color: #fff; padding: 16px; text-align: center;">
+                                <i class="bi bi-images" style="font-size: 32px; opacity: 0.7; margin-bottom: 8px;"></i>
+                                <span style="font-size: 13px; font-weight: 600; line-height: 1.3; opacity: 0.95;">Dia das Crian&#xE7;as</span>
+                            </div>
+                        
+                            <span class="ap-evento-badge-fotos">
+                                <i class="bi bi-images"></i> 23 fotos
+                            </span>
+                    </div>
+                    <div class="ap-evento-card-body">
+                        <h3 class="ap-evento-title">Dia das Crian&#xE7;as</h3>
+                        <div class="ap-evento-date">
+                            <i class="bi bi-calendar3"></i> 11/10/2026
+                        </div>
+                    </div>
+                </a>
+        </div>
+    </div>
+
+<!-- 📰 MURAL DE NOTÍCIAS & MÍDIAS OFICIAIS 📰 -->
+<div style="margin-bottom: 56px;">
+    <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+        <div>
+            <div class="val-section-title" style="margin-bottom: 4px;">
+                <i class="bi bi-newspaper" style="color: #0284c7;"></i> Últimas Notícias & Comunicados
+            </div>
+            <div class="val-section-sub" style="margin-bottom: 0;">Fique informado sobre os principais acontecimentos, investimentos e atos oficiais do município</div>
+        </div>
+        <a href="/noticias" class="btn-val btn-val-outline" style="font-size: 13px; padding: 8px 18px;">
+            Ver Todas as Notícias <i class="bi bi-arrow-right"></i>
+        </a>
+    </div>
+
+        <div class="val-news-grid">
+            <!-- 🌟 Notícia Principal em Grande Destaque (Esquerda) -->
+            <a href="/noticias/detalhes/prefeito-joao-pavan-recebe-presidente-do-cisan-para-fortalecer-parceria-regional-6b06dd97c76d164b925b0be7" class="val-news-featured-card">
+                <div class="val-news-featured-img-wrap">
+                        <img src="/uploads/noticias/noticia_20261125_79ab72ad7c8c4073a00a169ef6c86682.webp"
+                             alt="Prefeito Jo&#xE3;o Pavan recebe presidente do CISAN para fortalecer parceria regional"
+                             loading="lazy"
+                             decoding="async"
+                             onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                             class="val-news-featured-img" />
+                        <div class="val-news-featured-placeholder" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #0b3b60 0%, #174a75 100%); align-items: center; justify-content: center; flex-direction: column; color: #fff; padding: 32px; text-align: center;">
+                            <i class="bi bi-newspaper" style="font-size: 54px; opacity: 0.6; margin-bottom: 14px;"></i>
+                            <div style="font-size: 18px; font-weight: 700; line-height: 1.3; max-width: 80%; opacity: 0.95;">Prefeito Jo&#xE3;o Pavan recebe presidente do CISAN para fortalecer parceria regional</div>
+                        </div>
+                    <span class="val-news-badge-destaque"><i class="bi bi-star-fill"></i> Destaque Principal</span>
+                    <span class="val-news-badge-cat">Geral</span>
+                </div>
+                <div class="val-news-featured-body">
+                    <div class="val-news-meta">
+                        <span><i class="bi bi-calendar3"></i> 24/11/2026</span>
+                        <span><i class="bi bi-clock"></i> Leitura: 2 min</span>
+                    </div>
+                    <h2 class="val-news-featured-title">Prefeito Jo&#xE3;o Pavan recebe presidente do CISAN para fortalecer parceria regional</h2>
+                    <p class="val-news-featured-desc">O encontro refor&#xE7;ou o compromisso entre os munic&#xED;pios com o fortalecimento das pol&#xED;ticas p&#xFA;blicas voltadas ao saneamento b&#xE1;sico, ao desenvolvimento regional e &#xE0; melhoria da qualidade de vida da popula&#xE7;&#xE3;o.</p>
+                    <div class="val-news-read-more">
+                        <span>Ler matéria completa</span>
+                        <i class="bi bi-arrow-right"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- 📑 Lista Lateral de Notícias Recentes (Direita) -->
+            <div class="val-news-side-list">
+                    <a href="/noticias/detalhes/outubro-rosa-secretaria-de-saude-de-alto-paraiso-reforca-acoes-de-conscientizacao-e-prevencao-6ac7a8b857297f45b527dee7" class="val-news-side-card">
+                        <div class="val-news-side-img-wrap">
+                                <img src="/uploads/noticias/noticia_20261008_e4fcbb19f5ef4a308cc2cafa03db2dce.webp"
+                                     alt="Outubro Rosa: Secretaria de Sa&#xFA;de de Alto Para&#xED;so refor&#xE7;a a&#xE7;&#xF5;es de conscientiza&#xE7;&#xE3;o e preven&#xE7;&#xE3;o"
+                                     loading="lazy"
+                                     decoding="async"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                     class="val-news-side-img" />
+                                <div class="val-news-side-placeholder" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #0b3b60 0%, #1e5c8a 100%); align-items: center; justify-content: center; color: #fff; font-size: 24px;">
+                                    <i class="bi bi-newspaper" style="opacity: 0.7;"></i>
+                                </div>
+                        </div>
+                        <div class="val-news-side-body">
+                            <div class="val-news-side-meta">
+                                <span class="val-news-cat-pill">Sa&#xFA;de</span>
+                                <span class="val-news-date-text"><i class="bi bi-calendar3"></i> 08/10/2026</span>
+                            </div>
+                            <h3 class="val-news-side-title">Outubro Rosa: Secretaria de Sa&#xFA;de de Alto Para&#xED;so refor&#xE7;a a&#xE7;&#xF5;es de conscientiza&#xE7;&#xE3;o e preven&#xE7;&#xE3;o</h3>
+                            <p class="val-news-side-desc">O cuidado com a sa&#xFA;de come&#xE7;a com a preven&#xE7;&#xE3;o! O Outubro Rosa &#xE9; um convite para que todas as mulheres reservem um tempo para cuidar de si, realizar os exames recomendados e manter a aten&#xE7;&#xE3;o &#xE0; pr&#xF3;pria sa&#xFA;de.&#xD;&#xA;</p>
+                        </div>
+                    </a>
+                    <a href="/noticias/detalhes/palestra-sobre-o-novembro-azul-no-cras-conscientizacao-e-cuidado-com-a-saude-do-homem-6b06e2d0c76d164b925b0be8" class="val-news-side-card">
+                        <div class="val-news-side-img-wrap">
+                                <img src="/uploads/galerias/galeria_20261125_b3b4139a8de34d8091601111b272d512.webp"
+                                     alt="Palestra sobre o Novembro Azul no CRAS: Conscientiza&#xE7;&#xE3;o e cuidado com a sa&#xFA;de do homem"
+                                     loading="lazy"
+                                     decoding="async"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                     class="val-news-side-img" />
+                                <div class="val-news-side-placeholder" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #0b3b60 0%, #1e5c8a 100%); align-items: center; justify-content: center; color: #fff; font-size: 24px;">
+                                    <i class="bi bi-newspaper" style="opacity: 0.7;"></i>
+                                </div>
+                        </div>
+                        <div class="val-news-side-body">
+                            <div class="val-news-side-meta">
+                                <span class="val-news-cat-pill">A&#xE7;&#xE3;o Social &amp; CRAS</span>
+                                <span class="val-news-date-text"><i class="bi bi-calendar3"></i> 19/11/2026</span>
+                            </div>
+                            <h3 class="val-news-side-title">Palestra sobre o Novembro Azul no CRAS: Conscientiza&#xE7;&#xE3;o e cuidado com a sa&#xFA;de do homem</h3>
+                            <p class="val-news-side-desc">Palestra sobre o Novembro Azul no CRAS: Conscientiza&#xE7;&#xE3;o e cuidado com a sa&#xFA;de do homem</p>
+                        </div>
+                    </a>
+                    <a href="/noticias/detalhes/projeto-pomar-da-justica-6af32f4fda735d521434d112" class="val-news-side-card">
+                        <div class="val-news-side-img-wrap">
+                                <img src="/uploads/galerias/galeria_20261110_2b2e0600e36e441dbe2b52ceaa39b7ff.webp"
+                                     alt="Projeto Pomar da Justi&#xE7;a"
+                                     loading="lazy"
+                                     decoding="async"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                     class="val-news-side-img" />
+                                <div class="val-news-side-placeholder" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #0b3b60 0%, #1e5c8a 100%); align-items: center; justify-content: center; color: #fff; font-size: 24px;">
+                                    <i class="bi bi-newspaper" style="opacity: 0.7;"></i>
+                                </div>
+                        </div>
+                        <div class="val-news-side-body">
+                            <div class="val-news-side-meta">
+                                <span class="val-news-cat-pill">Meio ambiente</span>
+                                <span class="val-news-date-text"><i class="bi bi-calendar3"></i> 06/11/2026</span>
+                            </div>
+                            <h3 class="val-news-side-title">Projeto Pomar da Justi&#xE7;a</h3>
+                            <p class="val-news-side-desc">Educa&#xE7;&#xE3;o, cidadania e cuidado com o futuro!</p>
+                        </div>
+                    </a>
+                    <a href="/noticias/detalhes/feliz-dia-do-servidor-6ae22481da735d521434d111" class="val-news-side-card">
+                        <div class="val-news-side-img-wrap">
+                                <img src="/uploads/galerias/galeria_20261028_4b698ae1c7174d828efdefd2205b3ec8.webp"
+                                     alt="Feliz dia do servidor!"
+                                     loading="lazy"
+                                     decoding="async"
+                                     onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+                                     class="val-news-side-img" />
+                                <div class="val-news-side-placeholder" style="display: none; width: 100%; height: 100%; background: linear-gradient(135deg, #0b3b60 0%, #1e5c8a 100%); align-items: center; justify-content: center; color: #fff; font-size: 24px;">
+                                    <i class="bi bi-newspaper" style="opacity: 0.7;"></i>
+                                </div>
+                        </div>
+                        <div class="val-news-side-body">
+                            <div class="val-news-side-meta">
+                                <span class="val-news-cat-pill">Geral</span>
+                                <span class="val-news-date-text"><i class="bi bi-calendar3"></i> 28/10/2026</span>
+                            </div>
+                            <h3 class="val-news-side-title">Feliz dia do servidor!</h3>
+                            <p class="val-news-side-desc">Nossa homenagem aos nossos servidores que se dedicam para manter os setores dos servi&#xE7;o publico em funcionamento. </p>
+                        </div>
+                    </a>
+            </div>
+        </div>
+</div>
+
+
+
+
+            <!-- 🖨️ RODAPÉ OFICIAL DE IMPRESSÃO (Visível exclusivamente na impressão) 🖨️ -->
+            <div b-ernffg1v26 class="val-print-footer">
+                Prefeitura Municipal de Alto Paraíso - RO • Av. Jorge Teixeira, 3031 - Centro, CEP: 76.862-000 • Fone: (69) 3534-2101<br b-ernffg1v26 />
+                Documento gerado através do Portal Oficial (https://altoparaiso.ro.gov.br) em 27/11/2026 &#xE0;s 11:51:05.
+            </div>
+        </div>
+    </main>
+
+    <!-- 🚜 RODAPÉ INSTITUCIONAL OFICIAL COM FAIXA TEMÁTICA DO JERICO (ALTO PARAÍSO - RO) 🚜 -->
+    <footer b-ernffg1v26 class="ap-official-footer">
+        <!-- 🎨 FAIXA DECORATIVA EM MOSAICO COM O TEMA DE ALTO PARAÍSO (JERICO, AGRO, NATUREZA E CIDADANIA) -->
+        <div b-ernffg1v26 class="ap-footer-ribbon" aria-label="Símbolos e Identidade de Alto Paraíso">
+            <div b-ernffg1v26 class="ap-footer-ribbon-track">
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-green" title="🚜 Jerico: Trator Artesanal e Patrimônio de Alto Paraíso" onclick="showJericoDelight('🚜 Jerico: Trator Artesanal e Patrimônio de Alto Paraíso!')" style="cursor: pointer;">
+                        <svg b-ernffg1v26 viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle b-ernffg1v26 cx="6" cy="18" r="3"/>
+                            <circle b-ernffg1v26 cx="18" cy="18" r="2.2"/>
+                            <path b-ernffg1v26 d="M9 18h6.8M9 15h4v-5H9zM13 10h4l3 4.5v3.5M6 15V9h3M9 6h2v3H9zM15 7v3"/>
+                        </svg>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-yellow" title="🌾 Cafeicultura e Agropecuária Rondoniense">
+                        <i b-ernffg1v26 class="bi bi-flower1"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-blue" title="🚌 Transporte e Mobilidade Municipal">
+                        <i b-ernffg1v26 class="bi bi-bus-front-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-green-light" title="🌳 Natureza e Biodiversidade de Rondônia">
+                        <i b-ernffg1v26 class="bi bi-tree-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-amber" title="🎓 Educação e Futuro de Alto Paraíso">
+                        <i b-ernffg1v26 class="bi bi-mortarboard-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-blue-dark" title="🏆 Capital Nacional de Jericos Motorizados" onclick="showJericoDelight('🏆 Capital Nacional de Jericos Motorizados: Orgulho de Rondônia!')" style="cursor: pointer;">
+                        <svg b-ernffg1v26 viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle b-ernffg1v26 cx="6" cy="18" r="3"/>
+                            <circle b-ernffg1v26 cx="18" cy="18" r="2.2"/>
+                            <path b-ernffg1v26 d="M9 18h6.8M9 15h4v-5H9zM13 10h4l3 4.5v3.5M6 15V9h3M9 6h2v3H9zM15 7v3"/>
+                        </svg>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-emerald" title="🩺 Saúde Pública e Cuidado com a População">
+                        <i b-ernffg1v26 class="bi bi-heart-pulse-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-yellow" title="☀️ Clima Acolhedor de Alto Paraíso">
+                        <i b-ernffg1v26 class="bi bi-sun-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-cyan" title="🏛️ Gestão Pública Eficiente e Transparente">
+                        <i b-ernffg1v26 class="bi bi-bank2"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-orange" title="🏁 Corrida Nacional de Jericos Motorizados" onclick="showJericoDelight('🏁 Tradicional Corrida Nacional de Jericos de Alto Paraíso!')" style="cursor: pointer;">
+                        <svg b-ernffg1v26 viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle b-ernffg1v26 cx="6" cy="18" r="3"/>
+                            <circle b-ernffg1v26 cx="18" cy="18" r="2.2"/>
+                            <path b-ernffg1v26 d="M9 18h6.8M9 15h4v-5H9zM13 10h4l3 4.5v3.5M6 15V9h3M9 6h2v3H9zM15 7v3"/>
+                        </svg>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-blue" title="🛡️ Transparência Pública Nota A">
+                        <i b-ernffg1v26 class="bi bi-shield-check"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-green" title="🚜 Jerico: Trator Artesanal e Patrimônio de Alto Paraíso" onclick="showJericoDelight('🚜 Jerico: Trator Artesanal e Patrimônio de Alto Paraíso!')" style="cursor: pointer;">
+                        <svg b-ernffg1v26 viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle b-ernffg1v26 cx="6" cy="18" r="3"/>
+                            <circle b-ernffg1v26 cx="18" cy="18" r="2.2"/>
+                            <path b-ernffg1v26 d="M9 18h6.8M9 15h4v-5H9zM13 10h4l3 4.5v3.5M6 15V9h3M9 6h2v3H9zM15 7v3"/>
+                        </svg>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-yellow" title="🌾 Cafeicultura e Agropecuária Rondoniense">
+                        <i b-ernffg1v26 class="bi bi-flower1"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-blue" title="🚌 Transporte e Mobilidade Municipal">
+                        <i b-ernffg1v26 class="bi bi-bus-front-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-green-light" title="🌳 Natureza e Biodiversidade de Rondônia">
+                        <i b-ernffg1v26 class="bi bi-tree-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-amber" title="🎓 Educação e Futuro de Alto Paraíso">
+                        <i b-ernffg1v26 class="bi bi-mortarboard-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-blue-dark" title="🏆 Capital Nacional de Jericos Motorizados" onclick="showJericoDelight('🏆 Capital Nacional de Jericos Motorizados: Orgulho de Rondônia!')" style="cursor: pointer;">
+                        <svg b-ernffg1v26 viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle b-ernffg1v26 cx="6" cy="18" r="3"/>
+                            <circle b-ernffg1v26 cx="18" cy="18" r="2.2"/>
+                            <path b-ernffg1v26 d="M9 18h6.8M9 15h4v-5H9zM13 10h4l3 4.5v3.5M6 15V9h3M9 6h2v3H9zM15 7v3"/>
+                        </svg>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-emerald" title="🩺 Saúde Pública e Cuidado com a População">
+                        <i b-ernffg1v26 class="bi bi-heart-pulse-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-yellow" title="☀️ Clima Acolhedor de Alto Paraíso">
+                        <i b-ernffg1v26 class="bi bi-sun-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-cyan" title="🏛️ Gestão Pública Eficiente e Transparente">
+                        <i b-ernffg1v26 class="bi bi-bank2"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-orange" title="🏁 Corrida Nacional de Jericos Motorizados" onclick="showJericoDelight('🏁 Tradicional Corrida Nacional de Jericos de Alto Paraíso!')" style="cursor: pointer;">
+                        <svg b-ernffg1v26 viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle b-ernffg1v26 cx="6" cy="18" r="3"/>
+                            <circle b-ernffg1v26 cx="18" cy="18" r="2.2"/>
+                            <path b-ernffg1v26 d="M9 18h6.8M9 15h4v-5H9zM13 10h4l3 4.5v3.5M6 15V9h3M9 6h2v3H9zM15 7v3"/>
+                        </svg>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-blue" title="🛡️ Transparência Pública Nota A">
+                        <i b-ernffg1v26 class="bi bi-shield-check"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-green" title="🚜 Jerico: Trator Artesanal e Patrimônio de Alto Paraíso" onclick="showJericoDelight('🚜 Jerico: Trator Artesanal e Patrimônio de Alto Paraíso!')" style="cursor: pointer;">
+                        <svg b-ernffg1v26 viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle b-ernffg1v26 cx="6" cy="18" r="3"/>
+                            <circle b-ernffg1v26 cx="18" cy="18" r="2.2"/>
+                            <path b-ernffg1v26 d="M9 18h6.8M9 15h4v-5H9zM13 10h4l3 4.5v3.5M6 15V9h3M9 6h2v3H9zM15 7v3"/>
+                        </svg>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-yellow" title="🌾 Cafeicultura e Agropecuária Rondoniense">
+                        <i b-ernffg1v26 class="bi bi-flower1"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-blue" title="🚌 Transporte e Mobilidade Municipal">
+                        <i b-ernffg1v26 class="bi bi-bus-front-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-green-light" title="🌳 Natureza e Biodiversidade de Rondônia">
+                        <i b-ernffg1v26 class="bi bi-tree-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-amber" title="🎓 Educação e Futuro de Alto Paraíso">
+                        <i b-ernffg1v26 class="bi bi-mortarboard-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-blue-dark" title="🏆 Capital Nacional de Jericos Motorizados" onclick="showJericoDelight('🏆 Capital Nacional de Jericos Motorizados: Orgulho de Rondônia!')" style="cursor: pointer;">
+                        <svg b-ernffg1v26 viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle b-ernffg1v26 cx="6" cy="18" r="3"/>
+                            <circle b-ernffg1v26 cx="18" cy="18" r="2.2"/>
+                            <path b-ernffg1v26 d="M9 18h6.8M9 15h4v-5H9zM13 10h4l3 4.5v3.5M6 15V9h3M9 6h2v3H9zM15 7v3"/>
+                        </svg>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-emerald" title="🩺 Saúde Pública e Cuidado com a População">
+                        <i b-ernffg1v26 class="bi bi-heart-pulse-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-yellow" title="☀️ Clima Acolhedor de Alto Paraíso">
+                        <i b-ernffg1v26 class="bi bi-sun-fill"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-cyan" title="🏛️ Gestão Pública Eficiente e Transparente">
+                        <i b-ernffg1v26 class="bi bi-bank2"></i>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-orange" title="🏁 Corrida Nacional de Jericos Motorizados" onclick="showJericoDelight('🏁 Tradicional Corrida Nacional de Jericos de Alto Paraíso!')" style="cursor: pointer;">
+                        <svg b-ernffg1v26 viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle b-ernffg1v26 cx="6" cy="18" r="3"/>
+                            <circle b-ernffg1v26 cx="18" cy="18" r="2.2"/>
+                            <path b-ernffg1v26 d="M9 18h6.8M9 15h4v-5H9zM13 10h4l3 4.5v3.5M6 15V9h3M9 6h2v3H9zM15 7v3"/>
+                        </svg>
+                    </div>
+                    <div b-ernffg1v26 class="ap-ribbon-tile bg-tile-blue" title="🛡️ Transparência Pública Nota A">
+                        <i b-ernffg1v26 class="bi bi-shield-check"></i>
+                    </div>
+            </div>
+        </div>
+
+        <div b-ernffg1v26 class="container">
+            <div b-ernffg1v26 class="ap-footer-main-grid">
+                <!-- Coluna 1: Brasão & Contatos Oficiais de Alto Paraíso -->
+                <div b-ernffg1v26 class="ap-footer-col ap-footer-brand-col">
+                    <div b-ernffg1v26 class="ap-footer-logo-box">
+                            <img b-ernffg1v26 src="/uploads/brasao/brasao_rodape_20261007_c6966a7bd9f8496e80aa02f21dc66a25.webp" alt="Brasão Oficial de Alto Paraíso - RO" class="ap-footer-crest-img" />
+                        <div b-ernffg1v26 class="ap-footer-brand-text">
+                            <div b-ernffg1v26 class="ap-footer-city-title">PREFEITURA MUNICIPAL DE</div>
+                            <div b-ernffg1v26 class="ap-footer-city-name">ALTO PARA&#xCD;SO</div>
+                            <div b-ernffg1v26 class="ap-footer-city-tag">CAPITAL NACIONAL DE JERICOS MOTORIZADOS</div>
+                        </div>
+                    </div>
+
+                    <div b-ernffg1v26 class="ap-footer-contacts-list">
+                        <div b-ernffg1v26 class="ap-footer-contact-item">
+                            <i b-ernffg1v26 class="bi bi-geo-alt-fill ap-contact-icon"></i>
+                            <div b-ernffg1v26>
+                                <div b-ernffg1v26 class="ap-contact-bold">Avenida Marechal C&#xE2;ndido Rondon, 3031 &#x2014; Centro</div>
+                                <div b-ernffg1v26 class="ap-contact-muted">Alto Para&#xED;so - Rond&#xF4;nia | CEP: 76.862-000</div>
+                            </div>
+                        </div>
+
+                        <div b-ernffg1v26 class="ap-footer-contact-item">
+                            <i b-ernffg1v26 class="bi bi-whatsapp ap-contact-icon" style="color: #25d366;"></i>
+                            <div b-ernffg1v26>
+                                <a b-ernffg1v26 href="https://wa.me/5569999683368" target="_blank" rel="noopener noreferrer" class="ap-contact-link" title="Conversar no WhatsApp">
+                                    (69) 99968-3368
+                                </a>
+                            </div>
+                        </div>
+
+                        <div b-ernffg1v26 class="ap-footer-contact-item">
+                            <i b-ernffg1v26 class="bi bi-envelope-fill ap-contact-icon"></i>
+                            <div b-ernffg1v26>
+                                <a b-ernffg1v26 href="/cdn-cgi/l/email-protection#60070102090e05140520010c140f1001120109130f4e120f4e070f164e0212" class="ap-contact-link"><span class="__cf_email__" data-cfemail="d7b0b6b5beb9b2a3b297b6bba3b8a7b6a5b6bea4b8f9a5b8f9b0b8a1f9b5a5">[email&#160;protected]</span></a>
+                            </div>
+                        </div>
+
+                        <div b-ernffg1v26 class="ap-footer-contact-item">
+                            <i b-ernffg1v26 class="bi bi-clock-fill ap-contact-icon"></i>
+                            <div b-ernffg1v26>
+                                <span b-ernffg1v26>Segunda a Sexta: 07:30 &#xE0;s 13:30</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Links Rápidos -->
+                <div b-ernffg1v26 class="ap-footer-col ap-footer-links-col">
+                    <h4 b-ernffg1v26 class="ap-footer-title">Links R&#xE1;pidos</h4>
+                    <ul b-ernffg1v26 class="ap-footer-links-list">
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="/noticias" >
+                                        Not&#xED;cias Oficiais
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="/fotos" >
+                                        Fotos &amp; Galerias de Eventos
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="/videos" >
+                                        V&#xED;deos &amp; Transmiss&#xF5;es
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="https://www.diariomunicipal.com.br/arom/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                        Di&#xE1;rio Oficial (AROM)
+                                            <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; opacity: 0.7; margin-left: 3px;"></i>
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="/servicos" >
+                                        Servi&#xE7;os Online &amp; IPTU
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="http://transparencia.altoparaiso.ro.gov.br/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                        Portal da Transpar&#xEA;ncia
+                                            <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; opacity: 0.7; margin-left: 3px;"></i>
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="http://transparencia.altoparaiso.ro.gov.br/" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                        Licita&#xE7;&#xF5;es &amp; Editais
+                                            <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; opacity: 0.7; margin-left: 3px;"></i>
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="/secretarias" >
+                                        Concursos &amp; Processos Seletivos
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="/ouvidoria" >
+                                        Ouvidoria &amp; Fala.BR
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="https://transparencia.altoparaiso.ro.gov.br/novo/EXECUTIVO/acesso-a-informacao/2026/27/esic" target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;>
+                                        e-SIC Acesso &#xE0; Informa&#xE7;&#xE3;o
+                                            <i b-ernffg1v26 class="bi bi-box-arrow-up-right" style="font-size: 10px; opacity: 0.7; margin-left: 3px;"></i>
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="/politicadeprivacidade" >
+                                        Aviso de Privacidade &amp; LGPD
+                                    </a>
+                                </li>
+                                <li b-ernffg1v26>
+                                    <a b-ernffg1v26 href="/mapadosite" >
+                                        Mapa do Site
+                                    </a>
+                                </li>
+                    </ul>
+                </div>
+
+                <!-- Coluna 3: Redes Sociais & Comunidade -->
+                <div b-ernffg1v26 class="ap-footer-col ap-footer-social-col">
+                    <h4 b-ernffg1v26 class="ap-footer-title">Redes Sociais</h4>
+                    <p b-ernffg1v26 class="ap-footer-social-desc">
+                        Siga-nos nas redes sociais e fique por dentro de todas as novidades da nossa cidade.
+                    </p>
+
+                    <div b-ernffg1v26 class="ap-footer-social-icons">
+                        <a b-ernffg1v26 href="https://www.facebook.com/share/19P7N65DRa/" target="_blank" rel="noopener noreferrer" class="ap-social-icon-btn" title="Facebook Oficial da Prefeitura de Alto Paraíso" aria-label="Facebook">
+                            <i b-ernffg1v26 class="bi bi-facebook"></i>
+                        </a>
+                        <a b-ernffg1v26 href="https://www.instagram.com/prefeituradealtoparaiso.ro?igsi=ZnRsYmlvNWkzanM1" target="_blank" rel="noopener noreferrer" class="ap-social-icon-btn" title="Instagram Oficial da Prefeitura de Alto Paraíso" aria-label="Instagram">
+                            <i b-ernffg1v26 class="bi bi-instagram"></i>
+                        </a>
+                        <a b-ernffg1v26 href="https://www.youtube.com/@prefeituramunicipaldealtop8045" target="_blank" rel="noopener noreferrer" class="ap-social-icon-btn" title="Canal Oficial do YouTube da Prefeitura de Alto Paraíso" aria-label="YouTube">
+                            <i b-ernffg1v26 class="bi bi-youtube"></i>
+                        </a>
+                        <a b-ernffg1v26 href="https://wa.me/5569999683368" target="_blank" rel="noopener noreferrer" class="ap-social-icon-btn" title="WhatsApp Oficial da Prefeitura de Alto Paraíso" aria-label="WhatsApp">
+                            <i b-ernffg1v26 class="bi bi-whatsapp"></i>
+                        </a>
+                    </div>
+
+
+                    <!-- 🏅 SELO NACIONAL DE TRANSPARÊNCIA PÚBLICA (ATRICON) 🏅 -->
+                    <div b-ernffg1v26 class="ap-footer-selo-transparencia">
+                        <a b-ernffg1v26 href="https://radardatransparencia.atricon.org.br/" target="_blank" rel="noopener noreferrer" class="ap-selo-transparencia-link" title="Programa Nacional de Transparência Pública - Selo Prata ATRICON">
+                            <img b-ernffg1v26 src="/img/selo-transparencia-prata-2025.png" alt="Selo Qualidade em Transparência Prata 2025 - Radar da Transparência Pública ATRICON" class="ap-selo-transparencia-img" />
+                            <div b-ernffg1v26 class="ap-selo-transparencia-text">
+                                <span b-ernffg1v26 class="ap-selo-tag">Radar da Transparência</span>
+                                <strong b-ernffg1v26 class="ap-selo-title">Selo Qualidade Prata 2025</strong>
+                                <span b-ernffg1v26 class="ap-selo-org">Sistema Tribunais de Contas (ATRICON)</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- 🏛️ SELO QUALIDADE DA INFORMAÇÃO CONTÁBIL E FISCAL - NOTA A (TESOURO NACIONAL) 🏛️ -->
+                    <div b-ernffg1v26 class="ap-footer-selo-transparencia" style="margin-top: 10px;">
+                        <a b-ernffg1v26 href="https://ranking-municipios.tesouro.gov.br/ranking_municipios" target="_blank" rel="noopener noreferrer" class="ap-selo-transparencia-link" title="Ranking da Qualidade da Informação Contábil e Fiscal - Tesouro Nacional" style="background: rgba(14, 165, 233, 0.18); border-color: rgba(56, 189, 248, 0.4);">
+                            <img b-ernffg1v26 src="/img/selo-qualidade-fiscal-tesouro-nacional-2026.png" alt="Selo Nota A 2026 - Qualidade da Informação Contábil e Fiscal - Tesouro Nacional" class="ap-selo-transparencia-img" style="background: #ffffff; border-radius: 10px; padding: 4px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);" />
+                            <div b-ernffg1v26 class="ap-selo-transparencia-text">
+                                <span b-ernffg1v26 class="ap-selo-tag" style="color: #38bdf8;">Tesouro Nacional</span>
+                                <strong b-ernffg1v26 class="ap-selo-title">Nota A - Qualidade Fiscal 2026</strong>
+                                <span b-ernffg1v26 class="ap-selo-org">Ranking Contábil e Fiscal dos Municípios</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Faixa Inferior de Direitos & Botão de Cookies -->
+            <div b-ernffg1v26 class="ap-footer-bottom-bar">
+                <div b-ernffg1v26 class="ap-footer-bottom-flex">
+                    <a b-ernffg1v26 href="/politicadeprivacidade" class="ap-cookies-manage-btn" title="Política de Privacidade e Cookies">
+                        <i b-ernffg1v26 class="bi bi-gear-wide-connected"></i>
+                        <span b-ernffg1v26>Gerenciar Cookies</span>
+                    </a>
+
+                    <div b-ernffg1v26 class="ap-footer-copyright-text">
+                        &copy; 2026 Prefeitura Municipal de Alto Paraíso - RO. Todos os direitos reservados.
+                        <span b-ernffg1v26 class="ap-footer-divider">|</span>
+                        Desenvolvido pelo Departamento de Tecnologia da Informação (DPTI)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/site.js?v=of8XsEwgLkZy77pQiBxziqijKeGjgI3k3ErzMdcnNqQ"></script>
+    <script src="/js/accessibility.js?v=EX8cbVnm4wwOn0F40P-2NbiVzEkUm1Oj6AEUilvMK5E"></script>
+    <script>
+        let searchDebounceTimer = null;
+        let activeDirectMatchUrl = null;
+
+        function onSearchInput(query) {
+            clearTimeout(searchDebounceTimer);
+            const q = query.trim();
+            if (q.length < 2) {
+                fecharSearchDropdown();
+                activeDirectMatchUrl = null;
+                return;
+            }
+
+            searchDebounceTimer = setTimeout(() => {
+                buscarSugestoesApi(q);
+            }, 180);
+        }
+
+        async function buscarSugestoesApi(query) {
+            try {
+                const res = await fetch('/api/busca/sugestoes?q=' + encodeURIComponent(query));
+                const data = await res.json();
+                if (data.sucesso && data.itens && data.itens.length > 0) {
+                    renderizarSearchDropdown(query, data);
+                } else {
+                    renderizarSearchDropdownVazio(query);
+                }
+            } catch (err) {
+                console.error('Erro na busca:', err);
+            }
+        }
+
+        function renderizarSearchDropdown(query, data) {
+            const dropdown = document.getElementById('portalSearchDropdown');
+            activeDirectMatchUrl = data.matchDireto ? data.matchDireto.url : (data.itens.length > 0 && data.itens[0].isDirectMatch ? data.itens[0].url : null);
+
+            let html = '';
+
+            // Se houver Match Direto de Serviço / Link
+            if (data.matchDireto) {
+                const m = data.matchDireto;
+                html += `
+                    <div class="ap-search-group-header" style="background: #f0fdf4; color: #166534;">
+                        <i class="bi bi-lightning-charge-fill" style="color: #16a34a;"></i> ACESSO DIRETO RECOMENDADO
+                    </div>
+                    <a href="${m.url}" ${m.abrirNovaAba ? 'target="_blank" rel="noopener noreferrer"' : ''} class="ap-search-item direct-match">
+                        <div class="ap-search-item-icon" style="background: ${m.corFundoIcone || '#dcfce7'}; color: ${m.corIcone || '#16a34a'};">
+                            <i class="bi ${m.icone || 'bi-link-45deg'}"></i>
+                        </div>
+                        <div class="ap-search-item-body">
+                            <div class="ap-search-item-title">
+                                <span>${m.titulo}</span>
+                                <span class="ap-search-item-badge">Link Direto</span>
+                            </div>
+                            <div class="ap-search-item-desc">${m.descricao || 'Acesse o sistema diretamente'}</div>
+                        </div>
+                        <i class="bi bi-arrow-right-circle-fill" style="color: #16a34a; font-size: 18px;"></i>
+                    </a>
+                `;
+            }
+
+            // Agrupamento por Categoria
+            const servicos = data.itens.filter(i => (i.tipo === 'servico' || i.tipo === 'link') && (!data.matchDireto || i.url !== data.matchDireto.url));
+            const paginas = data.itens.filter(i => i.tipo === 'pagina');
+            const noticias = data.itens.filter(i => i.tipo === 'noticia' || i.tipo === 'evento');
+
+            if (servicos.length > 0) {
+                html += `<div class="ap-search-group-header"><i class="bi bi-grid-fill"></i> SERVIÇOS & LINKS ÚTEIS</div>`;
+                servicos.forEach(item => {
+                    html += `
+                        <a href="${item.url}" ${item.abrirNovaAba ? 'target="_blank" rel="noopener noreferrer"' : ''} class="ap-search-item">
+                            <div class="ap-search-item-icon" style="background: ${item.corFundoIcone || '#e0f2fe'}; color: ${item.corIcone || '#0284c7'};">
+                                <i class="bi ${item.icone || 'bi-file-text'}"></i>
+                            </div>
+                            <div class="ap-search-item-body">
+                                <div class="ap-search-item-title">${item.titulo}</div>
+                                <div class="ap-search-item-desc">${item.descricao}</div>
+                            </div>
+                            <i class="bi bi-chevron-right" style="color: #94a3b8; font-size: 12px;"></i>
+                        </a>
+                    `;
+                });
+            }
+
+            if (paginas.length > 0) {
+                html += `<div class="ap-search-group-header"><i class="bi bi-building"></i> PÁGINAS & SECRETARIAS</div>`;
+                paginas.forEach(item => {
+                    html += `
+                        <a href="${item.url}" class="ap-search-item">
+                            <div class="ap-search-item-icon" style="background: #ede9fe; color: #7c3aed;">
+                                <i class="bi ${item.icone || 'bi-file-earmark-text'}"></i>
+                            </div>
+                            <div class="ap-search-item-body">
+                                <div class="ap-search-item-title">${item.titulo}</div>
+                                <div class="ap-search-item-desc">${item.categoria || item.descricao}</div>
+                            </div>
+                            <i class="bi bi-chevron-right" style="color: #94a3b8; font-size: 12px;"></i>
+                        </a>
+                    `;
+                });
+            }
+
+            if (noticias.length > 0) {
+                html += `<div class="ap-search-group-header"><i class="bi bi-newspaper"></i> NOTÍCIAS & EVENTOS</div>`;
+                noticias.forEach(item => {
+                    html += `
+                        <a href="${item.url}" class="ap-search-item">
+                            <div class="ap-search-item-icon" style="background: #fef3c7; color: #d97706;">
+                                <i class="bi ${item.icone || 'bi-newspaper'}"></i>
+                            </div>
+                            <div class="ap-search-item-body">
+                                <div class="ap-search-item-title">${item.titulo}</div>
+                                <div class="ap-search-item-desc">${item.descricao}</div>
+                            </div>
+                            <i class="bi bi-chevron-right" style="color: #94a3b8; font-size: 12px;"></i>
+                        </a>
+                    `;
+                });
+            }
+
+            html += `
+                <a href="/busca?q=${encodeURIComponent(query)}" class="ap-search-dropdown-footer">
+                    Ver todos os resultados para "<strong>${query}</strong>" <i class="bi bi-arrow-right"></i>
+                </a>
+            `;
+
+            dropdown.innerHTML = html;
+            dropdown.style.display = 'block';
+        }
+
+        function renderizarSearchDropdownVazio(query) {
+            const dropdown = document.getElementById('portalSearchDropdown');
+            activeDirectMatchUrl = null;
+            dropdown.innerHTML = `
+                <div style="padding: 20px; text-align: center; color: #64748b; font-size: 13px;">
+                    <i class="bi bi-search" style="font-size: 24px; display: block; margin-bottom: 6px; color: #94a3b8;"></i>
+                    Nenhum serviço direto encontrado para "<strong>${query}</strong>".
+                </div>
+                <a href="/busca?q=${encodeURIComponent(query)}" class="ap-search-dropdown-footer">
+                    Pesquisar no portal completo <i class="bi bi-arrow-right"></i>
+                </a>
+            `;
+            dropdown.style.display = 'block';
+        }
+
+        function fecharSearchDropdown() {
+            const dropdown = document.getElementById('portalSearchDropdown');
+            if (dropdown) dropdown.style.display = 'none';
+        }
+
+        function onSearchFocus() {
+            const val = document.getElementById('portalSearchInput').value.trim();
+            if (val.length >= 2) {
+                onSearchInput(val);
+            }
+        }
+
+        function onSearchKeyDown(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                executarBuscaPrincipal();
+            } else if (event.key === 'Escape') {
+                fecharSearchDropdown();
+            }
+        }
+
+        function handleTopSearchSubmit(e) {
+            const query = document.getElementById('portalSearchInput').value.trim();
+            if (!query) {
+                if (e) e.preventDefault();
+                return false;
+            }
+
+            // Se houver um Match Direto de alta prioridade (ex: "nfs", "iptu", "cnd")
+            if (activeDirectMatchUrl) {
+                if (e) e.preventDefault();
+                if (activeDirectMatchUrl.startsWith('http')) {
+                    window.open(activeDirectMatchUrl, '_blank', 'noopener,noreferrer');
+                } else {
+                    window.location.href = activeDirectMatchUrl;
+                }
+                fecharSearchDropdown();
+                return false;
+            }
+
+            // Submete normalmente via GET para /Busca?q={query}
+            return true;
+        }
+
+        function executarBuscaPrincipal() {
+            handleTopSearchSubmit(null);
+            const query = document.getElementById('portalSearchInput').value.trim();
+            if (query && !activeDirectMatchUrl) {
+                window.location.href = '/Busca?q=' + encodeURIComponent(query);
+            }
+        }
+
+        // Fechar dropdown ao clicar fora
+        document.addEventListener('click', function(e) {
+            const wrapper = document.getElementById('portalSearchWrapper');
+            if (wrapper && !wrapper.contains(e.target)) {
+                fecharSearchDropdown();
+            }
+        });
+
+        function toggleMenuMobile() {
+            const collapse = document.getElementById('apNavCollapse');
+            const btn = document.getElementById('apMobileToggleBtn');
+            const icon = document.getElementById('apMobileToggleIcon');
+            if (!collapse || !btn) return;
+            const isOpen = collapse.classList.toggle('show');
+            btn.setAttribute('aria-expanded', isOpen);
+            if (isOpen) {
+                icon.className = 'bi bi-x-lg';
+                btn.classList.add('active');
+            } else {
+                icon.className = 'bi bi-list';
+                btn.classList.remove('active');
+                document.querySelectorAll('.ap-menu-item.open').forEach(el => el.classList.remove('open'));
+            }
+        }
+
+        function toggleSubmenuMobile(el) {
+            if (window.innerWidth <= 900) {
+                const parent = el.closest('.ap-menu-item');
+                if (parent) {
+                    const wasOpen = parent.classList.contains('open');
+                    document.querySelectorAll('.ap-menu-item.open').forEach(item => {
+                        if (item !== parent) item.classList.remove('open');
+                    });
+                    parent.classList.toggle('open', !wasOpen);
+                }
+            }
+        }
+
+        // 🚀 Navegação Acessível de Teclado no Menu Principal (Espaço, Enter, Setas, Esc)
+        function handleMenuKeyDown(e, el) {
+            const parent = el.closest('.ap-menu-item');
+            if (!parent) return;
+            const dropdown = parent.querySelector('.ap-dropdown-menu');
+            if (!dropdown) return;
+
+            if (e.key === ' ' || e.key === 'Spacebar' || e.key === 'Enter' || e.key === 'ArrowDown') {
+                e.preventDefault();
+                // Fechar outros menus abertos por teclado
+                document.querySelectorAll('.ap-menu-item.ap-keyboard-open').forEach(item => {
+                    if (item !== parent) {
+                        item.classList.remove('ap-keyboard-open');
+                        const link = item.querySelector('.ap-menu-link');
+                        if (link) link.setAttribute('aria-expanded', 'false');
+                    }
+                });
+                parent.classList.add('ap-keyboard-open');
+                el.setAttribute('aria-expanded', 'true');
+                const firstSubItem = dropdown.querySelector('a');
+                if (firstSubItem) {
+                    setTimeout(() => firstSubItem.focus(), 50);
+                }
+            } else if (e.key === 'Escape') {
+                e.preventDefault();
+                parent.classList.remove('ap-keyboard-open');
+                el.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        function handleSubmenuItemKeyDown(e, el) {
+            const dropdown = el.closest('.ap-dropdown-menu');
+            const parent = el.closest('.ap-menu-item');
+            if (!dropdown || !parent) return;
+
+            const items = Array.from(dropdown.querySelectorAll('a'));
+            const index = items.indexOf(el);
+
+            if (e.key === 'Escape') {
+                e.preventDefault();
+                parent.classList.remove('ap-keyboard-open');
+                const parentLink = parent.querySelector('.ap-menu-link');
+                if (parentLink) {
+                    parentLink.setAttribute('aria-expanded', 'false');
+                    parentLink.focus();
+                }
+            } else if (e.key === 'ArrowDown') {
+                e.preventDefault();
+                const next = items[index + 1] || items[0];
+                if (next) next.focus();
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                if (index > 0) {
+                    items[index - 1].focus();
+                } else {
+                    const parentLink = parent.querySelector('.ap-menu-link');
+                    if (parentLink) parentLink.focus();
+                }
+            }
+        }
+
+        // Fechar menus abertos por teclado ao clicar fora
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.ap-menu-item')) {
+                document.querySelectorAll('.ap-menu-item.ap-keyboard-open').forEach(item => {
+                    item.classList.remove('ap-keyboard-open');
+                    const link = item.querySelector('.ap-menu-link');
+                    if (link) link.setAttribute('aria-expanded', 'false');
+                });
+            }
+        });
+
+        // 🚀 Atalho de Teclado Global: Ctrl + K, Cmd + K ou '/' para focar na busca
+        document.addEventListener('keydown', function (e) {
+            const isCtrlK = (e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K');
+            const isSlash = e.key === '/' && document.activeElement?.tagName !== 'INPUT' && document.activeElement?.tagName !== 'TEXTAREA';
+
+            if (isCtrlK || isSlash) {
+                e.preventDefault();
+                const input = document.getElementById('portalSearchInput');
+                if (input) {
+                    input.focus();
+                    input.select();
+                    if (typeof onSearchFocus === 'function') {
+                        onSearchFocus();
+                    }
+                    input.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+
+        // 🚀 Scroll Listener para Botão Voltar ao Topo
+        window.addEventListener('scroll', function () {
+            const btn = document.getElementById('apBackToTopBtn');
+            if (btn) {
+                if (window.pageYOffset > 280) {
+                    btn.classList.add('show');
+                } else {
+                    btn.classList.remove('show');
+                }
+            }
+        }, { passive: true });
+
+        // 🚜 Toast de Celebração do Jerico / Orgulho Municipal
+        let delightTimeout;
+        function showJericoDelight(msg) {
+            const toast = document.getElementById('apDelightToast');
+            const textEl = document.getElementById('apDelightToastText');
+            if (!toast || !textEl) return;
+            textEl.textContent = msg || '🚜 Orgulho de Alto Paraíso - RO!';
+            toast.classList.add('show');
+            clearTimeout(delightTimeout);
+            delightTimeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3500);
+        }
+    </script>
+
+    <!-- Botão Flutuante Voltar ao Topo -->
+    <button b-ernffg1v26 type="button" class="ap-back-to-top-btn" id="apBackToTopBtn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="Voltar ao início da página" aria-label="Voltar ao topo">
+        <i b-ernffg1v26 class="bi bi-arrow-up"></i> <span b-ernffg1v26>Topo</span>
+    </button>
+
+    <!-- Toast Interativo do Jerico (Delight) -->
+    <div b-ernffg1v26 id="apDelightToast" class="ap-delight-toast">
+        <i b-ernffg1v26 class="bi bi-patch-check-fill" style="color: #38bdf8;"></i>
+        <span b-ernffg1v26 id="apDelightToastText"></span>
+    </div>
+
+    <!-- 🇧🇷 WIDGET OFICIAL VLIBRAS (GOVERNO DIGITAL / ACESSIBILIDADE EM LIBRAS) 🇧🇷 -->
+    <div b-ernffg1v26 vw class="enabled" style="position: fixed; bottom: 0; right: 0; width: 0; height: 0; pointer-events: none;">
+        <div b-ernffg1v26 vw-access-button class="active"></div>
+        <div b-ernffg1v26 vw-plugin-wrapper>
+            <div b-ernffg1v26 class="vw-plugin-top-wrapper"></div>
+        </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget({
+            rootPath: 'https://vlibras.gov.br/app',
+            personalPosition: 'BR'
+        });
+    </script>
+
+    
+    <script>
+        // ==========================================
+        // 🎠 CONTROLE AVANÇADO DO HERO SLIDER DINÂMICO
+        // ==========================================
+        let currentValSlide = 0;
+        const totalValSlides = 5;
+        const SLIDE_DURATION = 8000; // 8 segundos para leitura confortável
+        let slideStartTime = Date.now();
+        let isPaused = false;
+        let pausedElapsed = 0;
+        let sliderAnimFrame = null;
+
+        function updateProgressBar(progressPercent) {
+            const bar = document.getElementById('valSliderProgressBar');
+            if (bar) {
+                bar.style.width = Math.min(100, Math.max(0, progressPercent)) + '%';
+            }
+        }
+
+        function showValSlide(index, resetTimer = true) {
+            if (totalValSlides <= 0) return;
+            
+            // Garante índice circular
+            currentValSlide = (index % totalValSlides + totalValSlides) % totalValSlides;
+
+            for (let i = 0; i < totalValSlides; i++) {
+                const s = document.getElementById('valSlide' + i);
+                if (s) s.classList.remove('active');
+            }
+            const dots = document.querySelectorAll('.val-slider-dot');
+            dots.forEach(d => d.classList.remove('active'));
+
+            const targetSlide = document.getElementById('valSlide' + currentValSlide);
+            if (targetSlide) targetSlide.classList.add('active');
+            if (dots[currentValSlide]) dots[currentValSlide].classList.add('active');
+
+            if (resetTimer) {
+                slideStartTime = Date.now();
+                pausedElapsed = 0;
+                updateProgressBar(0);
+            }
+        }
+
+        function nextValSlide(isManual = false) {
+            showValSlide(currentValSlide + 1, true);
+        }
+
+        function prevValSlide(isManual = false) {
+            showValSlide(currentValSlide - 1, true);
+        }
+
+        function goToValSlide(index) {
+            showValSlide(index, true);
+        }
+
+        function pauseValSlider() {
+            if (isPaused) return;
+            isPaused = true;
+            pausedElapsed = Date.now() - slideStartTime;
+        }
+
+        function resumeValSlider() {
+            if (!isPaused) return;
+            isPaused = false;
+            slideStartTime = Date.now() - pausedElapsed;
+        }
+
+        function sliderTimerLoop() {
+            if (totalValSlides > 1) {
+                if (!isPaused) {
+                    const elapsed = Date.now() - slideStartTime;
+                    const progress = (elapsed / SLIDE_DURATION) * 100;
+                    updateProgressBar(progress);
+
+                    if (elapsed >= SLIDE_DURATION) {
+                        nextValSlide(false);
+                    }
+                }
+                sliderAnimFrame = requestAnimationFrame(sliderTimerLoop);
+            }
+        }
+
+        // Inicialização dos Eventos do Slider (Hover Freeze, Gestos de Touch e Teclado)
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderEl = document.getElementById('valHeroSlider');
+            if (sliderEl && totalValSlides > 1) {
+                // Congela no mouse hover e retoma ao sair
+                sliderEl.addEventListener('mouseenter', pauseValSlider);
+                sliderEl.addEventListener('mouseleave', resumeValSlider);
+
+                // Suporte a toque no Mobile (Pausa no toque e permite gestos swipe)
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                sliderEl.addEventListener('touchstart', function(e) {
+                    pauseValSlider();
+                    touchStartX = e.changedTouches[0].screenX;
+                }, { passive: true });
+
+                sliderEl.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const diff = touchEndX - touchStartX;
+                    if (Math.abs(diff) > 45) {
+                        if (diff < 0) {
+                            nextValSlide(true); // Swipe para a esquerda -> Próximo
+                        } else {
+                            prevValSlide(true); // Swipe para a direita -> Anterior
+                        }
+                    }
+                    resumeValSlider();
+                }, { passive: true });
+
+                // Inicia loop da barra de progresso
+                slideStartTime = Date.now();
+                sliderAnimFrame = requestAnimationFrame(sliderTimerLoop);
+            }
+        });
+
+        // Controle das Abas por Público-Alvo
+        function switchValTab(tabId) {
+            const container = (window.event && window.event.currentTarget) ? window.event.currentTarget.closest('.val-tabs-container') : document.querySelector('.val-tabs-container');
+            if (!container) return;
+            const btns = container.querySelectorAll('.val-tab-btn');
+            btns.forEach(b => b.classList.remove('active'));
+
+            const contents = container.querySelectorAll('.val-tab-content');
+            contents.forEach(c => c.classList.remove('active'));
+
+            if (window.event && window.event.currentTarget) {
+                window.event.currentTarget.classList.add('active');
+                if (typeof window.event.currentTarget.blur === 'function') {
+                    window.event.currentTarget.blur();
+                }
+            }
+            const targetContent = container.querySelector('#valTab-' + tabId);
+            if (targetContent) targetContent.classList.add('active');
+        }
+    </script>
+
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610eb40fd88e012',t:'MTc5NTc4MDI2NQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610eb40fd88e012',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

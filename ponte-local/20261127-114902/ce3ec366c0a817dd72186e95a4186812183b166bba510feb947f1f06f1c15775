@@ -1,0 +1,2267 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <!--| META TAGS |-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="application-name" content="Site Institucional da Prefeitura Municipal de Malacacheta">
+    <meta name="description" content="Site Institucional da Prefeitura Municipal de Malacacheta">
+    <meta name="keywords" content="Institucional, Transparência, Prefeitura, Prefeitura Municipal de Malacacheta">
+    <meta name="author" content="Digitaliza Tecnologia">
+    <meta name="generator" content="VS Code & PhpStorm">
+    <meta name="csrf-token" content="lH3NqZLTOXfsv1YxM4C38wfQPUWhvxauiVwG7WyH">
+
+    <!--| OG TAGS |-->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="http://malacacheta.mg.gov.br">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/site/brasao.png">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Prefeitura Municipal de Malacacheta">
+
+    <link rel="alternate" type="application/atom+xml" href="https://malacacheta.mg.gov.br/noticias.rss" title="Ultimas Noticias">
+
+    <title> Prefeitura Municipal de Malacacheta </title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    
+    <style>
+        :root {
+            --color__1: #0078d4;
+            --color__2: #1490df;
+        }
+    </style>
+
+    
+    <link rel="icon" type="image/x-icon"
+        href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/site/FaxXPkMm2EyclKlq5gMsApGSv1AacLfMQ6Hb5Rbb.png" />
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet"
+        href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/sl-1.6.2/datatables.min.css" />
+
+    
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+
+    
+    <link rel="stylesheet" type="text/css" href="https://malacacheta.mg.gov.br/css/style.css" />
+    </head>
+
+<body class="context">
+
+    
+        <div class="page_institucional">
+        
+        <nav class="navbar navbar-expand-lg" id="navbar" x-data="navbar">
+    <a href="https://malacacheta.mg.gov.br" style="height: 100%;">
+        <img class="navbar-brand img-fluid" style="height: 100%; width: auto; object-fit: cover;"
+            src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/site/brasao.png"
+            alt="Brasão">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="ph-bold ph-list" id="action_icon"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://malacacheta.mg.gov.br"> Home </a>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropMunicipio" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Município </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropMunicipio">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Município </h6>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/cidade"> Cidade </a>
+                            
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/orgaos-municipais"> Órgãos Municipais
+                            </a>
+                            
+
+                                                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/secretarias "> Secretarias </a>
+                            
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/noticias/todas"> Todas as Notícias </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/perguntas-frequentes"> Perguntas
+                                Frequentes </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title">
+                                                                    A Prefeitura
+                                                            </h6>
+                                                                                                                                                                                    <a class="dropdown-item" href="https://malacacheta.mg.gov.br/gestores">
+                                                Prefeito </a>
+                                                                                                                                                        
+                                                                                                                                                                                                    <a class="dropdown-item" href="https://malacacheta.mg.gov.br/vices">
+                                                Vice-Prefeito </a>
+                                                                                                                                        
+                            
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/estruturas-organizacional"> Estrutura
+                                Administrativa </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/documentos_oficiais"> Documentos
+                                Oficiais </a>
+
+                            
+                                                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/organogramas"> Organograma </a>
+                            
+                            
+                                                                                                            </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Cultura </h6>
+
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/turismo"> Turismo </a>
+                            
+                                                            
+                                
+                                
+                                                            
+                                                    </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropServicos" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Serviços </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropServicos">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Serviços </h6>
+
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/concursos-publicos"> Concursos </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/editais"> Editais e Processos
+                                Seletivos </a>
+                                                                                                                                        <a class="dropdown-item"
+                                            href="https://pmmalacacheta.cidadesmg.com.br/portaltransparencia" target="_blank"
+                                            rel="noopener"> Portal da Transparência </a>
+                                                                    
+                                                                                                            <a class="dropdown-item"
+                                            href="http://sistema.sintesetecnologia.com.br/sistemas/contracheque/index.xhtml?Param=Malacacheta"
+                                            target="_blank" rel="noopener"> Contracheque </a>
+                                                                    
+                                
+                                
+                                                                    <a class="dropdown-item"
+                                        href="https://malacacheta.sintesenotafiscal.com.br/NFSEWeb/login.xhtml"
+                                        target="_blank" rel="noopener"> Nota Fiscal de Serviço Eletrônica </a>
+                                
+                                                                                                            <a class="dropdown-item" href="https://pmmalacacheta.cidadesmg.com.br/portaltransparencia" target="_blank" rel="noopener"> Portal da Transparência </a>
+                                                                    
+                                                                                                <a class="dropdown-item" href="https://malacacheta.mg.gov.br/designacoes"> Designações </a>
+                                                                <a class="dropdown-item" href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-machacalis/pdf/BOLETIM_DE_INSPENCAO_MEDICA_-_BIM_2024.pdf"> Boletim de Inspeção Médica - BIM </a>
+                                                                                                    <a class="dropdown-item" href="https://malacacheta.mg.gov.br/contratos"> Contratos </a>
+                                                            
+                            
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/covid/home"> Covid-19 </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/emendas-parlamentares"> Emendas Parlamentares </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <!-- <h6 class="dropdown_title"> Serviços ao cidadão </h6>
+
+                            
+                            <a class="dropdown-item" href="http://malacacheta.mg.gov.br/portal-do-cidadao/e-sic/acompanhe"> Consultar antiga solicitação e-SIC </a>
+                            
+                            <a class="dropdown-item" href="http://malacacheta.mg.gov.br/portal-do-cidadao/ouvidoria/acompanhe"> Consultar antiga solicitação ouvidoria </a>
+
+                            <a class="dropdown-item" href="http://malacacheta.servicosaocidadao.net.br/services/e-sic"> Formulário e-SIC </a>
+                            <a class="dropdown-item" href="http://malacacheta.servicosaocidadao.net.br/search-code"> Consultar solicitação e-SIC </a>
+                            <a class="dropdown-item" href="http://malacacheta.servicosaocidadao.net.br/services/ombudsman"> Formulário Ouvidoria </a>
+                            <a class="dropdown-item" href="http://malacacheta.servicosaocidadao.net.br/search-code"> Consultar solicitação ouvidoria </a>
+                            <a class="dropdown-item" href="http://malacacheta.servicosaocidadao.net.br/services/pruning-tree"> Poda de Árvores </a>
+                            <a class="dropdown-item" href="http://malacacheta.servicosaocidadao.net.br/search-code"> Consultar solicitação poda de árvores </a>
+                            <a class="dropdown-item" href="http://malacacheta.servicosaocidadao.net.br/services/street-lighting"> Iluminação Pública </a>
+                            <a class="dropdown-item" href="http://malacacheta.servicosaocidadao.net.br/search-code"> Consultar solicitação iluminação pública </a>
+
+                                                            
+                                                             -->
+
+                                                    </ul>
+
+                                                    <ul class="dropdown_menu_list">
+                                <h6 class="dropdown_title"> Outros serviços </h6>
+                                                                                                            <a class="dropdown-item" href="https://coletum.com/pt_BR/account/11241/form/9553/answer/new">Formulário de cadastro de Malacachetense ausente</a>
+                                                                                                                                                <a class="dropdown-item" href="https://coletum.com/pt_BR/account/11241/form/9556/answer/new">Formulário de cadastro de artistas</a>
+                                                                                                                                                <a class="dropdown-item" href="https://www.tecpop.mg.gov.br/">Tecpop Minas</a>
+                                                                                                                                                <a class="dropdown-item" href="https://malacacheta.mg.gov.br/sala-mineira">Sala Mineira do Empreendedor</a>
+                                                                                                                                                <a class="dropdown-item" href="https://malacacheta.sintesetecnologia.com.br/portalDeServicos/index.xhtml">Serviços de Atendimento ao Contribuinte (IPTU, CND, etc)</a>
+                                                                                                                                                <a class="dropdown-item" href="https://raiox.malacacheta.mg.gov.br/">Resultados de Exames de Raio X</a>
+                                                                    
+                                
+                                                            </ul>
+                                            </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropLegislacao" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Legislação </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropLegislacao">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/todas/Todas%20as%20Leis"> Todas </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/1/Leis%20de%20Diretrizes%20Or%C3%A7ament%C3%A1rias"> Lei
+                                Diretrizes Orçamentárias </a>
+                                                        <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/2/Leis%20Or%C3%A7ament%C3%A1rias%20Anuais"> Lei
+                                Orçamentária Anual </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/3/Planos%20Plurianuais%20"> Plano Plurianual
+                            </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/4/Leis"> Leis </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/5/Leis%20Complementares"> Leis
+                                Complementares </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/15/Leis%20Complementares%20Consolidadas"> Leis
+                                Complementares Consolidadas </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/6/Leis%20Delegadas">
+                                Lei Delegada </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/7/Decretos">
+                                Decretos </a>
+                                    <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/22/Presta%C3%A7%C3%A3o%20de%20Contas">
+                                Prestação de Contas </a>
+                                                                                    <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/8/Portarias%20">
+                                Portarias </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/9/Resolu%C3%A7%C3%B5es%20">
+                                Resoluções </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/10/Proposi%C3%A7%C3%B5es">
+                                Proposição </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/11/Emenda%20da%20Lei%20Org%C3%A2nica"> Emenda da Lei
+                                Orgânica </a>
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/12/Decis%C3%B5es">
+                                Decisão </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            
+
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/convenios"> Convênios </a>
+
+                            
+                            
+                            
+                                                            <a class="dropdown-item"
+                                    href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/site/sSUFHlCqmnn4HiMHrnYPXdLh2I0dtwgOMF8Mqohl.pdf"
+                                    target="_blank" rel="noopener"> Lei de Estrutura Administrativa </a>
+                            
+                            
+                            <a class="dropdown-item" href="http://www.transparencia.mg.gov.br/convenios/convenios-de-saida/convenios-municipios/0/2018/01-01-2018/31-12-2018/451/0"
+                                target="_blank" rel="noopener"> Convenio Estadual </a>
+                            <a class="dropdown-item" href="http://www.portaldatransparencia.gov.br/localidades/3139201-malacacheta"
+                                target="_blank" rel="noopener"> Convenio Federal </a>
+
+                            <a class="dropdown-item"
+                                href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm"
+                                target="_blank" rel="noopener"> Lei nº 12.527/2011 </a>
+                            
+                            <a class="dropdown-item"
+                                href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14129.htm"
+                                target="_blank" rel="noopener"> Lei nº 14.129/2021 </a>
+                                                            <a class="dropdown-item"
+                                    href="https://www.almg.gov.br/consulte/legislacao/completa/completa.html?tipo=DEC&num=45969&ano=2012"
+                                    target="_blank" rel="noopener"> Decreto 45.969/2012 </a>
+                            
+                            <a class="dropdown-item" href="https://malacacheta.mg.gov.br/legislacoes/14/Instru%C3%A7%C3%A3o%20Normativa"> Instrução
+                                Normativa </a>
+
+                                                    </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://malacacheta.mg.gov.br/diarios-oficiais"> Diário Oficial </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://malacacheta.mg.gov.br/licitacoes/1"> Licitações </a>
+            </li>
+
+            
+                            <li class="nav-item">
+                    <a class="nav-link" href="https://malacacheta.mg.gov.br/obras"> Obras </a>
+                </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="https://malacacheta.mg.gov.br/convenios"> Convênios e Parcerias </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown" href="#" id="dropLeiAldirBranc" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Lei Aldir Blanc </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropLeiAldirBranc">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item"
+                                href="https://malacacheta.mg.gov.br/noticias/lei-aldir-blanc-municipio-de-malacacheta"> Ciclo 1 
+                            </a>
+                            <a class="dropdown-item"
+                                href="https://malacacheta.mg.gov.br/noticias/lei-aldir-blanc-ciclo-2"> Ciclo 2 
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+                            <li class="nav-item">
+                    <a class="nav-link" href="https://malacacheta.mg.gov.br/noticias/lei-paulo-gustavo-municipio-de-malacacheta" target=&quot;_blank&quot;>
+                        Lei Paulo Gustavo </a>
+                </li>
+                            <li class="nav-item">
+                    <a class="nav-link" href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/documentos-oficiais/PLANOS%20MUNICIPAIS%20E%20DOCUMENTOS%20T%C3%89CNICOS%20-%205996iwbg3e.pdf" target=&quot;_blank&quot;>
+                        Planos Municipais e Documentos Técnicos </a>
+                </li>
+            
+            
+
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="https://malacacheta.mg.gov.br/webmail" target="_blank" rel="noopener">
+                                Webmail </a>
+                                            </li>
+                            
+
+            <!-- item no menu -->
+            <li id="searchToggle" class="nav-item">
+                <a class="nav-link" href="#" x-on:click="showSearch = !showSearch">
+                    <i class="ph-bold ph-magnifying-glass"></i>
+                    <span hidden> Pesquisa </span>
+                </a>
+                <form method="GET" action="https://malacacheta.mg.gov.br/busca" class="drop drop-inline" id="inlineSearchDrop" x-cloak x-show="showSearch & isMobile" x-transition>
+                    <input class="form-control" type="text" placeholder="Pesquise..." minlength="3" name="campobusca">
+                </form>
+            </li>
+
+            <!-- fora da nav (ex: logo abaixo no HTML) -->
+            <div class="drop" x-cloak x-show="showSearch & !isMobile" x-transition>
+                <form method="GET" action="https://malacacheta.mg.gov.br/busca">
+                    <input class="form-control" type="text" placeholder="Pesquise..." minlength="3" name="campobusca">
+                </form>
+            </div>
+
+                    </ul>
+    </div>
+</nav>
+
+
+
+        <main id="main_content">
+            
+            <div class="floating-wrapper">
+    <div class="floating-sidebar">
+        <a href="https://malacacheta.mg.gov.br/lgpd" class="item" id='lgpd-link'>
+    <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="283.46px" height="283.46px" viewBox="0 0 283.46 283.46" enable-background="new 0 0 283.46 283.46" xml:space="preserve">
+<ellipse fill="#307FE8" cx="143.693" cy="140.938" rx="138.752" ry="138.014"/>
+<path fill="#808080" d="M-341,226.604"/>
+<g>
+	<g>
+		<g>
+			<defs>
+				<path id="SVGID_1_" d="M49.042,187.308h180.471c0,0,29.289-1.868,30.159-26.671c0,0,0.751-20.688-24.8-29.787
+					c0,0,2.368-27.544-29.539-24.304c0,0-15.828-40.134-48.355-11.467c0,0-11.469-27.172-46.366-21.811
+					c0,0-29.289,3.739-31.906,39.259c0,0-31.408-1.744-24.18,29.412c0,0-25.05-1.119-26.795,20.193
+					C27.731,162.133,26.235,182.074,49.042,187.308z"/>
+			</defs>
+			<use xlink:href="#SVGID_1_"  overflow="visible" fill="#F2691D"/>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  overflow="visible"/>
+			</clipPath>
+		</g>
+	</g>
+	<g>
+		<g>
+			<path id="SVGID_3_" fill="#FFFFFF" d="M229.579,189.409H48.804l-0.232-0.054c-12.631-2.899-18.207-10.166-20.661-15.753
+				c-2.657-6.049-2.291-11.4-2.274-11.625c0.725-8.858,5.369-15.453,13.432-19.091c4.868-2.195,9.846-2.832,12.893-2.999
+				c-1.513-8.535-0.238-15.424,3.8-20.507c6.064-7.633,16.615-8.809,21.022-8.95c1.861-17.92,10.551-27.583,17.649-32.569
+				c7.812-5.49,15.266-6.588,15.883-6.671c3.122-0.479,6.196-0.722,9.137-0.722c15.172,0,25.081,6.438,30.723,11.839
+				c3.746,3.587,6.14,7.169,7.458,9.467c7.447-6.052,14.694-9.117,21.57-9.117c16.201,0,25.092,16.557,27.451,21.666
+				c1.265-0.094,2.499-0.141,3.683-0.141c8.826,0,15.657,2.565,20.301,7.625c5.653,6.16,6.354,14.193,6.373,17.599
+				c12.884,4.99,18.927,12.947,21.738,18.847c3.191,6.696,3.03,12.229,3.021,12.46c-0.386,10.97-6.125,19.428-16.596,24.454
+				c-7.713,3.701-15.216,4.218-15.529,4.238L229.579,189.409z M49.282,185.209h180.151c0.692-0.055,7.384-0.662,14.029-3.88
+				c9.033-4.373,13.78-11.361,14.111-20.767c0.023-0.78,0.291-19.296-23.407-27.734l-1.525-0.544l0.139-1.614
+				c0.007-0.092,0.706-9.579-5.261-16.049c-4.581-4.971-12.023-6.997-21.976-5.987l-1.579,0.162l-0.585-1.479
+				c-0.08-0.203-8.298-20.46-24.177-20.46c-6.448,0-13.461,3.296-20.839,9.798l-2.188,1.928l-1.133-2.688
+				c-0.023-0.049-2.349-5.411-7.903-10.679c-7.377-7-16.693-10.549-27.687-10.549c-2.736,0-5.603,0.227-8.522,0.676l-0.053,0.008
+				c-0.065,0.009-7.04,0.977-14.186,6.054c-9.515,6.762-14.861,17.284-15.893,31.278l-0.152,2.056l-2.059-0.114
+				c-0.025-0.001-0.301-0.015-0.768-0.015c-3.028,0-13.329,0.531-18.772,7.383c-3.593,4.521-4.427,11.074-2.478,19.473l0.625,2.695
+				l-2.764-0.123c-0.021-0.002-0.213-0.009-0.544-0.009c-3.768,0-22.641,0.882-24.064,18.273
+				C29.774,163.023,28.819,180.381,49.282,185.209z"/>
+		</g>
+		<g>
+			<defs>
+				<path id="SVGID_4_" d="M229.579,189.409H48.804l-0.232-0.054c-12.631-2.899-18.207-10.166-20.661-15.753
+					c-2.657-6.049-2.291-11.4-2.274-11.625c0.725-8.858,5.369-15.453,13.432-19.091c4.868-2.195,9.846-2.832,12.893-2.999
+					c-1.513-8.535-0.238-15.424,3.8-20.507c6.064-7.633,16.615-8.809,21.022-8.95c1.861-17.92,10.551-27.583,17.649-32.569
+					c7.812-5.49,15.266-6.588,15.883-6.671c3.122-0.479,6.196-0.722,9.137-0.722c15.172,0,25.081,6.438,30.723,11.839
+					c3.746,3.587,6.14,7.169,7.458,9.467c7.447-6.052,14.694-9.117,21.57-9.117c16.201,0,25.092,16.557,27.451,21.666
+					c1.265-0.094,2.499-0.141,3.683-0.141c8.826,0,15.657,2.565,20.301,7.625c5.653,6.16,6.354,14.193,6.373,17.599
+					c12.884,4.99,18.927,12.947,21.738,18.847c3.191,6.696,3.03,12.229,3.021,12.46c-0.386,10.97-6.125,19.428-16.596,24.454
+					c-7.713,3.701-15.216,4.218-15.529,4.238L229.579,189.409z M49.282,185.209h180.151c0.692-0.055,7.384-0.662,14.029-3.88
+					c9.033-4.373,13.78-11.361,14.111-20.767c0.023-0.78,0.291-19.296-23.407-27.734l-1.525-0.544l0.139-1.614
+					c0.007-0.092,0.706-9.579-5.261-16.049c-4.581-4.971-12.023-6.997-21.976-5.987l-1.579,0.162l-0.585-1.479
+					c-0.08-0.203-8.298-20.46-24.177-20.46c-6.448,0-13.461,3.296-20.839,9.798l-2.188,1.928l-1.133-2.688
+					c-0.023-0.049-2.349-5.411-7.903-10.679c-7.377-7-16.693-10.549-27.687-10.549c-2.736,0-5.603,0.227-8.522,0.676l-0.053,0.008
+					c-0.065,0.009-7.04,0.977-14.186,6.054c-9.515,6.762-14.861,17.284-15.893,31.278l-0.152,2.056l-2.059-0.114
+					c-0.025-0.001-0.301-0.015-0.768-0.015c-3.028,0-13.329,0.531-18.772,7.383c-3.593,4.521-4.427,11.074-2.478,19.473l0.625,2.695
+					l-2.764-0.123c-0.021-0.002-0.213-0.009-0.544-0.009c-3.768,0-22.641,0.882-24.064,18.273
+					C29.774,163.023,28.819,180.381,49.282,185.209z"/>
+			</defs>
+			<clipPath id="SVGID_5_">
+				<use xlink:href="#SVGID_4_"  overflow="visible"/>
+			</clipPath>
+			<g clip-path="url(#SVGID_5_)">
+				<polygon fill="#FFFFFF" points="143.693,98.078 143.693,159.216 201.098,128.647 				"/>
+				<polygon fill="#FFFFFF" points="143.693,159.216 143.693,220.354 201.098,189.787 				"/>
+				<polygon fill="#FFFFFF" points="143.693,36.94 143.693,98.078 201.098,67.508 				"/>
+				<polygon fill="#FFFFFF" points="201.098,128.647 201.098,189.787 143.693,159.216 				"/>
+				<polygon fill="#FFFFFF" points="201.098,67.507 201.098,128.648 143.693,98.078 				"/>
+				<polygon fill="#FFFFFF" points="143.693,98.078 143.693,159.216 86.285,128.647 				"/>
+				<polygon fill="#FFFFFF" points="143.693,159.216 143.693,220.354 86.285,189.787 				"/>
+				<polygon fill="#FFFFFF" points="143.693,36.94 143.693,98.078 86.285,67.508 				"/>
+				<polygon fill="#FFFFFF" points="86.285,128.647 86.285,189.787 143.693,159.216 				"/>
+				<polygon fill="#FFFFFF" points="86.285,67.507 86.285,128.648 143.693,98.078 				"/>
+				<polygon fill="#FFFFFF" points="258.505,98.078 258.505,159.216 201.098,128.647 				"/>
+				<polygon fill="#FFFFFF" points="258.505,159.216 258.505,220.354 201.098,189.787 				"/>
+				<polygon fill="#FFFFFF" points="201.098,128.647 201.098,189.787 258.505,159.216 				"/>
+				<polygon fill="#FFFFFF" points="201.098,67.507 201.098,128.648 258.505,98.078 				"/>
+				<polygon fill="#FFFFFF" points="28.878,99.369 28.878,160.506 86.285,129.937 				"/>
+				<polygon fill="#FFFFFF" points="28.878,160.506 28.878,221.647 86.285,191.077 				"/>
+				<polygon fill="#FFFFFF" points="86.285,129.937 86.285,191.077 28.878,160.506 				"/>
+				<polygon fill="#FFFFFF" points="86.285,68.8 86.285,129.939 28.878,99.369 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<path fill="#FFFFFF" d="M88.927,153.978h11.721v9.202H76.767V124.4h12.16V153.978z"/>
+		<path fill="#FFFFFF" d="M128.253,137.654c-0.475-0.766-1.15-1.359-2.026-1.778c-0.876-0.42-1.937-0.631-3.177-0.631
+			c-2.337,0-4.145,0.759-5.422,2.274c-1.279,1.516-1.917,3.587-1.917,6.216c0,3.031,0.712,5.295,2.136,6.793
+			c1.424,1.497,3.615,2.244,6.573,2.244c2.811,0,5.075-1.131,6.792-3.396h-9.694v-8.599h19.772v12.159
+			c-1.679,2.884-3.998,5.358-6.956,7.422c-2.958,2.063-6.701,3.094-11.228,3.094c-4.018,0-7.514-0.83-10.49-2.492
+			c-2.977-1.662-5.258-3.988-6.847-6.983c-1.589-2.994-2.383-6.409-2.383-10.242c0-3.835,0.794-7.249,2.383-10.243
+			c1.588-2.994,3.862-5.321,6.819-6.983s6.426-2.494,10.407-2.494c5.074,0,9.211,1.226,12.405,3.671
+			c3.196,2.447,5.084,5.771,5.669,9.969H128.253L128.253,137.654z"/>
+		<path fill="#FFFFFF" d="M175.686,144.365c-1.131,1.991-2.802,3.57-5.011,4.738c-2.211,1.169-4.884,1.752-8.025,1.752h-4.82v12.325
+			H145.67V124.4h16.981c4.745,0,8.389,1.205,10.927,3.614c2.538,2.411,3.806,5.643,3.806,9.695
+			C177.384,140.157,176.819,142.375,175.686,144.365z M165.061,137.709c0-2.372-1.26-3.56-3.78-3.56h-3.451v7.119h3.451
+			C163.801,141.269,165.061,140.084,165.061,137.709z"/>
+		<path fill="#FFFFFF" d="M208.031,126.864c3.049,1.644,5.395,3.927,7.038,6.847c1.644,2.923,2.466,6.245,2.466,9.969
+			c0,3.689-0.822,7.011-2.466,9.969s-3.989,5.285-7.038,6.984c-3.051,1.697-6.6,2.546-10.654,2.546h-16.158v-38.779h16.158
+			C201.429,124.4,204.98,125.221,208.031,126.864z M202.8,150.088c1.605-1.497,2.409-3.634,2.409-6.409
+			c0-2.774-0.804-4.91-2.409-6.408c-1.607-1.497-3.78-2.246-6.519-2.246h-2.903v17.309h2.903
+			C199.02,152.334,201.193,151.586,202.8,150.088z"/>
+	</g>
+</g>
+</svg>
+</a>
+        <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+        <ul class="item sociais">
+                    <a class="item__flutuante" target="_blank" rel="noopener" href="https://www.facebook.com/prefeiturademalacacheta/">
+                <img class="img-fluid" src="https://malacacheta.mg.gov.br/storage/redes_sociais/facebook.svg" alt="...">
+            </a>
+                <a class="item__flutuante" target="_blank" rel="noopener" href="https://api.whatsapp.com/send/?phone=553335141629&text&type=phone_number&app_absent=0">
+            <img class="img-fluid" src="https://malacacheta.mg.gov.br/assets/media/img/iconWp.svg" alt="...">
+        </a>
+    </ul>
+        
+    </div>
+</div>
+
+
+            
+
+                            <div id="cont_Malacacheta" class="previsao_tempo none"></div>
+            
+            
+            
+                
+    <section id="home" class="banner" x-data="" x-cloak>
+    <h6 hidden> Home </h6>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                        <img class="carousel__img" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/site/banner.png" alt="Banner" />
+                    </div>
+
+                                                                                            
+                    </div>
+
+            </div>
+</section>
+    
+    
+
+    
+    <section class="sections-menu">
+    <div class="section-holder container">
+
+        <div class="section">
+            <div class="title-card">
+                <h2 class="title">Acesso Rápido</h2>
+            </div>
+
+            <div class="context">
+                                                            <div class="subcard">
+                            <h5 class="section-title">Geral</h5>
+                            <div class="items-list">
+                                                                                                            <a class="item" href="/licitacoes/1"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-gavel"></i>
+                                            
+                                            
+                                                                                            <span class="label">Licitações</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Licitações
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://pmmalacacheta.cidadesmg.com.br/portaltransparencia/"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-file-magnifying-glass"></i>
+                                            
+                                            
+                                                                                            <span class="label">Transparência Atual</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Transparência Atual
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://malacacheta.mg.gov.br:2096/"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-at"></i>
+                                            
+                                            
+                                                                                            <span class="label">Webmail</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Webmail
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://malacacheta.sintesenotafiscal.com.br/NFSEWeb/login.xhtml"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-note"></i>
+                                            
+                                            
+                                                                                            <span class="label">Nota Fiscal</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Nota Fiscal
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="/covid/home"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-virus"></i>
+                                            
+                                            
+                                                                                            <span class="label">Covid-19</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Covid-19
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://sistema.sintesetecnologia.com.br/sistemas/contracheque/index.xhtml?Param=Malacacheta"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-money"></i>
+                                            
+                                            
+                                                                                            <span class="label">Contracheque</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Contracheque
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://malacacheta.sintesetecnologia.com.br/portalDeServicos/index_ps.xhtml?faces-redirect=true"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-users-three"></i>
+                                            
+                                            
+                                                                                            <span class="label">Serviços do Contribuinte</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Serviços do Contribuinte
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="http://www.contasabertas.inf.br/entidade/pm-malacacheta"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-file-magnifying-glass"></i>
+                                            
+                                            
+                                                                                            <span class="label">Transparência até 2022</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Transparência até 2022
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://pmmalacacheta.cidadesmg.com.br/portaltransparencia/publica/emendasParlamentares/emendas.xhtml;jsessionid=gESH3Q4hsPTBY_mnOVOpSwXVyr9lUIVbPLS-tkYM.transp"
+                                            target="_blank">
+                                            
+                                                                                            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="216.03 328 579.3 381">
+  <path class="qmx-primary" d="M454.78 707.45c-.7.23-54.54.59-119.63.8-100.33.31-118.44.16-118.89-1.02-.77-1.99.55-16.2 2.25-24.28 4.65-22.1 14.57-40.77 30.47-57.32 14.88-15.5 29.29-24.82 47.97-31.02 63.4-21.07 130.15 11.28 151.93 73.62 4.85 13.9 8.54 38.37 5.9 39.22Zm244.22-.91c-9.26 1.94-29.12 2.67-38.5 1.4-15.96-2.15-34.4-8.93-49.22-18.1-11.7-7.23-28.24-23.51-35.89-35.32-11.03-17.03-17.81-36.86-19.04-55.67l-.65-9.85h80.49c44.26 0 98.18-.3 119.8-.67l39.33-.66-.63 10.91c-1.25 21.47-9.37 43.45-22.74 61.49-6.2 8.36-20.57 22.24-28.87 27.87-12.86 8.74-28.43 15.3-44.08 18.6Z"></path>
+  <path class="qmx-secondary" d="M492.8 707.6c-1.86.96-6.26 1.4-14.1 1.4h-11.4l-.61-11.25c-1.67-30.91-15.9-61.54-39.15-84.25-4.51-4.4-10.74-9.8-13.85-12l-5.65-4-.01-130c-.02-128.65 0-130.03 2-133.31 3.65-5.99 5.06-6.19 44.49-6.19h.17c30.78 0 36.75 0 40.58 2.86.93.69 1.73 1.56 2.73 2.63l2.5 2.67v364.68l-2.5 2.67c-1.38 1.48-3.72 3.31-5.2 4.09Zm103.17-.35c-3.11 1.57-7.18 1.75-39.47 1.74-34.16 0-36.17-.1-39.26-1.98-1.79-1.1-4.15-3.46-5.25-5.25-1.97-3.23-1.99-5.04-1.74-184.43l.25-181.17 2.5-2.67c1-1.07 1.8-1.94 2.73-2.63 3.83-2.86 9.8-2.86 40.58-2.86h.17c39.43 0 40.84.2 44.49 6.19 2 3.27 2.02 4.71 2.03 123.06V577h-59.26l.55 16.75c.59 18.42 2.62 28.69 8.67 43.82 8.63 21.62 25.04 43.09 43.25 56.58l6.84 5.08-1.81 3.13c-.99 1.73-3.37 3.93-5.27 4.89Z"></path>
+</svg>
+                                            
+                                            
+                                                                                            <span class="label">Emendas Parlamentares</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Emendas Parlamentares
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://acompanhe-emendas-ia.tce.mg.gov.br/"
+                                            target="_blank">
+                                            
+                                                                                            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="216.03 328 579.3 381">
+  <path class="qmx-primary" d="M454.78 707.45c-.7.23-54.54.59-119.63.8-100.33.31-118.44.16-118.89-1.02-.77-1.99.55-16.2 2.25-24.28 4.65-22.1 14.57-40.77 30.47-57.32 14.88-15.5 29.29-24.82 47.97-31.02 63.4-21.07 130.15 11.28 151.93 73.62 4.85 13.9 8.54 38.37 5.9 39.22Zm244.22-.91c-9.26 1.94-29.12 2.67-38.5 1.4-15.96-2.15-34.4-8.93-49.22-18.1-11.7-7.23-28.24-23.51-35.89-35.32-11.03-17.03-17.81-36.86-19.04-55.67l-.65-9.85h80.49c44.26 0 98.18-.3 119.8-.67l39.33-.66-.63 10.91c-1.25 21.47-9.37 43.45-22.74 61.49-6.2 8.36-20.57 22.24-28.87 27.87-12.86 8.74-28.43 15.3-44.08 18.6Z"></path>
+  <path class="qmx-secondary" d="M492.8 707.6c-1.86.96-6.26 1.4-14.1 1.4h-11.4l-.61-11.25c-1.67-30.91-15.9-61.54-39.15-84.25-4.51-4.4-10.74-9.8-13.85-12l-5.65-4-.01-130c-.02-128.65 0-130.03 2-133.31 3.65-5.99 5.06-6.19 44.49-6.19h.17c30.78 0 36.75 0 40.58 2.86.93.69 1.73 1.56 2.73 2.63l2.5 2.67v364.68l-2.5 2.67c-1.38 1.48-3.72 3.31-5.2 4.09Zm103.17-.35c-3.11 1.57-7.18 1.75-39.47 1.74-34.16 0-36.17-.1-39.26-1.98-1.79-1.1-4.15-3.46-5.25-5.25-1.97-3.23-1.99-5.04-1.74-184.43l.25-181.17 2.5-2.67c1-1.07 1.8-1.94 2.73-2.63 3.83-2.86 9.8-2.86 40.58-2.86h.17c39.43 0 40.84.2 44.49 6.19 2 3.27 2.02 4.71 2.03 123.06V577h-59.26l.55 16.75c.59 18.42 2.62 28.69 8.67 43.82 8.63 21.62 25.04 43.09 43.25 56.58l6.84 5.08-1.81 3.13c-.99 1.73-3.37 3.93-5.27 4.89Z"></path>
+</svg>
+                                            
+                                            
+                                                                                            <span class="label">Acompanhar Emendas - TCE</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Acompanhar Emendas - TCE
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://radardatransparencia.atricon.org.br/"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-crosshair"></i>
+                                            
+                                            
+                                                                                            <span class="label">Radar da Transparência</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Radar da Transparência
+                                                </span>
+                                            
+                                        </a>
+                                                                                                </div>
+                        </div>
+                                                                                <div class="subcard">
+                            <h5 class="section-title">Serviços ao Cidadão</h5>
+                            <div class="items-list">
+                                                                                                            <a class="item" href="https://malacacheta.sintesetecnologia.com.br/portalDeServicos/index_ps.xhtml?faces-redirect=true"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-users-three"></i>
+                                            
+                                            
+                                                                                            <span class="label">Serviços do Contribuinte</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Serviços do Contribuinte
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://malacacheta.servicosaocidadao.net.br/services/ombudsman"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-megaphone"></i>
+                                            
+                                            
+                                                                                            <span class="label">Ouvidoria</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Ouvidoria
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://malacacheta.servicosaocidadao.net.br/services/e-sic"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-newspaper"></i>
+                                            
+                                            
+                                                                                            <span class="label">Serviço de Informação ao Cidadão (E-SIC)</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Serviço de Informação ao Cidadão (E-SIC)
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://malacacheta.servicosaocidadao.net.br/services/pruning-tree"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-tree"></i>
+                                            
+                                            
+                                                                                            <span class="label">Poda de Árvores</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Poda de Árvores
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://malacacheta.servicosaocidadao.net.br/services/street-lighting"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-lightbulb-filament"></i>
+                                            
+                                            
+                                                                                            <span class="label">Iluminação Urbana</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Iluminação Urbana
+                                                </span>
+                                            
+                                        </a>
+                                                                                                </div>
+                        </div>
+                                                </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!--| SOBRE |-->
+<section class="sobre">
+    <h6 hidden> Sobre </h6>
+
+    <div class="container">
+        <div class="sobre_content">
+            <div class="sobre_content">
+                            </div>
+
+                                    <div class="sobre_right">
+                                                                        <div class="div_title">
+                                <span> Gerência </span>
+                                <h3 class="title"> Administração 2025 - 2028 </h3>
+                            </div>
+
+                            <div class="sobre_container">
+                                                                    <div class="sobre_text">
+                                        <a aria-label="Abrir detalhes" href="https://malacacheta.mg.gov.br/gestores"></a>
+
+                                        <img class="image__gerencia" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/gestor/Hermes%20Adalto%20Gomes%20da%20Cunha%20-%20gP9Jk08O8o.jpg" alt="Hermes Adalto Gomes da Cunha">
+
+                                        <div>
+                                            <h2 class="title"> Prefeito </h2><hr>
+                                            <p> Hermes Adalto Gomes da Cunha <br> Nascimento: 21/10/1964 </p>
+                                        </div>
+                                    </div>
+                                                                    <div class="sobre_text">
+                                        <a aria-label="Abrir detalhes" href="https://malacacheta.mg.gov.br/vices"></a>
+
+                                        <img class="image__gerencia" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/gestor/Lindomar%20Pereira%20Guedes%20-%20Y19SpQyXy3.jpg" alt="Lindomar Pereira Guedes">
+
+                                        <div>
+                                            <h2 class="title"> Vice-Prefeito </h2><hr>
+                                            <p> Lindomar Pereira Guedes <br> Nascimento: 29/12/1970 </p>
+                                        </div>
+                                    </div>
+                                                            </div>
+                                                            </div>
+                            </div>
+    </div>
+</section>
+    
+    
+    
+    <section class="noticias" id="noticias">
+    <h6 hidden> Noticias </h6>
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="div_title">
+                    <span> </span>
+                    <h3 class="title"> Notícias & Eventos </h3>
+                    <hr>
+                    <p> Fique por dentro de tudo que acontece no município, novidades, eventos, notícias e outros. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="min-height: 80vh; gap: 1rem; height: fit-content;">
+                            
+                
+                                                            <a href="https://malacacheta.mg.gov.br/noticias/designacao-2026" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>23</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/DESIGNA%C3%87%C3%83O%20-%202026-30-01-2026%20-%200bdJN.jpeg"
+                            alt="Capa da notícia: DESIGNAÇÃO - 2026" />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">DESIGNAÇÃO - 2026</h3>
+
+            <div class="desc">
+                <p style="padding-left: 60px;">&nbsp;<strong>Retifica&ccedil;&atilde;o da classifica&ccedil;&atilde;o final dos cargos de: Professor de 6&ordm; ao 9&ordm; ano - Hist&oacute;ria, Cuidador, Professor de Apoio (AEE) e Professor de 1&ordm; ao 5&ordm; ano -&gt; Clique aqui!</strong></p>
+<p style="padding-left: 60px;">&nbsp;</p>
+<p style="padding-left: 60px; text-align: center;"><strong>EDITAIS PARA O DIA 24/11/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PII N&ordm; 204, Clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="padding-left: 60px; text-align: center;"><strong>EDITAIS PARA O DIA 23/11/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PII N&ordm; 202, Clique aqui&nbsp;- PRORROGADO 8H, Clique aqui&nbsp;-&nbsp;PRORROGADO 9H, Clique aqui&nbsp;- PRORROGADO, Clique aqui</strong></p>
+<p style="text-align: left;"><strong>Professor PIII N&ordm; 203, Clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="padding-left: 60px; text-align: center;"><strong>EDITAIS PARA O DIA 18/11/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PIII N&ordm;&nbsp;201&nbsp;clique aqui&nbsp;- PRORROGADO 18/11 10H, Clique aqui&nbsp;-&nbsp;PRORROGADO 18/11 11H, Clique aqui&nbsp;- PRORROGADO, Clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="padding-left: 60px; text-align: center;"><strong>EDITAIS PARA O DIA 17/11/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PIII N&ordm;&nbsp;200&nbsp;clique aqui&nbsp;-&nbsp;PRORROGADO 10H:00, Clique aqui&nbsp;-&nbsp;PRORROGADO 11H:00, Clique aqui&nbsp;-&nbsp;PRORROGADO, Clique aqui&nbsp;</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="padding-left: 60px; text-align: center;"><strong>EDITAIS PARA O DIA 16/11/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PII N&ordm; 199, clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="padding-left: 60px; text-align: center;"><strong>EDITAIS PARA O DIA 09/11/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PIII N&ordm; 198, Clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="padding-left: 60px; text-align: center;"><strong>EDITAIS PARA O DIA 05/11/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PII N&ordm; 197, Clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="padding-left: 60px; text-align: center;"><strong>EDITAIS PARA O DIA 04/11/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PIII N&ordm; 195, clique aqui&nbsp;- PRORROGADO 9H:00, Clique aqui&nbsp;- PRORROGADO 10H:00, Clique aqui&nbsp;- PRORROGADO, Clique aqui</strong></p>
+<p style="text-align: left;"><strong>Professor PII N&ordm; 196, clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="padding-left: 60px; text-align: center;"><strong>EDITAIS PARA O DIA 03/11/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PIII N&ordm; 194, clique aqui&nbsp;</strong><strong>-&nbsp;PRORROGADO 15H:00, Clique aqui&nbsp;- PRORROGADO 16H:00,&nbsp;Clique aqui&nbsp;- PRORROGADO,&nbsp;Clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="padding-left: 60px; text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 29/10/2026</strong></p>
+<p><strong>Professor PIII N&ordm; 193,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 27/10/2026</strong></p>
+<p><strong>Professor PIII N&ordm; 192,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 22/10/2026</strong></p>
+<p><strong>Professor PII N&ordm; 191,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 21/10/2026</strong></p>
+<p><strong>Professor PII N&ordm; 189,&nbsp;Clique aqui&nbsp;</strong></p>
+<p><strong>Professor PII N&ordm; 190,&nbsp;Clique aqui</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center; padding-left: 90px;"><strong>EDITAIS PARA O DIA 09/10/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PIII 188 , Clique aqui&nbsp;-&nbsp;PRORROGADO 9H:00, Clique aqui&nbsp;- PRORROGADO 10H:00,&nbsp;Clique aqui&nbsp;- PRORROGADO,&nbsp;Clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="text-align: center; padding-left: 90px;"><strong>EDITAIS PARA O DIA 25/09/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PII 186 , Clique aqui</strong></p>
+<p style="text-align: left;"><strong>Professor PII 187 , Clique aqui&nbsp;- PRORROGADO 10H, Clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="text-align: center; padding-left: 90px;"><strong>EDITAIS PARA O DIA 23/09/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PII 185 , Clique aqui</strong></p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 08/09/2026</strong></p>
+<p><strong>Professor PII 184 2026 ,&nbsp;Clique aqui</strong></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 31/08/2026</strong></p>
+<p><strong>Professor PIII N&ordm; 181,&nbsp;Clique aqui&nbsp;- PRORROGADO 9H:30,&nbsp;Clique aqui&nbsp;- PRORROGADO 01/09 - 08H00, Clique aqui</strong></p>
+<p><strong>Professor PIII N&ordm; 182,&nbsp;Clique aqui</strong></p>
+<p><strong>Professor PIII N&ordm; 183,&nbsp;Clique aqui</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 26/08/2026</strong></p>
+<p><strong>Professor PII N&ordm; 179,&nbsp;Clique aqui&nbsp;</strong></p>
+<p><strong>Professor PIII N&ordm; 180,&nbsp;Clique aqui&nbsp;- PRORROGADO 10H:30, Clique aqui&nbsp;- PRORROGADO 11H:30,&nbsp;Clique aqui&nbsp;- PRORROGADO,&nbsp;Clique aqui</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 21/08/2026</strong></p>
+<p><strong>Professor PII N&ordm; 178,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 20/08/2026</strong></p>
+<p><strong>Professor PII N&ordm; 177,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 19/08/2026</strong></p>
+<p><strong>Professor PII N&ordm; 176,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 17/08/2026</strong></p>
+<p><strong>Professor PII N&ordm; 174,&nbsp;Clique aqui&nbsp;</strong></p>
+<p><strong>Professor PII N&ordm; 175,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 14/08/2026</strong></p>
+<p><strong>Professor PII N&ordm; 173,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 10/08/2026</strong></p>
+<p><strong>Professor PII N&ordm; 172,&nbsp;Clique aqui&nbsp;</strong></p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 03/08/2026</strong></p>
+<p style="text-align: left;"><strong>Professor de Apoio N&ordm; 171,&nbsp;Clique aqui</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 08/07/2026</strong></p>
+<p style="text-align: left;"><strong>Professor PIII 170 2026 Prorroga&ccedil;&atilde;o 3, Clique aqui</strong></p>
+<p style="text-align: left;"><strong>Professor PIII 170 2026 Prorroga&ccedil;&atilde;o 2, Clique aqui</strong></p>
+<p style="text-align: left;"><strong>Professor PIII 170 2026 Prorroga&ccedil;&atilde;o 1, Clique aqui</strong></p>
+<p><strong>Professor PIII N&ordm; 170,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<strong>EDITAIS PARA O DIA 07/07/2026</strong>
+<p><strong>Professor PII N&ordm; 169,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 30/06/2026</strong></p>
+<p><strong>Auxiliar de Servi&ccedil;os Gerais N&ordm; 168,&nbsp;Clique aqui&nbsp;- PRORROGADO 9:30H, Clique aqui&nbsp;- PRORROGADO 10:30H,&nbsp;Clique aqui</strong></p>
+<p>&nbsp;</p>
+<strong>EDITAIS PARA O DIA 27/06/2026</strong>
+<p><strong>Professor PIII N&ordm; 167,&nbsp;Clique aqui&nbsp;- PRORROGADO 10H, Clique aqui&nbsp;-&nbsp;PRORROGADO 11H,&nbsp;Clique aqui&nbsp;-&nbsp;PRORROGADO ,&nbsp;Clique aqui</strong></p>
+<p><strong>Cuidador N&ordm; 166, Clique aqui</strong></p>
+<strong>EDITAIS PARA O DIA 19/06/2026</strong>
+&nbsp;
+<p><strong>Especialista em Educa&ccedil;&atilde;o 165 2026,&nbsp;Clique</strong></p>
+<p>&nbsp;</p>
+<strong>EDITAIS PARA O DIA 17/06/2026</strong>
+<p><strong>Professor PIII N&ordm; 163,&nbsp;Clique aqui&nbsp;- PRORROGADO 16H, Clique aqui&nbsp;-&nbsp;PRORROGADO 7H,&nbsp;Clique aqui&nbsp;-&nbsp;PRORROGADO ,&nbsp;Clique aqui</strong></p>
+<p><strong>Professor PIII N&ordm; 164,&nbsp;Clique aqui&nbsp;- PRORROGADO 18/06 8H, Clique aqui&nbsp;-&nbsp;PRORROGADO 9H,&nbsp;Clique aqui&nbsp; &nbsp;</strong><strong>&nbsp;aqui&nbsp;Especialista em Educa&ccedil;&atilde;o 165 2026,&nbsp;Clique</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 11/06/2026</strong></p>
+<p><strong>Auxiliar de Servi&ccedil;os Gerais N&ordm; 161,&nbsp;Clique aqui&nbsp;&nbsp;- PRORROGADO 9H, Clique aqui&nbsp;&nbsp;- PRORROGADO 10H,&nbsp;Clique aqui&nbsp;-&nbsp;PRORROGADO ,&nbsp;Clique aqui</strong></p>
+<p><strong>Cuidador N&ordm; 162, Clique aqui</strong></p>
+<p>&nbsp;</p>
+<strong>EDITAIS PARA O DIA 10/06/2026</strong>
+<p style="padding-left: 60px;"><strong>&nbsp;Cuidador 160 2026, Clique aqui&nbsp;- PRORROGADO 9:30H, Clique aqui&nbsp;-&nbsp;PRORROGADO 10:30H,&nbsp;Clique aqui&nbsp;-&nbsp;PRORROGADO,&nbsp;Clique aqui</strong></p>
+<p style="padding-left: 60px;">&nbsp;</p>
+&nbsp;<strong>EDITAIS PARA O DIA 01/06/2026</strong>
+<p><strong>Professor PIII N&ordm; 158&nbsp;,&nbsp;Clique aqui&nbsp;&nbsp;- PRORROGADO 9H, Clique aqui&nbsp;-&nbsp;PRORROGADO 10H,&nbsp;Clique aqui&nbsp;-&nbsp;PRORROGADO ,&nbsp;Clique aqui</strong></p>
+<p><strong>Especialista em Educa&ccedil;&atilde;o N&ordm; 159, Clique aqui</strong></p>
+<p>&nbsp;</p>
+&nbsp;<strong>EDITAIS PARA O DIA 28/05/2026</strong>
+<p><strong>Professor PIII 157 2026, Clique aqui&nbsp;</strong><strong>- PRORROGADO 10H,&nbsp;Clique aqui -&nbsp;PRORROGADO 11H,&nbsp;Clique aqui&nbsp;- PRORROGADO,&nbsp;Clique aqui</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 25/05/2026</strong></p>
+<p><strong>Auxiliar de Servi&ccedil;os Gerais N&ordm; 156,&nbsp;Clique aqui&nbsp;- PRORROGADO 9H, Clique aqui</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 21/05/2026</strong></p>
+<p><strong>Professor PII N&ordm; 154,&nbsp;Clique aqui&nbsp;</strong></p>
+<p><strong>Professor PII N&ordm; 155,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 20/05/2026</strong></p>
+<p><strong>Professor PII N&ordm; 153,&nbsp;Clique aqui&nbsp;</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 19/05/2026</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 152,&nbsp;Clique aqui&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>EDITAIS PARA O DIA 15/05/2026</strong></p>
+<p><strong>Auxiliar de Servi&ccedil;os Gerais N&ordm; 151,&nbsp;Clique aqui&nbsp;- PRORROGADO 9H,&nbsp;Clique aqui -&nbsp;PRORROGADO 10H,&nbsp;Clique aqui&nbsp;- PRORROGADO,&nbsp;Clique aqui</strong></p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 11/05/2026</p>
+<p>Professor PII N&ordm; 148,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 149,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 150,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 07/05/2026</p>
+<p>Professor PII N&ordm; 147,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 27/04/2026</p>
+<p style="text-align: left;">Cuidador&nbsp;N&ordm; 146,&nbsp;Clique aqui&nbsp;&nbsp;- PRORROGADO 9H,&nbsp;Clique aqui -&nbsp;PRORROGADO 10H,&nbsp;Clique aqui&nbsp;- PRORROGADO,&nbsp;Clique aqui</p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 14/04/2026</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 145,&nbsp;Clique aqui&nbsp;- PRORROGADO 9H, Clique aqui</p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 07/04/2026</p>
+<p>Professor PII N&ordm; 144,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 01/04/2026</p>
+<p style="text-align: left;">Cuidador&nbsp;N&ordm; 143,&nbsp;Clique aqui&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 24/03/2026</p>
+<p style="text-align: left;">Auxiliar de Servi&ccedil;os Gerais N&ordm; 141,&nbsp;Clique aqui</p>
+<p style="text-align: left;">Especialista em Educa&ccedil;&atilde;o N&ordm; 142,&nbsp;Clique aqui</p>
+<p style="text-align: left;">&nbsp;</p>
+<p style="text-align: center; padding-left: 30px;">EDITAIS PARA O DIA 12/03/2026</p>
+<p style="text-align: left;">Auxiliar de Servi&ccedil;os Gerais N&ordm; 140, Clique aqui</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 11/03/2026</p>
+<p style="text-align: left;">Cuidador&nbsp;N&ordm; 139,&nbsp;Clique aqui&nbsp;- PRORROGADO 11H, Clique aqui - PRORROGADO 12H, Clique aquiui - PRORROGADO, Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center; padding-left: 30px;">EDITAIS PARA O DIA 06/03/2026</p>
+<p style="padding-left: 60px;">Professor III N&ordm; 138, Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center; padding-left: 30px;">EDITAIS PARA O DIA 04/03/2026</p>
+<p>Professor de Apoio N&ordm; 137, Clique aqui</p>
+<p style="text-align: center; padding-left: 30px;">EDITAIS PARA O DIA 03/03/2026</p>
+<p>Professor PIII N&ordm; 135,&nbsp;Clique aqui&nbsp;- PRORROGADO 10H, Clique aqui</p>
+<p>Professor PIII N&ordm; 136,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 27/02/2026</p>
+<p>Professor PIII N&ordm; 132,&nbsp;Clique aqui&nbsp;&nbsp;PRORROGADO 9:30H,&nbsp;Clique aqui&nbsp;- PRORROGADO 11H, Clique aqui - PRORROGADO, Clique aqui</p>
+<p>Cuidador N&ordm; 133,&nbsp;Clique aqui&nbsp;- PRORROGADO 9:30H, Clique aqui</p>
+<p>Cuidador N&ordm; 134,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 26/02/2026</p>
+<p>Professor PII N&ordm; 131,&nbsp;Clique aqui&nbsp;- PRORROGADO 10H, Clique aqui&nbsp;- PRORROGADO 13H, Clique aqui - PRORROGADO, Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 24/02/2026</p>
+<p>Professor PIII N&ordm; 127,&nbsp;Clique aqui&nbsp;- PRORROGADO 10H, Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais&nbsp;N&ordm; 128,&nbsp;Clique aqui</p>
+<p>Cuidador N&ordm; 129,&nbsp;Clique aqui</p>
+<p>Cuidador N&ordm; 130,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 20/02/2026</p>
+<p>Professor de Apoio&nbsp;N&ordm; 120,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 121,&nbsp;Clique aqui</p>
+<p>Cuidador&nbsp;N&ordm; 122,&nbsp;Clique aqui</p>
+<p>Cuidador N&ordm; 123,&nbsp;Clique aqui</p>
+<p>Cuidador N&ordm; 124,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 125,&nbsp;Clique aqui&nbsp;- RETIFICADO</p>
+<p>Professor PII N&ordm; 126,&nbsp;Clique aqui&nbsp;- RETIFICADO</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 09/02/2026</p>
+<p>Professor PIII N&ordm; 119,&nbsp;Clique aqui&nbsp;- PRORROGADO, 10/02 7h, Clique aqui&nbsp;-&nbsp;RORROGADO, 10/02 9h,&nbsp;Clique aqui&nbsp;- PRORROGADO, Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 09/02/2026</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 118,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 04/02/2026</p>
+<p>Professor PIII N&ordm; 117, Clique aqui</p>
+<p>&nbsp;</p>
+<p style="text-align: center;">EDITAIS PARA O DIA 03/02/2026</p>
+<p>Professor PIII N&ordm; 116,&nbsp;Clique aqui</p>
+<p style="padding-left: 30px;">&nbsp;</p>
+<p>&nbsp;</p>
+EDITAIS PARA O DIA 02/02/2026
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 110,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 111,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 112,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 113,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 114,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 115,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+EDITAIS PARA O DIA 30/01/2026
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 109,&nbsp;Clique aqui</p>
+<p>Especialista em Educa&ccedil;&atilde;o N&ordm; 108, Clique aqui</p>
+<p>Professor de Apoio N&ordm; 106,&nbsp;Clique aqui&nbsp;- PRORROGADO 30/01 8H&nbsp;</p>
+<p>Cuiador N&ordm; 103,&nbsp;Clique aqui&nbsp;&nbsp;- PRORROGADO&nbsp;30/01 8H&nbsp;- PRORROGADO 11H, Clique aqui&nbsp;- PRORROGADO, Clique aqui</p>
+<p>Professor PIII N&ordm; 057,&nbsp;Clique aqui&nbsp;&nbsp;- PRORROGADO&nbsp;30/01 8H&nbsp;- PRORROGADO 11H, Clique aqui&nbsp;- PRORROGADO, Clique aqui</p>
+<p>&nbsp;</p>
+<p>Professor PIII N&ordm; 060,&nbsp;Clique aqui&nbsp;&nbsp;- PRORROGADO&nbsp;30/01 8H</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+EDITAIS PARA O DIA 29/01/2026
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 073,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 074,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 075,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 076,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 077,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 078,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 079,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 080,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 081,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 082,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 083,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 084,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 085,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 086,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 087,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 088,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 089,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 090,&nbsp;Clique aqui</p>
+<p>Auxiliar de Servi&ccedil;os Gerais N&ordm; 091,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 092,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 093,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 094,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 095,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 096,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 097,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 098,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 099,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 100,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 101,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 102,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 103,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 104,&nbsp;Clique aqui</p>
+<p>Cuiador N&ordm; 105,&nbsp;Clique aqui</p>
+<p>Professor de Apoio N&ordm; 106,&nbsp;Clique aqui</p>
+<p>Professor de Apoio N&ordm; 107,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+EDITAIS PARA O DIA 28/01/2026
+<p>Professor PIII N&ordm; 050,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 051,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 052,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 053,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 054,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 055,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 056,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 057,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 058,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 059,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 060,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 061,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 062,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 063,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 064,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 065,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 066,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 067,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 068,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 069,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 071,&nbsp;Clique aqui</p>
+<p>Professor PIII N&ordm; 072,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+EDITAIS PARA O DIA 27/01/2026
+<p>&nbsp;</p>
+<p>Professor PII N&ordm; 001,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 002,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 003,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 004,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 005,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 006,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 007,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 008,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 009,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 010,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 011,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 012,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 013,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 014,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 015,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 016,&nbsp;Clique aqui</p>
+<p>Especialista Em Educa&ccedil;&atilde;o N&ordm; 0017,&nbsp;Clique aqui</p>
+<p>Especialista Em Educa&ccedil;&atilde;o N&ordm; 0018,&nbsp;Clique aqui</p>
+<p>Especialista Em Educa&ccedil;&atilde;o N&ordm; 0019,&nbsp;Clique aqui</p>
+<p>Especialista Em Educa&ccedil;&atilde;o N&ordm; 0020,&nbsp;Clique aqui</p>
+<p>Especialista Em Educa&ccedil;&atilde;o N&ordm; 0021,&nbsp;Clique aqui</p>
+<p>Especialista Em Educa&ccedil;&atilde;o N&ordm; 0022,&nbsp;Clique aqui</p>
+<p>Especialista Em Educa&ccedil;&atilde;o N&ordm; 0023,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 024.&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 025,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 026,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 027,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 028,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 029,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 030,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 031,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 032,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 033,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 034,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 035,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 036,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 037,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 038,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 039,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 040,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 041,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 042,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 043.&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 044,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 045,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 046,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 047,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 048,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 049,&nbsp;Clique aqui</p>
+<p>Professor PII N&ordm; 070,&nbsp;Clique aqui</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p><strong>&nbsp;</strong></p>
+<p><strong>LEIA a Resolu&ccedil;&atilde;o n&ordm; 02, de 29 de dezembro de 2025 -&gt; Clique aqui!</strong></p>
+<p><strong>Retifica&ccedil;&atilde;o da Resolu&ccedil;&atilde;o n&ordm; 02, de 29 de dezembro de 2025 -&gt;&nbsp;Clique aqui!</strong></p>
+<p>&nbsp;</p>
+<p>Documenta&ccedil;&atilde;o mencionada na Resolu&ccedil;&atilde;o&nbsp;n&ordm; 02, de 29 de dezembro de 2025.</p>
+<p>BIM - Boletim de Inspe&ccedil;&atilde;o M&eacute;dica -&gt; Clique aqui</p>
+<p>FICHA CADASTRAL - Auxiliar de Servi&ccedil;os Gerais -&gt; Clique aqui</p>
+<p>FICHA CADASTRAL - Professores e demais servidores -&gt; Clique aqui</p>
+<p>REQUERIMENTO PARA ATUAR COMO PROFESSOR DE APOIO (Quadro EFETIVO), Clique aqui</p>
+<p>&nbsp;</p>
+<strong>Resultado da an&aacute;lise dos recursos interpostos -&gt;&nbsp;Clique Aqui!!</strong>
+<strong>CLASSIFICA&Ccedil;&Atilde;O FINAL:</strong>
+<p><strong>1 - Auxiliar de Servi&ccedil;os Gerais,&nbsp;Clique aqui!</strong></p>
+<p><strong>2 - Assistente Educacional,&nbsp;Clique aqui!</strong></p>
+<p><strong>3 - Cuidador,&nbsp;Clique aqui!</strong></p>
+<p><strong>4 - Especialista em Educa&ccedil;&atilde;o,&nbsp;Clique aqui!</strong></p>
+<p><strong>5 - Professor de Apoio (AEE),&nbsp;Clique aqui!</strong></p>
+<p><strong>6 - Professor da Educa&ccedil;&atilde;o Infantil (Regular),&nbsp;Clique aqui!</strong></p>
+<p><strong>7 - Professor da Educa&ccedil;&atilde;o Infantil (Especial - APAE),&nbsp;Clique aqui!</strong></p>
+<p><strong>8 - Professor 1&ordm; ao 5&ordm; ano (Regular),&nbsp;Clique aqui!</strong></p>
+<p><strong>9 - Professor 1&ordm; ao 5&ordm; ano (Especial - APAE),&nbsp;Clique aqui!</strong></p>
+<p><strong>10 - Professor 6&ordm; ao 9&ordm; ano - Portugu&ecirc;s,&nbsp;Clique aqui!</strong></p>
+<p><strong>11 - Professor 6&ordm; ao 9&ordm; ano - Matem&aacute;tica,&nbsp;Clique aqui!</strong></p>
+<p><strong>12 - Professor 6&ordm; ao 9&ordm; ano - Hist&oacute;ria,&nbsp;Clique aqui!</strong></p>
+<p><strong>13 - Professor 6&ordm; ao 9&ordm; ano - Ci&ecirc;ncias,&nbsp;Clique aqui!</strong></p>
+<p><strong>14 - Professor 6&ordm; ao 9&ordm; ano - Geografia,&nbsp;Clique aqui!</strong></p>
+<p><strong>15 - Professor 6&ordm; ao 9&ordm; ano - Arte,&nbsp;Clique aqui!</strong></p>
+<p><strong>16 - Professor 6&ordm; ao 9&ordm; ano - Lingua Inglesa,&nbsp;Clique aqui!</strong></p>
+<p><strong>17 - Professor 6&ordm; ao 9&ordm; ano - Educa&ccedil;&atilde;o F&iacute;sica,&nbsp;Clique aqui!</strong></p>
+<p><strong>18 - Professor 6&ordm; ao 9&ordm; ano - Ensino Religioso,&nbsp;Clique aqui!</strong></p>
+<p>&nbsp;</p>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+FORMUL&Aacute;RIO PARA RECURSO DA CLASSIFICA&Ccedil;&Atilde;O PRELIMINAR (AT&Eacute; AS 23:59h DO DIA 07/01/2026) -&gt; Clique Aqui!!
+CLASSIFICA&Ccedil;&Atilde;O PRELIMINAR:
+<p>1 - Auxiliar de Servi&ccedil;os Gerais,&nbsp;Clique aqui!</p>
+<p>2 - Assistente Educacional,&nbsp;Clique aqui!</p>
+<p>3 - Cuidador,&nbsp;Clique aqui!</p>
+<p>4 - Especialista em Educa&ccedil;&atilde;o,&nbsp;Clique aqui!</p>
+<p>5 - Professor de Apoio (AEE),&nbsp;Clique aqui!</p>
+<p>6 - Professor da Educa&ccedil;&atilde;o Infantil (Regular),&nbsp;Clique aqui!</p>
+<p>7 - Professor da Educa&ccedil;&atilde;o Infantil (Especial - APAE),&nbsp;Clique aqui!</p>
+<p>8 - Professor 1&ordm; ao 5&ordm; ano (Regular),&nbsp;Clique aqui!</p>
+<p>9 - Professor 1&ordm; ao 5&ordm; ano (Especial - APAE),&nbsp;Clique aqui!</p>
+<p>10 - Professor 6&ordm; ao 9&ordm; ano - Portugu&ecirc;s,&nbsp;Clique aqui!</p>
+<p>11 - Professor 6&ordm; ao 9&ordm; ano - Matem&aacute;tica,&nbsp;Clique aqui!</p>
+<p>12 - Professor 6&ordm; ao 9&ordm; ano - Hist&oacute;ria,&nbsp;Clique aqui!</p>
+<p>13 - Professor 6&ordm; ao 9&ordm; ano - Ci&ecirc;ncias,&nbsp;Clique aqui!</p>
+<p>14 - Professor 6&ordm; ao 9&ordm; ano - Geografia,&nbsp;Clique aqui!</p>
+<p>15 - Professor 6&ordm; ao 9&ordm; ano - Arte,&nbsp;Clique aqui!</p>
+<p>16 - Professor 6&ordm; ao 9&ordm; ano - Lingua Inglesa,&nbsp;Clique aqui!</p>
+<p>17 - Professor 6&ordm; ao 9&ordm; ano - Educa&ccedil;&atilde;o F&iacute;sica,&nbsp;Clique aqui!</p>
+<p>18 - Professor 6&ordm; ao 9&ordm; ano - Ensino Religioso,&nbsp;Clique aqui!</p>
+<p>&nbsp;</p>
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+<p>&nbsp;</p>
+<p>Acesso os Formul&aacute;rios de Inscri&ccedil;&atilde;o:</p>
+<p>1 - Auxiliar de Servi&ccedil;os Gerais,&nbsp;Clique aqui!</p>
+<p>2 - Assistente Educacional,&nbsp;Clique aqui!</p>
+<p>3 - Cuidador,&nbsp;Clique aqui!</p>
+<p>4 - Especialista em Educa&ccedil;&atilde;o,&nbsp;Clique aqui!</p>
+<p>5 - Professor de Apoio (AEE),&nbsp;Clique aqui!</p>
+<p>6 - Professor da Educa&ccedil;&atilde;o Infantil (Regular),&nbsp;Clique aqui!</p>
+<p>7 - Professor da Educa&ccedil;&atilde;o Infantil (Especial - APAE),&nbsp;Clique aqui!</p>
+<p>8 - Professor 1&ordm; ao 5&ordm; ano (Regular),&nbsp;Clique aqui!</p>
+<p>9 - Professor 1&ordm; ao 5&ordm; ano (Especial - APAE),&nbsp;Clique aqui!</p>
+<p>10 - Professor 6&ordm; ao 9&ordm; ano - Portugu&ecirc;s,&nbsp;Clique aqui!</p>
+<p>11 - Professor 6&ordm; ao 9&ordm; ano - Matem&aacute;tica,&nbsp;Clique aqui!</p>
+<p>12 - Professor 6&ordm; ao 9&ordm; ano - Hist&oacute;ria,&nbsp;Clique aqui!</p>
+<p>13 - Professor 6&ordm; ao 9&ordm; ano - Ci&ecirc;ncias,&nbsp;Clique aqui!</p>
+<p>14 - Professor 6&ordm; ao 9&ordm; ano - Geografia,&nbsp;Clique aqui!</p>
+<p>15 - Professor 6&ordm; ao 9&ordm; ano - Artes,&nbsp;Clique aqui!</p>
+<p>16 - Professor 6&ordm; ao 9&ordm; ano - Lingua Inglesa,&nbsp;Clique aqui!</p>
+<p>17 - Professor 6&ordm; ao 9&ordm; ano - Educa&ccedil;&atilde;o F&iacute;sica,&nbsp;Clique aqui!</p>
+<p>18 - Professor 6&ordm; ao 9&ordm; ano - Ensino Religioso,&nbsp;Clique aqui!</p>
+<p>&nbsp;</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>Educação</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://malacacheta.mg.gov.br/noticias/cadastro-escolar-ano-letivo-de-2027" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>13</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/Cadastro%20escolar%20-%20Ano%20letivo%20de%202027%20-%20pUUDCBrDXs.png"
+                            alt="Capa da notícia: Cadastro escolar - Ano letivo de 2027" />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">Cadastro escolar - Ano letivo de 2027</h3>
+
+            <div class="desc">
+                <p>&nbsp;<strong>Leia a resolu&ccedil;&atilde;o: Resolu&ccedil;&atilde;o SME 01 de 26 de outubro de 2026 (Clique aqui)</strong></p>
+<p>&nbsp;</p>
+<p><strong>LISTAGEM&nbsp;FINAL</strong><strong>CMEI PIMPOLHO, Clique aqui</strong></p>
+<p><strong>CMEI MENINO JESUS, Clique aqui</strong></p>
+<p><strong>EM EVA RIBEIRO MENDES, Clique aqui</strong></p>
+<p><strong>EM ARISTIDES GOMES PEREIRA, Clique aqui</strong></p>
+<p><strong>CMEI PIMPOL&Acirc;NDIA, Clique aqui</strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>LISTAGEM PRELIMINARCMEI PIMPOLHO, Clique aqui</p>
+<p>CMEI MENINO JESUS, Clique aqui</p>
+<p>EM EVA RIBEIRO MENDES, Clique aqui</p>
+<p>EM ARISTIDES GOMES PEREIRA, Clique aqui</p>
+<p>CMEI PIMPOL&Acirc;NDIA, Clique aqui</p>
+<p>&nbsp;</p>
+<p>Formul&aacute;rio de Resursos, Clique aqui (https://forms.gle/fu7b5pW6i7JBuw8L7)</p>
+<p>Leia a resolu&ccedil;&atilde;o: Resolu&ccedil;&atilde;o SME 01 de 26 de outubro de 2026 (Clique aqui)</p>
+<p>Formul&aacute;rio de cadastro:&nbsp;https://forms.gle/xCrKQmakUqdwasRi6&nbsp;(Clique aqui)</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://malacacheta.mg.gov.br/noticias/convite-audiencia-publica" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>03</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/CONVITE%20AUDI%C3%8ANCIA%20P%C3%9ABLICA%20-%20KlcMUsYCCy.jpeg"
+                            alt="Capa da notícia: CONVITE AUDIÊNCIA PÚBLICA" />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/WhatsApp%20Image%202026-11-03%20at%2016.03.56%20%281%29%20-%20CnKBlMkAFI.jpeg"
+                                alt="Imagem da galeria: CONVITE AUDIÊNCIA PÚBLICA" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/WhatsApp%20Image%202026-11-03%20at%2016.03.56%20-%20TodNtZLk3n.jpeg"
+                                alt="Imagem da galeria: CONVITE AUDIÊNCIA PÚBLICA" />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">CONVITE AUDIÊNCIA PÚBLICA</h3>
+
+            <div class="desc">
+                <p style="text-align: center;"><strong>EDITAL DE CONVOCA&Ccedil;&Atilde;O N&ordm; 01/2026 - AUDI&Ecirc;NCIA P&Uacute;BLICA PLANO MUNICIPAL PELA PRIMEIRA INF&Acirc;NCIA &ndash; PMPI</strong></p>
+<p style="text-align: center;"><strong>- Acesse aqui</strong></p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://malacacheta.mg.gov.br/noticias/noticia-cadastro-escolar-escolas-estaduais" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>28</span>
+                <span>Oct</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/NOTICIA%20-%20Cadastro%20Escolar%20-%20Escolas%20Estaduais%20-%2093ooje6q06.jpg"
+                            alt="Capa da notícia: NOTICIA - Cadastro Escolar - Escolas Estaduais" />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/1000332589%20-%20Ulvz0rvslU.jpg"
+                                alt="Imagem da galeria: NOTICIA - Cadastro Escolar - Escolas Estaduais" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/1000332588%20-%20xzrgJA7RjS.jpg"
+                                alt="Imagem da galeria: NOTICIA - Cadastro Escolar - Escolas Estaduais" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/1000332590%20-%20FF1Glb0gE8.jpg"
+                                alt="Imagem da galeria: NOTICIA - Cadastro Escolar - Escolas Estaduais" />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">NOTICIA - Cadastro Escolar - Escolas Estaduais</h3>
+
+            <div class="desc">
+                
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://malacacheta.mg.gov.br/noticias/lei-aldir-blanc-ciclo-2" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>27</span>
+                <span>Oct</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/LEI%20ALDIR%20BLANC%20-%20CICLO%202%20-%20w8NpodcQy4.png"
+                            alt="Capa da notícia: LEI ALDIR BLANC - CICLO 2" />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">LEI ALDIR BLANC - CICLO 2</h3>
+
+            <div class="desc">
+                <p style="text-align: center;"><strong>Chamamento P&uacute;blico N&deg; 001/2026 - Orgulho Cultural</strong></p>
+
+<strong>Edital e Anexos,&nbsp;Clique aqui</strong>
+
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;">&nbsp;</p>
+<p style="text-align: center;"><strong>Chamamento P&uacute;blico N&deg; 002/2026 - Conex&atilde;o Cultural&nbsp;</strong></p>
+
+<strong>Edital e Anexos,&nbsp;Clique aqui</strong>
+
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p style="text-align: justify;"><strong>Decreto N&ordm;091/2026 "Regulamenta, no &acirc;mbito do Munic&iacute;pio de Malacacheta/MG, a execu&ccedil;&atilde;o da Pol&iacute;tica Nacional Aldir Blanc de Fomento &agrave; Cultura - PNAB, institu&iacute;da pela Lei Federal n&ordm; 14.399, de 8 de julho de 2022, regulamentada pelo Decreto Federal n&ordm; 11.740, de 18 de outubro de 2023, estabelece procedimentos para a avalia&ccedil;&atilde;o e sele&ccedil;&atilde;o de propostas culturais, disciplina a atua&ccedil;&atilde;o de pareceristas e avaliadores e d&aacute; outras provid&ecirc;ncias."</strong></p>
+<p style="text-align: center;"><strong>Ata da 2&ordf; Escuta P&uacute;blica </strong>(19/09/2026)<strong> -&nbsp;Clique aqui</strong></p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://malacacheta.mg.gov.br/noticias/processo-seletivo-simplificado-edital-no-032026-agente-comunitario-de-saude-ubs-dona-agostinha" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>16</span>
+                <span>Oct</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-malacacheta/noticia/PROCESSO%20SELETIVO%20SIMPLIFICADO%20EDITAL%20N%C2%BA%2003/2026%20-%20AGENTE%20COMUNIT%C3%81RIO%20DE%20SA%C3%9ADE%20UBS%20DONA%20AGOSTINHA%20-%20D5rOYC8bDc.png"
+                            alt="Capa da notícia: PROCESSO SELETIVO SIMPLIFICADO EDITAL Nº 03/2026 - A..." />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">PROCESSO SELETIVO SIMPLIFICADO EDITAL Nº 03/2026 - A...</h3>
+
+            <div class="desc">
+                <p>01. Edital n&ordm; 03.2026, Clique aqui</p>
+<p>02. Link do Formul&aacute;rio de Inscri&ccedil;&atilde;o - Edital n&ordm; 003.2026, Clique aqui</p>
+<p>03. Classifica&ccedil;&atilde;o Parcial,&nbsp;Clique aqui</p>
+<p>04. Link para Formul&aacute;rio de Recursos,&nbsp;Clique aqui</p>
+<p>05. Classifica&ccedil;&atilde;o Final 1&ordf; Etapa,&nbsp;Clique aqui</p>
+<p>06. Convoca&ccedil;&atilde;o para Entrevista,&nbsp;Clique aqui</p>
+<p><strong>07. Classifica&ccedil;&atilde;o Final,&nbsp;Clique aqui</strong></p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                    
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-center">
+                        <a class="btn btn_solid mt-5" href="https://malacacheta.mg.gov.br/noticias/todas"> Todas as notícias </a>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+    </section>
+
+    <section class="container feedback_context" style="margin-top: 3rem; margin-bottom: 3rem;" x-data="feedbackStars()">
+    <div class="my-6">
+        <div class="div_title">
+            <span> Sua opnião importa </span>
+            <h3 class="title"> Pesquisa de Satisfação </h3>
+        </div>
+
+        <div class="rating-container">
+            <div class="star-rating">
+                <template x-for="i in 5" :key="i">
+                    <span class="star" :style="{ color: starColor(i) }" @mousemove="preview(i, $event)"
+                        @mouseleave="hoverRate = 0" @click="select(i, $event)">
+                        <svg viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient :id="`grad-${i}`">
+                                    <stop offset="50%" stop-color="currentColor" />
+                                    <stop offset="50%" stop-color="#e5e7eb" />
+                                </linearGradient>
+                            </defs>
+
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                :fill="isHalf(i) ? `url(#grad-${i})` : 'currentColor'" d="M12 17.5
+            C12.3 17.5 12.6 17.6 12.8 17.8
+            L17.5 21
+            C17.9 21.3 18.2 20.9 18.1 20.5
+            L16.6 14.8
+            C16.5 14.5 16.6 14.2 16.9 14
+            L21.2 10.5
+            C21.6 10.2 21.4 9.6 20.9 9.5
+            L15.3 9
+            C15 9 14.7 8.8 14.6 8.5
+            L12.4 3
+            C12.2 2.6 11.8 2.6 11.6 3
+            L9.4 8.5
+            C9.3 8.8 9 9 8.7 9
+            L3.1 9.5
+            C2.6 9.6 2.4 10.2 2.8 10.5
+            L7.1 14
+            C7.4 14.2 7.5 14.5 7.4 14.8
+            L5.9 20.5
+            C5.8 20.9 6.1 21.3 6.5 21
+            L11.2 17.8
+            C11.4 17.6 11.7 17.5 12 17.5Z" />
+                        </svg>
+                    </span>
+                </template>
+            </div>
+        </div>
+
+        <div class="feedback-score">
+            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 1rem;">
+                <strong>Média de</strong>
+                <div class="score-number">
+                    <strong>4.3</strong>
+                    <span>/ 5</span>
+                </div>
+            </div>
+
+            <div class="score-meta">
+                4 avaliações
+            </div>
+        </div>
+
+        <div class="rating-breakdown" x-data="{ open: false }">
+
+            <button class="toggle" @click="open = !open">
+                Ver detalhamento
+                <span x-text="open ? '▲' : '▼'"></span>
+            </button>
+
+            <div x-show="open" x-transition class="bars">
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            5.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 75%"></div>
+                        </div>
+
+                        <span class="count">
+                            3
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            4.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            4.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            3.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            3.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            2.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            2.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 25%"></div>
+                        </div>
+
+                        <span class="count">
+                            1
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            1.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            1.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            0.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                            </div>
+        </div>
+
+        <div class="push_modal-backdrop" x-cloak x-data="modalComponent('feedback')" x-show="open" x-transition.opacity
+    @open-modal.window="if ($event.detail === name) open = true"
+    @close-modal.window="if ($event.detail === name) open = false">
+    <div class="push_modal" @click.outside="open = false">
+        <div class="feedback-form">
+                <h3>Sua opinião (opcional)</h3>
+                <form method="POST" action="/feedback">
+                    <input type="hidden" name="_token" value="lH3NqZLTOXfsv1YxM4C38wfQPUWhvxauiVwG7WyH">                    <input type="hidden" name="rate" :value="rate">
+                    <input type="text" name="name" placeholder="Seu nome (opcional)">
+                    <input type="email" name="email" placeholder="Seu e-mail (opcional)">
+                    <textarea name="message" placeholder="Escreva sua opinião (opcional)"></textarea>
+
+                    <div class="actions">
+                        <button type="submit">Enviar</button>
+                        <button type="button" @click="$dispatch('close-modal', 'feedback')">Agora não</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+        </div>
+</section>
+
+
+
+    
+            <section class="clima">
+    <div class="page_title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="div_title">
+                    <span> Clima </span>
+                    <h1 class="title">  </h1>
+                    <hr>
+                    <p> Veja as informações do clima para a cidade de <span>Malacacheta</span>. </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="climate_content">
+            <p id="weather-info" data-city="Malacacheta">Carregando informações do clima...</p>
+        </div>
+    </div>
+    
+</section>
+    
+    
+
+    
+            </main>
+
+        
+        
+        <footer>
+    <div class="container">
+        <div class="footer_content">
+            <div class="footer_content_1">
+                <div class="footer_info">
+                    <div class="div_title">
+                        <span> Endereço </span>
+                        <h1 class="title"> Prefeitura Municipal de Malacacheta </h1>
+                        <hr>
+                        <p>
+                            Praça Monsenhor Jorge Lopes de Oliveira, 130  <br>
+                            Centro, Malacacheta/MG - <span class="cep" data-mask="00000-000"> 39690000 </span>
+                        </p>
+
+                                                                                    <p>Atendimento ao público: 07:00 - 13:00</p>
+                            
+                                                            <p>
+                                    Expediente: 07:00 - 17:00
+
+                                                                    </p>
+                            
+                                            </div>
+                </div>
+
+                <div class="footer_contact">
+                    <div class="div_title">
+                        <span> Contatos </span>
+                    </div>
+
+                    <ul class="nav flex-column nav_footer">
+                        <a class="nav-link" target="_blank" rel="noopener" href="https://goo.gl/maps/ChZ6d1KBaGwkmSTv9">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-map-pin"></i>
+                            </div>
+                            <span> Localização </span>
+                        </a>
+
+                        <a class="nav-link" target="_blank" rel="noopener" href="/cdn-cgi/l/email-protection#2b5b594e4d4e425f5e594a6b464a474a484a48434e5f4a05464c054c445d054959">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-envelope-simple"></i>
+                            </div>
+                            <span> <span class="__cf_email__" data-cfemail="b3c3c1d6d5d6dac7c6c1d2f3ded2dfd2d0d2d0dbd6c7d29dded49dd4dcc59dd1c1">[email&#160;protected]</span> </span>
+                        </a>
+
+                         <a class="nav-link" href="#">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-phone"></i>
+                            </div>
+                            <span> (33) 3514-1629 </span>
+                        </a>
+
+                        
+                         
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_content_2">
+                                    <div class="footer_redes">
+                        <div class="div_title">
+                            <span> Redes Sociais </span>
+                        </div>
+
+                        <ul class="nav flex-column nav_footer">
+                                                            <a class="nav-link" target="_blank" rel="noopener" href="https://www.facebook.com/prefeiturademalacacheta/">
+                                    <div class="back_icon">
+                                        <img class="img-fluid" src="https://malacacheta.mg.gov.br/storage/redes_sociais/facebook.svg" alt="...">
+                                    </div>
+                                    <span> Facebook </span>
+                                </a>
+                                                    </ul>
+                    </div>
+                
+                <div class="footer_menu">
+                    <div class="div_title">
+                        <span> Menu </span>
+                    </div>
+
+                    <ul class="nav flex-column nav_footer">
+                        <a class="nav-link" target="_blank" rel="noopener" href="https://malacacheta.mg.gov.br/noticias.rss">
+                            <i class="ph-bold ph-rss"></i>
+                            <span> RSS </span>
+                        </a>
+
+                        <a class="nav-link" href="https://malacacheta.mg.gov.br/mapa-site">
+                            <i class="ph-bold ph-map-trifold"></i>
+                            <span> Mapa do Site </span>
+                        </a>
+
+                                                    <a class="nav-link" href="#" id="clima">
+                                <i class="ph-bold ph-thermometer-simple"></i>
+                                <span> Clima </span>
+                            </a>
+                        
+                                            </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_copy">
+            <div class="copy">
+                <span> 2026 &copy; Todos os direitos reservados Prefeitura Municipal de Malacacheta | CNPJ: <span data-mask="00.000.000/0000-00"> 18404871000136 </span> </span>
+            </div>
+
+            <div class="design">
+                <span> Designed by <a href="https://www.digitaliza.com.br" target="_blank" rel="external"> Digitaliza </a> </span>
+            </div>
+        </div>
+    </div>
+</footer>
+        <a href="#" id="topo">
+    <div class="topo">
+        <i class="ph-bold ph-arrow-fat-up"></i>
+    </div>
+</a>
+    </div>
+
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=1054904748249600&autoLogAppEvents=1" crossorigin="anonymous" nonce="TgKZxTuJ"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script> <!-- | DATATABLES Plugin | -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script> <!-- | DATATABLES Plugin | -->
+    <script src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/sl-1.6.2/datatables.min.js"></script>
+
+    <script src="https://malacacheta.mg.gov.br/js/app.js"></script>
+
+            <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('modalComponent', (name) => ({
+                    name,
+                    open: false,
+                    openModal() {
+                        this.open = true
+                    },
+                    closeModal() {
+                        this.open = false
+                    }
+                }))
+            })
+        </script>
+        <script>
+        // Alpinejs
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('navbar', () => ({
+                showSearch: false,
+                isMobile: false,
+                init() {
+                    this.isMobile = window.matchMedia('(max-width: 768px)').matches;
+                    window.matchMedia('(max-width: 768px)').addEventListener('change', e => {
+                        this.isMobile = e.matches;
+                    });
+                }
+            }));
+        });
+
+
+
+        $(document).ready(function() {
+            let hideTimeout;
+
+            function showDropdown(element) {
+                clearTimeout(hideTimeout);
+                const elementoPai = element.parent();
+                const divMenu = $(elementoPai.children()[1]);
+
+                $('.nav-link').each(function() {
+                    const ep = $(this).parent();
+                    const dm = $(ep.children()[1]);
+                    ep.removeClass('show');
+                    dm.removeClass('show');
+                });
+
+                elementoPai.addClass('show');
+                divMenu.addClass('show');
+            }
+
+            function hideDropdown() {
+                hideTimeout = setTimeout(function() {
+                    $('.nav-link').each(function() {
+                        const ep = $(this).parent();
+                        const dm = $(ep.children()[1]);
+                        ep.removeClass('show');
+                        dm.removeClass('show');
+                    });
+                }, 300);
+            }
+
+            // Aqui usamos pointerenter e pointerleave
+            $('.nav-link').on('mouseenter', function() {
+                showDropdown($(this));
+            });
+
+            $('.nav-link, .dropdown-menu').on('mouseleave', function() {
+                hideDropdown();
+            });
+
+            $('.dropdown-menu').on('mouseenter', function() {
+                clearTimeout(hideTimeout);
+            });
+
+            $(document).on('click', function(event) {
+                const target = $(event.target);
+                if (!target.closest('.nav-link').length && !target.closest('.dropdown-menu').length) {
+                    hideDropdown();
+                }
+            });
+        });
+    </script>
+    <!-- UserWay -->
+    <script>
+        window._userway_config = {
+            size: 'small',
+            position: '5'
+        }
+    </script>
+    <script data-account="HJhdKL5MCA" src="https://cdn.userway.org/widget.js"></script>
+    <script>
+        function feedbackStars() {
+            return {
+                rate: 0,
+                hoverRate: 0,
+                starColor(i) {
+                    const step = Math.min(this.displayRate, i * 2);
+                    if (step <= (i - 1) * 2) return '#e5e7eb';
+
+                    // posição global (1 a 10)
+                    const position = step;
+
+                    // interpolação HSL
+                    const startHue = 45; // amarelo fraco
+                    const endHue = 28; // laranja forte
+
+                    const hue =
+                        startHue - ((startHue - endHue) * (position - 1)) / 9;
+
+                    return `hsl(${hue}, 95%, 60%)`;
+                },
+
+                get displayRate() {
+                    return this.hoverRate || this.rate;
+                },
+
+                preview(i, event) {
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const half = (event.clientX - rect.left) < rect.width / 2;
+                    this.hoverRate = half ? (i * 2 - 1) : (i * 2);
+                },
+
+                select(i, event) {
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const half = (event.clientX - rect.left) < rect.width / 2;
+                    this.rate = half ? (i * 2 - 1) : (i * 2);
+                    this.hoverRate = 0;
+                    window.dispatchEvent(
+                        new CustomEvent('open-modal', {
+                            detail: 'feedback'
+                        })
+                    )
+                },
+
+                isFull(i) {
+                    return this.displayRate >= i * 2;
+                },
+
+                isHalf(i) {
+                    return this.displayRate === i * 2 - 1;
+                }
+            }
+        }
+    </script>
+    <!-- VLibras -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        new window.VLibras.Widget({
+            source: 'https://vlibras.gov.br/app',
+            position: 'L',
+        });
+    </script>
+
+            
+        <script>
+            $(function() {
+                const cidade = "Malacacheta";
+
+                fetch(
+                        `https://api.openweathermap.org/data/2.5/weather?q=${cidade},BR&appid=bbbf320c2a267ad7a2fe7b28f7bb6bb2&units=metric&lang=pt_br`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const temperatura = data.main.temp;
+                        const descricao = data.weather[0].description;
+
+                        document.getElementById('clima').textContent =
+                            `Agora em ${cidade}: ${temperatura}°C, ${descricao}`;
+                    })
+                    .catch(error => {
+                        document.getElementById('clima').textContent = 'Erro ao carregar o clima.';
+                        console.error('Erro ao buscar clima:', error);
+                    });
+            })
+        </script>
+            <script src="https://wbot.chat/index.js" token="7a6d1372ce586c7b97e66fee91edaa27"></script>
+</body>
+
+</html>

@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+<head>
+  <title>Prefeitura Municipal de São Gotardo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- <meta charset="UTF-8" /> -->
+  <link rel="icon" href="imagens/favicon.ico" type="image/png">
+  <link rel="stylesheet" href="cdn/css/bootstrap.min.css">
+  <link rel="stylesheet" href="cdn/css/estilos.css">
+  <link rel="stylesheet" href="lib/font_awesome/css/font-awesome.min.css">
+  <script src="cdn/axios/axios.min.js"></script>
+  <script src="cdn/moment/moment.min.js"></script>
+  <script src="cdn/moment/locale/pt-br.min.js"></script>
+  <script src="cdn/vue/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <div class="content" id="app">
+    <div id="menu-container" class="p-0"></div>
+    <p></p>
+    <div class="container container-custom">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb breadcrumb-gradient p-1">
+          <li class="breadcrumb-item"><a href="#"><i class="bi bi-house-door-fill me-1"></i> Início</a></li>
+          <!-- <li class="breadcrumb-item"><a href="#"></a>Pagina</li> -->
+          <li class="breadcrumb-item active" aria-current="page">Pagina Inicial</li>
+        </ol>
+      </nav>
+    </div>
+    <!-- CARROUSEL -->
+    <div class="container carrosel">
+      <div id="carouselExampleControls" class="carousel slide prefeitura" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item" v-for="imagem, index in imgCarousel" :class="{'active': index === 0}" :key="index">
+            <a :href="imagem.url" style="text-decoration:none; color: inherit;">
+              <img class="d-block w-100" :src="imagem.caminho" :alt="imagem">
+            </a>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Anterior</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Próximo</span>
+        </a>
+      </div>
+    </div>
+    <br>
+    <!-- CARROUSEL -->
+
+
+    <!-- ÚLTIMAS NOTÍCIAS -->
+    <div class="container container-custom">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="alert" style="background-color: #26408b;">
+            <h4 class="text-white"><strong>ÚLTIMAS NOTÍCIAS</strong></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BEGIN BLOCK_NOTICIAS -->
+
+    <div class="container container-custom">
+      <div class="row">
+        <div class="col-12 col-md-3 text-justify" v-for="noticia in dtNoticia" :key="noticia.codmidia">
+          <a :href="'midia_publicacao.php?codmidia=' + noticia.codmidia" style="text-decoration:none; color: inherit;">
+            <img :src="noticia.caminhoimagem" class="img img-fluid mb-3"alt="Imagem">
+            <div class="mb-2 corTexto"><strong>{{ noticia.titulo }}</strong></div>
+            <div>{{noticia.resumo}}</div>
+          </a>
+          <p><small>{{formataData(noticia.datafim)}}</small></p>
+        </div>
+      </div>
+    </div>
+    <div class="container container-custom">
+      <div class="row">
+        <div class="col-12 col-md-10">
+          <hr style="border: 1px solid #3498db;">
+        </div>
+        <div class="col-12 col-md-2">
+          <a href="https://www.saogotardo.mg.gov.br/todasnoticias.php">
+            <button type="button" class="btn btn-secondary btn-block" name="button">Todas as Notícias</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <br><br>
+   <!-- FIM NOTICIAS -->
+
+    <!-- ACESSO RÁPIDO -->
+    <div class="container container-custom">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="alert" style="background-color: #26408b;">
+            <h4 class="text-white"><strong>ACESSO RÁPIDO</strong></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container container-custom">
+      <div class="row">
+        <div class="col-sm col-md my-1">
+          <a href="https://transparencia-hd.com.br/?cod_empre=31" target="_blank">
+            <img src="icones/botao_transparencia.png" class="img-fluid w-100 rounded" alt="Portal da Transparência">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+          <a href="https://www.portaldoservidor.net.br/?cod_empre=31" target="_blank">
+            <img src="icones/botao_servidor.png" class="img-fluid w-100 rounded" alt="Portal do Servidor">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+          <a href="https://transparencia-hd.com.br/consulta/orcamento/leis/?cod_empre=31" target="_blank">
+            <img src="icones/botao_leis.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+          <a href="https://www.saogotardo.mg.gov.br/licitacoes/edital.php" target="_blank">
+            <img src="icones/botao_licitatorio.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+          <a href="https://transparencia-hd.com.br/?cod_empre=31" target="_blank">
+            <img src="icones/botao_informacao.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm col-md my-1">
+          <a href="https://www.saogotardo.mg.gov.br/iluminacaopublica/index.php" target="_self">
+            <img src="icones/botao_iluminacao.png" class="img-fluid w-100 rounded" alt="IPTU ONLINE">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+          <a href="https://www.saogotardo.mg.gov.br/meioambiente/index.php" target="_blank">
+            <img src="icones/botao_meioAmbiente.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+          <a href="https://saogotardomg.ereceita.net.br/" target="_blank">
+            <img src="icones/botao_notaFiscal.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+          <a href="https://www.saogotardo.mg.gov.br/feriados.php">
+            <img src="icones/botao_feriado.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+          <a href="https://www.saogotardo.mg.gov.br/salamineira/salamineira.php">
+            <img src="icones/botao_salaMineira.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm col-md my-1">
+          <a href="https://www.saogotardo.mg.gov.br/semed/index.php" target="_self">
+            <img src="icones/botao_consEducacao.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+          <a href="https://portal.notpaper.com.br/saogotardo/" target="_blank">
+            <img src="icones/notpaper01.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+          <a href="https://www.saogotardo.mg.gov.br/ouvidoria.php" target="_blank">
+            <img src="icones/botao_ouvidoria.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+            <a href="https://portaldocidadao.habeasdata.com.br/esic?cod_empre=31" target="_blank">
+            <img src="icones/btn_esic.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+            <a href="https://leis.org/prefeitura/mg/sao-gotardo/" target="_blank">
+            <img src="icones/leis_org.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm col-md my-1">
+          <a href="https://portaldocidadao.habeasdata.com.br/iptu?cod_empre=31" target="_blank">
+            <img src="icones/iptu_2026.png" class="img-fluid w-100 rounded" alt="...">
+          </a>
+        </div>
+        <div class="col-sm col-md my-1">
+        </div>
+        <div class="col-sm col-md my-1">
+        </div>
+        <div class="col-sm col-md my-1">
+        </div>
+        <div class="col-sm col-md my-1">
+        </div>
+      </div>
+    </div>
+    <br>
+    <!-- FIM ACESSO RAPIDO -->
+ 
+    <!-- INFORMACOES/PUBLICACOES -->
+    <div class="container container-custom">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="alert" style="background-color: #26408b;">
+            <h4 class="text-white"><strong>INFORMAÇÕES/PUBLICAÇÕES</strong></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container container-custom">
+      <div class="row">
+        <div class="col-12 col-md-3 bg-white p-2" v-for="artigo in dtArtigo" :key="artigo.codArtigo">
+          <a :href="'publicacoes.php?codArtigo=' + artigo.codArtigo" class="text-bold" style="text-decoration:none; color:black;">
+            <div class="card border-0 border rounded shadow-sm" style="height: 100% ;">
+              <div class="card-body">
+                <div class="col-12 tag p-2" :style="{ backgroundColor: artigo.cor }">
+                  {{ artigo.titulo }}
+                </div>
+                <p :class="tag" :style="{ backgroundColor: artigo.cor }"></p>
+                <!-- <h5 class="card-title corTexto">{{artigo.tituloArtigo}}</h5> -->
+                 <div class="mb-2 corTexto"><strong>{{artigo.tituloArtigo}}</strong></div>
+                <p class="card-text text-justify">{{ artigo.resumoPublicacao }}</p>
+              </div>
+              <div class="card-footer bg-white mb-3 text-right" style="background-color:#FFE456;">
+              </div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="container container-custom">
+      <div class="row">
+        <div class="col-12 col-md-10">
+          <hr style="border: 1px solid #3498db;">
+        </div>
+        <div class="col-12 col-md-2">
+          <a href="https://www.saogotardo.mg.gov.br/publicacoesgerais.php">
+            <button type="button" class="btn btn-secondary btn-block" name="button">Outras publicações</button>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- FIM INFORMACOES/PUBLICACOES -->
+
+    <div class="container container-custom mt-3">
+      <div class="row">
+        <div class="col-12 col-md-12">
+          <div class="alert" style="background-color: #26408b;">
+            <h4 class="text-white"><strong>GALERIAS</strong></h4>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-md-6 mb-3">
+          <a href="https://www.youtube.com/@PrefeituradeS%C3%A3oGotardo" target="_blank">
+            <img src="imagens/filckr01.jpg" class="img-fluid img-efeito" alt="">
+          </a>
+          <div class="p-2 text-white text-center" style="background-color: #1a84c7;">
+            <h3>Clique e acesse a nossa galeria de vídeos.</h3>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 mb-3">
+          <a href="https://www.flickr.com/photos/prefeiturasaogotardo/albums/" target="_blank">
+            <img src="imagens/flickr02.png" class="img-fluid img-efeito" alt="">
+          </a>
+          <div class="p-2 text-white text-center" style="background-color: #1a84c7;">
+            <h3>Clique e acesse a nossa galeria de fotos.</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container container-custom">
+      <div class="row">
+        <div class="col-sm-12 col-md-12">
+          <div class="alert" style="background-color: #26408b;">
+            <h4 class="text-white"><strong>Manuais</strong></h4>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container container-custom">
+      <div class="row">
+        <div class="col-12 col-md bg-white p-2">
+          <div class="card">
+            <a href="anexos/social/Desmistificando_acoes_coletivas_no_suas.pdf" target="_blank">
+              <img src="imagens/social_manual ações coletivas.png" class="card-img-top" alt="Manual">
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md bg-white p-2">
+          <div class="card">
+            <a href="imagens/82_Manual Escuta Especializada_1a edição.pdf" target="_blank">
+              <img src="imagens/logo_manual_escuta.png" class="card-img-top" alt="Manual">
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md bg-white p-2">
+          <div class="card">
+            <a href="imagens/protocolo_gestante.pdf" target="_blank">
+              <img src="imagens/logo_gestante.png" class="card-img-top" alt="Manual">
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md bg-white p-2">
+          <div class="card">
+            <a href="anexos/farmacia/remume_farmacia_basica.pdf" target="_blank">
+              <img src="imagens/logo_remume_farmacia.png" class="card-img-top" alt="Manual">
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md bg-white p-2">
+          <div class="card">
+            <a href="anexos/farmacia/remume_hemodialise.pdf" target="_blank">
+              <img src="imagens/logo_remume_hemodialise.png" class="card-img-top" alt="Manual">
+            </a>
+          </div>
+        </div>
+        <div class="col-12 col-md bg-white p-2">
+          <div class="card">
+            <a href="anexos/farmacia/remume_fitoterapicos_2023.pdf" target="_blank">
+              <img src="imagens/logo_remume_fitoterapicos.png" class="card-img-top" alt="Manual">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <!-- Estrutura do Modal -->
+    <div class="modal-overlay" id="modal-mensagem">
+      <div class="modal-content">
+        <span class="close-btn rounded-circle p-0 border-0 text-warning" onclick="closeModal()">&times;</span>
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+          <div class="carousel-inner">
+            <div v-for="(imagem, index) in dtBanner" :key="imagem.codimagem" :class="['carousel-item', { 'active': index === 0 }]">
+              <a :href="imagem.url" target="_blank"><img :src="'imagens/' + imagem.nomeimagem" class="modal-image" alt="Publicações"></a>
+            </div>
+          </div>
+          <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Anterior</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Próximo</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!-- Fim exibição de janela modal -->
+    <div id="menu-rodape"></div>
+    <!-- vlibras -->
+    <div vw class="enabled">
+      <div vw-access-button class="active"></div>
+      <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+      </div>
+    </div>
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+    <!-- vlibras -->
+  </div>
+  <!-- FIM APLICACAO -->
+</body>
+<script>
+function toggleContraste() {
+  document.body.classList.toggle('alto-contraste');
+}
+
+let tamanhoFonte = 100; // Representa 100% do tamanho base
+const incremento = 10; // Incremento de 10%
+
+function alterarFonte(acao) {
+  tamanhoFonte += acao * incremento;
+  if (tamanhoFonte < 80) tamanhoFonte = 80; // Tamanho mínimo de 80%
+  if (tamanhoFonte > 150) tamanhoFonte = 150; // Tamanho máximo de 150%
+  document.body.style.fontSize = tamanhoFonte + '%';
+}
+</script>
+<script>
+$(document).ready(function () {
+  $("#menu-container").load("logomenu.html", function () {
+    // Espera o conteúdo ser carregado, depois atribui o click
+    $("#btnBusca").on("click", function () {
+      const termo = $("#campoBusca").val(); // pega o valor digitado no input
+      if (termo.trim() !== "") {
+        // Redireciona para a página de busca com o termo na URL
+        window.location.href = "busca.php?q=" + encodeURIComponent(termo);
+      }
+    });
+  });
+  $("#menu-rodape").load("rodape.html");
+});
+
+
+function closeModal() {
+  document.getElementById("modal-mensagem").style.display = "none";
+};
+
+new Vue({
+  el: '#app',
+  data() {
+    return {
+      dtDestaques: '',
+      imagemDestaque: '',
+      codmidia: '',
+      titulo: '',
+      dtMidia: '',
+      dtNoticia: '',
+      dataFormatada: '',
+      dtArtigo: '',
+      dtArtigoTeste: '',
+      dtManual: '',
+      dtBanner: '',
+      imgCarousel: ''
+    };
+  },
+
+  methods: {
+    destaques() {
+      axios.post("pagina002.php", {
+        request_for: 'destaques'
+      }).then((response) => {
+        this.imagemDestaque = response.data[0].caminhoimagem;
+        this.codmidia = response.data[0].codmidia;
+      }).catch(error => {
+        console.error("Erro ao carregar imagem de destaque: ", error);
+      });
+    },
+
+    outrosDestaques() {
+      axios.post("pagina002.php", {
+        request_for: 'outrosDestaques'
+      }).then((response) => {
+        this.dtMidia = response.data;
+      }).catch(error => {
+        console.error("Erro ao carregar imagem de destaque: ", error);
+      });
+    },
+
+
+    noticias() {
+      axios.post("pagina002.php", {
+        request_for: 'noticias'
+      }).then((response) => {
+        this.dtNoticia = response.data;
+      }).catch(error => {
+        console.error("Erro ao carregar imagem de destaque: ", error);
+      });
+    },
+
+    // Frontend (Axios)
+    artigos:function(){
+      axios.get("https://www.saogotardo.mg.gov.br/artigos_ac.php?request_for=artigos")
+      .then(response => {
+        this.dtArtigo = response.data;
+      });
+    },
+
+    artigos03() {
+      axios.post(
+        "https://www.saogotardo.mg.gov.br/pagina002.php", // URL completa
+        { request_for: 'artigos' },
+        {
+          headers: {
+            'Content-Type': 'application/json' // Força o envio como JSON
+          }
+        }
+      )
+      .then((response) => {
+        console.log("Resposta:", response.data); // Debug
+        this.dtArtigoTeste = response.data;
+      })
+      .catch(error => {
+        console.error("Erro:", error.response); // Mostra detalhes do erro
+      });
+    },
+
+    artigos02:function(){
+      axios.post("pagina002.php", {
+        request_for:'artigos'
+      }).then(function(response){
+        app.dtArtigo = response.data;
+      });
+    },
+
+    bannerPrincipal(){
+      axios.post('pagina002.php', {
+        request_for: 'banner'
+      }).then((response)=>{
+        this.dtBanner = response.data;
+        if(this.dtBanner != false){
+          document.getElementById("modal-mensagem").style.display = "flex";
+        }
+      });
+    },
+
+    listaCarousel(){
+      axios.post("pagina002.php", {
+        request_for: 'carousel'
+      }).then((response)=>{
+        this.imgCarousel = response.data;
+      });
+    },
+
+    formataData(novaData){
+      const dataFormatada = moment(novaData).format('dddd, DD [de] MMMM [de] YYYY');
+      return dataFormatada.charAt(0).toUpperCase() + dataFormatada.slice(1);
+    }
+  },
+
+  created:function(){
+    this.artigos();
+  },
+
+  mounted() {
+    // this.buscaManuais();
+    this.destaques();
+    this.outrosDestaques();
+    this.noticias();
+    this.bannerPrincipal();
+    this.listaCarousel();
+  }
+});
+</script>
+
+<style>
+
+.corTexto {
+        color: #213F81;
+        font-weight: bold;
+}
+
+@media (max-width: 576px) {
+  .modal-content {
+    width: 90%; /* A largura será 90% da tela */
+    height: auto; /* Ajusta a altura automaticamente */
+    max-height: 90%; /* Limite de altura */
+  }
+
+  @media (max-width: 768px) {
+    .carousel-item img {
+      height: auto;
+    }
+  }
+
+  .closeOLD-btn {
+    top: 5px;
+    right: 5px;
+    width: 40px; /* Botão maior para facilitar o toque */
+    height: 40px;
+    font-size: 24px; /* Texto maior para visibilidade */
+  }
+
+  /* .close-btn {
+    width: 32px;
+    height: 32px;
+    background-color: #333;
+    color: white;
+    font-size: 20px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+} */
+
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1051;
+
+  width: 38px;
+  height: 38px;
+
+  border-radius: 50%;        /* círculo */
+  background-color: #000;   /* fundo do círculo */
+  color: #ffc107;           /* cor do X (amarelo bootstrap) */
+
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+
+  .tituloNoticias{
+    font-family: Roboto,sans-serif;
+    font-size: 0.8rem;
+    color: #0093b8;
+  }
+
+}
+
+.tituloNoticias{
+  font-family: Roboto,sans-serif;
+  font-size: 1.2rem;
+  color: #0093b8;
+}
+
+.carrosel {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    position: relative; /* Necessário para o z-index ser respeitado */
+    z-index: 1;         /* Camada baixa */
+}
+
+/* Cor de fundo azul ao passar o mouse nos itens principais do navbar */
+.navbar-nav .nav-link:hover {
+  /* background-color: #1a2f6e; /* azul escuro, combine com seu esquema */ */
+  /* color: white !important;  /* para garantir que o texto fique branco */ */
+}
+
+/* Cor de fundo azul ao passar o mouse nos itens do dropdown */
+.dropdown-menu .dropdown-item:hover {
+  /* background-color: #1a2f6e; /* mesmo tom de azul */
+  /* color: white !important; */ */
+}
+
+/* Estilo padrão */
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+body,td,th {
+	font-family: Verdana, Geneva, sans-serif;
+	/* font-size: 12px; */
+}
+
+/* Alto contraste */
+.alto-contraste {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.alto-contraste a {
+  color: #0ff !important; /* Ciano claro para links */
+}
+
+/* Exceção: texto dos cards em alto contraste */
+.alto-contraste .card {
+  color: #000 !important; /* Texto preto mesmo em alto contraste */
+  background-color: #fff !important; /* Opcional: fundo claro para contraste */
+}
+
+.img-efeito {
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.img-efeito:active {
+  transform: scale(0.95);
+}
+
+/* Estilo base dos links (agora são tags clicáveis) */
+.tag {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-decoration: none !important; /* Remove sublinhado padrão */
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Efeito hover para interatividade */
+.tag:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.tag-educacao {
+  background-color: #3498db; /* Azul */
+}
+
+#menu-container {
+    position: relative;
+    z-index: 1050; /* O Bootstrap usa valores em torno de 1000 para dropdowns */
+}
+/* Caso o problema persista, garanta que o container do carrossel seja inferior */
+
+</style>
+</html>

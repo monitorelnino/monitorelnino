@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de Encantado</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Encantado.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de Encantado' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://encantado.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://encantado.rs.gov.br/uploads/config/16025/brasao.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='330'>
+            <meta property='og:image:height' content='350'>
+            <meta property='og:site_name' content='encantado.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Encantado.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de Encantado'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Encantado.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://encantado.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://encantado.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://encantado.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://encantado.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://encantado.rs.gov.br/site/custom/default/css/color/c_encantado.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://encantado.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://encantado.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://encantado.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://encantado.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://encantado.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://encantado.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://encantado.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://encantado.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-JQLCFLRR2J"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-JQLCFLRR2J');
+    });
+</script>
+        <link rel="shortcut icon" href="https://encantado.rs.gov.br/uploads/config/16102/favicon.ico" />    
+	    <script>
+    var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?59375';
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = url;
+    var options = {
+  "enabled":true,
+  "chatButtonSetting":{
+      "backgroundColor":"#4dc247",
+      "ctaText":"Ouvidoria",
+      "borderRadius":"25",
+      "marginLeft":"0",
+      "marginBottom":"60",
+      "marginRight":"50",
+      "position":"right"
+  },
+  "brandSetting":{
+      "brandName":"Prefeitura de Encantado",
+      "brandSubTitle":"Ouvidoria Municipal",
+      "brandImg":"https://encantado.rs.gov.br/uploads/config/16025/brasao.png",
+      "welcomeText":"Olá!\nEste é o canal de comunicação da Ouvidoria Municipal. Em que podemos ajudar?",
+      "messageText":"Gostaria de um atendimento para a cidade de Encantado",
+      "backgroundColor":"#0a5f54",
+      "ctaText":"Iniciar conversa",
+      "borderRadius":"25",
+      "autoShow":false,
+      "phoneNumber":"555137510101"
+  }
+};
+    s.onload = function() {
+        CreateWhatsappChatWidget(options);
+    };
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+</script>
+<style>
+#wa-widget-send-button > svg {
+  height: 40px;
+  width: 40px;
+}
+#wa-widget-send-button > div {
+  font-size: 14px !important;
+}
+#wa-widget-send-button {
+  height: 40px !important;
+}
+
+.linksCabecalho h2, .linksCabecalho .h2  {
+	font-size: 1.0em;
+}
+.header02 #topBar a.logo {
+	margin: 0px 0 !important;
+
+img.max-height100 {
+  max-height: 120px !important;
+  margin: 0px 0;
+  margin-top: -1px;
+}
+span.client-name.nomargin.lineh30.appear-animation.fadeInLeft.animation-visible {
+    margin: 0 !important;
+}
+
+}
+
+
+.container {
+    width: 100% !important;
+    max-width: 1450px;
+}
+</style>    </head>
+	    <body class="smoothscroll wide home5_encantado2" data-background=""><a href="https://encantado.rs.gov.br/cdn-cgi/content?id=8J1PZmaVVXBE_ovcxAK1fvGESZ_a8EJgvSt9rM2.qko-1795780222.504083-1.2.1.1-GVFmSOV5leutmOdUYdXitWjDsl.s.EvXwKhs69f4X5XVPmIZeKn_6Y7QBdf2vrdC" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <div id="header" class='header02' role='banner'>
+  <!-- Top Bar -->
+  <header id="topBar" style="min-height: unset">
+    <div class="container">
+      <div class="fsize13 margin-top10 mobile-margin-top25 hide_mobile text-right pull-right">
+                  <p style="margin: 0 0 10px">Encantado, 27 de novembro de 2026.</p>
+
+                    <div class="hidden-xs hidden-sm btn-toolbar mb0" role="toolbar">
+              <div class="btn-group btn-group-lg pull-right">
+                                      <a href="javascript:;" target="_self" onclick="abrePopTelaInteira('http://encantado.multi24h.com.br/multi24/sistemas/transparencia/?entidade=1','Transparência')" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-search fsize15'></i> Transparência</a>
+                                        <a href="https://encantado.1doc.com.br/atendimento" target="_blank" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-address-card-o fsize15'></i> e-SIC</a>
+                                        <a href="https://encantado.1doc.com.br/atendimento" target="_blank" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-info-circle fsize15'></i> Acesso à Informação</a>
+                                        <a href="https://encantado.1doc.com.br/b.php?pg=wp/wp&itd=6" target="_blank" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-bullhorn fsize15'></i> Ouvidoria</a>
+                                        <a href="/turismo/visualizar/id/1003/?cristo-protetor-de-encantado.html" target="_self" onclick="" class="btn btn-primary height44 mb0 fsize15"><img src='https://encantado.rs.gov.br/uploads/link/45117/imagem_rio_christ_protetor4.png' style='max-height: 100%;margin-right:10px;' alt='' /> Conheça o Cristo Protetor</a>
+                                  </div>
+            </div>
+            
+        <div class="pull-right hidden-xs hidden-sm" style="
+          position: relative;
+          width: 225px;" role='search'>
+          <!-- Pesquisa -->
+          <form id="pesquisa" class="search nopadding" method="get" action="https://encantado.rs.gov.br/pesquisa">
+			<label for="searchbar-desktop" class="sr-only">Pesquisar:</label>
+            <input id="searchbar-desktop" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site" style="
+              margin: 0;
+              margin-top: 5px;
+            ">
+            <button type="submit" class="fa fa-search search-focus" title="Pesquisar" aria-label="Pesquisar"></button>
+          </form>
+          <!-- /Pesquisa -->
+        </div>
+
+                <div class="weather-topo styleBackgroundLight pull-right text-left previsao-topo hidden" style="margin-top: 5px">
+          <div class="row">
+            <div class="col-md-3 col-xs-3 nopadding mt5 text-center">
+              <i class="icone-temp m0 fsize25"></i>
+            </div>
+            <div class="col-md-9 col-xs-9">
+              <p class="nomargin"><strong>Encantado</strong></p>
+              <p class="nomargin">
+                <span class='min-temp'></span>&deg;C&nbsp;<small>MIN</small> <span class='max-temp'></span>&deg;C&nbsp;<small>MAX</small>
+              </p>
+            </div>
+          </div>
+        </div>
+              </div>
+
+      <!-- Logo -->
+
+                
+          <a class="logo" href="https://encantado.rs.gov.br">
+            <span class="client-name nomargin lineh30 appear-animation" data-animation="fadeInLeft" style="
+              margin: 22px 0 !important;
+            ">
+              <img class="appear-animation max-height100" src="https://encantado.rs.gov.br/uploads/config/45116/10_Versao_02___VERDE_.png" alt="Logo da Prefeitura" data-animation="fadeInLeft" />            </span>
+          </a>
+              </div>
+  </header>
+  <!-- /Top Bar -->
+
+  <!-- Top Nav -->
+  <header id="topNav">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get" action="https://encantado.rs.gov.br/pesquisa" role='search'>
+		<label for="searchbar-mobile" class="sr-only">Pesquisar:</label>
+        <input id="searchbar-mobile" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar"></button>
+      </form>
+      <!-- /Pesquisa -->
+
+      <!-- Mobile Menu Button -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <!-- Top Nav -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li><a href='https://encantado.rs.gov.br'>Início</a></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://encantado.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/pagina/id/3/?dados-do-municipio.html'>Dados do Município</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/galeria-prefeitos/bcid/55/?galeria-de-prefeitos.html'>Galeria de Prefeitos</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-4"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://encantado.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/servico/id/1/?servicos-ao-empreendedor.html'>Serviços ao Empreendedor</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://encantado.rs.gov.br/uploads/config/16025/brasao.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51)  3751-0100</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda a Sexta-Feira:</strong> 8h às 11h30 e das 13h às 17h<br />
+</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://encantado.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-4"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://encantado.rs.gov.br/secretaria/id/1012/?defesa-civil.html'>Defesa Civil</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/secretaria/id/1013/?gabinete-do-vice-prefeito.html'>Gabinete do Vice-Prefeito</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/secretaria/id/1004/?secretaria-da-gestao-financeira-e-orcamentaria.html'>Secretaria da Gestão Financeira e Orçamentária </a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/secretaria/id/1007/?secretaria-da-governanca.html'>Secretaria da Governança</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/secretaria/id/1005/?secretaria-da-saude.html'>Secretaria da Saúde </a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/secretaria/id/1006/?secretaria-de-agricultura-e-obras-publicas.html'>Secretaria de Agricultura e Obras Públicas</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/secretaria/id/1010/?secretaria-de-desenvolvimento-social-e-habitacao.html'>Secretaria de Desenvolvimento Social e Habitação</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/secretaria/id/1003/?secretaria-de-educacao-e-inovacao.html'>Secretaria de Educação e Inovação </a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/secretaria/id/1002/?secretaria-de-planejamento-e-desenvolvimento-economico.html'>Secretaria de Planejamento e Desenvolvimento Econômico</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/secretaria/id/1008/?secretaria-de-turismo-cultura-e-esporte.html'>Secretaria de Turismo, Cultura e Esporte </a></li></ul></div><div class="col-md-4"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://encantado.rs.gov.br/conselho/id/1009/?comdica.html'>COMDICA</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://encantado.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://encantado.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://encantado.rs.gov.br/uploads/config/16025/brasao.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51)  3751-0100</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda a Sexta-Feira:</strong> 8h às 11h30 e das 13h às 17h<br />
+</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://encantado.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/concurso/id/202/?processo-seletivo.html'>Processo Seletivo</a></li></ul></div><div class="col-md-3"><p class="menu-category">Legislação</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://leismunicipais.com.br/prefeitura/rs/encantado' target='_blank'>Leis Municipais</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/legislacao/id/5/?decretos.html'>Decretos</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/legislacao/id/1002/?editais.html'>Editais</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/legislacao/id/1001/?lei-aldir-blanc.html'>Lei Aldir Blanc</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/legislacao/id/6/?lei-organica.html'>Lei Orgânica</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/legislacao/id/1003/?lei-paulo-gustavo.html'>Lei Paulo Gustavo </a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/legislacao/id/11/?portaria.html'>Portaria</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/legislacao/id/1004/?tabela-de-aprovados-do-r-5100-do-governo-federal.html'>TABELA DE APROVADOS DO R$ 5.100 DO GOVERNO FEDERAL</a></li></ul></div><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://encantado.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html'>Diário Oficial</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://encantado.multi24h.com.br/multi24/sistemas/transparencia/?entidade=1&secao=dinamico&id=18093' target='_blank'>Parcerias Volutárias</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li><li role="menuitem"><a href='https://portal.tce.rs.gov.br/aplicprod/f?p=50500:4:::NO::F50500_CD_ORGAO:46700&cs=1sozNb2JU0gsn705Aadq9ZV2l9Fk' target='_blank'>Licitações</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://encantado.rs.gov.br/uploads/config/16025/brasao.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51)  3751-0100</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda a Sexta-Feira:</strong> 8h às 11h30 e das 13h às 17h<br />
+</p></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://encantado.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-frequentes.html'>Perguntas Frequentes</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/ordem-servico/bcid/39/?e-sic---pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/pagina/id/1020/?plano-habitacional-de-encantado.html'>Plano Habitacional de Encantado</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://encantado.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Turismo</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://encantado.rs.gov.br/turismo/id/5/?pontos-turisticos.html'>Pontos Turísticos</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/turismo/id/1006/?hospedagem.html'>Hospedagem</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/turismo/id/1007/?gastronomia.html'>Gastronomia</a></li><li role="menuitem"><a href='https://encantado.rs.gov.br/turismo/id/1005/?acesse-visite-encantado.html'>Acesse Visite Encantado</a></li></ul></li></ul></nav>
+      </div>
+      <!-- /Top Nav -->
+    </div>
+  </header>
+  <!-- /Top Nav -->
+</div>
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a> <!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350" style="
+            width: 100% !important;
+            height: auto;
+            aspect-ratio: 96 / 25;">
+                    <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://encantado.rs.gov.br/uploads/banner/16103/original_banner_CRISTO_PRINCIPAL.jpg');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                        <div class="container" style="height: 100%;">
+                        <div class="box fullbox" style="height: 100%">
+                            <p class="similar-h3 subTitle">Cristo Protetor</p>
+                                                        <p>A maior estátua de Cristo do mundo. </p>
+                                                        <p><a href="/pagina/id/1003/?cristo-protetor.html" target='_self' class="btn btn-small btn-primary">Confira</a><br />
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://encantado.rs.gov.br/uploads/banner/16106/original_nossa_histria.jpg');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                        <div class="container" style="height: 100%;">
+                        <div class="box fullbox" style="height: 100%">
+                            <p class="similar-h3 subTitle">Nossa História </p>
+                                                        <p>Conheça fatos marcantes da trajetória do nosso município.</p>
+                                                        <p><a href="/pagina/id/2/?historia-do-municipio.html" target='_self' class="btn btn-small btn-primary">Confira</a><br />
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: true, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: true        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img src="https://encantado.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+ 
+
+            <div class="p0 styleContrasteGray">
+                <div class="container">
+                    <hr class="half-margins invisible">
+                    <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://visiteencantado.com.br/" target='_blank'>
+                                <p class="similar-h4 mb10">Acesse Turismo Encantado</p>
+                        <img src="https://encantado.rs.gov.br/uploads/banner/44701/original_TURISMO.png" class="img-responsive" alt="Acesse Turismo Encantado" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://nfg.sefaz.rs.gov.br/site/index.aspx" target='_blank'>
+                                <p class="similar-h4 mb10">Nota Fiscal Gaúcha</p>
+                        <img src="https://encantado.rs.gov.br/uploads/banner/10/original_NOTAGAUCHA.png" class="img-responsive" alt="Nota Fiscal Gaúcha" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://www.aplvaledotaquari.com.br/" target='_blank'>
+                                <p class="similar-h4 mb10">Arranjo Produtivo Local</p>
+                        <img src="https://encantado.rs.gov.br/uploads/banner/16113/original_APL.png" class="img-responsive" alt="Arranjo Produtivo Local" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2fEmissorNacional%2fDPS%2fNFSe%3fidr%3deXgyaFBpekhKdjlRbkVpYUl5WXNsZz090&idr=eXgyaFBpekhKdjlRbkVpYUl5WXNsZz090" target='_blank'>
+                                <p class="similar-h4 mb10">NOTA FISCAL ELETRÔNICA</p>
+                        <img src="https://encantado.rs.gov.br/uploads/banner/45120/original_nfeletro.png" class="img-responsive" alt="NOTA FISCAL ELETRÔNICA" role="presentation" />
+                </a>
+            </div>
+    </div>                    <hr class="half-margins">
+                </div>
+            </div>
+            <div class="pb40 pt40">
+    <div class="container">
+        <!-- NOTÍCIAS -->
+        <div class="overflow-hidden col-md-12col-md-12 mobile-nopadding"><section id="box-noticias" class="nopadding">
+    <div class="container">
+        <header class="text-center">
+            <h2>Últimas notícias</h2>
+            <div class="divider half-margins onepage center"><!-- lines divider --></div>
+        </header>
+                <div class="row">
+            <div class="col-md-12">
+                <div class="row mb25 appear-animation" data-animation="bounceIn">
+                    <div class="col-md-12">
+                        <div class="col-md-6" style="
+							display: flex;
+							justify-content: center;
+						">
+                            <img class="img-responsive" src="https://encantado.rs.gov.br/uploads/noticia/45301/media_BRASO_SITE.png" alt="Imagem ilustrativa da notícia: Prefeitura de Encantado abre período de inscrições para matrículas de 2027." style="max-height: 500px;"  role="presentation">
+                        </div>
+                        <div class="col-md-6">
+                                                        <small>04/11/2026</small>
+                            <h3>Prefeitura de Encantado abre período de inscrições para matrículas de 2027.</h3>
+                            <p>As inscrições encerram no dia 16 de novembro de 2026.</p>
+                            <p><a href="https://encantado.rs.gov.br/noticia/visualizar/id/6941/?prefeitura-de-encantado-abre-periodo-de-inscricoes-para-matriculas-de-2027.html" class="btn btn-default btn-sm" role="button">Ler mais</a></p>
+                        </div>
+                    </div>
+                </div>
+                                <hr class="clearfix mb15 mt15 visible-xs-block visible-sm-block">
+                <div class="row">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInLeftBig" data-animation-delay="500">
+                        <img class="img-responsive" src="https://encantado.rs.gov.br/uploads/noticia/45295/media_Crianas_site.png" alt="Imagem ilustrativa da notícia: Cardápio Escolar - Novembro de 2026." role="presentation">
+                                                <small>03/11/2026</small><br/>
+                        <a href="https://encantado.rs.gov.br/noticia/visualizar/id/6940/?cardapio-escolar---novembro-de-2026.html" class="h4">Cardápio Escolar - Novembro de 2026.</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInDownBig" data-animation-delay="0">
+                        <img class="img-responsive" src="https://encantado.rs.gov.br/uploads/noticia/45289/media_BRASO_SITE.png" alt="Imagem ilustrativa da notícia: Edital de Chamamento Público de Seleção Nº 08/2026" role="presentation">
+                                                <small>08/10/2026</small><br/>
+                        <a href="https://encantado.rs.gov.br/noticia/visualizar/id/6939/?edital-de-chamamento-publico-de-selecao-no-082026.html" class="h4">Edital de Chamamento Público de Seleção Nº 08/2026</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="clearfix visible-sm-block"></div>
+                    <hr class="clearfix mb15 mt15 visible-sm-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInUpBig" data-animation-delay="0">
+                        <img class="img-responsive" src="https://encantado.rs.gov.br/uploads/noticia/45286/media_Subida_da_Lagoa_site.png" alt="Imagem ilustrativa da notícia: Subida da Lagoa tem bloqueios de segunda à quinta-feira." role="presentation">
+                                                <small>06/10/2026</small><br/>
+                        <a href="https://encantado.rs.gov.br/noticia/visualizar/id/6938/?subida-da-lagoa-tem-bloqueios-de-segunda-a-quinta-feira.html" class="h4">Subida da Lagoa tem bloqueios de segunda à quinta-feira.</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInRightBig" data-animation-delay="500">
+                        <img class="img-responsive" src="https://encantado.rs.gov.br/uploads/noticia/45285/media_Setembro_NFG.png" alt="Imagem ilustrativa da notícia: Ganhadores do NFG - mês de Setembro." role="presentation">
+                                                <small>05/10/2026</small><br/>
+                        <a href="https://encantado.rs.gov.br/noticia/visualizar/id/6937/?ganhadores-do-nfg---mes-de-setembro.html" class="h4">Ganhadores do NFG - mês de Setembro.</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="clearfix visible-sm-block"></div>
+                    <hr class="clearfix mb15 mt15 visible-sm-block">
+                                    </div>
+                                <div class="row text-center ">
+                    <a class="btn btn-primary" href="https://encantado.rs.gov.br/noticia">Ver todas as Notícias</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section></div>
+        <!-- /NOTÍCIAS -->
+    </div>
+</div>
+<div class="pb40 pt40 styleBackgroundLight">
+    <div class="container">
+        <div class="row">
+            <!-- NOTÍCIAS -->
+            <div class="overflow-hidden col-md-12 mobile-nopadding"><div id="acessoRapidoHorizontal" class="row">
+    <div class="col-md-12"><h2 class="similar-h4 title"><strong>Acesso Rápido</strong></h2></div>
+    <div class="owl-carousel banner-servicos" data-plugin-options='{"navigation": true, "pagination": false,"items": 1}'>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Protocolo (1DOC)" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://encantado.1doc.com.br/b.php?pg=o/wp','Protocolo (1DOC)')">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-laptop'></i>                        <span class="block">Protocolo (1DOC)</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Ouvidoria (1DOC)" href="https://encantado.1doc.com.br/b.php?pg=wp/wp&itd=6" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-volume-off'></i>                        <span class="block">Ouvidoria (1DOC)</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Recolhimento de Lixo" href="https://coleta.encantado.rs.gov.br/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-trash'></i>                        <span class="block">Recolhimento de Lixo</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="IPTU" href="http://encantado.multi24h.com.br/multi24/sistemas/portal/?atalho=consulta-debitos-deslogado&base=1" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-file-text'></i>                        <span class="block">IPTU</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Consulta Alvará" href="http://encantado.multi24h.com.br/multi24/sistemas/portal/?&atalho=consulta-issqn" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-check'></i>                        <span class="block">Consulta Alvará</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Nota Fiscal Eletrônica " href="http://encantado.nfse-tecnos.com.br/default.aspx" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-file'></i>                        <span class="block">Nota Fiscal Eletrônica </span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Prefeitura 24H" href="http://encantado.multi24h.com.br/multi24/sistemas/portal/#" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-desktop'></i>                        <span class="block">Prefeitura 24H</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Sine / Junta Militar " href="http://wa.me/+555137510104" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-industry'></i>                        <span class="block">Sine / Junta Militar </span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Cardápio Escolar" href="https://encantado.rs.gov.br/noticia/visualizar/id/6940/?cardapio-escolar---novembro-de-2026.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-cutlery'></i>                        <span class="block">Cardápio Escolar</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Licitações" href="http://encantado.multi24h.com.br/multi24/sistemas/transparencia/?secao=dinamico&id=9684" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-gavel'></i>                        <span class="block">Licitações</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Lista de espera educação infantil" href="https://encantado.rs.gov.br/uploads/midia/45311/Lista_de_Espera___Novembro_2026.pdf" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-child'></i>                        <span class="block">Lista de espera educação infantil</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Critérios de seleção de Famílias" href="https://docs.google.com/document/d/1jGDFGf0r8frAzvOKGk9ZUaAXYaoLn3XHHX5-JkX8bWk/edit?usp=sharing" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-home'></i>                        <span class="block">Critérios de seleção de Famílias</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Medicamentos Disponíveis Farmácia Municipal" href="https://encantado.rs.gov.br/noticia/visualizar/id/6914/?medicamentos-disponiveis-farmacia-municipal.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Medicamentos Disponíveis Farmácia Municipal</span>
+                    </div>
+                </a>
+            </div>
+            </div>
+        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+            <!-- /NOTÍCIAS -->
+        </div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+<div class="pt60 pb60">
+    <div class="container">
+      <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+            <div class="col-md-8 mobile-nopadding"><!-- ATRAÇÕES TURÍSTICAS -->
+<h2 class="similar-h4 title"><strong>ATRA&Ccedil;&Otilde;ES TUR&Iacute;STICAS</strong></h2>
+<div class="tabs tab-tur widget featured-box-minimal nomargin-top">
+   <!-- tabs -->
+   <ul class="nav nav-tabs nav-justified">
+           <li class="active">
+         <a href="#tab_0" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-star icone-turismo"></i> Ponte de Ferro         </a>
+      </li>
+            <li class="">
+         <a href="#tab_1" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-star icone-turismo"></i> Santuário Nossa Senhora de Fátima         </a>
+      </li>
+            <li class="">
+         <a href="#tab_2" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-star icone-turismo"></i> Casa de Cultura          </a>
+      </li>
+         </ul>
+
+
+   <!-- tabs content -->
+   <div class="tab-content mb15">
+           <div id="tab_0" class="tab-pane active">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://encantado.rs.gov.br/uploads/pontoturistico/40578/maior_ponte_de_ferro.jpg" alt="Ponte de Ferro" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Ponte de Ferro" href="https://encantado.rs.gov.br/turismo/visualizar/id/1020/?ponte-de-ferro.html">
+               Ponte de Ferro             </a>
+             </h3>
+           <p class="mb0">A ponte de ferro de Linha São Roque, construída em 1928 e inaugurada em 1929. Durante muito tempo, era o único acesso entre as regiões Planalto Central e Metropolitana. </p>
+           <p class="mb0"><a href="https://encantado.rs.gov.br/turismo/visualizar/id/1020" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Ponte de Ferro				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+            <div id="tab_1" class="tab-pane ">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://encantado.rs.gov.br/uploads/pontoturistico/40505/maior_Encantado___12.jpg" alt="Santuário Nossa Senhora de Fátima" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Santuário Nossa Senhora de Fátima" href="https://encantado.rs.gov.br/turismo/visualizar/id/1010/?santuario-nossa-senhora-de-fatima.html">
+               Santuário Nossa Senhora de Fátima             </a>
+             </h3>
+           <p class="mb0">O santuário foi construído no ano de 1953 em estilo original, e tornou-se um ponto de devoção para fiéis de Nossa Senhora de Fátima.</p>
+           <p class="mb0"><a href="https://encantado.rs.gov.br/turismo/visualizar/id/1010" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Santuário Nossa Senhora de Fátima				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+            <div id="tab_2" class="tab-pane ">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://encantado.rs.gov.br/uploads/pontoturistico/16114/maior_casadecultura4.jpg" alt="Casa de Cultura " />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Casa de Cultura " href="https://encantado.rs.gov.br/turismo/visualizar/id/1001/?casa-de-cultura.html">
+               Casa de Cultura              </a>
+             </h3>
+           <p class="mb0">Na área central, encontra-se a Casa de Cultura Dr. Pedro José Lahude, que abriga o Museu Municipal resgatando a história de 106 anos do Município.</p>
+           <p class="mb0"><a href="https://encantado.rs.gov.br/turismo/visualizar/id/1001" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Casa de Cultura 				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+         </div>
+
+   <a title="Atrações completas" href="https://encantado.rs.gov.br/turismo" class="btn btn-default btn-content">
+      <i class="fa fa-map-o"></i> Mais Atrações
+	  <span class="sr-only">
+		Turísticas
+	  </span>
+    </a>
+</div></div>
+            <div class="col-md-4 mt4-xs mobile-nopadding"><!-- EVENTOS -->
+<div class="widget featured-box-minimal">
+    <div class="row mb0">
+		<div class="pr15 pl15 mrauto mlauto">
+			<h2 class="similar-h4 title"><strong>&Uacute;LTIMO EVENTO</strong></h2>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<a href="https://encantado.rs.gov.br/evento/visualizar/id/1256/?halloween.html">
+			<p class="lead">Halloween</p>
+		</a>
+		<p class="nomargin">Festa temática de Halloween com programação especial no Clube Comercial.</p>
+	</div>
+
+	<div class="col-md-12 mb15">
+	    		<strong>Local:</strong> Clube Comercial<br />
+						<strong>In&iacute;cio:</strong> 31/10/2026<br />
+			</div>
+
+	<a href="https://encantado.rs.gov.br/evento/?agenda-de-eventos.html" class="btn btn-default btn-content">
+	    <i class="fa fa-calendar"></i> Agenda completa
+    </a>
+</div>
+<!-- /EVENTOS --></div>
+      			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+    </div>
+</div>
+
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                
+        <div class="col-md-6 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://encantado.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="1002">Consulta Pública</option>
+                                                        <option value="103">Convite</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="109">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://encantado.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="202">Processo Seletivo</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://encantado.rs.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="5">Decretos</option>
+                                                        <option value="1002">Editais</option>
+                                                        <option value="1">Legislação</option>
+                                                        <option value="1001">Lei Aldir Blanc</option>
+                                                        <option value="6">Lei Orgânica</option>
+                                                        <option value="1003">Lei Paulo Gustavo </option>
+                                                        <option value="11">Portaria</option>
+                                                        <option value="1004">TABELA DE APROVADOS DO R$ 5.100 DO GOVERNO FEDERAL</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-6 mobile-nopadding mobile-margin-top25"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/14211/thumb_prefeito.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Prefeito: Jonas Calvi" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://encantado.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Jonas Calvi</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3751-0100                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8h às 11h30min<br />
+13h às 17h<br />
+De Segunda a Sexta-feira.<br />
+<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/secretaria/id/1004/?secretaria-da-gestao-financeira-e-orcamentaria.html">
+                       Secretaria da Gestão Financeira e Orçamentária                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/40845/thumb_klaus.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Klaus Werner Schnack" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria da Gestão Financeira e Orçamentária " href="https://encantado.rs.gov.br/secretaria/id/1004/?secretaria-da-gestao-financeira-e-orcamentaria.html">
+                            <span class="similar-h4"><strong>Klaus Werner Schnack</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3751-0105                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8h às 11h30min<br />
+13h às 17h<br />
+De Segunda a Sexta-Feira.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/secretaria/id/1006/?secretaria-de-agricultura-e-obras-publicas.html">
+                       Secretaria de Agricultura e Obras Públicas                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/45138/thumb_Baixinho_Vice.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Agostinho Orsolin" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Agricultura e Obras Públicas" href="https://encantado.rs.gov.br/secretaria/id/1006/?secretaria-de-agricultura-e-obras-publicas.html">
+                            <span class="similar-h4"><strong>Agostinho Orsolin</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  3751-0123                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8h às 11h30min<br />
+13h às 17h<br />
+De Segunda a Sexta-Feira.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/secretaria/id/1010/?secretaria-de-desenvolvimento-social-e-habitacao.html">
+                       Secretaria de Desenvolvimento Social e Habitação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/44027/thumb_jaque.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Jaqueline Taborda " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria de Desenvolvimento Social e Habitação" href="https://encantado.rs.gov.br/secretaria/id/1010/?secretaria-de-desenvolvimento-social-e-habitacao.html">
+                            <span class="similar-h4"><strong>Jaqueline Taborda </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3751-0100                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8h às 11h30min e das 13h às 17h, de segunda à sexta-feira                         </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/secretaria/id/1007/?secretaria-da-governanca.html">
+                       Secretaria da Governança                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/44744/thumb_sabrinajpg.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Sabrina Dadalt Guedes" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria da Governança" href="https://encantado.rs.gov.br/secretaria/id/1007/?secretaria-da-governanca.html">
+                            <span class="similar-h4"><strong>Sabrina Dadalt Guedes</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3751-0103                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8h às 11h30min<br />
+13h às 17h<br />
+De Segunda a Sexta-Feira<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/secretaria/id/1012/?defesa-civil.html">
+                       Defesa Civil                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/44742/thumb_loivo.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Coordenador: Loivo Castoldi Dezordi" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Coordenador</small>
+                        <div class="row">
+                          <a title="Defesa Civil" href="https://encantado.rs.gov.br/secretaria/id/1012/?defesa-civil.html">
+                            <span class="similar-h4"><strong>Loivo Castoldi Dezordi</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 98017-8016                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda à sexta-feira, das 08h às 11h30min e das 13h às 17h. <br />
+<br />
+Plantão de monitoramento em casos de urgência climática, 24h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/secretaria/id/1002/?secretaria-de-planejamento-e-desenvolvimento-economico.html">
+                       Secretaria de Planejamento e Desenvolvimento Econômico                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/44747/thumb_cae.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário:  José Caetano Turatti Ost" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Planejamento e Desenvolvimento Econômico" href="https://encantado.rs.gov.br/secretaria/id/1002/?secretaria-de-planejamento-e-desenvolvimento-economico.html">
+                            <span class="similar-h4"><strong> José Caetano Turatti Ost</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  3751-0102                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8h às 11h30min<br />
+13h às 17h<br />
+De Segunda a Sexta-Feira.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/secretaria/id/1005/?secretaria-da-saude.html">
+                       Secretaria da Saúde                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/16110/thumb_karol.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Karoline Crippa" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria da Saúde " href="https://encantado.rs.gov.br/secretaria/id/1005/?secretaria-da-saude.html">
+                            <span class="similar-h4"><strong>Karoline Crippa</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3751-0111                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8h às 11h30min<br />
+13h às 17h<br />
+De Segunda a Sexta-Feira.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/secretaria/id/1003/?secretaria-de-educacao-e-inovacao.html">
+                       Secretaria de Educação e Inovação                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/44219/thumb_ste.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Stéfanie Casagrande" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria de Educação e Inovação " href="https://encantado.rs.gov.br/secretaria/id/1003/?secretaria-de-educacao-e-inovacao.html">
+                            <span class="similar-h4"><strong>Stéfanie Casagrande</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3751-0109                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8h às 11h30min<br />
+13h às 17h<br />
+De Segunda a Sexta-Feira.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/secretaria/id/1008/?secretaria-de-turismo-cultura-e-esporte.html">
+                       Secretaria de Turismo, Cultura e Esporte                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/44220/thumb_karina.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Karina Mezzomo" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria de Turismo, Cultura e Esporte " href="https://encantado.rs.gov.br/secretaria/id/1008/?secretaria-de-turismo-cultura-e-esporte.html">
+                            <span class="similar-h4"><strong>Karina Mezzomo</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3751-0147                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8h às 11h30min <br />
+13h às 17h<br />
+De Segunda a Sexta-Feira.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://encantado.rs.gov.br/secretaria/id/1013/?gabinete-do-vice-prefeito.html">
+                       Gabinete do Vice-Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://encantado.rs.gov.br/uploads/departamento/44751/thumb_baixinho.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Vice-Prefeito: Agostinho Orsolin " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Vice-Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Vice-Prefeito" href="https://encantado.rs.gov.br/secretaria/id/1013/?gabinete-do-vice-prefeito.html">
+                            <span class="similar-h4"><strong>Agostinho Orsolin </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3751-0100                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> De segunda à sexta-feira, das 08h às 11h30min e das 13h às 17h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-29.236740, -51.872422],
+                15
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-29.236740, -51.872422],
+                        {alt:'Prefeitura Municipal de Encantado'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de Encantado</strong></p>                <p style="margin: 5px 0px;">Rua Monsenhor Scalabrini, 1047 / Centro Administrativo&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Encantado / RS</p><p style="margin: 5px 0px;">95960-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer01" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <div class="logo_footer dark col-md-3">
+                                <img alt="Brasão da prefeitura" src="https://encantado.rs.gov.br/uploads/config/16025/brasao.png" height="130" class="pull-left logo appear-animation opaco08" data-animation="bounceIn"/>
+                                <p class="block">
+                    <br />Rua Monsenhor Scalabrini, 1047, Centro<br />
+                    CEP: 95960-000<br /><br />                </p>
+                                <p class="block">
+                                        (51)  3751-0100<br/>
+                                        gabinete@encantado-rs.com.br<br />                </p>
+                                <p class="block">
+                    <strong>Hor&aacute;rios de Atendimento:</strong><br />
+                    <strong>Segunda a Sexta-Feira:</strong> 8h às 11h30 e das 13h às 17h<br />
+                </p>
+                                <p class="block">
+                    <a href="https://encantado.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/p/Prefeitura-de-Encantado-61568748990703/" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://twitter.com/pref_encantado" target="_blank" class="social">
+						<i class="fa fa-twitter">
+							<span class="sr-only">Twitter/X da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://instagram.com/prefeituraencantado" target="_blank" class="social">
+						<i class="fa fa-instagram">
+							<span class="sr-only">Instagram da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://www.youtube.com/channel/UCukxG4lq--Pm3VmYGc2Jozg" target="_blank" class="social">
+						<i class="fa fa-youtube-square">
+							<span class="sr-only">Youtube da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://encantado.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+                </p>
+            </div>
+
+            <div class="spaced col-md-9 col-sm-9 hidden-sm hidden-xs">
+                            <div class="row">
+                                    <div class="col-md-3">
+                        <p class="similar-h4 mb15">Licita&ccedil;&otilde;es</p>
+						<ul class="list-unstyled nobordered">
+												    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/licitacao/id/110/?chamamento-publico.html">
+						            <i class="fa fa-angle-right"></i>Chamamento Público					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/licitacao/id/1002/?consulta-publica.html">
+						            <i class="fa fa-angle-right"></i>Consulta Pública					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/licitacao/id/106/?leilao.html">
+						            <i class="fa fa-angle-right"></i>Leilão					            </a>
+				            </li>
+					    					    </ul>
+				    </div>
+										<div class="col-md-3">
+					    <p class="similar-h4 mb15">Outras &Aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a href="https://encantado.rs.gov.br/transparencia/?transparencia.html" class="block">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://encantado.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://encantado.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://encantado.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Notícias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://encantado.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://encantado.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://encantado.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+                                        <div class="col-md-6">
+                        <p class="similar-h4 mb15">Secretarias e &Oacute;rg&atilde;os</p>
+                        <ul class="list-unstyled nobordered">
+                            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/gabinete-do-prefeito/?gabinete-do-prefeito.html">
+						            <i class="fa fa-angle-right"></i> Gabinete do Prefeito					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/secretaria/id/1012/?defesa-civil.html">
+						            <i class="fa fa-angle-right"></i> Defesa Civil					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/secretaria/id/1013/?gabinete-do-vice-prefeito.html">
+						            <i class="fa fa-angle-right"></i> Gabinete do Vice-Prefeito					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/secretaria/id/1004/?secretaria-da-gestao-financeira-e-orcamentaria.html">
+						            <i class="fa fa-angle-right"></i> Secretaria da Gestão Financeira e Orçamentária 					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/secretaria/id/1007/?secretaria-da-governanca.html">
+						            <i class="fa fa-angle-right"></i> Secretaria da Governança					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/secretaria/id/1005/?secretaria-da-saude.html">
+						            <i class="fa fa-angle-right"></i> Secretaria da Saúde 					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/secretaria/id/1006/?secretaria-de-agricultura-e-obras-publicas.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Agricultura e Obras Públicas					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/secretaria/id/1010/?secretaria-de-desenvolvimento-social-e-habitacao.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Desenvolvimento Social e Habitação					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/secretaria/id/1003/?secretaria-de-educacao-e-inovacao.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Educação e Inovação 					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/secretaria/id/1002/?secretaria-de-planejamento-e-desenvolvimento-economico.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Planejamento e Desenvolvimento Econômico					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/secretaria/id/1008/?secretaria-de-turismo-cultura-e-esporte.html">
+						            <i class="fa fa-angle-right"></i> Secretaria de Turismo, Cultura e Esporte 					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://encantado.rs.gov.br/conselho/id/1009/?comdica.html">
+						            <i class="fa fa-angle-right"></i> COMDICA					            </a>
+				            </li>
+				            			            </ul>
+		            </div>
+		            	            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+        <div class="container text-center fsize12 post-copyright" style="
+            display: flex;
+			flex-direction: column;
+            justify-content: center">
+            <p style="margin:0" id="footer.copyrightTxt">
+				Este site utiliza a ferramenta
+                <a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+					<img src="https://encantado.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+					<span class="sr-only">iPrefeituras</span>
+				</a>.
+			</p>
+			<p style="margin:0" id="footer.copyrightTxt3">
+                Um produto
+                <strong>
+					<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+				</strong>.
+            </p>
+        </div>
+    </div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://encantado.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://encantado.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://encantado.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://encantado.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://encantado.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://encantado.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://encantado.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://encantado.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610ea36aa73cb59',t:'MTc5NTc4MDIyMg=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610ea36aa73cb59',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

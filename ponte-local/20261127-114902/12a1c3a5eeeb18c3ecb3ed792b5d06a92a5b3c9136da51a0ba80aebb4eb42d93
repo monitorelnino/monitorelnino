@@ -1,0 +1,2256 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de Teutônia</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Teutônia.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de Teutônia' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://teutonia.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://teutonia.rs.gov.br/uploads/config/23606/prefeitura_teutonia.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='160'>
+            <meta property='og:image:height' content='221'>
+            <meta property='og:site_name' content='teutonia.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Teutônia.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de Teutônia'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Teutônia.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://teutonia.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://teutonia.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://teutonia.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://teutonia.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+<!-- ESTILOS CSS -->
+<link href="https://teutonia.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://teutonia.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.10" rel="stylesheet" type="text/css" />
+
+    <link id="layoutColor" href="https://teutonia.rs.gov.br/site/custom/default/css/color/darkgreen.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://teutonia.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://teutonia.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://teutonia.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://teutonia.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://teutonia.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://teutonia.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-9B0V6T9XNK"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-9B0V6T9XNK');
+    });
+</script>
+        <link rel="shortcut icon" href="https://teutonia.rs.gov.br/uploads/config/19568/Logo_Teutonia_1.ico" />    
+	    <!-- Especifico -->
+    <a href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/transparencia/" target="_blank" target="_blank" class="botao-flutuante">
+  Portal da Transparência
+    </a>
+
+<style>
+#topNav nav > ul.nav>li > a {
+    padding: 15px 25px!important;
+}
+#selo{position: fixed;right: 0px;bottom: 80px;z-index: 99;width: 117px;padding: 0 0 5px 5px;left: unset;}
+
+.max-height100 {
+    max-height: 80px !important;
+}
+
+        .botao-flutuante {
+            position: fixed;
+            bottom: 50px;
+            right: 15px;
+            background-color: #4060b8!important;
+            color: #EAF1DC;
+            padding: 5px 10px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+             z-index: 9999;
+
+        }
+        
+.botao-flutuante:hover {
+    background-color: #edf2ff!important; /* Cor ao passar o mouse */
+}
+
+</style>    </head>
+	    <body class="smoothscroll wide home5_teutonia2" data-background=""><a href="https://teutonia.rs.gov.br/cdn-cgi/content?id=G25w6lZNElCZS0SBInu.oyjPhlTJb_V5OBAvhuNImnI-1795780189.9242613-1.2.1.1-jUHBDW7i8yeX1uRTgU3JJjNOgh39i1uYOVjxa01lyg_yps9JAAIxQpC8zx9YVMuo" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <!-- Cabeçalho -->
+<!--===================================================-->
+<div id="header" class='header08'>
+  <header id="topBar" class="">
+    <div class="container">
+      <!-- Logo -->
+      <div class="col-md-4 col-sm-7 nopadding-left">
+        <!-- Data -->
+                <p class="mb10 mt5"><small class="pl15">Teutônia, 27 de novembro de 2026</small></p>
+        <!-- Fim Data -->
+                    <h1 class="client-name nomargin lineh30">
+            <a  class="logo" href="https://teutonia.rs.gov.br">
+                <img class="max-height100" src="https://teutonia.rs.gov.br/uploads/config/28054/Logo_Teutonia_2.png" alt="Logo da Prefeitura"/>            </a>
+            </h1>
+                  </div>
+      <!-- / Logo -->
+
+            <div class="col-md-8 col-sm-5 hidden-xs border-b-2-fff radius-right-20 styleBackgroundLight">
+        <div class="row">
+          <div class="col-md-6 alterate">
+            <div class="box-search-and-weather radius4 m0" title="Temperatura" aria-label="Temperatura" tabindex="0">
+              <!-- Previsão do tempo-->
+                            <div class="weather previsao-topo hidden">
+                <div style="flex:2;"></div>
+                <div class="weather-today">
+                  <i class="m0 fsize32 wi wi-thermometer"></i>
+                </div>
+                <div class="weather-week">
+                  <p class="fontw400 mb0">
+                    <small aria-label="Mínima de">MIN</small> <span class='min-temp'></span>°C
+                  </p>
+				  <span class="sr-only">e</span>
+                  <p class="fontw400 mb0">
+                    <small aria-label="Máxima de">MAX</small> <span class='max-temp'></span>°C
+                  </p>
+                </div>
+              </div>
+                            <!-- /Previsão do tempo-->
+              <!-- Busca -->
+              <div class="search-site" role='search'>
+                <form id="pesquisa" class="search nopadding" method="get" action="https://teutonia.rs.gov.br/pesquisa">
+			  		<label for="searchbar-desktop" class="sr-only">Pesquisar no site:</label>
+                  <input title="Procurar no site" id="searchbar-desktop" type="text" class="form-control nomargin" name="q" value="" placeholder="Procurar no site">
+                  <button type="submit" class="fa fa-search search-focus styleColor" title="Pesquisar" aria-label="Pesquisar"></button>
+                </form>
+              </div>
+              <!-- /Busca -->
+            </div>
+          </div>
+
+                        <div class="col-md-6 pt15 hidden-sm">
+                <div class="row">
+                  <div class="owl-carousel" data-plugin-options='{"items":1,"pagination": false, "autoPlay": true}'>
+                                                  <div class="item">
+                                                              <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="/ouvidoria" target="_self" onclick="">
+        <i class='fa fa-bullhorn styleColor'></i>                                <h2 class="styleColor">Ouvidoria</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/portal/?atalho=emitir-certidoes" target="_blank" onclick="">
+        <i class='fa fa-search-minus styleColor'></i>                                <h2 class="styleColor">Consulta de Negativas</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                            <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/portal/?atalho=consulta-debitos-deslogado" target="_self" onclick="">
+        <i class='fa fa-list-alt styleColor'></i>                                <h2 class="styleColor">Consulta de Débitos</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://teutonia.rs.gov.br/pagina/id/1004/?formularios.html" target="_self" onclick="">
+        <i class='fa fa-desktop styleColor'></i>                                <h2 class="styleColor">Portal do Servidor</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                          </div>
+                                                        <div class="item">
+                                                              <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/portal/" target="_blank" onclick="">
+        <i class='fa fa-user styleColor'></i>                                <h2 class="styleColor">Atendimento ao Cidadão</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/transparencia/?entidade=1&secao=licitacoes&sub=info_licitacao" target="_blank" onclick="">
+        <i class='fa fa-folder-open styleColor'></i>                                <h2 class="styleColor">Licitações e Contratos</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                          </div>
+                                              </div>
+                </div>
+              </div>
+                      </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <!--===================================================-->
+  <header id="topNav" class="">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get"
+            action="https://teutonia.rs.gov.br/pesquisa">
+		<label for="searchbar-mobile" class="sr-only">Pesquisar no site:</label>
+        <input title="termo de pesquisa" id="searchbar-mobile" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar" style="min-width:24px;min-height:24px;margin-top: -5px;"></button>
+      </form>
+      <!-- Menu Mobile -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse"> <i class="fa fa-bars"></i></button>
+      <!-- Menu -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li><a href='https://teutonia.rs.gov.br'>Início</a></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/3/?apresentacao.html'>Apresentação</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/galeria-prefeitos/bcid/55/?galeria-de-prefeitos.html'>Galeria de Prefeitos</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/servidores/bcid/56/?servidores.html'>Servidores</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Atrações Turísticas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/turismo/id/5/?pontos-turisticos.html'>Pontos Turísticos</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/turismo/id/1/?bares-e-restaurantes.html'>Bares e Restaurantes</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/turismo/id/4/?hoteis.html'>Hoteis</a></li></ul></div><div class="col-md-3"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/servico/id/1/?servicos-ao-empreendedor.html'>Serviços ao Empreendedor</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://teutonia.rs.gov.br/uploads/config/23606/prefeitura_teutonia.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51)  3762-7700</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />Segunda-feira a sexta-feira<br />
+07h30 às 11h30 | 13h00 às 17h00</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-3"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1001/?administracao.html'>Administração</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1002/?agricultura-e-meio-ambiente.html'>Agricultura e Meio Ambiente</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1003/?assistencia-social-e-habitacao.html'>Assistência Social e Habitação</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1006/?desenvolvimento-economico-inovacao-e-turismo.html'>Desenvolvimento Econômico, Inovação e Turismo</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1004/?educacao.html'>Educação</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1005/?fazenda.html'>Fazenda</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1007/?juventude-cultura-esporte-e-lazer.html'>Juventude, Cultura, Esporte e Lazer</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1008/?obras-viacao-e-transportes.html'>Obras, Viação e Transportes</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1009/?planejamento-mobilidade-urbana-e-seguranca-publica.html'>Planejamento, Mobilidade Urbana e Segurança Pública</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1011/?procuradoria-geral.html'>Procuradoria Geral</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/secretaria/id/1010/?saude.html'>Saúde</a></li></ul></div><div class="col-md-3"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1038/?conselho-de-alimentacao-escolar-de-teutonia-cae.html'>Conselho de Alimentação Escolar de Teutônia - CAE</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1027/?conselho-municipal-de-acompanhamento-social-do-fundeb.html'>Conselho Municipal de Acompanhamento Social do FUNDEB</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1028/?conselho-municipal-de-agricultura-comat.html'>Conselho Municipal de Agricultura - COMAT</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1037/?conselho-municipal-de-assistencia-social-cmas.html'>Conselho Municipal de Assistência Social - CMAS</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1024/?conselho-municipal-de-defesa-civil.html'>Conselho Municipal de Defesa Civil</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1030/?conselho-municipal-de-defesa-dos-animais.html'>Conselho Municipal de Defesa dos Animais</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1015/?conselho-municipal-de-educacao-cme.html'>Conselho Municipal de Educação - CME</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1033/?conselho-municipal-de-habitacao-comuha.html'> Conselho Municipal de Habitação - COMUHA</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1022/?conselho-municipal-de-politica-cultural-cmpc.html'>Conselho Municipal de Política Cultural - CMPC</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1026/?conselho-municipal-de-saude-cms.html'>Conselho Municipal de Saúde - CMS</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1025/?conselho-municipal-de-transito-comtrante.html'>Conselho Municipal de Trânsito - COMTRANTE</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1035/?conselho-municipal-do-idoso-de-teutonia-comit.html'>Conselho Municipal do Idoso de Teutônia - COMIT</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1029/?conselho-municipal-do-meio-ambiente-commate.html'>Conselho Municipal do Meio Ambiente - COMMATE</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1036/?conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-comdica.html'>Conselho Municipal dos Direitos da Criança e do Adolescente - COMDICA</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1034/?conselho-municipal-dos-direitos-da-mulher-comdim.html'>Conselho Municipal dos Direitos da Mulher - COMDIM</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1031/?conselho-municipal-do-turismo-comtur.html'>Conselho Municipal do Turismo - COMTUR</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/conselho/id/1032/?conselho-tutelar.html'>Conselho Tutelar</a></li></ul></div><div class="col-md-3"><p class="menu-category">Outros Departamentos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/departamento/id/1019/?departamento-do-bem-estar-animal.html'>Departamento do Bem-estar Animal</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/departamento/id/1020/?lgpd-solicitacao-titular-de-dados.html'>LGPD - Solicitação Titular de Dados</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/departamento/id/1023/?sala-do-empreendedor.html'>Sala do Empreendedor</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/departamento/id/1021/?setor-de-engenharia.html'>Setor de Engenharia</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://teutonia.rs.gov.br/uploads/config/23606/prefeitura_teutonia.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51)  3762-7700</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />Segunda-feira a sexta-feira<br />
+07h30 às 11h30 | 13h00 às 17h00</p></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Utilidades</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1016/?abastecimento-de-agua.html'>Abastecimento de Água</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1038/?estacionamento-rotativo.html'>Estacionamento Rotativo</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1010/?itinerario-onibus-urbano.html'>Itinerário Ônibus Urbano</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1011/?itinerario-transporte-escolar.html'>Itinerário Transporte Escolar</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1053/?onibus-da-saude.html'>Ônibus da Saúde</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1012/?recolhimento-de-lixo.html'>Recolhimento de Lixo</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1013/?servico-de-taxi-em-teutonia.html'>Serviço de Táxi em Teutônia</a></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/concurso/id/1002/?editais-de-selecao.html'>Editais de Seleção</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/concurso/id/202/?processo-seletivo.html'>Processo Seletivo</a></li></ul></div><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://teutonia.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html'>Diário Oficial</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://teutonia.rs.gov.br/uploads/config/23606/prefeitura_teutonia.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51)  3762-7700</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />Segunda-feira a sexta-feira<br />
+07h30 às 11h30 | 13h00 às 17h00</p></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://teutonia.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-frequentes.html'>Perguntas Frequentes</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/ordem-servico/bcid/39/?e-sic-pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1033/?auxilio-cultural.html'>Auxílio Cultural</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1005/?lei-aldir-blanc.html'>Lei Aldir Blanc</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1067/?lei-paulo-gustavo.html'>Lei Paulo Gustavo</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1009/?lista-de-medicamentos.html'>Lista de Medicamentos</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1081/?coronavirus.html'>Coronavírus</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1104/?pnab-ciclo-1.html'>PNAB - CICLO 1</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1188/?pnab-ciclo-2-2026.html'>PNAB - CICLO 2 - 2026</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1107/?auxilio-reconstrucao.html'>Auxílio Reconstrução</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1175/?cadastro-cultural.html'>Cadastro Cultural</a></li></ul></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Dados Abertos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://teutonia.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://teutonia.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>SINE</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://teutonia.rs.gov.br/pagina/id/1197/?vagas-de-emprego.html'>Vagas de emprego</a></li></ul></li></ul></nav>
+      </div>
+    </div>
+  </header>
+  <!--===================================================-->
+  <!-- Fim Menu -->
+</div>
+<!--===================================================-->
+<!-- Fim Cabeçalho -->
+            <main id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a> <!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350" style="
+            width: 100% !important;
+            height: auto;
+            aspect-ratio: 96 / 25;">
+                    <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://teutonia.rs.gov.br/uploads/banner/28060/original_Site_para_link_na_bio_blogueiro_fotogrfico_em_Verde_e_branco__1920_x_500_px.png');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: false, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: false        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img src="https://teutonia.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+ 
+
+            <div class="p0 styleContrasteGray">
+                <div class="container">
+                    <hr class="half-margins invisible">
+                    <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/portal/#tab-consulta-debitos" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/29662/original_banner_conta_de_gua.png" class="img-responsive tituloOculto" alt="2ª via da conta de água" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://teutonia.rs.gov.br/pagina/id/1188/?pnab-ciclo-2-2026.html" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/29733/original_Banner_de_Site_para_Educao_Municipal.png" class="img-responsive tituloOculto" alt="PNAB - CICLO 12" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://teutoniavs.sislam.com.br/defaults/sistemas" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/29746/original_SISLAM.jpeg" class="img-responsive tituloOculto" alt="SISLAM" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://teutonia.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/28197/original_Dirio_Oficial.webp" class="img-responsive tituloOculto" alt="Diário Oficial" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://biblioteca.teutonia.rs.gov.br/" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/27125/original_009_banner_biblioteca_01.jpg" class="img-responsive tituloOculto" alt="Biblioteca Pública Municipal Professor Arno Sommer" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://teutonia.rs.gov.br/pagina/id/1030/?arboriza-teutonia.html" target='_self'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/25769/original_008_arboriza_teutonia.png" class="img-responsive tituloOculto" alt="Arboriza Teutônia" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/transparencia/?entidade=1&secao=licitacoes&sub=info_licitacao" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/28063/original_LICITAES.png" class="img-responsive tituloOculto" alt="Licitações e contratos" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://radardatransparencia.atricon.org.br" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/28120/original_radar_de_transaprencia_4.webp" class="img-responsive tituloOculto" alt="Radar da Transparência Pública" role="presentation" />
+                </a>
+            </div>
+    </div>                    <hr class="half-margins">
+                </div>
+            </div>
+            <div class="pb40 pt40">
+    <div class="container">
+        <!-- NOTÍCIAS -->
+        <div class="overflow-hidden col-md-12col-md-12 mobile-nopadding"><section id="box-noticias" class="nopadding">
+    <div class="container">
+        <header class="text-center">
+            <h2>Últimas notícias</h2>
+            <div class="divider half-margins onepage center"><!-- lines divider --></div>
+        </header>
+                <div class="row">
+            <div class="col-md-12">
+                <div class="row mb25 appear-animation" data-animation="bounceIn">
+                    <div class="col-md-12">
+                        <div class="col-md-6" style="
+							display: flex;
+							justify-content: center;
+						">
+                            <img class="img-responsive" src="https://teutonia.rs.gov.br/uploads/noticia/29777/media_LAYOUT_NOTICIAS_SITE_14.png" alt="Imagem ilustrativa da notícia: 1º Campeonato Municipal de Futevôlei de Teutônia consagra campeões" style="max-height: 500px;"  role="presentation">
+                        </div>
+                        <div class="col-md-6">
+                                                        <small>26/11/2026</small>
+                            <h3>1º Campeonato Municipal de Futevôlei de Teutônia consagra campeões</h3>
+                            <p>Competição reuniu 23 duplas em quatro categorias e movimentou as quadras do CT Kliks. Confira a classificação dos atletas que conquistaram os primeiros lugares em cada categoria.</p>
+                            <p><a href="https://teutonia.rs.gov.br/noticia/visualizar/id/3498/?1o-campeonato-municipal-de-futevolei-de-teutonia-consagra-campeoes.html" class="btn btn-default btn-sm" role="button">Ler mais</a></p>
+                        </div>
+                    </div>
+                </div>
+                                <hr class="clearfix mb15 mt15 visible-xs-block visible-sm-block">
+                <div class="row">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInLeftBig" data-animation-delay="500">
+                        <img class="img-responsive" src="https://teutonia.rs.gov.br/uploads/noticia/29783/media_LAYOUT_NOTICIAS_SITE_19.png" alt="Imagem ilustrativa da notícia: Teutônia terá espetáculo de Natal com Tchê Guri e programação gratuita em dezembro" role="presentation">
+                                                <small>25/11/2026</small><br/>
+                        <a href="https://teutonia.rs.gov.br/noticia/visualizar/id/3499/?teutonia-tera-espetaculo-de-natal-com-tche-guri-e-programacao-gratuita-em-dezembro.html" class="h4">Teutônia terá espetáculo de Natal com Tchê Guri e programação gratuita em dezembro</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInDownBig" data-animation-delay="0">
+                        <img class="img-responsive" src="https://teutonia.rs.gov.br/uploads/noticia/29775/media_LAYOUT_NOTICIAS_SITE_13.png" alt="Imagem ilustrativa da notícia: Brigada Militar lança Operação Papai Noel para reforçar segurança em Teutônia e região" role="presentation">
+                                                <small>25/11/2026</small><br/>
+                        <a href="https://teutonia.rs.gov.br/noticia/visualizar/id/3497/?brigada-militar-lanca-operacao-papai-noel-para-reforcar-seguranca-em-teutonia-e-regiao.html" class="h4">Brigada Militar lança Operação Papai Noel para reforçar segurança em Teutônia e região</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="clearfix visible-sm-block"></div>
+                    <hr class="clearfix mb15 mt15 visible-sm-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInUpBig" data-animation-delay="0">
+                        <img class="img-responsive" src="https://teutonia.rs.gov.br/uploads/noticia/29751/media_LAYOUT_NOTICIAS_SITE_12.png" alt="Imagem ilustrativa da notícia: Acendimento das luzes de Natal reúne milhares de pessoas em Teutônia" role="presentation">
+                                                <small>21/11/2026</small><br/>
+                        <a href="https://teutonia.rs.gov.br/noticia/visualizar/id/3496/?acendimento-das-luzes-de-natal-reune-milhares-de-pessoas-em-teutonia.html" class="h4">Acendimento das luzes de Natal reúne milhares de pessoas em Teutônia</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="col-md-3 col-sm-6 mb15 appear-animation" data-animation="fadeInRightBig" data-animation-delay="500">
+                        <img class="img-responsive" src="https://teutonia.rs.gov.br/uploads/noticia/29745/media_LAYOUT_NOTICIAS_SITE_9.png" alt="Imagem ilustrativa da notícia: Teutônia abre edital de fomento cultural com R$ 242 mil em recursos" role="presentation">
+                                                <small>18/11/2026</small><br/>
+                        <a href="https://teutonia.rs.gov.br/noticia/visualizar/id/3495/?teutonia-abre-edital-de-fomento-cultural-com-r-242-mil-em-recursos.html" class="h4">Teutônia abre edital de fomento cultural com R$ 242 mil em recursos</a>
+                    </div>
+                    <hr class="clearfix mb15 mt15 visible-xs-block">
+                                        <div class="clearfix visible-sm-block"></div>
+                    <hr class="clearfix mb15 mt15 visible-sm-block">
+                                    </div>
+                                <div class="row text-center ">
+                    <a class="btn btn-primary" href="https://teutonia.rs.gov.br/noticia">Ver todas as Notícias</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section></div>
+        <!-- /NOTÍCIAS -->
+    </div>
+</div>
+<div class="pb40 pt40 styleBackgroundLight">
+    <div class="container">
+        <div class="row">
+            <!-- NOTÍCIAS -->
+            <div class="overflow-hidden col-md-12 mobile-nopadding"><div id="acessoRapidoHorizontal" class="row">
+    <div class="col-md-12"><h2 class="similar-h4 title"><strong>Acesso Rápido</strong></h2></div>
+    <div class="owl-carousel banner-servicos" data-plugin-options='{"navigation": true, "pagination": false,"items": 1}'>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Atendimento ao Cidadão" href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/portal/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-user'></i>                        <span class="block">Atendimento ao Cidadão</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Ouvidoria" href="teutonia.rs.gov.br/ouvidoria" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-bullhorn'></i>                        <span class="block">Ouvidoria</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Nota Fiscal Eletrônica " href="http://teutonia.nfse-tecnos.com.br/default.aspx" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-file'></i>                        <span class="block">Nota Fiscal Eletrônica </span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Central de Vagas" href="https://centraldevagas.teutonia.rs.gov.br/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-child'></i>                        <span class="block">Central de Vagas</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Licitações e Contratos" href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/transparencia/?entidade=1&secao=licitacoes&sub=info_licitacao" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-gavel'></i>                        <span class="block">Licitações e Contratos</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Portal do Servidor" href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/portal/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-id-card-o'></i>                        <span class="block">Portal do Servidor</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Lista de Medicamentos" href="https://famurs.com.br/remume#inicioRemume" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-plus-square'></i>                        <span class="block">Lista de Medicamentos</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Leis Municipais" href="https://leis.org/prefeitura/rs/teutonia" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-balance-scale'></i>                        <span class="block">Leis Municipais</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Decretos " href="https://leismunicipais.com.br/prefeitura/rs/teutonia" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-gavel'></i>                        <span class="block">Decretos </span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Transparência" href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/transparencia/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-search'></i>                        <span class="block">Transparência</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Sala do Empreendedor" href="https://teutonia.rs.gov.br/departamento/id/1023/?sala-do-empreendedor.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-briefcase'></i>                        <span class="block">Sala do Empreendedor</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Licenciamento Ambiental" href="https://teutoniama.sislam.com.br/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-tree'></i>                        <span class="block">Licenciamento Ambiental</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Processo Seletivo" href="concurso/id/202/?processo-seletivo.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-file-o'></i>                        <span class="block">Processo Seletivo</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Adote um Canteiro" href="https://teutonia.rs.gov.br/pagina/id/1066/?adote-um-canteiro.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-leaf'></i>                        <span class="block">Adote um Canteiro</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Aprovação Engenharia e Urbanismo" href="https://teutoniaurb.sislam.com.br/ " target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-upload'></i>                        <span class="block">Aprovação Engenharia e Urbanismo</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Lei Paulo Gustavo" href="https://teutonia.rs.gov.br/pagina/id/1067/?lei-paulo-gustavo.html" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-yelp'></i>                        <span class="block">Lei Paulo Gustavo</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Arboriza Teutônia" href="https://teutonia.rs.gov.br/pagina/id/1030/?arboriza-teutonia.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-tree'></i>                        <span class="block">Arboriza Teutônia</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Programa de Integração Tributária - PIT" href="https://teutonia.rs.gov.br/pagina/id/1034/?programa-de-integracao-tributaria.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-line-chart'></i>                        <span class="block">Programa de Integração Tributária - PIT</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Nota Fiscal Gaúcha" href="https://teutonia.rs.gov.br/pagina/id/1006/?nota-fiscal-gaucha.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-hand-o-right'></i>                        <span class="block">Nota Fiscal Gaúcha</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Controle de Ponto" href="https://teutoniars.gestaoponto.com.br/login/?next=/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-clock-o'></i>                        <span class="block">Controle de Ponto</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+            </div>
+        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+            <!-- /NOTÍCIAS -->
+        </div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+
+<!--             <div class="p0 styleContrasteGray">
+                <div class="container">
+                    <hr class="half-margins invisible">
+                    <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://teutonia.rs.gov.br/pagina/id/1188/?pnab-ciclo-2-2026.html" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/29733/original_Banner_de_Site_para_Educao_Municipal.png" class="img-responsive tituloOculto" alt="PNAB - CICLO 12" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/portal/#tab-consulta-debitos" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/29662/original_banner_conta_de_gua.png" class="img-responsive tituloOculto" alt="2ª via da conta de água" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://teutonia.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/28197/original_Dirio_Oficial.webp" class="img-responsive tituloOculto" alt="Diário Oficial" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://teutonia.rs.gov.br/pagina/id/1030/?arboriza-teutonia.html" target='_self'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/25769/original_008_arboriza_teutonia.png" class="img-responsive tituloOculto" alt="Arboriza Teutônia" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://teutoniavs.sislam.com.br/defaults/sistemas" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/29746/original_SISLAM.jpeg" class="img-responsive tituloOculto" alt="SISLAM" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://multi24.teutonia.rs.gov.br/multi24/sistemas/transparencia/?entidade=1&secao=licitacoes&sub=info_licitacao" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/28063/original_LICITAES.png" class="img-responsive tituloOculto" alt="Licitações e contratos" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://biblioteca.teutonia.rs.gov.br/" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/27125/original_009_banner_biblioteca_01.jpg" class="img-responsive tituloOculto" alt="Biblioteca Pública Municipal Professor Arno Sommer" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://radardatransparencia.atricon.org.br" target='_blank'>
+                                <img src="https://teutonia.rs.gov.br/uploads/banner/28120/original_radar_de_transaprencia_4.webp" class="img-responsive tituloOculto" alt="Radar da Transparência Pública" role="presentation" />
+                </a>
+            </div>
+    </div>                    <hr class="half-margins">
+                </div>
+            </div>
+             -->
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                
+        <div class="col-md-6 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://teutonia.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="103">Convite</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="109">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://teutonia.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="1002">Editais de Seleção</option>
+                                                        <option value="202">Processo Seletivo</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://teutonia.rs.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1">Legislação</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-6 mobile-nopadding mobile-margin-top25"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+                            <span class="pull-right">
+                    <a class="prev" href="javascript:;">
+                        <i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+                            <span class="sr-only">Anterior</span>
+                        </i>
+                    </a>
+                    <a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+                        <span class="sr-only">Próximo</span>
+                    </i></a>
+                </span>
+                        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/27566/thumb_Design_sem_nome_2.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Prefeito: Renato Airton Altmann" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://teutonia.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Renato Airton Altmann</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3762-7700                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a Sexta-feira:<br />
+07h30 às 11h30 | 13h às 17h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/27592/thumb_WhatsApp_Image_2025_01_29_at_171319.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Chefe de Gabinete: Délcio José Barbosa" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Chefe de Gabinete</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://teutonia.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Délcio José Barbosa</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3762-7700                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a Sexta-feira:<br />
+07h30 às 11h30 | 13h às 17h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1005/?fazenda.html">
+                       Fazenda                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/27586/thumb_7.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Lidiane Cardozo Laggemann" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Fazenda" href="https://teutonia.rs.gov.br/secretaria/id/1005/?fazenda.html">
+                            <span class="similar-h4"><strong>Lidiane Cardozo Laggemann</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 98577-0329                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1007/?juventude-cultura-esporte-e-lazer.html">
+                       Juventude, Cultura, Esporte e Lazer                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/28301/thumb_Design_sem_nome.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Vanessa Carniel" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Juventude, Cultura, Esporte e Lazer" href="https://teutonia.rs.gov.br/secretaria/id/1007/?juventude-cultura-esporte-e-lazer.html">
+                            <span class="similar-h4"><strong>Vanessa Carniel</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99877-3804                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1011/?procuradoria-geral.html">
+                       Procuradoria Geral                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/28400/thumb_aline_perfil_jpg_paint.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Procuradora Geral: Aline Krüger" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Procuradora Geral</small>
+                        <div class="row">
+                          <a title="Procuradoria Geral" href="https://teutonia.rs.gov.br/secretaria/id/1011/?procuradoria-geral.html">
+                            <span class="similar-h4"><strong>Aline Krüger</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3762-7700                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1008/?obras-viacao-e-transportes.html">
+                       Obras, Viação e Transportes                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/27560/thumb_2.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Ariberto Magedanz" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Obras, Viação e Transportes" href="https://teutonia.rs.gov.br/secretaria/id/1008/?obras-viacao-e-transportes.html">
+                            <span class="similar-h4"><strong>Ariberto Magedanz</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3762-7788                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1001/?administracao.html">
+                       Administração                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/29617/thumb_WhatsApp_Image_2026_10_08_at_125254.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Roseli Maria Hartmann" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Administração" href="https://teutonia.rs.gov.br/secretaria/id/1001/?administracao.html">
+                            <span class="similar-h4"><strong>Roseli Maria Hartmann</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  3762-7700                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1009/?planejamento-mobilidade-urbana-e-seguranca-publica.html">
+                       Planejamento, Mobilidade Urbana e Segurança Pública                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/27559/thumb_Design_sem_nome_2.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Renato Airton Altmann" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Planejamento, Mobilidade Urbana e Segurança Pública" href="https://teutonia.rs.gov.br/secretaria/id/1009/?planejamento-mobilidade-urbana-e-seguranca-publica.html">
+                            <span class="similar-h4"><strong>Renato Airton Altmann</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3762-7700                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1004/?educacao.html">
+                       Educação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/27562/thumb_Design_sem_nome_1_1.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Evandro Biondo" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Educação" href="https://teutonia.rs.gov.br/secretaria/id/1004/?educacao.html">
+                            <span class="similar-h4"><strong>Evandro Biondo</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3762-7770                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1003/?assistencia-social-e-habitacao.html">
+                       Assistência Social e Habitação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/27563/thumb_6.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Cleudori Paniz" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Assistência Social e Habitação" href="https://teutonia.rs.gov.br/secretaria/id/1003/?assistencia-social-e-habitacao.html">
+                            <span class="similar-h4"><strong>Cleudori Paniz</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99260-6165                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1002/?agricultura-e-meio-ambiente.html">
+                       Agricultura e Meio Ambiente                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/28958/thumb_Fran.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Francieli Weimer" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Agricultura e Meio Ambiente" href="https://teutonia.rs.gov.br/secretaria/id/1002/?agricultura-e-meio-ambiente.html">
+                            <span class="similar-h4"><strong>Francieli Weimer</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9753-1311                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1006/?desenvolvimento-economico-inovacao-e-turismo.html">
+                       Desenvolvimento Econômico, Inovação e Turismo                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/27561/thumb_1.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Valdir José Griebeler" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Desenvolvimento Econômico, Inovação e Turismo" href="https://teutonia.rs.gov.br/secretaria/id/1006/?desenvolvimento-economico-inovacao-e-turismo.html">
+                            <span class="similar-h4"><strong>Valdir José Griebeler</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99977-8272                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://teutonia.rs.gov.br/secretaria/id/1010/?saude.html">
+                       Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://teutonia.rs.gov.br/uploads/departamento/27558/thumb_9.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Marlene Metz" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Saúde" href="https://teutonia.rs.gov.br/secretaria/id/1010/?saude.html">
+                            <span class="similar-h4"><strong>Marlene Metz</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 8577-2865                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira:<br />
+07h30 às 11h30|13h às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+
+<div class="pt60 pb60">
+    <div class="container">
+      <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+            <div class="col-md-8 mobile-nopadding"><!-- ATRAÇÕES TURÍSTICAS -->
+<h2 class="similar-h4 title"><strong>ATRA&Ccedil;&Otilde;ES TUR&Iacute;STICAS</strong></h2>
+<div class="tabs tab-tur widget featured-box-minimal nomargin-top">
+   <!-- tabs -->
+   <ul class="nav nav-tabs nav-justified">
+           <li class="active">
+         <a href="#tab_0" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-star icone-turismo"></i> Rota Germânica         </a>
+      </li>
+            <li class="">
+         <a href="#tab_1" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-star icone-turismo"></i> Lagoa da Harmonia         </a>
+      </li>
+            <li class="">
+         <a href="#tab_2" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-star icone-turismo"></i> Centro Administrativo         </a>
+      </li>
+         </ul>
+
+
+   <!-- tabs content -->
+   <div class="tab-content mb15">
+           <div id="tab_0" class="tab-pane active">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://teutonia.rs.gov.br/uploads/pontoturistico/28720/maior_1.png" alt="Rota Germânica" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Rota Germânica" href="https://teutonia.rs.gov.br/turismo/visualizar/id/1017/?rota-germanica.html">
+               Rota Germânica             </a>
+             </h3>
+           <p class="mb0">Teutônia, Nossa Gente, Nossa Cultura</p>
+           <p class="mb0"><a href="https://teutonia.rs.gov.br/turismo/visualizar/id/1017" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Rota Germânica				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+            <div id="tab_1" class="tab-pane ">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://teutonia.rs.gov.br/uploads/pontoturistico/19575/maior_DSC01894.jpg" alt="Lagoa da Harmonia" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Lagoa da Harmonia" href="https://teutonia.rs.gov.br/turismo/visualizar/id/1007/?lagoa-da-harmonia.html">
+               Lagoa da Harmonia             </a>
+             </h3>
+           <p class="mb0">Situada à 593m de altitude, possui uma belíssima lagoa de 8 hectares de água límpida e perene em meio à um verde exuberante.</p>
+           <p class="mb0"><a href="https://teutonia.rs.gov.br/turismo/visualizar/id/1007" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Lagoa da Harmonia				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+            <div id="tab_2" class="tab-pane ">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://teutonia.rs.gov.br/uploads/pontoturistico/19569/maior_20170713_171417_01.jpg" alt="Centro Administrativo de Teutônia. Foto: Léo Wiebusch" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Centro Administrativo" href="https://teutonia.rs.gov.br/turismo/visualizar/id/1006/?centro-administrativo.html">
+               Centro Administrativo             </a>
+             </h3>
+           <p class="mb0">Sede da Administração Municipal, é o cartão postal da cidade de Teutônia.</p>
+           <p class="mb0"><a href="https://teutonia.rs.gov.br/turismo/visualizar/id/1006" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Centro Administrativo				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+         </div>
+
+   <a title="Atrações completas" href="https://teutonia.rs.gov.br/turismo" class="btn btn-default btn-content">
+      <i class="fa fa-map-o"></i> Mais Atrações
+	  <span class="sr-only">
+		Turísticas
+	  </span>
+    </a>
+</div></div>
+            <div class="col-md-4 mt4-xs mobile-nopadding"><!-- EVENTOS -->
+<div class="widget featured-box-minimal">
+    <div class="row mb0">
+		<div class="pr15 pl15 mrauto mlauto">
+			<h2 class="similar-h4 title"><strong>PR&Oacute;XIMO EVENTO</strong></h2>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<a href="https://teutonia.rs.gov.br/evento/visualizar/id/1100/?acendimento-das-luzes-natalinas-na-prefeitura.html">
+			<p class="lead">Acendimento das Luzes Natalinas na Prefeitura</p>
+		</a>
+		<p class="nomargin">Um espetáculo de luz, cor e magia!</p>
+	</div>
+
+	<div class="col-md-12 mb15">
+	    		<strong>Local:</strong> Prefeitura Municipal de Teutônia<br />
+						<strong>In&iacute;cio:</strong> 22/11/2026<br />
+				<strong>T&eacute;rmino:</strong> 27/12/2026			</div>
+
+	<a href="https://teutonia.rs.gov.br/evento/?agenda-de-eventos.html" class="btn btn-default btn-content">
+	    <i class="fa fa-calendar"></i> Agenda completa
+    </a>
+</div>
+<!-- /EVENTOS --></div>
+      			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+    </div>
+</div>
+
+
+<div class="pt60 pb60">
+    <div class="container">
+                <div class="col-md-6 mobile-nopadding mobile-margin-top25"><!-- FACEBOOK -->
+<div class="widget appear-animation" data-animation="bounceIn">
+	<div class="fb-page" data-href="https://www.facebook.com/prefeiturateutonia" data-height="380" data-small-header="true" data-adapt-container-width="true" data-width="10000" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"></div>
+</div>
+<!-- /FACEBOOK --></div>
+                <div class="col-md-6 mobile-nopadding mobile-margin-top25"><!-- CONCURSOS -->
+<div class="widget owl-carousel-controls featured-box-minimal overflow-hidden">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>CONCURSOS</strong></h2>
+                        <span class="pull-right">
+                <a class="prev" href="javascript:;">
+					<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+						<span class="sr-only">Anterior</span>
+					</i>
+				</a>
+                <a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+					<span class="sr-only">Próximo</span>
+				</i></a>
+            </span>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 005/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concurso                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 001/2026 Concurso Público" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2536/?edital-no-0012026-concurso-publico.html">
+                            <p>Edital nº 001/2026 Concurso Público</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 005/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concurso                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 001/2026 Concurso Público" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2537/?edital-no-0012026-concurso-publico.html">
+                            <p>Edital nº 001/2026 Concurso Público</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 005/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concurso                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 001/2026 Concurso Público" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2533/?edital-no-0012026-concurso-publico.html">
+                            <p>Edital nº 001/2026 Concurso Público</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 005/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concurso                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 001/2026 Concurso Público" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2540/?edital-no-0012026-concurso-publico.html">
+                            <p>Edital nº 001/2026 Concurso Público</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 005/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concurso                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 001/2026 Concurso Público" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2539/?edital-no-0012026-concurso-publico.html">
+                            <p>Edital nº 001/2026 Concurso Público</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 005/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concurso                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 001/2026 Concurso Público" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2534/?edital-no-0012026-concurso-publico.html">
+                            <p>Edital nº 001/2026 Concurso Público</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 005/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concurso                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 001/2026 Concurso Público" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2535/?edital-no-0012026-concurso-publico.html">
+                            <p>Edital nº 001/2026 Concurso Público</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 004/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Processo Seletivo                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital de Processo Seletivo Público nº 001/2026" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2543/?edital-de-processo-seletivo-publico-no-0012026.html">
+                            <p>Edital de Processo Seletivo Público nº 001/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 004/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Processo Seletivo                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital de Processo Seletivo Público nº 001/2026" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2541/?edital-de-processo-seletivo-publico-no-0012026.html">
+                            <p>Edital de Processo Seletivo Público nº 001/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 004/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Processo Seletivo                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital de Processo Seletivo Público nº 001/2026" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2538/?edital-de-processo-seletivo-publico-no-0012026.html">
+                            <p>Edital de Processo Seletivo Público nº 001/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 004/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Processo Seletivo                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital de Processo Seletivo Público nº 001/2026" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2542/?edital-de-processo-seletivo-publico-no-0012026.html">
+                            <p>Edital de Processo Seletivo Público nº 001/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            25/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            30/11/2026                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 185/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Convocação                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 185/2026 - Concurso Público nº 01/2022" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2532/?edital-no-1852026-concurso-publico-no-012022.html">
+                            <p>Edital nº 185/2026 - Concurso Público nº 01/2022</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            24/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            04/12/2026                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 182/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Convocação                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 182/2026 - Concurso Público nº 01/2022" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2530/?edital-no-1822026-concurso-publico-no-012022.html">
+                            <p>Edital nº 182/2026 - Concurso Público nº 01/2022</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            18/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            28/11/2026                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">Edital nº 181/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Convocação                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital nº 181/2026 - Concurso Público nº 01/2022" href="https://teutonia.rs.gov.br/concurso/visualizar/id/2529/?edital-no-1812026-concurso-publico-no-012022.html">
+                            <p>Edital nº 181/2026 - Concurso Público nº 01/2022</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o text-muted"></i>
+                            <strong>Início:</strong>
+                            18/11/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            28/11/2026                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /CONCURSOS --></div>
+            </div>
+</div>
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-29.482293, -51.816280],
+                17
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-29.482293, -51.816280],
+                        {alt:'Prefeitura Municipal de Teutônia'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de Teutônia</strong></p>                <p style="margin: 5px 0px;">Avenida Um Oeste, 878&nbsp;&nbsp;&nbsp;Bairro: Centro Administrativo</p><p style="margin: 5px 0px;">Teutônia / RS</p><p style="margin: 5px 0px;">95890-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+
+            </main>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer02" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <!-- endereço e redes sociais -->
+            <div class="spaced col-md-4 col-sm-4">
+                                <p>
+                    Avenida Um Oeste, 878, Centro Administrativo<br />
+                    CEP: 95890-000<br />                    ouvidoria@teutonia.rs.gov.br<br />                </p>
+                                    <p class="similar-h3">(51)  3762-7700</p>
+                                <p>Segunda-feira a sexta-feira<br />
+07h30 às 11h30 | 13h00 às 17h00</p>
+                				<p class="block">
+					<a href="https://teutonia.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/prefeiturateutonia" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://instagram.com/prefeiturateutonia" target="_blank" class="social">
+						<i class="fa fa-instagram">
+							<span class="sr-only">Instagram da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://www.youtube.com/prefeiturateutonia" target="_blank" class="social">
+						<i class="fa fa-youtube-square">
+							<span class="sr-only">Youtube da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://teutonia.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+				</p>
+            </div>
+            <!-- /endereço e redes sociais -->
+
+            <!-- col #2 -->
+            <div class="spaced col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="col-md-5 col-sm-4 hidden-xs hide-line-last-new">
+                        <p class="similar-h4">&Uacute;ltimas not&iacute;cias</p>
+                                                <ul class="list-unstyled">
+                                                        <li>
+                                <a class="block"
+                                href="https://teutonia.rs.gov.br/noticia/visualizar/id/3498/?1o-campeonato-municipal-de-futevolei-de-teutonia-consagra-campeoes.html">
+                                    1º Campeonato Municipal de Futevôlei de Teutônia consagra campeões                                </a>
+                                <small>26/11/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://teutonia.rs.gov.br/noticia/visualizar/id/3499/?teutonia-tera-espetaculo-de-natal-com-tche-guri-e-programacao-gratuita-em-dezembro.html">
+                                    Teutônia terá espetáculo de Natal com Tchê Guri e programação gratuita em dezembro                                </a>
+                                <small>25/11/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://teutonia.rs.gov.br/noticia/visualizar/id/3497/?brigada-militar-lanca-operacao-papai-noel-para-reforcar-seguranca-em-teutonia-e-regiao.html">
+                                    Brigada Militar lança Operação Papai Noel para reforçar segurança em Teutônia e região                                </a>
+                                <small>25/11/2026</small>
+                            </li>
+                                                    </ul>
+                                            </div>
+
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <p class="similar-h4">Outras &aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a class="block" href="https://teutonia.rs.gov.br/transparencia/?transparencia.html">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://teutonia.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://teutonia.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://teutonia.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Not&iacute;cias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://teutonia.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://teutonia.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://teutonia.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                                                <!-- brasão -->
+                        <p class="text-center">
+                            <img alt="Brasão da prefeitura" src="https://teutonia.rs.gov.br/uploads/config/23606/prefeitura_teutonia.png" class="logo img-responsive appear-animation opaco08" data-animation="bounceIn"/>
+                        </p>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+	<div class="container text-center fsize12 post-copyright" style="
+		display: flex;
+		flex-direction: column;
+		justify-content: center">
+		<p style="margin:0" id="footer.copyrightTxt">
+			Este site utiliza a ferramenta
+			<a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+				<img src="https://teutonia.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+				<span class="sr-only">iPrefeituras</span>
+			</a>.
+		</p>
+		<p style="margin:0" id="footer.copyrightTxt3">
+			Um produto
+			<strong>
+				<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+			</strong>.
+		</p>
+	</div>
+</div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://teutonia.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://teutonia.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://teutonia.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://teutonia.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://teutonia.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://teutonia.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://teutonia.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://teutonia.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		<div id="selo">
+<map name="maplink-selo" class="map-oselo"><area shape="circle" alt="Link da Campanha Transparência" title="Selo da Transparência" coords="57,59,55" href="/pagina/id/1095/?selo-prata-em-transparencia.html " target="_self"></map>
+<img alt="selo transparência" class="img-responsive oselo" usemap="#maplink-selo" title="Selo da Transparência" src="//visaoi.com.br/img/selo-tp-prata-2023.png">
+</div>
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições e com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a610e96b08aadf68',t:'MTc5NTc4MDE4OQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a610e96b08aadf68',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
