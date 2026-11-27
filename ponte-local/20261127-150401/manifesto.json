@@ -1,0 +1,38 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-27T15:07:17+00:00",
+ "itens": [
+  {
+   "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20a%20situa%C3%A7%C3%A3o%20de%20emerg%C3%AAncia%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=27-11-2026&delta=50",
+   "em": "2026-11-27T15:04:01+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=27-11-2026&secao=do1",
+   "em": "2026-11-27T15:05:02+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=27-11-2026&secao=do1e",
+   "em": "2026-11-27T15:06:06+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22reconhece%20o%20estado%20de%20calamidade%20p%C3%BAblica%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=29-06-2026&publishTo=27-11-2026&delta=50",
+   "em": "2026-11-27T15:07:09+00:00",
+   "status": 502,
+   "erro": "HTTP 502"
+  },
+  {
+   "url": "https://www.srh.ce.gov.br/comite-integrado-de-seguranca-hidrica-lista-demandas-de-abastecimento-do-ceara-ao-midr/",
+   "em": "2026-11-27T15:07:13+00:00",
+   "erro": "URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl."
+  },
+  {
+   "url": "https://portalcgm.riobranco.ac.gov.br/lai/orientacoes/estado-de-emergencia/",
+   "em": "2026-11-27T15:07:16+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  }
+ ]
+}
