@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-27 · #PR · Nível II para as emergências reconhecidas lidas no DOU
+
+Os 709 reconhecimentos federais achados pela consulta do DOU "reconhece a situação de emergência" passam a registrar o tipo de declaração, que é o da própria consulta. Com isso, 630 municípios mostram nível II (Portaria MDR nº 260/2022, art. 5º). Os reconhecimentos vindos de notícia do MIDR e de resposta a pedido de acesso ficam sem nível até a leitura do ato.
+
 ## 2026-11-26 · #2117 · Prova de mutação cobre SEO, acessibilidade, segurança e estrutura
 
 O registro de mutações tinha dez defeitos e quatro verificadores de página (`seo`, `acessibilidade`, `seguranca`, `estrutura`) eram pegos por um só caso, ou por nenhum que lhes fosse próprio. Entram quatro: descrição curta, imagem sem alt, handler inline e tag desbalanceada. A fusão de verificadores (itens 3 e 6) agora tem prova de cobertura. Código: +0/−0.
