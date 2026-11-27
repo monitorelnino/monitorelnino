@@ -1,0 +1,69 @@
+{
+ "data": "2026-11-27",
+ "formato_versao": 1,
+ "etapas": {
+  "descobrir_planos": {
+   "alvos_consultados": 40,
+   "alvos_verificados": 6,
+   "achados_novos": 0,
+   "fila_acumulada": 84
+  },
+  "juiz": {
+   "pistas_recebidas": 354,
+   "com_documento": 193,
+   "promovidas": 5,
+   "recusa_documento_inacessivel": 87,
+   "recusa_texto_nao_extraivel": 74,
+   "recusa_ente_nao_confirmado": 19,
+   "recusa_citacao_incompleta": 29,
+   "recusa_autoridade_nao_confirmada": 5,
+   "recusa_minuta_ou_rascunho": 2,
+   "recusa_noticia_institucional_nao_e_o_plano": 17,
+   "recusa_natureza_duvidosa": 4,
+   "recusa_fora_do_objeto": 1,
+   "recusa_resposta": 2
+  },
+  "transferencias_municipais": {
+   "consultas": 9,
+   "com_resultado_bruto": 9,
+   "municipios": 50121
+  }
+ },
+ "verificador_imprensa": {
+  "na_fila": 1100,
+  "lidas": 1,
+  "exibiveis": 0,
+  "inacessiveis": 0,
+  "nao_lidas_por_orcamento": 0,
+  "resolucoes": 0,
+  "nao_resolvidas_por_orcamento": 0,
+  "por_motivo": {
+   "sem_marcador_do_ciclo": 1,
+   "veiculo_nao_listado": 1021,
+   "sem_https": 78
+  },
+  "crescimento_da_lista": {
+   "candidatos": 4,
+   "avaliados_por_noite": 15,
+   "entraram": [],
+   "recusas": {
+    "sem_https": 1,
+    "sem_pagina_de_expediente": 3
+   },
+   "institucionais": []
+  },
+  "orcamento": {
+   "paginas_lidas": 1,
+   "por_host": {
+    "rbtv.com.br": 1
+   },
+   "recusas_por_host": {},
+   "hosts_desligados": [],
+   "teto_por_host": 40,
+   "teto_global": 600
+  },
+  "versao": "1.0 (29/09/2026)",
+  "gravado_em": "2026-11-27T04:45:28"
+ },
+ "atualizado_em": "2026-11-27T08:52:40"
+}

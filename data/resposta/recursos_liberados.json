@@ -12139,29 +12139,53 @@
  ],
  "janela_lida": {
   "desde": "2026-11-18",
-  "ate": "2026-11-25",
-  "atos_na_busca": 46,
-  "janelas_incompletas": []
+  "ate": "2026-11-26",
+  "atos_na_busca": 0,
+  "janelas_incompletas": [
+   {
+    "de": "2026-11-18",
+    "ate": "2026-11-26",
+    "erro": "HTTPError: HTTP Error 502: Bad Gateway",
+    "consulta": "\"Autoriza a transferência de recursos\""
+   },
+   {
+    "de": "2026-11-18",
+    "ate": "2026-11-26",
+    "erro": "HTTPError: HTTP Error 502: Bad Gateway",
+    "consulta": "\"Autoriza o empenho e a transferência de recursos\""
+   }
+  ]
  },
  "cobertura": {
   "desde": "2026-06-29",
-  "ate": "2026-11-25",
+  "ate": "2026-11-26",
   "consultas": [
    "\"Autoriza a transferência de recursos\"",
    "\"Autoriza o empenho e a transferência de recursos\""
   ],
-  "a_reler": []
+  "a_reler": [
+   {
+    "de": "2026-11-18",
+    "ate": "2026-11-26",
+    "consulta": "\"Autoriza a transferência de recursos\""
+   },
+   {
+    "de": "2026-11-18",
+    "ate": "2026-11-26",
+    "consulta": "\"Autoriza o empenho e a transferência de recursos\""
+   }
+  ]
  },
  "recusas": {
   "fora_do_orgao": 0,
-  "prorrogacao_de_prazo": 17,
-  "sem_municipio_legivel": 1,
-  "sem_valor_declarado": 5,
-  "retificacao": 4,
+  "prorrogacao_de_prazo": 0,
+  "sem_municipio_legivel": 0,
+  "sem_valor_declarado": 0,
+  "retificacao": 0,
   "ato_nao_lido": 0
  },
  "atos_novos_nesta_rodada": 0,
- "atualizado_em": "25/11/2026",
+ "atualizado_em": "26/11/2026",
  "total_por_acao": {
   "resposta": 293681178.38,
   "recuperacao": 263951833.73,
