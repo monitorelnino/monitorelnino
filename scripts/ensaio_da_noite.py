@@ -1252,40 +1252,56 @@ def ensaio_valvula_traz_a_main(diz) -> bool:
 
 
 def ensaio_publicador_segue_o_rebase(diz) -> bool:
-    """31. O publicador segue o rebase depois de unir e regenerar (F101).
+    """31. O publicador segue o rebase e sela de novo sobre a `main` que andou (F101, F104).
 
-    25/11/2026, run 45526087142: a união resolveu os quatro caminhos, a cadeia regenerou o cartão e as
-    páginas, e o laço punha no índice só os caminhos com escritor declarado; `rebase --continue`
-    recusava a árvore suja nas cinco tentativas. Roda o trecho do próprio `publicar_dados.yml` num
-    repositório temporário, com o derivado regenerado depois da união.
+    F101 (25/11, run 45526087142): depois da união, o derivado regenerado ficava fora do índice e
+    `rebase --continue` recusava. F104 (27/11, e7655e17): rebase LIMPO sobre um merge alheio não
+    regenerava, e a `main` selada ficava com derivado velho. Roda os trechos do próprio
+    `publicar_dados.yml` num repositório temporário, nos dois caminhos.
     """
     fonte = (RAIZ / ".github/workflows/publicar_dados.yml").read_text(encoding="utf-8")
-    trecho = fonte.split("--regenerar-para-commit || true", 1)[-1].split("if ! GIT_EDITOR=true git rebase --continue", 1)[0]
-    with tempfile.TemporaryDirectory() as t:
-        tmp = pathlib.Path(t)
-        g = _repo(tmp)
-        (tmp / "scripts").mkdir(); (tmp / "config").mkdir(); (tmp / "data").mkdir()
-        shutil.copy(RAIZ / "scripts" / "commit_do_elo.py", tmp / "scripts")
-        shutil.copy(RAIZ / "config" / "escritores.json", tmp / "config")
-        card = tmp / "data" / "municipios_card.json"
-        card.write_text("base\n", newline="\n"); g("add", "-A"); g("commit", "-qm", "base")
-        g("checkout", "-qb", "publicador"); card.write_text("nosso\n", newline="\n"); g("commit", "-qam", "publicação")
-        g("checkout", "-q", "main"); card.write_text("deles\n", newline="\n"); g("commit", "-qam", "main andou")
-        g("checkout", "-q", "publicador")
-        if g("rebase", "main", pode_falhar=True) == 0:
-            diz("  ✗ o ensaio não produziu conflito: ele não está medindo o que diz medir")
-            return False
-        card.write_text("deles\n", newline="\n"); g("add", "data/municipios_card.json")   # a união: versão de cima
-        card.write_text("regenerado\n", newline="\n")                                     # a cadeia canônica
-        subprocess.run(["bash", "-c", trecho], cwd=tmp, capture_output=True)
-        seguiu = subprocess.run(["git", "-c", "core.editor=true", "rebase", "--continue"], cwd=tmp,
-                                capture_output=True, env={**os.environ, "GIT_AUTHOR_NAME": "e",
-                                "GIT_AUTHOR_EMAIL": "e@e", "GIT_COMMITTER_NAME": "e",
-                                "GIT_COMMITTER_EMAIL": "e@e"}).returncode == 0
-    if not seguiu:
-        diz("  ✗ derivado regenerado ficou fora do índice: o `rebase --continue` recusa (F101)")
+    uniu = fonte.split("if ! GIT_EDITOR=true git rebase --continue", 1)[0].rstrip().splitlines()[-1]
+    sela = 'if [ "$(git rev-parse HEAD^)" != "$BASE" ]; then' + fonte.split(
+        'if [ "$(git rev-parse HEAD^)" != "$BASE" ]; then', 1)[-1].split("\n            fi\n", 1)[0] + "\nfi"
+    amb = {**os.environ, "GIT_AUTHOR_NAME": "e", "GIT_AUTHOR_EMAIL": "e@e", "GIT_COMMITTER_NAME": "e",
+           "GIT_COMMITTER_EMAIL": "e@e"}
+    resultado = []
+    for conflito in (True, False):
+        with tempfile.TemporaryDirectory() as t:
+            tmp = pathlib.Path(t)
+            g = _repo(tmp)
+            (tmp / "scripts").mkdir(); (tmp / "data").mkdir()
+            (tmp / "scripts" / "gerar_codemap.py").write_text("", newline="\n")
+            (tmp / "scripts" / "verificar_derivados.sh").write_text("cat data/dado.json > data/derivado.json\n", newline="\n")
+            dado, deriv = tmp / "data" / "dado.json", tmp / "data" / "derivado.json"
+            dado.write_text("base\n", newline="\n"); deriv.write_text("base\n", newline="\n"); g("add", "-A"); g("commit", "-qm", "base")
+            g("checkout", "-qb", "publicador")
+            (deriv if conflito else tmp / "data" / "outro.json").write_text("nosso\n", newline="\n"); g("add", "-A")
+            g("commit", "-qm", "publicação")
+            base = subprocess.run(["git", "rev-parse", "HEAD^"], cwd=tmp, capture_output=True, text=True).stdout.strip()
+            g("checkout", "-q", "main"); dado.write_text("deles\n", newline="\n")
+            if conflito:
+                deriv.write_text("deles\n", newline="\n")
+            g("add", "-A"); g("commit", "-qm", "merge alheio, sem selo")
+            g("checkout", "-q", "publicador")
+            if (g("rebase", "main", pode_falhar=True) == 0) == conflito:
+                diz("  ✗ o ensaio não produziu o caminho que diz medir")
+                return False
+            if conflito:
+                g("checkout", "--ours", "--", "data/derivado.json")   # a união: versão de cima (no rebase, "ours")
+                subprocess.run(["bash", "-c", uniu], cwd=tmp, capture_output=True)
+                if subprocess.run(["git", "-c", "core.editor=true", "rebase", "--continue"], cwd=tmp,
+                                  capture_output=True, env=amb).returncode != 0:
+                    resultado.append("rebase recusou")
+                    continue
+            subprocess.run(["bash", "-c", sela], cwd=tmp, capture_output=True, env={**amb, "BASE": base})
+            limpo = subprocess.run(["git", "status", "--porcelain"], cwd=tmp, capture_output=True, text=True).stdout
+            resultado.append(subprocess.run(["git", "show", "HEAD:data/derivado.json"], cwd=tmp,
+                                            capture_output=True, text=True).stdout.strip() + ("" if not limpo else "+sujo"))
+    if resultado != ["deles", "deles"]:
+        diz(f"  ✗ o publicador não sela sobre a `main` que andou (F101/F104): união, limpo = {resultado}")
         return False
-    diz("  ✓ depois da união e da regeneração, o rebase do publicador segue")
+    diz("  ✓ depois de unir ou de rebase limpo, o publicador regenera e sela sobre a `main` nova")
     return True
 
 
@@ -1393,7 +1409,7 @@ ENSAIOS = (
     ("29. o regime de prioridade suspende só o listado",
      ensaio_regime_de_prioridade_suspende_so_o_listado),
     ("30. a válvula traz a `main` antes do PR de dado", ensaio_valvula_traz_a_main),
-    ("31. o publicador segue o rebase depois de unir e regenerar", ensaio_publicador_segue_o_rebase),
+    ("31. o publicador segue o rebase e sela de novo sobre a main que andou", ensaio_publicador_segue_o_rebase),
     ("32. a válvula não comita o log da corrente", ensaio_valvula_nao_comita_o_log),
     ("33. a `main` se sela sozinha; selada, volta a ser estrita", ensaio_main_se_sela),
 )
