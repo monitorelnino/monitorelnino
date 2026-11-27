@@ -9,6 +9,9 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-27 · #2156 · Nível II para as emergências reconhecidas lidas no DOU
+
+Os 709 reconhecimentos federais achados pela consulta do DOU "reconhece a situação de emergência" passam a registrar o tipo de declaração, que é o da própria consulta. Com isso, 630 municípios mostram nível II (Portaria MDR nº 260/2022, art. 5º). Os reconhecimentos vindos de notícia do MIDR e de resposta a pedido de acesso ficam sem nível até a leitura do ato.
 ## 2026-11-27 · #2153 · Juiz 1.8: repetição do mesmo documento colapsa numa decisão
 
 Rodada paralela J18 (J12): o arquivo `data/paralelo_juiz18.json` trouxe Taió/SC e Trindade do Sul/RS duas vezes cada, com a mesma pista. O gravador único do arquivo paralelo passa a colapsar repetições do mesmo hash, UF e município na mais antiga, e o autoteste ganha a trava. Só código do modo paralelo; nada do índice publicado muda. Linhas líquidas: +14/−0 (um defeito, a trava que o corrige e o teste dela).
