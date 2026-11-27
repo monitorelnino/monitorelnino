@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-27 · #PR · Portal recusado com 403 de fora se relê pela cópia da ponte
+## 2026-11-27 · #2180 · Portal recusado com 403 de fora se relê pela cópia da ponte
 
 O leitor do portal da prefeitura guardava como recusa o 403 visto de fora do país e não o refazia no mesmo dia, mesmo depois de a ponte trazer a página do Brasil. Agora a recusa com 403 cujo domínio tem cópia da ponte se refaz uma vez, pela cópia; recusa confirmada do Brasil e muro de robô continuam recusa.
 
