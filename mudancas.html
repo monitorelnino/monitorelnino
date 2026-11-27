@@ -46,6 +46,8 @@
     <dl class="mudancas-lista">
       <dt>27/11/2026 · Reconhecimentos federais lidos pela edição do DOU quando a consulta cai</dt>
       <dd>A consulta do Diário Oficial da União respondeu 502 ao coletor por dias, e reconhecimentos de 20 a 26/11 (entre eles a calamidade de Tupanciretã) ficaram fora. Agora, quando a consulta cai, o coletor lê a edição de cada dia dos últimos 14, que tem endereço fixo; 502 e 504 passam a acionar a ponte no Brasil, como o 403.</dd>
+      <dt>27/11/2026 · Publicador: sela de novo depois de rebase limpo</dt>
+      <dd>O laço de push da publicação só regenerava os derivados quando o rebase conflitava; com um merge entre a regeneração e o push, a `main` recebia o próprio selo já velho e os Portões reprovavam a publicação (três vezes em 26–27/11). Agora regenera sempre que a base mudou. Ensaio 31 cobre os dois caminhos; falha F104.</dd>
       <dt>27/11/2026 · União: fonte suspensa vale a observação mais recente</dt>
       <dd>A união pela base comum recusava `fontes_suspensas.json` quando dois elos visitavam a mesma fonte em dias diferentes (o `hash` muda a cada visita). Agora o registro cuja observação é mais recente em `ultima_deteccao` e `reavaliada_em` vence inteiro; sem lado dominante, continua recusando.</dd>
       <dt>27/11/2026 · Coluna &quot;Nível&quot; na tabela de emergências da Defesa civil</dt>
@@ -162,8 +164,6 @@
       <dd>Entram no catálogo a fila de pendentes vencida de 15→16/11 (F96) e de 16→17/11 (F97) e a quarentena que não movia pista sem `id` em 18→19/11 (F98), cada uma com causa, prova, correção e caso de teste. O F90 passa a dizer a hora em que a `main` ficou vermelha de fato: 03:03 UTC de 22/11.</dd>
       <dt>24/11/2026 · Portões leem o repositório, não a cópia local</dt>
       <dd>O portão do escritor de pista e a regra de escrita portável varriam o disco e acusavam cópias de trabalho de agentes que o Git ignora: 54 escritas inexistentes pararam a cadeia local. Os dois passam a usar a lista de arquivos versionados que já existia. A quarentena ganha o caso da pista sem `id` e sem endereço.</dd>
-      <dt>24/11/2026 · Portão: PR não devolve arquivo a uma versão anterior da main</dt>
-      <dd>O #2043 levou, por engano, seis arquivos em versões anteriores da `main` e desfaria a regra D2 do resolvedor sem conflito nenhum. A regra nova `regressao` do verificador do repositório reprova o PR cujo arquivo de código, configuração, catálogo ou documento é igual a uma das 15 versões anteriores da `main`. Reversão de propósito diz &quot;Reverte&quot; num commit do PR.</dd>
     </dl>
   </section>
 </main>

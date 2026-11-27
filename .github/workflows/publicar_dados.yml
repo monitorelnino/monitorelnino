@@ -371,6 +371,7 @@ jobs:
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
           SSH="ssh -i ~/.ssh/robo -o IdentitiesOnly=yes"
           EMPURROU=0
+          BASE=$(git rev-parse HEAD^)
           for TENTATIVA in 1 2 3 4 5; do
             GIT_SSH_COMMAND="$SSH" git fetch --depth=50 git@github.com:${GITHUB_REPOSITORY}.git main || true
             if ! git rebase FETCH_HEAD; then
@@ -384,21 +385,21 @@ jobs:
                 echo "::error::a união RECUSOU um caminho — ver o nome no log acima"
                 break
               fi
-              # A2-09: depois de unir, os derivados são função do dado unido — regenerar ANTES de
-              # continuar, senão o manifesto chega obsoleto à `main`.
-              python3 recalcular_mare.py --write || true
-              python3 scripts/gerar_codemap.py || true
-              bash scripts/verificar_derivados.sh --regenerar-para-commit || true
-              # F101 (25/11/2026): o commit local põe TUDO o que a cadeia escreve; aqui era o índice só dos
-              # caminhos com escritor declarado, e o derivado regenerado (cartão, páginas, PDFs) ficava
-              # fora: `rebase --continue` recusava a árvore suja nas cinco tentativas.
-              git add -u
+              git add -u   # derivado em conflito: o resolvedor fica com o de cima; regenera-se abaixo
               if ! GIT_EDITOR=true git rebase --continue; then
                 git rebase --abort || true
                 echo "::warning::a união resolveu mas o rebase não seguiu; nova tentativa"
                 sleep $((TENTATIVA * 10)); continue
               fi
+            fi
+            # A2-09 + F-selo (27/11/2026): `main` andou (rebase limpo OU unido) → regenera e sela de novo.
+            # Só o conflito regenerava; o rebase limpo selou derivado velho (e7655e17, c8827d0, 31ffb54).
+            if [ "$(git rev-parse HEAD^)" != "$BASE" ]; then
+              python3 scripts/gerar_codemap.py || true
+              bash scripts/verificar_derivados.sh --regenerar-para-commit || true   # já recalcula o índice
+              git add -u   # F101 (25/11/2026): tudo o que a cadeia escreve, não só o de escritor declarado
               git diff --cached --quiet || git commit --amend --no-edit
+              BASE=$(git rev-parse HEAD^)
             fi
             if GIT_SSH_COMMAND="$SSH" python3 scripts/empurrar.py "main" "$TENTATIVA"; then
               EMPURROU=1; break

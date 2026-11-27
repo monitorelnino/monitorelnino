@@ -1,6 +1,6 @@
 {
  "_governanca": "Catálogo interno das falhas da corrente noturna de 04/10 a 10/10/2026, montado das notas do robo-registro e dos comentários datados do código; toda falha nova vira linha nova, com causa, prova e o caso de teste que a reproduz.",
- "atualizado_em": "2026-11-25",
+ "atualizado_em": "2026-11-27",
  "falhas": [
   {
    "id": "F01",
@@ -1403,6 +1403,18 @@
    ],
    "correcao": "PR 1 (D3/D4): o publicador regenera e commita `CODEMAP.md` com o resto; no push da `main`, derivado velho passa com aviso enquanto a `main` aguarda selo (`scripts/selo_da_main.py`) e reprova quando selada. PR 2 (D1/D2): o selo sai do PR.",
    "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_main_se_sela"
+  },
+  {
+   "id": "F104",
+   "noite": "2026-11-26→2026-11-27",
+   "titulo": "Rebase limpo do publicador sela a `main` com derivado velho",
+   "sintoma": "Portões vermelhos na própria publicação: c8827d0 (26/11 18:10, run 45873921293) e 31ffb54 (20:45, run 45893576823) com `mudancas.html` e manifesto obsoletos; e7655e17 (27/11 11:46, run 45993494777) com `data/cobertura_declarada_uf.json` e manifesto.",
+   "causa": "O laço de push só regenerava os derivados no caminho com conflito; quando a `main` recebia um merge entre a regeneração e o push (#2143, #2161), o rebase limpo assentava o selo, calculado sobre a base antiga, em cima do dado novo.",
+   "prova": [
+    "run 45992794523 (Publicar dados, head 6afebaa9): `Successfully rebased`, `88ca0839..e7655e17 HEAD -> main`, sem regeneração; 88ca0839 é o #2161"
+   ],
+   "correcao": "publicar_dados.yml: regenerar e emendar o commit sempre que a base do rebase mudou, limpo ou unido; a união só fica com a versão de cima do derivado.",
+   "caso_de_teste": "scripts/ensaio_da_noite.py::ensaio_publicador_segue_o_rebase"
   }
  ]
 }
