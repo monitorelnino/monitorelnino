@@ -1,0 +1,38 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-27T09:05:20+00:00",
+ "itens": [
+  {
+   "url": "http://www.rj.gov.br/saude/node/1302",
+   "em": "2026-11-27T09:04:02+00:00",
+   "status": 503,
+   "erro": "HTTP 503"
+  },
+  {
+   "url": "http://www.rj.gov.br/saude/node/3084",
+   "em": "2026-11-27T09:04:03+00:00",
+   "status": 503,
+   "erro": "HTTP 503"
+  },
+  {
+   "url": "https://www.sinj.df.gov.br/sinj/Diario/97ab8d5b-d510-3cd2-a720-5f7939bcbe8f/DODF%20039%2023-02-2017%20INTEGRA.pdf",
+   "em": "2026-11-27T09:04:06+00:00",
+   "status": 200,
+   "tipo": "application/pdf",
+   "final": "https://www.sinj.df.gov.br/sinj/Diario/97ab8d5b-d510-3cd2-a720-5f7939bcbe8f/DODF%20039%2023-02-2017%20INTEGRA.pdf",
+   "bytes": 3581745,
+   "sha256": "648117381081d8e37fe09ed4ff048979fcca1c9831b9c2d329cddbdb8dd2b916"
+  },
+  {
+   "url": "https://saobernardo.sp.gov.br/web/sbc/plano-municipal-de-saneamento-basico",
+   "em": "2026-11-27T09:04:07+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://penha.sc.gov.br/cms/pagina/ver/codMapaItem/149723",
+   "em": "2026-11-27T09:04:44+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  }
+ ]
+}
