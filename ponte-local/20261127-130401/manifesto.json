@@ -1,0 +1,166 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-27T13:13:13+00:00",
+ "itens": [
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=20-11-2026&secao=do1",
+   "em": "2026-11-27T13:04:01+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=20-11-2026&secao=do1e",
+   "em": "2026-11-27T13:05:17+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=UTF-8",
+   "final": "https://www.in.gov.br/leiturajornal?data=20-11-2026&secao=do1e",
+   "bytes": 138463,
+   "sha256": "e1d0fe05f3a93fa9331b0df67e810cbd694594b2a88a9510bf86f6e35c210739"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=21-11-2026&secao=do1",
+   "em": "2026-11-27T13:05:21+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=21-11-2026&secao=do1e",
+   "em": "2026-11-27T13:06:25+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=UTF-8",
+   "final": "https://www.in.gov.br/leiturajornal?data=21-11-2026&secao=do1e",
+   "bytes": 139525,
+   "sha256": "24af8b067942f15738e14a45600b0e5ba413f10c2fad7e044c33780c0c4846db"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=23-11-2026&secao=do1",
+   "em": "2026-11-27T13:06:29+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=23-11-2026&secao=do1e",
+   "em": "2026-11-27T13:07:32+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=UTF-8",
+   "final": "https://www.in.gov.br/leiturajornal?data=23-11-2026&secao=do1e",
+   "bytes": 155630,
+   "sha256": "72a0f6fb3de6f9fafa63772a774c4dc7ec84e7925d33c8ce35e4bec4a2b7406f"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=24-11-2026&secao=do1",
+   "em": "2026-11-27T13:07:40+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=24-11-2026&secao=do1e",
+   "em": "2026-11-27T13:08:43+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=UTF-8",
+   "final": "https://www.in.gov.br/leiturajornal?data=24-11-2026&secao=do1e",
+   "bytes": 163212,
+   "sha256": "7c3dd1ff860347f06dec96b2c26238cdcf190be9b316140f195d1b4f93dea805"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=25-11-2026&secao=do1",
+   "em": "2026-11-27T13:08:47+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=25-11-2026&secao=do1e",
+   "em": "2026-11-27T13:09:50+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=UTF-8",
+   "final": "https://www.in.gov.br/leiturajornal?data=25-11-2026&secao=do1e",
+   "bytes": 155852,
+   "sha256": "53241f86dd61e547fa8bf8b0982363111d953b66b54a92e8de1d1f8ff5796e71"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1",
+   "em": "2026-11-27T13:09:55+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1e",
+   "em": "2026-11-27T13:10:58+00:00",
+   "status": 502,
+   "erro": "HTTP 502"
+  },
+  {
+   "url": "https://agenciagov.ebc.com.br/noticias/defesa-civil",
+   "em": "2026-11-27T13:11:03+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=utf-8",
+   "final": "https://agenciagov.ebc.com.br/noticias/defesa-civil",
+   "bytes": 65631,
+   "sha256": "de6048d68e13394f9b6b02c36753d7f4ac3ccb1387a37106d887ce75dd356920",
+   "sha256_de_origem": "347a2364f4e464365a337185e872658b71c1e0aaf3cb8b53fe1d4065e95ff351",
+   "segredos_redigidos": 1,
+   "cpfs_redigidos": 0
+  },
+  {
+   "url": "https://agenciagov.ebc.com.br/noticias/defesa-civil/rss.xml",
+   "em": "2026-11-27T13:11:03+00:00",
+   "status": 200,
+   "tipo": "application/atom+xml",
+   "final": "https://agenciagov.ebc.com.br/noticias/defesa-civil/rss.xml",
+   "bytes": 487,
+   "sha256": "2acd7dc8ae1884738175458b3d67d48d8bc6dd7ec349700fdf9592cb7c718e60"
+  },
+  {
+   "url": "https://cachoeirasdemacacu.rj.gov.br/",
+   "em": "2026-11-27T13:11:06+00:00",
+   "erro": "URLError: <urlopen error [SSL: TLSV1_ALERT_INTERNAL_ERROR] tlsv1 alert internal error (_ssl.c:1010)>"
+  },
+  {
+   "url": "https://franciscosa.mg.gov.br/",
+   "em": "2026-11-27T13:11:07+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://www.franciscosa.mg.gov.br/",
+   "bytes": 0,
+   "erro": "corpo vazio"
+  },
+  {
+   "url": "https://governadorcelsoramos.sc.gov.br/",
+   "em": "2026-11-27T13:11:10+00:00",
+   "status": 403,
+   "recusa": true
+  },
+  {
+   "url": "https://pmaltoparaiso.ro.gov.br/",
+   "em": "2026-11-27T13:11:10+00:00",
+   "erro": "URLError: <urlopen error [Errno 11002] getaddrinfo failed>"
+  },
+  {
+   "url": "https://correiapinto.sc.gov.br/",
+   "em": "2026-11-27T13:11:11+00:00",
+   "status": 403,
+   "recusa": true
+  },
+  {
+   "url": "https://santacecilia.sc.gov.br/",
+   "em": "2026-11-27T13:11:12+00:00",
+   "status": 403,
+   "recusa": true
+  },
+  {
+   "url": "https://arroiodosratos.rs.gov.br/",
+   "em": "2026-11-27T13:11:12+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "http://arroiodosratos.rs.gov.br/",
+   "em": "2026-11-27T13:11:49+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "https://bentogoncalves.rs.gov.br/",
+   "em": "2026-11-27T13:12:13+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  },
+  {
+   "url": "http://bentogoncalves.rs.gov.br/",
+   "em": "2026-11-27T13:12:49+00:00",
+   "erro": "URLError: <urlopen error [WinError 10060] A connection attempt failed because the connected party did not properly respond after a"
+  }
+ ]
+}
