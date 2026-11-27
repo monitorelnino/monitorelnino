@@ -63,6 +63,17 @@ jobs:
         env:
           COMANDOS: ${{ inputs.comandos }}
         run: printf '%s\n' "$COMANDOS" | python3 scripts/saude_pipeline.py --conferir-comandos
+      # 27/11/2026: dois lotes do Buscador 2 (26 e 27/11) partiram de um `origin/main` local parado
+      # em 24/11 (a37cdb64, 345 commits atrás): rodaram o código antigo, sem SearXNG nem a busca no
+      # veículo corrigida, fecharam 2.711 pistas com 0 resolvidas e abriram PR de dado sujo. O ramo da
+      # válvula nasce da `main` de agora: se ela tem commit que o ramo não tem há mais de 6 h, recusa.
+      - name: O ramo parte da `main` de agora
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          read -r falta desde < <(gh api "repos/$GITHUB_REPOSITORY/compare/$GITHUB_SHA...main" -q '[.ahead_by, (.commits[0].commit.committer.date // "-")] | @tsv')
+          [ "$falta" = 0 ] || [ $(( $(date -u +%s) - $(date -u -d "$desde" +%s) )) -le 21600 ] && { echo "✓ ramo em dia (${falta} commit(s) da main fora)"; exit 0; }
+          echo "✗ o ramo parte de uma main velha: ${falta} commit(s) da main fora dele, o mais antigo de ${desde}. Recrie o ramo de origin/main depois de git fetch."; exit 1
   coletar:
     needs: conferir
     uses: ./.github/workflows/_coletor.yml
