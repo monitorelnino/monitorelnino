@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-27 · #PR · Reconhecimentos federais lidos pela edição do DOU quando a consulta cai
+## 2026-11-27 · #2166 · Reconhecimentos federais lidos pela edição do DOU quando a consulta cai
 
 A consulta do Diário Oficial da União respondeu 502 ao coletor por dias, e reconhecimentos de 20 a 26/11 (entre eles a calamidade de Tupanciretã) ficaram fora. Agora, quando a consulta cai, o coletor lê a edição de cada dia dos últimos 14, que tem endereço fixo; 502 e 504 passam a acionar a ponte no Brasil, como o 403.
 
