@@ -1271,17 +1271,17 @@ def ensaio_publicador_segue_o_rebase(diz) -> bool:
             tmp = pathlib.Path(t)
             g = _repo(tmp)
             (tmp / "scripts").mkdir(); (tmp / "data").mkdir()
-            (tmp / "scripts" / "gerar_codemap.py").write_text("")
-            (tmp / "scripts" / "verificar_derivados.sh").write_text("cat data/dado.json > data/derivado.json\n")
+            (tmp / "scripts" / "gerar_codemap.py").write_text("", newline="\n")
+            (tmp / "scripts" / "verificar_derivados.sh").write_text("cat data/dado.json > data/derivado.json\n", newline="\n")
             dado, deriv = tmp / "data" / "dado.json", tmp / "data" / "derivado.json"
-            dado.write_text("base\n"); deriv.write_text("base\n"); g("add", "-A"); g("commit", "-qm", "base")
+            dado.write_text("base\n", newline="\n"); deriv.write_text("base\n", newline="\n"); g("add", "-A"); g("commit", "-qm", "base")
             g("checkout", "-qb", "publicador")
-            (deriv if conflito else tmp / "data" / "outro.json").write_text("nosso\n"); g("add", "-A")
+            (deriv if conflito else tmp / "data" / "outro.json").write_text("nosso\n", newline="\n"); g("add", "-A")
             g("commit", "-qm", "publicação")
             base = subprocess.run(["git", "rev-parse", "HEAD^"], cwd=tmp, capture_output=True, text=True).stdout.strip()
-            g("checkout", "-q", "main"); dado.write_text("deles\n")
+            g("checkout", "-q", "main"); dado.write_text("deles\n", newline="\n")
             if conflito:
-                deriv.write_text("deles\n")
+                deriv.write_text("deles\n", newline="\n")
             g("add", "-A"); g("commit", "-qm", "merge alheio, sem selo")
             g("checkout", "-q", "publicador")
             if (g("rebase", "main", pode_falhar=True) == 0) == conflito:
