@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-27 · #2167 · Publicador: sela de novo depois de rebase limpo
+
+O laço de push da publicação só regenerava os derivados quando o rebase conflitava; com um merge entre a regeneração e o push, a `main` recebia o próprio selo já velho e os Portões reprovavam a publicação (três vezes em 26–27/11). Agora regenera sempre que a base mudou. Ensaio 31 cobre os dois caminhos; falha F104.
+
 ## 2026-11-27 · #2154 · União: fonte suspensa vale a observação mais recente
 
 A união pela base comum recusava `fontes_suspensas.json` quando dois elos visitavam a mesma fonte em dias diferentes (o `hash` muda a cada visita). Agora o registro cuja observação é mais recente em `ultima_deteccao` e `reavaliada_em` vence inteiro; sem lado dominante, continua recusando.
