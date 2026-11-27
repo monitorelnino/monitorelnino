@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-22",
+ "gerado_em": "2026-11-27",
  "municipios": {
   "5103403": {
    "S16": {
@@ -860,6 +860,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5102504&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "erro",
+    "consulta": null,
+    "motivo": "ValueError: leitura incompleta: teto de 20 min no município, 1693 contratação(ões) lida(s); não vale como ausência",
+    "dominio": null
    }
   },
   "5103502": {
@@ -896,6 +903,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5103502&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5103502&pagina=1&tamanhoPagina=500",
+    "motivo": "329 contratação(ões) lida(s) em 33 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -934,6 +948,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5104104&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5104104&pagina=1&tamanhoPagina=500",
+    "motivo": "755 contratação(ões) lida(s) em 40 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "5104807": {
@@ -970,6 +991,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5104807&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5104807&pagina=1&tamanhoPagina=500",
+    "motivo": "160 contratação(ões) lida(s) em 33 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -1008,6 +1036,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5105101&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5105101&pagina=1&tamanhoPagina=500",
+    "motivo": "439 contratação(ões) lida(s) em 36 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "5105150": {
@@ -1045,6 +1080,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5105150&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5105150&pagina=1&tamanhoPagina=500",
+    "motivo": "945 contratação(ões) lida(s) em 45 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "5105259": {
@@ -1081,6 +1123,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=5105259&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-27",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=5105259&pagina=1&tamanhoPagina=500",
+    "motivo": "1029 contratação(ões) lida(s) em 46 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
