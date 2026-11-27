@@ -22,23 +22,20 @@
   },
   {
    "id": "uf_dengue_alerta",
-   "valor": 4,
+   "valor": 1,
    "referencia": "nível atual",
    "rotulo": "estados com dengue em nível de alerta",
    "fonte": "InfoDengue (Fiocruz e FGV)",
    "sem_coleta": false,
    "lista": [
-    "ES",
-    "PB",
-    "PR",
-    "SP"
+    "ES"
    ],
    "nota": "nível calculado pelo InfoDengue; o estado entra quando ao menos um município acompanhado está em nível 3 ou 4"
   },
   {
    "id": "calor_municipios_severo",
-   "valor": 459,
-   "referencia": "2026-11-25",
+   "valor": 303,
+   "referencia": "2026-11-26",
    "rotulo": "municípios em nível severo ou extremo de calor",
    "fonte": "Ministério da Saúde (Painel Nacional de Excesso de Calor)",
    "sem_coleta": false
