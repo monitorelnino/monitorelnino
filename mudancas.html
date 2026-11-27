@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>27/11/2026 · Válvula recusa ramo que parte de main velha</dt>
+      <dd>Dois lotes do Buscador 2 (26 e 27/11) nasceram de um `origin/main` local parado em 24/11 e rodaram código antigo, sem SearXNG: 2.711 pistas fechadas, nenhuma resolvida. A válvula agora recusa o ramo quando a `main` tem commit que ele não tem há mais de 6 h.</dd>
       <dt>27/11/2026 · Reconhecimentos federais lidos pela edição do DOU quando a consulta cai</dt>
       <dd>A consulta do Diário Oficial da União respondeu 502 ao coletor por dias, e reconhecimentos de 20 a 26/11 (entre eles a calamidade de Tupanciretã) ficaram fora. Agora, quando a consulta cai, o coletor lê a edição de cada dia dos últimos 14, que tem endereço fixo; 502 e 504 passam a acionar a ponte no Brasil, como o 403.</dd>
       <dt>27/11/2026 · Publicador: sela de novo depois de rebase limpo</dt>
@@ -162,8 +164,6 @@
       <dd>Duas coletas de dia de 15/11 ficaram em PR aberto sem poder unir com a `main`. O que tinham de permanente entra agora: 306 execuções do log de busca e o registro, com motivo, das 150 pistas da saúde estadual que as regras de hoje recusam. O estado de 15/11 que elas traziam já foi refeito pelas coletas seguintes.</dd>
       <dt>24/11/2026 · Catálogo de falhas: três noites sem linha e o horário do F90</dt>
       <dd>Entram no catálogo a fila de pendentes vencida de 15→16/11 (F96) e de 16→17/11 (F97) e a quarentena que não movia pista sem `id` em 18→19/11 (F98), cada uma com causa, prova, correção e caso de teste. O F90 passa a dizer a hora em que a `main` ficou vermelha de fato: 03:03 UTC de 22/11.</dd>
-      <dt>24/11/2026 · Portões leem o repositório, não a cópia local</dt>
-      <dd>O portão do escritor de pista e a regra de escrita portável varriam o disco e acusavam cópias de trabalho de agentes que o Git ignora: 54 escritas inexistentes pararam a cadeia local. Os dois passam a usar a lista de arquivos versionados que já existia. A quarentena ganha o caso da pista sem `id` e sem endereço.</dd>
     </dl>
   </section>
 </main>
