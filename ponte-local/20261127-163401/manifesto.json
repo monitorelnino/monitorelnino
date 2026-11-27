@@ -1,0 +1,33 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-27T16:35:15+00:00",
+ "itens": [
+  {
+   "url": "https://sus.rj.gov.br/",
+   "em": "2026-11-27T16:34:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://portal.rj.gov.br/",
+   "em": "2026-11-27T16:34:01+00:00",
+   "erro": "URLError: <urlopen error [Errno 11001] getaddrinfo failed>"
+  },
+  {
+   "url": "https://rj.gov.br/",
+   "em": "2026-11-27T16:34:01+00:00",
+   "status": 503,
+   "erro": "HTTP 503"
+  },
+  {
+   "url": "https://defesacivil.rn.gov.br/",
+   "em": "2026-11-27T16:34:02+00:00",
+   "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly closed by the remote host>"
+  },
+  {
+   "url": "https://www.defesacivil.rn.gov.br/",
+   "em": "2026-11-27T16:34:38+00:00",
+   "erro": "URLError: <urlopen error [WinError 10054] An existing connection was forcibly closed by the remote host>"
+  }
+ ]
+}
