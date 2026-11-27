@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+
+    <!-- Basic Page Needs -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Prefeitura Municipal de Guidoval, Minas Gerais">
+    <meta name="author" content="Prefeitura Municipal de Guidoval">
+
+    <!-- Page Title -->
+    <title> Prefeitura Municipal de Guidoval</title>
+
+    <!-- Favicon 
+        <link rel="icon" type="image/png" href="favicon.png">
+        -->
+    <link rel="shortcut icon" href="images/favicon.png">
+    <!-- Mobile Specific Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="fonts/font-awesome/css/font-awesome.min.css">
+
+    <!-- Flex Slider -->
+    <link rel="stylesheet" href="css/flexslider.css">
+
+    <!-- Owl Carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.min.css">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- Impressão -->
+    <link href="css/print.css" rel="stylesheet" type="text/css" media="print" />
+
+    <!-- Royalslider -->
+    <link href="slide/royalslider.css" rel="stylesheet">
+    <!--<link href="slide/reset.css" rel="stylesheet">-->
+    <link href="slide/rs-default.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        #menuAcessibilidade {
+            background: #fff;
+            position: fixed;
+            margin-left: -500px;
+            top: 150px;
+            z-index: 100;
+            width: 220px;
+            border-radius: 0;
+            box-shadow: 0px 0px 4px 0px rgba(51, 51, 51, 0.2);
+            font-family: 'Open Sans', Arial, sans-serif;
+        }
+
+        #menuAcessibilidade h4 {
+            padding: 5px 0;
+            border-bottom: #ccc 1px solid;
+            text-transform: uppercase;
+            font-size: 15px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        #menuAcessibilidade .content-menuAcessibilidade {
+            padding: 16px;
+        }
+
+        #menuAcessibilidade button {
+            display: block;
+            margin: 8px 0;
+            width: 100%;
+            padding: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        #showMenuAcessibilidade {
+            z-index: 100;
+            margin-left: 0px;
+            position: fixed;
+            left: 0;
+            top: 100px;
+            background: #fff;
+            border: #ccc 1px solid;
+            box-shadow: #ccc 0 0 2px;
+            font-size: 18px;
+            display: block;
+            border-bottom-right-radius: 0.8em;
+            border-top-right-radius: 0.8em;
+            padding: 10px 16px;
+            cursor: pointer;
+        }
+
+        #hideMenuAcessibilidade {
+            cursor: pointer;
+            line-height: 43px;
+            font-size: 38px;
+            color: #999;
+            position: absolute;
+            background-color: #fff;
+            width: 40px;
+            height: 40px;
+            top: 7px;
+            right: 16px;
+            text-align: center;
+        }
+    </style>
+
+</head>
+<body class="homepage">
+
+    <!-- Preloader 
+    <div class="loader-wrapper">
+        <div class="sk-cube-grid">
+            <div class="sk-cube sk-cube1"></div>
+            <div class="sk-cube sk-cube2"></div>
+            <div class="sk-cube sk-cube3"></div>
+            <div class="sk-cube sk-cube4"></div>
+            <div class="sk-cube sk-cube5"></div>
+            <div class="sk-cube sk-cube6"></div>
+            <div class="sk-cube sk-cube7"></div>
+            <div class="sk-cube sk-cube8"></div>
+            <div class="sk-cube sk-cube9"></div>
+        </div>
+    </div>
+    -->
+    <!-- Page Wrapper -->
+    <div class="wrapper">
+
+        <!-- Header Section -->
+        <header>
+            <div class="header-area">
+
+                <!-- Top Contact Info -->
+                <div class="row logo-top-info">
+                    <div class="container">
+                        <div class="col-md-3 logo">
+                            <!-- Main Logo -->
+                            <a href="index.php"><img src="http://guidoval.mg.gov.br/portal/images/logo.png" alt="Prefeitura Municipal de Guidoval" /></a>
+                            <!-- Responsive Toggle Menu -->
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                                <span class="sr-only"> Menu </span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                        </div>
+                        <div class="col-md-9 top-info-social">
+                            <div class="pull-right">
+                                <div class="top-info">
+                                    <div class="call">
+                                        <h3> TELEFONE </h3>
+                                        <p> +55 32 3418-0519 </p>
+                                    </div>
+                                    <div class="email">
+                                        <h3> EMAIL </h3>
+                                        <p> prefeitura@guidoval.mg.gov.br </p>
+                                    </div>
+                                    <div class="market">
+                                        <h3> ATENDIMENTO </h3>
+                                        <p> Segunda a Sexta <span class="forex"> <i class="fa fa-caret-up" aria-hidden="true"></i> 08h - 16h </span> </p>
+                                    </div>
+                                </div>
+                                <div class="social">
+                                    <ul class="social-icons">
+                                        <!--<li><a href="https://webmail.guidoval.mg.gov.br" target="_blank" title="Webmail Prefeitura Municipal de Guidoval" title="Webmail Prefeitura Municipal de Guidoval"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>-->
+                                        <li><a href="https://www.facebook.com/prefdeguidoval" target="_blank" title="Facebook Prefeitura Municipal de Guidoval">
+                                            <i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="https://www.instagram.com/prefeituradeguidoval" target ="_blank"><i class="fab fa-instagram"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Navigation Section -->
+                <nav id="navbar" class="collapse navbar-collapse main-menu">
+    <div class="container">
+        <ul class="main-menu">
+            <li class="dropdown"> <a href="#" data-toggle="dropdown">Guidoval
+                    <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                <ul>
+                    <li> <a href="historia.php"> História</a> </li>
+                    <li> <a href="hino.php"> Hino </a> </li>
+                    <li> <a href="homenagem.php"> Homenagem </a> </li>
+                    <!--
+                    <li> <a href="noticias.php"> Notícias </a> </li>
+                    <li> <a href="videos.php"> Vídeos</a> </li><li> <a href=""> Gabinete </a> </li>
+                    <li> <a href=""> Galeria de Ex-prefeitos </a> </li>-->
+                </ul>
+            </li>
+            <li class="dropdown"><a href="#" data-toggle="dropdown"> Estrutura Adm
+                    <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                <ul>
+                    <li><a href="estrutura-administrativa.php">Secretarias</a> </li>
+                    <li> <a href="organograma.php">Organograma</a> </li>
+                </ul>
+            </li>
+            <li><a href="licitacoes.php">Licitações</a> </li>
+
+
+            <li class="dropdown"> <a href="#" data-toggle="dropdown">Editais
+                    <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                <ul>
+                    <li> <a href="chamamentos-publico.php"> Chamadas Públicas </a> </li>
+                    <li><a href="concursos.php">Concursos | Processos Seletivos</a> </li>
+                </ul>
+            </li>
+
+            <li> <a href="https://apps.habeasdata.com.br/t_pref_gdv" target="_blank"> Transparência </a> </li>
+
+            <!-- <li class="dropdown"> <a href="#" data-toggle="dropdown">Transparência
+                    <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                <ul>
+                    <li> <a href="convenios.php"> Convênios </a> </li>
+                    <li> <a href="https://apps.habeasdata.com.br/t_pref_gdv" target="_blank"> Portal da Transparência </a> </li>
+                    <li> <a href="http://transparencia.guidoval.mg.gov.br/solicitacao/nova" target="_blank"> E-sic </a> </li>
+                </ul>
+            </li>-->
+
+            <li class="dropdown"> <a href="#" data-toggle="dropdown">Legislação
+                    <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                <ul>
+                    <li> <a href="atas.php"> Atas </a> </li>
+                    <li> <a href="decretos.php"> Decretos </a> </li>
+                    <li> <a href="leis.php"> Leis </a> </li>
+                    <li> <a href="oficios.php"> Ofícios </a> </li>
+                    <li> <a href="portarias.php"> Portarias </a> </li>
+                </ul>
+            </li>
+            <!--<li class="dropdown"> <a href="#" data-toggle="dropdown">Consultas
+                    <i class="fa fa-chevron-down dropdown-toggle"> </i>  </a>
+                <ul>
+                   <li> <a href=""> Telefones Úteis </a> </li>
+                    <li> <a href=""> Pontos de Táxi </a> </li>
+                    <li> <a href=""> Horários de Onibus </a> </li>
+                </ul>
+            </li>         -->
+
+            <li class="dropdown"> <a href="#" data-toggle="dropdown">Serviços
+                    <i class="fa fa-chevron-down dropdown-toggle"> </i> </a>
+                <ul>
+                    <li> <a href="carta-servicos.php"> Carta de Serviços </a> </li>
+                    <li> <a href="https://portaldocidadao.habeasdata.com.br/esic?cod_empre=69" target="_blank"> e-Sic </a> </li>
+                    <li> <a href="https://enotas.habeasdata.com.br/?cod_empre=69" target="_blank"> Nota Fiscal </a> </li>
+                    <li> <a href="https://portaldocidadao.habeasdata.com.br/?cod_empre=69" target="_blank"> Atendimento ao Cidadão </a> </li>
+
+                    <li><a href="https://www.guidoval.mg.gov.br/portal/salamineira/">Sala Mineira</a> </li>
+                    <!--<li> <a href="https://rsihd.reta.com.br/software/html5.html?user=portcid&pwd=UZASTAANAhmr$!17&program=C" target="_blank"> Atendimento ao Cidadão </a> </li>
+                    <li> <a href="cnd.php">Certidão Negativa </a> </li>
+                    <li> <a href=""> Pontos de Táxi </a> </li>
+                    <li> <a href=""> Horários de Onibus </a> </li>-->
+                    <li> <a href="https://portaldoservidor.net.br/?cod_empre=69" target="_blank"> Contra Cheque </a> </li>
+                    <li><a href="https://webmail.guidoval.mg.gov.br" target="_blank" title="Webmail Prefeitura Municipal de Guidoval" title="Webmail Prefeitura Municipal de Guidoval"> WEBMAIL </a></li>
+                    <li> <a href="mapa-site.php"> Mapa do Site </a> </li>
+                </ul>
+            </li>
+            <li><a href="diario-oficial.php">Diário Oficial</a> </li>
+            <!-- CAMPO DE BUSCA -->
+            <li class="menu-search">
+                <form action="busca.php" method="GET">
+                    <input type="text" name="q" placeholder="Buscar..." required>
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </form>
+            </li>
+
+        </ul>
+    </div>
+</nav>            </div>
+        </header>        <!-- Header Section -->
+
+
+
+        <!-- Main Content Section -->
+        <main class="main">
+
+            <!--<section class="home-news">
+
+                <div class="row text-center">
+                    <img src="images/periodoeleitoral.png" width="80%"/>
+                </div>
+
+            </section>-->
+
+            <section class="home-news">
+                <div class="container">
+                    <div class="row news">
+                                                        <div class="col-md-7">
+                                    <div class="blog-img-box">
+                                        <div class="blog-date"> <span class="month">jul                                            </span> <span class="date"> 20</span> </div>
+                                        <a class="hover-effect" href="noticia.php?getLink=1679">
+                                            <img src="http://guidoval.mg.gov.br/uploads-imagens/2ªCorridaRústicadeGuidoval-17921817326ad285e40b907a.jpg" width="600px" height="400px" alt="2ª Corrida Rústica de Guidoval" />
+                                        </a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <h3><a href="noticia.php?getLink=1679"> 2ª Corrida Rústica de Guidoval </a> </h3>
+                                    </div>
+                                </div>
+                                
+                        <div class="col-md-5">
+                            <div class="row news">
+                                                                        <div class="col-xs-12 col-md-6 top25">
+                                            <div class="blog-img-box">
+                                                <div class="blog-date"> <span class="month">set                                                    </span> <span class="date"> 19</span> </div>
+                                                <a class="hover-effect" href="noticia.php?getLink=1678">
+                                                    <img src="http://guidoval.mg.gov.br/uploads-imagens/ConstruçãodeumanovapontedeconcretonaSerradaOnça-175839938768cf0b9b5e1177.jpg" width="250px" height="120px" alt="Construção de uma nova ponte de concreto na Serra da Onça!" />
+                                                </a>
+                                            </div>
+                                            <div class="blog-content">
+                                                <p><a href="noticia.php?getLink=1678"> Construção de uma nova ponte de... </a> </p>
+                                            </div>
+                                        </div>
+                                                                                <div class="col-xs-12 col-md-6 top25">
+                                            <div class="blog-img-box">
+                                                <div class="blog-date"> <span class="month">set                                                    </span> <span class="date"> 18</span> </div>
+                                                <a class="hover-effect" href="noticia.php?getLink=1676">
+                                                    <img src="http://guidoval.mg.gov.br/uploads-imagens/LeilãoBeneficenteEncontrodeCavaleiros,emproldoLardosIdososSãoVicentedePaulo.-175819138068cbdf1482e92.jpeg" width="250px" height="120px" alt="Leilão Beneficente & Encontro de Cavaleiros, em prol do Lar dos Idosos São Vicente de Paulo." />
+                                                </a>
+                                            </div>
+                                            <div class="blog-content">
+                                                <p><a href="noticia.php?getLink=1676"> Leilão Beneficente & Encontro de... </a> </p>
+                                            </div>
+                                        </div>
+                                                                    </div>
+
+                            <div class="row news">
+                                                                        <div class="col-xs-12 col-md-6 top25">
+                                            <div class="blog-img-box">
+                                                <div class="blog-date"> <span class="month">set                                                    </span> <span class="date"> 17</span> </div>
+                                                <a class="hover-effect" href="noticia.php?getLink=1675">
+                                                    <img src="http://guidoval.mg.gov.br/uploads-imagens/FaçaaBiometria-175819128768cbdeb778d92-.jpg" width="250px" height="120px" alt="Faça a Biometria " />
+                                                </a>
+                                            </div>
+                                            <div class="blog-content">
+                                                <p><a href="noticia.php?getLink=1675"> Faça a Biometria  </a> </p>
+                                            </div>
+                                        </div>
+                                                                                <div class="col-xs-12 col-md-6 top25">
+                                            <div class="blog-img-box">
+                                                <div class="blog-date"> <span class="month">set                                                    </span> <span class="date"> 17</span> </div>
+                                                <a class="hover-effect" href="noticia.php?getLink=1677">
+                                                    <img src="http://guidoval.mg.gov.br/uploads-imagens/PrefeitaLucianaRecebeMedalhaDoMéritoEspecialNaAlmg-175819169868cbe052f20749.jpg" width="250px" height="120px" alt="Prefeita Luciana Recebe Medalha Do Mérito Especial Na Almg!" />
+                                                </a>
+                                            </div>
+                                            <div class="blog-content">
+                                                <p><a href="noticia.php?getLink=1677"> Prefeita Luciana Recebe Medalha Do... </a> </p>
+                                            </div>
+                                        </div>
+                                                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="home-services-other">
+                <div class="container">
+                    <div class="section-title text-center">
+                        <h2 class="title-services-other title-2">Licitação</h2>
+                        <h4 class="subtitle-services-other subtitle-2">Acompanhe os Processos Licitatórios do Município de </h4>
+
+                    </div>
+
+                    <div class="row services-other">
+                                                        <div class="col-sm-4">
+                                    <div class="img-box">
+                                        <a href="licitacao.php?licitacao=782"><img src="images/tome_nota2.png" alt="PROCESSO 145/2026 DISPENSA ELETRÔNICA 83/2026" /></a>
+                                    </div>
+                                    <div class="services-info">
+                                        <h4 class="services-title-one subtitle">
+                                            <a href="licitacao.php?licitacao=782">PROCESSO 145/2026 DISPENSA ELETRÔNICA 83/2026 </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                                                <div class="col-sm-4">
+                                    <div class="img-box">
+                                        <a href="licitacao.php?licitacao=781"><img src="images/tome_nota2.png" alt="PROCESSO 144/2026 DISPENSA 82/2026" /></a>
+                                    </div>
+                                    <div class="services-info">
+                                        <h4 class="services-title-one subtitle">
+                                            <a href="licitacao.php?licitacao=781">PROCESSO 144/2026 DISPENSA 82/2026 </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                                                <div class="col-sm-4">
+                                    <div class="img-box">
+                                        <a href="licitacao.php?licitacao=780"><img src="images/tome_nota2.png" alt="PROCESSO 142/2026 DISPENSA ELETRÔNICA 80/2026" /></a>
+                                    </div>
+                                    <div class="services-info">
+                                        <h4 class="services-title-one subtitle">
+                                            <a href="licitacao.php?licitacao=780">PROCESSO 142/2026 DISPENSA ELETRÔNICA 80/2026 </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                
+
+                        <div class="clearfix spacer-70"></div>
+                                                        <div class="col-sm-4">
+                                    <div class="img-box">
+                                        <a href="licitacao.php?licitacao=779"><img src="images/tome_nota2.png" alt="PROCESSO 143/2026 DISPENSA 81/2026" /></a>
+                                    </div>
+                                    <div class="services-info">
+                                        <h4 class="services-title-one subtitle">
+                                            <a href="licitacao.php?licitacao=779">PROCESSO 143/2026 DISPENSA 81/2026 </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                                                <div class="col-sm-4">
+                                    <div class="img-box">
+                                        <a href="licitacao.php?licitacao=778"><img src="images/tome_nota2.png" alt="PROCESSO 141/2026 DISPENSA 79/2026" /></a>
+                                    </div>
+                                    <div class="services-info">
+                                        <h4 class="services-title-one subtitle">
+                                            <a href="licitacao.php?licitacao=778">PROCESSO 141/2026 DISPENSA 79/2026 </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                                                <div class="col-sm-4">
+                                    <div class="img-box">
+                                        <a href="licitacao.php?licitacao=777"><img src="images/tome_nota2.png" alt="PROCESSO 139/2026 DISPENSA 77/2026" /></a>
+                                    </div>
+                                    <div class="services-info">
+                                        <h4 class="services-title-one subtitle">
+                                            <a href="licitacao.php?licitacao=777">PROCESSO 139/2026 DISPENSA 77/2026 </a>
+                                        </h4>
+                                    </div>
+                                </div>
+                                
+                    </div>
+
+                </div>
+            </section>
+           
+
+
+
+            <section class="home-news">
+                <div class="container">
+                    <div class="row news">
+                                                        <div class="col-md-4">
+                                    <div class="blog-img-box">
+                                        <div class="blog-date"> <span class="month">set                                            </span> <span class="date"> 16</span> </div>
+                                        <a class="hover-effect" href="noticia.php?getLink=1674">
+                                            <img src="https://guidoval.mg.gov.br/uploads-imagens/EventoSetembroAmarelo-175806803668c9fd441df76o.jpg" width="360px" height="292px" alt="Notícias Prefeitura Municipal de Guidoval" />
+                                        </a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <p><a href="noticia.php?getLink=1674"> Evento Setembro Amarelo  </a> </p>
+
+                                    </div>
+                                </div>
+                                                                <div class="col-md-4">
+                                    <div class="blog-img-box">
+                                        <div class="blog-date"> <span class="month">set                                            </span> <span class="date"> 15</span> </div>
+                                        <a class="hover-effect" href="noticia.php?getLink=1673">
+                                            <img src="https://guidoval.mg.gov.br/uploads-imagens/CastraçãoGratuitaDecãesEGatos.-175806797968c9fd0bde6a32.jpg" width="360px" height="292px" alt="Notícias Prefeitura Municipal de Guidoval" />
+                                        </a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <p><a href="noticia.php?getLink=1673"> Castração Gratuita De cães E Gatos. </a> </p>
+
+                                    </div>
+                                </div>
+                                                                <div class="col-md-4">
+                                    <div class="blog-img-box">
+                                        <div class="blog-date"> <span class="month">set                                            </span> <span class="date"> 10</span> </div>
+                                        <a class="hover-effect" href="noticia.php?getLink=1672">
+                                            <img src="https://guidoval.mg.gov.br/uploads-imagens/EDITALDECONVOCAÇÃODAASSEMBLEIAGERALEXTRAORDINÁRIA-175767698568c405b9cac10).jpg" width="360px" height="292px" alt="Notícias Prefeitura Municipal de Guidoval" />
+                                        </a>
+                                    </div>
+                                    <div class="blog-content">
+                                        <p><a href="noticia.php?getLink=1672"> EDITAL DE CONVOCAÇÃO DA ASSEMBLEIA... </a> </p>
+
+                                    </div>
+                                </div>
+                                
+                    </div>
+                    <!--<div class="blog-btn text-center">
+                        <a href="noticias.php" class="btn btn-primary" role="button">MAIS NOTÍCIAS</a>
+                    </div>-->
+                </div>
+            </section>
+            
+            <section class="home-partners">
+                <div class="container">
+                    <div class="section-title text-center">
+                        <a href="https://www.guidoval.mg.gov.br/portal/salamineira" target="_blank"><img src="https://guidoval.mg.gov.br/portal/salamineira/images/sala-mineira.jpg" width="99%"/></a>
+                    </div>
+                </div>
+            </section>
+<!--
+            <section class="home-services-other">
+                <div class="container">
+                    <div class="section-title text-center">
+                        <a href="chamamentos-publico.php"><img src="https://www.rodeiro.mg.gov.br/portal/images/chamamento.png" width="100%"/></a>
+
+                    </div>
+
+                    <div class="row services-other">
+                                                        <div>
+                                    <div class="services-info">
+                                        <br>
+                                        <center>
+                                            <h4 class="services-title-one subtitle">
+                                            <a href="chamamento-publico.php?chamamento="> </a>
+                                            </h4>
+                                        </center>
+                                    </div>
+                                </div>
+                                                
+                    </div>
+                </div>
+            </section>
+
+            <section class="home-ceo">
+                <div class="container">
+                    <div class="row ceo">
+                        <div class="col-md-6">
+                            <div class="ceo-photo">
+                                <img src="images/administracao.png" alt="Prefeitura Municipal de Guidoval" />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="ceo-details">
+            <!--<h2 class="ceo-title color-title"> WORD FROM CEO </h2>--
+            <h4 class="ceo-subtitle subtitle"> ADMINISTRAÇÃO 2017-2020 </h4>
+            <p align="justify">A administração municipal atua de forma a estruturar cada vez mais a cidade e promover mais saúde, educação, bem-estar social e melhor infraestrutura.
+                Com trabalho sério, todas as secretarias buscam se integrar para fazer o melhor por todos. O homem do campo recebe o apoio necessário para seu dia a dia e, assim, todos ficam satisfeitos em Guidoval.</p>
+            <p align="justify">Promover uma gestão participativa e transparente, provendo o bem-estar social ao servir o município a partir dos princípios constitucionais éticos de responsabilidade social e desenvolvimento local e regional, por meio de ações e serviços públicos efetivos, na busca da qualidade de vida da comunidade</p>
+            <!--<h4 class="ceo-sign"> <img src="images/ceo-sign.png" alt="signature" /> </h4>
+            <p class="ceo-name">Gregory Walker, CEO</p>--
+        </div>
+    </div>
+</div>
+</div>
+</section>-->
+
+            <section class="home-partners">
+                <div class="container">
+                    <div class="section-title text-center">
+                        <a href="https://guidoval.mg.gov.br/ouvidoria" target="_blank"><img src="images/ouvidoria.png" width="99%"/></a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="home-services">
+                <div class="container">
+                    <div class="row services">
+                        <div class="col-md-6">
+                            <div class="hover-effect">
+                                <img src="images/issqn.jpg" alt="ISSQN Guidoval" />
+                            </div>
+                            <h4 class="services-title-one subtitle">Imposto Sobre Serviços de Qualquer Natureza</h4>
+                            <p>Informamos que as guias para pagamento do ISSQN já se encontram disponíveis na sede da Prefeitura e também podem ser solicitadas por email: <a href="mailto:licitacao@paulacandido.mg.gov.br" alt="Tributos Guidoval">tributos@guidoval.mg.gov.br</a>
+                            </p>
+
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="hover-effect">
+                                <img src="images/concurso.jpg" alt="Concurso Guidoval" />
+                            </div>
+                            <h4 class="services-title-one subtitle">Concursos e Processos Seletivos Prefeitura de Guidoval-MG</h4>
+                            <p>Acompanhe os Processos Seletivos e Concursos do Município de Guidoval</p>
+                            <p><a href="concursos.php">Saiba mais...</a></p>
+                        </div>
+                        <!--<div class="col-md-6">
+                            <div class="hover-effect">
+                                <img src="images/divida-ativa.png" alt="our-operations" />
+                            </div>
+                            <h4 class="services-title-one subtitle">Prorrogação do prazo para pagamento da dívida com desconto até 28/02/2018</h4>
+                            <p><b>Parcela Única: </b>Desconto de 100% nas multas e juros.</p>
+                            <p><b>Em até 4 vezes: </b>Desconto de 70% nas multas e juros.</p>
+                            <p><b>De 5 à 10 vezes: </b>Desconto de 50% nas multas e juros.</p>
+                        </div>
+                        <!--<div class="col-md-4">
+                            <div class="hover-effect">
+                                <img src="images/services-three.jpg" alt="social-resposibility" />
+                            </div>
+                            <h4 class="services-title-one subtitle">SOCIAL RESPONIBILITY</h4>
+                            <p>Globally incubate principle-centered e-markets with standards compliant catalysts for change. Efficiently extend highly efficient products.</p>
+                            <a href="#" class="btn btn-default btn-normal">Read More</a>
+                        </div>-->
+                    </div>
+                </div>
+            </section>
+
+            <section class="home-links">
+                <div class="container">
+                    <div class="row links">
+                        <div class="col-md-2">
+                            <h4 class="links-title subtitle">Legislação</h4>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="atas.php" class="btn btn-primary" role="button">Atas</a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="decretos.php" class="btn btn-primary" role="button">Decretos</a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="http://transparencia-hd.com.br/?cod_empre=69" class="btn btn-primary" role="button">Instruções Normativas</a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="leis.php" class="btn btn-primary" role="button">Leis</a>
+                        </div>
+                        <div class="col-md-2">
+                            <a href="portarias.php" class="btn btn-primary" role="button">Portarias</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="home-services-other">
+                <div class="container">
+                    <div class="section-title text-center">
+                        <a href="http://transparencia-hd.com.br/?cod_empre=69" target="_blank"><img src="images/banner_transparencia.png" width="99%"/></a>
+                        <div class="spacer-20"> </div>
+                    </div>
+                </div>
+            </section>
+            <section class="home-publications">
+                <div class="container">
+                    <div class="row publications">
+                        <div class="col-md-7 col-sm-6">
+                            <div class="panel-group" id="accordion">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title"> 
+                                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><img src="images/prefeituras/azul/diario_oficial.png"/></a>
+                                        </h4>
+                                    </div>
+                                    <div id="collapseOne" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                                                                                <h2>DIÁRIO OFICIAL</h2>
+                                                    <p><p>Edi&ccedil;&atilde;o 124/2026</p>
+</p>
+                                                    <p>27/11/2026</p>
+                                                    <a href="diario-oficial-detalhe.php?getLink=625">Saiba mais...</a>
+                                                                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-5 col-sm-6">
+                            <div class="plubication-downloads">
+                                <h2 class="publish">Informação</h2>
+                                <div class="download-file">
+                                    <a href="atas.php"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Atas <span>PDF</span> </a>
+                                </div>
+                                <div class="download-file">
+                                    <a href="convenios.php"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Convênios <span>PDF</span> </a>
+                                </div>
+                                <div class="download-file">
+                                    <a href="decretos.php"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Decretos <span>PDF</span> </a>
+                                </div>
+                                <div class="download-file">
+                                    <a href="leis.php"> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Leis <span>PDF</span> </a>
+                                </div>
+                                <div class="download-file">
+                                    <a href=""> <i class="fa fa-file-pdf-o" aria-hidden="true"></i> Portarias <span>PDF</span> </a>
+                                </div>
+                            <!--<p class="download-title">Other Downloads</p>
+                            <ul class="download-list">
+                                <li><a href="#"> Atas </a> <span></span></li>
+                                <li><a href="#"> Leis </a> <span></span></li>
+                                <li><a href="#"> Decretos </a> <span></span></li>
+                                <li><a href="#"> Portarias </a> <span></span></li>
+                            </ul>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!--<section class="home-news">
+                <div class="container">
+                    <div class="row news">
+                                                        <div class="col-md-6">
+                                    <div class="blog-img-box">
+                                                                            </div>
+                                </div>
+                                                    </div>
+                </div>
+            </section>-->
+
+            <section class="home-partners">
+                <div class="container">
+                    <div class="section-title text-center">
+                        <a href="http://transparencia.guidoval.mg.gov.br/Ocorrencia/Create" target="_blank"><img src="images/banner_e-sic.jpg"/></a>
+                    </div>
+                </div>
+            </section>
+
+            <!--<section class="home-ceo">
+                <div class="container">
+                    <div class="row ceo">
+                        <div class="col-md-12">
+                            <div class="ceo-photo">
+                                <img src="images/calendario-cultural.jpg" alt="Calendário Cultural Prefeitura Municipal de Guidoval" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+                                    <section class="home-partners">
+                                        <div class="container">
+                                            <div class="section-title text-center">
+                                                <h2 class="subtitle-testimonials title-2">PARCEIROS </h2>
+                                                <div class="spacer-20"> </div>
+                                            </div>
+
+                                            <div class="row partners">
+                                                <div class="logo-slides slides owl-carousel">
+            <!--<div class="item">
+                <div class="partner-images">
+                    <img src="images/partner1.png" alt="Partner Image 1">
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="partner-images">
+                    <img src="images/partner2.png" alt="Partner Image 1">
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="partner-images">
+                    <img src="images/partner3.png" alt="Partner Image 1">
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="partner-images">
+                    <img src="images/partner4.png" alt="Partner Image 1">
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="partner-images">
+                    <img src="images/partner1.png" alt="Partner Image 1">
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="partner-images">
+                    <img src="images/partner2.png" alt="Partner Image 1">
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="partner-images">
+                    <img src="images/partner3.png" alt="Partner Image 1">
+                </div>
+            </div>
+
+            <div class="item">
+                <div class="partner-images">
+                    <img src="images/partner4.png" alt="Partner Image 1">
+                </div>
+            </div>--
+
+        </div>
+    </div>
+</div>
+</section>-->
+
+        </main>
+        <!-- Main Content Section -->
+
+        <!-- Footer Section -->
+        <footer>
+
+    <div class="footer">
+
+        <div class="container">
+
+
+            <!-- Prefooter Section -->
+
+            <div class="row pre-footer">
+
+
+                <div class="col-md-4">
+
+                    <div class="contact-box">
+
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+
+
+                        <div class="contact-details">
+
+                            <h4 class="pre-footer-title">
+                                ATENDIMENTO
+                            </h4>
+
+
+                            <p>
+                                Praça Santo Antonio, 71,
+                                <br>
+                                Centro, Guidoval
+                            </p>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="col-md-4">
+
+                    <div class="contact-box">
+
+                        <i class="fa fa-phone" aria-hidden="true"></i>
+
+
+                        <div class="contact-details">
+
+                            <h4 class="pre-footer-title">
+                                TELEFONE
+                            </h4>
+
+
+                            <p>
+                                (32) 3578-1514
+                                <br>&nbsp;
+                            </p>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="col-md-4">
+
+                    <div class="contact-box">
+
+                        <i class="fa fa-envelope" aria-hidden="true"></i>
+
+
+                        <div class="contact-details">
+
+                            <h4 class="pre-footer-title">
+                                EMAIL
+                            </h4>
+
+
+                            <p>
+                                prefeitura@guidoval.mg.gov.br
+                                <br>&nbsp;
+                            </p>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <!-- /Prefooter Section -->
+
+
+        </div>
+
+    </div>
+
+
+
+
+    <!-- Copyright -->
+
+    <div class="copyright">
+
+
+        <div class="container">
+
+
+            <div class="row copyright-bar">
+
+
+
+                <div class="col-md-6">
+
+
+                    <p>
+                        Copyright © Prefeitura Municipal de Guidoval
+                    </p>
+
+
+                </div>
+
+
+
+
+                <div class="col-md-6 text-right">
+
+
+                    <p>
+
+
+                        <a href="#">
+                            Desenvolvido por:
+                        </a>
+
+
+
+                        <a href="mailto:atendimento@eduardofeliciano.com.br"
+                            title="Sites e Portais para Órgãos Públicos">
+
+
+                            <img src="http://eduardofeliciano.com.br/ef4.png">
+
+
+                        </a>
+
+
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+    <!-- /Copyright -->
+
+
+</footer>
+
+
+
+
+
+<!-- BOTÃO FLUTUANTE PESQUISA SATISFAÇÃO -->
+
+<a
+    href="pesquisa-satisfacao.php"
+    id="abrirPesquisaSatisfacao"
+    title="Responder Pesquisa de Satisfação"
+    aria-label="Responder Pesquisa de Satisfação">
+
+    <i class="fa fa-star"></i>
+
+</a>
+
+
+
+
+
+<!-- ACESSIBILIDADE -->
+
+<a
+    href="#"
+    id="showMenuAcessibilidade"
+    accesskey="0"
+    tabindex="0"
+    title="Abrir menu de acessibilidade (Alt + 0)">
+
+    <i class="fa fa-universal-access"></i>
+
+</a>
+
+
+
+<div id="menuAcessibilidade">
+
+
+    <span
+        id="hideMenuAcessibilidade"
+        tabindex="0"
+        title="Fechar menu">
+
+        ×
+
+
+    </span>
+
+
+
+
+    <div class="content-menuAcessibilidade">
+
+
+        <h4>
+            Acessibilidade
+            <i class="fa fa-universal-access"></i>
+        </h4>
+
+
+
+
+        <button
+            id="aumentarFonte"
+            accesskey="1"
+            tabindex="0">
+
+            Aumentar Fonte
+
+            <b>A+</b>
+
+        </button>
+
+
+
+
+        <button
+            id="diminuirFonte"
+            accesskey="2"
+            tabindex="0">
+
+            Diminuir Fonte
+
+            <b>A-</b>
+
+        </button>
+
+
+
+
+        <button
+            id="fonteOriginal"
+            accesskey="3"
+            tabindex="0">
+
+            Fonte Original
+
+            <b>A</b>
+
+        </button>
+
+
+
+
+        <button
+            id="btnContraste"
+            accesskey="4"
+            tabindex="0">
+
+            Alto Contraste
+
+            <i class="fa fa-adjust"></i>
+
+        </button>
+
+
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<!-- VLIBRAS -->
+
+<div vw class="enabled">
+
+    <div vw-access-button class="active"></div>
+
+
+    <div vw-plugin-wrapper>
+
+        <div class="vw-plugin-top-wrapper"></div>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<style>
+    /* ================================
+ BOTÃO PESQUISA SATISFAÇÃO
+================================ */
+
+
+    #abrirPesquisaSatisfacao {
+
+
+        position: fixed;
+
+        right: 20px;
+
+        bottom: 80px;
+
+
+        width: 55px;
+
+        height: 55px;
+
+
+        background: #1d5ca8;
+
+        color: #fff;
+
+
+        border-radius: 50%;
+
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: center;
+
+
+        font-size: 25px;
+
+
+        z-index: 9998;
+
+
+        box-shadow: 0 2px 8px rgba(0, 0, 0, .35);
+
+
+    }
+
+
+
+    #abrirPesquisaSatisfacao:hover {
+
+
+        background: #0d3d75;
+
+        color: #fff;
+
+        text-decoration: none;
+
+
+    }
+</style>
+
+
+
+
+
+<script>
+    /* ================================
+ ACESSIBILIDADE
+================================ */
+
+
+    $('#showMenuAcessibilidade').click(function(e) {
+
+        e.preventDefault();
+
+
+        $('#menuAcessibilidade')
+            .animate({
+                marginLeft: '0'
+            }, 300);
+
+
+    });
+
+
+
+
+    $('#hideMenuAcessibilidade').click(function() {
+
+
+        $('#menuAcessibilidade')
+            .animate({
+                marginLeft: '-500px'
+            }, 300);
+
+
+    });
+
+
+
+
+
+    $('#aumentarFonte').click(function() {
+
+
+        var tamanho = parseFloat($('body').css('font-size'));
+
+
+        $('body').css(
+
+            'font-size',
+
+            (tamanho + 2) + 'px'
+
+        );
+
+
+    });
+
+
+
+
+
+    $('#diminuirFonte').click(function() {
+
+
+        var tamanho = parseFloat($('body').css('font-size'));
+
+
+        $('body').css(
+
+            'font-size',
+
+            (tamanho - 2) + 'px'
+
+        );
+
+
+    });
+
+
+
+
+
+    $('#fonteOriginal').click(function() {
+
+
+        $('body').css(
+
+            'font-size',
+
+            '16px'
+
+        );
+
+
+    });
+
+
+
+
+
+    /* ================================
+     ALTO CONTRASTE
+    ================================ */
+
+
+    document.getElementById("btnContraste")
+        .addEventListener("click", function() {
+
+
+            var css = document.getElementById("css_contraste");
+
+
+
+            if (css) {
+
+
+                css.parentNode.removeChild(css);
+
+
+            } else {
+
+
+                var link = document.createElement("link");
+
+
+                link.id = "css_contraste";
+
+                link.rel = "stylesheet";
+
+                link.type = "text/css";
+
+                link.href = "css/contraste.css";
+
+
+
+                document
+                    .getElementsByTagName("head")[0]
+                    .appendChild(link);
+
+
+
+            }
+
+
+        });
+</script>
+
+
+
+
+
+<!-- VLIBRAS -->
+
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+
+<script>
+    new window.VLibras.Widget(
+
+        'https://vlibras.gov.br/app'
+
+    );
+</script>
+
+
+
+
+
+<!-- GOOGLE ANALYTICS -->
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-52598075-3"></script>
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+
+
+    function gtag() {
+
+        dataLayer.push(arguments);
+
+    }
+
+
+
+    gtag('js', new Date());
+
+
+
+    gtag(
+
+        'config',
+
+        'UA-52598075-3'
+
+    );
+</script>
+
+
+<!-- ============= /Footer =============== -->        <!-- Footer Section -->
+
+        <!-- back-to-top link -->
+        <a href="#0" class="cd-top"> Top </a>
+
+    </div>
+
+    <!-- Page Wrapper
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    <!-- Javascripts
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+    <!-- Jquery Library -->
+    <script src="js/jquery.min.js"></script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- jQuery Flex Slider -->
+    <script src="js/jquery.flexslider-min.js"></script>
+
+    <!-- Owl Carousel -->
+    <script src="js/owl.carousel.min.js"></script>
+
+    <!-- Counter JS -->
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+
+    <!-- Back to top -->
+    <script src="js/back-to-top.js"></script>
+
+    <!-- Form Validation -->
+    <script src="js/validate.js"></script>
+
+    <!-- Subscribe Form JS -->
+    <script src="js/subscribe.js"></script>
+
+    <!-- Main JS -->
+    <script src="js/main.js"></script>
+
+    <!-- royalslider -->
+    <script src="slide/jquery-1.8.3.min.js"></script>
+    <script src="slide/jquery.royalslider.min.js"></script>
+
+    <script>
+        jQuery(document).ready(function ($) {
+            $('#video-gallery').royalSlider({
+                arrowsNav: false,
+                fadeinLoadedSlide: true,
+                controlNavigationSpacing: 0,
+                controlNavigation: 'thumbnails',
+                thumbs: {
+                    autoCenter: false,
+                    fitInViewport: true,
+                    orientation: 'vertical',
+                    spacing: 0,
+                    paddingBottom: 0
+                },
+                keyboardNavEnabled: true,
+                imageScaleMode: 'fill',
+                imageAlignCenter: true,
+                slidesSpacing: 0,
+                loop: false,
+                loopRewind: true,
+                numImagesToPreload: 3,
+                video: {
+                    autoHideArrows: true,
+                    autoHideControlNav: false,
+                    autoHideBlocks: true,
+                    youTubeCode: '<iframe src="https://www.youtube.com/embed/%id%?rel=1&autoplay=1&showinfo=0" frameborder="no" allowFullscreen></iframe>'
+                },
+                autoScaleSlider: true,
+                autoScaleSliderWidth: 960,
+                autoScaleSliderHeight: 450,
+
+                /* size of all images http://help.dimsemenov.com/kb/royalslider-jquery-plugin-faq/adding-width-and-height-properties-to-images */
+                imgWidth: 640,
+                imgHeight: 360
+
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

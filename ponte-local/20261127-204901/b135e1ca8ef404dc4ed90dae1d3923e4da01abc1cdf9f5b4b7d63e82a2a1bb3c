@@ -1,0 +1,1619 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="author" content="Thyago Hoffman" />
+<meta name="reply-to" content="hoffmandev@outlook.com" />
+<title>PREFEITURA DE ÁGUIA BRANCA - ES</title>
+<meta name="description" content="Águia Branca é um município brasileiro do estado do Espírito Santo, colonizada por poloneses. Segundo o IBGE 2014 sua população é de..." />
+
+<meta property="og:title" content="PREFEITURA DE ÁGUIA BRANCA - ES" />
+<meta property="og:site_name" content="PREFEITURA DE ÁGUIA BRANCA - ES" />
+<meta property="og:url" content="https://aguiabranca.es.gov.br/" />
+<meta property="og:type" content="government" />
+<meta property="og:description" content="Águia Branca é um município brasileiro do estado do..." />
+<meta property="og:image" content="https://aguiabranca.es.gov.br/assets/img/logotipo-share.png" />
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="PREFEITURA DE ÁGUIA BRANCA - ES" />
+<meta name="twitter:description" content="Águia Branca é um município brasileiro do estado do Espírito Santo, colonizada por poloneses. Segundo o IBGE 2014 sua população é de..." />
+<meta name="twitter:image" content="https://aguiabranca.es.gov.br/assets/img/logotipo-share.png" />
+
+<link rel='shortcut icon' type='image/x-icon' href='https://aguiabranca.es.gov.br/assets/img/favicon.ico' />
+<!-- ================================
+Importa o Pre-Loader ================ -->
+<link rel="stylesheet" href="https://aguiabranca.es.gov.br/statics/assets/plugins/loaders/loaders.css-master/loaders.css?v=1795812502" />
+<!-- ================================ -->
+
+
+<link rel='stylesheet' href='https://aguiabranca.es.gov.br/statics/bootstrap/css/bootstrap.min.css?v=1795812502' type='text/css' />
+
+<link rel="stylesheet" href="https://aguiabranca.es.gov.br/statics/assets/plugins/prettyPhoto/css/prettyPhoto.css?v=1795812502" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://aguiabranca.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.css?v=1795812502" type="text/css" media="screen" />
+<link rel="stylesheet" href="https://unpkg.com/swiper@8/swiper-bundle.min.css" type="text/css" media="screen" />
+
+<link href='https://aguiabranca.es.gov.br/statics/frontend/acessibilidade/style_acessibilidade.css?v=1795812502' rel='stylesheet' type='text/css'>
+<script src='https://aguiabranca.es.gov.br/statics/frontend/acessibilidade/js_acessibilidade.js?v=1795812502'></script>
+<link href='https://unpkg.com/swiper@8/swiper-bundle.min.css?v=1795812502' rel='stylesheet' type='text/css'>
+<link href='https://aguiabranca.es.gov.br/statics/assets/plugins/validation/css/validationEngine.jquery.min.css?v=1795812502' rel='stylesheet' type='text/css'>
+<link href='https://aguiabranca.es.gov.br/statics/frontend/select2/dist/css/select2.min.css?v=1795812502' rel='stylesheet' type='text/css'>
+<link href='https://aguiabranca.es.gov.br/assets/css/style_site.css?v=1795812502' rel='stylesheet' type='text/css'>
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+</head>
+
+<body>
+    <section>
+    <div id="preloader">
+        <div class="loaders">
+            <div class="preloader">
+                <div class="loader-inner ball-clip-rotate">
+                    <div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section><!-- Bloco Acessibilidade -->
+<section>
+    <nav class="navbar navbar-default back-primary2" id="acessibilidade">
+        <div class="container-fluid">
+            <div class="row bloco-middle-center">
+                <div class="col-lg-11 col-xs-12">
+
+                    <!-- Brand and toggle get grouped for better mobile display -->
+                    <div class="navbar-header navbar-right text-right">
+                        <!-- <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" role="button" data-target="#MENU-ACESSIBILIDADE" aria-expanded="false">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button> -->
+                        <a class="navbar-toggle collapsed visible-xs" data-toggle="collapse" data-target="#MENU-ACESSIBILIDADE" aria-expanded="false" title="Menu Acessibilidade">ACESSIBILIDADE</a>
+                    </div>
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="MENU-ACESSIBILIDADE">
+                        <ul class="nav navbar-nav col-sm-6">
+                            <li><a href="#pagina_site" title="Ir para o conteúdo" accesskey=""><span>1</span> Ir para o conteúdo</a></li>
+                            <li><a href="#bloco-logo" title="Ir para o topo" accesskey="2"><span>2</span> Ir para o menu</a></li>
+                            <li><a href="#bloco-logo" onclick="openSearch()" title="Ir para o rodapé" accesskey="3"><span>3</span> Ir para a busca</a></li>
+                            <li><a href="#horarios" title="Ir para o rodapé" accesskey="4"><span>4</span> Ir para o rodapé</a></li>
+                            <li><a class="acessibilidade_fonte" accesskey="5" onClick="fonte('d');" title="Diminuir tamanho da fonte"><span>A<sup>-</sup></span> Diminuir fonte</a></li>
+                            <li><a class="acessibilidade_fonte" accesskey="6" onClick="fonte('a');" title="Aumentar tamanho da fonte"><span>A<sup>+</sup></span> Aumentar fonte</a></li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right col-sm-6">
+                            <li><a href="https://aguiabranca.es.gov.br/acessibilidade" accesskey="7" data-toggle="tooltip" data-placement="bottom" data-container="body" title="Acessibilidade do site"><span><i class="fa fa-wheelchair">&nbsp;</i></span> Acessibilidade</a></li>
+                            <li><a accesskey="8" onclick="ativar_contraste()" title="Contraste do Site"><span><i class="glyphicon glyphicon-adjust"></i></span> Contraste</a></li>
+                            <li><a href="https://aguiabranca.es.gov.br/sitemap" title="Contraste do Site"><span><i class="glyphicon glyphicon-map-marker"></i></span> Mapa do Site</a></li>
+                            <li class="dropdown">
+                                <a class=" dropdown-toggle submenu-institucional" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" title="Links dos Sistemas"><span><i class="fa fa-chevron-down"></i></span> Sistemas </a>
+                                <ul class="dropdown-menu">
+                                                                                                                                                    <li><a href="https://webmail-seguro.com.br/prefeituradeaguiabranca.es.gov.br" target="_blank" title="Ir para o webmail">Webmail</a></li>
+                                                                        <li><a href="https://aguiabranca.es.gov.br/sistema/" target="_blank" accesskey="2" title="Ir para intranet">Intranet</a></li>
+
+                                    <!-- <li><a href="https://aguiabranca.es.gov.br/pagina/popup/2156" target="_blank" title="Ir para LGPD">LGPD</a></li> -->
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+
+                </div>
+            </div>
+        </div><!-- /.container-fluid -->
+    </nav>
+</section>
+<!-- / Bloco Acessibilidade -->
+    <!-- Bloco Logo -->
+    <section>
+        <div class="container-fluid hidden-xs" id="bloco-logo">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-sm-12 bloco-vertical-middle justify-content-space-beetween">
+                    <div class="col-sm-4 no-padding">
+                        <a href="https://aguiabranca.es.gov.br/" title="Direcionar para a Home do Site">
+                            <img id="logo-menu" src="https://aguiabranca.es.gov.br/assets/img/logo_site.png" alt="LOGO DE PREFEITURA DE ÁGUIA BRANCA - ES" />
+                        </a>
+                    </div>
+                    <div class="col-sm-8 pad-right-0 bloco-vertical-middle justify-content">
+                        <ul class="d-flex justify-content">
+                            <li class='presentation '><a class='' href='https://radardatransparencia.atricon.org.br' target="_blank" title='Direcionar para Radar da Transparência'> Radar da Transparência</a></li><li class='presentation '><a class='' href='/e-ouv' target="_blank" title='Direcionar para Ouvidoria'> Ouvidoria</a></li><li class='presentation '><a class='' href='/e-sic' target="_blank" title='Direcionar para e-Sic'> e-Sic</a></li><li class='presentation '><a class='' href='http://aguiabranca-es.portaltp.com.br/' target="_blank" title='Direcionar para Transparência'> Transparência</a></li><li class='presentation '><a class='' href='/pagina/ler/1035/tca' target="_blank" title='Direcionar para TAC'> TAC</a></li><li class='presentation '><a class='' href='/controladoria' target="_blank" title='Direcionar para Controladoria'> Controladoria</a></li><li class='presentation '><a class='' href='https://aguiabranca.es.gov.br/licitacao'  title='Direcionar para Licitações'> Licitações</a></li><li class='presentation '><a class='' href='/pagina/ler/600/acesso-informacao'  title='Direcionar para Acesso à informação'> Acesso à informação</a></li>                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <form class="form-padrao hidden" action="https://aguiabranca.es.gov.br/busca">
+                                    <fieldset class="no-padding d-flex no-margin">
+                                        <input type="text" class="form-control" name="q" id="q" placeholder="Faça sua busca aqui" />
+                                        <span class="input-group-btn d-flex">
+                                            <button class="btn" type="button" onclick="openSearch()"><i class="fa fa-search"></i></button>
+                                        </span>
+                                    </fieldset>
+                                </form>
+                                <button class="btn btn-default botao-busca" type="button" onclick="openSearch()"><i class="fa fa-search"></i></button>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Bloco Logo -->
+
+    <!-- Bloco Menu -->
+    <section>
+        <header class="container-fluid" id="bloco-menu">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12">
+                    <nav class="navbar">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a href="https://aguiabranca.es.gov.br/" title="Direcionar para a Home do Site"><img class="navbar-brand visible-xs" src="https://aguiabranca.es.gov.br/assets/img/logo_site.png" alt="Logo de PREFEITURA DE ÁGUIA BRANCA - ES" /></a>
+                        </div>
+
+                        <div class="collapse navbar-collapse" id="menu">
+                            <ul class="nav navbar-nav">
+                                <li class='presentation '><a class='' href=' https://www.portaldecompraspublicas.com.br'  title='Direcionar para COMPRAS PÚBLICAS ELETRÔNICAS'> COMPRAS PÚBLICAS ELETRÔNICAS</a></li><li class='presentation '><a class='' href='https://aguiabranca.es.gov.br/'  title='Direcionar para PÁGINA INICIAL'> PÁGINA INICIAL</a></li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para A CIDADE'>
+                
+                A CIDADE
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/pagina/ler/1000/historia'  title='Direcionar para História do Município'> História do Município</a></li><li class='presentation '><a class='' href='/pagina/ler/1007/localizao'  title='Direcionar para Localização'> Localização</a></li><li class='presentation '><a class='' href='/pagina/ler/1003/simbolos'  title='Direcionar para Símbolos Oficiais'> Símbolos Oficiais</a></li><li class='presentation '><a class='' href='/pagina/ler/1008/hino'  title='Direcionar para Hino'> Hino</a></li><li class='presentation '><a class='' href='/pagina/ler/1006/feriados'  title='Direcionar para Feriados Municipais'> Feriados Municipais</a></li><li class='presentation '><a class='' href='/pagina/ler/1002/educacao_cultura'  title='Direcionar para Educação e Cultura'> Educação e Cultura</a></li><li class='presentation '><a class='' href='/pagina/ler/1004/turismo'  title='Direcionar para Turismos'> Turismos</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para INSTITUCIONAL'>
+                
+                INSTITUCIONAL
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/pagina/ler/1011/prefeito'  title='Direcionar para Prefeito'> Prefeito</a></li><li class='presentation '><a class='' href='/pagina/ler/1012/vice_prefeito'  title='Direcionar para Vice - Prefeito'> Vice - Prefeito</a></li><li class='presentation '><a class='' href='/pagina/ler/1009/defesa_civil'  title='Direcionar para Defesa Cívil'> Defesa Cívil</a></li><li class='presentation '><a class='' href='/pagina/ler/1013/estrutura'  title='Direcionar para Estrutura Organizacional'> Estrutura Organizacional</a></li><li class='presentation '><a class='' href='/pagina/ler/2/perguntas'  title='Direcionar para Perguntas Frequentes'> Perguntas Frequentes</a></li></ul>
+          </li><li class='presentation '><a class='' href='/secretaria'  title='Direcionar para SECRETARIAS'> SECRETARIAS</a></li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para LEGISLAÇÃO'>
+                
+                LEGISLAÇÃO
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/legislacao?especie_normativa=1' target="_blank" title='Direcionar para Lei Orgânica'> Lei Orgânica</a></li><li class='presentation '><a class='' href='http://www.cmab.es.gov.br/legislacao?especie_normativa=1' target="_blank" title='Direcionar para Leis Ordinárias'> Leis Ordinárias</a></li><li class='presentation '><a class='' href='/controladoria/legislacao/index/IN' target="_blank" title='Direcionar para Instruções Normativas'> Instruções Normativas</a></li><li class='presentation '><a class='' href='/legislacao' target="_blank" title='Direcionar para Legislação Municipal'> Legislação Municipal</a></li><li class='presentation '><a class='' href='http://www.al.es.gov.br' target="_blank" title='Direcionar para Legislação Estadual'> Legislação Estadual</a></li><li class='presentation '><a class='' href='http://www4.planalto.gov.br/legislacao' target="_blank" title='Direcionar para Legislação Federal'> Legislação Federal</a></li></ul>
+          </li><li class='dropdown '>
+              <a class=' dropdown-toggle submenu-institucional' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false' title='Direcionar para COMUNICAÇÃO'>
+                
+                COMUNICAÇÃO
+                <i class='fa fa-chevron-down' style='font-size:12px;'></i>
+              </a>
+              <ul class='dropdown-menu'><li class='presentation '><a class='' href='/noticia'  title='Direcionar para Notícias'> Notícias</a></li><li class='presentation '><a class='' href='/agenda'  title='Direcionar para Agenda de Eventos'> Agenda de Eventos</a></li><li class='presentation '><a class='' href='/galeria'  title='Direcionar para Galerias de Fotos'> Galerias de Fotos</a></li><li class='presentation '><a class='' href='/video'  title='Direcionar para Vídeos'> Vídeos</a></li><li class='presentation '><a class='' href='/pagina/ler/1005/telefones-uteis'  title='Direcionar para Telefones Úteis'> Telefones Úteis</a></li></ul>
+          </li><li class='presentation '><a class='' href='/controladoria'  title='Direcionar para CONTROLADORIA'> CONTROLADORIA</a></li>                            </ul>
+                            <ul class="nav navbar-nav visible-xs">
+                                <li class='presentation '><a class='' href='https://radardatransparencia.atricon.org.br' target="_blank" title='Direcionar para Radar da Transparência'> Radar da Transparência</a></li><li class='presentation '><a class='' href='/e-ouv' target="_blank" title='Direcionar para Ouvidoria'> Ouvidoria</a></li><li class='presentation '><a class='' href='/e-sic' target="_blank" title='Direcionar para e-Sic'> e-Sic</a></li><li class='presentation '><a class='' href='http://aguiabranca-es.portaltp.com.br/' target="_blank" title='Direcionar para Transparência'> Transparência</a></li><li class='presentation '><a class='' href='/pagina/ler/1035/tca' target="_blank" title='Direcionar para TAC'> TAC</a></li><li class='presentation '><a class='' href='/controladoria' target="_blank" title='Direcionar para Controladoria'> Controladoria</a></li><li class='presentation '><a class='' href='https://aguiabranca.es.gov.br/licitacao'  title='Direcionar para Licitações'> Licitações</a></li><li class='presentation '><a class='' href='/pagina/ler/600/acesso-informacao'  title='Direcionar para Acesso à informação'> Acesso à informação</a></li>                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </nav>
+                </div>
+            </div>
+        </header>
+    </section>
+    <!-- / Bloco Menu -->
+
+    
+    
+    <div id="conteudo" tabindex="-1"></div> <!-- /conteudo - acessibilidade -->
+    <div class="ajustar_fonte pagina_site" id="pagina_site">
+
+        <!--Conteúdo-->
+        <!--Bloco Galerias -->
+<!--/.Bloco Galerias -->
+
+<!-- Bloco Acesso Rápido -->
+<section>
+            <div class="container-fluid top3" id="acesso-rapido">
+              <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12">
+                  <div class="titulo bloco-vertical-middle">
+                      <h2> Acesso Rápido </h2>
+                  </div>
+                  <div class="row"><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="https://e-flow.es.gov.br/flow-definition/117511f3-36c6-b9b9-6b35-4c2c4d02ecbc" title="Protocolo Online">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/files/icons/documento-1.jpg alt='Exibe a foto do item: Protocolo Online' />
+                          </div>
+                          <p>Protocolo Online</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="/selecao" title="Processo Seletivo">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/filemanager/acesso-rapido/twemoji_memo.svg alt='Exibe a foto do item: Processo Seletivo' />
+                          </div>
+                          <p>Processo Seletivo</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="/pagina/ler/3028/setor-de-tributacao" title="Setor de Tributação">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/files/icons/documento-1.jpg alt='Exibe a foto do item: Setor de Tributação' />
+                          </div>
+                          <p>Setor de Tributação</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="/pagina/ler/3025/concursos" title="Concurso">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/files/icons/resume.jpg alt='Exibe a foto do item: Concurso' />
+                          </div>
+                          <p>Concurso</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="https://es-aguiabranca-pm.cia.cloud.el.com.br/" title="Controle Interno">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/filemanager/acesso-rapido/twemoji_link.svg alt='Exibe a foto do item: Controle Interno' />
+                          </div>
+                          <p>Controle Interno</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="/pagina/ler/3016/nbsp" title="Meio Ambiente">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/filemanager/acesso-rapido/twemoji_leaf-fluttering-in-wind.svg alt='Exibe a foto do item: Meio Ambiente' />
+                          </div>
+                          <p>Meio Ambiente</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="/documento?tipo=34" title="Defesa Civil">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/files/icons/defesa-civil-logo-bc62e20b18-seeklogo-com-1.png alt='Exibe a foto do item: Defesa Civil' />
+                          </div>
+                          <p>Defesa Civil</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="http://gsp02.cloud.el.com.br/es-aguiabranca-pm-sas/login.jsf" title="Assistência Social">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/filemanager/acesso-rapido/twemoji_card-file-box.svg alt='Exibe a foto do item: Assistência Social' />
+                          </div>
+                          <p>Assistência Social</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="/pagina/ler/1002/educacao-e-cultura" title="Secretaria Municipal de Educação, Cultura, Esporte e Lazer">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/files/icons/diversidade.png alt='Exibe a foto do item: Secretaria Municipal de Educação, Cultura, Esporte e Lazer' />
+                          </div>
+                          <p>Secretaria Municipal de Educação, Cultura, Esporte e Lazer</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="/pagina/ler/3022/aguia-branca-prev" title="Instituto">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/files/icons/instituicao-3-1.png alt='Exibe a foto do item: Instituto' />
+                          </div>
+                          <p>Instituto</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="https://aguiabranca.es.gov.br/pagina/ler/3027/obras-e-servicos-de-engenharia" title="Obras e Serviços de Engenharia">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/files/icons/arquiteto.png alt='Exibe a foto do item: Obras e Serviços de Engenharia' />
+                          </div>
+                          <p>Obras e Serviços de Engenharia</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="http://aguiabranca-es.portaltp.com.br/api/dadosabertos.aspx" title="Portal de dados abertos">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/files/icons/dados-abertos2__1_-removebg-preview-1.png alt='Exibe a foto do item: Portal de dados abertos' />
+                          </div>
+                          <p>Portal de dados abertos</p>
+                        </div>
+                      </a>
+                    </div><div class="col-md-2 col-sm-4 col-xs-6 top2">
+                      <a href="https://ioes.dio.es.gov.br/dom" title="Diário Oficial">
+                        <div class="acesso-rapido-item bloco-sombra ">
+                          <div>
+                            <img src=https://aguiabranca.es.gov.br/uploads/files/icons/diario-1.png alt='Exibe a foto do item: Diário Oficial' />
+                          </div>
+                          <p>Diário Oficial</p>
+                        </div>
+                      </a>
+                    </div></div>
+                </div>
+              </div>
+            </div>
+          </section><!-- / Bloco Acesso Rápido -->
+
+    <!-- Bloco Últimas Notícias -->
+    <section>
+        <div class="container-fluid top3">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12" id="noticias">
+                    <div class="titulo bloco-vertical-middle">
+                        <h2> ÚLTIMAS NOTÍCIAS </h2>
+                    </div>
+                    
+                    <!-- adicionado o carrossel exibindo as ultimas 3 notícias -->
+                    <div class="col-sm-6 col-xs-12 pad-left-0">
+                        <div class="swiper banners">
+                            <div class="swiper-wrapper">
+                                                                    <div class="swiper-slide">
+                                        <a class="pad-left-0" href="https://aguiabranca.es.gov.br/noticia/ler/16921/inscricoes-abertas-concurso-de-remocao-2026" title="Direciona para a notícia: INSCRIÇÕES ABERTAS – CONCURSO DE REMOÇÃO 2026">
+                                            <div class="bloco-sombra imagem">
+                                                <img class="img-responsive" src="https://aguiabranca.es.gov.br/uploads/files/banner-concurso-remocao-2026-1.png" alt="Foto da notícia: INSCRIÇÕES ABERTAS – CONCURSO DE REMOÇÃO 2026" />
+                                            </div>
+                                            <h5>25 de novembro de 2026</h5>
+                                            <h2>INSCRIÇÕES ABERTAS – CONCURSO DE REMOÇÃO 2026</h2>
+                                        </a>
+                                    </div>
+                                                                    <div class="swiper-slide">
+                                        <a class="pad-left-0" href="https://aguiabranca.es.gov.br/noticia/ler/16919/e-flow-" title="Direciona para a notícia: E-FLOW ">
+                                            <div class="bloco-sombra imagem">
+                                                <img class="img-responsive" src="https://aguiabranca.es.gov.br/uploads/files/e-flow_banner_845x375.png" alt="Foto da notícia: E-FLOW " />
+                                            </div>
+                                            <h5>19 de novembro de 2026</h5>
+                                            <h2>E-FLOW </h2>
+                                        </a>
+                                    </div>
+                                                                    <div class="swiper-slide">
+                                        <a class="pad-left-0" href="https://aguiabranca.es.gov.br/noticia/ler/16918/convocacao-concurso-publico-edital-no-57-2026" title="Direciona para a notícia: Convocação – Concurso Público Edital nº 57/2026">
+                                            <div class="bloco-sombra imagem">
+                                                <img class="img-responsive" src="https://aguiabranca.es.gov.br/uploads/files/gemini_generated_image_ej2sgpej2sgpej2s.jpg" alt="Foto da notícia: Convocação – Concurso Público Edital nº 57/2026" />
+                                            </div>
+                                            <h5>17 de novembro de 2026</h5>
+                                            <h2>Convocação – Concurso Público Edital nº 57/2026</h2>
+                                        </a>
+                                    </div>
+                                                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-5 col-sm-offset-1 col-xs-12 border-left">
+                                                        <a class="row item-noticia bot1" href="https://aguiabranca.es.gov.br/noticia/ler/16920/concurso-de-remocao-2026" title="Direciona para a notícia: CONCURSO DE REMOÇÃO 2026">
+                                    <div class="col-xs-3 text-center pad-left-0">
+                                        <h1>19</h1><h4>novembro<br /> de 2026</h4>                                    </div>
+                                    <div class="col-xs-8 no-padding">
+                                        <h4>CONCURSO DE REMOÇÃO 2026</h4>
+                                    </div>
+                                </a>
+                                                        <a class="row item-noticia bot1" href="https://aguiabranca.es.gov.br/noticia/ler/16915/convocacao-concurso-publico-" title="Direciona para a notícia: Convocação – Concurso Público ">
+                                    <div class="col-xs-3 text-center pad-left-0">
+                                        <h1>10</h1><h4>novembro<br /> de 2026</h4>                                    </div>
+                                    <div class="col-xs-8 no-padding">
+                                        <h4>Convocação – Concurso Público </h4>
+                                    </div>
+                                </a>
+                                                        <a class="row item-noticia bot1" href="https://aguiabranca.es.gov.br/noticia/ler/16913/luto-oficial-" title="Direciona para a notícia: LUTO OFICIAL ">
+                                    <div class="col-xs-3 text-center pad-left-0">
+                                        <h1>06</h1><h4>outubro<br /> de 2026</h4>                                    </div>
+                                    <div class="col-xs-8 no-padding">
+                                        <h4>LUTO OFICIAL </h4>
+                                    </div>
+                                </a>
+                                                        <a class="row item-noticia bot1" href="https://aguiabranca.es.gov.br/noticia/ler/16912/convocacao-concurso-publico-edital-no-53-2026" title="Direciona para a notícia: Convocação – Concurso Público Edital nº 53/2026">
+                                    <div class="col-xs-3 text-center pad-left-0">
+                                        <h1>29</h1><h4>setembro<br /> de 2026</h4>                                    </div>
+                                    <div class="col-xs-8 no-padding">
+                                        <h4>Convocação – Concurso Público Edital nº 53/2026</h4>
+                                    </div>
+                                </a>
+                                            </div>
+                    <div class="text-right">
+                        <a href="https://aguiabranca.es.gov.br/noticia" title="Ir para página de notícias" class="botao-link">Ver mais notícias <i class="fas fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            </div>
+    </section>
+    <!-- /.Bloco Últimas Notícias -->
+
+
+
+        <!--/.Conteúdo-->
+
+    </div>
+    <!--/.container - pagina_site -->
+
+            <!-- Bloco Banner -->
+        <section>
+            <div class="container-fluid top3">
+                <div class="row bloco-center">
+                    <div class="col-lg-11 col-xs-12">
+                        <!-- Swiper -->
+                        <div class="swiper banners">
+                            <div class="swiper-wrapper">
+                                                                    <div class="swiper-slide">
+                                        <a href="http://cimnoroeste.es.gov.br/" title="Banner: Consórcio CIM Noroeste">
+                                            <img class="img-responsive size-img-banner" src="https://aguiabranca.es.gov.br/uploads/files/cim.jpg" alt="Consórcio CIM Noroeste" />
+                                        </a>
+                                    </div>
+                                                                    <div class="swiper-slide">
+                                        <a href="http://www.condoeste.es.gov.br/" title="Banner: Condoeste ">
+                                            <img class="img-responsive size-img-banner" src="https://aguiabranca.es.gov.br/uploads/files/condoeste_1-1.[1].png" alt="Condoeste " />
+                                        </a>
+                                    </div>
+                                                                    <div class="swiper-slide">
+                                        <a href="https://app.rgsystem.com.br/consulta-externa/aguiabranca/A7F613AB2AF447D0A35464419968E90A" title="Banner: Farmácia Municipal">
+                                            <img class="img-responsive size-img-banner" src="https://aguiabranca.es.gov.br/uploads/files/233223232.png" alt="Farmácia Municipal" />
+                                        </a>
+                                    </div>
+                                                                    <div class="swiper-slide">
+                                        <a href="https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/a/aedes-aegypti" title="Banner: Anuencia Ambiental">
+                                            <img class="img-responsive size-img-banner" src="https://aguiabranca.es.gov.br/uploads/files/aedes1.jpg" alt="Anuencia Ambiental" />
+                                        </a>
+                                    </div>
+                                                                    <div class="swiper-slide">
+                                        <a href="https://aguiabranca.es.gov.br/pagina/ler/3042/consulta-publica" title="Banner: CONSULTA PÚBLICA">
+                                            <img class="img-responsive size-img-banner" src="https://aguiabranca.es.gov.br/uploads/files/Design-sem-nome-3.png" alt="CONSULTA PÚBLICA" />
+                                        </a>
+                                    </div>
+                                                            </div>
+                            <div class="swiper-button-next"></div>
+                            <div class="swiper-button-prev"></div>
+                            <!-- <div class="swiper-pagination"></div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- /.Bloco Banner -->
+    
+    <!-- Bloco Newsletter -->
+    <section>
+        <div class="container-fluid bot3 top3" id="bloco-fique-conectado">
+            <div class="row bloco-center">
+                <div class="col-lg-7 col-xs-12">
+                    <div class="titulo bloco-vertical-middle">
+                        <h2> BOLETIM INFORMATIVO </h2>
+                    </div>
+                    <p>Receba novidades por e-mail ou siga nossas redes sociais</p>
+                    <form action="https://aguiabranca.es.gov.br/home/newsletter_contato_cadastrar" id="newsletter" class="form-inline" method="post" accept-charset="utf-8">
+<input type="hidden" name="csrf_site_name" value="9212d4f59add3840b729d3b6427df949" />                                                                                                                      
+                    <input type="hidden" id="g-recaptcha-response" name="g-recaptcha-response" value="6Lfl0OsqAAAAANW5gGLjsoWJ0QDXVa_COIMwTYth" />
+                    <!-- <div class="form-group">
+                        <input type="text" placeholder="Insira aqui seu nome" class="form-control validate[required]" name="nome" id="nome" />
+                    </div> -->
+                    <!-- <div class="col-sm-2 col-xs-12 top1">
+                                    <input required placeholder="Insira seu telefone" class="form-control" name="telefone" />
+                                </div> -->
+                    <div class="form-group">
+                        <input type="email" placeholder="Insira aqui seu endereço de e-mail" class="form-control validate[required,custom[email]]" name="email" id="email" required size="50" />
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="botao botao-primary1">QUERO ME INSCREVER </button>
+                    </div>
+                    </form>                </div>
+                <div class="col-lg-4 col-xs-12 d-grid align-content-space-between">
+                    <div class="titulo bloco-vertical-middle">
+                        <h2> REDES SOCIAIS </h2>
+                    </div>
+                    <ul class="redes">
+                                                    <li><a target="_blank" href="https://youtube.com/channel/UCXHdCrP_3htIZdcZgv_E6NQ" class="bloco-sombra" title="Link do Youtube"><img src="https://aguiabranca.es.gov.br/statics/assets/img/icone_youtube.svg" alt="Ícone do Youtube" /></a></li>
+                                                                            <li><a target="_blank" href="https://www.facebook.com/prefeituradeaguiabrancaes" class="bloco-sombra" title="Link do Facebook"><img src="https://aguiabranca.es.gov.br/statics/assets/img/icone_facebook.svg" alt="Ícone do Facebook" /></a></li>
+                                                                            <li><a target="_blank" href="https://www.instagram.com/prefeitura_aguiabranca" class="bloco-sombra" title="Link do Instagram"><img src="https://aguiabranca.es.gov.br/statics/assets/img/icone_instagram.svg" alt="Ícone do Instagram" /></a></li>
+                                                                                                                                            </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /.Bloco Newsletter -->
+
+    <!-- Bloco Horários -->
+    <section>
+        <div class="container-fluid back-primary1 top3 bot4" id="horarios">
+            <div class="row bloco-center">
+                <div class="col-lg-7 col-sm-6 col-xs-12 bloco-space-between">
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                            <h3>Atendimento ao Público</h3>
+                            <p>Segunda à Quinta-feira,<br /> das 7h30 às 11h e das 12h30 às 15h. <br /> Sexta-feira - 7h às 12h</p>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <h3>Telefone</h3>
+                            <p>(27) 3745-1357</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-xs-12">
+                            <h3>Endereço</h3>
+                            <p>Rua Vicente Pissinatti, n&deg; 71 - Centro <br>Águia Branca/ES - CEP: 29795-000</p>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                            <h3>E-mail</h3>
+                            <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d6b1b7b4bfb8b3a2b396b7b1a3bfb7b4a4b7b8b5b7f8b3a5f8b1b9a0f8b4a4">[email&#160;protected]</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-6 col-xs-12">
+                    <h3>Localização</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3772.799445906357!2d-40.74244848455431!3d-18.984462614505468!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xb68e9976831d93%3A0xbd736e88c1b2975!2sPrefeitura%20Municipal%20de%20Aguia%20Branca!5e0!3m2!1spt-BR!2sbr!4v1663011747396!5m2!1spt-BR!2sbr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / Bloco Horários -->
+
+    <!--Rodapé-->
+    <section>
+        <div class="container-fluid back-primary2 bot3 top3" id="rodape">
+            <div class="row bloco-center">
+                <div class="col-lg-11 col-xs-12">
+                    <div class='col-md-4 col-xs-12'>
+              <div class='row'><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-building"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>A CIDADE</h5>
+                      <ul><li class='presentation '><a class='' href='/pagina/ler/1000/historia'  title='Direcionar para História do Município'> História do Município</a></li><li class='presentation '><a class='' href='/pagina/ler/1007/localizao'  title='Direcionar para Localização'> Localização</a></li><li class='presentation '><a class='' href='/pagina/ler/1003/simbolos'  title='Direcionar para Símbolos Oficiais'> Símbolos Oficiais</a></li><li class='presentation '><a class='' href='/pagina/ler/1008/hino'  title='Direcionar para Hino '> Hino </a></li><li class='presentation '><a class='' href='/pagina/ler/1006/feriados'  title='Direcionar para Feriados Municipais'> Feriados Municipais</a></li><li class='presentation '><a class='' href='/pagina/ler/1002/educacao_cultura'  title='Direcionar para Educação e Cultura'> Educação e Cultura</a></li><li class='presentation '><a class='' href='/pagina/ler/1004/turismo'  title='Direcionar para Turismos'> Turismos</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fa fa-university"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>INSTITUCIONAL</h5>
+                      <ul><li class='presentation '><a class='' href='/pagina/ler/1011/prefeito'  title='Direcionar para Prefeito'> Prefeito</a></li><li class='presentation '><a class='' href='/pagina/ler/1012/vice_prefeito'  title='Direcionar para Vice - Prefeito'> Vice - Prefeito</a></li><li class='presentation '><a class='' href='/pagina/ler/1009/defesa_civil'  title='Direcionar para Defesa Cívil'> Defesa Cívil</a></li><li class='presentation '><a class='' href='/pagina/ler/1013/estrutura'  title='Direcionar para Estrutura Organizacional'> Estrutura Organizacional</a></li><li class='presentation '><a class='' href='/pagina/ler/2/perguntas'  title='Direcionar para Perguntas Frequentes'> Perguntas Frequentes</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <a href="/secretaria" title="SECRETARIAS"><h5>SECRETARIAS</h5></a>
+                      <ul></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-phone-alt"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <a href="/e-ouv" title="e-OUV"><h5>e-OUV</h5></a>
+                      <ul></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fa fa-exclamation-circle"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <a href="/e-sic" title="e-SIC"><h5>e-SIC</h5></a>
+                      <ul></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-balance-scale"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>LEGISLAÇÃO</h5>
+                      <ul><li class='presentation '><a class='' href='/legislacao?especie_normativa=1' target="_blank" title='Direcionar para Lei Orgânica'> Lei Orgânica</a></li><li class='presentation '><a class='' href='http://www.cmab.es.gov.br/legislacao?especie_normativa=1' target="_blank" title='Direcionar para Leis Ordinárias'> Leis Ordinárias</a></li><li class='presentation '><a class='' href='/controladoria/legislacao/index/IN' target="_blank" title='Direcionar para Instruções Normativas'> Instruções Normativas</a></li><li class='presentation '><a class='' href='/legislacao' target="_blank" title='Direcionar para Legislação Municipal'> Legislação Municipal</a></li><li class='presentation '><a class='' href='http://www.al.es.gov.br/' target="_blank" title='Direcionar para Legislação Estadual'> Legislação Estadual</a></li><li class='presentation '><a class='' href='http://www4.planalto.gov.br/legislacao' target="_blank" title='Direcionar para Legislação Federal'> Legislação Federal</a></li></ul>
+                    </div>
+                  </div>  </div>
+            </div><div class='col-md-4 col-xs-12'>
+              <div class='row'><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-rss"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>COMUNICAÇÃO</h5>
+                      <ul><li class='presentation '><a class='' href='/noticia'  title='Direcionar para Notícias'> Notícias</a></li><li class='presentation '><a class='' href='/agenda'  title='Direcionar para Agenda de Eventos'> Agenda de Eventos</a></li><li class='presentation '><a class='' href='/pagina/ler/3019/canais-de-comunicacao'  title='Direcionar para Canais de Comunicação'> Canais de Comunicação</a></li><li class='presentation '><a class='' href='/pagina/ler/1005/telefones-uteis'  title='Direcionar para Telefones Úteis'> Telefones Úteis</a></li><li class='presentation '><a class='' href='/pagina/ler/3020/links-uteis'  title='Direcionar para Links Úteis'> Links Úteis</a></li><li class='presentation '><a class='' href='/galeria'  title='Direcionar para Galerias de Fotos'> Galerias de Fotos</a></li><li class='presentation '><a class='' href='/video'  title='Direcionar para Vídeos'> Vídeos</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-desktop"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>SERVIÇOS</h5>
+                      <ul><li class='presentation '><a class='' href='https://servicos.cloud.el.com.br/es-aguiabranca-pm/services/' target="_blank" title='Direcionar para Serviços Online'> Serviços Online</a></li><li class='presentation '><a class='' href='/pagina/ler/3006/servicos-para-o-cidadao' target="_blank" title='Direcionar para Serviços para o CIdadão'> Serviços para o CIdadão</a></li><li class='presentation '><a class='' href='/pagina/ler/3005/servicos-para-empresas' target="_blank" title='Direcionar para Serviços para a Empresa'> Serviços para a Empresa</a></li><li class='presentation '><a class='' href='https://servicos.cloud.el.com.br/es-aguiabranca-pm/portal' target="_blank" title='Direcionar para Contracheque Online'> Contracheque Online</a></li><li class='presentation '><a class='' href='/pagina/ler/3007/portal-municipal-de-saude' target="_blank" title='Direcionar para Portal da Saúde'> Portal da Saúde</a></li><li class='presentation '><a class='' href='http://www.simplifica.es.gov.br/' target="_blank" title='Direcionar para Simplifica ES'> Simplifica ES</a></li><li class='presentation '><a class='' href='https://es-aguiabranca-pm-nfs.cloud.el.com.br//paginas/sistema/login.jsf' target="_blank" title='Direcionar para Nota Fiscal Eletrônica'> Nota Fiscal Eletrônica</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-user-shield"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>POLÍTICA DE PRIVACIDADE</h5>
+                      <ul><li class='presentation '><a class='' href='/pagina/ler/3021/termos-de-uso' target="_blank" title='Direcionar para Termos de Uso'> Termos de Uso</a></li><li class='presentation '><a class='' href='/pagina/ler/3011/lgpd' target="_blank" title='Direcionar para LGPD'> LGPD</a></li></ul>
+                    </div>
+                  </div><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-lock"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>ACESSO INTERNO</h5>
+                      <ul><li class='presentation '><a class='' href='/sistema' target="_blank" title='Direcionar para Intranet'> Intranet</a></li><li class='presentation '><a class='' href='https://webmail-seguro.com.br/prefeituradeaguiabranca.es.gov.br/v2/' target="_blank" title='Direcionar para Webmail'> Webmail</a></li></ul>
+                    </div>
+                  </div>  </div>
+            </div><div class='col-md-4 col-xs-12'>
+              <div class='row'><div class='col-xs-12 bot3 bloco-vertical-middle'>
+                    <div class='col-sm-2 hidden-xs no-padding'>
+                      <h2><i class="fas fa-stream"></i></h2>
+                    </div>
+                    <div class='col-sm-10 col-xs-12 bord-left'>
+                      <h5>TRANSPARÊNCIA</h5>
+                      <ul><li class='presentation '><a class='' href='https://aguiabranca-es.portaltp.com.br/api/dadosabertos.aspx'  title='Direcionar para Dados Abertos'> Dados Abertos</a></li><li class='presentation '><a class='' href='/licitacao' target="_blank" title='Direcionar para Licitações'> Licitações</a></li><li class='presentation '><a class='' href='/ata' target="_blank" title='Direcionar para Atas de Registro de Preço'> Atas de Registro de Preço</a></li><li class='presentation '><a class='' href='/contrato' target="_blank" title='Direcionar para Contratos'> Contratos</a></li><li class='presentation '><a class='' href='/documento?tipo=2' target="_blank" title='Direcionar para Ficha de Ponto Saúde'> Ficha de Ponto Saúde</a></li><li class='presentation '><a class='' href='/licitacao?ano=&fkmodalidade=40&fksituacao=&search=&vencedor=' target="_blank" title='Direcionar para Dispensa e Inexigibilidade'> Dispensa e Inexigibilidade</a></li><li class='presentation '><a class='' href='/documento?tipo=18' target="_blank" title='Direcionar para Instruções Normativas'> Instruções Normativas</a></li><li class='presentation '><a class='' href='/documento?tipo=6' target="_blank" title='Direcionar para Lei de Diretrizes Orçamentárias (LDO)'> Lei de Diretrizes Orçamentárias (LDO)</a></li><li class='presentation '><a class='' href='/documento?tipo=5' target="_blank" title='Direcionar para Lei Orçamentária Anual (LOA)'> Lei Orçamentária Anual (LOA)</a></li><li class='presentation '><a class='' href='/documento?tipo=14' target="_blank" title='Direcionar para Licenciamento Ambiental'> Licenciamento Ambiental</a></li><li class='presentation '><a class='' href='/documento?tipo=13' target="_blank" title='Direcionar para Parecer Prévio do Tribunal de Contas'> Parecer Prévio do Tribunal de Contas</a></li><li class='presentation '><a class='' href='/documento?tipo=9' target="_blank" title='Direcionar para Plano de Saneamento Básico'> Plano de Saneamento Básico</a></li><li class='presentation '><a class='' href='/documento?tipo=21' target="_blank" title='Direcionar para Plano de Saneamento Básico e Gestão Integrada de Resíduos Sólidos de Águia Branca'> Plano de Saneamento Básico e Gestão Integrada de Resíduos Sólidos de Águia Branca</a></li><li class='presentation '><a class='' href='/documento?tipo=15' target="_blank" title='Direcionar para Plano Diretor de Tecnologia da Informação'> Plano Diretor de Tecnologia da Informação</a></li><li class='presentation '><a class='' href='/documento?tipo=7' target="_blank" title='Direcionar para Plano Plurianual (PPA)'> Plano Plurianual (PPA)</a></li><li class='presentation '><a class='' href='/selecao' target="_blank" title='Direcionar para Processo Seletivo'> Processo Seletivo</a></li><li class='presentation '><a class='' href='/documento?tipo=10' target="_blank" title='Direcionar para Reavaliação Atuarial'> Reavaliação Atuarial</a></li><li class='presentation '><a class='' href='/documento?tipo=3' target="_blank" title='Direcionar para Relatório de Gestão Fiscal (RGF)'> Relatório de Gestão Fiscal (RGF)</a></li><li class='presentation '><a class='' href='/documento?tipo=4' target="_blank" title='Direcionar para Relatório Resumido da Execução Orçamentária (RREO)'> Relatório Resumido da Execução Orçamentária (RREO)</a></li><li class='presentation '><a class='' href='/documento?tipo=12' target="_blank" title='Direcionar para Resultado do Julgamento pelo Legislativo'> Resultado do Julgamento pelo Legislativo</a></li><li class='presentation '><a class='' href='/documento?tipo=17' target="_blank" title='Direcionar para Sistema de Meio Ambiente - SEMMA'> Sistema de Meio Ambiente - SEMMA</a></li><li class='presentation '><a class='' href='/documento?tipo=1' target="_blank" title='Direcionar para Termo de Compromisso Ambiental'> Termo de Compromisso Ambiental</a></li><li class='presentation '><a class='' href='/pagina/ler/1028/plano-de-saneamento-basico-e-gestao-integrada-de-residuos-solidos-de-aguia-branca' target="_blank" title='Direcionar para Plano de Saneamento Básico e Gestão Integrada de Resíduos Sólidos de Águia Branca'> Plano de Saneamento Básico e Gestão Integrada de Resíduos Sólidos de Águia Branca</a></li><li class='presentation '><a class='' href='/documento?tipo=20' target="_blank" title='Direcionar para Audiências Públicas'> Audiências Públicas</a></li><li class='presentation '><a class='' href='/noticia/ler/16287/-/popup' target="_blank" title='Direcionar para Plano Municipal de Saúde'> Plano Municipal de Saúde</a></li></ul>
+                    </div>
+                  </div>  </div>
+            </div>                </div>
+            </div>
+        </div>
+    </section>
+    <!--/.Rodapé-->
+
+    <!-- SubRodapé Ágape -->
+    <section>
+        <div class="container-fluid back-primary1" id="sub-rodape">
+            <div class="row top1 bot1 bloco-middle-center">
+                <div class="col-sm-10 col-xs-12 icon-rodape">
+                    <p>
+                        Copyright © 2022 Prefeitura Municipal de Águia Branca. Todos os direitos reservados.                    </p>
+                </div>
+                <div class="col-lg-1 col-sm-2 col-xs-12 no-padding">
+                    <a target="_blank" href="https://agapeconsultoria.com.br/" title="Direcionar para o site da Ágape"><img alt="Logo da Ágape" src="https://aguiabranca.es.gov.br/assets/img/logo_empresa.png" class="img-responsive" /></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- / SubRodapé Ágape -->
+
+      <!-- Container de Privacidade e Cookies  -->
+
+  <style>
+    /* GOOGLE ANALYTICS */
+
+    .cookies-container {
+      color: #222;
+      position: fixed;
+      bottom: 2rem;
+      z-index: 1000;
+    }
+
+    .card-title {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 21px;
+      line-height: 1.5;
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+
+    .card-link {
+      font-weight: bold;
+      text-decoration: none;
+      color: #2F2F2F;
+    }
+
+    .card-text {
+      font-style: normal;
+      font-weight: normal;
+
+      line-height: 150%;
+      align-items: center;
+      color: #505050;
+
+    }
+
+    .cookies-content {
+      background: white;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(1rem);
+      animation: slideUp 0.5s forwards;
+      border-radius: 4px;
+      background: rgba(251, 251, 251, 0.95);
+
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    @keyframes slideUp {
+      to {
+        transform: initial;
+        opacity: initial;
+      }
+    }
+
+    .cookies-pref label {
+      margin-right: 1rem;
+    }
+
+    .cookies-save {
+      grid-column: 2;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background: var(--Primary0);
+      color: white;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      padding: 0.8rem 2rem;
+      font-size: 16px;
+    }
+
+    .cookies-save:hover {
+      background: var(--Primary2);
+      transition: .3s;
+    }
+
+    @media (max-width: 500px) {
+      .cookies-content {
+        grid-template-columns: 1fr;
+      }
+
+      .cookies-save {
+        grid-column: 1;
+        grid-row: 3;
+      }
+    }
+  </style>
+
+  <div class="cookies-container col-md-12">
+    <div class="cookies-content col-md-10 col-md-offset-1">
+      <div class="col-md-12">
+        <h2 class="card-title">Política de Privacidade</h2>
+      </div>
+      <div class="col-md-10">
+        <p class="card-text">Utilizamos cookies essenciais e tecnologias semelhantes de acordo com a nossa
+          <a href="" target="_blank" class="card-link">Política de Privacidade</a>
+          e, ao continuar navegando, você concorda com as condições contidas nela.
+        </p>
+                  <input type="hidden" checked data-function="simplecookie" />
+              </div>
+      <div class="text-right col-md-2">
+        <button class="cookies-save card text-right">Continuar</button>
+      </div>
+    </div>
+  </div>
+  <!-- / Container de Privacidade e Cookies  -->
+
+  <!-- Privacidade -->
+  
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    function cookies(functions) {
+      const clientName = 'https:aguiabranca';
+      const container = document.querySelector('.cookies-container');
+      const save = document.querySelector('.cookies-save');
+      if (!container || !save) return null;
+
+      const localPref = JSON.parse(window.localStorage.getItem('cookies-pref' + clientName));
+      if (localPref) activateFunctions(localPref);
+
+      function getFormPref() {
+        return [...document.querySelectorAll('[data-function]')]
+          .filter((el) => el.checked)
+          .map((el) => el.getAttribute('data-function'));
+      }
+
+      function activateFunctions(pref) {
+        pref.forEach((f) => functions[f]());
+        container.style.display = 'none';
+        window.localStorage.setItem('cookies-pref' + clientName, JSON.stringify(pref));
+      }
+
+      function handleSave() {
+        const pref = getFormPref();
+        activateFunctions(pref);
+      }
+
+      save.addEventListener('click', handleSave);
+    }
+
+    function analytics() {
+
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', '');
+
+      console.log('Função anali..');
+    }
+
+    function simplecookie() {
+      console.log('Política de Privacidade Autorizada');
+    }
+
+    cookies({
+      simplecookie,    });
+  </script>
+
+  <!-- / Privacidade -->
+<div vw class="enabled">
+  <div vw-access-button class="active" accesskey="8"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+</div>
+
+<noscript>
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <div class="alert alert-warning" role="alert">
+            Você precisa habilitar o JavaScript para visualizar este Portal corretamente.
+        </div>
+    </div>
+</noscript><script src='https://unpkg.com/swiper@8/swiper-bundle.min.js?v=1795812502'></script>
+<script src='https://aguiabranca.es.gov.br/statics/assets/js/jquery-1.11.1.min.js?v=1795812502'></script>
+<script src='https://aguiabranca.es.gov.br/statics/bootstrap/js/bootstrap.min.js?v=1795812502'></script>
+<!-- <script src='https://aguiabranca.es.gov.br/statics/font-awesome/fontawesome-free-5.15.4-web/js/all.js?v=1795812502'></script> -->
+<script src="https://aguiabranca.es.gov.br/statics/assets/plugins/prettyPhoto/js/jquery.prettyPhoto.js?v=1795812502"></script>
+<script src="https://aguiabranca.es.gov.br/statics/assets/plugins/fancybox/jquery.fancybox.js?v=1795812502"></script>
+
+<script src='https://aguiabranca.es.gov.br/statics/frontend/select2/dist/js/select2.full.min.js?v=1795812502'></script>
+
+<!-- Script para adicionar abertura em popup em links com a classe "popup" -->
+<script>
+  $(".popup").fancybox({
+    'width': '95%',
+    'height': '92%',
+    'autoScale': false,
+    'transitionIn': 'none',
+    'transitionOut': 'none',
+    'type': 'iframe'
+  });
+</script>
+
+<!-- Função da Pesquisa no Menu -->
+<script>
+  const BASE_URL = "https://aguiabranca.es.gov.br/";
+
+  function fonte(e) {
+    var elements = $('p, h1, h2, h3, h4, h5, h6, a, button, input, i, svg');
+
+    elements.each((index, item) => {
+      let element = $(item);
+      let font = $(element).css('font-size');
+
+      let newFont = e == 'a' ? parseInt(font) + 1 : parseInt(font) - 1;
+
+      element.css('font-size', newFont);
+    })
+  }
+
+  function openSearch(e) { // Função de Botão de Busca
+    if ($('#bloco-logo .form-padrao input').val() != '') {
+      $('#bloco-logo form').submit();
+    } else {
+      let button = document.querySelector('#bloco-logo button.botao-busca');
+      let form = document.querySelector('#bloco-logo .form-padrao');
+      form.classList.toggle('hidden');
+      button.classList.toggle('hidden');
+    }
+  }
+
+  function dataAtualFormatada(e) {
+    let data = new Date(e);
+    let dia = data.getDate();
+    if (dia <= 9) dia = "0" + dia;
+    var meses = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+    data = dia + " de " + meses[data.getMonth()] + " de " + data.getFullYear();
+    return data;
+  }
+
+  $(".nav-stacked a").click(function(e) {
+    if ($(this).children('svg').attr('data-icon') == 'plus')
+      $(this).children('svg').attr('data-icon', 'minus')
+    else
+      $(this).children('svg').attr('data-icon', 'plus')
+  });
+
+  $('.dropdown-submenu a.submenu-institucional').on("click", function(e) { // Faz os submenu do submenu funcionar no mobile
+    e.preventDefault();
+    $(this).next('ul').toggle('open');
+    e.stopPropagation();
+  });
+
+  $(document).ready(function() { // Processa depois de carregar a página
+
+    if (typeof funcion_a_comprobar === 'function') {
+      if (typeof number == "undefined" || number == null) {
+        let number = $('.inputmask_tel');
+        number.inputmask({
+          mask: ["+55 (99) 9999-9999", "+55 (99) 9 9999-9999", ],
+          keepStatic: true
+        });
+      }
+
+      if (typeof cpf_cnpj == "undefined" || cpf_cnpj == null) {
+        let cpf_cnpj = $('.inputmask_cpf_cnpj');
+        cpf_cnpj.inputmask({
+          mask: ["[CPF REDIGIDO]", "99.999.999/9999-99", ],
+          keepStatic: true
+        });
+      }
+    }
+
+    $(window).scroll(function() {
+      var scrollTop = $(window).scrollTop();
+      if (scrollTop > 50) {
+        $('#acessibilidade').addClass("navbar-fixed-top");
+      } else {
+        $('#acessibilidade').removeClass("navbar-fixed-top");
+      }
+    });
+
+    var html = document.getElementsByTagName('html')[0];
+    html.style.cssText = '--Primary0: #00401B; --Primary1: #005926; --Primary2: #106635';
+
+    // Filtro por Pesquisa
+    $('#search-faq').submit(function(e) {
+      e.preventDefault();
+      var request = $.ajax({
+          dataType: "json",
+          url: BASE_URL + `faq/faqs_post/0/8?termos=` + $('#termos').val(),
+          beforeSend() {
+            $('.bloco-tabs ul.nav').html('');
+            $('.bloco-tabs ul.nav').addClass('loader');
+          },
+        })
+        .done(function(msg) {
+          $('.bloco-tabs ul.nav').load();
+          $('.bloco-tabs ul.nav').removeClass('loader');
+          msg.map(item => {
+            $('ul.nav.nav-pills.nav-stacked').append(`
+            <li>
+                <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                <div class="texto collapse" id="${item.id}">
+                    ${item.resposta}
+                </div>
+            </li>
+          `);
+          });
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+
+    });
+
+    $('#acesso a').click(function(e) {
+      e.preventDefault();
+      var categoria = $(this).data('categoria');
+      var request = $.ajax({
+          // type: 'POST',
+          // data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `faq/faqs_post/?categoria_id=` + categoria,
+          beforeSend() {
+            $('.bloco-tabs ul.nav').html('');
+            $('.bloco-tabs ul.nav').addClass('loader');
+          },
+        })
+        .done(function(msg) {
+          $('.bloco-tabs ul.nav').removeClass('loader');
+          $('.bloco-tabs ul.nav').load();
+          msg.map(item => {
+            $('ul.nav.nav-pills.nav-stacked').append(`
+              <li>
+                  <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                  <div class="texto collapse" id="${item.id}">
+                      ${item.resposta}
+                  </div>
+              </li>
+            `);
+          });
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+
+    });
+
+    // Função de Load More Notícias
+    var offset_posts = 5
+    $('#load_more_posts').click(function(e) {
+      e.preventDefault();
+      var request = $.ajax({
+          // type: 'GET',
+          // data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `noticia/get_post/${offset_posts}/5`,
+          beforeSend() {
+            $('#load_more_posts').html('Carregando...');
+            $('.loader').removeClass('hidden');
+          },
+        })
+        .done(function(msg) {
+          offset_posts = offset_posts + 5;
+          $('.loader').addClass('hidden');
+          $('#load_more_posts').html('Carregar mais notícias');
+          msg.map(item => {
+            $('.noticias').append(`
+            <a href="${BASE_URL}noticia/ler/${item.id}/${item.titulo.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^\w-]+/g, '-').toLowerCase()}" title="Notícia: ${item.titulo}">
+              <div class="col-sm-3 col-xs-12 imagem no-padding">
+                  <img src="${item.capa}" alt="${item.titulo}" />
+              </div>
+              <div class="col-sm-9 col-xs-12 texto">
+                  <h2>${item.titulo}</h2>
+                  <p>` + item.chamada.substring(0, 550) + `</p>
+                  <h5>` + dataAtualFormatada(item.publicacao) + `</h5>
+              </div>
+              <hr />
+            </a>
+          `);
+          })
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+    });
+
+    // Função de Load More nos Faqs
+    var offset_faqs = 8
+    $('#load_more_faq').click(function(e) {
+      e.preventDefault();
+
+      var request = $.ajax({
+          dataType: "json",
+          url: BASE_URL + `faq/faqs_post/${offset_faqs}/5`,
+          beforeSend() {
+            $('#load_more_faq').html('Carregando...');
+            $('.loader').removeClass('hidden');
+          },
+        })
+        .done(function(msg) {
+          offset_faqs = offset_faqs + 5;
+          $('.loader').addClass('hidden');
+          $('#load_more_faq').html('Carregar mais perguntas');
+          msg.map(item => {
+            $('ul.nav.nav-pills.nav-stacked').append(`
+              <li>
+                  <a class="item" data-toggle="collapse" href="#${item.id}" role="button" aria-expanded="false" aria-controls="${item.id}">${item.pergunta} <i class="fa fa-plus"></i></a>
+                  <div class="texto collapse" id="${item.id}">
+                      ${item.resposta}
+                  </div>
+              </li>
+            `);
+          })
+        })
+        .fail(function() {
+          $('.message').html('Não consegui carregar, tente novamente.');
+        });
+    });
+
+    // Bloco de Vereadores/Atividade Legislativa no Portal Institucional
+    var VereadoresAPI = $('.vereadores-lista').data('vereadoresapi');
+    if (typeof VereadoresAPI !== "undefined" && VereadoresAPI) {
+      $.getJSON(VereadoresAPI + 'api/vereador/?v=2&qtd=100', function(json) { // Lista os Vereadores
+        var bloco_vereadores = $('.vereadores-lista');
+        var parlamentar = $.map(json.dados, function(item) {
+          if (item.situacao == 'Licenciado para assumir cargo no Executivo') return;
+          return bloco_vereadores.append(`
+            <a target="_blank" href="${VereadoresAPI}vereador.aspx?id=${item.ID}" target="_blank" title="Veja mais sobre o vereador(a) ${item.nome_parlamentar}" class="vereador-item">
+              <div class="imagem">
+                  <img src="${item.foto}" alt="Foto do vereador(a) ${item.nome}" />
+              </div>
+              <div class="texto">
+                  <h3>${item.nome}</h3>
+                  <h5>${item.partido_sigla}</h5>
+                  </div>
+                  </a>
+                  `);
+          // <p>Situação <span>${item.situacao}</span></p>
+        });
+      });
+      $('.vereadores-lista .loader').hide();
+
+      $.getJSON(VereadoresAPI + 'api/norma_filtros?v=2', function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.especie_normativa').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+
+      $.getJSON(VereadoresAPI + 'api/proposicao_filtros/?v=2&area=LEG', function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.proposicoes').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+
+      $.getJSON(VereadoresAPI + 'api/proposicao_filtros/?v=2&area=ADM', function(json) {
+        var data = $.map(json.tipos, function(item) {
+          return {
+            id: item.tipo_id,
+            text: item.tipo
+          }
+        });
+        data.unshift({
+          id: '',
+          text: ''
+        });
+        return $('.processos_administrativos').select2({ // Monta o Select usando Ajax
+          placeholder: 'Selecione o tipo',
+          width: '100%',
+          data: data
+        });
+      });
+    }
+
+    var isSomethingTrue = false;
+    $('.openTabs').click(function(e) {
+      e.preventDefault();
+      $('.bloco-tabs').toggle('in');
+      $(this).toggleClass('botao-primary0');
+      if (!isSomethingTrue) {
+        isSomethingTrue = true;
+        $(this).html('Ver menos serviços');
+      } else {
+        isSomethingTrue = false;
+        $(this).html('Ver todos os serviços');
+      }
+    });
+
+    // Função de Load More nos Faqs
+    $('#fotos a:not(.botao)').click(function(e) {
+      e.preventDefault();
+      let idGaleria = $(this).data('id');
+
+      //Initial csrf values
+      var data = {};
+      var api_images = [];
+      var api_titles = [];
+      var api_descriptions = [];
+
+      $.ajax({
+          // type: 'POST',
+          data: data,
+          //dataType tells jQuery to expect JSON response
+          dataType: "json",
+          url: BASE_URL + `galeria/get_galeria_anexos/` + idGaleria,
+        })
+        .done(function(msg) {
+          // console.log(msg);
+          msg.map(item => {
+            api_images.push(item['arquivo']);
+            api_titles.push(item['titulo']);
+            api_descriptions.push(['']);
+          });
+          $.prettyPhoto.open(api_images, api_titles, api_descriptions);
+          $.prettyPhoto.changePage('next');
+          $.prettyPhoto.changePage('previous');
+          $.prettyPhoto.close();
+        })
+        .fail(function(response, status, error) {
+          // console.log(error);
+          $.prettyPhoto.open(BASE_URL + 'assets/img/brasao.jpg', 'Não consegui carregar, tente novamente.', '');
+        });
+    });
+
+    // Auto Contraste Função
+
+
+
+    $('#acessibilidade_contraste').on('click', function(event) {
+      event.preventDefault();
+
+      $('body').toggleClass('contrast');
+      $('body').toggleClass('scrollbar-color');
+      $('#acesso-rapido .col-lg-11>.row').toggleClass('scrollbar-color');
+      if ($(this).attr('data-original-title') == 'Aplicar auto contraste') {
+        $(this).attr('data-original-title', 'Remover auto contraste');
+      } else {
+        $(this).attr('data-original-title', 'Aplicar auto contraste');
+      };
+
+
+      var logo_menu = document.getElementById('logo-menu');
+      if (!logo_menu) return null;
+      if (logo_menu.src == 'https://aguiabranca.es.gov.br/assets/img/logo_site_branco.png') logo_menu.src = 'https://aguiabranca.es.gov.br/assets/img/logo_site.png';
+      else logo_menu.src = 'https://aguiabranca.es.gov.br/assets/img/logo_site_branco.png';
+
+    });
+
+    var Contrast = {
+      storage: 'contrastState',
+      cssClass: 'contrast',
+      currentState: null,
+      check: checkContrast,
+      getState: getContrastState,
+      setState: setContrastState,
+      toogle: toogleContrast,
+      updateView: updateViewContrast
+    };
+
+    toggleContrast = function() {
+      Contrast.toogle();
+    };
+
+    Contrast.check();
+
+    function checkContrast() {
+      this.updateView();
+    }
+
+    function getContrastState() {
+      return localStorage.getItem(this.storage) === 'true';
+    }
+
+    function setContrastState(state) {
+      localStorage.setItem(this.storage, '' + state);
+      this.currentState = state;
+      this.updateView();
+    }
+
+    function updateViewContrast() {
+      var body = document.body;
+
+      if (!body) return;
+
+      if (this.currentState === null)
+        this.currentState = this.getState();
+
+      if (this.currentState) {
+        body.classList.add(this.cssClass);
+      } else {
+        body.classList.remove(this.cssClass);
+      }
+    }
+
+    function toogleContrast() {
+      this.setState(!this.currentState);
+    }
+    // FIM AUTOCONTRASTE
+
+    // Função do Popup nas fotos
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        events: {
+          'onReady': onPlayerReady,
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+    $('a[rel=group]').fancybox();
+    $("a[rel^='prettyPhoto']").prettyPhoto({
+      default_width: 700, //I have tried playing with these values
+      default_height: 500, //I have tried playing with these values
+      theme: 'light_rounded',
+      social_tools: '<a target="_blank" download href="#" class="download_image left btn btn-xs btn-default"><span class="fa fa-download"></span> Baixar Imagem</a>',
+
+      overlay_gallery: false,
+      show_title: false,
+      hideflash: true,
+      iframe_markup: "<iframe src='{path}' width='{width}' height='{height}' frameborder='no' allowfullscreen='true'></iframe>",
+      deeplinking: false
+    });
+
+    $('body').on('click', '.download_image', function() {
+      var foto_download = $('#fullResImage').attr('src');
+      $(this).attr('href', foto_download);
+    });
+
+    $('div.thumbnail').on('click', 'a', function() {
+      var id = $(this).attr('id');
+      if (id.length) {
+        $.ajax({
+          url: BASE_URL + 'galeria/contador_acessos/' + id,
+          type: "post",
+          data: {
+            'id': id
+          }
+        });
+      }
+    });
+
+    // VERIFICA SWIPER
+    if (document.getElementsByClassName('destaques').length !== 0) {
+      var destaques = new Swiper(".destaques", {
+        loop: true,
+        autoHeight: true,
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".destaques .swiper-pagination",
+          dynamicBullets: true,
+          clickable: true,
+        },
+        navigation: {
+          nextEl: ".destaques .swiper-button-next",
+          prevEl: ".destaques .swiper-button-prev",
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('especialidades').length !== 0) {
+      var especialidades = new Swiper(".especialidades", {
+        // slidesPerView: 1,
+        calculateHeight: true,
+        spaceBetween: 20,
+
+        breakpoints: {
+          // 0: {
+          // },
+          // when window width is >= 768px
+          769: {
+            slidesPerGroup: 4,
+            slidesPerView: 2,
+            allowTouchMove: false,
+            grid: {
+              rows: 2,
+            },
+          },
+        },
+
+        // loop: true, // <- causes issues combined with multi row setup!!
+        navigation: {
+          nextEl: ".especialidades .swiper-button-next",
+          prevEl: ".especialidades .swiper-button-prev",
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('galerias').length != 0) {
+      var banners = new Swiper(".galerias", {
+        slidesPerView: 1,
+        autoHeight: true,
+        loop: true,
+        spaceBetween: 10,
+        // effect: "fade",
+
+        breakpoints: {
+          // 0: {
+          // },
+          // when window width is >= 768px
+          769: {
+            slidesPerView: 4,
+          },
+        },
+        navigation: {
+          nextEl: "#galerias .next",
+          prevEl: "#galerias .prev",
+        },
+        pagination: {
+          el: ".galerias .swiper-pagination",
+          clickable: true,
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('banners').length != 0) {
+      var banners = new Swiper(".banners", {
+        slidesPerView: 1,
+        autoHeight: true,
+        loop: true,
+        spaceBetween: 10,
+        // effect: "fade",
+        autoplay: {
+          delay: 5000,
+          disableOnInteraction: false,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+
+      var estatico = new Swiper(".estatico", {
+        slidesPerView: 1,
+        autoHeight: true,
+        loop: false,
+        spaceBetween: 10,
+        // effect: "fade",
+        autoplay: {
+          // delay: 3000,
+          disableOnInteraction: true,
+        },
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+    }
+
+    if (document.getElementsByClassName('portais').length != 0) {
+      var portais = new Swiper(".portais", {
+        slidesPerView: 6,
+        spaceBetween: 30,
+        slidesPerGroup: 6,
+        loop: true,
+        loopFillGroupWithBlank: true,
+        navigation: {
+          nextEl: ".portais .swiper-button-next",
+          prevEl: ".portais .swiper-button-prev",
+        },
+      });
+    }
+
+    $('#web-tv #video').carousel({
+      interval: false,
+    });
+
+    // bootstrap-datepicker ---------------------
+    if ($('.bootstrap_datepicker').length) {
+      $('.bootstrap_datepicker').datepicker({
+        format: 'dd/mm/yyyy'
+      });
+    }
+
+    $('#imprimir').click(function() {
+      window.print();
+    });
+  });
+
+  
+  function cookies(functions) {
+    const container = document.querySelector('.cookies-container');
+    const save = document.querySelector('.cookies-save');
+    if (!container || !save) return null;
+
+    const localPref = JSON.parse(window.localStorage.getItem('cookies-pref'));
+    if (localPref) activateFunctions(localPref);
+
+    function getFormPref() {
+      return [...document.querySelectorAll('[data-function]')]
+        .filter((el) => el.checked)
+        .map((el) => el.getAttribute('data-function'));
+    }
+
+    function activateFunctions(pref) {
+      pref.forEach((f) => functions[f]());
+      container.style.display = 'none';
+      window.localStorage.setItem('cookies-pref', JSON.stringify(pref));
+    }
+
+    function handleSave() {
+      const pref = getFormPref();
+      activateFunctions(pref);
+    }
+
+    save.addEventListener('click', handleSave);
+  }
+
+  function analytics() {
+
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', '');
+
+    console.log('Função anali..');
+  }
+
+  function simplecookie() {
+    console.log('Política de Privacidade Autorizada');
+  }
+
+  // ============================================================
+  // Função Frame do Youtube
+  
+
+  </script>
+
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lfl0OsqAAAAANW5gGLjsoWJ0QDXVa_COIMwTYth"></script>
+  <script text="text/Javascript">
+    $(function() { // Recaptcha no formulário da Newsletter
+      $(".form_recaptcha .bnt_submit_recaptcha").click(function(e) {
+        e.preventDefault();
+        grecaptcha.execute('6Lfl0OsqAAAAANW5gGLjsoWJ0QDXVa_COIMwTYth').then(function(token) {
+          var recaptchaResponse = document.getElementById('recaptcha_token');
+          recaptchaResponse.value = token;
+
+          $('.form_recaptcha').submit();
+        })
+      })
+    });
+
+    // var form = $('#newsletter');
+    // $(form).submit(function(e) { // Função do Formulario newsletter da Home
+    //   e.preventDefault();
+    //   grecaptcha.execute('6Lfl0OsqAAAAANW5gGLjsoWJ0QDXVa_COIMwTYth').then(function(token) {
+    //     // add token value to form
+    //     document.getElementById('g-recaptcha-response').value = token;
+
+    //     $.ajax({
+    //         type: form.attr('method'),
+    //         url: form.attr('action'),
+    //         dataType: 'json',
+    //         data: form.serialize(),
+    //         beforeSend() {
+    //           // console.log('Carregando...');
+    //           $('#newsletter .loader').toggleClass('hidden');
+    //         },
+    //       })
+    //       .success(function(msg) {
+    //         // console.log(msg);
+    //         if (msg == 200) {
+    //           alertify.success('Contato cadastrado com sucesso!');
+    //         } else {
+    //           alertify.error(msg);
+    //         }
+    //         $('#newsletter .loader').toggleClass('hidden');
+    //       })
+    //       .fail(function(request, status, error) {
+    //         // console.log('Status: ', status);
+    //         $('#newsletter .loader').toggleClass('hidden');
+    //       });
+    //   });
+    // });
+  </script>
+
+
+<script>
+  var preloader = document.getElementById('preloader');
+  if (typeof preloader !== "undefined" && preloader) {
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        // if (document.readyState === "complete") { // Ainda carregando
+        preloader.classList.toggle('loaded')
+        setTimeout(() => {
+          preloader.classList.add('hidden')
+        }, 1000);
+        // }
+      }, 3000);
+    });
+  }
+</script>
+
+<noscript>
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+    <div class="alert alert-warning" role="alert">
+      Você precisa habilitar o JavaScript para visualizar este Portal corretamente.
+    </div>
+  </div>
+</noscript><script src='https://aguiabranca.es.gov.br/statics/assets/plugins/inputmask-5/jquery.inputmask.js?v=1795812502'></script>
+<script src='https://aguiabranca.es.gov.br/statics/assets/plugins/inputmask-5/inputmask_personalizacao.js?v=1795812502'></script>
+<script src='https://aguiabranca.es.gov.br/statics/assets/plugins/validation/js/languages/jquery.validationEngine-pt_BR.min.js?v=1795812502'></script>
+<script src='https://aguiabranca.es.gov.br/statics/assets/plugins/validation/js/jquery.validationEngine.min.js?v=1795812502'></script>
+<script src='https://aguiabranca.es.gov.br/statics/assets/plugins/validation/js/contrib/other-validations.js?v=1795812502'></script>
+<script src='https://aguiabranca.es.gov.br/statics/assets/js/recaptcha.js?v=1795812502'></script>
+
+</body>
+
+</html>

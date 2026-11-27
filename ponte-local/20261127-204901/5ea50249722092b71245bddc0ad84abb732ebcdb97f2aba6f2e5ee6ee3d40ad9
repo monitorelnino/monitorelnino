@@ -1,0 +1,1412 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <meta name="title" content="Prefeitura Municipal de Quinze de Novembro/RS | Quinze de Novembro - RS">
+    <meta name="og:title" content="Prefeitura Municipal de Quinze de Novembro/RS | Quinze de Novembro - RS">
+    <meta name="og:site_name" content="Quinze de Novembro - RS">
+    <meta name="image" content="https://quinzedenovembro.rs.gov.br/images/logo.png">
+    <meta name="og:image" content="https://quinzedenovembro.rs.gov.br/images/logo.png">
+    <meta name="og:image:url" content="https://quinzedenovembro.rs.gov.br/images/logo.png">
+    <meta name="og:image:secure_url" content="https://quinzedenovembro.rs.gov.br/images/logo.png">
+    <meta name="keywords" content="prefeitura, municipal, quinze, novembrors, portal, voce, pode, consultar, debitos, emitir, guias, pagamento, realizar, parcelamentos, gerar, cnd, imprimir">
+    <meta name="abstract" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, ...">
+    <meta name="description" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, gerar CND, imprimir BCI, acessar o sistema de NFSe">
+    <meta name="og:description" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, gerar CND, imprimir BCI, acessar o sistema de NFSe">
+    <meta name="og:type" content="website">
+
+        <meta name="csrf-param" content="_csrf-frontend">
+<meta name="csrf-token" content="nurmcha4xV4HzFYbB-1eMT2qA2D6t9rhl5tDkP8QMTX4r7IRJImBaDWcI3I11QlHUp8wP5zvjoiiyzn3jnxmDA==">
+    <title></title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XKD5W7T30K"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XKD5W7T30K');
+    </script>
+
+   <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+    <script type="text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.0.0/cookie-consent.js" charset="UTF-8"></script>
+    <script type="text/javascript" charset="UTF-8">
+    document.addEventListener('DOMContentLoaded', function () {
+    cookieconsent.run({"notice_banner_type":"simple","consent_type":"express","palette":"light","language":"pt","page_load_consent_levels":["strictly-necessary"],"notice_banner_reject_button_hide":false,"preferences_center_close_button_hide":false,"page_refresh_confirmation_buttons":false,"website_name":"Quinze de Novembro"});
+    });
+    </script>
+
+    <!-- Google Analytics -->
+
+    <!-- Google tag (gtag.js) -->
+    <script type="text/plain" cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-XKD5W7T30K"></script>
+    <script type="text/plain" cookie-consent="tracking">
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-XKD5W7T30K');
+    </script>
+
+    <!-- end of Google Analytics-->
+
+    <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/" rel="nofollow noopener">TermsFeed Policy Generator</a></noscript>
+    <!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+
+    <link href="/css/responsive-calendar.css?v=1751479974" rel="stylesheet">
+<link href="/css/impressao.css?v=1751479974" rel="stylesheet" media="print">
+<link href="/assets/f2691771/dist/assets/owl.carousel.min.css?v=1751481220" rel="stylesheet">
+<link href="/assets/f2691771/dist/assets/owl.theme.default.min.css?v=1751481220" rel="stylesheet">
+<link href="/assets/fe66d664/css/bootstrap.css?v=1751481073" rel="stylesheet">
+<link href="/assets/e7c8ac0a/css/select2.min.css?v=1792773537" rel="stylesheet">
+<link href="/assets/bca2a326/css/select2-addl.min.css?v=1751481220" rel="stylesheet">
+<link href="/assets/bca2a326/css/select2-material.min.css?v=1751481220" rel="stylesheet">
+<link href="/assets/abc6c159/css/kv-widgets.min.css?v=1751481220" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Arsenal:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Mitr:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
+<link href="/css/estilos.css?v=1789756763" rel="stylesheet">
+<link href="/css/responsivo.css?v=1789756763" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+<link href="/assets/8ce329b9/style.css?v=1751481216" rel="stylesheet">
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" defer crossorigin="anonymous"></script>
+<script>window.s2options_d70332a3 = {"themeCss":".select2-container--material","sizeCss":"","doReset":true,"doToggle":false,"doOrder":false};
+window.select2_c0c02640 = {"allowClear":true,"theme":"material","width":"auto","placeholder":"Filtrar por Departamento","language":"pt-BR"};
+
+window.select2_95307d1a = {"allowClear":true,"theme":"material","width":"auto","placeholder":"Filtrar por Serviço","language":"pt-BR"};
+</script></head>
+
+<body>
+    
+    
+<div id="acessibilidade" class="dontPrint">
+    <div id="texto">
+        <span class="icone"><i class="fas fa-wheelchair"></i></span>
+        <span class="links">
+            <a id="linkMenu" accesskey="1" href="javascript:;" title="Menu" class="text-left">
+            <i class="fas fa-bars"></i>&nbsp;&nbsp;Menu
+            </a>
+            <a id="linkConteudo" accesskey="2" href="#conteudo" title="Conteúdo" class="text-left">
+            <i class="fas fa-edit"></i>&nbsp;&nbsp;Conteúdo
+            </a>
+            <a id="linkBusca" accesskey="3" href="javascript:;" title="Busca" class="text-left">
+            <i class="fas fa-search"></i>&nbsp;&nbsp;Busca
+            </a>
+            <a id="linkMapaSite" accesskey="4" href="/site/mapa-site" title="Mapa" class="text-left">
+            <i class="fas fa-sitemap"></i>&nbsp;&nbsp;Mapa
+            </a>
+            <a id="acessibilidade" accesskey="4" href="/pagina/view/12" title="Acessibilidade" class="text-left">
+            <i class="fas fa-wheelchair"></i>&nbsp;&nbsp;Acessibilidade
+            </a>
+            <br />
+                <a accesskey="5" id='aumentarFonte' href="javascript:;" title="Aumentar Fonte  [Ctrl+5]">
+                    <i class="fas fa-plus-circle"></i>&nbsp;&nbsp;Fonte Maior
+                </a>
+                <a accesskey="6" id='diminuirFonte' href="javascript:;" title="Diminuir Fonte  [Ctrl+6]">
+                    <i class="fas fa-minus-circle"></i>&nbsp;&nbsp;Fonte Menor
+                </a>
+                <a accesskey="7" id='fonteOriginal' href="javascript:;" title="Fonte Original  [Ctrl+7]">
+                    <i class="fas fa-font"></i>&nbsp;&nbsp;Fonte Padrão
+                </a>
+            <br />
+                <a accesskey="9" id='contraste' href="javascript:;" title="Contraste  [Ctrl+9]">
+                    <i class="fas fa-adjust"></i>&nbsp;&nbsp;Contraste
+                </a>
+                <a accesskey="10" id='corOriginal' href="javascript:;" title="Cor Original  [Ctrl+10]">
+                    <i class="fas fa-circle"></i>&nbsp;&nbsp;Cor Original
+                </a>
+        </span>
+    </div>
+</div>    
+<div class="modal fade dontPrint" id="divImpressao" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" >
+    <div class="modal-dialog modal-lg dontPrint" role="document">
+        <div class="modal-content dontPrint">
+            <div class="modal-header dontPrint">
+                <div id="opcoesImpressao" class="col-md-12 col-sm-12 hidden-xs text-left">
+                    <a href="javascript:;" onclick="javascript:window.print();" title="Imprimir" class="btnPadrao btn-sm">Imprimir</a>
+                    <a href="javascript:;" onclick="fecharImpressao()" title="Fechar" class="btnPadrao btn-sm">Fechar</a>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="conteudoImpressao"></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+    <header>
+
+        <section id="barra-topo" class="container-fluid">
+            <div class="row justify-content-between">
+                <div class="col-4 col-md-6 text-left midias-sociais">
+                                            <a href="https://www.facebook.com/pm.quinzedenovembro" title="Facebook">
+                            <img src="/images/facebook.png" width="22px" alt="Facebook">                        </a>
+                                                                                    <a href="https://www.instagram.com/prefeituraquinzedenovembro/" title="Instagram">
+                            <img src="/images/instagram.png" width="22px" alt="Instagram">                        </a>
+                                                                <a href="https://www.youtube.com/@prefeituradequinzedenovemb8041" title="You Tube">
+                            <img src="/images/youtube.png" width="22px" alt="You Tube">                        </a>
+                                    </div>
+                <div class="col-8 col-md-6 padding10B">
+                    <form id="form-busca" class="form-inline" action="/search" method="get">                    <div class="form-group mx-sm-1">
+                        <input name="q" type="text" width="100%" id="pesquisa" placeholder="Busca no site ..."
+                            class="form-control input-busca">
+                    </div>
+                    <button type="submit"><i><i class="fa fa-search"></i> </i></button>
+                    </form>                </div>
+
+            </div>
+        </section>
+
+        <section class="header bg-topo">
+            <div class="container-fluid" id="box-logo">
+                <div class="row nomargin justify-content-between">
+                    <div class="col-4 col-sm-5 col-md-1 col-lg-1 col-xl-1 nopadding">
+                        <img class="margin30L margin30T margin30B" src="/images/logo.png" height="100" alt="Quinze de Novembro">                    </div>
+                    <div class="col-8 col-sm-7 col-md-4 col-lg-3 col-xl-3 nopadding logotipo-descricoes">
+                        <a href="/" title="Quinze de Novembro/RS"> 
+                            <h1>
+                                <small>Prefeitura Municipal</small>
+                                Quinze de Novembro
+                                <span>Estado do Rio Grande do Sul</span>
+                            </h1>    
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-7 col-lg-8 col-xl-8 text-center nopadding atalhos-topo">
+                                                    
+                                                                    <a href="/ouvidoria" title="Ouvidoria" class="btnTopo"><img src='https://quinzedenovembro.rs.gov.br/uploads/link/13133/maior_BPug_pLOnC8iSgrsk3N5-oUf3xKAyMFw.png' alt="img">Ouvidoria</a>
+                                 
+                            
+                                                                    <a href="https://webapp1-quinzedenovembro.cidade360.cloud/pronimtb/" title="Portal Transparência" class="btnTopo"><img src='https://quinzedenovembro.rs.gov.br/uploads/link/13133/maior_BPug_pLOnC8iSgrsk3N5-oUf3xKAyMFw.png' alt="img">Portal Transparência</a>
+                                 
+                            
+                                                                    <a href="/esic" title="E-SIC" class="btnTopo"><img src='https://quinzedenovembro.rs.gov.br/uploads/link/13133/maior_BPug_pLOnC8iSgrsk3N5-oUf3xKAyMFw.png' alt="img">E-SIC</a>
+                                 
+                            
+                                                                    <a href="https://leis.org/prefeitura/rs/quinze-de-novembro/bom" title="Boletim Oficial Municipal" class="btnTopo        "><i><i class="fa fa-clipboard-list"></i> </i>Boletim Oficial Municipal</a>
+                              
+                                                       
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <div class="container-fluid">
+            <div id="posicao-menu" class="col-ce1-8 col-tab1-12 col-tb2-18 col-pc1-18 col-pc3-18">
+                <!--
+DYNAMIKAWEB YII2 ADAPTIVE MENU BEGIN
+
+author: Rodrigo Dornelles <rodrigo@dynamika.com.br>
+copyright: Dynamika Soluções WEB - 2020
+license: BSD-3
+-->
+<section id="menu" class="dynamika-menu-nav-forest">
+    <ul class="dynamika-menu-ul-forest">
+        <!-- MENU ROOT (home) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="/" title="Home" target="_self">
+        Home
+    </a> 
+    <!-- span -->  <!-- span -->
+</li>
+<!-- MENU ROOT (institucional) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Institucional" target="_self">
+        Institucional
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (sobre-quinze-de-novembro)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Sobre Quinze de Novembro</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/3/dados-gerais" title="Dados Gerais" target="_self">
+        Dados Gerais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/ouvidoria" title="Fale com a Prefeitura" target="_self">
+        Fale com a Prefeitura
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/2" title="Hino" target="_self">
+        Hino
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/1/historico" title="Histórico" target="_self">
+        Histórico
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/13" title="Lei Orgânica Municipal" target="_self">
+        Lei Orgânica Municipal
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/10" title="Origem do nome do município" target="_self">
+        Origem do nome do município
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/11" title="Telefones úteis" target="_self">
+        Telefones úteis
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (turismo)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Turismo</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?PontoTuristicoSearch[id_ponto_turistico_area]=4" title="Atrações Turísticas" target="_self">
+        Atrações Turísticas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?PontoTuristicoSearch[id_ponto_turistico_area]=9" title="Igrejas" target="_self">
+        Igrejas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?PontoTuristicoSearch[id_ponto_turistico_area]=6" title="Gastronomia" target="_self">
+        Gastronomia
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?PontoTuristicoSearch[id_ponto_turistico_area]=7" title="Hospedagem" target="_self">
+        Hospedagem
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?PontoTuristicoSearch[id_ponto_turistico_area]=10" title="Parques e Praças" target="_self">
+        Parques e Praças
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo/index?PontoTuristicoSearch[id_ponto_turistico_area]=8" title="Pontos Naturais" target="_self">
+        Pontos Naturais
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (governo) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Governo" target="_self">
+        Governo
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (governo)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Governo</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/1/gabinete-do-prefeito" title="Gabinete do Prefeito" target="_self">
+        Gabinete do Prefeito
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/7/departamento-municipal-de-agricultura-pecuaria-industria-e-comercio" title="Agricultura, Pecuária, Indústria, Comércio e Meio Ambiente" target="_self">
+        Agricultura, Pecuária, Indústria, Comércio e Meio Ambiente
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/6/departamento-municipal-de-assistencia-social-e-habitacao" title="Assistência Social e Habitação" target="_self">
+        Assistência Social e Habitação
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="	/secretaria/view/4/departamento-municipal-de-educacao-e-desporto" title=" Educação, Desporto, Turismo e Cultura" target="_self">
+         Educação, Desporto, Turismo e Cultura
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/2/departamento-municipal-de-financas" title="Finanças" target="_self">
+        Finanças
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/5/departamento-municipal-de-obras-viacao-e-urbanismo" title="Obras, Viação e Urbanismo" target="_self">
+        Obras, Viação e Urbanismo
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/9/departamento-municipal-de-planejamento-e-administracao" title="Planejamento e Administração" target="_self">
+        Planejamento e Administração
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/3/departamento-municipal-de-saude" title="Saúde" target="_self">
+        Saúde
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (estrutura-administrativa)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Estrutura Administrativa</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch[id_departamento_categoria]=7" title="Assessorias" target="_self">
+        Assessorias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch[id_departamento_categoria]=3" title="Centrais/Unidades" target="_self">
+        Centrais/Unidades
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch[id_departamento_categoria]=6" title="Conselhos" target="_self">
+        Conselhos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch[id_departamento_categoria]=5" title="Escola" target="_self">
+        Escola
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch[id_departamento_categoria]=2" title="Setores" target="_self">
+        Setores
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch%5Bid_departamento_categoria%5D=9" title="Coordenadorias" target="_self">
+        Coordenadorias
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (publicacoes) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Publicações" target="_self">
+        Publicações
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (licitacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Licitações</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?EditalSearch[id_edital_categoria]=12" title="Chamamento Público - Agricultura Familiar" target="_self">
+        Chamamento Público - Agricultura Familiar
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?EditalSearch[id_edital_categoria]=13" title="Chamamento Público - Credenciamento" target="_self">
+        Chamamento Público - Credenciamento
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?EditalSearch[id_edital_categoria]=7" title="Concorrência" target="_self">
+        Concorrência
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?EditalSearch[id_edital_categoria]=8" title="Inexigibilidade de Licitação" target="_self">
+        Inexigibilidade de Licitação
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="	/licitacao/index?EditalSearch[id_edital_categoria]=9" title="Leilão" target="_self">
+        Leilão
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?EditalSearch[id_edital_categoria]=3" title="Pregão" target="_self">
+        Pregão
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?EditalSearch[id_edital_categoria]=6" title="Tomada de Preços" target="_self">
+        Tomada de Preços
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/licitacao/index?EditalSearch[id_edital_categoria]=21" title="Dispensa de Licitação" target="_blank">
+        Dispensa de Licitação
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (recursos-humanos)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Recursos Humanos</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/concurso/index?EditalSearch%5Bid_edital_categoria%5D=29" title="Concurso Público" target="_self">
+        Concurso Público
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/concurso/index?EditalSearch%5Bid_edital_categoria%5D=30" title="Processo de Escolha Conselho Tutelar" target="_self">
+        Processo de Escolha Conselho Tutelar
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/concurso/index?%3F=&EditalSearch[id_edital_categoria]=2" title="Processo Seletivo Público - PSP" target="_self">
+        Processo Seletivo Público - PSP
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/concurso/index?EditalSearch%5Bid_edital_categoria%5D=16" title="Processo Seletivo Simplificado - PSS" target="_self">
+        Processo Seletivo Simplificado - PSS
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/concurso/index?%3F=&EditalSearch%5Bid_edital_categoria%5D=22" title="Processos Seletivos - Departamento de Educação" target="_self">
+        Processos Seletivos - Departamento de Educação
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (documentos)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Documentos</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/documentos?cat=18" title="Educação - documentos 2021 - pandemia coronavírus" target="_self">
+        Educação - documentos 2021 - pandemia coronavírus
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/documentos?cat=20" title="Lei Paulo Gustavo" target="_self">
+        Lei Paulo Gustavo
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/documentos?cat=15" title="Lei Aldir Blanc - PNAB" target="_self">
+        Lei Aldir Blanc - PNAB
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/documentos?cat=12" title="Lei de diretrizes orçamentárias - LDO" target="_self">
+        Lei de diretrizes orçamentárias - LDO
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/documentos?cat=13" title="Lei orçamentária anual - LOA" target="_self">
+        Lei orçamentária anual - LOA
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/documentos?cat=10" title="Plano plurianual - PPA" target="_self">
+        Plano plurianual - PPA
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/documentos?cat=9" title="Repasses e transferências realizadas" target="_self">
+        Repasses e transferências realizadas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/20" title="Repasses e transferências recebidas" target="_self">
+        Repasses e transferências recebidas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/documentos?cat=14" title="Termos de Colaboração / Fomento / Parcerias" target="_self">
+        Termos de Colaboração / Fomento / Parcerias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/documentos?cat=19" title="Seleção Habitacional" target="_self">
+        Seleção Habitacional
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (transparencia) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Transparência" target="_self">
+        Transparência
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (contas-publicas)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Contas Públicas</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:20:::NO:20:F50500_CD_ORGAO:&cs=1Uz50MPvTy2gJnNIXGF1W0cxBVU0" title="Contratos" target="_blank">
+        Contratos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/transparencia/index/cat/11" title="Demonstrativos Contábeis" target="_self">
+        Demonstrativos Contábeis
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/transparencia/index/cat/10" title="Parecer" target="_self">
+        Parecer
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/transparencia/index/cat/9" title="Prestação de Contas" target="_self">
+        Prestação de Contas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/transparencia/index/cat/1" title="Relatórios - RGF e RREO" target="_self">
+        Relatórios - RGF e RREO
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://radardatransparencia.atricon.org.br/" title="Radar da Transparência Pública" target="_self">
+        Radar da Transparência Pública
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (sobre-a-transparencia)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Sobre a Transparência</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://leismunicipais.com.br/prefeitura/rs/quinzedenovembro" title="Leis Municipais" target="_blank">
+        Leis Municipais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/faq" title="Perguntas Frequentes" target="_self">
+        Perguntas Frequentes
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://webapp1-quinzedenovembro.cidade360.cloud/pronimtb/" title="Portal da Transparência" target="_self">
+        Portal da Transparência
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/obra" title="Obras, Projetos, Programas e ações" target="_self">
+        Obras, Projetos, Programas e ações
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/ouvidoria" title="Ouvidoria" target="_self">
+        Ouvidoria
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/esic/relatorio" title="Relatório - Serviço de Informação ao Cidadão" target="_self">
+        Relatório - Serviço de Informação ao Cidadão
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/esic" title="Serviços de Informação ao Cidadão" target="_self">
+        Serviços de Informação ao Cidadão
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (servicos) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="/servico" title="Serviços" target="_self">
+        Serviços
+    </a> 
+    <!-- span -->  <!-- span -->
+</li>
+<!-- MENU ROOT (rpps) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="RPPS" target="_self">
+        RPPS
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (conselhos-e-comites)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Conselhos e Comitês</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/view/20/conselho-de-administracao" title="Conselho de Administração" target="_self">
+        Conselho de Administração
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/view/21/comite-de-investimentos" title="Comitê de Investimento" target="_self">
+        Comitê de Investimento
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/view/22/conselho-fiscal" title="Conselho Fiscal" target="_self">
+        Conselho Fiscal
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (legislacao-e-financas)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Legislação e Finanças</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao/index?LegislacaoSearch%5Bid_categoria%5D=6" title="Legislação Específica - RPPS" target="_self">
+        Legislação Específica - RPPS
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/29/dados-financeiros-e-prestacao-de-contas" title="Dados Financeiros e Prestação de Contas" target="_self">
+        Dados Financeiros e Prestação de Contas
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (certidoes-e-eleicoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Certidões e Eleições</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/documentos?cat=22" title="Certidões" target="_self">
+        Certidões
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/concurso/index?EditalSearch%5Bid_edital_categoria%5D=25" title="Eleições" target="_self">
+        Eleições
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (covid-19) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Covid-19" target="_self">
+        Covid-19
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (numeros)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Números</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid/vacinacao" title="Calendário de Vacinação" target="_self">
+        Calendário de Vacinação
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid" title="Covid em números" target="_self">
+        Covid em números
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid/insumo-recebido" title="Insumos Recebidos" target="_self">
+        Insumos Recebidos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/unidade-saude" title="Unidades de Saúde" target="_self">
+        Unidades de Saúde
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid/vacina-recebida" title="Vacinas Recebidas" target="_self">
+        Vacinas Recebidas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid/vacinometro" title="Vacinômetro" target="_self">
+        Vacinômetro
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (informacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Informações</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/ouvidoria" title="Denúncias de 'fura-fila' - Ouvidoria" target="_self">
+        Denúncias de 'fura-fila' - Ouvidoria
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://antigo.saude.gov.br/saude-de-a-z/ouvidoria-do-sus" title="Denúncias de 'fura-fila' - ouvidoria do SUS" target="_blank">
+        Denúncias de 'fura-fila' - ouvidoria do SUS
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/15" title="Plano de ação municipal" target="_self">
+        Plano de ação municipal
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/covid/licitacao" title="Processos de aquisição de insumos" target="_self">
+        Processos de aquisição de insumos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/17" title="Registro de sobra de doses" target="_self">
+        Registro de sobra de doses
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/16" title="Segurança e Eficiência da Vacinas" target="_self">
+        Segurança e Eficiência da Vacinas
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (comunicacao) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Comunicação" target="_self">
+        Comunicação
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (imprensa)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Imprensa</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/evento" title="Agenda de Eventos" target="_self">
+        Agenda de Eventos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/enquete" title="Enquetes" target="_self">
+        Enquetes
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/noticia" title="Notícias" target="_self">
+        Notícias
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (multimidia)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Multimídia</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/audios" title="Áudios" target="_self">
+        Áudios
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/fotos" title="Galeria de Fotos" target="_self">
+        Galeria de Fotos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia/videos" title="Galeria de Vídeos" target="_self">
+        Galeria de Vídeos
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+    </ul>
+</section>
+<!--
+DYNAMIKAWEB YII2 ADAPTIVE MENU END
+-->            </div>
+            <span data-menu-toggle="menu" class="menu-fechado"><i><i class="fa fa-bars"></i> </i> menu</span>
+        </div>
+                    
+
+    </header>
+
+    <div id="bread" class="container-fluid text-right">
+            </div>
+
+    <div id="main conteudo" class="content">
+                        
+    
+
+<section class="container-fluid box-sem-margem cor5">
+    <div class="row padding-news">
+        <div class="col-12 col-lg-6">
+                                                <div class="noticia-destaque-principal">
+                                                    <img src="/uploads/noticia/16547/maior_T-dc4Pwj0B0gwME2PekG_n3KeH603mpu.jpg" width="100%" alt="Notícia">                                                <a href="/noticia/view/1569/matriculas-e-rematriculas-2027" title="Matrículas e Rematrículas 2027">
+                            <h3><strong>Matrículas e Rematrículas 2027</strong></h3>
+                        </a>
+                    </div>
+                                                <div class="row nomargin">
+                                            <div class="col-4 noticia-destaque-secundario">
+                                                            <img src="/uploads/noticia/16495/maior_u78wl0XsHstWk-2Fv8UE39XkEjhpGSSr.jpg" alt="Notícia">                                                        <a href="/noticia/view/1568/nosso-talento-merece-seu-voto" title="Nosso talento merece seu voto!">
+                                <h3><strong>Nosso talento merece seu voto!</strong></h3>
+                            </a>
+                        </div>
+                                            <div class="col-4 noticia-destaque-secundario">
+                                                            <img src="/uploads/noticia/16490/maior_j2BxB-VGk7SN2k8Np6ObeqDgPnt3nAn9.jpeg" alt="Notícia">                                                        <a href="/noticia/view/1565/7-melhor-resultado-do-imers" title="7º MELHOR RESULTADO DO IMERS">
+                                <h3><strong>7º MELHOR RESULTADO DO IMERS</strong></h3>
+                            </a>
+                        </div>
+                                            <div class="col-4 noticia-destaque-secundario">
+                                                            <img src="/uploads/noticia/16491/maior_B6C9WymUN4mzPi9nM2MkAm6-MauAa5UB.jpg" alt="Notícia">                                                        <a href="/noticia/view/1566/xviii-semana-municipal-do-idoso" title="XVIII Semana Municipal do Idoso">
+                                <h3><strong>XVIII Semana Municipal do Idoso</strong></h3>
+                            </a>
+                        </div>
+                                    </div>  
+                  
+                    </div>    
+                        <div class="col-12 col-lg-6 box-atalho-capa">
+                <div id="box-atalho" class="row nomargin justify-content-between">
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-barcode"></i> </i>
+                                                                <h3><a href="https://webapp1-quinzedenovembro.cidade360.cloud/NFSe.Portal/" title="NFS-e - Nota Fiscal Eletrônica" target=""><strong>NFS-e - Nota Fiscal Eletrônica</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-desktop"></i> </i>
+                                                                <h3><a href="https://webapp1-quinzedenovembro.cidade360.cloud:8443/deiss/servlet/br.com.cetil.ar.gips.hprincipal?XHYvHvw0LR7ksvk2RI32+A==" title="DEISS - Declaração Eletrônica de ISS" target="target=&#039;_blank&#039;"><strong>DEISS - Declaração Eletrônica de ISS</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-file-upload"></i> </i>
+                                                                <h3><a href="https://webapp1-quinzedenovembro.cidade360.cloud:8443/cidadao" title="Certidão Negativa de Débito" target="target=&#039;_blank&#039;"><strong>Certidão Negativa de Débito</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-clone"></i> </i>
+                                                                <h3><a href="https://webapp1-quinzedenovembro.cidade360.cloud:8443/cidadao" title="Segunda via da Conta" target="target=&#039;_blank&#039;"><strong>Segunda via da Conta</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-file-alt"></i> </i>
+                                                                <h3><a href="https://leismunicipais.com.br/prefeitura/rs/quinzedenovembro" title="Legislação Municipal" target="target=&#039;_blank&#039;"><strong>Legislação Municipal</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-users-cog"></i> </i>
+                                                                <h3><a href="/pagina/view/5" title="Portal do Servidor" target=""><strong>Portal do Servidor</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-users"></i> </i>
+                                                                <h3><a href="https://www.quinzedenovembro.rs.gov.br/concurso/index?EditalSearch%5Bid_edital_categoria%5D=16" title="Processo Seletivo Simplificado" target="target=&#039;_blank&#039;"><strong>Processo Seletivo Simplificado</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-funnel-dollar"></i> </i>
+                                                                <h3><a href="/transparencia" title="Contas Públicas" target=""><strong>Contas Públicas</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-file-alt"></i> </i>
+                                                                <h3><a href="/licitacao" title="Licitações e Contratos" target=""><strong>Licitações e Contratos</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-home"></i> </i>
+                                                                <h3><a href="https://webapp1-quinzedenovembro.cidade360.cloud:8443/cidadao/servlet/br.com.cetil.ar.jvlle.hcarnealvara?1" title="Segunda Via IPTU" target="target=&#039;_blank&#039;"><strong>Segunda Via IPTU</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-tint"></i> </i>
+                                                                <h3><a href="http://logprosistemas.ddns.net:9078/gsan/exibirEmitirSegundaViaContaInternetAcessoGeralAction.do?acessoGeral=s" title="Segunda Via Conta de Água" target="target=&#039;_blank&#039;"><strong>Segunda Via Conta de Água</strong></a></h3>
+                            </div>
+                                                <div class="atalho">
+                                                                    <i><i class="fa fa-exchange-alt"></i> </i>
+                                                                <h3><a href="/midia/documentos?cat=9" title="Repasses e Transferências" target=""><strong>Repasses e Transferências</strong></a></h3>
+                            </div>
+                                    </div>
+            </div>
+                </div>
+</section>
+
+
+
+<!-- BLOCO 3 COVID -->
+<section class="container-fluid box">
+<div class="titulo"><span>Dados Covid</span></div>
+    <div id="cvd" class="row nomargin justify-content-between">
+        <div class="text-center covid-capa cor1">
+            <div>
+                <h3><span data-time="2000" data-to="1648" class="dynamika-counter-up"></span></h3>
+            </div>
+            <h4>Casos</h4>
+        </div>
+        <div class="text-center covid-capa cor2">
+            <div>
+                <h3><span data-time="2000" data-to="3761" class="dynamika-counter-up"></span></h3>
+            </div>
+            <h4>1º Dose</h4>
+        </div>
+        <div class="text-center covid-capa cor3">
+            <div>
+                <h3><span data-time="2000" data-to="0" class="dynamika-counter-up"></span>
+                </h3>
+            </div>
+            <h4>Ativos</h4>
+        </div>
+        <div class="text-center covid-capa cor4">
+            <div>
+                <h3><span data-time="2000" data-to="12" class="dynamika-counter-up"></span></h3>
+            </div>
+            <h3>
+                <h4>Óbitos</h4>
+        </div>
+        <div class="col-12 text-center margin10T">
+            <a class="btnPadrao" href="/covid" title="Covid"><strong>mais dados</strong></a>        </div>
+    </div>
+</section>
+
+<!-- COMUNICADOS -->
+<section class="container-fluid bg-primary box padding80T padding80B">
+    <div class="row">
+                    <div class="col-12 col-lg-6">
+                <div class="row">
+                    <div class="col-12">
+                        <div class=" relative radius6">
+                            <div class="titulo"><span>Comunicados Importantes</span></div>
+                            <div class="row padding20V tema">
+                            <div id="owlc0" class="owl-carousel">                                                                    <img id="banner-capa" src="/uploads/temas/16549/original_Cffd3Jv27CFXO3EknLyeZ2q4gnGvw9wU.jpg" width="100%" alt="Tema">                                                                    <img id="banner-capa" src="/uploads/temas/16548/original_jCeAYL9GAP12RLJ_U7Z-4-ntH4ayeB2c.jpg" width="100%" alt="Tema">                                                                    <img id="banner-capa" src="/uploads/temas/16550/original_EU4pgjTonbIsL23IA0cZM7aTSvBW0dWH.jpg" width="100%" alt="Tema">                                                            </div>                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-12 col-lg-6 margin-top-md">
+            <div class="row">
+                <!-- LICITAÇÕES -->
+                <div class="col-12">
+                    <div class="altura-box-1 relative radius6">
+                        <div class="titulo"><span>Licitações abertas</span></div>
+                        <div class="row padding20V">
+                                                            <div class="indisponivel">Nenhuma Licitação <br />aberta no momento.</div>
+                                                    </div>
+                        <div class="row">
+                            <div class="col-12 text-center">
+                                <a href="/licitacao?slug=Licita%C3%A7%C3%B5es" title="Licitações" class="btnPadrao">todas licitações</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid bg-secondary padding60T padding80B">
+    <div class="row">
+        <div class="col-12 col-lg-6 text-center">
+            <div class="titulo text-center"><span>Departamentos</span></div>
+            <p>Você pode contatar diretamente com os departamentos municipais da Prefeitura Municipal de Quinze de Novembro. Seleciona nas opções abaixo para verificar endereço, horário de atendimento e telefone.<br /></p>
+            <br />
+            <form id="w1" action="/departamento" method="GET">                    <div class="form-group field-departamentosearch-id">
+
+<div class="kv-plugin-loading loading-departamentosearch-id">&nbsp;</div><select id="departamentosearch-id" class="form-control" name="DepartamentoSearch[id]" data-s2-options="s2options_d70332a3" data-krajee-select2="select2_c0c02640" style="width: 1px; height: 1px; visibility: hidden;">
+<option value="">Filtrar por Departamento</option>
+<option value="27">Assessoria de Acompanhamento de Grupos do CRAS</option>
+<option value="33">ASSESSORIA DE COMUNICAÇÃO</option>
+<option value="26">Assessoria de Manutenção de Espaços Públicos</option>
+<option value="5">Assessoria de Manutenção Veicular </option>
+<option value="8">Assessoria de Meio Ambiente</option>
+<option value="3">Assessoria de Projetos</option>
+<option value="23">Assessoria de Serviços de Drenagem</option>
+<option value="24">Assessoria de Serviços do Interior</option>
+<option value="13">Assessoria de Serviços Urbanos</option>
+<option value="25">Assessoria de Trânsito e Sinalização</option>
+<option value="9">Assessoria Jurídica</option>
+<option value="10">Assessoria Pedagógica</option>
+<option value="21">Comitê de Investimentos RPPS</option>
+<option value="36">CONSELHO DO FUNDEB</option>
+<option value="22">Conselho Fiscal do RPPS</option>
+<option value="37">CONSELHO  MUNICIPAL DE ASSISTÊNCIA SOCIAL</option>
+<option value="38">CONSELHO MUNICIPAL DE EDUCAÇÃO</option>
+<option value="20">Conselho Municipal de Previdência</option>
+<option value="39">CONSELHO MUNICIPAL DE SAÚDE</option>
+<option value="19">Conselho Tutelar</option>
+<option value="12">Controle Interno</option>
+<option value="34">Coordenador de equipe de limpeza de vias de circulação</option>
+<option value="35">Coordenador de equipe de trabalhos no interior</option>
+<option value="31">Coordenadoria de Agroindústrias</option>
+<option value="32">Coordenadoria de Desportos</option>
+<option value="7">Coordenadoria de Manutenção Hidráulica e Elétrica</option>
+<option value="30">Coordenadoria de Planejamento e Convênios</option>
+<option value="15">Coordenadoria de Programas de Saúde</option>
+<option value="29">Coordenadoria de Turismo e Cultura</option>
+<option value="28">Coordenadoria de Unidades Básicas de Saúde</option>
+<option value="11">Coordenadoria do Centro de Referência de Assistência Social - CRAS</option>
+<option value="2">Coordenadoria Geral do Gabinete do Prefeito</option>
+<option value="18">Diretor de Escola - Escola Municipal de Educação Infantil Pequeno Polegar</option>
+<option value="17">Diretor de Escola - Escola Municipal de Ensino Fundamental Progresso</option>
+<option value="16">Diretor de Escola - Escola Municipal de Ensino Fundamental Santa Clara </option>
+<option value="14">Procuradoria Jurídica</option>
+</select>
+
+<div class="help-block"></div>
+</div>            </form>        </div>
+        <div class="col-12 col-lg-6 text-center margin-top-md">
+            <div class="titulo text-center"><span>Serviços - Solicitações</span></div>
+            <p>A Prefeitura oferece diversos serviços online que você pode solicitar diretamente pelo site. Para isso, selecione o serviço desejado, preencha e encaminhe o formulário apresentado.<br /></p>
+            <br /><form id="w2" action="/servico" method="GET">                    <div class="form-group field-servicosearch-id">
+
+<div class="kv-plugin-loading loading-servicosearch-id">&nbsp;</div><select id="servicosearch-id" class="form-control" name="ServicoSearch[id]" data-s2-options="s2options_d70332a3" data-krajee-select2="select2_95307d1a" style="width: 1px; height: 1px; visibility: hidden;">
+<option value="">Filtrar por Serviço</option>
+<option value="4">AR Cidadão</option>
+<option value="6">Consulta - Acervo da Biblioteca</option>
+<option value="8">Declaração Eletrônica de ISS - DEISS</option>
+<option value="7">Nota Fiscal Eletrônica - NFSE</option>
+<option value="3">Portal CTC - Certidão de Tempo de Contribuição</option>
+<option value="9">Portal Prefeitura</option>
+<option value="5">Sistema de Gestão de Biblioteca</option>
+</select>
+
+<div class="help-block"></div>
+</div>            </form>        </div>
+    </div>
+</section>
+
+
+<section class="container-fluid padding80T padding80B">
+    <div class="row">
+
+            <div class="col-12 col-lg-6">
+            <div class="row">
+                <!-- Turismo -->
+                <div class="col-12">
+                    <div class="relative radius6">
+                        <div class="titulo"><span>Turismo - Pontos de Visitação</span></div>
+                        <div class="row nomargin relative">
+                                                    <div class="col-12 col-sm-6 padding3 text-center">
+                                                                <div class="box-expande">    
+                                <img class="altura-box-7 rounded img-expande" src="/uploads/ponto_turistico/13397/maior_M8kwn3UiBCUIQnhP2iqVwSs_1Z70XlTu.jpg" width="100%" alt="Turismo">                                                                </div>
+                                <a href="/turismo/view/20/igreja-da-comunidade-evangelica-de-confissao-luterana-no-brasil" title="Igreja da Comunidade Evangélica de Confissão Luterana no Brasil">
+                                    <h4 class="nomargin padding10V text-center"><strong>Igreja da Comunidade Evangélica de Confissão Luterana no Brasil</strong></h4>
+                                </a>
+                                <span class="resumo">Quinze de Novembro é o município que tem a maior porcentagem de evangélicos de todo o Brasil. Em 2008, 80% da população mantinha a religião de seus antepassados.</span>
+                            </div>
+                                                        <div class="col-12 col-sm-6 padding3 text-center">
+                                                                <div class="box-expande">    
+                                <img class="altura-box-7 rounded img-expande" src="/uploads/ponto_turistico/13396/maior_tjf49eoG_QGnRtjinOa2v0uc4zXjMD8n.jpg" width="100%" alt="Turismo">                                                                </div>
+                                <a href="/turismo/view/22/praca-municipal-clara-arend-saft" title="Praça Municipal Clara Arend Saft">
+                                    <h4 class="nomargin padding10V text-center"><strong>Praça Municipal Clara Arend Saft</strong></h4>
+                                </a>
+                                <span class="resumo">O local também tem acesso projetado para portadores de necessidades especiais. Durante a noite, a iluminação torna o centro da cidade ainda mais bonito.</span>
+                            </div>
+                                                                                </div>
+                    </div>
+                    <div class="col-12 text-center">
+                        <hr />
+                        <a href="/turismo?slug=Turismo" title="Turismo" class="btnPadrao">todos</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+            <div class="col-12 col-lg-6 margin-top-md">
+            <div class="row">
+                <div class="col-12">
+                    <div class="relative radius6">
+                        <div class="titulo"><span>Turismo - Gastronomia</span></div>
+                        <div class="row nomargin relative">
+                                                    <div class="col-12 col-sm-6 padding3 text-center">
+                                                                <div class="box-expande">    
+                                <img class="altura-box-7 rounded img-expande" src="/uploads/ponto_turistico/13171/maior_aTm9WwySuyhuK5DUwynVDuXGj01YOVgu.jpeg" width="100%" alt="Turismo">                                                                </div>
+                                <a href="/turismo/view/30/deutschs-beer" title="Deutsch's Beer">
+                                    <h4 class="nomargin padding10V"><strong>Deutsch's Beer</strong></h4>
+                                </a>
+                                <span class="resumo"></span>
+                            </div>
+                                                        <div class="col-12 col-sm-6 padding3 text-center">
+                                                                <div class="box-expande">    
+                                <img class="altura-box-7 rounded img-expande" src="/uploads/ponto_turistico/13158/maior_HZkfAejA4bMYatUsJors_oUFNHXqldLf.jpeg" width="100%" alt="Turismo">                                                                </div>
+                                <a href="/turismo/view/29/point-do-sorvete" title="Point do Sorvete">
+                                    <h4 class="nomargin padding10V"><strong>Point do Sorvete</strong></h4>
+                                </a>
+                                <span class="resumo">Atende todos os dias das 15h as 23h com sorvetes, hambúrgueres e petiscos. (54) 991994683 </span>
+                            </div>
+                                                                                </div>
+                    </div>
+                </div>
+            </div>
+                <div class="col-12 text-center">
+                    <hr />
+                    <a href="/turismo/index?PontoTuristicoSearch[id_ponto_turistico_area]=6" title="Turismo" class="btnPadrao">todos</a>
+                </div>
+            </div>
+    </div>
+</section>
+    </div>
+
+
+    <footer class="container-fluid">
+        <div class="row border-footer">
+            <div class="col-12 col-md-10 col-lg-11 text-left margin50V">
+                <div class="row">
+                    <div class="col-12 col-sm-5 col-md-5 col-xl-3"><img class="rounded-maior prefeitura" src="/images/prefeitura.jpg" width="100%" alt="Prefeitura"></div>
+                    <div class="col-12 col-sm-7 col-md-5 col-xl-5 dados-footer nopadding">
+                        <p style="text-align: justify;"><strong>Prefeitura Municipal de Quinze de Novembro/RS</strong></p>
+<p>Rua Gon&ccedil;alves Dias, n&ordm; 875 - Centro<br />CEP: 98230-000 / Telefone: (54) 3322-1500<br />Email: <a href="/cdn-cgi/l/email-protection#11617c20247f7e6751617c20247f7e673f63623f767e673f7363"><span class="__cf_email__" data-cfemail="e3938ed2d68d8c95a3938ed2d68d8c95cd9190cd848c95cd8191">[email&#160;protected]</span></a><br />Atendimento: 07:30h &agrave;s 11:30h e das 13:30h &agrave;s 17:30h.</p>                        <br />
+                        <a href="/pagina/view/11" title="Links e Telefones Úteis" class="btnPadrao">Telefones Úteis</a>
+                        <a href="/contato" title="Fale Conosco" class="btnPadrao">Fale Conosco</a>
+                        <a href="/faq" title="Perguntas Frequentes" class="btnPadrao">Perguntas Frequentes</a>
+                        <a href="https://mail.pm15nov.rs.gov.br/" title="Webmail" class="btnPadrao" target="_blank">Webmail</a>
+                    </div>
+                    <div class="col-12 col-sm-12 col-md-2 col-xl-4 d-flex justify-content-center align-items-center">
+                        <div class="selo-transparencia-footer">
+                            <img src="/images/transparencia-prata.png" alt="Selo Transparência">                        </div>
+                    </div>
+                </div>            
+            </div>
+            <div class="col-12 col-md-2 col-lg-1 midias-sociais text-right padding30T padding30B">
+                                    <a href="https://www.facebook.com/pm.quinzedenovembro" title="Facebook">
+                        <img src="/images/facebook.png" width="28px" alt="Facebook">                    </a><br />
+                                                                    <a href="https://www.instagram.com/prefeituraquinzedenovembro/" title="Instagram">
+                        <img src="/images/instagram.png" width="28px" alt="Instagram">                    </a><br />
+                                                    <a href="https://www.youtube.com/@prefeituradequinzedenovemb8041" title="You Tube">
+                        <img src="/images/youtube.png" width="28px" alt="You Tube">                    </a><br />
+                            </div>
+        </div>
+        <hr>
+        <div class="row margin10B margin10T">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-8 text-center">
+                    <strong>Qual o seu nível de satisfação com o atendimento da Prefeitura</strong>
+                    <fieldset class="radio-image" style="margin-top:15px;">
+                        <div class="col">
+                            <label class="radio-satisfacao">
+                                <input type="radio" class="icone-radio" onclick="setOpcao(1)">
+                                <img src="/images/muito_insatisfeito.png" alt=""><br/> Muito insatisfeito
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="radio-satisfacao">
+                                <input type="radio" class="icone-radio" onclick="setOpcao(2)">
+                                <img src="/images/insatisfeito.png" alt=""><br/> Insatisfeito
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="radio-satisfacao">
+                                <input type="radio" class="icone-radio" onclick="setOpcao(3)">
+                                <img src="/images/indiferente.png" alt=""><br/> Neutro
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="radio-satisfacao">
+                                <input type="radio" class="icone-radio" onclick="setOpcao(4)">
+                                <img src="/images/satisfeito.png" alt=""><br/> Satisfeito
+                            </label>
+                        </div>
+                        <div class="col">
+                            <label class="radio-satisfacao">
+                                <input type="radio" class="icone-radio" onclick="setOpcao(5)">
+                                <img src="/images/muito_satisfeito.png" alt=""><br/> Muito satisfeito
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+                <div class="col-12 col-lg-4">
+                    
+<div id="w5"></div>                </div>
+                <div class="col-md-12 mt-2" id="camposSatisfacao" style="display: none;">
+                    
+<form id="pesquisa-form" action="/site/resposta" method="post">
+<input type="hidden" name="_csrf-frontend" value="nurmcha4xV4HzFYbB-1eMT2qA2D6t9rhl5tDkP8QMTX4r7IRJImBaDWcI3I11QlHUp8wP5zvjoiiyzn3jnxmDA==">    <div class="row">
+        <div class="form-group field-avaliacao-opcao">
+
+<input type="hidden" id="avaliacao-opcao" class="form-control" name="AvaliacaoAtendimento[opcao]">
+
+<div class="help-block"></div>
+</div>        <div class="col-12 col-md-4">
+            <div class="form-group field-avaliacaoatendimento-nome">
+
+<input type="text" id="avaliacaoatendimento-nome" class="form-control" name="AvaliacaoAtendimento[nome]" placeholder="Digite seu nome">
+
+<div class="help-block"></div>
+</div>        </div>
+        <div class="col-12 col-md-4">
+            <div class="form-group field-avaliacaoatendimento-email">
+
+<input type="text" id="avaliacaoatendimento-email" class="form-control" name="AvaliacaoAtendimento[email]" placeholder="Digite aqui seu email">
+
+<div class="help-block"></div>
+</div>        </div>
+        <div class="col-12 col-md-4">
+            <div class="form-group field-avaliacaoatendimento-mensagem">
+
+<input type="text" id="avaliacaoatendimento-mensagem" class="form-control" name="AvaliacaoAtendimento[mensagem]" placeholder="Digite sua mensagem">
+
+<div class="help-block"></div>
+</div>        </div>
+        <div class="form-group text-center justify-content-center w-100">
+            <button type="submit" class="btnPadrao">Enviar</button>        </div>
+    </div>
+</form>                </div>
+            </div>
+        </div> 
+    </footer>
+
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d223981.60668706673!2d-53.28160167823406!3d-28.698242478208652!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94fd622ee61a0c55%3A0xa7e8ca2814ecc9d3!2sQuinze+de+Novembro+-+RS!5e0!3m2!1spt-BR!2sbr!4v1530287927041" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>    
+
+    <div id="barra-footer" class="container-fluid">
+        <div class="row">
+            <div class="col-10 text-left margin10V">
+                <small>
+                &copy; Copyright 2026 - Direitos reservados à Prefeitura de Quinze de Novembro/RS
+                </small>
+            </div>
+            <div class="col-2 text-right margin10V">
+                <a href="http://www.dynamika.com.br" target="_blank"
+                    title="Dynamika Soluções Web"><img src="/images/selo-dynamika.png" alt="Dynamika Soluções Web"></a>
+                <button onclick="topFunction()" id="myBtn" class="btn btn-info" title="Topo"><i
+                        class="icon-up-open"></i><br />topo</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="stop" class="scrollTop">
+        <span><a href="" title="Topo"><i class="fa-2x fa fa-angle-up"></i> </a></span>
+    </div>
+
+    <!-- Botão Flutuante WhatsApp Central da Prefeitura -->
+    <a href="https://wa.me/5554 93054865" target="_blank" class="whatsapp-flutuante" title="Fale com a Prefeitura pelo WhatsApp">
+        <img src="/images/central-prefeitura.png" alt="WhatsApp da Prefeitura">    </a>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/acessibilidade.js?v=1751479974"></script>
+<script src="/assets/a65dcce1/jquery.js?v=1751481073"></script>
+<script src="/js/responsive-calendar.min.js?v=1751479974"></script>
+<script src="/assets/f2691771/dist/owl.carousel.min.js?v=1751481220" defer="defer"></script>
+<script src="/assets/c1b7ed/yii.js?v=1751481073"></script>
+<script src="/assets/e7c8ac0a/js/select2.full.min.js?v=1792773537"></script>
+<script src="/assets/e7c8ac0a/js/i18n/pt-BR.js?v=1792773537"></script>
+<script src="/assets/bca2a326/js/select2-krajee.min.js?v=1751481220"></script>
+<script src="/assets/abc6c159/js/kv-widgets.min.js?v=1751481220"></script>
+<script src="/assets/c1b7ed/yii.validation.js?v=1751481073"></script>
+<script src="/assets/c1b7ed/yii.activeForm.js?v=1751481073"></script>
+<script src="/assets/fe66d664/js/bootstrap.bundle.js?v=1751481073"></script>
+<script src="/assets/41c068f0/sweetalert2.all.min.js?v=1751481073"></script>
+<script src="/js/site.js?v=1779815092"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="/js/avaliacao-atendimento.js?v=1751479974"></script>
+<script src="/assets/8ce329b9/script.js?v=1751481216"></script>
+<script src="/assets/9da39b77/dist/apexcharts.min.js?v=1792773538"></script>
+<script>document.addEventListener('DOMContentLoaded', async () => {
+    const scriptElementVlibras = document.createElement('script');
+    scriptElementVlibras.type = 'text/javascript';
+    scriptElementVlibras.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+    scriptElementVlibras.addEventListener('load', async () => {
+        await new window.VLibras.Widget('https://vlibras.gov.br/app');
+    });
+
+    await document.body.insertAdjacentHTML('beforeend', `<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>`);
+    await document.head.appendChild(scriptElementVlibras);
+});</script>
+<script>jQuery(function ($) {
+jQuery("#owlc0").owlCarousel(
+{"dots":false,"smartSpeed":700,"autoplay":true,"autoplayTimeout":5000,"items":1,"loop":true}
+);
+
+jQuery&&jQuery.pjax&&(jQuery.pjax.defaults.maxCacheLength=0);
+if (jQuery('#departamentosearch-id').data('select2')) { jQuery('#departamentosearch-id').select2('destroy'); }
+jQuery.when(jQuery('#departamentosearch-id').select2(select2_c0c02640)).done(initS2Loading('departamentosearch-id','s2options_d70332a3'));
+jQuery('#departamentosearch-id').on('change', () => { jQuery('#w1').submit()});
+
+jQuery('#w1').yiiActiveForm([{"id":"departamentosearch-id","name":"id","container":".field-departamentosearch-id","input":"#departamentosearch-id","validate":function (attribute, value, messages, deferred, $form) {yii.validation.number(value, messages, {"pattern":/^[+-]?\d+$/,"message":"\u0022ID\u0022 deve ser um número inteiro.","skipOnEmpty":1});}}], []);
+if (jQuery('#servicosearch-id').data('select2')) { jQuery('#servicosearch-id').select2('destroy'); }
+jQuery.when(jQuery('#servicosearch-id').select2(select2_95307d1a)).done(initS2Loading('servicosearch-id','s2options_d70332a3'));
+jQuery('#servicosearch-id').on('change', () => { jQuery('#w2').submit()});
+
+jQuery('#w2').yiiActiveForm([{"id":"servicosearch-id","name":"id","container":".field-servicosearch-id","input":"#servicosearch-id","validate":function (attribute, value, messages, deferred, $form) {yii.validation.number(value, messages, {"pattern":/^[+-]?\d+$/,"message":"\u0022ID\u0022 deve ser um número inteiro.","skipOnEmpty":1});}}], []);
+
+          var chart = new ApexCharts(document.querySelector('#w5'), {"chart":{"type":"bar","width":"100%","height":170,"parentHeightOffset":5,"toolbar":{"show":false}},"series":[{"name":"Muito Insatisfeito","data":[3]},{"name":"Insatisfeito","data":[0]},{"name":"Neutro","data":[0]},{"name":"Satisfeito","data":[1]},{"name":"Muito Satisfeito","data":[4]}],"xaxis":{"categories":["Resultados"],"labels":{"show":false}},"yaxis":{"labels":{"show":false}},"colors":["rgb(164, 8, 8)","rgb(158, 38, 38)","rgb(229,194,24)","rgb(0,141,54)","rgb(0,102,51)"],"stroke":{"width":5,"colors":["transparent"]},"title":{"text":"Resultados","align":"center","floating":true},"subtitle":{"text":"","align":"center","floating":false},"plotOptions":{"bar":{"horizontal":true,"barHeight":"80%","columnWidth":"30%","dataLabels":{"position":"bottom"}}},"legend":{"show":false,"position":"bottom","horizontalAlign":"left","showForSingleSeries":true},"dataLabels":{"enabled":false}});
+          chart.render();
+jQuery('#pesquisa-form').yiiActiveForm([], []);
+});</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a614044f1caff41e',t:'MTc5NTgxMjc0OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a614044f1caff41e',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>

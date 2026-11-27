@@ -1,0 +1,1867 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de Doutor Ricardo</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Doutor Ricardo.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de Doutor Ricardo' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://doutorricardo.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://doutorricardo.rs.gov.br/uploads/config/26095/brasaoDrRicardo.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='224'>
+            <meta property='og:image:height' content='251'>
+            <meta property='og:site_name' content='doutorricardo.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Doutor Ricardo.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de Doutor Ricardo'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Doutor Ricardo.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://doutorricardo.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://doutorricardo.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://doutorricardo.rs.gov.br/site/custom/default/css/color/red.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://doutorricardo.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://doutorricardo.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://doutorricardo.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://doutorricardo.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://doutorricardo.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://doutorricardo.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://doutorricardo.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://doutorricardo.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-NEYM5KK2H8"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-NEYM5KK2H8');
+    });
+</script>
+        <link rel="shortcut icon" href="https://doutorricardo.rs.gov.br/uploads/config/18/favicon.ico" />    
+	        </head>
+	    <body class="smoothscroll wide home2" data-background=""><a href="https://doutorricardo.rs.gov.br/cdn-cgi/content?id=_7._xJ215pT48NPLOtd.hMl0it8DRHQAre0fBzWtpZ8-1795812631.3739822-1.2.1.1-U6unvH1T3PCEab4kRIWat_K7vfaHsCh1FCXc9VTD1nTeTQddx_GwAZWsZoCIZfaR" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <!-- Cabeçalho -->
+<!--===================================================-->
+<div id="header" class='header08'>
+  <header id="topBar" class="">
+    <div class="container">
+      <!-- Logo -->
+      <div class="col-md-4 col-sm-7 nopadding-left">
+        <!-- Data -->
+                <p class="mb10 mt5"><small class="pl15">Doutor Ricardo, 27 de novembro de 2026</small></p>
+        <!-- Fim Data -->
+                        <div class="col-md-3 col-sm-3 col-xs-4 p10v5h desktop-mt20">
+                  <a  href="https://doutorricardo.rs.gov.br">
+                    <img src="https://doutorricardo.rs.gov.br/uploads/config/26095/brasaoDrRicardo.png" class="img-responsive" alt="Brasão da Prefeitura" />
+                  </a>
+                </div>
+                            <div class="col-md-9 col-sm-9 col-xs-8 desktop-mt20 p10v5h">
+              <h1 class="client-name nomargin lineh30">
+              <a class="logo" href="https://doutorricardo.rs.gov.br">
+                  Prefeitura Municipal de Doutor Ricardo              </a>
+              </h1>
+            </div>
+                  </div>
+
+      <!-- / Logo -->
+
+            <div class="col-md-8 col-sm-5 hidden-xs border-b-2-fff radius-right-20 styleBackgroundLight">
+        <div class="row">
+          <div class="col-md-6 alterate">
+            <div class="box-search-and-weather radius4 m0" title="Temperatura" aria-label="Temperatura" tabindex="0">
+              <!-- Previsão do tempo-->
+                            <div class="weather previsao-topo hidden">
+                <div style="flex:2;"></div>
+                <div class="weather-today">
+                  <i class="m0 fsize32 wi wi-thermometer"></i>
+                </div>
+                <div class="weather-week">
+                  <p class="fontw400 mb0">
+                    <small aria-label="Mínima de">MIN</small> <span class='min-temp'></span>°C
+                  </p>
+				  <span class="sr-only">e</span>
+                  <p class="fontw400 mb0">
+                    <small aria-label="Máxima de">MAX</small> <span class='max-temp'></span>°C
+                  </p>
+                </div>
+              </div>
+                            <!-- /Previsão do tempo-->
+              <!-- Busca -->
+              <div class="search-site" role='search'>
+                <form id="pesquisa" class="search nopadding" method="get" action="https://doutorricardo.rs.gov.br/pesquisa">
+			  		<label for="searchbar-desktop" class="sr-only">Pesquisar no site:</label>
+                  <input title="Procurar no site" id="searchbar-desktop" type="text" class="form-control nomargin" name="q" value="" placeholder="Procurar no site">
+                  <button type="submit" class="fa fa-search search-focus styleColor" title="Pesquisar" aria-label="Pesquisar"></button>
+                </form>
+              </div>
+              <!-- /Busca -->
+            </div>
+          </div>
+
+                        <div class="col-md-6 pt15 hidden-sm">
+                <div class="row">
+                  <div class="owl-carousel" data-plugin-options='{"items":1,"pagination": false, "autoPlay": true}'>
+                                                  <div class="item">
+                                                              <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://doutorricardo.cittaweb.com.br/transparencia','Portal da Transparência')">
+        <i class='fa fa-search styleColor'></i>                                <h2 class="styleColor">Portal da Transparência</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="/ordem-servico" target="_self" onclick="">
+        <i class='fa fa-address-card-o styleColor'></i>                                <h2 class="styleColor">e-SIC</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                            <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="/sic" target="_self" onclick="">
+        <i class='fa fa-info-circle styleColor'></i>                                <h2 class="styleColor">Acesso à Informação</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="/ouvidoria" target="_self" onclick="">
+        <i class='fa fa-bullhorn styleColor'></i>                                <h2 class="styleColor">Ouvidoria</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                          </div>
+                                                        <div class="item">
+                                                              <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://www.instagram.com/terradofilo?igsh=Z3NwY29ueTl0N2s3" target="_blank" onclick="">
+        <i class='fa fa-instagram styleColor'></i>                                <h2 class="styleColor">Instagram</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://www.facebook.com/share/16hueMfitr/" target="_blank" onclick="">
+        <i class='fa fa-facebook-official styleColor'></i>                                <h2 class="styleColor">Facebook</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                          </div>
+                                              </div>
+                </div>
+              </div>
+                      </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <!--===================================================-->
+  <header id="topNav" class="">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get"
+            action="https://doutorricardo.rs.gov.br/pesquisa">
+		<label for="searchbar-mobile" class="sr-only">Pesquisar no site:</label>
+        <input title="termo de pesquisa" id="searchbar-mobile" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar" style="min-width:24px;min-height:24px;margin-top: -5px;"></button>
+      </form>
+      <!-- Menu Mobile -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse"> <i class="fa fa-bars"></i></button>
+      <!-- Menu -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li><a href='https://doutorricardo.rs.gov.br'>Início</a></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/galeria-prefeitos/bcid/55/?galeria-de-prefeitos.html'>Galeria de Prefeitos</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/3/?dados-do-municipio.html'>Dados do Município</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/1007/?comunidades-do-interior.html'>Comunidades do Interior </a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/1008/?soberanas-do-municipio.html'>Soberanas do Município </a></li></ul></div><div class="col-md-3"><p class="menu-category">Atrações Turísticas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/turismo/id/1/?bares-e-restaurantes.html'>Bares e Restaurantes</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/turismo/id/5/?pontos-turisticos.html'>Pontos Turísticos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://doutorricardo.rs.gov.br/uploads/config/26095/brasaoDrRicardo.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 99666-9296</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 8:00h às 11:30h e das 13:00h às 17:30h</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-4"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/secretaria/id/1001/?secretaria-de-administracao-e-planejamento.html'>Secretaria de Administração e Planejamento</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/secretaria/id/1006/?secretaria-de-agricultura.html'>Secretaria de Agricultura</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/secretaria/id/1011/?secretaria-de-assistencia-social.html'>Secretaria de Assistência Social </a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/secretaria/id/1007/?secretaria-de-cultura-e-turismo.html'>Secretaria de Cultura e Turismo </a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/secretaria/id/1005/?secretaria-de-educacao.html'>Secretaria de Educação</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/secretaria/id/1002/?secretaria-de--fazenda.html'>Secretaria de  Fazenda</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/secretaria/id/1008/?secretaria-de-obras-e-transito.html'>Secretaria de Obras e Trânsito</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/secretaria/id/1004/?secretaria-de-saude.html'>Secretaria de Saúde</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/secretaria/id/1027/?secretaria-do-meio-ambiente-e-esporte.html'>Secretaria do Meio Ambiente e Esporte</a></li></ul></div><div class="col-md-4"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1013/?conselho-de-acompanhamento-controle-social-distribuicao-transferencia-e-aplicacao-dos-recursos-do-fundo-de-manutencao-e-desenvolvimento-da-educacao.html'>Conselho de Acompanhamento, Controle Social, Distribuição, Transferência e Aplicação dos Recursos do Fundo de Manutenção e Desenvolvimento da Educação</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1014/?conselho-de-alimentacao-escolar--comae.html'>Conselho de Alimentação Escolar – COMAE</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1021/?conselho-de-assistencia-social.html'>Conselho de Assistência Social</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1017/?conselho-de-cultura.html'>Conselho de Cultura</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1015/?conselho-de-defesa-do-meio-ambiente---comdema.html'>Conselho de Defesa do Meio Ambiente - COMDEMA</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1020/?conselho-de-interesse-social-da-habitacao.html'>Conselho de Interesse Social da Habitação</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1019/?conselho-de-saude--cms.html'>Conselho de Saúde – CMS</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1022/?conselho-de-turismo.html'>Conselho de Turismo</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1023/?conselho-do-desenvolvimento-rural.html'>Conselho do Desenvolvimento Rural</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1025/?conselho-do-desporto.html'>Conselho do Desporto</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1016/?conselho-dos-direitos-da-crianca-e-do-adolescente--comdica.html'>Conselho dos Direitos da Criança e do Adolescente – COMDICA</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1028/?conselho-municipal-da-educacao.html'>Conselho Municipal da Educação </a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1018/?conselho-municipal-de-protecao-e-defesa-civil.html'>Conselho Municipal de Proteção e Defesa Civil. </a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1009/?conselho-tutelar.html'>Conselho Tutelar</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1024/?junta-administrativa-de-recursos-de-infracoes--jari.html'>Junta Administrativa de Recursos de Infrações – JARI</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/conselho/id/1010/?junta-de-servico-militar.html'>Junta de Serviço Militar </a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://doutorricardo.rs.gov.br/uploads/config/26095/brasaoDrRicardo.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 99666-9296</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 8:00h às 11:30h e das 13:00h às 17:30h</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-2"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/5/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/110/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/1001/?chamamento-publico.html'>Chamamento Público </a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/101/?concorrencia-publica.html'>Concorrência Pública</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/103/?convite.html'>Convite</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/107/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/108/?pregao-presencial.html'>Pregão Presencial</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/licitacao/id/109/?tomada-de-preco.html'>Tomada de Preço</a></li></ul></div><div class="col-md-2"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/concurso/id/1004/?concurso-de-escolha-das-soberanas.html'>CONCURSO DE ESCOLHA DAS SOBERANAS</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/concurso/id/1003/?edital-de-certificacao-de-diretor-de-escola.html'>EDITAL DE CERTIFICAÇÃO DE DIRETOR DE ESCOLA</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/concurso/id/1005/?edital-de-selecao-de-alunos.html'>EDITAL DE SELEÇÃO DE ALUNOS</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/concurso/id/1002/?processo-seletivo.html'>PROCESSO SELETIVO </a></li></ul></div><div class="col-md-2"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://portal.tce.rs.gov.br/aplicprod/f?p=50202:1' target='_blank'>Legislação</a></li></ul></div><div class="col-md-2"><p class="menu-category">Legislação</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/legislacao/id/5/?decretos.html'>Decretos</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/legislacao/id/1001/?instrucao-normativa.html'>Instrução Normativa</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/legislacao/id/2/?leis.html'>Leis</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/legislacao/id/1003/?plano-de-contingencia-para-desastres-naturais.html'>PLANO DE CONTINGÊNCIA PARA DESASTRES NATURAIS </a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/legislacao/id/1004/?plano-municipal-de-saneamento-basico.html'>PLANO MUNICIPAL DE SANEAMENTO BÁSICO </a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/legislacao/id/11/?portaria.html'>Portaria</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/legislacao/id/1002/?resolucao.html'>RESOLUÇÃO</a></li></ul></div><div class="col-md-2"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='http://www1.tce.rs.gov.br/aplicprod/f?p=50202:1' target='_blank'>Decretos</a></li><li role="menuitem"><a href='http://www1.tce.rs.gov.br/aplicprod/f?p=50500:4:::NO::F50500_CD_ORGAO:84000&cs=1hCqH4o8EJzMbdLQfHLsuvDKoduw' target='_blank'>LicitaCon</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html'>Diário Oficial</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://doutorricardo.cittaweb.com.br/citta/#/transparencia' target='_blank'>Contas Públicas</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-frequentes.html'>Perguntas Frequentes</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/ordem-servico/bcid/39/?e-sic---pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/1011/?relatorio-das-ouvidorias.html'>Relatório das Ouvidorias</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/1037/?plano-anual-de-contratacao.html'>Plano Anual de Contratação</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Dados Abertos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>COVID-19</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/1013/?vacinacao-covid-19.html'>Vacinação Covid-19</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/1004/?licitacoes.html'>Licitações </a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/1005/?decretos.html'>Decretos </a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/1006/?leis.html'>Leis</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/1009/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://doutorricardo.rs.gov.br/pagina/id/1012/?planos-de-fiscalizacao.html'>PLANOS DE FISCALIZAÇÃO</a></li></ul></li></ul></nav>
+      </div>
+    </div>
+  </header>
+  <!--===================================================-->
+  <!-- Fim Menu -->
+</div>
+<!--===================================================-->
+<!-- Fim Cabeçalho -->
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a><!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="pb40 pt40">
+    <div class="container">
+        <div class="row">
+            <!-- NOTÍCIAS E ACESSO RÁPIDO -->
+                        <div class="overflow-hidden col-md-7 mobile-nopadding"><!-- 3 ÚLTIMAS NOTÍCIAS -->
+<div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": true, "navigation": false, "pagination": true, "stopOnHover": "true", "progressBar":"true"}'>
+        <div class="item">
+        <div class="col-md-12 nopadding" style="position: relative;background-color:#F7F7F7">
+                        <img class="img-responsive" style="max-height: 430px!important;" src="https://doutorricardo.rs.gov.br/uploads/noticia/27715/media_Fundesa_1.png" alt="Contribuição FUNDESA RS 2026" role="presentation">
+                    </div>
+        <div class="noticias03-item">
+            <p class="mb10 similar-h2 lineh32">
+                <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5293/?contribuicao-fundesa-rs-2026.html">
+                Contribuição FUNDESA RS 2026                </a>
+            </p>
+            <p class="nomargin hidden-xs">Secretaria da Agricultura, informa aos produtores sobre a contribuição FUNDESA para o ano de 2026.</p>
+        </div>
+    </div>
+        <div class="item">
+        <div class="col-md-12 nopadding" style="position: relative;background-color:#F7F7F7">
+                        <img class="img-responsive" style="max-height: 430px!important;" src="https://doutorricardo.rs.gov.br/uploads/noticia/27610/media_CARD_1.png" alt="Consulta Popular 2026/2027" role="presentation">
+                    </div>
+        <div class="noticias03-item">
+            <p class="mb10 similar-h2 lineh32">
+                <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5291/?consulta-popular-20262027.html">
+                Consulta Popular 2026/2027                </a>
+            </p>
+            <p class="nomargin hidden-xs">Vale do Taquari definirá destino de mais de R$ 2 milhões a partir do dia 20 de julho. 
+</p>
+        </div>
+    </div>
+        <div class="item">
+        <div class="col-md-12 nopadding" style="position: relative;background-color:#F7F7F7">
+                        <img class="img-responsive" style="max-height: 430px!important;" src="https://doutorricardo.rs.gov.br/uploads/noticia/27595/media_WhatsApp_Image_2026_07_08_at_161641.jpeg" alt="Secretaria de Meio Ambiente realiza plantio de árvores nativas" role="presentation">
+                    </div>
+        <div class="noticias03-item">
+            <p class="mb10 similar-h2 lineh32">
+                <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5290/?secretaria-de-meio-ambiente-realiza-plantio-de-arvores-nativas.html">
+                Secretaria de Meio Ambiente realiza plantio de árvores nativas                </a>
+            </p>
+            <p class="nomargin hidden-xs">Equipe da Secretaria de Meio Ambiente e Secretaria de Obras, realizaram plantio de árvores nativas em áreas verdes do Município</p>
+        </div>
+    </div>
+    </div></div>
+                        <div class="col-md-5 mt4-xs"><!-- ACESSO RÁPIDO -->
+<div id="acessorapido" class="widget featured-box-minimal owl-carousel-controls">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>ACESSO R&Aacute;PIDO</strong></h2>
+                        <span class="pull-right">
+				<a class="prev" href="javascript:;" aria-label="Anterior" title="Anterior">
+					<i class="mr5 lineh30 fa fa-arrow-left widget-icon" aria-hidden="true">
+						<span class="sr-only">Anterior</span>
+					</i>
+				</a>
+				<a class="next" href="javascript:;" aria-label="Próximo" title="Próximo">
+					<i class="mr5 lineh30 fa fa-arrow-right widget-icon" aria-hidden="true">
+						<span class="sr-only">Próximo</span>
+					</i>
+				</a>
+            </span>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1,"transitionStyle":"fade" ,"autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+        				<li class="text-left">
+					<div class="alert alert-default" style="margin-bottom: 13px;overflow: hidden;">
+                    <p class="text-left" style="float: left;">
+						<i class='fa fa-angle-right' style='color:#000!important;background-color:#DCDCDC!important;'></i>						<span class="sr-only">
+							Portal NFS-e						</span>
+					</p>
+                    <p class="lead" style="float: left;">
+						<a title="Portal NFS-e" href="https://doutorricardo.cittaweb.com.br/nfse" target="_self" onclick="">
+							Portal NFS-e						</a>
+					</p>
+					<p class="description"><small>Portal NFS-e</small></p>
+					</div>
+				</li>
+
+
+            				<li class="text-left">
+					<div class="alert alert-default" style="margin-bottom: 13px;overflow: hidden;">
+                    <p class="text-left" style="float: left;">
+						<i class='fa fa-angle-right' style='color:#000!important;background-color:#DCDCDC!important;'></i>						<span class="sr-only">
+							Acesso à informação						</span>
+					</p>
+                    <p class="lead" style="float: left;">
+						<a title="Acesso à informação" href="javascript:;" target="_self" onclick="abrePopTelaInteira('/transparencia','Acesso à informação')">
+							Acesso à informação						</a>
+					</p>
+					<p class="description"><small>Obtenha informações pública de seu interesse como: acesso a registros financeiros, administrativos e demais informações</small></p>
+					</div>
+				</li>
+
+
+            				<li class="text-left">
+					<div class="alert alert-default" style="margin-bottom: 13px;overflow: hidden;">
+                    <p class="text-left" style="float: left;">
+						<i class='fa fa-angle-right' style='color:#000!important;background-color:#DCDCDC!important;'></i>						<span class="sr-only">
+							e-SIC						</span>
+					</p>
+                    <p class="lead" style="float: left;">
+						<a title="e-SIC" href="/ordem-servico" target="_self" onclick="">
+							e-SIC						</a>
+					</p>
+					<p class="description"><small>Formulário para solicitação de acesso às informações municipais</small></p>
+					</div>
+				</li>
+
+
+            				<li class="text-left">
+					<div class="alert alert-default" style="margin-bottom: 13px;overflow: hidden;">
+                    <p class="text-left" style="float: left;">
+						<i class='fa fa-angle-right' style='color:#000!important;background-color:#DCDCDC!important;'></i>						<span class="sr-only">
+							Perguntas Frequentes						</span>
+					</p>
+                    <p class="lead" style="float: left;">
+						<a title="Perguntas Frequentes" href="/perguntas-respostas" target="_self" onclick="">
+							Perguntas Frequentes						</a>
+					</p>
+					<p class="description"><small>Perguntas e respostas mais frequentes. O cidadão pode acessar facilmente esta área na tentativa de solucionar as dúvidas</small></p>
+					</div>
+				</li>
+
+
+            				<li class="text-left">
+					<div class="alert alert-default" style="margin-bottom: 13px;overflow: hidden;">
+                    <p class="text-left" style="float: left;">
+						<i class='fa fa-angle-right' style='color:#000!important;background-color:#DCDCDC!important;'></i>						<span class="sr-only">
+							Portal de Transparência						</span>
+					</p>
+                    <p class="lead" style="float: left;">
+						<a title="Portal de Transparência" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://doutorricardo.cittaweb.com.br/transparencia','Portal de Transparência')">
+							Portal de Transparência						</a>
+					</p>
+					<p class="description"><small>Portal de Transparência para acesso externo ao da Prefeitura</small></p>
+					</div>
+				</li>
+
+
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+        				<li class="text-left">
+					<div class="alert alert-default" style="margin-bottom: 13px;overflow: hidden;">
+                    <p class="text-left" style="float: left;">
+						<i class='fa fa-angle-right' style='color:#000!important;background-color:#DCDCDC!important;'></i>						<span class="sr-only">
+							Legislação						</span>
+					</p>
+                    <p class="lead" style="float: left;">
+						<a title="Legislação" href="http://transparencia.doutorricardo.rs.gov.br:8080/multi24/sistemas/transparencia/" target="_self" onclick="">
+							Legislação						</a>
+					</p>
+					<p class="description"><small>Acesse as leis municipais</small></p>
+					</div>
+				</li>
+
+
+            				<li class="text-left">
+					<div class="alert alert-default" style="margin-bottom: 13px;overflow: hidden;">
+                    <p class="text-left" style="float: left;">
+						<i class='fa fa-angle-right' style='color:#000!important;background-color:#DCDCDC!important;'></i>						<span class="sr-only">
+							Licitações						</span>
+					</p>
+                    <p class="lead" style="float: left;">
+						<a title="Licitações" href="/licitacao" target="_self" onclick="">
+							Licitações						</a>
+					</p>
+					<p class="description"><small>Confira os editais de licitações de nosso município</small></p>
+					</div>
+				</li>
+
+
+            				<li class="text-left">
+					<div class="alert alert-default" style="margin-bottom: 13px;overflow: hidden;">
+                    <p class="text-left" style="float: left;">
+						<i class='fa fa-angle-right' style='color:#000!important;background-color:#DCDCDC!important;'></i>						<span class="sr-only">
+							Concursos						</span>
+					</p>
+                    <p class="lead" style="float: left;">
+						<a title="Concursos" href="/concurso" target="_self" onclick="">
+							Concursos						</a>
+					</p>
+					<p class="description"><small>Acesso aos editais de concursos do município</small></p>
+					</div>
+				</li>
+
+
+            				<li class="text-left">
+					<div class="alert alert-default" style="margin-bottom: 13px;overflow: hidden;">
+                    <p class="text-left" style="float: left;">
+						<i class='fa fa-angle-right' style='color:#000!important;background-color:#DCDCDC!important;'></i>						<span class="sr-only">
+							Serviços						</span>
+					</p>
+                    <p class="lead" style="float: left;">
+						<a title="Serviços" href="/servico" target="_self" onclick="">
+							Serviços						</a>
+					</p>
+					<p class="description"><small>Acesse os serviços que a prefeitura e suas secretarias oferecem para o cidadão</small></p>
+					</div>
+				</li>
+
+
+            				<li class="text-left">
+					<div class="alert alert-default" style="margin-bottom: 13px;overflow: hidden;">
+                    <p class="text-left" style="float: left;">
+						<i class='fa fa-angle-right' style='color:#000!important;background-color:#DCDCDC!important;'></i>						<span class="sr-only">
+							Ouvidoria						</span>
+					</p>
+                    <p class="lead" style="float: left;">
+						<a title="Ouvidoria" href="/ouvidoria" target="_self" onclick="">
+							Ouvidoria						</a>
+					</p>
+					<p class="description"><small>A Ouvidoria é um canal para você apresentar manifestações como reclamações, denúncias, solicitações e sugestões.</small></p>
+					</div>
+				</li>
+
+
+                        </ul>
+        </div>
+	        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+                        <div class="col-md-12"><div class="hidden-xs mb15 other-news">
+    <h2 class="similar-h4 title"><strong>OUTRAS NOT&Iacute;CIAS</strong></h2>
+    <div class="row">
+                <div class="col-md-3 mb10 block">
+                        <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5289/?secretaria-da-agricultura-e-servico-de-inspecao-municipal-distribuem-cartilha-de-educacao-sanitaria.html">
+                <img class="img-responsive" src="https://doutorricardo.rs.gov.br/uploads/noticia/27530/media_folheto_educao_sanitria_SIM.png" alt="Secretaria da Agricultura e Serviço de Inspeção Municipal distribuem cartilha de educação sanitária" role="presentation"/>
+            </a>
+            <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5289/?secretaria-da-agricultura-e-servico-de-inspecao-municipal-distribuem-cartilha-de-educacao-sanitaria.html">
+                <p class="nomargin">Secretaria da Agricultura e Serviço de Inspeção Municipal distribuem cartilha de educação sanitária</p>
+            </a>
+        </div>
+            <div class="col-md-3 mb10 block">
+                        <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5286/?rs-qualificacao-recomecar.html">
+                <img class="img-responsive" src="https://doutorricardo.rs.gov.br/uploads/noticia/27523/media_ChatGPT_Image_29_de_jun_de_2026_12_52_49.png" alt="RS QUALIFICAÇÃO RECOMEÇAR " role="presentation"/>
+            </a>
+            <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5286/?rs-qualificacao-recomecar.html">
+                <p class="nomargin">RS QUALIFICAÇÃO RECOMEÇAR </p>
+            </a>
+        </div>
+            <div class="col-md-3 mb10 block">
+                        <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5285/?programa-de-regularizacao-fiscal-2026.html">
+                <img class="img-responsive" src="https://doutorricardo.rs.gov.br/uploads/noticia/27517/media_WhatsApp_Image_2026_06_19_at_084639.jpeg" alt="PROGRAMA DE REGULARIZAÇÃO FISCAL 2026" role="presentation"/>
+            </a>
+            <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5285/?programa-de-regularizacao-fiscal-2026.html">
+                <p class="nomargin">PROGRAMA DE REGULARIZAÇÃO FISCAL 2026</p>
+            </a>
+        </div>
+            <div class="col-md-3 mb10 block">
+                        <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5287/?secretaria-do-meio-ambiente-disponibiliza-cartilha-sobre-separacao-de-lixo.html">
+                <img class="img-responsive" src="https://doutorricardo.rs.gov.br/uploads/noticia/27525/media_1.png" alt="Secretaria do Meio Ambiente disponibiliza cartilha sobre separação de lixo" role="presentation"/>
+            </a>
+            <a href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5287/?secretaria-do-meio-ambiente-disponibiliza-cartilha-sobre-separacao-de-lixo.html">
+                <p class="nomargin">Secretaria do Meio Ambiente disponibiliza cartilha sobre separação de lixo</p>
+            </a>
+        </div>
+        </div>
+    <a href="https://doutorricardo.rs.gov.br/noticia/?noticias.html" class="btn btn-default pull-right">Mais not&iacute;cias</a>
+</div></div>
+            <!-- /NOTÍCIAS E ACESSO RÁPIDO -->
+        </div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-6" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://doutorricardo.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="1001">Chamamento Público </option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="103">Convite</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="109">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://doutorricardo.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="1004">CONCURSO DE ESCOLHA DAS SOBERANAS</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="1003">EDITAL DE CERTIFICAÇÃO DE DIRETOR DE ESCOLA</option>
+                                                        <option value="1005">EDITAL DE SELEÇÃO DE ALUNOS</option>
+                                                        <option value="1002">PROCESSO SELETIVO </option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://doutorricardo.rs.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="5">Decretos</option>
+                                                        <option value="1001">Instrução Normativa</option>
+                                                        <option value="1">Legislação</option>
+                                                        <option value="2">Leis</option>
+                                                        <option value="1003">PLANO DE CONTINGÊNCIA PARA DESASTRES NATURAIS </option>
+                                                        <option value="1004">PLANO MUNICIPAL DE SANEAMENTO BÁSICO </option>
+                                                        <option value="11">Portaria</option>
+                                                        <option value="1002">RESOLUÇÃO</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-6 mt4-xs"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://doutorricardo.rs.gov.br/uploads/departamento/21615/thumb_WhatsApp_Image_2025_01_07_at_135519.jpeg" class="img-responsive max-height100" alt="Foto do(a) Prefeito: Alvaro José Giacobbo " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://doutorricardo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Alvaro José Giacobbo </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99595-8389</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h<br />
+                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99595-8389                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://doutorricardo.rs.gov.br/uploads/departamento/25809/thumb_WhatsApp_Image_2025_01_07_at_135620.jpeg" class="img-responsive max-height100" alt="Foto do(a) Vice-prefeito: Leandro Valério Vian " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Vice-prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://doutorricardo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Leandro Valério Vian </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99595-8389</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h<br />
+                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99595-8389                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/secretaria/id/1011/?secretaria-de-assistencia-social.html">
+                       Secretaria de Assistência Social                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://doutorricardo.rs.gov.br/uploads/departamento/20769/thumb_WhatsApp_Image_2025_01_07_at_141638.jpeg" class="img-responsive max-height100" alt="Foto do(a) Secretária: Eliana Zenere Giacobbo" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria de Assistência Social " href="https://doutorricardo.rs.gov.br/secretaria/id/1011/?secretaria-de-assistencia-social.html">
+                            <span class="similar-h4"><strong>Eliana Zenere Giacobbo</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 98186-3743</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 98186-3743                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/secretaria/id/1004/?secretaria-de-saude.html">
+                       Secretaria de Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://doutorricardo.rs.gov.br/uploads/departamento/25322/thumb_Zaquiel_Roveda_2.jpeg" class="img-responsive max-height100" alt="Foto do(a) Secretário: Zaquiel Roveda" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Saúde" href="https://doutorricardo.rs.gov.br/secretaria/id/1004/?secretaria-de-saude.html">
+                            <span class="similar-h4"><strong>Zaquiel Roveda</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99815-4320</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99815-4320                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/secretaria/id/1007/?secretaria-de-cultura-e-turismo.html">
+                       Secretaria de Cultura e Turismo                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://doutorricardo.rs.gov.br/uploads/departamento/26705/thumb_WhatsApp_Image_2026_01_16_at_151032.jpeg" class="img-responsive max-height100" alt="Foto do(a) Secretária: Jessica Potrich" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria de Cultura e Turismo " href="https://doutorricardo.rs.gov.br/secretaria/id/1007/?secretaria-de-cultura-e-turismo.html">
+                            <span class="similar-h4"><strong>Jessica Potrich</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99975-2047</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h<br />
+                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99975-2047                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/secretaria/id/1008/?secretaria-de-obras-e-transito.html">
+                       Secretaria de Obras e Trânsito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://doutorricardo.rs.gov.br/uploads/departamento/26704/thumb_IMG_0529.jpg" class="img-responsive max-height100" alt="Foto do(a) Secretário: Rogerio Bertoncelli Dorigon" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Obras e Trânsito" href="https://doutorricardo.rs.gov.br/secretaria/id/1008/?secretaria-de-obras-e-transito.html">
+                            <span class="similar-h4"><strong>Rogerio Bertoncelli Dorigon</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99750-5298</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h<br />
+                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99750-5298                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/secretaria/id/1027/?secretaria-do-meio-ambiente-e-esporte.html">
+                       Secretaria do Meio Ambiente e Esporte                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://doutorricardo.rs.gov.br/uploads/departamento/26062/thumb_WhatsApp_Image_2025_03_13_at_171558.jpeg" class="img-responsive max-height100" alt="Foto do(a) Secretário: Rodrigo Baldissera" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria do Meio Ambiente e Esporte" href="https://doutorricardo.rs.gov.br/secretaria/id/1027/?secretaria-do-meio-ambiente-e-esporte.html">
+                            <span class="similar-h4"><strong>Rodrigo Baldissera</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99685-3517</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99685-3517                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/secretaria/id/1001/?secretaria-de-administracao-e-planejamento.html">
+                       Secretaria de Administração e Planejamento                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário da Administração e Planejamento</small>
+                        <div class="row">
+                          <a title="Secretaria de Administração e Planejamento" href="https://doutorricardo.rs.gov.br/secretaria/id/1001/?secretaria-de-administracao-e-planejamento.html">
+                            <span class="similar-h4"><strong>Leodacir Cornelli</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99595-8389</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99595-8389                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/secretaria/id/1002/?secretaria-de--fazenda.html">
+                       Secretaria de  Fazenda                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://doutorricardo.rs.gov.br/uploads/departamento/24537/thumb_Mariana.jpg" class="img-responsive max-height100" alt="Foto do(a) Secretária da Fazenda: Mariana Mariotti" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária da Fazenda</small>
+                        <div class="row">
+                          <a title="Secretaria de  Fazenda" href="https://doutorricardo.rs.gov.br/secretaria/id/1002/?secretaria-de--fazenda.html">
+                            <span class="similar-h4"><strong>Mariana Mariotti</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99642-4884</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99642-4884                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/secretaria/id/1005/?secretaria-de-educacao.html">
+                       Secretaria de Educação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://doutorricardo.rs.gov.br/uploads/departamento/23265/thumb_laudiana_1.jpeg" class="img-responsive max-height100" alt="Foto do(a) Secretária da Educação: Laudiana De Bortolli" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária da Educação</small>
+                        <div class="row">
+                          <a title="Secretaria de Educação" href="https://doutorricardo.rs.gov.br/secretaria/id/1005/?secretaria-de-educacao.html">
+                            <span class="similar-h4"><strong>Laudiana De Bortolli</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99666-9296</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h<br />
+                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99666-9296                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://doutorricardo.rs.gov.br/secretaria/id/1006/?secretaria-de-agricultura.html">
+                       Secretaria de Agricultura                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://doutorricardo.rs.gov.br/uploads/departamento/22990/thumb_IsmaelPotrich.jpg" class="img-responsive max-height100" alt="Foto do(a) Secretário: Ismael Potrich" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Agricultura" href="https://doutorricardo.rs.gov.br/secretaria/id/1006/?secretaria-de-agricultura.html">
+                            <span class="similar-h4"><strong>Ismael Potrich</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99973-9375</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99973-9375                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8:00h às 11:30h e das 13:00h às 17:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+<div class="p0 styleContrasteGray">
+    <div class="container">
+        <hr class="half-margins invisible">
+        <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://doutorricardo.cittaweb.com.br/pessoal" target='_self'>
+                                <p class="similar-h4 mb10">PORTAL DO SERVIDOR</p>
+                        <img src="https://doutorricardo.rs.gov.br/uploads/banner/25531/original_rh.jpg" class="img-responsive" alt="PORTAL DO SERVIDOR" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://atendimento.receita.rs.gov.br/informativos-pit" target='_blank'>
+                                <p class="similar-h4 mb10">Programa de Integração Tributária</p>
+                        <img src="https://doutorricardo.rs.gov.br/uploads/banner/25997/original_Design_sem_nomecopia2.png" class="img-responsive" alt="Programa de Integração Tributária" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://atendimento.receita.rs.gov.br/lista-de-debitos-inscritos-em-divida-ativa" target='_blank'>
+                                <p class="similar-h4 mb10">Lista de Devedores do Estado/RS</p>
+                        <img src="https://doutorricardo.rs.gov.br/uploads/banner/21816/original_Receita_Estadual.png" class="img-responsive" alt="Lista de Devedores do Estado/RS" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://doutorricardo.cittatec.com.br/diariooficial" target='_self'>
+                                <p class="similar-h4 mb10">Diário Oficial Municipal Eletrônico - DOM-E </p>
+                        <img src="https://doutorricardo.rs.gov.br/uploads/banner/25537/original_DiarioOficial2.jpg" class="img-responsive" alt="Diário Oficial Municipal Eletrônico - DOM-E " role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://nfg.sefaz.rs.gov.br/site/index.aspx?m=1" target='_self'>
+                                <p class="similar-h4 mb10">Nota Fiscal Gaúcha</p>
+                        <img src="https://doutorricardo.rs.gov.br/uploads/banner/26003/original_Design_sem_nome_4.png" class="img-responsive" alt="Nota Fiscal Gaúcha" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://doutorricardo.cittaweb.com.br/autoatendimento" target='_self'>
+                                <p class="similar-h4 mb10">Autoatendimento</p>
+                        <img src="https://doutorricardo.rs.gov.br/uploads/banner/25550/original_autoatendimento.jpg" class="img-responsive" alt="Autoatendimento" role="presentation" />
+                </a>
+            </div>
+    </div>        <hr class="half-margins">
+    </div>
+</div>
+
+
+<div class="pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+                        <div class="col-md-8 mobile-nopadding"><!-- ATRAÇÕES TURÍSTICAS -->
+<h2 class="similar-h4 title"><strong>ATRA&Ccedil;&Otilde;ES TUR&Iacute;STICAS</strong></h2>
+<div class="row tabs nomargin-top atracoes-turisticas">
+    <!-- tabs -->
+    <div class="col-md-3 col-sm-3 featured-box-minimal mobile-nopadding-turismo tab-tur">
+        <ul class="nav nav-tabs nav-stacked">
+                        <li class="active">
+                <a href="#tab_0" data-toggle="tab">ADEGA DO VALE</a>
+            </li>
+                        <li class="">
+                <a href="#tab_1" data-toggle="tab">RESTAURANTE PERUCHINI</a>
+            </li>
+                        <li class="">
+                <a href="#tab_2" data-toggle="tab">PARADOURO 332 - REST. E LANCHERIA</a>
+            </li>
+                    </ul>
+        <a class="btn btn-block btn-primary btn-atracoes" href="https://doutorricardo.rs.gov.br/turismo/?pontos-turisticos.html">
+            <i class="fa fa-plus"></i>Ver mais
+			<span class="sr-only">
+				Pontos Tur&iacute;sticos
+			</span>
+        </a>
+    </div>
+    <!-- tabs content -->
+    <div class="col-md-9 col-sm-9 nopadding-left">
+        <div class="tab-content div-atracoes">
+                        <div id="tab_0" class="tab-pane active">
+                <h3 class="similar-h4">ADEGA DO VALE</h3>
+                <div class="row">
+                                        <div class="col-md-7 flex-center">
+                        <img class="img-responsive" src="https://doutorricardo.rs.gov.br/uploads/pontoturistico/25930/maior_01.jpeg" alt="ADEGA DO VALE" />
+                    </div>
+                                        <div class="col-md-5">
+                        Comércio de produtos coloniais. 
+De dezembro até final de fevereiro, atende também pelo sistema COLHE-PAGUE de uvas de mesa.                        <a href="https://doutorricardo.rs.gov.br/turismo/visualizar/id/1005/?adega-do-vale.html" class="btn btn-default btn-sm mt15">
+							Ver atra&ccedil;&atilde;o
+							<span class="sr-only">
+								ADEGA DO VALE							</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+                        <div id="tab_1" class="tab-pane ">
+                <h3 class="similar-h4">RESTAURANTE PERUCHINI</h3>
+                <div class="row">
+                                        <div class="col-md-7 flex-center">
+                        <img class="img-responsive" src="https://doutorricardo.rs.gov.br/uploads/pontoturistico/25971/maior_01.jpg" alt="RESTAURANTE PERUCHINI" />
+                    </div>
+                                        <div class="col-md-5">
+                        O espaço oferece buffet livre com comida caseira muito bem preparada, sobremesa, aos sábados servem um maravilhoso cardápio nas mesas, servem lanches, café da manhã. O atendimento é muito acolhedor.                        <a href="https://doutorricardo.rs.gov.br/turismo/visualizar/id/1004/?restaurante-peruchini.html" class="btn btn-default btn-sm mt15">
+							Ver atra&ccedil;&atilde;o
+							<span class="sr-only">
+								RESTAURANTE PERUCHINI							</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+                        <div id="tab_2" class="tab-pane ">
+                <h3 class="similar-h4">PARADOURO 332 - REST. E LANCHERIA</h3>
+                <div class="row">
+                                        <div class="col-md-7 flex-center">
+                        <img class="img-responsive" src="https://doutorricardo.rs.gov.br/uploads/pontoturistico/25986/maior_02.jpg" alt="PARADOURO 332 - REST. E LANCHERIA" />
+                    </div>
+                                        <div class="col-md-5">
+                        Situado no centro, ao lado da Prefeitura às margens da ERS 332, o restaurante, lancheria e conveniência oferece buffet com sobremesas, à la carte e lanches rápidos. Ambiente super agradável e atendimento diferenciado.                         <a href="https://doutorricardo.rs.gov.br/turismo/visualizar/id/1012/?paradouro-332---rest-e-lancheria.html" class="btn btn-default btn-sm mt15">
+							Ver atra&ccedil;&atilde;o
+							<span class="sr-only">
+								PARADOURO 332 - REST. E LANCHERIA							</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+                    </div>
+    </div>
+</div>
+<!-- //// ATRAÇÕES TURÍSTICAS --></div>
+                        <div class="col-md-4 mt4-xs mobile-nopadding"><!-- EVENTOS -->
+<div class="widget featured-box-minimal">
+    <div class="row mb0">
+		<div class="pr15 pl15 mrauto mlauto">
+			<h2 class="similar-h4 title"><strong>&Uacute;LTIMO EVENTO</strong></h2>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<a href="https://doutorricardo.rs.gov.br/evento/visualizar/id/1027/?20-filo-italiano.html">
+			<p class="lead">20° FILÓ ITALIANO</p>
+		</a>
+		<p class="nomargin">Maio será marcado por tradição, cultura e grandes atrações no 20° Filó Italiano de Doutor Ricardo!</p>
+	</div>
+
+	<div class="col-md-12 mb15">
+	    			</div>
+
+	<a href="https://doutorricardo.rs.gov.br/evento/?agenda-de-eventos.html" class="btn btn-default btn-content">
+	    <i class="fa fa-calendar"></i> Agenda completa
+    </a>
+</div>
+<!-- /EVENTOS --></div>
+            			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+        </div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight styleContrasteGray pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mobile-nopadding"><!-- MULTIMIDIA -->
+<h2 class="similar-h4 title"><strong>MULTIM&Iacute;DIA</strong></h2>
+    <ul class="sort-destination isotope multimidia flex-center" style="flex-wrap: wrap;">
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="20ª Settimana Italiana de Porto Alegre" class="item-hover" href="https://doutorricardo.rs.gov.br/galeria/id/1019/?20a-settimana-italiana-de-porto-alegre.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								20ª Settimana Italiana de Porto Alegre							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://doutorricardo.rs.gov.br/uploads/midia/27532/media_WhatsApp_Image_2026_07_08_at_090046_1.jpeg" width="260" height="260" alt="20ª Settimana Italiana de Porto Alegre" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">08/07/2026 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">20ª Settimana Italiana de Porto Alegre</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="DOUTOR RICARDO, UM ENCANTO DE CIDADE!" class="item-hover" href="https://doutorricardo.rs.gov.br/galeria/id/1018/?doutor-ricardo-um-encanto-de-cidade.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								DOUTOR RICARDO, UM ENCANTO DE CIDADE!							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://doutorricardo.rs.gov.br/uploads/midia/26596/media_489144876_1086956630141214_8691533083376506528_n.jpg" width="260" height="260" alt="DOUTOR RICARDO, UM ENCANTO DE CIDADE!" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">12/12/2025 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">DOUTOR RICARDO, UM ENCANTO DE CIDADE!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        	</ul>
+<!-- /MULTIMIDIA --></div>
+        </div>
+    </div>
+</div>
+
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-29.089875, -51.989639],
+                16
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-29.089875, -51.989639],
+                        {alt:'Prefeitura Municipal de Doutor Ricardo'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de Doutor Ricardo</strong></p>                <p style="margin: 5px 0px;">RS 332, 3699 / km 21&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Doutor Ricardo / RS</p><p style="margin: 5px 0px;">95967-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer02" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+
+		<div class="logo_footer dark col-md-3">
+                                <img alt="Brasão da prefeitura" src="https://doutorricardo.rs.gov.br/uploads/config/26095/brasaoDrRicardo.png" height="130" class="pull-left logo appear-animation opaco08" data-animation="bounceIn"/>
+                                <p class="block">
+                    <br />RS 332, 3699, Centro<br />
+                    CEP: 95967-000<br /><br />                </p>
+                                <p class="block">
+                                        (51) 99666-9296<br/>
+                                        administracao@doutorricardo.rs.gov.br<br />                </p>
+                                <p class="block">
+                    <strong>Hor&aacute;rios de Atendimento:</strong><br />
+                    <strong>Segunda à Sexta:</strong> 8:00h às 11:30h e das 13:00h às 17:30h                </p>
+                                <p class="block">
+                    <a href="https://doutorricardo.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/share/16hueMfitr/" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://instagram.com/terradofilo?igsh=Z3NwY29ueTl0N2s3" target="_blank" class="social">
+						<i class="fa fa-instagram">
+							<span class="sr-only">Instagram da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://doutorricardo.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+                </p>
+            </div>
+            <!-- endereço e redes sociais -->
+            <!-- <div class="spaced col-md-4 col-sm-4">
+                                <p>
+                    RS 332, 3699, Centro<br />
+                    CEP: 95967-000<br />                    administracao@doutorricardo.rs.gov.br<br />                </p>
+                
+
+
+                    <p class="similar-h3">(51) 99666-9296</p>
+                                <p><strong>Segunda à Sexta:</strong> 8:00h às 11:30h e das 13:00h às 17:30h</p>
+                				<p class="block">
+					<a href="https://doutorricardo.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/share/16hueMfitr/" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://instagram.com/terradofilo?igsh=Z3NwY29ueTl0N2s3" target="_blank" class="social">
+						<i class="fa fa-instagram">
+							<span class="sr-only">Instagram da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://doutorricardo.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+				</p>
+            </div> -->
+            <!-- /endereço e redes sociais -->
+
+            <!-- col #2 -->
+            <div class="spaced col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="col-md-5 col-sm-4 hidden-xs hide-line-last-new">
+                        <p class="similar-h4">&Uacute;ltimas not&iacute;cias</p>
+                                                <ul class="list-unstyled">
+                                                        <li>
+                                <a class="block"
+                                href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5293/?contribuicao-fundesa-rs-2026.html">
+                                    Contribuição FUNDESA RS 2026                                </a>
+                                <small>01/10/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5292/?secretaria-do-meio-ambiente-e-esporte-realiza-replantio-de-arvores-nativas-vandalizadas.html">
+                                    Secretaria do Meio Ambiente e Esporte realiza replantio de árvores nativas vandalizadas                                </a>
+                                <small>03/09/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://doutorricardo.rs.gov.br/noticia/visualizar/id/5291/?consulta-popular-20262027.html">
+                                    Consulta Popular 2026/2027                                </a>
+                                <small>15/07/2026</small>
+                            </li>
+                                                    </ul>
+                                            </div>
+
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <p class="similar-h4">Outras &aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a class="block" href="https://doutorricardo.rs.gov.br/transparencia/?transparencia.html">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://doutorricardo.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://doutorricardo.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://doutorricardo.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Not&iacute;cias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://doutorricardo.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://doutorricardo.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://doutorricardo.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                        <!--                         <p class="text-center">
+                            <img alt="Brasão da prefeitura" src="https://doutorricardo.rs.gov.br/uploads/config/26095/brasaoDrRicardo.png" class="logo img-responsive appear-animation opaco08" data-animation="bounceIn"/>
+                        </p>
+                         -->
+												<!-- logo do cliente -->
+						<p class="text-center">
+							<img src="https://doutorricardo.rs.gov.br/uploads/config/26128/LOGOS_GESTO_E_30_ANOS_07.png" alt="Logo da Prefeitura" class="logo img-responsive appear-animation opaco08" data-animation="fadeInLeft" />
+						</p>
+						                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+	<div class="container text-center fsize12 post-copyright" style="
+		display: flex;
+		flex-direction: column;
+		justify-content: center">
+		<p style="margin:0" id="footer.copyrightTxt">
+			Este site utiliza a ferramenta
+			<a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+				<img src="https://doutorricardo.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+				<span class="sr-only">iPrefeituras</span>
+			</a>.
+		</p>
+		<p style="margin:0" id="footer.copyrightTxt3">
+			Um produto
+			<strong>
+				<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+			</strong>.
+		</p>
+	</div>
+</div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://doutorricardo.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://doutorricardo.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://doutorricardo.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://doutorricardo.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://doutorricardo.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a6140172187664de',t:'MTc5NTgxMjYzMQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a6140172187664de',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

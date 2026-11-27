@@ -1,0 +1,2280 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR" style="scroll-behavior:smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <title>Prefeitura Municipal de Nova Boa Vista - RS</title>
+    <meta name="title" content="Prefeitura de Nova Boa Vista | Prefeitura Municipal de Nova Boa Vista - RS">
+<meta name="og:title" content="Prefeitura de Nova Boa Vista | Prefeitura Municipal de Nova Boa Vista - RS">
+<meta name="og:site_name" content="Prefeitura Municipal de Nova Boa Vista - RS">
+<meta name="image" content="">
+<meta name="og:image" content="">
+<meta name="og:image:url" content="">
+<meta name="og:image:secure_url" content="">
+<meta name="keywords" content="prefeitura, nova, boa, vista">
+<meta name="abstract" content="">
+<meta name="description" content="">
+<meta name="og:description" content="">
+<meta name="og:type" content="website">
+<meta name="csrf-param" content="_csrf-frontend">
+<meta name="csrf-token" content="4oSEWKGzXNStmdcjEPOlM8tk9y4NXgqMjChmBKfNheqPtsEO8vsXuYDNkht7xJZZpxKOcXppWtb8GQV23fnHpw==">
+
+<link href="" rel="image_src">
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<link href="/assets/b90c1bf6/css/banner.css?v=1794489025" rel="stylesheet">
+<link href="/assets/7bffca5/css/cards.css?v=1794489025" rel="stylesheet">
+<link href="/assets/b7c29d74/css/bootstrap.css?v=1794490048" rel="stylesheet">
+<link href="/css/grid.css?v=1794489025" rel="stylesheet">
+<link href="/css/estilos.css?v=1794594581" rel="stylesheet">
+<link href="/css/responsivo.css?v=1794489025" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&amp;family=Syncopate:wght@700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=B612:ital,wght@0,400;0,700;1,400;1,700&amp;family=Syncopate:wght@400;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.1/dist/cookieconsent.css" rel="stylesheet">
+<link href="/assets/93899980/css/lgpd.css?v=1794489025" rel="stylesheet">
+<link href="/assets/1c9f8b28/css/style.css?v=1755795172" rel="stylesheet">
+<link href="/assets/31ed07b6/style.css?v=1631210132" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons-wind.min.css" rel="stylesheet">
+<link href="/assets/f94f9f84/css/weather.css?v=1794489025" rel="stylesheet">
+<link href="/assets/af58aed8/captcha.css?v=1640022146" rel="stylesheet">
+<style>/* --- CARD ACESSO RÁPIDO --- */
+.card-quick-access {
+    --card-accent: var(--dynamic-accent);
+    
+    display: flex;
+    flex-direction: column;
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 24px;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+
+.card-quick-access:hover {
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+    transform: translateY(-4px);
+}
+
+.card-quick-access-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.card-quick-access-icon {
+    color: var(--card-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-quick-access-icon .material-symbols-outlined {
+    font-size: 42px;
+}
+
+.card-quick-access-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--card-accent);
+    line-height: 1.25;
+    margin: 0;
+}
+
+.card-quick-access-body {
+    font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.5;
+    margin-bottom: 24px;
+    flex-grow: 1;
+}
+
+.card-quick-access-footer {
+    margin-top: auto;
+    display: flex;
+    align-items: center;
+    color: var(--card-accent);
+}
+
+.card-quick-access-footer .material-symbols-outlined {
+    font-size: 24px;
+    transition: transform 0.3s ease;
+}
+
+.card-quick-access:hover .card-quick-access-footer .material-symbols-outlined {
+    transform: translateX(6px);
+}</style>
+<style>.card-news-modern {
+    background: #ffffff;
+    border-radius: 16px;
+    overflow: hidden;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    position: relative;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s ease;
+}
+
+.card-news-modern:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.card-news-image-box {
+    height: 220px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-news-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.card-news-modern:hover .card-news-image-box img {
+    transform: scale(1.08);
+}
+
+.card-news-badge {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    background: var(--card-accent);
+    color: #ffffff;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 6px 12px;
+    border-radius: 30px;
+    z-index: 2;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+.card-news-body {
+    padding: 24px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-news-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.4;
+    margin-top: 0;
+    margin-bottom: 12px;
+    transition: color 0.3s ease;
+}
+
+.card-news-modern:hover .card-news-title {
+    color: var(--card-accent);
+}
+
+.card-news-excerpt {
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.card-news-footer {
+    margin-top: auto;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.card-news-readmore {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--card-accent);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-news-readmore span {
+    transition: transform 0.3s ease;
+}
+
+.card-news-modern:hover .card-news-readmore span {
+    transform: translateX(4px);
+}</style>
+<style>.card-sec-horizontal {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-decoration: none !important;
+    border: 1px solid #edf2f7;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    transition: all 0.3s ease;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.card-sec-horizontal:hover {
+    transform: translateX(5px); /* Move levemente para o lado em vez de para cima */
+    border-color: var(--dynamic-accent);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+}
+
+.card-sec-hz-left {
+    flex-shrink: 0;
+    position: relative;
+}
+
+.card-sec-hz-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 16px; /* Squircle mais acentuado */
+    overflow: hidden;
+    border: 2px solid #f8f9fa;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.card-sec-hz-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Ícone da secretaria sobreposto à foto como uma pequena badge */
+.card-sec-hz-icon {
+    position: absolute;
+    bottom: -8px;
+    right: -8px;
+    background: var(--dynamic-accent);
+    color: #fff;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    border: 2px solid #fff;
+}
+
+.card-sec-hz-body {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.card-sec-hz-role {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--dynamic-accent);
+    font-weight: 800;
+    letter-spacing: 0.5px;
+    margin-bottom: 2px;
+}
+
+.card-sec-hz-name {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #1a202c;
+    margin-bottom: 8px;
+}
+
+.card-sec-hz-title {
+    font-size: 0.85rem;
+    color: #718096;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-top: 1px dashed #e2e8f0;
+    padding-top: 8px;
+}</style>
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" defer crossorigin="anonymous"></script>
+<script>var inputmask_7260b05d = {"mask":["[CPF REDIGIDO]","99.999.999\/9999-99"]};</script>
+    
+<div id="lgpd-widget-container" 
+     style="display:none;" 
+     data-config='{&quot;textoPolitica&quot;:&quot;&lt;p data-path-to-node=\&quot;5,0\&quot;&gt;&lt;strong data-path-to-node=\&quot;5,0\&quot; data-index-in-node=\&quot;0\&quot;&gt;N&amp;oacute;s respeitamos a sua privacidade&lt;/strong&gt; Para oferecer a melhor experi&amp;ecirc;ncia poss&amp;iacute;vel, este site utiliza cookies. Eles s&amp;atilde;o divididos em duas categorias:&lt;/p&gt;\r\n&lt;ul data-path-to-node=\&quot;5,1\&quot;&gt;\r\n&lt;li&gt;\r\n&lt;p data-path-to-node=\&quot;5,1,0,0\&quot;&gt;&lt;strong data-path-to-node=\&quot;5,1,0,0\&quot; data-index-in-node=\&quot;0\&quot;&gt;Cookies Essenciais:&lt;/strong&gt; Necess&amp;aacute;rios para o funcionamento b&amp;aacute;sico do site (n&amp;atilde;o podem ser desativados).&lt;/p&gt;\r\n&lt;/li&gt;\r\n&lt;li&gt;\r\n&lt;p data-path-to-node=\&quot;5,1,1,0\&quot;&gt;&lt;strong data-path-to-node=\&quot;5,1,1,0\&quot; data-index-in-node=\&quot;0\&quot;&gt;Cookies de Desempenho (Google Analytics):&lt;/strong&gt; Ajudam-nos a entender como os visitantes interagem com o site, coletando informa&amp;ccedil;&amp;otilde;es de forma an&amp;ocirc;nima para podermos melhorar nosso conte&amp;uacute;do e navega&amp;ccedil;&amp;atilde;o.&lt;/p&gt;\r\n&lt;/li&gt;\r\n&lt;/ul&gt;\r\n&lt;p data-path-to-node=\&quot;5,2\&quot;&gt;Voc&amp;ecirc; pode escolher aceitar todos os cookies ou gerenciar suas prefer&amp;ecirc;ncias.&amp;nbsp;&lt;/p&gt;&quot;,&quot;analyticsId&quot;:&quot;&quot;}'>
+</div></head>
+
+<body>
+    <script>function dynamikacaptchaw7(){loadCaptcha(hcaptcha, "w7_c", "#loginfrontform-recaptcha", "add061f6-a9be-42be-ae8a-88623218833e")}
+function dynamikacaptchaw9(){loadCaptcha(hcaptcha, "w9_c", "#loginfrontform-recaptcha", "add061f6-a9be-42be-ae8a-88623218833e")}</script>    <header class="modern-site-header">
+        <section style="margin-bottom: 0px;" class="dontPrint">
+
+            <!-- 1. TOP BAR (Escura Institucional) -->
+            <div class="barra-superior">
+                <div class="container-fluid barra-superior-container">
+
+                    <!-- Lado Esquerdo: Tag Institucional -->
+                    <div class="gov-tag d-none d-lg-flex align-items-center">
+                        <i class="fa-solid fa-landmark mr-2"></i> Portal Oficial do Município de Nova Boa Vista
+                    </div>
+
+                    <!-- Lado Direito: Redes, Acessibilidade e Login -->
+                    <div class="topbar-right d-flex align-items-center justify-content-between justify-content-lg-end w-100 w-lg-auto">
+                        
+                        <!-- Redes Sociais Rápidas no Topo -->
+                        <div class="topbar-socials d-none d-sm-flex align-items-center">
+                                                            <a href="https://www.facebook.com/share/18G5LiYabS/" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                                                                                        <a href="https://www.instagram.com/municipionovaboavista/" target="_blank" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                                                                                                            </div>
+
+                        <div class="acessibilidade-wrapper d-flex align-items-center">
+                            <div class="acessibilidade d-flex align-items-center">
+                                <a id="acessibilidade" href="/pagina/view/10/acessibilidade" title="Acessibilidade" class="d-inline-block">
+    <i><i class="fa fa-wheelchair"></i> </i>
+</a>
+<a id="aumentarFonte" href="javascript:;" title="Aumentar Fonte" class="d-inline-block">
+    <i><i class="fa fa-plus-circle"></i> </i>
+</a>
+<a id="diminuirFonte" href="javascript:;" title="Diminuir Fonte" class="d-inline-block">
+    <i><i class="fa fa-minus-circle"></i> </i>
+</a>
+<a id="lgpd" href="/pagina/view/2/lei-geral-de-protecao-de-dados-lgpd" title="Lei Geral de Proteção de Dados" class="d-inline-block">
+    <i><i class="fa fa-user-shield"></i> </i>
+</a>
+<a id="fonteOriginal" href="javascript:;" title="Fonte Original" class="d-inline-block">
+    <i><i class="fa fa-fas fa-font"></i> </i>
+</a>
+<a id="corOriginal" href="javascript:;" title="Cor Original" class="d-inline-block">
+    <i><i class="fa fa-fas fa-circle"></i> </i>
+</a>
+<a id="contraste" href="javascript:;" title="Contraste" class="d-inline-block">
+    <i id="contraste"><i class="fa fa-adjust"></i> </i>
+</a>
+                                <a href="/site/mapa-site" class="link-mapa-site" title="Mapa do Site">
+                                    <i class="fa-solid fa-sitemap mr-1"></i> <span class="d-none d-md-inline">Mapa do Site</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div id="box-usuario">
+                            <div class="usuario-icone">
+                                <a class="login btn-user-top" href="/" title="Fazer Login" data-toggle="modal" data-target="#modal-cadastro"><i class="far fa-user"></i>  <span>Entrar</span></a>                                <a class="logado btn-user-top" href="/conta" title="Área do usuário"><i class="fa fa-user"></i>  <span id="usuario-text" class="ml-1">Minha Conta</span></a>                                <a class="logado btn-logout-top ml-2" href="/conta/logout" title="Logout"><i class="fa fa-sign-out-alt"></i>  Sair</a>                                                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- 2. MAIN HEADER (Logo, Busca Centralizada e Botões) -->
+            <div id="header-container" class="main-header-area">
+                <div class="container-fluid main-header-inner">
+
+                    <!-- Logo e Nome do Município -->
+                    <div id="brasao" class="brand-wrapper">
+                        <a href="/" title="Município de Nova Boa Vista" class="logo-link">
+                            <img class="brasao-img" src="/images/logo-brasao.png" alt="Brasão Nova Boa Vista">                            <div class="logo-divider"></div>
+                            <div class="logo-text">
+                                <span class="logo-prefeitura">Município de</span>
+                                <span class="logo-cidade">Nova Boa Vista</span>
+                            </div>
+                        </a>
+                    </div>
+
+                    <!-- Busca Sempre Visível e Com Respiro -->
+                    <div class="header-search-center dontPrint d-none d-md-block">
+                        <div class="busca-moderna">
+                            <form id="form-busca" action="/busca/index" method="get">                            <input type="text" id="busca-input" name="q" placeholder="O que você procura no portal hoje?" aria-label="Pesquisar">                            <input type="hidden" name="sort" value="relevancia">                            <button type="submit" class="btn-busca" title="Buscar">
+                                <i class="fa fa-search"></i>                             </button>
+                            </form>                        </div>
+                    </div>
+
+                    <!-- Área de Ações: CTA e Menu Mobile -->
+                    <div class="nav-actions d-flex align-items-center justify-content-end">
+
+                        <!-- Botão CTA Destacado -->
+                                                    <a href="https://portal.novaboavista.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" target="_blank" class="cta-button d-none d-sm-inline-flex align-items-center">
+                                <span class="cta-icon-box">
+                                    <span class="material-symbols-outlined service-dash-icon">search</span>
+                                </span>
+                                <span class="cta-label">Portal da Transparência</span>
+                            </a>
+                        
+                        <!-- Menu Mobile Integrado à direita -->
+                        <div class="menu-mobile-btn ml-3 d-xl-none">
+                            <div class="column">
+    <div id="dl-menu" class="dynamika-menu-responsivo-wrapper">
+        <button class="dl-trigger"><i><svg class="svg-inline--fa fa-bars fa-w-14" aria-hidden="true" focusable="false" data-prefix="fa" data-icon="bars" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg><!-- <i class="fa fa-bars"></i> Font Awesome fontawesome.com --> </i> <span>menu</span></button>
+        <ul class="dl-menu">
+            <li>
+    <a href="/" title="Início" target="_self">
+        Início
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Institucional" target="_self">
+        Institucional
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/pagina/view/1/historico" title="Histórico" target="_self">
+        Histórico
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="https://cidades.ibge.gov.br/brasil/rs/nova-boa-vista/panorama" title="Estatísticas" target="_blank">
+        Estatísticas
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="/turismo" title="Pontos Turísticos" target="_self">
+        Pontos Turísticos
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="/pagina/view/6/carta-de-servicos-ao-usuario" title="Carta de Serviços" target="_self">
+        Carta de Serviços
+    </a>
+    <!-- ul --><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Governo" target="_self">
+        Governo
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="#" title="Secretarias Municipais" target="_self">
+        Secretarias Municipais
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/secretaria/view/11/gabinete-do-prefeito" title="Gabinete do Prefeito" target="_self">
+        Gabinete do Prefeito
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/4/administracao-e-turismo" title="Administração e Turismo" target="_self">
+        Administração e Turismo
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/1/agricultura-e-meio-ambiente" title="Agricultura e Meio Ambiente" target="_self">
+        Agricultura e Meio Ambiente
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/2/assistencia-social" title="Assistência Social" target="_self">
+        Assistência Social
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/6/educacao-cultura-e-desporto" title="Educação, Cultura e Desporto" target="_self">
+        Educação, Cultura e Desporto
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/7/financas" title="Finanças" target="_self">
+        Finanças
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/9/obras-publicas-servicos-urbanos-e-transito" title="Obras Públicas, Serviços Urbanos e Trânsito" target="_self">
+        Obras Públicas, Serviços Urbanos e Trânsito
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/10/planejamento-inovacao-e-desenvolvimento-economico" title="Planejamento, Inovação e Desenvolvimento Econômico" target="_self">
+        Planejamento, Inovação e Desenvolvimento Econômico
+    </a>
+</li>
+<li>
+    <a href="/secretaria/view/3/saude" title="Saúde" target="_self">
+        Saúde
+    </a>
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Estrutura Administrativa" target="_self">
+        Estrutura Administrativa
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/departamento/index?DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=1" title="Conselhos Municipais" target="_self">
+        Conselhos Municipais
+    </a>
+</li></ul><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Publicações" target="_self">
+        Publicações
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="#" title="Legislações" target="_self">
+        Legislações
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="https://leis.org/prefeitura/rs/nova-boa-vista" title="Leis Municipais" target="_blank">
+        Leis Municipais
+    </a>
+</li>
+<li>
+    <a href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=2" title="Lei Orgânica" target="_self">
+        Lei Orgânica
+    </a>
+</li>
+<li>
+    <a href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=3" title="Decretos" target="_self">
+        Decretos
+    </a>
+</li>
+<li>
+    <a href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=4" title="Portarias" target="_self">
+        Portarias
+    </a>
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="http://186.208.82.114:8080/TransparenciaJavaEnvironment/servlet/com.tche.transparencia.wlicitacoes" title="Licitações" target="_blank">
+        Licitações
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Contratações" target="_self">
+        Contratações
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/contratacao/index?ContratacaoSearch%5Bq%5D=&ContratacaoSearch%5Bid_contratacao_categoria%5D=2&ContratacaoSearch%5Bano%5D=" title="Concurso Público" target="_self">
+        Concurso Público
+    </a>
+</li>
+<li>
+    <a href="/contratacao/index?ContratacaoSearch%5Bq%5D=&ContratacaoSearch%5Bid_contratacao_categoria%5D=1&ContratacaoSearch%5Bano%5D=" title="Processo Seletivo Simplificado" target="_self">
+        Processo Seletivo Simplificado
+    </a>
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Documentos Legais" target="_self">
+        Documentos Legais
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=1" title="Editais gerais " target="_self">
+        Editais gerais 
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=3" title="Meio Ambiente" target="_self">
+        Meio Ambiente
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=5" title="Tributos" target="_self">
+        Tributos
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=2" title="Editais - Lei Aldir Blanc" target="_self">
+        Editais - Lei Aldir Blanc
+    </a>
+</li>
+<li>
+    <a href="#" title="Planos Municipais" target="_self">
+        Planos Municipais
+    </a>
+</li></ul><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Transparência" target="_self">
+        Transparência
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="#" title="Publicações" target="_self">
+        Publicações
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="https://portal.novaboavista.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" title="Portais" target="_blank">
+        Portais
+    </a>
+</li>
+<li>
+    <a href="/transparencia" title="Contas Públicas" target="_self">
+        Contas Públicas
+    </a>
+</li>
+<li>
+    <a href="/contrato" title="Contratos" target="_self">
+        Contratos
+    </a>
+</li>
+<li>
+    <a href="/parceria" title="Parcerias" target="_self">
+        Parcerias
+    </a>
+</li>
+<li>
+    <a href="/transparencia/filtro?TransparenciaSearch%5Bid_transparencia_categoria%5D=1" title="RPPS" target="_self">
+        RPPS
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=5" title="Tributos" target="_self">
+        Tributos
+    </a>
+</li>
+<li>
+    <a href="https://radardatransparencia.atricon.org.br/" title="Radar da Transparência Pública" target="_blank">
+        Radar da Transparência Pública
+    </a>
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Canais de Atendimento" target="_self">
+        Canais de Atendimento
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="https://falabr.cgu.gov.br/publico/RS/novaboavista/Manifestacao/RegistrarManifestacao" title="Ouvidoria / E-OUV" target="_blank">
+        Ouvidoria / E-OUV
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=7" title="Relatórios da Ouvidoria" target="_self">
+        Relatórios da Ouvidoria
+    </a>
+</li>
+<li>
+    <a href="/esic" title="E-SIC" target="_self">
+        E-SIC
+    </a>
+</li>
+<li>
+    <a href="/faq" title="Perguntas Frequentes" target="_self">
+        Perguntas Frequentes
+    </a>
+</li></ul><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Comunicação" target="_self">
+        Comunicação
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/noticia" title="Notícias" target="_self">
+        Notícias
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="/midia-foto" title="Galeria de Fotos" target="_self">
+        Galeria de Fotos
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="/midia-video" title="Galeria de Vídeos" target="_self">
+        Galeria de Vídeos
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="/evento" title="Calendário de Eventos" target="_self">
+        Calendário de Eventos
+    </a>
+    <!-- ul --><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="/pagina/view/14/defesa-civil" title="Defesa Civil " target="_self">
+        Defesa Civil 
+    </a>
+    <!-- ul --><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Portais" target="_blank">
+        Portais
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="#" title="Portal Educação" target="_blank">
+        Portal Educação
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/pagina/view/15/central-de-vagas" title="Central de Vagas" target="_self">
+        Central de Vagas
+    </a>
+</li>
+<li>
+    <a href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=6" title="Decretos" target="_self">
+        Decretos
+    </a>
+</li>
+<li>
+    <a href="/documento/view/505?slug=plano-municipal-da-educacao-2015-2025" title="Plano Municipal de Educação (2015-2025)" target="_self">
+        Plano Municipal de Educação (2015-2025)
+    </a>
+</li>
+<li>
+    <a href="https://portal.novaboavista.rs.gov.br/PortalAlunoWeb/com.tche.aluno.hloginaluno" title="Portal do Aluno" target="_blank">
+        Portal do Aluno
+    </a>
+</li>
+<li>
+    <a href="/departamento/view/2/conselho-municipal-de-educacao" title="Conselho Municipal de Educação" target="_self">
+        Conselho Municipal de Educação
+    </a>
+</li>
+<li>
+    <a href="/documento/view/498?slug=politica-da-educacao-de-tempo-integral-nova-boa-vista-2026" title="Política de Educação em Tempo Integral" target="_self">
+        Política de Educação em Tempo Integral
+    </a>
+</li>
+<li>
+    <a href="/departamento/view/4?slug=conselho-municipal-de-acompanhamento-e-controle-social-do-fundo-de-manutencao-e-desenvolvimento-da-educacao-basica-e-de-valorizacao-dos-profissionais-da-educacao-cacs-fundeb" title="CACS - FUNDEB" target="_self">
+        CACS - FUNDEB
+    </a>
+</li>
+<li>
+    <a href="/departamento/view/3/conselho-municipal-de-alimentacao-escolar" title="CAE" target="_self">
+        CAE
+    </a>
+</li></ul><!-- ul -->
+</li>
+<li>
+    <a href="#" title="Portal da Saúde" target="_blank">
+        Portal da Saúde
+    </a>
+    <!-- ul --><ul class="dl-submenu"><li>
+    <a href="/unidade-saude/index" title="Unidades de Saúde (Horários)" target="_self">
+        Unidades de Saúde (Horários)
+    </a>
+</li>
+<li>
+    <a href="/pagina/view/3/medicamentos" title="Medicamentos" target="_self">
+        Medicamentos
+    </a>
+</li>
+<li>
+    <a href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=12" title="Publicações" target="_self">
+        Publicações
+    </a>
+</li></ul><!-- ul -->
+</li></ul><!-- ul -->
+</li>
+        </ul>
+    </div>
+</div>                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Busca Mobile -->
+                <div class="container-fluid d-md-none pb-3 px-4 dontPrint">
+                    <div class="busca-moderna w-100">
+                        <form id="form-busca-mobile" action="/busca/index" method="get">                        <input type="text" name="q" placeholder="Pesquisar no portal..." aria-label="Pesquisar">                        <input type="hidden" name="sort" value="relevancia">                        <button type="submit" class="btn-busca" title="Buscar">
+                            <i class="fa fa-search"></i>                         </button>
+                        </form>                    </div>
+                </div>
+            </div>
+
+            <!-- 3. MENU BAR (Barra Azul Primária) -->
+            <div class="menu-bar-area d-none d-xl-block">
+                <div class="container-fluid">
+                    <section class="navbar navbar-expand-lg m-0 p-0 justify-content-center">
+                        <div class="navbar-nav modern-nav-links">
+                            <!--
+DYNAMIKAWEB YII2 ADAPTIVE MENU BEGIN
+
+author: Rodrigo Dornelles <rodrigo@dynamika.com.br>
+copyright: Dynamika Soluções WEB - 2020
+license: BSD-3
+-->
+<section id="menu" class="dynamika-menu-nav-forest">
+    <ul class="dynamika-menu-ul-forest">
+        <!-- MENU ROOT (inicio) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="/" title="Início" target="_self">
+        Início
+    </a> 
+    <!-- span -->  <!-- span -->
+</li>
+<!-- MENU ROOT (institucional) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Institucional" target="_self">
+        Institucional
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (_auto)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/1/historico" title="Histórico" target="_self">
+        Histórico
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://cidades.ibge.gov.br/brasil/rs/nova-boa-vista/panorama" title="Estatísticas" target="_blank">
+        Estatísticas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/turismo" title="Pontos Turísticos" target="_self">
+        Pontos Turísticos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/6/carta-de-servicos-ao-usuario" title="Carta de Serviços" target="_self">
+        Carta de Serviços
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (governo) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Governo" target="_self">
+        Governo
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (secretarias-municipais)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Secretarias Municipais</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/11/gabinete-do-prefeito" title="Gabinete do Prefeito" target="_self">
+        Gabinete do Prefeito
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/4/administracao-e-turismo" title="Administração e Turismo" target="_self">
+        Administração e Turismo
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/1/agricultura-e-meio-ambiente" title="Agricultura e Meio Ambiente" target="_self">
+        Agricultura e Meio Ambiente
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/2/assistencia-social" title="Assistência Social" target="_self">
+        Assistência Social
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/6/educacao-cultura-e-desporto" title="Educação, Cultura e Desporto" target="_self">
+        Educação, Cultura e Desporto
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/7/financas" title="Finanças" target="_self">
+        Finanças
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/9/obras-publicas-servicos-urbanos-e-transito" title="Obras Públicas, Serviços Urbanos e Trânsito" target="_self">
+        Obras Públicas, Serviços Urbanos e Trânsito
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/10/planejamento-inovacao-e-desenvolvimento-economico" title="Planejamento, Inovação e Desenvolvimento Econômico" target="_self">
+        Planejamento, Inovação e Desenvolvimento Econômico
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/secretaria/view/3/saude" title="Saúde" target="_self">
+        Saúde
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (estrutura-administrativa)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Estrutura Administrativa</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/index?DepartamentoSearch%5Bq%5D=&DepartamentoSearch%5Bid_secretaria%5D=&DepartamentoSearch%5Bid_departamento_categoria%5D=1" title="Conselhos Municipais" target="_self">
+        Conselhos Municipais
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (publicacoes) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Publicações" target="_self">
+        Publicações
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (legislacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Legislações</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://leis.org/prefeitura/rs/nova-boa-vista" title="Leis Municipais" target="_blank">
+        Leis Municipais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=2" title="Lei Orgânica" target="_self">
+        Lei Orgânica
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=3" title="Decretos" target="_self">
+        Decretos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=4" title="Portarias" target="_self">
+        Portarias
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (_auto)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="http://186.208.82.114:8080/TransparenciaJavaEnvironment/servlet/com.tche.transparencia.wlicitacoes" title="Licitações" target="_blank">
+        Licitações
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (contratacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Contratações</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao/index?ContratacaoSearch%5Bq%5D=&ContratacaoSearch%5Bid_contratacao_categoria%5D=2&ContratacaoSearch%5Bano%5D=" title="Concurso Público" target="_self">
+        Concurso Público
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contratacao/index?ContratacaoSearch%5Bq%5D=&ContratacaoSearch%5Bid_contratacao_categoria%5D=1&ContratacaoSearch%5Bano%5D=" title="Processo Seletivo Simplificado" target="_self">
+        Processo Seletivo Simplificado
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (documentos-legais)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Documentos Legais</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=1" title="Editais gerais " target="_self">
+        Editais gerais 
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=3" title="Meio Ambiente" target="_self">
+        Meio Ambiente
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=5" title="Tributos" target="_self">
+        Tributos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=2" title="Editais - Lei Aldir Blanc" target="_self">
+        Editais - Lei Aldir Blanc
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="#" title="Planos Municipais" target="_self">
+        Planos Municipais
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (transparencia) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Transparência" target="_self">
+        Transparência
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (publicacoes)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Publicações</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://portal.novaboavista.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" title="Portais" target="_blank">
+        Portais
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/transparencia" title="Contas Públicas" target="_self">
+        Contas Públicas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/contrato" title="Contratos" target="_self">
+        Contratos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/parceria" title="Parcerias" target="_self">
+        Parcerias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/transparencia/filtro?TransparenciaSearch%5Bid_transparencia_categoria%5D=1" title="RPPS" target="_self">
+        RPPS
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=5" title="Tributos" target="_self">
+        Tributos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://radardatransparencia.atricon.org.br/" title="Radar da Transparência Pública" target="_blank">
+        Radar da Transparência Pública
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (canais-de-atendimento)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Canais de Atendimento</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://falabr.cgu.gov.br/publico/RS/novaboavista/Manifestacao/RegistrarManifestacao" title="Ouvidoria / E-OUV" target="_blank">
+        Ouvidoria / E-OUV
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=7" title="Relatórios da Ouvidoria" target="_self">
+        Relatórios da Ouvidoria
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/esic" title="E-SIC" target="_self">
+        E-SIC
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/faq" title="Perguntas Frequentes" target="_self">
+        Perguntas Frequentes
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (comunicacao) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Comunicação" target="_self">
+        Comunicação
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (_auto)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/noticia" title="Notícias" target="_self">
+        Notícias
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-foto" title="Galeria de Fotos" target="_self">
+        Galeria de Fotos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/midia-video" title="Galeria de Vídeos" target="_self">
+        Galeria de Vídeos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/evento" title="Calendário de Eventos" target="_self">
+        Calendário de Eventos
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+<!-- MENU ROOT (defesa-civil) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="/pagina/view/14/defesa-civil" title="Defesa Civil " target="_self">
+        Defesa Civil 
+    </a> 
+    <!-- span -->  <!-- span -->
+</li>
+<!-- MENU ROOT (portais) -->
+<li class="dynamika-menu-li-root">
+    <a class="dynamika-menu-a-root" href="#" title="Portais" target="_blank">
+        Portais
+    </a> 
+    <!-- span --> <span class="dynamika-menu-span-items"><!-- MENU SUB (portal-educacao)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Portal Educação</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/15/central-de-vagas" title="Central de Vagas" target="_self">
+        Central de Vagas
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/legislacao/index?LegislacaoSearch%5Bq%5D=&LegislacaoSearch%5Bid_legislacao_categoria%5D=6" title="Decretos" target="_self">
+        Decretos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/view/505?slug=plano-municipal-da-educacao-2015-2025" title="Plano Municipal de Educação (2015-2025)" target="_self">
+        Plano Municipal de Educação (2015-2025)
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="https://portal.novaboavista.rs.gov.br/PortalAlunoWeb/com.tche.aluno.hloginaluno" title="Portal do Aluno" target="_blank">
+        Portal do Aluno
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/view/2/conselho-municipal-de-educacao" title="Conselho Municipal de Educação" target="_self">
+        Conselho Municipal de Educação
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/view/498?slug=politica-da-educacao-de-tempo-integral-nova-boa-vista-2026" title="Política de Educação em Tempo Integral" target="_self">
+        Política de Educação em Tempo Integral
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/view/4?slug=conselho-municipal-de-acompanhamento-e-controle-social-do-fundo-de-manutencao-e-desenvolvimento-da-educacao-basica-e-de-valorizacao-dos-profissionais-da-educacao-cacs-fundeb" title="CACS - FUNDEB" target="_self">
+        CACS - FUNDEB
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/departamento/view/3/conselho-municipal-de-alimentacao-escolar" title="CAE" target="_self">
+        CAE
+    </a>
+</li>
+    </ul>
+</span>
+<!-- MENU SUB (portal-da-saude)-->
+<span class="dynamika-menu-span-sub">
+    <!-- H3 --><a href="#"><h3>Portal da Saúde</h3></a><!-- H3 -->
+    <!-- P --><!-- P -->
+    <ul>
+        <!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/unidade-saude/index" title="Unidades de Saúde (Horários)" target="_self">
+        Unidades de Saúde (Horários)
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/pagina/view/3/medicamentos" title="Medicamentos" target="_self">
+        Medicamentos
+    </a>
+</li>
+<!-- MENU LINK -->
+<li class="dynamika-menu-li-link">
+    <a class="dynamika-menu-a-link" href="/documento/index?DocumentoSearch%5Bq%5D=&DocumentoSearch%5Bid_secretaria%5D=&DocumentoSearch%5Bid_documento_categoria%5D=12" title="Publicações" target="_self">
+        Publicações
+    </a>
+</li>
+    </ul>
+</span></span> <!-- span -->
+</li>
+    </ul>
+</section>
+<!--
+DYNAMIKAWEB YII2 ADAPTIVE MENU END
+-->                        </div>
+                    </section>
+                </div>
+            </div>
+
+        </section>
+    </header>
+
+    <div id="main">
+        
+        <!-- INICIO DO CONTEÚDO -->
+                <main>
+
+         <section class="bannerContainer" id="banner-topo">
+         
+<div class="hero-slider-wrapper" >
+    <div class="swiper" id="hero-slider-w0">
+        <div class="swiper-wrapper">
+
+                            
+                <div class="swiper-slide">
+                    
+                    <!-- Wrapper dinâmico ocupando 100% do slide -->
+                    <div  class="d-block text-decoration-none" style="position: relative; width: 100%; height: 100%; outline: none; color: inherit;">
+
+                        <div class="slide-bg-image"
+                            style="background-image: url('/uploads/banner/17930/maior_6HxoMx6kXY1eyq7S7S0GWqF-di7ZcavW.jpg');"
+                            data-swiper-parallax="50%">
+                        </div>
+
+                        <div class="slide-overlay"></div>
+
+                        <div class="slide-content" data-swiper-parallax="-300">
+
+                            <p class="slide-subtitle">
+                                                            </p>
+
+                                                        
+                            
+                            <!-- Botão "Saiba Mais" removido -->
+
+                        </div>
+                    </div>
+
+                </div>
+                            
+                <div class="swiper-slide">
+                    
+                    <!-- Wrapper dinâmico ocupando 100% do slide -->
+                    <div  class="d-block text-decoration-none" style="position: relative; width: 100%; height: 100%; outline: none; color: inherit;">
+
+                        <div class="slide-bg-image"
+                            style="background-image: url('/uploads/banner/17946/maior_OB8anLUsP6VwWwM8xh2RFCH6jZlAJyKO.jpeg');"
+                            data-swiper-parallax="50%">
+                        </div>
+
+                        <div class="slide-overlay"></div>
+
+                        <div class="slide-content" data-swiper-parallax="-300">
+
+                            <p class="slide-subtitle">
+                                                            </p>
+
+                                                        
+                            
+                            <!-- Botão "Saiba Mais" removido -->
+
+                        </div>
+                    </div>
+
+                </div>
+                            
+                <div class="swiper-slide">
+                    
+                    <!-- Wrapper dinâmico ocupando 100% do slide -->
+                    <div  class="d-block text-decoration-none" style="position: relative; width: 100%; height: 100%; outline: none; color: inherit;">
+
+                        <div class="slide-bg-image"
+                            style="background-image: url('/uploads/banner/17947/maior_VpkBkbCKpH0Payj4KsZI_mc4SCrt53ve.jpeg');"
+                            data-swiper-parallax="50%">
+                        </div>
+
+                        <div class="slide-overlay"></div>
+
+                        <div class="slide-content" data-swiper-parallax="-300">
+
+                            <p class="slide-subtitle">
+                                                            </p>
+
+                                                        
+                            
+                            <!-- Botão "Saiba Mais" removido -->
+
+                        </div>
+                    </div>
+
+                </div>
+                            
+                <div class="swiper-slide">
+                    
+                    <!-- Wrapper dinâmico ocupando 100% do slide -->
+                    <div  class="d-block text-decoration-none" style="position: relative; width: 100%; height: 100%; outline: none; color: inherit;">
+
+                        <div class="slide-bg-image"
+                            style="background-image: url('/uploads/banner/17948/maior_p3lPn-dChNoW6OVHPi0NlpvAknR7bjSX.jpeg');"
+                            data-swiper-parallax="50%">
+                        </div>
+
+                        <div class="slide-overlay"></div>
+
+                        <div class="slide-content" data-swiper-parallax="-300">
+
+                            <p class="slide-subtitle">
+                                                            </p>
+
+                                                        
+                            
+                            <!-- Botão "Saiba Mais" removido -->
+
+                        </div>
+                    </div>
+
+                </div>
+            
+        </div>
+
+        <!-- <div class="swiper-pagination"></div> -->
+        <!-- <div class="swiper-button-next" style="color: white;"></div>
+        <div class="swiper-button-prev" style="color: white;"></div> -->
+    </div>
+</div>
+
+      </section>
+   
+<!-- BLOCO LINKS UTEIS -->
+   <section id="link-capa" class="section-padding-fundo bg-light">
+      <div class="container-fluid">
+         
+<div class="carousel-cards-section" style="--carousel-theme-color: var(--color-primary);">
+    
+    
+    <div class="carousel-cards-wrapper">
+        
+                    <div class="swiper-button-prev-custom" id="cards-swiper-w1-prev">❮</div>
+        
+        <div class="swiper " id="cards-swiper-w1">
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://falabr.cgu.gov.br/v2/" target="_blank" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">support_agent</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            Ouvidoria        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Canal para você realizar sua manifestação com a administração pública.        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Nova%20Boa%20Vista,&cs=1ADwe75KiZ9guThI38fjBUxNiFiE" target="_blank" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">file_copy</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            Licitacon        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Acesso a licitacon do município de Nova Boa Vista.        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://portal.novaboavista.rs.gov.br/PortalContribuinteJavaEnvironment/com.tche.portalcontribuinte.whome" target="_blank" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">account_balance</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            Portal do Contribuinte        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Acesso a serviços e informações destinados aos contribuintes do município.        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="http://nfse.tcheinfo.com.br/novaboavista-rs" target="_blank" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">note_stack</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            NFS-e        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Plataforma integrada para emissão, consulta e gestão unificada de Notas Fiscais de Serviço Eletrônicas em âmbito naci...        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="http://iptubr.com.br/novaboavista/" target="_blank" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">home</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            IPTU BR        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Consulta, emissão de guias e gestão unificada de débitos e dados cadastrais do Imposto Predial e Territorial Urbano.        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://nfpe.tcheinfo.com.br/TcheNFPePortal/servlet/com.tche.nfpe.htcheinfo" target="_blank" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">eco</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            NF-e Produtor Rural        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Emissão e gerenciamento de notas fiscais eletrônicas por produtores rurais para acobertar a circulação e venda de sua...        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://radardatransparencia.atricon.org.br/" target="_blank" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">bar_chart</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            Radar da Transparência        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Ferramenta de avaliação e monitoramento da transparência pública em portais de órgãos de todos os poderes e esferas d...        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="http://186.208.82.114:8080/CchJavaEnvironment/servlet/com.tche.cch.wcontracheque" target="_blank" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">receipt_long</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            Contra-cheque        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Consulta, emissão e detalhamento dos rendimentos, descontos e proventos mensais recebidos pelo trabalhador.        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/pagina/view/6/carta-de-servicos-ao-usuario" target="_self" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">group</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            Carta de Serviços        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Consulta às informações sobre os serviços públicos prestados por órgãos e entidades, detalhando requisitos, prazos e ...        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://portal.novaboavista.rs.gov.br/PortalAlunoWeb/com.tche.aluno.hloginaluno" target="_self" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">school</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            Portal do Aluno        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Acesso a notas, frequência, horários, histórico escolar e serviços acadêmicos disponibilizados pela instituição de en...        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://pagnovaboavista.tcheinfo.com.br/PagOnlineJavaEnvironment/com.tche.pagonline.hpaginicial" target="_blank" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">attach_money</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            Portal de Pagamentos Online        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Plataforma digital para consulta, emissão de guias e realização de pagamentos de taxas, impostos e serviços públicos.        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="https://portal.novaboavista.rs.gov.br/NotaPremioPortal/com.tche.notapremio.home" target="_blank" class="card-quick-access" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-quick-access-header">
+                    <div class="card-quick-access-icon">
+                <span class="material-symbols-outlined">note_alt</span>
+            </div>  
+                <h3 class="card-quick-access-title">
+            Nota Premiada        </h3>
+    </div>
+
+            <div class="card-quick-access-body">
+            Consulta de bilhetes gerados, acompanhamento de sorteios e resgate de prêmios obtidos ao incluir o CPF nas notas fisc...        </div>
+    
+    <div class="card-quick-access-footer">
+        <span class="material-symbols-outlined">arrow_forward</span>
+    </div>
+    
+</a>                    </div>
+                            </div>
+            
+                            <div class="swiper-pagination"></div>
+                    </div>
+
+                    <div class="swiper-button-next-custom" id="cards-swiper-w1-next">❯</div>
+            </div>
+</div>
+
+      </div>
+   </section>
+
+<!-- BLOCO NOTÍCIAS -->
+<section id="noticia-capa" class="margin-section">
+   <div class="container-fluid">
+      <div class="row">
+         <div class="col-ce1-24">
+            <div class="titulo-ponto">
+               <h2>Últimas Notícias</h2>
+            </div>
+         </div>
+      </div>
+
+      
+         
+<div class="carousel-cards-section" style="--carousel-theme-color: var(--color-secondary);">
+    
+    
+    <div class="carousel-cards-wrapper">
+        
+        
+        <div class="swiper " id="cards-swiper-w2">
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/138/nova-boa-vista-recebe-reconhecimento-no-9-encontro-do-programa-alfabetiza-tche" class="card-news-modern" style="--card-accent: var(--color-secondary)">
+    <div class="card-news-image-box">
+                    <div class="card-news-badge">Atualizações</div>
+                <img src="/uploads/noticia/18450/media_mzA9H-2sag_zNJwU-ZcptsTz6dCDtPIp.png" alt="Nova Boa Vista recebe reconhecimento no 9º Encontro do Programa Alfabetiza Tchê" loading="lazy">    </div>
+    
+    <div class="card-news-body">
+        <h3 class="card-news-title">Nova Boa Vista recebe reconhecimento no 9º Encontro do Programa Alfabetiza Tchê</h3>
+        <p class="card-news-excerpt">Entre os municípios reconhecidos está Nova Boa Vista, que recebeu o Selo Prat...</p>
+        
+        <div class="card-news-footer">
+            <div class="card-news-readmore">
+                Ler matéria <span>&rarr;</span>
+            </div>
+        </div>
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/137/nova-boa-vista-participa-do-seminario-de-educacao-fiscal-em-nonoai" class="card-news-modern" style="--card-accent: var(--color-secondary)">
+    <div class="card-news-image-box">
+                    <div class="card-news-badge">Atualizações</div>
+                <img src="/uploads/noticia/18447/media_oDUT1SJxwwIsrfII8XaTt2psWiF-DrxD.png" alt="Nova Boa Vista participa do Seminário de Educação Fiscal em Nonoai" loading="lazy">    </div>
+    
+    <div class="card-news-body">
+        <h3 class="card-news-title">Nova Boa Vista participa do Seminário de Educação Fiscal em Nonoai</h3>
+        <p class="card-news-excerpt">Os alunos do 8º ano da Escola Municipal de Ensino Fundamental Santos Anjos, t...</p>
+        
+        <div class="card-news-footer">
+            <div class="card-news-readmore">
+                Ler matéria <span>&rarr;</span>
+            </div>
+        </div>
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/136/nova-carteira-de-identidade-saiba-como-fazer-a-sua-em-nova-boa-vista" class="card-news-modern" style="--card-accent: var(--color-secondary)">
+    <div class="card-news-image-box">
+                    <div class="card-news-badge">Atualizações</div>
+                <img src="/uploads/noticia/18443/media_xWFz8OIRmPAGEQLQwJ8F7XgD81b5vI5w.jpg" alt="NOVA CARTEIRA DE IDENTIDADE: SAIBA COMO FAZER A SUA EM NOVA BOA VISTA" loading="lazy">    </div>
+    
+    <div class="card-news-body">
+        <h3 class="card-news-title">NOVA CARTEIRA DE IDENTIDADE: SAIBA COMO FAZER A SUA EM NOVA BOA VISTA</h3>
+        <p class="card-news-excerpt">A Prefeitura Municipal de Nova Boa Vista informa à população que a coleta de ...</p>
+        
+        <div class="card-news-footer">
+            <div class="card-news-readmore">
+                Ler matéria <span>&rarr;</span>
+            </div>
+        </div>
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/135/representantes-de-nova-boa-vista-garantem-liberacao-de-recursos-para-continuidade-da-obra-do-portico-durante-agenda-em-brasilia" class="card-news-modern" style="--card-accent: var(--color-secondary)">
+    <div class="card-news-image-box">
+                    <div class="card-news-badge">Atualizações</div>
+                <img src="/uploads/noticia/18437/media_Zn9z_6O2r2rpMEOsCvxt9hZF7bS_XPne.png" alt="Representantes de Nova Boa Vista garantem liberação de recursos para continuidade da obra do pórtico durante agenda em Brasília" loading="lazy">    </div>
+    
+    <div class="card-news-body">
+        <h3 class="card-news-title">Representantes de Nova Boa Vista garantem liberação de recursos para continuidade da obra do pórtico durante agenda em Brasília</h3>
+        <p class="card-news-excerpt">Um dos principais destaques da agenda foi a visita ao Ministério do Turismo, ...</p>
+        
+        <div class="card-news-footer">
+            <div class="card-news-readmore">
+                Ler matéria <span>&rarr;</span>
+            </div>
+        </div>
+    </div>
+</a>                    </div>
+                            </div>
+            
+                            <div class="swiper-pagination"></div>
+                    </div>
+
+            </div>
+</div>
+
+
+         <div class="row mt-2">
+            <div class="col-ce1-24 text-center">
+               <a class="btn-secondary" href="/noticia/index">Todas as Notícias</a>            </div>
+         </div>
+
+      
+   </div>
+</section>
+
+
+<!-- BLOCO SECRETARIAS -->
+   <section class="section-padding-fundo margin-section">
+      <div class="row container-fluid">
+                     <div class="nopadding col-ce1-24 responsive-margin">
+               <div class="titulo-lateral">
+                  <h2>Secretarias Municipais</h2>
+               </div>
+               <div class="nopadding col-ce1-24 text-center home-secretaria">
+                  
+<div class="carousel-cards-section" style="--carousel-theme-color: var(--color-primary);">
+    
+    
+    <div class="carousel-cards-wrapper">
+        
+        
+        <div class="swiper " id="cards-swiper-w3">
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/7/financas" class="card-sec-horizontal" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-hz-left">
+        <div class="card-sec-hz-avatar">
+            <img src="/uploads/pessoa/8/media_UPGd_H2Ql9p8OUlsRxi0iQxSw_yPOCtO.jpg" alt="Fernanda Orlando" loading="lazy">        </div>
+        <div class="card-sec-hz-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+    </div>
+
+    <div class="card-sec-hz-body">
+        <span class="card-sec-hz-role">Secretária Municipal</span>
+        <span class="card-sec-hz-name">Fernanda Orlando</span>
+        <h3 class="card-sec-hz-title">
+            <i class="fas fa-building" style="opacity: 0.5;"></i>
+            Finanças        </h3>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/4/administracao-e-turismo" class="card-sec-horizontal" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-hz-left">
+        <div class="card-sec-hz-avatar">
+            <img src="/uploads/pessoa/5/media_DdjzLmV09aLk1fgZ4nJ9ogRcuCwTP7x_.jpg" alt="João Fritzen" loading="lazy">        </div>
+        <div class="card-sec-hz-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+    </div>
+
+    <div class="card-sec-hz-body">
+        <span class="card-sec-hz-role">Secretário Municipal</span>
+        <span class="card-sec-hz-name">João Fritzen</span>
+        <h3 class="card-sec-hz-title">
+            <i class="fas fa-building" style="opacity: 0.5;"></i>
+            Administração e Turismo        </h3>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/2/assistencia-social" class="card-sec-horizontal" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-hz-left">
+        <div class="card-sec-hz-avatar">
+            <img src="/uploads/pessoa/2/media_toaZPQmrm8G3CvRwbhOXNEG0fxvW8Gsp.jpg" alt="Leticia Koop" loading="lazy">        </div>
+        <div class="card-sec-hz-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+    </div>
+
+    <div class="card-sec-hz-body">
+        <span class="card-sec-hz-role">Secretaria</span>
+        <span class="card-sec-hz-name">Leticia Koop</span>
+        <h3 class="card-sec-hz-title">
+            <i class="fas fa-building" style="opacity: 0.5;"></i>
+            Assistência Social        </h3>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/1/agricultura-e-meio-ambiente" class="card-sec-horizontal" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-hz-left">
+        <div class="card-sec-hz-avatar">
+            <img src="/uploads/pessoa/1/media_ktrOIxxxF3Pu94Fhr_4bju2kGy5cnyPC.png" alt="Edson Mossmann" loading="lazy">        </div>
+        <div class="card-sec-hz-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+    </div>
+
+    <div class="card-sec-hz-body">
+        <span class="card-sec-hz-role">Secretario</span>
+        <span class="card-sec-hz-name">Edson Mossmann</span>
+        <h3 class="card-sec-hz-title">
+            <i class="fas fa-building" style="opacity: 0.5;"></i>
+            Agricultura e Meio Ambiente        </h3>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/10/planejamento-inovacao-e-desenvolvimento-economico" class="card-sec-horizontal" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-hz-left">
+        <div class="card-sec-hz-avatar">
+            <img src="/uploads/pessoa/11/media_bbT_TrXxw0xN2YPmibsHgmbIAkdG0ame.jpg" alt="César Manfro" loading="lazy">        </div>
+        <div class="card-sec-hz-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+    </div>
+
+    <div class="card-sec-hz-body">
+        <span class="card-sec-hz-role">Secretário Municipal</span>
+        <span class="card-sec-hz-name">César Manfro</span>
+        <h3 class="card-sec-hz-title">
+            <i class="fas fa-building" style="opacity: 0.5;"></i>
+            Planejamento, Inovação e Desenvolvimento Econômico        </h3>
+    </div>
+    
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/secretaria/view/9/obras-publicas-servicos-urbanos-e-transito" class="card-sec-horizontal" style="--dynamic-accent: var(--color-primary)">
+    
+    <div class="card-sec-hz-left">
+        <div class="card-sec-hz-avatar">
+            <img src="/uploads/pessoa/10/media_vWCaIai9spIN7NCFpF7RoFC-fNHSeCd7.png" alt="Vilmar José Milani" loading="lazy">        </div>
+        <div class="card-sec-hz-icon">
+            <i class="fas fa-landmark"></i>
+        </div>
+    </div>
+
+    <div class="card-sec-hz-body">
+        <span class="card-sec-hz-role">Secretário Municipal</span>
+        <span class="card-sec-hz-name">Vilmar José Milani</span>
+        <h3 class="card-sec-hz-title">
+            <i class="fas fa-building" style="opacity: 0.5;"></i>
+            Obras Públicas, Serviços Urbanos e Trânsito        </h3>
+    </div>
+    
+</a>                    </div>
+                            </div>
+            
+                            <div class="swiper-pagination"></div>
+                    </div>
+
+            </div>
+</div>
+
+               </div>
+            </div>
+               </div>
+   </section>
+</main>        <!-- FINAL DO CONTEÚDO -->
+    </div>
+
+    <!-- RODAPÉ ESCURO INSTITUCIONAL PREMIUM -->
+    <footer class="site-footer-dark margin-section">
+        <!-- Linha luminosa superior -->
+        <div class="footer-top-accent"></div>
+
+        <div class="container-fluid footer-content-wrapper">
+            <div class="footer-grid-modern">
+
+                <!-- Coluna 1: Identidade e Redes Sociais -->
+                <div class="footer-col brand-col">
+                    <a href="/" class="footer-brand-link mb-4">
+                        <img class="footer-brasao" src="/images/logo-brasao.png" alt="Prefeitura Municipal">                        <div class="footer-brand-text">
+                            <span>Município de</span>
+                            <strong>Nova Boa Vista</strong>
+                        </div>
+                    </a>
+
+                    <p class="slogan-dark">Trabalhando com transparência, responsabilidade e inovação por uma cidade cada vez melhor para todos os cidadãos.</p>
+
+                    <div class="social-dark-wrapper">
+                        <span class="social-label">Conecte-se conosco:</span>
+                        <div class="social-dark-list">
+                                                            <a href="https://www.facebook.com/share/18G5LiYabS/" target="_blank" title="Facebook" class="sc-fb"><i class="fa-brands fa-facebook-f"></i></a>
+                                                                                        <a href="https://www.instagram.com/municipionovaboavista/" target="_blank" title="Instagram" class="sc-insta"><i class="fa-brands fa-instagram"></i></a>
+                                                                                                            </div>
+                    </div>
+                </div>
+
+                <!-- Coluna 2: Cards de Atendimento e Contato (Com espaçamento ideal) -->
+                <div class="footer-col contact-col">
+                    <h4 class="title-dark">Canais de Atendimento</h4>
+
+                    <div class="contact-cards-grid">
+                                                    <div class="contact-card-item">
+                                <div class="icon-dark"><i class="fa-solid fa-location-dot"></i></div>
+                                <div class="info-dark">
+                                    <span>Localização</span>
+                                    <strong>Av. Jacob Wagner Sobrinho, 40 - CEP: 99.580-000</strong>
+                                </div>
+                            </div>
+                        
+                                                    <div class="contact-card-item">
+                                <div class="icon-dark"><i class="fa-solid fa-phone-volume"></i></div>
+                                <div class="info-dark">
+                                    <span>Telefone Central</span>
+                                    <strong>(54) 9 9706-0014</strong>
+                                </div>
+                            </div>
+                        
+                                                    <div class="contact-card-item">
+                                <div class="icon-dark"><i class="fa-solid fa-envelope-open-text"></i></div>
+                                <div class="info-dark">
+                                    <span>E-mail Oficial</span>
+                                    <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="1e7f7a737770776d6a6c7f7d7f715e7071687f7c717f68776d6a7f306c6d30797168307c6c">[email&#160;protected]</a></strong>
+                                </div>
+                            </div>
+                        
+                                                    <div class="contact-card-item">
+                                <div class="icon-dark"><i class="fa-regular fa-clock"></i></div>
+                                <div class="info-dark">
+                                    <span>Horário de Expediente</span>
+                                    <strong>das 08h às 12h e das 13h às 17h</strong>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+
+                <!-- Coluna 3: Previsão do Tempo -->
+                <div class="footer-col weather-col">
+                    <h4 class="title-dark">Clima no Município</h4>
+                    <div class="weather-widget-dark">
+                        
+<div class="weather-widget theme-dark background-transparent" role="region" aria-label="Previsão do tempo">
+
+            <div class="weather-current" aria-live="polite">
+
+            <div class="weather-left">
+                <div class="temp">19°C</div>
+                <div class="desc">Chuva moderada</div>
+
+                <div class="desc-sub">
+                    Máx: 23° • Mín: 18°
+                </div>
+            </div>
+
+            <div class="weather-right" aria-hidden="true">
+                <div class="icon-wrap"><i class="wi wi-rain current-icon weather-rainy" style="font-size:38px"></i></div>
+                <div class="wind">Vento: 12.2 km/h</div>
+            </div>
+
+        </div>
+    
+
+
+            <div class="weather-forecast">
+
+            <h4 class="visually-hidden">Próximos dias</h4>
+
+            <div class="forecast-scroll" role="list">
+
+                
+                    
+                    <div class="forecast-item"
+                        role="listitem"
+                        tabindex="0"
+                        data-tooltip="Pancadas de chuva fracas">
+
+                        <div class="f-date">27/11</div>
+                        <div class="f-icon"><i class="wi wi-showers day-icon weather-rainy" style="font-size:38px"></i></div>
+
+                        <div class="f-temps">
+                            <span class="f-temp-max">23°</span>
+                            <span class="f-temp-min">18°</span>
+                        </div>
+
+                        <div class="f-desc">Pancadas de chuva fracas</div>
+
+                    </div>
+
+                
+                    
+                    <div class="forecast-item"
+                        role="listitem"
+                        tabindex="0"
+                        data-tooltip="Pancadas de chuva fracas">
+
+                        <div class="f-date">28/11</div>
+                        <div class="f-icon"><i class="wi wi-showers day-icon weather-rainy" style="font-size:38px"></i></div>
+
+                        <div class="f-temps">
+                            <span class="f-temp-max">28°</span>
+                            <span class="f-temp-min">17°</span>
+                        </div>
+
+                        <div class="f-desc">Pancadas de chuva fracas</div>
+
+                    </div>
+
+                
+            </div>
+        </div>
+    
+</div>
+
+
+<style>
+    .visually-hidden {
+        position: absolute !important;
+        height: 1px;
+        width: 1px;
+        overflow: hidden;
+        clip: rect(1px, 1px, 1px, 1px);
+        white-space: nowrap;
+    }
+</style>                    </div>
+                </div>
+
+            </div>
+
+            <!-- Mapa Integrado com Margem Confortável -->
+                            <div class="footer-map-box">
+                    <div class="map-header-tag">
+                        <i class="fa-solid fa-map-location-dot mr-2"></i> Como chegar
+                    </div>
+                    <div class="map-pure-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17726.084878847483!2d-52.9817742!3d-27.987868799999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94fcdc8cff247785%3A0x1ba73f4563bf4036!2sNova%20Boa%20Vista%2C%20RS%2C%2099580-000!5e1!3m2!1spt-BR!2sbr!4v1793730555239!5m2!1spt-BR!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="strict-origin-when-cross-origin"></iframe>                    </div>
+                </div>
+                    </div>
+
+        <!-- Barra Inferior de Direitos Autorais -->
+        <div class="footer-bottom-darker">
+            <div class="footer-bottom-wrapper">
+                <p class="copyright-text">
+                    &copy; 2026 <strong>Prefeitura Municipal de Nova Boa Vista - RS</strong>. Todos os direitos reservados.
+                </p>
+                <div class="developer-credit">
+                    <a class="logo-dynamika" href="http://www.dynamika.com.br" target="_blank" title="Dynamika Soluções Web">
+                        <span>Desenvolvido por:</span>
+                        <img src="/images/logo-dynamika.png" alt="Dynamika">                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    
+
+<div id="modal-cadastro" class="fade modal" role="dialog" tabindex="-1" aria-hidden="true">
+<div class="modal-dialog modal-lg" role="document">
+<div class="modal-content">
+<div class="modal-header">
+
+<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
+</div>
+<div class="modal-body">
+
+<h5 class="modal-title"><strong>Área do Usuário</strong></h5>
+<hr />
+
+<div class="row justify-content-center">
+    <div id="aba-conta" class="col-12 col-lg-6 text-center">
+        <h5><strong>Login</strong></h5>
+        <p>Se você já possui cadastro no site, baste inserir os dados de acesso nos campos abaixo.</p>
+        <ul id="w10" class="nav nav-tabs nav-justified" role="tablist"><li class="nav-item"><a class="nav-link active" href="#w10-tab0" data-toggle="tab" role="tab" aria-controls="w10-tab0" aria-selected="true">CPF/CNPJ</a></li>
+<li class="nav-item"><a class="nav-link" href="#w10-tab1" data-toggle="tab" role="tab" aria-controls="w10-tab1" aria-selected="false">E-mail</a></li></ul>
+<div class="tab-content"><div id="w10-tab0" class="tab-pane active"><form id="w6" class="login-form" action="/conta/login" method="post">
+<input type="hidden" name="_csrf-frontend" value="4oSEWKGzXNStmdcjEPOlM8tk9y4NXgqMjChmBKfNheqPtsEO8vsXuYDNkht7xJZZpxKOcXppWtb8GQV23fnHpw=="><div class="form-group field-input-username-cpfcnpj required">
+<label for="input-username-cpfcnpj">CPF ou CNPJ</label>
+<input type="text" id="input-username-cpfcnpj" class="form-control" name="LoginFrontForm[username]" aria-required="true" data-plugin-inputmask="inputmask_7260b05d">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-password required">
+<label for="loginfrontform-password">Senha</label>
+<input type="password" id="loginfrontform-password" class="form-control" name="LoginFrontForm[password]" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-recaptcha">
+<label for="loginfrontform-recaptcha">Verificação</label>
+<input type="hidden" id="loginfrontform-recaptcha" class="form-control" name="LoginFrontForm[reCaptcha]"><div id="w7_c" class="captcha-size captcha-center captcha-no-print " data-sitekey="add061f6-a9be-42be-ae8a-88623218833e"></div>
+
+<div class="invalid-feedback"></div>
+</div><button type="submit" class="btn btn-success" name="login-button">Acessar</button></form></div>
+<div id="w10-tab1" class="tab-pane"><form id="w8" class="login-form" action="/conta/login" method="post">
+<input type="hidden" name="_csrf-frontend" value="4oSEWKGzXNStmdcjEPOlM8tk9y4NXgqMjChmBKfNheqPtsEO8vsXuYDNkht7xJZZpxKOcXppWtb8GQV23fnHpw=="><div class="form-group field-loginfrontform-username required">
+<label for="loginfrontform-username">E-mail</label>
+<input type="text" id="loginfrontform-username" class="form-control" name="LoginFrontForm[username]" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-password required">
+<label for="loginfrontform-password">Senha</label>
+<input type="password" id="loginfrontform-password" class="form-control" name="LoginFrontForm[password]" aria-required="true">
+
+<div class="invalid-feedback"></div>
+</div><div class="form-group field-loginfrontform-recaptcha">
+<label for="loginfrontform-recaptcha">Verificação</label>
+<input type="hidden" id="loginfrontform-recaptcha" class="form-control" name="LoginFrontForm[reCaptcha]"><div id="w9_c" class="captcha-size captcha-center captcha-no-print " data-sitekey="add061f6-a9be-42be-ae8a-88623218833e"></div>
+
+<div class="invalid-feedback"></div>
+</div><button type="submit" class="btn btn-success" name="login-button">Acessar</button></form></div></div>    </div>
+    <div class="col-12 col-lg-6 text-center">
+        <h5><strong>Cadastro</strong></h5>
+        <p>Não possui cadastro junto à Prefeitura? Então preencha os dados e nos envie. No próximo acesso basta colocar os dados de usuário e senha.</p>
+        <br />
+        <a class="btn-padrao-conta" href="/conta/cadastrar?tipo=pf"><i class="fa fa-user-alt"></i> <br />Pessoa Física</a>        <a class="btn-padrao-conta" href="/conta/cadastrar?tipo=pj"><i class="fa fa-building"></i> <br />Pessoa Jurídica</a>    </div>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>    
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="/js/acessibilidade.js?v=1794489025"></script>
+<script src="//js.hcaptcha.com/1/api.js?onload=dynamikacaptchaw7&amp;render=explicit"></script>
+<script src="//js.hcaptcha.com/1/api.js?onload=dynamikacaptchaw9&amp;render=explicit"></script>
+<script src="/assets/54776095/jquery.js?v=1693229950"></script>
+<script src="/assets/5d67b0c5/yii.js?v=1751010173"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="/assets/b90c1bf6/js/banner.js?v=1794489025"></script>
+<script src="/assets/7bffca5/js/cards.js?v=1794489025"></script>
+<script src="/assets/b7c29d74/js/bootstrap.bundle.js?v=1794490048"></script>
+<script src="/assets/576478d4/sweetalert2.all.min.js?v=1794490048"></script>
+<script src="/js/site.js?v=1794489025"></script>
+<script src="https://cdn.jsdelivr.net/gh/orestbida/cookieconsent@v3.0.1/dist/cookieconsent.umd.js"></script>
+<script src="/assets/93899980/js/lgpd.js?v=1794489025"></script>
+<script src="/assets/1c9f8b28/js/modernizr.custom.js?v=1755795172"></script>
+<script src="/assets/1c9f8b28/js/dlmenu.js?v=1755795172"></script>
+<script src="/assets/1c9f8b28/js/script.js?v=1755795172"></script>
+<script src="/assets/31ed07b6/script.js?v=1631210132"></script>
+<script src="/assets/f94f9f84/js/weather.js?v=1794489025"></script>
+<script src="/assets/e4949261/jquery.inputmask.js?v=1785480535"></script>
+<script src="/assets/5d67b0c5/yii.validation.js?v=1751010173"></script>
+<script src="/assets/af58aed8/captcha.js?v=1640022146"></script>
+<script src="/assets/5d67b0c5/yii.activeForm.js?v=1751010173"></script>
+<script>document.addEventListener('DOMContentLoaded', async () => {
+    const scriptElementVlibras = document.createElement('script');
+    scriptElementVlibras.type = 'text/javascript';
+    scriptElementVlibras.src = 'https://vlibras.gov.br/app/vlibras-plugin.js';
+    scriptElementVlibras.addEventListener('load', async () => {
+        await new window.VLibras.Widget('https://vlibras.gov.br/app');
+    });
+
+    await document.body.insertAdjacentHTML('beforeend', `<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>`);
+    await document.head.appendChild(scriptElementVlibras);
+});
+$(function(){
+    $(document).on('submit', '.login-form', function(e){
+        var form = this;
+        e.preventDefault();
+        var postData = new FormData(form);
+
+        $.ajax({
+            url: $(this).prop('action'),
+            type: 'POST',
+            data:  postData,
+            contentType: false,
+            cache: false,
+            processData:false,
+            dataType: 'json',
+            beforeSend: function(){
+                //$.LoadingOverlay("show");
+            },
+            success: function(result) {
+                if (result.success) {
+                    $('#modal-cadastro').modal('hide');
+                    swal("Aviso", result.message, "success");
+                    $(form)[0].reset();
+                    document.querySelectorAll('.login').forEach((el) => { el.style.display = "none"})
+                    document.querySelectorAll('.logado').forEach((el) => { el.style.display = "initial"})
+
+                    if(document.login_rastreio){
+                        const click = new Event("click");
+                        document.login_rastreio.dispatchEvent(click);
+                    } else {
+                        setTimeout(() => {
+                            window.location.href = '/conta';
+                        }, 1500);
+                    }
+                    
+                    return true;
+                }
+                swal("Erro", result.message, "error");
+            },
+            error: function(error) {
+                var msg = 'Não foi possível enviar a requisição. Por favor, tente mais tarde.';
+                swal("Erro", msg , "error");
+                console.log(error.responseText);
+            },
+            complete: function() {
+                //$.LoadingOverlay("hide");
+            }
+        });
+    });
+});
+</script>
+<script>jQuery(function ($) {
+initCarouselBanner('#hero-slider-w0');
+initCarouselCards('#cards-swiper-w1', {"breakpoints":{"320":{"slidesPerView":1},"768":{"slidesPerView":3,"spaceBetween":20},"1024":{"slidesPerView":4,"spaceBetween":10},"1679":{"slidesPerView":5,"spaceBetween":10}},"autoplay":false,"showPagination":true,"showNavigation":true,"rows":1});
+initCarouselCards('#cards-swiper-w2', {"breakpoints":{"640":{"slidesPerView":1.2,"spaceBetween":5},"768":{"slidesPerView":2,"spaceBetween":5},"1024":{"slidesPerView":3,"spaceBetween":15},"1400":{"slidesPerView":4,"spaceBetween":15}},"autoplay":false,"showPagination":true,"showNavigation":false,"rows":1});
+initCarouselCards('#cards-swiper-w3', {"breakpoints":{"640":{"slidesPerView":1.2,"spaceBetween":5},"768":{"slidesPerView":2,"spaceBetween":5},"1024":{"slidesPerView":3,"spaceBetween":15},"1400":{"slidesPerView":4,"spaceBetween":15}},"autoplay":true,"showPagination":true,"showNavigation":false,"rows":1});
+                                document.querySelectorAll('.logado').forEach((el) => { el.style.display = "none"})
+jQuery("#input-username-cpfcnpj").inputmask(inputmask_7260b05d);
+jQuery('#w6').yiiActiveForm([{"id":"input-username-cpfcnpj","name":"username","container":".field-input-username-cpfcnpj","input":"#input-username-cpfcnpj","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022CPF ou CNPJ\u0022 não pode ficar em branco."});}},{"id":"loginfrontform-password","name":"password","container":".field-loginfrontform-password","input":"#loginfrontform-password","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Senha\u0022 não pode ficar em branco."});}}], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+jQuery('#w8').yiiActiveForm([{"id":"loginfrontform-username","name":"username","container":".field-loginfrontform-username","input":"#loginfrontform-username","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022E-mail\u0022 não pode ficar em branco."});yii.validation.email(value, messages, {"pattern":/^[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?$/,"fullPattern":/^[^@]*<[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+(?:\.[a-zA-Z0-9!#$%&'*+\/=?^_`{|}~-]+)*@(?:[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?\.)+[a-zA-Z0-9](?:[a-zA-Z0-9-]*[a-zA-Z0-9])?>$/,"allowName":false,"message":"\u0022E-mail\u0022 não é um endereço de e-mail válido.","enableIDN":false,"skipOnEmpty":1});}},{"id":"loginfrontform-password","name":"password","container":".field-loginfrontform-password","input":"#loginfrontform-password","error":".invalid-feedback","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Senha\u0022 não pode ficar em branco."});}}], {"errorSummary":".alert.alert-danger","errorCssClass":"is-invalid","successCssClass":"is-valid","validationStateOn":"input"});
+jQuery('#w10').tab();
+jQuery('#modal-cadastro').modal({"show":false});
+});</script></body>
+
+</html>

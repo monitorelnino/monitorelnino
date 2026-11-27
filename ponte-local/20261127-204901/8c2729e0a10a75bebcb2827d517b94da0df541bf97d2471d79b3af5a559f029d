@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de Fontoura Xavier</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Fontoura Xavier.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de Fontoura Xavier' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://fontouraxavier.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://fontouraxavier.rs.gov.br/uploads/config/16025/Sem_Ttulo_1.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='624'>
+            <meta property='og:image:height' content='592'>
+            <meta property='og:site_name' content='fontouraxavier.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Fontoura Xavier.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de Fontoura Xavier'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Fontoura Xavier.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://fontouraxavier.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://fontouraxavier.rs.gov.br/site/custom/default/css/color/blueprussian.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://fontouraxavier.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://fontouraxavier.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://fontouraxavier.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://fontouraxavier.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://fontouraxavier.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://fontouraxavier.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://fontouraxavier.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-TBYHKGG15H"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-TBYHKGG15H');
+    });
+</script>
+        <link rel="shortcut icon" href="https://fontouraxavier.rs.gov.br/uploads/config/18/4467brasao_300x285.ico" />    
+	    <style>
+.banner-servicos a > p.similar-h4 {display: none;}
+
+header#topNav {
+    background: #48587a;
+    border-color: #0002 !important;
+    
+    .nav > li {
+        border-color: #0002 !important;
+        
+        > a {
+            color: white !important;  
+        }
+    }
+}
+</style>    </head>
+	    <body class="smoothscroll wide home5_fontxavier" data-background=""><a href="https://fontouraxavier.rs.gov.br/cdn-cgi/content?id=nXu.WBHe5WAJfIFqJ772Mh19hqgScKF5XErCO5bVTTI-1795812640.481459-1.2.1.1-XBoY54_CKIgU6pxEtLt32YN9JsLhwyzw7Ww0RbbZaKUcSM7p0_9exf_L7sbyA3rG" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <div id="header" class='header02' role='banner'>
+  <!-- Top Bar -->
+  <header id="topBar" style="min-height: unset">
+    <div class="container">
+      <div class="fsize13 margin-top10 mobile-margin-top25 hide_mobile text-right pull-right">
+                  <p style="margin: 0 0 10px">Fontoura Xavier, 27 de novembro de 2026.</p>
+
+                    <div class="hidden-xs hidden-sm btn-toolbar mb0" role="toolbar">
+              <div class="btn-group btn-group-lg pull-right">
+                                      <a href="/transparencia" target="_self" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-search fsize15'></i> Portal da Transparência</a>
+                                        <a href="/pagina/id/1021/?nf-eletronica.html" target="_self" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-file-zip-o fsize15'></i> Nota Fiscal Eletrônica</a>
+                                        <a href="/sic" target="_self" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-info-circle fsize15'></i> Acesso à Informação</a>
+                                        <a href="/ouvidoria" target="_self" onclick="" class="btn btn-primary height44 mb0 fsize15"><i class='fa fa-bullhorn fsize15'></i> Ouvidoria</a>
+                                  </div>
+            </div>
+            
+        <div class="pull-right hidden-xs hidden-sm" style="
+          position: relative;
+          width: 225px;" role='search'>
+          <!-- Pesquisa -->
+          <form id="pesquisa" class="search nopadding" method="get" action="https://fontouraxavier.rs.gov.br/pesquisa">
+			<label for="searchbar-desktop" class="sr-only">Pesquisar:</label>
+            <input id="searchbar-desktop" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site" style="
+              margin: 0;
+              margin-top: 5px;
+            ">
+            <button type="submit" class="fa fa-search search-focus" title="Pesquisar" aria-label="Pesquisar"></button>
+          </form>
+          <!-- /Pesquisa -->
+        </div>
+
+                <div class="weather-topo styleBackgroundLight pull-right text-left previsao-topo hidden" style="margin-top: 5px">
+          <div class="row">
+            <div class="col-md-3 col-xs-3 nopadding mt5 text-center">
+              <i class="icone-temp m0 fsize25"></i>
+            </div>
+            <div class="col-md-9 col-xs-9">
+              <p class="nomargin"><strong>Fontoura Xavier</strong></p>
+              <p class="nomargin">
+                <span class='min-temp'></span>&deg;C&nbsp;<small>MIN</small> <span class='max-temp'></span>&deg;C&nbsp;<small>MAX</small>
+              </p>
+            </div>
+          </div>
+        </div>
+              </div>
+
+      <!-- Logo -->
+
+                
+          <a class="logo" href="https://fontouraxavier.rs.gov.br">
+            <span class="client-name nomargin lineh30 appear-animation" data-animation="fadeInLeft" style="
+              margin: 22px 0 !important;
+            ">
+              <img class="appear-animation max-height100" src="https://fontouraxavier.rs.gov.br/uploads/config/16177/logo_FontouraXavier_site.png" alt="Logo da Prefeitura" data-animation="fadeInLeft" />            </span>
+          </a>
+              </div>
+  </header>
+  <!-- /Top Bar -->
+
+  <!-- Top Nav -->
+  <header id="topNav">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get" action="https://fontouraxavier.rs.gov.br/pesquisa" role='search'>
+		<label for="searchbar-mobile" class="sr-only">Pesquisar:</label>
+        <input id="searchbar-mobile" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar"></button>
+      </form>
+      <!-- /Pesquisa -->
+
+      <!-- Mobile Menu Button -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+        <i class="fa fa-bars"></i>
+      </button>
+
+      <!-- Top Nav -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li><a href='https://fontouraxavier.rs.gov.br'>Início</a></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/1003/?simbolos-de-fontoura-xavier.html'>Simbolos de Fontoura Xavier</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/1004/?hino-de-fontoura-xavier.html'>Hino de Fontoura Xavier</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/3/?dados-gerais-do-municipio.html'>Dados Gerais do Município</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/galeria-prefeitos/bcid/55/?galeria-de-prefeitos.html'>Galeria de Prefeitos</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/servidores/bcid/56/?servidores.html'>Servidores</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Atrações Turísticas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/turismo/id/4/?hoteis.html'>Hoteis</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/turismo/id/5/?pontos-turisticos.html'>Pontos Turísticos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/servico/id/1/?servicos-ao-empreendedor.html'>Serviços ao Empreendedor</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://fontouraxavier.rs.gov.br/uploads/config/16025/Sem_Ttulo_1.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(54) 3111-0050</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong>  08h às 11h30min e 13h30min às 16h30min</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-3"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/secretaria/id/1008/?secretaria-municipal-da-administracao.html'>Secretaria Municipal da Administração</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/secretaria/id/1009/?secretaria-municipal-da-agricultura.html'>Secretaria Municipal da Agricultura</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/secretaria/id/1004/?secretaria-municipal-da-fazenda.html'>Secretaria Municipal da Fazenda</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/secretaria/id/1007/?secretaria-municipal-da-saude.html'>Secretaria Municipal da Saúde</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/secretaria/id/1010/?secretaria-municipal-de-assistencia-social.html'>Secretaria Municipal de Assistência Social</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/secretaria/id/1014/?secretaria-municipal-de-cultura-turismo-e-esportes.html'>Secretaria Municipal de Cultura, Turismo e Esportes.</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/secretaria/id/1002/?secretaria-municipal-de-educacao.html'>Secretaria Municipal de Educação</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/secretaria/id/1003/?secretaria-municipal-de-obras-e-viacao.html'>Secretaria Municipal de Obras e Viação</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/secretaria/id/1006/?secretaria-municipal-de-servicos-urbanos-e-meio-ambiente.html'>Secretaria Municipal de Serviços Urbanos e Meio Ambiente</a></li></ul></div><div class="col-md-3"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/conselho/id/1012/?conselho-municipal-da-educacao.html'>Conselho Municipal da Educação</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/conselho/id/1005/?conselho-tutelar.html'>Conselho Tutelar</a></li></ul></div><div class="col-md-3"><p class="menu-category">Outros Departamentos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/departamento/id/1013/?fiscalizacao-e-tributacao.html'>Fiscalização e tributação</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://fontouraxavier.rs.gov.br/uploads/config/16025/Sem_Ttulo_1.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(54) 3111-0050</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong>  08h às 11h30min e 13h30min às 16h30min</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/4/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/110/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/101/?concorrencia-publica.html'>Concorrência Pública</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/103/?credenciamento.html'>Credenciamento</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/1001/?edital.html'>Edital</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/107/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/108/?pregao-presencial.html'>Pregão Presencial</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/licitacao/id/109/?tomada-de-preco.html'>Tomada de Preço</a></li></ul></div><div class="col-md-3"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/concurso/id/202/?processo-seletivo.html'>Processo Seletivo</a></li></ul></div><div class="col-md-3"><p class="menu-category">Legislação</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/legislacao/id/3/?codigo-de-obras.html'>Código de Obras</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/legislacao/id/7/?codigo-tributario-municipal.html'>Código Tributário Municipal</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/legislacao/id/5/?decretos.html'>Decretos</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/legislacao/id/4/?estatuto-do-servidor.html'>Estatuto do Servidor</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/legislacao/id/2/?leis.html'>Leis</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/legislacao/id/1002/?nota-informativa.html'> Nota Informativa</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/legislacao/id/1005/?plano-municipal.html'>PLANO MUNICIPAL </a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/legislacao/id/10/?plano-plurianual.html'>Plano Plurianual </a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/legislacao/id/11/?portaria.html'>Portaria</a></li></ul></div><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html'>Diário Oficial</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-frequentes.html'>Perguntas Frequentes</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/ordem-servico/bcid/39/?e-sic---pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/1016/?relatorio-de-ouvidorias-2024.html'>Relatório de Ouvidorias 2024</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/1028/?modelos-padronizados.html'>Modelos Padronizados</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/5/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/6/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/1032/?relatorio-da-ouvidoria-2025.html'>Relatorio da Ouvidoria 2025</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/1034/?relatorio-ouvidoria-2026.html'>RELATÓRIO OUVIDORIA 2026</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Dados Abertos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://fontouraxavier.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li></ul></li><li><a href='https://fontouraxavier.rs.gov.br/pagina/id/1005/?covid-19.html'>Covid-19</a></li></ul></nav>
+      </div>
+      <!-- /Top Nav -->
+    </div>
+  </header>
+  <!-- /Top Nav -->
+</div>
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a> <!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350" style="
+            width: 100% !important;
+            height: auto;
+            aspect-ratio: 96 / 25;">
+                    <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://fontouraxavier.rs.gov.br/uploads/banner/16183/original_iptur2022.jpg');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                        <a title="IPTU 2022" href="https://e-gov.betha.com.br/cdweb/03114-241/contribuinte/main.faces" target='_self' class="linkBannner"></a>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: false, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: false        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+
+
+<div class="pb40 pt40">
+    <div class="container">
+      <!-- NOTÍCIAS E ACESSO RÁPIDO -->
+            <div class="overflow-hidden col-md-9 mobile-nopadding"><!-- NOTÍCIAS Acessiveis -->
+<section role="group" id="noticia4" aria-labelledby="noticia4.title" class="nopadding">
+    <div class="row">
+    <div class="col-md-12">
+        <h2 class="similar-h4 title" id="noticia4.title"><strong>ÚLTIMAS NOT&Iacute;CIAS</strong></h2>
+    </div>
+                        <article class="col-md-4">
+                    <a  href="https://fontouraxavier.rs.gov.br/noticia/visualizar/id/1234/?confira-o-boletim-do-programa-de-integracao-tributaria-de-abril-de-2026.html"
+                    aria-labelledby="noticia4.0">
+
+					<div class="news-thumb">
+													<img class="img-responsive" src="https://fontouraxavier.rs.gov.br/default/img/imgIndisponivel.jpg" alt="Imagem sem descrição" role="presentation" />
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.0">
+						Confira o boletim do programa de integração tributária de abril de 2026.					</h3>
+    			</a>
+    		</article>
+        	                <article class="col-md-4">
+                    <a  href="https://fontouraxavier.rs.gov.br/noticia/visualizar/id/1233/?confira-o-regulamento-do-concurso-da-escolha-das-soberanas-de-fontoura-xavier-e-festa-do-pinhao.html"
+                    aria-labelledby="noticia4.1">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://fontouraxavier.rs.gov.br/uploads/noticia/22063/media_WhatsApp_Image_2026_05_19_at_105830.jpeg" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.1">
+						Confira o regulamento do Concurso da Escolha das Soberanas de Fontoura Xavier e Festa do Pinhão					</h3>
+    			</a>
+    		</article>
+        	                <article class="col-md-4">
+                    <a  href="https://fontouraxavier.rs.gov.br/noticia/visualizar/id/1230/?prefeitura-adquire-escavadeira-hidraulica-para-reforcar-servicos-no-municipio.html"
+                    aria-labelledby="noticia4.2">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://fontouraxavier.rs.gov.br/uploads/noticia/22031/media_WhatsApp_Image_2026_05_12_at_084958.jpeg" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.2">
+						Prefeitura adquire escavadeira hidráulica para reforçar serviços no município					</h3>
+    			</a>
+    		</article>
+        	    </div>
+
+        <div class="other-news hidden-xs col-md-12">
+        <div class="row">
+
+                        <a  href="https://fontouraxavier.rs.gov.br/noticia/visualizar/id/1229/?curso-de-nota-fiscal-do-produtor-rural.html"
+                aria-labelledby="noticia4m.3">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://fontouraxavier.rs.gov.br/uploads/noticia/22028/media_Nota_fiscal_.jpeg" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">08/05/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.3">CURSO DE NOTA FISCAL DO PRODUTOR RURAL </h3>
+                    </div>
+                </article>
+            </a>
+                        <a  href="https://fontouraxavier.rs.gov.br/noticia/visualizar/id/1228/?programa-de-aquisicao-de-alimentos-paa.html"
+                aria-labelledby="noticia4m.4">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://fontouraxavier.rs.gov.br/uploads/noticia/22019/media_WhatsApp_Image_2026_05_07_at_095635.jpeg" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">07/05/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.4">Programa de Aquisição de Alimentos (PAA)</h3>
+                    </div>
+                </article>
+            </a>
+                        <a  href="https://fontouraxavier.rs.gov.br/noticia/visualizar/id/1225/?cadastro-online-para-lista-de-espera-escolar-2026-ja-esta-disponivel.html"
+                aria-labelledby="noticia4m.5">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://fontouraxavier.rs.gov.br/uploads/noticia/21958/media_Logo_municipio_fx.jpeg" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">14/04/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.5">Cadastro online para lista de espera escolar 2026 já está disponível</h3>
+                    </div>
+                </article>
+            </a>
+                    </div>
+    </div>
+    <a aria-label="Ver mais notícias"
+        href="https://fontouraxavier.rs.gov.br/noticia/?noticias.html"
+        class="btn btn-default btn-content featured-box-minimal"><i class="fa fa-newspaper-o"></i> Mais not&iacute;cias</a>
+</section></div>
+            <div class="col-md-3 mt4-xs mobile-nopadding mobile-margin-top25"><!-- ACESSO RÁPIDO -->
+<div id="acessoRapido1" class="widget featured-box-minimal owl-carousel-controls">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>ACESSO R&Aacute;PIDO</strong></h2>
+                        <span class="pull-right">
+				<a class="prev" href="javascript:;" aria-label="Anterior" title="Anterior">
+					<i class="mr5 lineh30 fa fa-arrow-left widget-icon" aria-hidden="true">
+						<span class="sr-only">Anterior</span>
+					</i>
+				</a>
+				<a class="next" href="javascript:;" aria-label="Próximo" title="Próximo">
+					<i class="mr5 lineh30 fa fa-arrow-right widget-icon" aria-hidden="true">
+						<span class="sr-only">Próximo</span>
+					</i>
+				</a>
+            </span>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1,"transitionStyle":"goDown" ,"autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Minha Folha" href="https://login.betha.cloud/servicelogin/login.faces?app=1c8315b6-1fb9-4a4c-b545-9f585d9fbd10&continue=dUt3pl7deSJcIfYbNgSBvyszrVx7CtLXMQ8SyjaTDIyAxIspOkXzLADGEjv59FmVkDvvSbpRV9h8ufTnTBpXO7RI651ay-4WmGKXeVTIjMkChFiJp09kXAw470h7bbL8oUHjYCAXMXlECtofVqS6JH_AsUaEICqRqBtvHR3H6EaV7xj-zMFKvctuq3OpBd0D2bm7ZGKL5FW87THOHVMFfKa78RGLE1rHG4-C9orarg3P6FWJxPv3ECi_-6l9Bk1p6H2lZLFDkaYqMaknTip-yIqNvEXBB5m_rT9djaI6-xVfpbEl6XvGlmmv0Ys5W3G800KXcdR3de07j3Zd4EffI5RW-_2EfDE5dS7z1UqPjzCG1GR7_U0Qh-_a_IKV5zzIe3RelIaxIAMqGnBWm1QcSGMqD_qvzLN4c0OqZvSoi2TkmEkXaMw5g2AK3hroF5r1lx0Z-q5JR9_pZ5QKRCeLErzjRO7V5iy57tVTQsEmgO7jmOvo4M1PJ03hFP4cj3shMhnfeZnzKu015H9xdnO5nyTcSfXRLopmNYc-qfX5orussKFYXE6rPhsM47xJLoTDjoba-RBjCuQPU2rsBydePlTJRF7VtMnz&mobile=false" target="_blank" onclick="">
+                        <i class='fa fa-address-book-o'></i> Minha Folha                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Serviço ao Contribuinte" href="https://e-gov.betha.com.br/cdweb/resource.faces?params=cv9YaYUpLxlrNlWgzg91Hw==" target="_blank" onclick="">
+                        <i class='fa fa-address-card'></i> Serviço ao Contribuinte                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Legislação Municipal - TCE" href="https://leismunicipais.com.br/leis/rs/fontoura-xavier?o=tcers" target="_blank" onclick="">
+                        <i class='fa fa-balance-scale'></i> Legislação Municipal - TCE                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Nota Fiscal Gaúcha" href="https://nfg.sefaz.rs.gov.br/site/index.aspx" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Nota Fiscal Gaúcha                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Consulta Devedores ICMS / IPVA RS" href="https://fontouraxavier.rs.gov.br/pagina/id/1026/?consulta-devedores-icms--ipva-rs.html" target="_blank" onclick="">
+                        <i class='fa fa-user-circle'></i> Consulta Devedores ICMS / IPVA RS                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Modelos Padronizados Lei 14.133/2021" href="https://fontouraxavier.rs.gov.br/pagina/id/1028/?modelos-padronizados.html" target="_self" onclick="">
+                        <i class='fa fa-info'></i> Modelos Padronizados Lei 14.133/2021                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Suporte TI" href="/pagina/id/1010/?suporte-ti.html" target="_self" onclick="">
+                        <i class='fa fa-desktop'></i> Suporte TI                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="SEFAZ RS" href="https://fazenda.rs.gov.br/inicial" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> SEFAZ RS                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="e-SIC" href="/ordem-servico" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> e-SIC                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Famurs" href="https://famurs.com.br/" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Famurs                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Imunização Covid-19" href="https://vacina.saude.rs.gov.br/" target="_blank" onclick="">
+                        <img loading='lazy' class='mr10 radius25 width35 height35' src='https://fontouraxavier.rs.gov.br/uploads/link/17364/imagem_vacina.png' alt='' /> Imunização Covid-19                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Licitacon" href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Fontoura%20Xavier,&cs=1wpQsbaZ3WjrpvsVFnpHpwdCDvCk" target="_blank" onclick="">
+                        <i class='fa fa-handshake-o'></i> Licitacon                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Contas Públicas" href="/contas-publicas" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Contas Públicas                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Acesso à informação" href="/transparencia" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Acesso à informação                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Perguntas Frequentes" href="/perguntas-respostas" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Perguntas Frequentes                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="A.G.M" href="http://www.agm.org.br/" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> A.G.M                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Portal da Transparência" href="https://transparencia.betha.cloud/#/gyz3c722W4jjT3Ri0F_qgQ==" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Portal da Transparência                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Diário Oficial" href="/diario-oficial" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Diário Oficial                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Legislação" href="/legislacao" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Legislação                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Licitações" href="/licitacao" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Licitações                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Concursos" href="/concurso" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Concursos                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Serviços" href="/servico" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Serviços                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Ouvidoria" href="/ouvidoria" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Ouvidoria                    </a>
+                </li>
+                        </ul>
+        </div>
+	        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+            <!-- /NOTÍCIAS E ACESSO RÁPIDO -->
+    </div>
+</div>
+
+<div class="p0 styleContrasteGray styleBackgroundLight pt40">
+	<div class="container">
+		<!--<hr class="half-margins invisible"> -->
+		<div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 6}'>
+        <div class="col-md-12 text-left">
+                <a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Fontoura%20Xavier,&cs=1wpQsbaZ3WjrpvsVFnpHpwdCDvCk" target='_blank'>
+                                <p class="similar-h4 mb10">Licitacon</p>
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/banner/16186/original_LICITACON.jpg" class="img-responsive" alt="Licitacon" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://falabr.cgu.gov.br/publico/RS/FontouraXavier/Manifestacao/RegistrarManifestacao" target='_blank'>
+                                <p class="similar-h4 mb10">E-Ouv</p>
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/banner/16189/original_EOUV.jpg" class="img-responsive" alt="E-Ouv" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://famurs.com.br/" target='_blank'>
+                                <p class="similar-h4 mb10">Famurs</p>
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/banner/16185/original_FAMURS.jpg" class="img-responsive" alt="Famurs" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.gov.br/receitafederal/pt-br" target='_blank'>
+                                <p class="similar-h4 mb10">Receita Federal</p>
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/banner/16190/original_RECEITA.jpg" class="img-responsive" alt="Receita Federal" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://www.amasbi.com.br/web/" target='_blank'>
+                                <p class="similar-h4 mb10">Amasbi</p>
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/banner/16184/original_amasbiedi2t.png" class="img-responsive" alt="Amasbi" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://transparencia.betha.cloud/#/gyz3c722W4jjT3Ri0F_qgQ==" target='_blank'>
+                                <p class="similar-h4 mb10">Portal da Transparência</p>
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/banner/16188/original_PORTAL.jpg" class="img-responsive" alt="Portal da Transparência" role="presentation" />
+                </a>
+            </div>
+    </div>		<hr class="half-margins">
+	</div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- LICITAÇÕES -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>LICITA&Ccedil;&Otilde;ES</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">101-2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL PE 101-2026 AQUISIÇÃO DE TRATOR AGRÍCOLA" href="https://fontouraxavier.rs.gov.br/licitacao/visualizar/id/1613/?edital-pe-101-2026-aquisicao-de-trator-agricola.html">
+                            <p>EDITAL PE 101-2026 AQUISIÇÃO DE TRATOR AGRÍCOLA</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            09/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">110-2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência Pública                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL CC 110-2026 CALÇAMENTO RUA JOÃO R DE GODOY" href="https://fontouraxavier.rs.gov.br/licitacao/visualizar/id/1612/?edital-cc-110-2026-calcamento-rua-joao-r-de-godoy.html">
+                            <p>EDITAL CC 110-2026 CALÇAMENTO RUA JOÃO R DE GODOY</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            11/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">108-2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência Pública                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL CC 108-2026 CESSÃO DA FOLHA DE PAGAMENTO" href="https://fontouraxavier.rs.gov.br/licitacao/visualizar/id/1611/?edital-cc-108-2026-cessao-da-folha-de-pagamento.html">
+                            <p>EDITAL CC 108-2026 CESSÃO DA FOLHA DE PAGAMENTO</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            18/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">105-2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL PE 105-2026 AQUISIÇÃO DE ENSILADEIRA" href="https://fontouraxavier.rs.gov.br/licitacao/visualizar/id/1609/?edital-pe-105-2026-aquisicao-de-ensiladeira.html">
+                            <p>EDITAL PE 105-2026 AQUISIÇÃO DE ENSILADEIRA</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            07/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">107</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência Pública                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL CC 107-2026 CALÇAMENTO RUA CASTELO BRANCO" href="https://fontouraxavier.rs.gov.br/licitacao/visualizar/id/1610/?edital-cc-107-2026-calcamento-rua-castelo-branco.html">
+                            <p>EDITAL CC 107-2026 CALÇAMENTO RUA CASTELO BRANCO</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            10/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">100/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência Pública                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL CC 100/26 CALÇAMENTO R. ALEXANDRO CEMIN E  " href="https://fontouraxavier.rs.gov.br/licitacao/visualizar/id/1605/?edital-cc-10026-calcamento-r-alexandro-cemin-e.html">
+                            <p>EDITAL CC 100/26 CALÇAMENTO R. ALEXANDRO CEMIN E  </p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            27/11/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /LICITAÇÕES --></div>
+                <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://fontouraxavier.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="103">Credenciamento</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="1001">Edital</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="109">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://fontouraxavier.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="202">Processo Seletivo</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-4 mobile-nopadding mobile-margin-top25"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/16182/thumb_phpThumb_generated_thumbnail_4.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Prefeito: Luiz Armando Taffarel" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://fontouraxavier.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Luiz Armando Taffarel</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta:<br />
+8h às 11h45min <br />
+das 13h00 às 17h00min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/16995/thumb_phpThumb_generated_thumbnail_3.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Vice Prefeito: Paulo Cezar Quevedo" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Vice Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://fontouraxavier.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Paulo Cezar Quevedo</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta:<br />
+8h às 11h45min <br />
+das 13h00 às 17h00min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/secretaria/id/1014/?secretaria-municipal-de-cultura-turismo-e-esportes.html">
+                       Secretaria Municipal de Cultura, Turismo e Esportes.                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/22359/thumb_ChatGPT_Image_30_de_jul_de_2026_13_50_09.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Joselice Pedroso de Moraes" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Cultura, Turismo e Esportes." href="https://fontouraxavier.rs.gov.br/secretaria/id/1014/?secretaria-municipal-de-cultura-turismo-e-esportes.html">
+                            <span class="similar-h4"><strong>Joselice Pedroso de Moraes</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (54)  3389-1122                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Das 8h às 11h30 e das 13h30 às 16h30.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/secretaria/id/1010/?secretaria-municipal-de-assistencia-social.html">
+                       Secretaria Municipal de Assistência Social                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/21144/thumb_WhatsApp_Image_2025_05_20_at_092700.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Josimar Miranda da Silva" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Assistência Social" href="https://fontouraxavier.rs.gov.br/secretaria/id/1010/?secretaria-municipal-de-assistencia-social.html">
+                            <span class="similar-h4"><strong>Josimar Miranda da Silva</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (54) 3389-1158                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8h às 11h30min das 13h30 às 16h30min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/secretaria/id/1003/?secretaria-municipal-de-obras-e-viacao.html">
+                       Secretaria Municipal de Obras e Viação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/16934/thumb_WhatsApp_Image_2021_10_08_at_090929.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Nelin Quevedo " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Obras e Viação" href="https://fontouraxavier.rs.gov.br/secretaria/id/1003/?secretaria-municipal-de-obras-e-viacao.html">
+                            <span class="similar-h4"><strong>Nelin Quevedo </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (54) 3389-1205                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8h às 11h45min das 13h00 às 17h30min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/secretaria/id/1006/?secretaria-municipal-de-servicos-urbanos-e-meio-ambiente.html">
+                       Secretaria Municipal de Serviços Urbanos e Meio Ambiente                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/22064/thumb_WhatsApp_Image_2026_05_19_at_111703.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Tarcisio Chitolina Parnoff" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Serviços Urbanos e Meio Ambiente" href="https://fontouraxavier.rs.gov.br/secretaria/id/1006/?secretaria-municipal-de-servicos-urbanos-e-meio-ambiente.html">
+                            <span class="similar-h4"><strong>Tarcisio Chitolina Parnoff</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (54) 3389-1122                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8h às 11h45min das 13h00 às 17h00min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/secretaria/id/1007/?secretaria-municipal-da-saude.html">
+                       Secretaria Municipal da Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/21140/thumb_WhatsApp_Image_2026_05_19_at_111358.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Eduardo Vaz" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal da Saúde" href="https://fontouraxavier.rs.gov.br/secretaria/id/1007/?secretaria-municipal-da-saude.html">
+                            <span class="similar-h4"><strong>Eduardo Vaz</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (54) 3389-1123                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8h às 11h45min das 13h00 às 17h00min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/secretaria/id/1008/?secretaria-municipal-da-administracao.html">
+                       Secretaria Municipal da Administração                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/21143/thumb_WhatsApp_Image_2025_05_20_at_090902.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Tainá Farias" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal da Administração" href="https://fontouraxavier.rs.gov.br/secretaria/id/1008/?secretaria-municipal-da-administracao.html">
+                            <span class="similar-h4"><strong>Tainá Farias</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (54) 3389-1122                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8h às 11h45min das 13h30 às 17h00min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/secretaria/id/1004/?secretaria-municipal-da-fazenda.html">
+                       Secretaria Municipal da Fazenda                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/21156/thumb_WhatsApp_Image_2025_05_23_at_123327.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Flávia Dadalt Taffarel" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal da Fazenda" href="https://fontouraxavier.rs.gov.br/secretaria/id/1004/?secretaria-municipal-da-fazenda.html">
+                            <span class="similar-h4"><strong>Flávia Dadalt Taffarel</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (54) 3389-1122                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8h às 11h45min das 13h30 às 16h30min<br />
+                         </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/secretaria/id/1009/?secretaria-municipal-da-agricultura.html">
+                       Secretaria Municipal da Agricultura                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/22065/thumb_WhatsApp_Image_2026_05_19_at_111840.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Evandro Tonelli " />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal da Agricultura" href="https://fontouraxavier.rs.gov.br/secretaria/id/1009/?secretaria-municipal-da-agricultura.html">
+                            <span class="similar-h4"><strong>Evandro Tonelli </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (54) 3389-1122                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8h às 11h45min das 13h00 às 17h00min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://fontouraxavier.rs.gov.br/secretaria/id/1002/?secretaria-municipal-de-educacao.html">
+                       Secretaria Municipal de Educação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://fontouraxavier.rs.gov.br/uploads/departamento/21146/thumb_WhatsApp_Image_2025_05_20_at_093256.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Sandra Finatto Nhoatto" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Educação" href="https://fontouraxavier.rs.gov.br/secretaria/id/1002/?secretaria-municipal-de-educacao.html">
+                            <span class="similar-h4"><strong>Sandra Finatto Nhoatto</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (54) 3389-1122                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta: 8h às 11h45min das 13h00 às 17h00min                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+
+
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-28.983548, -52.345983],
+                17
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-28.983548, -52.345983],
+                        {alt:'Prefeitura Municipal de Fontoura Xavier'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de Fontoura Xavier</strong></p>                <p style="margin: 5px 0px;">Av. Vinte e Cinco de Abril, 920&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Fontoura Xavier / RS</p><p style="margin: 5px 0px;">99370-000</p></div>');markerArray.push(marker)});</script>
+
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer02" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <!-- endereço e redes sociais -->
+            <div class="spaced col-md-4 col-sm-4">
+                                <p>
+                    Av. Vinte e Cinco de Abril, 920, Centro<br />
+                    CEP: 99370-000<br />                    gabinete@fontouraxavier.rs.gov.br<br />                </p>
+                                    <p class="similar-h3">(54) 3111-0050</p>
+                                <p><strong>Segunda à Sexta:</strong>  08h às 11h30min e 13h30min às 16h30min</p>
+                				<p class="block">
+					<a href="https://fontouraxavier.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/terradopinhaofx" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://instagram.com/prefeiturafontouraxavier" target="_blank" class="social">
+						<i class="fa fa-instagram">
+							<span class="sr-only">Instagram da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://www.youtube.com/channel/UCOMi6Ti5kwFMMyTlWT3tPRA" target="_blank" class="social">
+						<i class="fa fa-youtube-square">
+							<span class="sr-only">Youtube da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://fontouraxavier.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+				</p>
+            </div>
+            <!-- /endereço e redes sociais -->
+
+            <!-- col #2 -->
+            <div class="spaced col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="col-md-5 col-sm-4 hidden-xs hide-line-last-new">
+                        <p class="similar-h4">&Uacute;ltimas not&iacute;cias</p>
+                                                <ul class="list-unstyled">
+                                                        <li>
+                                <a class="block"
+                                href="https://fontouraxavier.rs.gov.br/noticia/visualizar/id/1235/?prefeito-fio-taffarel-inaugura-pontilhao-no-campo-novo.html">
+                                    Prefeito Fio Taffarel inaugura pontilhão no Campo Novo                                </a>
+                                <small>29/05/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://fontouraxavier.rs.gov.br/noticia/visualizar/id/1234/?confira-o-boletim-do-programa-de-integracao-tributaria-de-abril-de-2026.html">
+                                    Confira o boletim do programa de integração tributária de abril de 2026.                                </a>
+                                <small>26/05/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://fontouraxavier.rs.gov.br/noticia/visualizar/id/1233/?confira-o-regulamento-do-concurso-da-escolha-das-soberanas-de-fontoura-xavier-e-festa-do-pinhao.html">
+                                    Confira o regulamento do Concurso da Escolha das Soberanas de Fontoura Xavier e Festa do Pinhão                                </a>
+                                <small>19/05/2026</small>
+                            </li>
+                                                    </ul>
+                                            </div>
+
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <p class="similar-h4">Outras &aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a class="block" href="https://fontouraxavier.rs.gov.br/transparencia/?transparencia.html">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://fontouraxavier.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://fontouraxavier.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://fontouraxavier.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Not&iacute;cias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://fontouraxavier.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://fontouraxavier.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://fontouraxavier.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                                                <!-- brasão -->
+                        <p class="text-center">
+                            <img alt="Brasão da prefeitura" src="https://fontouraxavier.rs.gov.br/uploads/config/16025/Sem_Ttulo_1.png" class="logo img-responsive appear-animation opaco08" data-animation="bounceIn"/>
+                        </p>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+	<div class="container text-center fsize12 post-copyright" style="
+		display: flex;
+		flex-direction: column;
+		justify-content: center">
+		<p style="margin:0" id="footer.copyrightTxt">
+			Este site utiliza a ferramenta
+			<a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+				<img src="https://fontouraxavier.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+				<span class="sr-only">iPrefeituras</span>
+			</a>.
+		</p>
+		<p style="margin:0" id="footer.copyrightTxt3">
+			Um produto
+			<strong>
+				<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+			</strong>.
+		</p>
+	</div>
+</div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://fontouraxavier.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://fontouraxavier.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://fontouraxavier.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://fontouraxavier.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://fontouraxavier.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a61401aaf9f864ab',t:'MTc5NTgxMjY0MA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a61401aaf9f864ab',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

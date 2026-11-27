@@ -1,0 +1,787 @@
+<!DOCTYPE HTML>
+<html lang="pt-BR">
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="iso-8859-1">
+    <meta name="description" content="Prefeitura Municipal de Colorado">
+    <meta name="keywords" content="Prefeitura Municipal de Colorado">
+    <meta name="author" content=" -  - CF">
+    <meta name="robots" content="">
+    <meta name="revisit-after" content="1">
+    <meta property="og:url" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="">
+    <meta property="og:site_name" content="Prefeitura Municipal de Colorado">
+    <meta property="og:description" content="Prefeitura Municipal de Colorado">
+    <meta property="og:image" content="">
+    <meta property="og:image:type" content="">
+    <meta name="google-site-verification" content=" ">
+    <title>Prefeitura Municipal de Colorado</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="https://colorado.rs.gov.br/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="https://colorado.rs.gov.br/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="https://colorado.rs.gov.br/favicon/favicon-16x16.png">
+    <link rel="manifest" href="https://colorado.rs.gov.br/favicon/site.webmanifest">
+    <link rel="mask-icon" href="https://colorado.rs.gov.br/favicon/safari-pinned-tab.svg" color="#da2319">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#da2319">
+    <meta name="apple-mobile-web-app-title" content="Prefeitura Municipal de Colorado">
+    <meta name="application-name" content="Prefeitura Municipal de Colorado">
+            <link href="https://colorado.rs.gov.br/web/system/font-awesome/css/font-awesome.min.css?v=2.0.3" rel="stylesheet">
+            <link href="https://colorado.rs.gov.br/web/system/weather-icons/css/weather-icons.min.css?v=2.0.3" rel="stylesheet">
+            <link href="https://colorado.rs.gov.br/web/system/css/custom.css?v=2.0.3" rel="stylesheet">
+            <link href="https://colorado.rs.gov.br/system/js/jquery/ui/jquery-ui.min.css?v=2.0.3" rel="stylesheet">
+            <link href="https://colorado.rs.gov.br/system/js/lightGallery/css/lightgallery.min.css?v=2.0.3" rel="stylesheet">
+            <link href="https://colorado.rs.gov.br/system/js/horizontal-timeline/horizontal-timeline.css?v=2.0.3" rel="stylesheet">
+        <script type="text/javascript">
+        var CONFIG_URL = 'https://colorado.rs.gov.br/';
+        var PATH_GET = {"url":"pt_BR"};
+        var PATH_GET_S = PATH_GET['url'].split('/');
+        var MSG_CLASS = Array('info', 'warning', 'success', 'danger');
+        var MSG_CLASS_ICO = Array('info-circle', 'exclamation-triangle', 'check-circle', 'times-circle');
+
+        var lang_carregando = 'Carregando...';
+    </script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/jquery.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/jquery-migrate.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/jquery.easing.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/jquery.alphanumeric.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/jquery.cookie.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/jquery.form.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/jquery.maskedinput.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/jquery.maskmoney.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/jquery.placeholder.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/ui/jquery-ui.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/jquery/ui/jquery-ui.pt-BR.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/web/system/bootstrap/js/bootstrap.bundle.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/lightGallery/js/lightgallery-all.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/outdatedbrowser/outdatedbrowser.min.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/system/js/horizontal-timeline/horizontal-timeline.js?v=2.0.2" type="text/javascript"></script>
+            <script src="https://colorado.rs.gov.br/web/system/js/funcoes.js?v=2.0.2" type="text/javascript"></script>
+    </head>
+
+<body>
+    <noscript>
+        <p>- Seu browser n&atilde;o suporta scripts!</p>
+    </noscript>
+    <header class=" home">
+        <div class="fixed-top topo w-100">
+            <div class="bg-secondary barra_top">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-12 col-lg-auto my-auto mr-auto py-2 text-center text-lg-left">
+                            <a class="btn btn-sm btn-outline-primary text-dark border-0" href="#conteudo" accesskey="1">Ir para conte&uacute;do <span class="badge badge-primary p-2">1</span></a>
+                            <a class="btn btn-sm btn-outline-primary text-dark border-0" href="#menu" accesskey="2">Ir para o menu <span class="badge badge-primary p-2">2</span></a>
+                            <a class="btn btn-sm btn-outline-primary text-dark border-0" href="#busca" accesskey="3">Ir para a busca <span class="badge badge-primary p-2">3</span></a>
+                            <a class="btn btn-sm btn-outline-primary text-dark border-0" href="#rodape" accesskey="4">Ir para o rodap&eacute; <span class="badge badge-primary p-2">4</span></a>
+                        </div>
+                        <div class="col-12 col-lg-auto my-auto ml-auto py-2 text-center text-lg-right">
+                            <a href="https://colorado.rs.gov.br/pt_BR/acessibilidade" class="btn btn-sm btn-outline-dark border-0"><span class="fa fa-wheelchair text-primary"></span> Acessibilidade</a>
+                            <a href="#" class="btn btn-sm btn-outline-dark border-0 btn-contrast"><span class="fa fa-adjust text-primary"></span> Alto Contraste</a>
+                            <a href="http://vlibras.com.br" target="_blank" class="btn btn-sm btn-outline-dark border-0"><span class="fa fa-deaf text-primary"></span> Libras</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container-fluid py-2">
+                <div class="row">
+                    <div class="col-auto my-auto mr-auto py-2">
+                        <div id="logo"><a class="align-middle" href="https://colorado.rs.gov.br/" title="Prefeitura Municipal de Colorado">Prefeitura Municipal de Colorado</a></div>
+                    </div>
+                    <div class="col-auto my-auto ml-auto py-2">
+                        <button class="btn btn-outline-primary border-0 d-block d-lg-none" type="button" data-toggle="offcanvas">
+                            <span class="fa fa-bars"></span>
+                            <span class="d-none d-sm-inline-block text-uppercase">&nbsp;MENU</span>
+                        </button>
+                        <div class="d-none d-lg-block">
+                                                        <form action="https://colorado.rs.gov.br/pt_BR/busca" method="get" name="form_bus" id="form_bus">
+                                <div class="input-group">
+                                    <input name="p" id="busca" type="search" class="form-control bg-secondary border-secondary" placeholder="Faça sua busca pelo site." aria-label="Busca" value="">
+                                                                            <div class="input-group-append">
+                                            <button class="btn btn-primary bg-secondary text-tertiary border-secondary buscar enviar" type="submit"><span class="fa fa-search"></span></button>
+                                        </div>
+                                                                    </div>
+                            </form>
+                            <nav class="menu-secundario navbar navbar-expand-lg p-0 h-100">
+                                <div class="navbar-collapse offcanvas-collapse h-100 py-2" id="menu_secundario">
+                                            <ul class="nav nav-fill w-100">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.cittatec.com.br/diariooficial"  target="_blank">DIÁRIO OFICIAL</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/cidade" >CIDADE</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/historico" >HISTÓRICO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/estatisticas" >ESTATÍSTICAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/localizacao" >LOCALIZAÇÃO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/simbolo" >SÍMBOLO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/pontos-turisticos" >PONTOS TURÍSTICOS</a>
+                                    </li>
+                    </ul>
+                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/governo" >GOVERNO</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/administracao" >ADMINISTRAÇÃO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/secretarios" >SECRETÁRIOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/galeria-de-exprefeitos" >GALERIA DE EX-PREFEITOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/rpps" >RPPS</a>
+                                    </li>
+                    </ul>
+                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/secretarias" >SECRETARIAS</a>
+                            <ul class="nav">
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/11/-serviuos-e-agricultura"> SERVIÇOS E AGRICULTURA</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/7/auuo-social-habitauuo">AÇÃO SOCIAL, HABITAÇÃO</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/8/administrauuo-e-fazenda">ADMINISTRAÇÃO E FAZENDA</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/9/educauuo-cultura-e-desporto">EDUCAÇÃO, CULTURA E DESPORTO</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/10/meio-ambiente-saneamento-busico">MEIO AMBIENTE, SANEAMENTO BÁSICO</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/13/planejamento-industria-comurcio-e-turismo">PLANEJAMENTO, INDUSTRIA, COMÉRCIO E TURISMO</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/12/saude">SAÚDE</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/14/secretaria-de-obras">SECRETARIA DE OBRAS</a>
+                </li>
+                    </ul>
+                </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/covid19" >COVID-19</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/pandemia-boletim" >BOLETINS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/bulas" >BULAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/pandemia-decretos" >DECRETOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/denuncie-furafilas" >DENÚNCIE (FURA-FILAS)</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/doses-recebidasadquiridas" >DOSES RECEBIDAS/ADQUIRIDAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/grupos-prioritarios" >GRUPOS PRIORITÁRIOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/insumos-recebidosadquiridos" >INSUMOS RECEBIDOS/ADQUIRIDOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/local-de-vacinacao" >LOCAL DE VACINAÇÃO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/plano-de-acao-municipal" >PLANO DE AÇÃO MUNICIPAL</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/seguranca-eficacia-das-vacinas" >SEGURANÇA, EFICÁCIA DAS VACINAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/sobra-identificada-de-doses" >SOBRA IDENTIFICADA DE DOSES</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/pandemia-vacinometro" >VACINAÇÃO COVID-19</a>
+                                    </li>
+                    </ul>
+                    </li>
+                    </ul>
+                                    </div>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-primary text-light menu">
+                <nav class="navbar navbar-expand-lg p-0 h-100">
+                    <div class="container-fluid">
+                        <div class="navbar-collapse offcanvas-collapse h-100 py-2" id="menu">
+                            <div class="navbar-toggler border-0 p-3 text-right">
+                                <button class="btn btn-outline-secondary border-0" type="button" data-toggle="offcanvas">
+                                    <span class="fa fa-times"></span>
+                                </button>
+                            </div>
+                            <div class="form-busca d-block d-lg-none pt-2 pb-4 px-3">
+                                <form action="https://colorado.rs.gov.br/pt_BR/busca" method="get" name="form_bus" id="form_bus">
+                                    <div class="input-group input-group-lg">
+                                        <input name="p" id="p2" type="search" class="form-control  bg-secondary border-secondary" placeholder="Faça sua busca pelo site." aria-label="Busca" value="">
+                                                                                    <div class="input-group-append">
+                                                <button class="btn btn-primary bg-secondary text-tertiary border-secondary buscar enviar" type="submit"><span class="fa fa-search"></span></button>
+                                            </div>
+                                                                            </div>
+                                </form>
+                            </div>
+                            <div class="d-block d-lg-none">
+                                        <ul class="nav nav-fill w-100">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.cittatec.com.br/diariooficial"  target="_blank">DIÁRIO OFICIAL</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/cidade" >CIDADE</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/historico" >HISTÓRICO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/estatisticas" >ESTATÍSTICAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/localizacao" >LOCALIZAÇÃO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/simbolo" >SÍMBOLO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/pontos-turisticos" >PONTOS TURÍSTICOS</a>
+                                    </li>
+                    </ul>
+                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/governo" >GOVERNO</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/administracao" >ADMINISTRAÇÃO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/secretarios" >SECRETÁRIOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/galeria-de-exprefeitos" >GALERIA DE EX-PREFEITOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/rpps" >RPPS</a>
+                                    </li>
+                    </ul>
+                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/secretarias" >SECRETARIAS</a>
+                            <ul class="nav">
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/11/-serviuos-e-agricultura"> SERVIÇOS E AGRICULTURA</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/7/auuo-social-habitauuo">AÇÃO SOCIAL, HABITAÇÃO</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/8/administrauuo-e-fazenda">ADMINISTRAÇÃO E FAZENDA</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/9/educauuo-cultura-e-desporto">EDUCAÇÃO, CULTURA E DESPORTO</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/10/meio-ambiente-saneamento-busico">MEIO AMBIENTE, SANEAMENTO BÁSICO</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/13/planejamento-industria-comurcio-e-turismo">PLANEJAMENTO, INDUSTRIA, COMÉRCIO E TURISMO</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/12/saude">SAÚDE</a>
+                </li>
+                            <li class="nav-item my-auto ">
+                    <a class="nav-link m-0 text-left" href="https://colorado.rs.gov.br/pt_BR/secretarias/14/secretaria-de-obras">SECRETARIA DE OBRAS</a>
+                </li>
+                    </ul>
+                </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/covid19" >COVID-19</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/pandemia-boletim" >BOLETINS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/bulas" >BULAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/pandemia-decretos" >DECRETOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/denuncie-furafilas" >DENÚNCIE (FURA-FILAS)</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/doses-recebidasadquiridas" >DOSES RECEBIDAS/ADQUIRIDAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/grupos-prioritarios" >GRUPOS PRIORITÁRIOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/insumos-recebidosadquiridos" >INSUMOS RECEBIDOS/ADQUIRIDOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/local-de-vacinacao" >LOCAL DE VACINAÇÃO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/plano-de-acao-municipal" >PLANO DE AÇÃO MUNICIPAL</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/seguranca-eficacia-das-vacinas" >SEGURANÇA, EFICÁCIA DAS VACINAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/sobra-identificada-de-doses" >SOBRA IDENTIFICADA DE DOSES</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/pandemia-vacinometro" >VACINAÇÃO COVID-19</a>
+                                    </li>
+                    </ul>
+                    </li>
+                    </ul>
+                                </div>
+                                    <ul class="nav nav-fill w-100">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/servicos" >SERVIÇOS</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.cittaweb.com.br/autoatendimento"  target="_blank">AUTOATENDIMENTO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.cittaweb.com.br/cnd"  target="_blank">CND</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.cittaweb.com.br/citta/#/ambiental"  target="_blank">LICENCIAMENTO AMBIENTAL</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.cittaweb.com.br/nfse"  target="_blank">NFS-E</a>
+                                    </li>
+                    </ul>
+                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/publicacoes" >PUBLICAÇÕES</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/concursos" >CONCURSOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/conselho-municipal-de-educacao" >CONSELHO MUNICIPAL DE EDUCAÇÃO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/contratos" >CONTRATOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/editais" >EDITAIS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/editais-lei-aldir-blanc" >EDITAIS LEI ALDIR BLANC</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/licitacoes" >LICITAÇÕES</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/lista-de-vagas-escolas-municipais" >LISTA DE VAGAS ESCOLAS MUNICIPAIS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/parcerias" >PARCERIAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/plano-municipal-de-saneamento-basico-" >PLANO MUNICIPAL DE SANEAMENTO BÁSICO </a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/portarias" >PORTARIAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/contas-publicas" >RELATÓRIOS FISCAIS</a>
+                                    </li>
+                    </ul>
+                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/comunicacao" >COMUNICAÇÃO</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/noticias" >NOTÍCIAS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/eventos" >EVENTOS</a>
+                                    </li>
+                    </ul>
+                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/legislacao" >LEGISLAÇÃO</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://cespro.com.br/visualizarDiploma.php?cdMunicipio=7410&cdDiploma=201712491"  target="_blank">CÓDIGO TRIBUTÁRIO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/decretos" >DECRETOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://cespro.com.br/pesquisaLegislacao.php?cdMunicipio=7410&cdTipo=5300&byIndiceAssunto=Orca:OrcaDireOrca"  target="_blank">LDO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://cespro.com.br/visualizarLegislacao.php?cdMunicipio=7410"  target="_blank">LEGISLAÇÃO</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://cespro.com.br/visualizarDiploma.php?cdMunicipio=7410&cdDiploma=201411271"  target="_blank">LEI DE ACESSO A  INFORMAÇÃO - LAI</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://cespro.com.br/visualizarDiploma.php?cdMunicipio=7410&cdDiploma=99995?cdMunicipio=7410&cdTipoDiploma=5260"  target="_blank">LEI ORGÂNICA</a>
+                                    </li>
+                    </ul>
+                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/gestao-administrativa" >GESTÃO ADMINISTRATIVA</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.cittaweb.com.br/transparencia"  target="_blank">PORTAL DA TRANSPARÊNCIA</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/contato" >CONTATO</a>
+                            <ul class="nav rounded">
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/carta-de-servicos" >CARTA DE SERVIÇOS</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/ouvidoria" >OUVIDORIA</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/relatorios-ouvidoria" >RELATÓRIOS OUVIDORIA</a>
+                                    </li>
+                            <li class="nav-item ">
+                    <a class="btn  nav-link border-0" href="https://colorado.rs.gov.br/pt_BR/sic" >SIC</a>
+                                    </li>
+                    </ul>
+                    </li>
+                    </ul>
+                            </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+                        <div id="banner" class="carousel slide carousel-fade" data-interval="3000" data-ride="carousel">
+                    <div class="carousel-inner">
+                                                    <div class="carousel-item active">
+                                <img class="w-100 d-none d-lg-block" src="https://colorado.rs.gov.br/system/filemanager/files/banners_arquivo1_1_1_1778005025.png" alt="Prefeitura">
+                                <img class="h-100 d-block d-lg-none" src="https://colorado.rs.gov.br/system/filemanager/files/banners_arquivo1_1_1_1778005025.png" alt="Prefeitura">
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="w-100 d-none d-lg-block" src="https://colorado.rs.gov.br/system/filemanager/files/banners_arquivo1_2_1_1773333076.png" alt="Praça">
+                                <img class="h-100 d-block d-lg-none" src="https://colorado.rs.gov.br/system/filemanager/files/banners_arquivo1_2_1_1773333076.png" alt="Praça">
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="w-100 d-none d-lg-block" src="https://colorado.rs.gov.br/system/filemanager/files/banners_arquivo1_3_1_1773252266.png" alt="Igreja">
+                                <img class="h-100 d-block d-lg-none" src="https://colorado.rs.gov.br/system/filemanager/files/banners_arquivo1_3_1_1773252266.png" alt="Igreja">
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="w-100 d-none d-lg-block" src="https://colorado.rs.gov.br/system/filemanager/files/banners_arquivo1_4_1_1773254257.png" alt="SOBERANAS">
+                                <img class="h-100 d-block d-lg-none" src="https://colorado.rs.gov.br/system/filemanager/files/banners_arquivo1_4_1_1773254257.png" alt="SOBERANAS">
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="w-100 d-none d-lg-block" src="https://colorado.rs.gov.br/system/filemanager/files/banners_arquivo1_5_1_1773333863.png" alt="gruta cidade">
+                                <img class="h-100 d-block d-lg-none" src="https://colorado.rs.gov.br/system/filemanager/files/banners_arquivo1_5_1_1773333863.png" alt="gruta cidade">
+                            </div>
+                                            </div>
+                    <a class="carousel-control-prev" href="#banner" role="button" data-slide="prev">
+                        <span class="fa fa-chevron-left fa-2x"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#banner" role="button" data-slide="next">
+                        <span class="fa fa-chevron-right fa-2x"></span>
+                    </a>
+                </div>
+                <div class="clearfix"></div>
+            </header>
+    <section id="conteudo">
+        <div class="bg-secondary">
+    <div class="container-fluid py-3">
+        <div class="row">
+<div class="col-sm-6 col-md-4 col-lg-3 my-auto py-2"><a class="btn btn-outline-dark border-0 text-left d-flex justify-content-start align-items-center" href="https://colorado.cittaweb.com.br/transparencia" target="_blank"><span class="fa fa-chevron-right mr-2"><!-- ico --></span>Transpar&ecirc;ncia P&uacute;blica</a></div>
+<div class="col-sm-6 col-md-4 col-lg-3 my-auto py-2"><a class="btn btn-outline-dark border-0 text-left d-flex justify-content-start align-items-center" href="pt_BR/licitacoes"><span class="fa fa-chevron-right mr-2"><!-- ico --></span>Licita&ccedil;&otilde;es</a></div>
+<div class="col-sm-6 col-md-4 col-lg-3 my-auto py-2"><a class="btn btn-outline-dark border-0 text-left d-flex justify-content-start align-items-center" href="https://atendimento.receita.rs.gov.br/lista-de-debitos-inscritos-em-divida-ativa" target="_blank"><span class="fa fa-chevron-right mr-2"><!-- ico --></span>Contribuintes em D&iacute;vida Ativacom o Estado</a></div>
+<div class="col-sm-6 col-md-4 col-lg-3 my-auto py-2"><a class="btn btn-outline-dark border-0 text-left d-flex justify-content-start align-items-center" href="https://colorado.cittaweb.com.br/autoatendimento" target="_blank"><span class="fa fa-chevron-right mr-2"><!-- ico --></span>Auto- Atendimento</a></div>
+<div class="col-sm-6 col-md-4 col-lg-3 my-auto py-2"><a class="btn btn-outline-dark border-0 text-left d-flex justify-content-start align-items-center" href="pt_BR/ouvidoria"><span class="fa fa-chevron-right mr-2"><!-- ico --></span>Ouvidoria</a></div>
+<div class="col-sm-6 col-md-4 col-lg-3 my-auto py-2"><a class="btn btn-outline-dark border-0 text-left d-flex justify-content-start align-items-center" href="pt_BR/sic"><span class="fa fa-chevron-right mr-2"><!-- ico --></span>Acesso &agrave; Informa&ccedil;&atilde;o</a></div>
+<div class="col-sm-6 col-md-4 col-lg-3 my-auto py-2"><a class="btn btn-outline-dark border-0 text-left d-flex justify-content-start align-items-center" href="pt_BR/covid19"><span class="fa fa-chevron-right mr-2"><!-- ico --></span>Covid-19</a></div>
+<div class="col-sm-6 col-md-4 col-lg-3 my-auto py-2"><a class="btn btn-outline-dark border-0 text-left d-flex justify-content-start align-items-center" href="https://colorado.cittaweb.com.br/nfse" target="_blank"><span class="fa fa-chevron-right mr-2"><!-- ico --></span>NFS-E</a></div>
+<div class="col-sm-6 col-md-4 col-lg-3 my-auto py-2"><a class="btn btn-outline-dark border-0 text-left d-flex justify-content-start align-items-center" href="https://nfg.sefaz.rs.gov.br/site/sorteios.aspx" target="_blank"><span class="fa fa-chevron-right mr-2"><!-- ico --></span>Nota Fiscal Ga&uacute;cha</a></div>
+<div class="col-sm-6 col-md-4 col-lg-3 my-auto py-2"><a class="btn btn-outline-light border-0 text-left d-flex justify-content-start align-items-center" href="pt_BR/editais-lei-aldir-blanc"><img src="system/filemanager/biblioteca/bg-aldir-blanc.png" alt="" width="100%"></a></div>
+</div>    </div>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md py-4">
+            <p class="h2 title-custom py-3">Notícias em destaque</p>
+                            <div class="row pb-4">
+                                            <div class="col-sm-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://colorado.rs.gov.br/pt_BR/noticias/727/cadastro-nota-fiscal-gaucha"><img src="https://colorado.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/informativos_anexos_1_727_2517_1793017065.png&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">26/10/2026</p>
+                                    <a href="https://colorado.rs.gov.br/pt_BR/noticias/727/cadastro-nota-fiscal-gaucha" class="h4 pb-2 card-title">Cadastro Nota Fiscal Gaucha</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="col-sm-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://colorado.rs.gov.br/pt_BR/noticias/725/emissao-de-nfes"><img src="https://colorado.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/informativos_anexos_1_725_2515_1784894875.png&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">24/07/2026</p>
+                                    <a href="https://colorado.rs.gov.br/pt_BR/noticias/725/emissao-de-nfes" class="h4 pb-2 card-title">Emissão da NFS-e</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="col-sm-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://colorado.rs.gov.br/pt_BR/noticias/724/nota-fiscal-gaucha2"><img src="https://colorado.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/informativos_anexos_1_724_2514_1783450551.png&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">07/07/2026</p>
+                                    <a href="https://colorado.rs.gov.br/pt_BR/noticias/724/nota-fiscal-gaucha2" class="h4 pb-2 card-title">NOTA FISCAL GAUCHA</a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="col-sm-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://colorado.rs.gov.br/pt_BR/noticias/726/sorteio-da-nota-"><img src="https://colorado.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/informativos_anexos_1_726_2516_1787319719.png&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">30/06/2026</p>
+                                    <a href="https://colorado.rs.gov.br/pt_BR/noticias/726/sorteio-da-nota-" class="h4 pb-2 card-title">Sorteio da Nota Premiada </a>
+                                </div>
+                            </div>
+                        </div>
+                                            <div class="col-sm-3 py-2 my-auto">
+                            <div class="card">
+                                                                    <a href="https://colorado.rs.gov.br/pt_BR/noticias/723/informativo-pit-n-33"><img src="https://colorado.rs.gov.br/system/php/wideimage/images.php?arquivo=filemanager/files/informativos_anexos_1_723_2513_1777551897.png&amp;largura=350&amp;altura=350" class="card-img"></a>
+                                                                <div class="card-body text-center">
+                                    <p class="card-text text-muted text-center">30/04/2026</p>
+                                    <a href="https://colorado.rs.gov.br/pt_BR/noticias/723/informativo-pit-n-33" class="h4 pb-2 card-title">INFORMATIVO PIT Nº 33</a>
+                                </div>
+                            </div>
+                        </div>
+                                    </div>
+                <p class="pt-2 pb-0">
+                    <a class="btn btn-lg btn-primary btn-block" href="https://colorado.rs.gov.br/pt_BR/noticias"><span class="fa fa-plus"></span> Not&iacute;cias</a>
+                </p>
+                    </div>
+
+    </div>
+</div>
+<div class="bg-secondary">
+    <div class="row no-gutters">
+        <div class="col-md-6 bg-dark">
+            <div id="mapa">
+    <div id="map_canvas"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key=[SEGREDO REDIGIDO]"></script>
+    <script>
+
+        function initialize() {
+
+            var myLatlng = new google.maps.LatLng(-28.5271685, -52.9928085);
+
+            var styleArray = [
+                {
+                    "stylers": [
+                        {"hue": "#2D3C50"},
+                        {"saturation": 1},
+                        {"lightness": 1},
+                        {"gamma": 1},
+                        {"invert_lightness": true}
+                    ]
+                }
+            ];
+
+            var mapOptions = {
+                zoom: 15,
+                center: myLatlng,
+                mapTypeControl: false,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                zoomControl: true,
+                zoomControlOptions: {
+                    position: google.maps.ControlPosition.TOP_LEFT
+                },
+                scaleControl: false,
+                streetViewControl: true,
+                streetViewControlOptions: {
+                    position: google.maps.ControlPosition.LEFT_TOP
+                },
+                fullscreenControl: false,
+                fullscreenControlOptions: {
+                    position: google.maps.ControlPosition.TOP_RIGHT
+                },
+                scrollwheel: false/*,
+                 styles: styleArray*/
+            };
+
+            var map = new google.maps.Map(document.getElementById('map_canvas'), mapOptions);
+
+            var infowindow1 = new google.maps.InfoWindow({
+                content: '<div class="map_marker">' +
+                        '' +
+                        '<span class="clear"></span>' +
+                        '</div>'
+            });
+
+            var marker1 = new google.maps.Marker({
+                position: new google.maps.LatLng(-28.5271685, -52.9928085),
+                map: map,
+                title: 'Prefeitura Municipal de Colorado',
+                icon: CONFIG_URL + 'web/system/images/bg_logo_ico.png'
+            });
+
+            google.maps.event.addListener(marker1, 'click', function () {
+                infowindow1.open(map, marker1);
+            });
+
+        }
+
+        google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+</div>
+        </div>
+        <div class="col-md-6 my-auto">
+            <div class="p-4 m-auto ml-md-0" style="width:90%;">
+                <p class="h4">Newsletter</p>
+                <p>Cadastre-se para receber novidades</p>
+                <div id="form_news" class="pt-3">
+                    <form action="" method="post" name="form_new" id="form_new">
+                        <div class="form-row">
+                            <div class="form-group col-12 m-0 py-1 my-auto">
+                                <label for="new_nome" class="d-none">Seu nome</label>
+                                <input name="new_nome" id="new_nome" type="text" class="form-control" placeholder="Seu nome">
+                            </div>
+                            <div class="form-group col-12 m-0 py-1 my-auto">
+                                <label for="new_email" class="d-none">Seu e-mail</label>
+                                <input name="new_email" id="new_email" type="email" class="form-control" placeholder="Seu e-mail">
+                            </div>
+                            <div class="col-12 py-1 text-center">
+                                <input name="enviar_new" type="hidden" value="true">
+                                <button type="submit" class="btn btn-primary btn-block enviar">Cadastrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>    </section>
+    <footer id="rodape">
+        <div class="bg-primary text-light">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-auto my-auto mx-auto mx-md-0 py-2 text-left">
+                        <div class="logo-text">
+                            <div class="p1">PREFEITURA MUNICIPAL DE</div>
+                            <div class="p2">Colorado</div>
+                        </div>
+                    </div>
+                    <div class="col-md my-auto text-center text-md-right">
+                        <p class="font-weight-bold font-italic">Atendimento ao Público</p>
+                        <p>Segunda-feira a sexta-feira</p>
+<p>Manh&atilde; 08:00h &agrave;s 11:30h</p>
+<p>Tarde 13:15h &agrave;s 16:20h</p>                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid py-3">
+            <div class="row text-center text-md-left">
+                <div class="col-md-6 col-lg-4 my-auto py-2">
+                    <p class="font-weight-bold">Colorado/RS</p>
+                    <p><a href="https://www.google.com.br/maps/place/Prefeitura+Municipal+de+Colorado/@-28.5280673,-52.9974549,17z/data=!4m9!1m2!2m1!1sprefeitura+colorado!3m5!1s0x94fd417d16ac8391:0xc8d662442c8d63aa!8m2!3d-28.5271906!4d-52.9928126!15sChNwcmVmZWl0dXJhIGNvbG9yYWRvkgEJY2l0eV9oYWxs" target="_blank" class="btn btn-outline-dark border-0">Av. Boa Esperança, 692 - CEP: 99.460-000</a></p>
+                </div>
+                <div class="col-md my-auto py-2">
+                    <p class="font-weight-bold">E-mail</p>
+                    <p><a href="/cdn-cgi/l/email-protection#ea9a8789858685988b8e85aa89858685988b8e85c49899c48d859cc48898" title="pmcolorado@colorado.rs.gov.br" class="btn btn-outline-dark border-0 text-left"><span class="__cf_email__" data-cfemail="5f2f323c3033302d3e3b301f3c3033302d3e3b30712d2c71383029713d2d">[email&#160;protected]</span></a></p>
+                </div>
+                <div class="col-md col-lg-auto my-auto py-2">
+                    <p class="font-weight-bold">Telefone</p>
+                    <p>
+                        <a href="tel:05431910001" class="btn btn-outline-dark border-0">(54) 3191-0001</a>
+                    </p>
+                </div>
+                <div class="col col-sm-6 col-lg-auto my-auto py-2">
+                    <p class="font-weight-bold">Acompanhe-nos</p>
+                    <p>
+                        <a class="btn btn-outline-dark border-0" href="https://www.facebook.com/profile.php?id=100069853818958" target="_blank">
+                            <span class="fa fa-facebook fa-2x"></span>
+                        </a>
+                        <a class="btn btn-outline-dark border-0" href="https://www.instagram.com/prefeituradecoloradors" target="_blank">
+                            <span class="fa fa-instagram fa-2x"></span>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="bg-secondary text-tertiary">
+            <div class="container-fluid py-4">
+                <div class="row">
+                    <div class="col-md my-auto">
+                        <p class="text-center text-md-left m-0">&COPY; 2021 - <a href="https://colorado.rs.gov.br/" title="Prefeitura Municipal de Colorado" class="btn btn-outline-tertiary border-0">Prefeitura Municipal de Colorado</a></p>
+                    </div>
+                    <div class="col-md my-auto">
+                        <p class="text-center text-md-right m-0"><a href="http://www.addesign.com.br" title="Addesign - Cria&ccedil;&atilde;o de Sites" class="btn btn-outline-tertiary border-0" target="_blank">Feito com <span class="fa fa-heart"></span> por Addesign</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <div class="clearfix"></div>
+            <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+            (function(i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function() {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+            ga('create', 'UA-17491649-12', 'auto');
+            ga('send', 'pageview');
+        </script>
+        <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id))
+                return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v3.2&appId=282468742327802&autoLogAppEvents=1';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <script>
+        $(function() {
+            outdatedBrowser({
+                bgColor: '#f25648',
+                color: '#fff'
+            });
+        });
+    </script>
+    <div id="outdated">
+         <h6>O seu navegador est&aacute; desatualizado!</h6>
+ <p>Atualize o seu navegador para ter uma melhor experi&ecirc;ncia e visualiza&ccedil;&atilde;o deste site. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/pt-br">Atualize o seu navegador agora</a></p>
+ <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Fechar">&times;</a></p>
+    </div>
+</body>
+
+</html>

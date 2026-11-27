@@ -1,0 +1,1831 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta name="title" content="Prefeitura Municipal de Barra Funda/RS | Barra Funda - RS">
+  <meta name="og:title" content="Prefeitura Municipal de Barra Funda/RS | Barra Funda - RS">
+  <meta name="og:site_name" content="Barra Funda - RS">
+  <meta name="image" content="https://barrafunda.rs.gov.br/images/logo.png">
+  <meta name="og:image" content="https://barrafunda.rs.gov.br/images/logo.png">
+  <meta name="og:image:url" content="https://barrafunda.rs.gov.br/images/logo.png">
+  <meta name="og:image:secure_url" content="https://barrafunda.rs.gov.br/images/logo.png">
+  <meta name="keywords" content="prefeitura, municipal, barra, fundars, portal, voce, pode, consultar, debitos, emitir, guias, pagamento, realizar, parcelamentos, gerar, cnd, imprimir">
+  <meta name="abstract" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, ...">
+  <meta name="description" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, gerar CND, imprimir BCI, acessar o sistema de NFSe">
+  <meta name="og:description" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, gerar CND, imprimir BCI, acessar o sistema de NFSe">
+  <meta name="og:type" content="website">
+
+    <meta name="csrf-param" content="_csrf-frontend">
+<meta name="csrf-token" content="aEd6l-hxmqAIuP9kwBpEiHmEghgPT6cHbfz_iajQumI7Fxf4ikD7-nnRtQuYQDLsO8_QdTg39UNetJLk27HwVw==">
+  <title>Barra Funda/RS</title>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-118871719-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-118871719-1');
+  </script>
+  <link href="/css/impressao.css?v=1751025589" rel="stylesheet" media="print">
+<link href="/assets/f2691771/dist/assets/owl.carousel.min.css?v=1751026528" rel="stylesheet">
+<link href="/assets/f2691771/dist/assets/owl.theme.default.min.css?v=1751026528" rel="stylesheet">
+<link href="/assets/2feea795/dist/jquery.bxslider.css?v=1793037407" rel="stylesheet">
+<link href="/assets/37c17581/css/bootstrap.css?v=1751026520" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&amp;display=swap" rel="stylesheet">
+<link href="/css/animacao.css?v=1751025589" rel="stylesheet">
+<link href="/css/estilos.css?v=1776346283" rel="stylesheet">
+<link href="/css/responsivo.css?v=1751025589" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+<link href="/assets/17b785b8/cookieconsent.min.css?v=1751026520" rel="stylesheet">
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" defer crossorigin="anonymous"></script>
+<script>var DynamikaBaseUrl = "http://barrafunda.rs.gov.br";</script></head>
+
+<body>
+      
+<div class="modal fade dontPrint" id="divImpressao" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" >
+    <div class="modal-dialog modal-lg dontPrint" role="document">
+        <div class="modal-content dontPrint">
+            <div class="modal-header dontPrint">
+                <div id="opcoesImpressao" class="col-md-12 col-sm-12 hidden-xs text-left">
+                    <a href="javascript:;" onclick="javascript:window.print();" title="Imprimir Página" class="btnPadrao btn-sm">Imprimir</a>
+                    <a href="javascript:;" onclick="fecharImpressao()" title="Fechar Impresssão" class="btnPadrao btn-sm">Fechar</a>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="conteudoImpressao"></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->    
+    <header class="topo">
+      <section class="container-fluid">
+        <div id="grid-busca" class="row text-center padding20V">
+          <div class="col-12 col-sm-5 col-md-6 col-lg-6">
+            <div class="logo">
+              <a href="/" title="Barra Funda/RS">
+                <img src="/images/logo.png" alt="Barra Funda">              </a>
+            </div>
+            <div class="slogan">
+              <span>Prefeitura Municipal de</span>
+              <span>BARRA FUNDA</span>
+            </div>
+          </div>
+          <div class="col-12 col-sm-7 col-md-6 col-lg-6 text-right box-busca">
+            <div class="row">
+              <div class="col-12">
+                <form id="form-busca" class="form-inline" action="/busca" method="get">                <div class="form-group mx-sm-1">
+                  <input type="text" class="form-control" id="pesquisa" name="q" size="30" placeholder="Digite aqui ...">
+                </div>
+                <button title="pesquisar" type="submit" class="pop-icon"><i class="fas fa-search icon"></i><span>&nbsp;&nbsp;BUSCA</span></button>
+                </form>              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 margin10T text-right posicao-btn-topo">
+                <span class="icone" id="icone-cr"><i class="fas fa-wheelchair"></i></span>
+                                                      <a href="/pagina/view/25" target="_blank" title="Ouvidoria" class="btnTopo">Ouvidoria</a>
+                                      <a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" target="_blank" title="Portal Transparência" class="btnTopo">Portal Transparência</a>
+                                      <a href="https://transparencia.barrafunda.rs.gov.br/PortalContribuinteJavaEnvironment/com.tche.portalcontribuinte.whome" target="_blank" title="Guias de Água, IPTU e Certidões" class="btnTopo">Guias de Água, IPTU e Certidões</a>
+                                                  <div id="acessibilidade" class="dontPrint">
+    <div id="texto">
+        <span class="links">
+            <a id="linkMenu" accesskey="1" href="javascript:;" title="Menu." class="text-left">
+                <i class="fas fa-bars"></i>&nbsp;&nbsp;Menu
+            </a>
+            <a id="linkConteudo" accesskey="2" href="#conteudo" title="Conteúdo." class="text-left">
+                <i class="fas fa-edit"></i>&nbsp;&nbsp;Conteúdo
+            </a>
+            <a id="linkBusca" accesskey="3" href="javascript:;" title="Busca." class="text-left">
+                <i class="fas fa-search"></i>&nbsp;&nbsp;Busca
+            </a>
+            <a id="linkMapaSite" accesskey="4" href="/site/mapa-site" title="Mapa." class="text-left">
+                <i class="fas fa-sitemap"></i>&nbsp;&nbsp;Mapa
+            </a>
+            <a id="acessibilidade-pagina" accesskey="0" href="/pagina/view/16" title="Acessibilidade." class="text-left">
+                <i class="fas fa-wheelchair"></i>&nbsp;&nbsp;Acessibilidade
+            </a>
+            <a id="lgpd" accesskey="0" href="/pagina/view/24" title="Lei Geral de Proteção de Dados." class="text-left">
+                <i class="fas fa-user-shield"></i>&nbsp;&nbsp;Lei Geral de Proteção de Dados
+            </a>
+            <br />
+            <a accesskey="5" id='aumentarFonte' href="javascript:;" title="Aumentar Fonte">
+                <i class="fas fa-plus-circle"></i>&nbsp;&nbsp;Fonte Maior
+            </a>
+            <a accesskey="6" id='diminuirFonte' href="javascript:;" title="Diminuir Fonte">
+                <i class="fas fa-minus-circle"></i>&nbsp;&nbsp;Fonte Menor
+            </a>
+            <a accesskey="7" id='fonteOriginal' href="javascript:;" title="Fonte Original">
+                <i class="fas fa-font"></i>&nbsp;&nbsp;Fonte Padrão
+            </a>
+            <br />
+            <a accesskey="8" id="corOriginal" href="javascript:;" title="Cor Original">
+                <h5 class="fas fa-circle"></h5> <small>Original</small>
+            </a>
+            <a accesskey="9" id='contraste' href="javascript:;" title="Contraste.">
+                <i class="fas fa-adjust"></i>&nbsp;&nbsp;Contraste
+            </a>
+        </span>
+    </div>
+</div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>  
+
+      <section class="container-fluid bg-light">
+        <div class="row">
+          <div class="col-12 midias-sociais-top text-right">
+            <a class="mr-2" href="https://www.instagram.com/barrafunda.rs?igsh=MTJzd2VlZzhvOXRrZg==" target="_blank">
+              <img src="/images/logo-instagram.png" alt="Facebook">            </a>
+            <a href="https://www.facebook.com/PMBarraFunda?rdid=6b8pZSlKrgUc3jmj&share_url=https%3A%2F%2Fwww.facebook.com%2Fshare%2F15GqNAYDrb%2F#" target="_blank">
+              <img src="/images/logo-facebook.png" alt="Facebook">            </a>
+          </div>
+        </div>
+      </section>
+
+      <span onclick="openNav()" id="menu-focus" class="icon-menu-principal"><i><i class="fa fa-bars"></i> </i> menu</span>
+      
+    <section id="menu" class="bg-menu">
+        <div class="container-fluid">
+            <nav>
+                <ul class="main-nav">                                    
+
+
+    <li>
+        <a href="#" title="Institucional" target="">Institucional&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Sobre Barra Funda) -->
+	<span class="menu-coluna">
+
+    <h3>Sobre Barra Funda</h3>
+
+    
+    
+    <li><a href="/pagina/view/1" title="História." target="">História</a></li>
+            
+    
+    <li><a href="/pagina/view/2" title="Localização." target="">Localização</a></li>
+            
+    
+    <li><a href="/pagina/view/3" title="Símbolos oficiais." target="">Símbolos oficiais</a></li>
+            
+    
+    <li><a href="/pagina/view/4" title="Números e curiosidades." target="">Números e curiosidades</a></li>
+            
+    
+    <li><a href="/pagina/view/5" title="Gestões anteriores." target="">Gestões anteriores</a></li>
+            
+    
+    <li><a href="/pagina/view/32" title="Homenagem a Barra Funda ." target="">Homenagem a Barra Funda </a></li>
+        
+
+	</span>
+                            
+                        
+	<!-- MENU SUB AUTO AFTER MENU ROOT (Institucional) -->
+	<span class="menu-coluna">
+            
+    <li><a href="https://www.barrafunda.rs.gov.br/site/mapa-site" title="Mapa do Site." target="">Mapa do Site</a></li>
+                                            
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Governo" target="">Governo&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Gabinete) -->
+	<span class="menu-coluna">
+
+    <h3>Gabinete</h3>
+
+    
+    
+    <li><a href="/secretaria/view/8" title="Gabinete do Prefeito." target="">Gabinete do Prefeito</a></li>
+            
+    
+    <li><a href="/secretaria/view/9" title="Gabinete do Vice-Prefeito." target="">Gabinete do Vice-Prefeito</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Secretarias) -->
+	<span class="menu-coluna">
+
+    <h3>Secretarias</h3>
+
+    
+    
+    <li><a href="/secretaria/view/1" title="Administração e Planejamento." target="">Administração e Planejamento</a></li>
+            
+    
+    <li><a href="/secretaria/view/3" title="Agricultura e Meio Ambiente." target="">Agricultura e Meio Ambiente</a></li>
+            
+    
+    <li><a href="/secretaria/view/2" title="Assistência Social." target="">Assistência Social</a></li>
+            
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/secretaria/view/13/cultura-e-turismo" title="Cultura e Turismo." target="">Cultura e Turismo</a></li>
+            
+    
+    <li><a href="/secretaria/view/4" title="Educação e Desporto." target="">Educação e Desporto</a></li>
+            
+    
+    <li><a href="/secretaria/view/5" title="Finanças." target="">Finanças</a></li>
+            
+    
+    <li><a href="/secretaria/view/6" title="Obras, Serviços e Trânsito." target="">Obras, Serviços e Trânsito</a></li>
+            
+    
+    <li><a href="/secretaria/view/7" title="Saúde." target="">Saúde</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Órgãos de Assessoramento) -->
+	<span class="menu-coluna">
+
+    <h3>Órgãos de Assessoramento</h3>
+
+    
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/departamento/view/28/asssessoria-juridica" title="Procuradoria Jurídica." target="">Procuradoria Jurídica</a></li>
+            
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/departamento/view/29" title="Comunicação.." target="">Comunicação.</a></li>
+            
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/departamento/view/27/controle-interno" title="Controle interno." target="">Controle interno</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Estrutura Administrativa) -->
+	<span class="menu-coluna">
+
+    <h3>Estrutura Administrativa</h3>
+    <p class="text-left">Consulte informações dos responsáveis, endereço, horário de atendimento e telefones de contato das instituições que compõem a estrutura administrativa do município.</p>
+    
+    
+    <li><a href="/departamento/cat/2" title="Conselhos." target="">Conselhos</a></li>
+            
+    
+    <li><a href="/departamento/cat/1" title="Departamentos." target="">Departamentos</a></li>
+            
+    
+    <li><a href="/departamento/cat/4" title="Órgãos." target="">Órgãos</a></li>
+            
+    
+    <li><a href="/departamento/cat/3" title="Setores." target="">Setores</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Legislação" target="">Legislação&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Legislação) -->
+	<span class="menu-coluna">
+
+    <h3>Legislação</h3>
+
+    
+    
+    <li><a href="https://barrafunda.cespro.com.br/" title="Leis Municipais." target="">Leis Municipais</a></li>
+            
+    
+    <li><a href="https://barrafunda.cespro.com.br/visualizarLeisPorAno.php?cdMunicipio=7266&amp;cdTipoDiploma=7621" title="Decretos." target="">Decretos</a></li>
+            
+    
+    <li><a href="/legislacao/cat/4" title="Portarias." target="">Portarias</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/pesquisaLegislacao.php?cdMunicipio=7266&amp;cdTipo=7620&amp;byIndiceAssunto=Orca:OrcaPlanPlurInve" title="PPA." target="">PPA</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/pesquisaLegislacao.php?cdMunicipio=7266&amp;cdTipo=7620&amp;byIndiceAssunto=Orca:OrcaDireOrca" title="LDO." target="">LDO</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/pesquisaLegislacao.php?cdMunicipio=7266&amp;cdTipo=7620&amp;byIndiceAssunto=Orca:OrcaReceDesp" title="LOA." target="">LOA</a></li>
+            
+    
+    <li><a href="/legislacao/cat/2" title="Resoluções." target="">Resoluções</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" title="Transparência" target="">Transparência&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Prestação de Contas) -->
+	<span class="menu-coluna">
+
+    <h3>Prestação de Contas</h3>
+
+    
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br:8443/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" title="Registro de Despesas." target="">Registro de Despesas</a></li>
+            
+    
+    <li><a href="/transparencia/index/cat/1" title="Demonstrações Contábeis." target="">Demonstrações Contábeis</a></li>
+            
+    
+    <li><a href="/transparencia/index/cat/3" title="Pareceres de Contas." target="">Pareceres de Contas</a></li>
+            
+    
+    <li><a href="/transparencia/index/cat/2" title="Relatórios de Gestão Fiscal." target="">Relatórios de Gestão Fiscal</a></li>
+            
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wfolha" title="Recursos Humanos." target="">Recursos Humanos</a></li>
+            
+    
+    <li><a href="/pagina/view/28" title="Acordos Firmados." target="">Acordos Firmados</a></li>
+            
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wdiarias?ExercicioAno=2024&amp;NaturezaCodigo=33901400000000&amp;TipoEnte=E" title="Diárias." target="">Diárias</a></li>
+            
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wconveniosdireito" title="Convênios, repasses ou transferências ." target="">Convênios, repasses ou transferências </a></li>
+            
+    
+    <li><a href="/documento/cat/7" title="Parcerias - Lei n° 13.019/2014." target="">Parcerias - Lei n° 13.019/2014</a></li>
+            
+    
+    <li><a href="/documento/cat/5" title="Consórcio Intermunicipal de Saúde." target="">Consórcio Intermunicipal de Saúde</a></li>
+            
+    
+    <li><a href="https://municipalista.paineis.gov.br/extensions/municipalista/municipalista.html" title="Emendas Parlamentares/Painel Tranferegov.br." target="">Emendas Parlamentares/Painel Tranferegov.br</a></li>
+            
+    
+    <li><a href="https://parlamentar.paineis.gov.br/extensions/parlamentar/parlamentar.html" title="Emendas Parlamentares/Painel Parlamentar." target="">Emendas Parlamentares/Painel Parlamentar</a></li>
+            
+    
+    <li><a href="https://www.transparencia.rs.gov.br/emendas-parlamentares/emendas-parlamentares-estaduais/dados/" title="Emendas Parlamentares / Estaduais." target="">Emendas Parlamentares / Estaduais</a></li>
+            
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/pagina/view/38" title="Emenda Parlamentares Municipal." target="">Emenda Parlamentares Municipal</a></li>
+            
+    
+    <li><a href="https://paineis.tcers.tc.br/extensions/ControleSocial-TransferenciasEspeciais/emendaspix.html" title="Emendas PIX." target="">Emendas PIX</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Fale Conosco) -->
+	<span class="menu-coluna">
+
+    <h3>Fale Conosco</h3>
+
+    
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" title="Portal da Transparência." target="">Portal da Transparência</a></li>
+            
+    
+    <li><a href="/esic" title="SIC - Serviço de Informação ao Cidadão." target="">SIC - Serviço de Informação ao Cidadão</a></li>
+            
+    
+    <li><a href="/pagina/view/25" title="Ouvidoria." target="">Ouvidoria</a></li>
+            
+    
+    <li><a href="/pagina/view/26" title="Carta de Serviços." target="">Carta de Serviços</a></li>
+            
+    
+    <li><a href="/faq" title="Perguntas Frequentes." target="">Perguntas Frequentes</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Documentos" target="">Documentos&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Gerais) -->
+	<span class="menu-coluna">
+
+    <h3>Gerais</h3>
+
+    
+    
+    <li><a href="/documento/cat/2" title="Editais." target="">Editais</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Previdência Servidores Municipais) -->
+	<span class="menu-coluna">
+
+    <h3>Previdência Servidores Municipais</h3>
+
+    
+    
+    <li><a href="/pagina/view/18" title="Sobre o RPPS." target="">Sobre o RPPS</a></li>
+            
+    
+    <li><a href="/documento/cat/4" title="Documentos RPPS." target="">Documentos RPPS</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Serviços" target="">Serviços&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Cidadão) -->
+	<span class="menu-coluna">
+
+    <h3>Cidadão</h3>
+
+    
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/PortalContribuinteJavaEnvironment/servlet/com.tche.portalcontribuinte.whome" title="Portal do Contribuinte." target="">Portal do Contribuinte</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Empresas) -->
+	<span class="menu-coluna">
+
+    <h3>Empresas</h3>
+
+    
+    
+    <li><a href="/servico/view/5" title="Nota Fiscal Eletrônica." target="">Nota Fiscal Eletrônica</a></li>
+            
+    
+    <li><a href="/servico/view/2" title="Licenças Ambientais." target="">Licenças Ambientais</a></li>
+            
+    
+    <li><a href="/servico/view/6" title="Serviço de Inspeção Municipal." target="">Serviço de Inspeção Municipal</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Servidor Público) -->
+	<span class="menu-coluna">
+
+    <h3>Servidor Público</h3>
+
+    
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/CchJavaEnvironment/servlet/com.tche.cch.wcontracheque" title="Contracheque Online." target="">Contracheque Online</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Comunicação" target="">Comunicação&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Imprensa) -->
+	<span class="menu-coluna">
+
+
+
+    
+    
+    <li><a href="/noticia" title="Notícias." target="">Notícias</a></li>
+            
+    
+    <li><a href="/evento" title="Calendário de Eventos." target="">Calendário de Eventos</a></li>
+            
+    
+    <li><a href="/midia/fotos" title="Galeria de Fotos." target="">Galeria de Fotos</a></li>
+            
+    
+    <li><a href="/midia/audios" title="Áudios." target="">Áudios</a></li>
+            
+    
+    <li><a href="/enquete" title="Enquetes." target="">Enquetes</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Licitações" target="">Licitações&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Licitações) -->
+	<span class="menu-coluna">
+
+    <h3>Licitações</h3>
+
+    
+    
+    <li><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Barra%20Funda,74000&amp;cs=16fmTvd7dH_F3gOI4fQx7w-JNyGs" title="Licitações." target="">Licitações</a></li>
+            
+    
+    <li><a href="https://pncp.gov.br/app/pca/94704004000102/2026" title="Plano de Contratações Anuais." target="">Plano de Contratações Anuais</a></li>
+            
+    
+    <li><a href="https://portaldatransparencia.gov.br/sancoes/consulta?paginacaoSimples=true&amp;tamanhoPagina=&amp;offset=&amp;direcaoOrdenacao=asc&amp;orgaoEntidadeSancionadora=Prefeitura+de+Barra+Funda&amp;colunasSelecionadas=linkDeta" title="Licitantes e/ou Contratados Sancionados Administrativamente ." target="">Licitantes e/ou Contratados Sancionados Administrativamente </a></li>
+            
+    
+    <li><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Barra%20Funda,74000&amp;cs=16fmTvd7dH_F3gOI4fQx7w-JNyGs" title="LicitaCon." target="">LicitaCon</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Contratos" target="">Contratos&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Contratos e Aditivos) -->
+	<span class="menu-coluna">
+
+    <h3>Contratos e Aditivos</h3>
+
+    
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/contrato" title="Contratos Administrativos." target="">Contratos Administrativos</a></li>
+            
+    
+    <li><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:21:::NO:RIR,21:P21_PAG_RETORNO,F50500_CD_ORGAO:20,74000&amp;cs=1jazmB49BWe6ntApBT4Rqd3Tk24k" title="Contrato LicitaCon - TCE." target="">Contrato LicitaCon - TCE</a></li>
+            
+    
+    <li><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:25:::NO:25,RIR:F50500_CD_ORGAO:74000&amp;cs=1jr8yAchaqTtK6ACS_ZA8eEUe2TA" title="Fiscais de Contratos." target="">Fiscais de Contratos</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Seletivos" target="">Seletivos&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Concursos Públicos ou Processos Seletivos) -->
+	<span class="menu-coluna">
+
+    <h3>Concursos Públicos ou Processos Seletivos</h3>
+    <p class="text-left">Acompanhe e concorra para as oportunidades de trabalho que a Prefeitura de Barra Funda disponibiliza através de concursos públicos ou processos seletivos. Consulte informações nos links abaixo.</p>
+    
+    
+    <li><a href="/concurso/cat/2" title="Concursos Públicos." target="">Concursos Públicos</a></li>
+            
+    
+    <li><a href="/concurso/cat/11" title="Processos Seletivos Públicos." target="">Processos Seletivos Públicos</a></li>
+            
+    
+    <li><a href="/concurso/cat/12" title="Processos Seletivos Simplificados." target="">Processos Seletivos Simplificados</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                                    </ul>            </nav>
+        </div>
+    </section>
+
+
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <nav>
+        <ul class="menu">                    
+
+
+    <li>
+        <a href="#" title="Institucional" target="">Institucional&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Sobre Barra Funda) -->
+	<span class="menu-coluna">
+
+    <h3>Sobre Barra Funda</h3>
+
+    
+    
+    <li><a href="/pagina/view/1" title="História." target="">História</a></li>
+            
+    
+    <li><a href="/pagina/view/2" title="Localização." target="">Localização</a></li>
+            
+    
+    <li><a href="/pagina/view/3" title="Símbolos oficiais." target="">Símbolos oficiais</a></li>
+            
+    
+    <li><a href="/pagina/view/4" title="Números e curiosidades." target="">Números e curiosidades</a></li>
+            
+    
+    <li><a href="/pagina/view/5" title="Gestões anteriores." target="">Gestões anteriores</a></li>
+            
+    
+    <li><a href="/pagina/view/32" title="Homenagem a Barra Funda ." target="">Homenagem a Barra Funda </a></li>
+        
+
+	</span>
+                            
+                        
+	<!-- MENU SUB AUTO AFTER MENU ROOT (Institucional) -->
+	<span class="menu-coluna">
+            
+    <li><a href="https://www.barrafunda.rs.gov.br/site/mapa-site" title="Mapa do Site." target="">Mapa do Site</a></li>
+                                            
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Governo" target="">Governo&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Gabinete) -->
+	<span class="menu-coluna">
+
+    <h3>Gabinete</h3>
+
+    
+    
+    <li><a href="/secretaria/view/8" title="Gabinete do Prefeito." target="">Gabinete do Prefeito</a></li>
+            
+    
+    <li><a href="/secretaria/view/9" title="Gabinete do Vice-Prefeito." target="">Gabinete do Vice-Prefeito</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Secretarias) -->
+	<span class="menu-coluna">
+
+    <h3>Secretarias</h3>
+
+    
+    
+    <li><a href="/secretaria/view/1" title="Administração e Planejamento." target="">Administração e Planejamento</a></li>
+            
+    
+    <li><a href="/secretaria/view/3" title="Agricultura e Meio Ambiente." target="">Agricultura e Meio Ambiente</a></li>
+            
+    
+    <li><a href="/secretaria/view/2" title="Assistência Social." target="">Assistência Social</a></li>
+            
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/secretaria/view/13/cultura-e-turismo" title="Cultura e Turismo." target="">Cultura e Turismo</a></li>
+            
+    
+    <li><a href="/secretaria/view/4" title="Educação e Desporto." target="">Educação e Desporto</a></li>
+            
+    
+    <li><a href="/secretaria/view/5" title="Finanças." target="">Finanças</a></li>
+            
+    
+    <li><a href="/secretaria/view/6" title="Obras, Serviços e Trânsito." target="">Obras, Serviços e Trânsito</a></li>
+            
+    
+    <li><a href="/secretaria/view/7" title="Saúde." target="">Saúde</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Órgãos de Assessoramento) -->
+	<span class="menu-coluna">
+
+    <h3>Órgãos de Assessoramento</h3>
+
+    
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/departamento/view/28/asssessoria-juridica" title="Procuradoria Jurídica." target="">Procuradoria Jurídica</a></li>
+            
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/departamento/view/29" title="Comunicação.." target="">Comunicação.</a></li>
+            
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/departamento/view/27/controle-interno" title="Controle interno." target="">Controle interno</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Estrutura Administrativa) -->
+	<span class="menu-coluna">
+
+    <h3>Estrutura Administrativa</h3>
+    <p class="text-left">Consulte informações dos responsáveis, endereço, horário de atendimento e telefones de contato das instituições que compõem a estrutura administrativa do município.</p>
+    
+    
+    <li><a href="/departamento/cat/2" title="Conselhos." target="">Conselhos</a></li>
+            
+    
+    <li><a href="/departamento/cat/1" title="Departamentos." target="">Departamentos</a></li>
+            
+    
+    <li><a href="/departamento/cat/4" title="Órgãos." target="">Órgãos</a></li>
+            
+    
+    <li><a href="/departamento/cat/3" title="Setores." target="">Setores</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Legislação" target="">Legislação&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Legislação) -->
+	<span class="menu-coluna">
+
+    <h3>Legislação</h3>
+
+    
+    
+    <li><a href="https://barrafunda.cespro.com.br/" title="Leis Municipais." target="">Leis Municipais</a></li>
+            
+    
+    <li><a href="https://barrafunda.cespro.com.br/visualizarLeisPorAno.php?cdMunicipio=7266&amp;cdTipoDiploma=7621" title="Decretos." target="">Decretos</a></li>
+            
+    
+    <li><a href="/legislacao/cat/4" title="Portarias." target="">Portarias</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/pesquisaLegislacao.php?cdMunicipio=7266&amp;cdTipo=7620&amp;byIndiceAssunto=Orca:OrcaPlanPlurInve" title="PPA." target="">PPA</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/pesquisaLegislacao.php?cdMunicipio=7266&amp;cdTipo=7620&amp;byIndiceAssunto=Orca:OrcaDireOrca" title="LDO." target="">LDO</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/pesquisaLegislacao.php?cdMunicipio=7266&amp;cdTipo=7620&amp;byIndiceAssunto=Orca:OrcaReceDesp" title="LOA." target="">LOA</a></li>
+            
+    
+    <li><a href="/legislacao/cat/2" title="Resoluções." target="">Resoluções</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" title="Transparência" target="">Transparência&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Prestação de Contas) -->
+	<span class="menu-coluna">
+
+    <h3>Prestação de Contas</h3>
+
+    
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br:8443/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" title="Registro de Despesas." target="">Registro de Despesas</a></li>
+            
+    
+    <li><a href="/transparencia/index/cat/1" title="Demonstrações Contábeis." target="">Demonstrações Contábeis</a></li>
+            
+    
+    <li><a href="/transparencia/index/cat/3" title="Pareceres de Contas." target="">Pareceres de Contas</a></li>
+            
+    
+    <li><a href="/transparencia/index/cat/2" title="Relatórios de Gestão Fiscal." target="">Relatórios de Gestão Fiscal</a></li>
+            
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wfolha" title="Recursos Humanos." target="">Recursos Humanos</a></li>
+            
+    
+    <li><a href="/pagina/view/28" title="Acordos Firmados." target="">Acordos Firmados</a></li>
+            
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wdiarias?ExercicioAno=2024&amp;NaturezaCodigo=33901400000000&amp;TipoEnte=E" title="Diárias." target="">Diárias</a></li>
+            
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wconveniosdireito" title="Convênios, repasses ou transferências ." target="">Convênios, repasses ou transferências </a></li>
+            
+    
+    <li><a href="/documento/cat/7" title="Parcerias - Lei n° 13.019/2014." target="">Parcerias - Lei n° 13.019/2014</a></li>
+            
+    
+    <li><a href="/documento/cat/5" title="Consórcio Intermunicipal de Saúde." target="">Consórcio Intermunicipal de Saúde</a></li>
+            
+    
+    <li><a href="https://municipalista.paineis.gov.br/extensions/municipalista/municipalista.html" title="Emendas Parlamentares/Painel Tranferegov.br." target="">Emendas Parlamentares/Painel Tranferegov.br</a></li>
+            
+    
+    <li><a href="https://parlamentar.paineis.gov.br/extensions/parlamentar/parlamentar.html" title="Emendas Parlamentares/Painel Parlamentar." target="">Emendas Parlamentares/Painel Parlamentar</a></li>
+            
+    
+    <li><a href="https://www.transparencia.rs.gov.br/emendas-parlamentares/emendas-parlamentares-estaduais/dados/" title="Emendas Parlamentares / Estaduais." target="">Emendas Parlamentares / Estaduais</a></li>
+            
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/pagina/view/38" title="Emenda Parlamentares Municipal." target="">Emenda Parlamentares Municipal</a></li>
+            
+    
+    <li><a href="https://paineis.tcers.tc.br/extensions/ControleSocial-TransferenciasEspeciais/emendaspix.html" title="Emendas PIX." target="">Emendas PIX</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Fale Conosco) -->
+	<span class="menu-coluna">
+
+    <h3>Fale Conosco</h3>
+
+    
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/TransparenciaJavaEnvironment/com.tche.transparencia.wtransparencia" title="Portal da Transparência." target="">Portal da Transparência</a></li>
+            
+    
+    <li><a href="/esic" title="SIC - Serviço de Informação ao Cidadão." target="">SIC - Serviço de Informação ao Cidadão</a></li>
+            
+    
+    <li><a href="/pagina/view/25" title="Ouvidoria." target="">Ouvidoria</a></li>
+            
+    
+    <li><a href="/pagina/view/26" title="Carta de Serviços." target="">Carta de Serviços</a></li>
+            
+    
+    <li><a href="/faq" title="Perguntas Frequentes." target="">Perguntas Frequentes</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Documentos" target="">Documentos&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Gerais) -->
+	<span class="menu-coluna">
+
+    <h3>Gerais</h3>
+
+    
+    
+    <li><a href="/documento/cat/2" title="Editais." target="">Editais</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Previdência Servidores Municipais) -->
+	<span class="menu-coluna">
+
+    <h3>Previdência Servidores Municipais</h3>
+
+    
+    
+    <li><a href="/pagina/view/18" title="Sobre o RPPS." target="">Sobre o RPPS</a></li>
+            
+    
+    <li><a href="/documento/cat/4" title="Documentos RPPS." target="">Documentos RPPS</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Serviços" target="">Serviços&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Cidadão) -->
+	<span class="menu-coluna">
+
+    <h3>Cidadão</h3>
+
+    
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/PortalContribuinteJavaEnvironment/servlet/com.tche.portalcontribuinte.whome" title="Portal do Contribuinte." target="">Portal do Contribuinte</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Empresas) -->
+	<span class="menu-coluna">
+
+    <h3>Empresas</h3>
+
+    
+    
+    <li><a href="/servico/view/5" title="Nota Fiscal Eletrônica." target="">Nota Fiscal Eletrônica</a></li>
+            
+    
+    <li><a href="/servico/view/2" title="Licenças Ambientais." target="">Licenças Ambientais</a></li>
+            
+    
+    <li><a href="/servico/view/6" title="Serviço de Inspeção Municipal." target="">Serviço de Inspeção Municipal</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Servidor Público) -->
+	<span class="menu-coluna">
+
+    <h3>Servidor Público</h3>
+
+    
+    
+    <li><a href="https://transparencia.barrafunda.rs.gov.br/CchJavaEnvironment/servlet/com.tche.cch.wcontracheque" title="Contracheque Online." target="">Contracheque Online</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Comunicação" target="">Comunicação&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Imprensa) -->
+	<span class="menu-coluna">
+
+
+
+    
+    
+    <li><a href="/noticia" title="Notícias." target="">Notícias</a></li>
+            
+    
+    <li><a href="/evento" title="Calendário de Eventos." target="">Calendário de Eventos</a></li>
+            
+    
+    <li><a href="/midia/fotos" title="Galeria de Fotos." target="">Galeria de Fotos</a></li>
+            
+    
+    <li><a href="/midia/audios" title="Áudios." target="">Áudios</a></li>
+            
+    
+    <li><a href="/enquete" title="Enquetes." target="">Enquetes</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Licitações" target="">Licitações&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Licitações) -->
+	<span class="menu-coluna">
+
+    <h3>Licitações</h3>
+
+    
+    
+    <li><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Barra%20Funda,74000&amp;cs=16fmTvd7dH_F3gOI4fQx7w-JNyGs" title="Licitações." target="">Licitações</a></li>
+            
+    
+    <li><a href="https://pncp.gov.br/app/pca/94704004000102/2026" title="Plano de Contratações Anuais." target="">Plano de Contratações Anuais</a></li>
+            
+    
+    <li><a href="https://portaldatransparencia.gov.br/sancoes/consulta?paginacaoSimples=true&amp;tamanhoPagina=&amp;offset=&amp;direcaoOrdenacao=asc&amp;orgaoEntidadeSancionadora=Prefeitura+de+Barra+Funda&amp;colunasSelecionadas=linkDeta" title="Licitantes e/ou Contratados Sancionados Administrativamente ." target="">Licitantes e/ou Contratados Sancionados Administrativamente </a></li>
+            
+    
+    <li><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Barra%20Funda,74000&amp;cs=16fmTvd7dH_F3gOI4fQx7w-JNyGs" title="LicitaCon." target="">LicitaCon</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Contratos" target="">Contratos&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Contratos e Aditivos) -->
+	<span class="menu-coluna">
+
+    <h3>Contratos e Aditivos</h3>
+
+    
+    
+    <li><a href="https://www.barrafunda.rs.gov.br/contrato" title="Contratos Administrativos." target="">Contratos Administrativos</a></li>
+            
+    
+    <li><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:21:::NO:RIR,21:P21_PAG_RETORNO,F50500_CD_ORGAO:20,74000&amp;cs=1jazmB49BWe6ntApBT4Rqd3Tk24k" title="Contrato LicitaCon - TCE." target="">Contrato LicitaCon - TCE</a></li>
+            
+    
+    <li><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:25:::NO:25,RIR:F50500_CD_ORGAO:74000&amp;cs=1jr8yAchaqTtK6ACS_ZA8eEUe2TA" title="Fiscais de Contratos." target="">Fiscais de Contratos</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Seletivos" target="">Seletivos&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Concursos Públicos ou Processos Seletivos) -->
+	<span class="menu-coluna">
+
+    <h3>Concursos Públicos ou Processos Seletivos</h3>
+    <p class="text-left">Acompanhe e concorra para as oportunidades de trabalho que a Prefeitura de Barra Funda disponibiliza através de concursos públicos ou processos seletivos. Consulte informações nos links abaixo.</p>
+    
+    
+    <li><a href="/concurso/cat/2" title="Concursos Públicos." target="">Concursos Públicos</a></li>
+            
+    
+    <li><a href="/concurso/cat/11" title="Processos Seletivos Públicos." target="">Processos Seletivos Públicos</a></li>
+            
+    
+    <li><a href="/concurso/cat/12" title="Processos Seletivos Simplificados." target="">Processos Seletivos Simplificados</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                            </ul>    </nav>
+</div>    </header>
+
+    <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>    
+        <div id="conteudo">
+      
+
+<!-- Modal -->
+<div id="banner-popup" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Telefones Úteis</h4>
+            </div>
+            <div class="modal-body">
+                <div class="padding5"><img class="minHeight100" src="/uploads/banner/27087/maior_uUUcMXDBOVo90U1yxFjL77vVTAxpc55K.jpg" width="100%" alt="Telefones Úteis"></div>
+            </div>
+            <div class="modal-footer">
+                <button title="sair" type="button" class="btn btnPadrao" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="owlc0" class="owl-carousel">    <div class="container-fluid">
+    <div class="banner-item bannerTopo">
+    <a href="/"><strong>14º Edição do Projeto Chama da Cultura 2026 - "A Casa dos Brinquedos Abandonados" </strong><img src="/uploads/banner/30170/maior_tnL1HqkSrX3EmGgrLg8b5Ez4DZABT_5i.jpg" alt="Espetáculo 2026"></a>    </div>
+    </div>
+    <div class="container-fluid">
+    <div class="banner-item bannerTopo">
+    <a href="/"><strong>14º Edição do Projeto Chama da Cultura 2026 -  "A Casa dos Brinquedos Abandonados" </strong><img src="/uploads/banner/30253/maior_Fhc4xa4vhNglykkSD5RDE6TZNF1TeSQ_.jpeg" alt="Espetáculo 2026"></a>    </div>
+    </div>
+    <div class="container-fluid">
+    <div class="banner-item bannerTopo">
+    <a href="/"><strong></strong><img src="/uploads/banner/24512/maior_myFxx7mfMHM94HXqgxyOqZKvnapie-HX.jpg" alt="DECORAÇÃO NATALINA"></a>    </div>
+    </div>
+    <div class="container-fluid">
+    <div class="banner-item bannerTopo">
+    <a href="/"><strong></strong><img src="/uploads/banner/24515/maior_ifDjWqvxkHNbMShLPpEDsDb748cargLq.jpg" alt="EU AMO"></a>    </div>
+    </div>
+    <div class="container-fluid">
+    <div class="banner-item bannerTopo">
+    <a href="/"><strong></strong><img src="/uploads/banner/18669/maior_jpgpA5-Y7q2IyTXzBpK-PqVjWZH3T9Li.png" alt="parede"></a>    </div>
+    </div>
+    <div class="container-fluid">
+    <div class="banner-item bannerTopo">
+    <a href="/"><strong></strong><img src="/uploads/banner/23067/maior_tAd-TgdzTe56HCBh1iTd4q9ryuPpRF2C.jpg" alt="ESPETÁCULO 2"></a>    </div>
+    </div>
+    <div class="container-fluid">
+    <div class="banner-item bannerTopo">
+    <a href="/"><strong></strong><img src="/uploads/banner/23070/maior_hec8Vhhy0iVV9y7NiWiPqkYwmL-fuj16.jpg" alt="PORTICO"></a>    </div>
+    </div>
+       
+</div> 
+
+  <section class="margin20T">
+    <div class="container-fluid">
+      <div class="row">
+        <div id="owlc1" class="owl-carousel">                      <div class="col-12">
+              <a href="https://atendimento.receita.rs.gov.br/pit-programa-de-integracao-tributaria2" target="_self" title="Banner" class="banner-menor">
+                <img src="/uploads/banner/23093/maior_vjsrsZr3ySygDmo-ptVBCoqhGCy-TU9i.png" alt="PIT(Programa de Integração Tributária)">              </a>
+            </div>
+                      <div class="col-12">
+              <a href="https://atendimento.receita.rs.gov.br/lista-de-debitos-inscritos-em-divida-ativa" target="_self" title="Banner" class="banner-menor">
+                <img src="/uploads/banner/24036/maior_vSmkhCT4dmgTXSM5YQadGDI8ExaI6ONa.png" alt="Consulta Devedores Sefaz RS">              </a>
+            </div>
+                      <div class="col-12">
+              <a href="https://nfg.sefaz.rs.gov.br/ReceitaCerta/SaibaMais.aspx" target="_self" title="Banner" class="banner-menor">
+                <img src="/uploads/banner/23131/maior_Wucim6-vCgBk8ZuKKJl-0BGZPFPRT1-1.jpg" alt="Receita Certa">              </a>
+            </div>
+                      <div class="col-12">
+              <a href="https://paineis.tcers.tc.br/extensions/licitacon/lista.html?cod_orgao=74000" target="_self" title="Banner" class="banner-menor">
+                <img src="/uploads/banner/24509/maior_wz_mu9Yc8Z0g5fqIxU8AO5RWaxBD3bCs.png" alt="Licitacon Obras">              </a>
+            </div>
+                      <div class="col-12">
+              <a href="https://radardatransparencia.atricon.org.br" target="_self" title="Banner" class="banner-menor">
+                <img src="/uploads/banner/23126/maior_j8RNOUyCh8pWbUM2J5tzq2AcpEZsZvDq.jpg" alt="Radar Nacional da Transparência Pública">              </a>
+            </div>
+                      <div class="col-12">
+              <a href="https://municipalista.paineis.gov.br/extensions/municipalista/municipalista.html" target="_self" title="Banner" class="banner-menor">
+                <img src="/uploads/banner/23127/maior_kJGsxbVsG8t2IelCZUaKKXqKPPo7d26Q.jpg" alt="Painel Transferegov.br">              </a>
+            </div>
+                      <div class="col-12">
+              <a href="https://parlamentar.paineis.gov.br/extensions/parlamentar/parlamentar.html" target="_self" title="Banner" class="banner-menor">
+                <img src="/uploads/banner/23128/maior_gaOR0aOl3oo_4gE-cHqArJ5UWA5VvR3p.jpg" alt="Painel Parlamentar">              </a>
+            </div>
+                      <div class="col-12">
+              <a href="https://www.devolveicms.rs.gov.br/inicial" target="_self" title="Banner" class="banner-menor">
+                <img src="/uploads/banner/23094/maior_2G2xCF38c0zFqeuEuY6u1nxsFY5-PnY_.jpg" alt="Devolve ICMS">              </a>
+            </div>
+                  </div> 
+      </div>
+    </div>
+  </section>
+
+<!-- BLOCOS NOTICIAS -->
+
+<section class="margin80T">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-lg-8">
+        <div class="titulo bg-white"><span>Notícias</span></div>
+        <div class="row">
+                                    <div class="col-12 col-sm-6 news">
+                <div class="row nomargin">
+                  <div class="col-12 nopadding imagem-noticia box-expande"><img class="img-expande" src="/uploads/noticia/31421/media_KjQy24746STmRLvDwGmaZAOAydSnQ3HP.jpeg" width="100%" alt="vigilancia-em-saude-realiza-aplicacao-de-inseticida-em-r ..."></div>
+                  <div class="col-12 padding20 bg-light altura-box-1 margin30B">
+                  27/11/2026<br />
+                  <h5><a href="/noticia/view/3409/vigilancia-em-saude-realiza-aplicacao-de-inseticida-em-residencias-como-acao-de-combate-a-dengue"><strong>Vigilância em Saúde realiza aplicação de inseticida em residências como ação de combate à dengue</strong></a></h5>
+                  <p>A ação é realizada considerando os resultados dos monitoramentos previamente realizados e a identificação de locais que demandam intervenção.</p>
+                  </div>
+                </div>
+              </div>
+                          <div class="col-12 col-sm-6 news">
+                <div class="row nomargin">
+                  <div class="col-12 nopadding imagem-noticia box-expande"><img class="img-expande" src="/uploads/noticia/31417/media_IB_xl7TOHTll8QpwZ8ejvtke6nO_YFYU.png" width="100%" alt="transito-interrompido-na-linha-encantado-para-obras-de-r ..."></div>
+                  <div class="col-12 padding20 bg-light altura-box-1 margin30B">
+                  27/11/2026<br />
+                  <h5><a href="/noticia/view/3408/transito-interrompido-na-linha-encantado-para-obras-de-restabelecimento-de-bueiros"><strong>Trânsito interrompido na Linha Encantado para obras de restabelecimento de bueiros</strong></a></h5>
+                  <p>Desta vez, as obras estão sendo realizadas na Linha Encantado, próximo à residência de Valdeni Michelon.</p>
+                  </div>
+                </div>
+              </div>
+                          <div class="col-12 col-sm-6 news">
+                <div class="row nomargin">
+                  <div class="col-12 nopadding imagem-noticia box-expande"><img class="img-expande" src="/uploads/noticia/31416/media_WvcQayqn8CWZnMNOVL1vkLR39E-u60g4.png" width="100%" alt="prazo-para-matriculas-e-rematriculas-encerra-na-proxima- ..."></div>
+                  <div class="col-12 padding20 bg-light altura-box-1 margin30B">
+                  26/11/2026<br />
+                  <h5><a href="/noticia/view/3407/prazo-para-matriculas-e-rematriculas-encerra-na-proxima-segunda-feira"><strong>Prazo para matrículas e rematrículas encerra na próxima segunda-feira</strong></a></h5>
+                  <p>Matrículas e rematrículas podem ser feitas na Escola Municipal Barra Funda e a Escola Municipal de Educação Infantil Raio de Sol até segunda-feira, 30 de novembro.</p>
+                  </div>
+                </div>
+              </div>
+                          <div class="col-12 col-sm-6 news">
+                <div class="row nomargin">
+                  <div class="col-12 nopadding imagem-noticia box-expande"><img class="img-expande" src="/uploads/noticia/31408/media_Sm2Vgb9Pxz-uOE7dDCtNzgNfOvE8vmla.jpeg" width="100%" alt="cmd-barra-funda-conquista-dois-titulos-nas-finais-do-cam ..."></div>
+                  <div class="col-12 padding20 bg-light altura-box-1 margin30B">
+                  26/11/2026<br />
+                  <h5><a href="/noticia/view/3406/cmd-barra-funda-conquista-dois-titulos-nas-finais-do-campeonato-regional-meninita-2026"><strong>CMD Barra Funda conquista dois títulos nas finais do Campeonato Regional Meninita 2026</strong></a></h5>
+                  <p>O município conquistou o campeonato nas categorias Sub-13 e Sub-17, além do vice-campeonato na Sub-15.</p>
+                  </div>
+                </div>
+              </div>
+                              </div>
+      </div>
+      <div class="col-12 col-lg-4">
+              <div class="row">
+          <div class="col-12">
+            <div class="atalhos desfoque"> 
+              <ul id="w2"><li><i><i class="fa fa-viruses"></i> </i><a href="https://transparencia.barrafunda.rs.gov.br:8443/TransparenciaJavaEnvironment/com.tche.transparencia.wempenhoscovid?OrgaoCodigo=0&amp;UnidadeCodigo=0&amp;FuncaoCodigo=&amp;SubfuncaoCodigo=&amp;ProgramaCodigo=&amp;AcaoCodigo=&amp;NaturezaCodigo=0&amp;RecursoCodigo=0&amp;TipoEnte=" title="Gastos Coronavíruss" target="_blank"><strong>Gastos Coronavírus</strong></a><p>Consulte informações sobre as despesas e gastos relacionados às ações públicas do município para o combate à Covid.</p></li>
+<li><i><i class="fa fa-balance-scale"></i> </i><a href="https://barrafunda.cespro.com.br/" title="Leis Municipaiss" target="_blank"><strong>Leis Municipais</strong></a><p>Consulte as Leis e Decretos do Municipío de Barra Funda</p></li>
+<li><i><i class="fa fa-user"></i> </i><a href="https://transparencia.barrafunda.rs.gov.br/PortalContribuinteJavaEnvironment/com.tche.portalcontribuinte.whome" title="Portal do Contribuintes" target="_blank"><strong>Portal do Contribuinte</strong></a><p>Neste espaço você pode consultar e acessar, de forma online, serviços que são oferecidos pelo município aos contribuintes e cidadão.</p></li>
+<li><i><i class="fa fa-dollar-sign"></i> </i><a href="https://transparencia.barrafunda.rs.gov.br/CchJavaEnvironment/com.tche.cch.hlogin" title="Contra-cheque onlines"><strong>Contra-cheque online</strong></a><p>Servidores públicos podem consultar com segurança e rapidez, de forma online, os dados e histórico de contra-cheques do município.</p></li>
+<li><i><i class="fa fa-volume-up"></i> </i><a href="/midia/audios" title="Programa Semanal de Rádios"><strong>Programa Semanal de Rádio</strong></a><p>Escute os programas semanais que rodam nas rádios Sarandi AM e Simpatia FM.</p></li></ul>
+              
+            </div>
+          </div>
+        </div>
+            </div>
+    </div>
+  </div>
+</section>
+
+<br /><br /><br />
+
+<!-- BLOCO 3 SECRETARIAS, LICITAÇÕES -->
+<section class="container-fluid margin80T">
+  <div class="row">
+    <div class="col-12">
+      <div class="row nomargin">
+        <div class="col-12 nopadding padding-box">
+          <div class="titulo"><span>Secretarias</span></div>
+                        <div id="owlc3" class="owl-carousel">                                              <div class="col-12 text-center">
+                  <div class="cont">
+                      <div class="container-image">
+                        <img class="img-secretario" src="/uploads/secretaria/25142/maior_iw-WplmFUd5nVC4um2ien9m12kkwGntn.jpg" width="100%" alt="Secretário Andrize Gelain"><br />
+                      </div>
+                      <h4><a href="/secretaria/view/13/cultura-e-turismo" title="Cultura e Turismo"><strong>Cultura e Turismo</strong></a></h4>
+                      <strong>Responsável:</strong> Andrize Gelain<br />
+                      <strong>Telefone:</strong> (54) 99655-8503                  </div>
+                </div>
+                                              <div class="col-12 text-center">
+                  <div class="cont">
+                      <div class="container-image">
+                        <img class="img-secretario" src="/uploads/secretaria/24585/maior_FxGmhywSh9xlfE-kU8qZb_N0nFUA6S7u.jpeg" width="100%" alt="Secretário Sabrina Potrich Tolotti"><br />
+                      </div>
+                      <h4><a href="/secretaria/view/2/assistencia-social" title="Assistência Social"><strong>Assistência Social</strong></a></h4>
+                      <strong>Responsável:</strong> Sabrina Potrich Tolotti<br />
+                      <strong>Telefone:</strong> (54) 99932-5406                  </div>
+                </div>
+                                              <div class="col-12 text-center">
+                  <div class="cont">
+                      <div class="container-image">
+                        <img class="img-secretario" src="/uploads/secretaria/23916/maior_dgp-Mv_FdoA-ZNWSNr3H1Gcls_8gwRdU.jpg" width="100%" alt="Secretário Clovis Batistella "><br />
+                      </div>
+                      <h4><a href="/secretaria/view/3/agricultura-e-meio-ambiente" title="Agricultura e Meio Ambiente"><strong>Agricultura e Meio Ambiente</strong></a></h4>
+                      <strong>Responsável:</strong> Clovis Batistella <br />
+                      <strong>Telefone:</strong> (54) 99655-8503                  </div>
+                </div>
+                                              <div class="col-12 text-center">
+                  <div class="cont">
+                      <div class="container-image">
+                        <img class="img-secretario" src="/uploads/secretaria/29981/maior_nhyMC1g5yQTyQMSM34D0OKN0Ch0VCoha.jpg" width="100%" alt="Secretário Claudiano Gilmar Alves Rodrigues"><br />
+                      </div>
+                      <h4><a href="/secretaria/view/6/obras-servicos-e-transito" title="Obras, Serviços e Trânsito"><strong>Obras, Serviços e Trânsito</strong></a></h4>
+                      <strong>Responsável:</strong> Claudiano Gilmar Alves Rodrigues<br />
+                      <strong>Telefone:</strong> (54) 99655-8503                  </div>
+                </div>
+                                              <div class="col-12 text-center">
+                  <div class="cont">
+                      <div class="container-image">
+                        <img class="img-secretario" src="/uploads/secretaria/23811/maior_Xd3aK9xBGX3-78y7ubQo1OD8gfrOpa_f.jpg" width="100%" alt="Secretário Monica Silveira Thiel "><br />
+                      </div>
+                      <h4><a href="/secretaria/view/7/saude" title="Saúde"><strong>Saúde</strong></a></h4>
+                      <strong>Responsável:</strong> Monica Silveira Thiel <br />
+                      <strong>Telefone:</strong> (54) 99986-2718                  </div>
+                </div>
+                                              <div class="col-12 text-center">
+                  <div class="cont">
+                      <div class="container-image">
+                        <img class="img-secretario" src="/uploads/secretaria/24584/maior_ZiNnyuELyfJnXtE1kpBk1SUtmIgp4522.jpeg" width="100%" alt="Secretário Lucas Augusto Rossetto"><br />
+                      </div>
+                      <h4><a href="/secretaria/view/1/administracao-e-planejamento" title="Administração e Planejamento"><strong>Administração e Planejamento</strong></a></h4>
+                      <strong>Responsável:</strong> Lucas Augusto Rossetto<br />
+                      <strong>Telefone:</strong> (54) 99652-5842                  </div>
+                </div>
+                                              <div class="col-12 text-center">
+                  <div class="cont">
+                      <div class="container-image">
+                        <img class="img-secretario" src="/uploads/secretaria/24586/maior__v49XhD4dUXGKEvObMh7kpSj9SEByfvV.jpg" width="100%" alt="Secretário Celio André Ré "><br />
+                      </div>
+                      <h4><a href="/secretaria/view/5/financas" title="Finanças"><strong>Finanças</strong></a></h4>
+                      <strong>Responsável:</strong> Celio André Ré <br />
+                      <strong>Telefone:</strong> (54) 99655-8503                  </div>
+                </div>
+                                              <div class="col-12 text-center">
+                  <div class="cont">
+                      <div class="container-image">
+                        <img class="img-secretario" src="/uploads/secretaria/24583/maior_oWhvBkZoNSU4NyHmjqTE8BSwuqWEnpDH.jpeg" width="100%" alt="Secretário Enio Cotica"><br />
+                      </div>
+                      <h4><a href="/secretaria/view/9/gabinete-do-vice-prefeito" title="Gabinete do Vice-Prefeito"><strong>Gabinete do Vice-Prefeito</strong></a></h4>
+                      <strong>Responsável:</strong> Enio Cotica<br />
+                      <strong>Telefone:</strong> (54) 99655-8503                  </div>
+                </div>
+                                              <div class="col-12 text-center">
+                  <div class="cont">
+                      <div class="container-image">
+                        <img class="img-secretario" src="/uploads/secretaria/17501/maior_IhJDDnnmBmt9U7pqarEDa6dC6LjWhewK.jpg" width="100%" alt="Secretário Daiane Michele Finatto"><br />
+                      </div>
+                      <h4><a href="/secretaria/view/4/educacao-e-desporto" title="Educação e Desporto "><strong>Educação e Desporto </strong></a></h4>
+                      <strong>Responsável:</strong> Daiane Michele Finatto<br />
+                      <strong>Telefone:</strong> (54) 99655-8503                  </div>
+                </div>
+                                              <div class="col-12 text-center">
+                  <div class="cont">
+                      <div class="container-image">
+                        <img class="img-secretario" src="/uploads/secretaria/24582/maior_Pa0ilXsZwjWnDWjea7e4BSKXWBqXEf5r.jpeg" width="100%" alt="Secretário André Signor"><br />
+                      </div>
+                      <h4><a href="/secretaria/view/8/gabinete-do-prefeito" title="Gabinete do Prefeito"><strong>Gabinete do Prefeito</strong></a></h4>
+                      <strong>Responsável:</strong> André Signor<br />
+                      <strong>Telefone:</strong> (54) 99655-8503                  </div>
+                </div>
+                     
+            </div> 
+                    
+        </div>
+      </div>
+    </div>
+  </div>
+</section>    </div>
+    <footer>
+      <div class="container-fluid">
+        <div class="margin60V" style="margin:60px 0px 30px 0px">
+          <div class="row" style="margin-bottom:20px;">
+            <div class="col-12 col-lg-7 col-xl-8 footer">
+              <br />
+              <div class="logo"><img class="" src="/images/logo.png" alt="Barra Funda"></div>
+              <div class="slogan">
+                <h5><strong>Prefeitura Municipal de Barra Funda</strong></h5>
+<p>Avenida 24 de mar&ccedil;o, 735 - Bairro Centro<br />CEP 99585-000 - Barra Funda/RS<br /><strong>Telefone:</strong> (54) 99918-4275 / (54) 99655-8503&nbsp;</p>
+<p><strong>Atendimento:</strong> 08:00h &agrave;s 12:00h e das 13:00h &agrave;s 17:00h</p>                <div class="row">
+                  <div class="col-12 padding20 midias-footer">
+                                          <a href="https://www.facebook.com/share/15GqNAYDrb/" title="Facebook">
+                        <img src="/images/logo-facebook.png" width="24px" alt="Facebook">                      </a>
+                                                                                  <a href="https://www.instagram.com/barrafunda.rs?igsh=MTJzd2VlZzhvOXRrZg==" title="Instagram">
+                        <img src="/images/logo-instagram.png" width="24px" alt="Instagram">                      </a>
+                                                          </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-5 col-xl-4 hidden576 hidden767 hidden991">
+              <div class="padding10 text-left"> <strong>Governo e Secretarias</strong> </div>
+                                                <a class="btnFooter" href="/secretaria/view/5/financas" title="Finançass">Finanças</a>                                  <a class="btnFooter" href="/secretaria/view/2/assistencia-social" title="Assistência Socials">Assistência Social</a>                                  <a class="btnFooter" href="/secretaria/view/9/gabinete-do-vice-prefeito" title="Gabinete do Vice-Prefeitos">Gabinete do Vice-Prefeito</a>                                  <a class="btnFooter" href="/secretaria/view/8/gabinete-do-prefeito" title="Gabinete do Prefeitos">Gabinete do Prefeito</a>                                  <a class="btnFooter" href="/secretaria/view/4/educacao-e-desporto" title="Educação e Desporto s">Educação e Desporto </a>                                  <a class="btnFooter" href="/secretaria/view/7/saude" title="Saúdes">Saúde</a>                                  <a class="btnFooter" href="/secretaria/view/3/agricultura-e-meio-ambiente" title="Agricultura e Meio Ambientes">Agricultura e Meio Ambiente</a>                                  <a class="btnFooter" href="/secretaria/view/6/obras-servicos-e-transito" title="Obras, Serviços e Trânsitos">Obras, Serviços e Trânsito</a>                                  <a class="btnFooter" href="/secretaria/view/13/cultura-e-turismo" title="Cultura e Turismos">Cultura e Turismo</a>                                  <a class="btnFooter" href="/secretaria/view/1/administracao-e-planejamento" title="Administração e Planejamentos">Administração e Planejamento</a>                                          </div>
+          </div>
+          <hr>
+          <div class="row margin10B">
+            <div class="row justify-content-center">
+              <div class="col-12 col-lg-8 text-center">
+                <strong>Qual o seu nível de satisfação com o atendimento da Prefeitura</strong>
+                <fieldset class="radio-image" style="margin-top:15px;">
+                  <div class="col">
+                    <label class="radio-satisfacao">
+                      <input type="radio" class="icone-radio" onclick="setOpcao(1)">
+                      <img src="/images/muito_insatisfeito.png" alt=""><br/> Muito insatisfeito
+                    </label>
+                  </div>
+                  <div class="col">
+                    <label class="radio-satisfacao">
+                      <input type="radio" class="icone-radio" onclick="setOpcao(2)">
+                      <img src="/images/insatisfeito.png" alt=""><br/> Insatisfeito
+                    </label>
+                  </div>
+                  <div class="col">
+                    <label class="radio-satisfacao">
+                      <input type="radio" class="icone-radio" onclick="setOpcao(3)">
+                      <img src="/images/indiferente.png" alt=""><br/> Neutro
+                    </label>
+                  </div>
+                  <div class="col">
+                    <label class="radio-satisfacao">
+                      <input type="radio" class="icone-radio" onclick="setOpcao(4)">
+                      <img src="/images/satisfeito.png" alt=""><br/> Satisfeito
+                    </label>
+                  </div>
+                  <div class="col">
+                    <label class="radio-satisfacao">
+                      <input type="radio" class="icone-radio" onclick="setOpcao(5)">
+                      <img src="/images/muito_satisfeito.png" alt=""><br/> Muito satisfeito
+                    </label>
+                  </div>
+                </fieldset>
+              </div>
+              <div class="col-12 col-lg-4">
+                
+<div id="w6"></div>              </div>
+              <div class="col-md-12 mt-2" id="camposSatisfacao" style="display: none;">
+                
+<form id="pesquisa-form" action="/site/resposta" method="post">
+<input type="hidden" name="_csrf-frontend" value="aEd6l-hxmqAIuP9kwBpEiHmEghgPT6cHbfz_iajQumI7Fxf4ikD7-nnRtQuYQDLsO8_QdTg39UNetJLk27HwVw==">    <div class="row">
+        <div class="form-group field-avaliacao-opcao">
+
+<input type="hidden" id="avaliacao-opcao" class="form-control" name="AvaliacaoAtendimento[opcao]">
+
+<div class="help-block"></div>
+</div>        <div class="col-12 col-md-4">
+            <div class="form-group field-avaliacaoatendimento-nome">
+
+<input type="text" id="avaliacaoatendimento-nome" class="form-control" name="AvaliacaoAtendimento[nome]" placeholder="Digite seu nome">
+
+<div class="help-block"></div>
+</div>        </div>
+        <div class="col-12 col-md-4">
+            <div class="form-group field-avaliacaoatendimento-email">
+
+<input type="text" id="avaliacaoatendimento-email" class="form-control" name="AvaliacaoAtendimento[email]" placeholder="Digite aqui seu email">
+
+<div class="help-block"></div>
+</div>        </div>
+        <div class="col-12 col-md-4">
+            <div class="form-group field-avaliacaoatendimento-mensagem">
+
+<input type="text" id="avaliacaoatendimento-mensagem" class="form-control" name="AvaliacaoAtendimento[mensagem]" placeholder="Digite sua mensagem">
+
+<div class="help-block"></div>
+</div>        </div>
+        <div class="d-flex w-100 justify-content-center">
+            <div class="form-group field-avaliacaoatendimento-recaptcha">
+
+<input type="hidden" id="avaliacaoatendimento-recaptcha" class="form-control" name="AvaliacaoAtendimento[reCaptcha]"><div id="avaliacaoatendimento-recaptcha-recaptcha-pesquisa-form" class="g-recaptcha" data-sitekey="6LcGBOEaAAAAAP2Su38tAfEmqNRRxiCcobZ3alx0" data-input-id="avaliacaoatendimento-recaptcha" data-form-id="pesquisa-form"></div>
+
+<div class="help-block"></div>
+</div>        </div>
+        <div class="form-group text-center justify-content-center w-100">
+            <button type="submit" class="btnPadrao">Enviar</button>        </div>
+    </div>
+</form>              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </footer>
+
+    <div id="barra-footer" class="container-fluid">
+      <div class="row">
+        <div class="col-9 text-left margin10V">
+          <small>&copy; Copyright 2026 - Direitos reservados à Prefeitura de Barra Funda/RS</small>
+        </div>
+        <div class="col-3 text-right margin10V">
+          <a href="http://www.webmail.barrafunda.gov.rs.br" target="_blank" title="WebMail" style="padding-right: 15px;"><i class="fa fa-envelope"></i> </a>
+          <a href="http://www.dynamika.com.br" target="_blank" title="Dynamika Soluções Web"><img src="/images/selo-dynamika.png" alt="Dynamika Soluções Web"></a>
+          <button onclick="topFunction()" id="myBtn" class="btn btn-info" title="Voltar ao Topo"><i class="icon-up-open"></i><br />topo</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="stop" class="scrollTop">
+      <span><a href="" title="Voltar ao Topo"><i class="fa-2x fa fa-angle-up"></i> <br />topo</a></span>
+    </div>
+
+  <script src="//www.google.com/recaptcha/api.js?hl=pt&amp;render=explicit&amp;onload=recaptchaOnloadCallback" async defer></script>
+<script src="/assets/a65dcce1/jquery.js?v=1751026520"></script>
+<script src="/assets/f2691771/dist/owl.carousel.min.js?v=1751026528" defer="defer"></script>
+<script src="/assets/c1b7ed/yii.js?v=1751026520"></script>
+<script src="/assets/2feea795/dist/jquery.bxslider.js?v=1793037407"></script>
+<script src="/assets/2feea795/dist/vendor/jquery.fitvids.js?v=1793037407"></script>
+<script src="/assets/37c17581/js/bootstrap.bundle.js?v=1751026520"></script>
+<script src="/assets/ca42cc68/sweetalert2.all.min.js?v=1751026520"></script>
+<script src="/js/site.js?v=1757678258"></script>
+<script src="/js/responsive-calendar.min.js?v=1751025589"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+<script src="/js/avaliacao-atendimento.js?v=1751025589"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js"></script>
+<script src="/assets/17b785b8/cookieconsent.min.js?v=1751026520"></script>
+<script src="/js/jquery.hotkeys.js?v=1751025589"></script>
+<script src="/js/cookies.js?v=1751025589"></script>
+<script src="/assets/5bae8d5b/dist/apexcharts.min.js?v=1793037396"></script>
+<script src="/assets/c1b7ed/yii.activeForm.js?v=1751026520"></script>
+<script>$("#w2").bxSlider({"minSlides":6,"moveSlides":1,"controls":false,"mode":"vertical","auto":true,"speed":500,"infiniteLoop":true,"autoHover":true,"pause":3000});
+window.cookieconsent.initialise({"palette":{"popup":{"background":"#333","text":"#d6d6d6"},"button":{"background":"#4a89d3"}},"theme":"classic","content":{"message":"Ao continuar utilizando essa ferramenta, você concorda com que armazenemos cookies em seu dispositivo para melhoria contínua da experiência de navegação dos usuários além do possível tratamento de dados. Ao fechar esta mensagem sem modificar as definições do seu navegador, os cookies continuarão ativos. Caso não concorde com a utilização deles","dismiss":"Entendi","deny":"Desativar os cookies","link":"Saiba mais!","href":"https://barrafunda.rs.gov.br/pagina/view/24","target":"_parent"}});
+function recaptchaOnloadCallback() {
+    "use strict";
+    jQuery(".g-recaptcha").each(function () {
+        const reCaptcha = jQuery(this);
+        if (reCaptcha.data("recaptcha-client-id") === undefined) {
+            const recaptchaClientId = grecaptcha.render(reCaptcha.attr("id"), {
+                "callback": function (response) {
+                    if (reCaptcha.data("form-id") !== "") {
+                        jQuery("#" + reCaptcha.data("input-id"), "#" + reCaptcha.data("form-id")).val(response)
+                            .trigger("change");
+                    } else {
+                        jQuery("#" + reCaptcha.data("input-id")).val(response).trigger("change");
+                    }
+
+                    if (reCaptcha.attr("data-callback")) {
+                        eval("(" + reCaptcha.attr("data-callback") + ")(response)");
+                    }
+                },
+                "expired-callback": function () {
+                    if (reCaptcha.data("form-id") !== "") {
+                        jQuery("#" + reCaptcha.data("input-id"), "#" + reCaptcha.data("form-id")).val("");
+                    } else {
+                        jQuery("#" + reCaptcha.data("input-id")).val("");
+                    }
+
+                    if (reCaptcha.attr("data-expired-callback")) {
+                        eval("(" + reCaptcha.attr("data-expired-callback") + ")()");
+                    }
+                },
+            });
+            reCaptcha.data("recaptcha-client-id", recaptchaClientId);
+        }
+    });
+}</script>
+<script>jQuery(function ($) {
+$(function() {
+    $('#banner-popup').modal('show');
+});    setTimeout(function() { $('#banner-popup').modal('hide') }, 10000);
+jQuery("#owlc0").owlCarousel(
+{"dots":true,"smartSpeed":700,"autoplay":true,"autoplayTimeout":5000,"items":1,"loop":true}
+);
+
+jQuery("#owlc1").owlCarousel(
+{"autoplay":true,"autoplayTimeout":3000,"items":4,"loop":true,"responsiveClass":true,"responsive":{"0":{"items":1},"600":{"items":2},"800":{"items":3},"1000":{"items":3},"1500":{"items":4}}}
+);
+
+jQuery("#owlc3").owlCarousel(
+{"dots":true,"smartSpeed":1000,"autoplay":true,"autoplayTimeout":5000,"loop":true,"slideBy":4,"responsive":{"0":{"items":1},"420":{"items":1},"520":{"items":2},"768":{"items":2},"992":{"items":3},"1400":{"items":4}}}
+);
+
+
+var fonteOriginal = 14;
+var teclas = 'ctrl+';
+
+$(document).bind('keydown', teclas+'1', function(){
+    $('#linkMenu').trigger('click');
+    return false;
+});
+
+$(document).bind('keydown', teclas+'2', function(){
+    $('#linkConteudo')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'3', function(){
+    $('#linkBusca')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'4', function(){
+    $('#linkMapaSite')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'5', function(){
+    $('#aumentarFonte')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'6', function(){
+    $('#diminuirFonte')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'7', function(){
+    $('#fonteOriginal')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'8', function(){
+    $('#corOriginal')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'9', function(){
+    $('#contraste')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'0', function(){
+    $('#acessibilidade')[0].click();
+    return false;
+});
+
+//link menu
+$('#linkMenu').click(function(){
+    openNav();
+    $('#acessibilidade').css('right',0);
+});
+
+//link busca
+$("#linkConteudo").click(function(){
+    $('#conteudo').focus();
+    $('#acessibilidade').css('right',0);
+});
+
+//link busca
+$("#linkBusca").click(function(){
+    $('#pesquisa').focus();
+    $('#pesquisa').val('');
+    $('#acessibilidade').css('right',0);
+});
+
+//aumentar fonte
+$("#aumentarFonte").click(function(){
+    var tamanhoFonte = $('body').css('font-size');
+    tamanhoFonte = parseInt(tamanhoFonte.substr(0,2));
+
+    if (tamanhoFonte <= 22){
+        tamanhoFonte++;
+        $('body').css('font-size',tamanhoFonte);
+    }
+
+    return false;
+});
+
+//diminuit fonte
+$("#diminuirFonte").click(function(){
+    var tamanhoFonte = $('body').css('font-size');
+    tamanhoFonte = parseInt(tamanhoFonte.substr(0,2));
+
+    if (tamanhoFonte >= 12) {
+        tamanhoFonte--;
+        $('body').css('font-size',tamanhoFonte);
+    }
+
+    return false;
+});
+
+$("#fonteOriginal").click(function(){
+    $('body').css('font-size',fonteOriginal);
+    return false;
+});
+
+$("#contraste").click(function(){
+    cssFile = $('#contrasteCSS');
+    if(!cssFile.attr('id')){
+        $('head').append('<link id="contrasteCSS" rel="stylesheet" href="/css/contraste.css" type="text/css" />');
+    }
+    $.cookie("css",'contraste', {expires: 365, path: '/'});
+    return false;
+});
+
+//remover contraste
+$("#corOriginal").click(function(){
+    $('#contrasteCSS').remove();
+    $.cookie("css",'corOriginal', {expires: 365, path: '/'});
+    return false;
+});
+
+if($.cookie("css")) {
+    $('#'+$.cookie("css")).trigger('click');
+}
+
+
+          var chart = new ApexCharts(document.querySelector('#w6'), {"chart":{"type":"bar","width":"100%","height":170,"parentHeightOffset":5,"toolbar":{"show":false}},"series":[{"name":"Muito Insatisfeito","data":[0]},{"name":"Insatisfeito","data":[2]},{"name":"Neutro","data":[1]},{"name":"Satisfeito","data":[3]},{"name":"Muito Satisfeito","data":[15]}],"xaxis":{"categories":["Resultados"],"labels":{"show":false}},"yaxis":{"labels":{"show":false}},"colors":["rgb(164, 8, 8)","rgb(158, 38, 38)","rgb(229,194,24)","rgb(0,141,54)","rgb(0,102,51)"],"stroke":{"width":5,"colors":["transparent"]},"title":{"text":"Resultados","align":"center","floating":true},"subtitle":{"text":"","align":"center","floating":false},"plotOptions":{"bar":{"horizontal":true,"barHeight":"80%","columnWidth":"30%","dataLabels":{"position":"bottom"}}},"legend":{"show":false,"position":"bottom","horizontalAlign":"left","showForSingleSeries":true},"dataLabels":{"enabled":false}});
+          chart.render();
+jQuery('#pesquisa-form').yiiActiveForm([], []);
+});</script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a613ff7c2ed8353d',t:'MTc5NTgxMjU1MQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a613ff7c2ed8353d',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

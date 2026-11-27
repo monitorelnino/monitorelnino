@@ -1,0 +1,811 @@
+<!-- Modal 
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h6 class="modal-title">INFORMATIVO</h6>
+                    <button type="button" class="btn" data-dismiss="modal" aria-label="Fechar">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>                    
+                    <div class="modal-body" style="text-align: justify;line-height: 2;">
+                        <a href="https://japi.rn.gov.br/ListaDeLeiloesPresencias">
+                            <img width="600" class="img-fluid" src="https://japi.rn.gov.br/img/leilao-01-2025.jpg"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- Fim Modal -->        
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="js/bootstrap.min.js"></script>
+            <script>
+          $(document).ready(function(){
+            $('#myModal').modal('show');
+          });
+        </script>
+
+  
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="csrf-token" content="YEPCAzjnFJP5vdvJIT4zatBRV0rKbbnE6238eghf">
+    <title>Prefeitura Municipal de Japi/RN, Poder Executivo, Japi/RN</title>
+    <link rel="shortcut icon" href="/img/favicon.png">
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Form -->
+    <link href="/form/form.css" rel="stylesheet">
+    <!-- Bootstrap 4 -->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">    
+
+    <!-- Custom styles for this template -->
+    <link href="/css/small-business.css" rel="stylesheet">
+    <link href="/css/acessibilidade.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script lang="text/javascript">
+            //setando a variável que controla as funções de acessibilidade
+            if(sessionStorage.getItem('tamanho_fonte') == null){
+                sessionStorage.setItem('tamanho_fonte', 1);
+            }
+            if(sessionStorage.getItem('cor_escura') == null){
+                sessionStorage.setItem('cor_escura', 0);
+            }
+
+        </script>
+        <style>
+          .breadcrumb-item + .breadcrumb-item::before {
+            content: ">>";
+            padding: 0 .5rem;
+            color: #6c757d; /* cinza padrÃƒÂ£o do Bootstrap */
+          }            
+        </style>
+  </head>
+  <body class="acessibilidade">
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container mt-1 mb-1">
+            <a class="navbar-brand" href="#top" accesskey="1">Ir para o Conteúdo Principal [Alt + 1]</a>
+            <a class="navbar-brand" href="#menu" accesskey="2">Início do Menu [Alt + 2]</a>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto my-1 p-1" style="border:1px solid #fff;border-radius:8px">
+            <li class="nav-item ml-2">
+                <a class="navbar-brand" href="#">Acessibilidade</a>
+            </li>
+            <li class="nav-item">
+                <a class="navbar-brand" href="#" onClick="fonte('a');">A+</a>
+            </li>
+            <li class="nav-item">
+                <a class="navbar-brand" href="#" onClick="fonte('n');">A</a>
+            </li>
+            <li class="nav-item">
+                <a class="navbar-brand" href="#" onClick="fonte('d');">A-</a>
+            </li>
+            <li class="nav-item">
+                <a class="navbar-brand" href="#" id="altocontraste" accesskey="3" onclick="window.toggleContrast()" onkeydown="window.toggleContrast()">
+                    <i class="fa fa-adjust"></i> Contraste
+                </a>
+            </li> 
+            <li class="nav-item">
+                <a class="navbar-brand" href="https://japi.rn.gov.br/pages/mapasite"><i class="fa fa-sitemap"></i> Mapa do Site</a>
+            </li>            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header - set the background image for the header in the line below  -->
+    <header class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <a href="https://japi.rn.gov.br">
+              <img class="img-fluid" src="/img/logo-topo.png" alt="Prefeiura de Japi, Selo Unicef 2021-224, Selo Nacional compromisso com a Alfabetização Ouro 2024" title="Prefeiura de Japi, Selo Unicef 2021-224, Selo Nacional compromisso com a Alfabetização Ouro 2024">              
+            </a>  
+          </div>
+          <div class="col-lg-6">
+              <a href="https://radardatransparencia.atricon.org.br/" target="_blank">
+                <img class="img-fluid" style="float:right;" src="/img/selo_diamante_2025_pref_japi.png" alt="">
+              </a>
+          </div>
+        </div>              
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menu" style="background-image: url('https://japi.rn.gov.br/img/linha.png');background-position: bottom;background-repeat: no-repeat;background-size: 100% auto;">
+      <div class="container">
+          <a class="navbar-brand" href="https://japi.rn.gov.br">
+            <i class="fa fa-home"></i> PREFEITURA DE JAPI/RN
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  A CIDADE
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">                  
+                  <a class="dropdown-item" href="https://japi.rn.gov.br/pages/historico">Histórico</a>
+                  <a class="dropdown-item" href="https://japi.rn.gov.br/pages/localizacao">Localização</a>
+                  <a class="dropdown-item" href="https://japi.rn.gov.br/pages/simbolos">Símbolos Municipais</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  A PREFEITURA
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="https://japi.rn.gov.br/ListaDeSecretarias">Estrutura Administrativa</a>
+                  <a class="dropdown-item" href="https://japi.rn.gov.br/pages/aPrefeita">A Prefeita</a>
+                  <a class="dropdown-item" href="#">Vice-Prefeito</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://japi.rn.gov.br/ListaDeNoticias">NOTÍCIAS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://japi.rn.gov.br/transparencia-municipal">PORTAL DA TRANSPARÊNCIA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://japi.rn.gov.br/Contatos">FALE CONOSCO</a>
+              </li>              
+            </ul>
+            <a href="https://japi.rn.gov.br/pesquisa">
+              <form class="card mt-3 mb-3" action="#">
+                <div class="input-group">
+                    <input type="hidden" name="_token" value="YEPCAzjnFJP5vdvJIT4zatBRV0rKbbnE6238eghf">
+                  <input type="text" name="texto" class="form-control" placeholder="Faça sua pesquisa" aria-label="Search">
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </form>
+            </a>
+          </div>
+        </div>  
+      </nav>
+         
+     <!-- Page Content -->
+<div class="services-banner">
+    <div class="services-container">
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-money"></i>
+            </div>
+            <h3>Emissão de Tributos</h3>
+            <p>IPTU, ISS e outros tributos municipais</p>
+            <a href="http://rn.japi.tributario.aspec.com.br/portal/login.xhtml" target="_blank" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-search"></i>
+            </div>
+            <h3>Portal da Transparência</h3>
+            <p>Execução orçamentária e financeira</p>
+            <a href="https://japi.rn.gov.br/transparencia-municipal" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-info"></i>
+            </div>
+            <h3>SIC e E-SIC</h3>
+            <p>Lei Complementar nº 12.527/2011</p>
+            <a href="https://japi.rn.gov.br/AcessoAInformacao" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-eye"></i>
+            </div>
+            <h3>Processos Licitatórios</h3>
+            <p>Avisos, editais, contratos e demais atos</p>
+            <a href="https://japi.rn.gov.br/licitacoes" target="_blank" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-id-card"></i>
+            </div>
+            <h3>Contracheque Online</h3>
+            <p>Ficha Individual Financeira</p>
+            <a href="https://app.topsolutionsrn.com.br/contracheque/pmjapi/" target="_blank" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-newspaper-o"></i>
+            </div>
+            <h3>Diário Oficial do Município</h3>
+            <p>Publicação dos atos normativos</p>
+            <a href="https://japi.rn.gov.br/atosNormativos" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-info"></i>
+            </div>
+            <h3>Pesquisa de Satisfação</h3>
+            <p>Alvaliação dos serviços públicos</p>
+            <a href="https://japi.rn.gov.br/pages/pesquisaSatisfacao" target="_blank" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-comment"></i>
+            </div>
+            <h3>Ouvidoria Municipal</h3>
+            <p>Canal direto entre você e a Prefeitura</p>
+            <a href="https://japi.rn.gov.br/Contatos" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-arrow-right"></i>
+            </div>
+            <h3>RADAR DA TRANSPARÊNCIA</h3>
+            <p>Radar Nacional da Transparência Pública</p>
+            <a href="https://radardatransparencia.atricon.org.br/" target="_blank" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-book"></i>
+            </div>
+            <h3>E-CAF</h3>
+            <p>Cadastro de Fornecedores</p>
+            <a href="https://japi.rn.gov.br/pages/fornecedor" target="_blank" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+
+    </div>
+</div>    
+    <div class="container mb-4 mt-4">
+        <h1 class="main-title">Últimas notícias</h1>
+        <div class="row">
+            <!-- Coluna esquerda - Notícia em destaque -->
+            <div class="col-lg-8 mb-4 mb-lg-0">
+                                              
+                <div class="card featured-card">
+                    <div class="featured-img-container">
+                        <img src="./storage/noticias/October2026/lUYHuDtJ45oLA4gyrE5r.jpg" class="featured-img" alt="A festa da criançada continua, e agora é a vez de Queimadas!">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-subtitle mb-2 text-muted">A festa da criançada continua, e agora é a vez de Queimadas!</h3>
+                        <p class="text-muted mb-2">15/10/2026</p>
+                        <p class="card-text">
+                            Depois de tanta alegria na pra&ccedil;a central do nosso munic&iacute;pio, chegou a hora de levar essa comemora&ccedil;&atilde;o especial para as crian&ccedil;as da Comunidade Queimadas!
+Teremos entrega de brinquedos, pipoca, algod&atilde;o-doce...</p>
+                        <a href="https://japi.rn.gov.br/post/a-festa-da-criancada-continua-e-agora-e-a-vez-de-queimadas" class="btn btn-success">Abrir Notícia</a>
+                    </div>
+                </div>
+                                              
+            </div>
+            
+            <!-- Coluna direita - Notícias secundárias -->
+            <div class="col-lg-4">
+                                                                        <!-- Notícia 1 -->
+                <div class="card news-card h-120">
+                    <div class="card-body d-flex p-2">
+                        <div class="news-img-container me-3">
+                            <img src="./storage/noticias/October2026/nDip28Ae89wxp5s3SRRb.jpg" class="news-img" alt="Prefeitura de Japi realiza estudos para implantação de Academias da Saúde no Alto São Sebastião e em Pedra Preta">
+                        </div>
+                        <div class="d-flex flex-column justify-content-between ml-2">
+                            <div>
+                                <span class="news-category"></span>
+                                <h6 class="card-title mb-1">
+                                    <a href="https://japi.rn.gov.br/post/prefeitura-de-japi-realiza-estudos-para-implantacao-de-academias-da-saude-no-alto-sao-sebastiao-e-em-pedra-preta">Prefeitura de Japi realiza estudos para implantação de Academias da Saúde no Alto São Sebastião e em Pedra Preta</a></h6>
+                                <small class="text-muted">15/10/2026</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                            <!-- Notícia 1 -->
+                <div class="card news-card h-120">
+                    <div class="card-body d-flex p-2">
+                        <div class="news-img-container me-3">
+                            <img src="./storage/noticias/October2026/sRIERkVnpe4HnmMsldoU.jpg" class="news-img" alt="Japi promove ação de educação em saúde para idosos com foco na saúde mental, alimentação saudável e atividades físicas">
+                        </div>
+                        <div class="d-flex flex-column justify-content-between ml-2">
+                            <div>
+                                <span class="news-category"></span>
+                                <h6 class="card-title mb-1">
+                                    <a href="https://japi.rn.gov.br/post/japi-promove-acao-de-educacao-em-saude-para-idosos-com-foco-na-saude-mental-alimentacao-saudavel-e-atividades-fisicas">Japi promove ação de educação em saúde para idosos com foco na saúde mental, alimentação saudável e atividades físicas</a></h6>
+                                <small class="text-muted">15/10/2026</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                            <!-- Notícia 1 -->
+                <div class="card news-card h-120">
+                    <div class="card-body d-flex p-2">
+                        <div class="news-img-container me-3">
+                            <img src="./storage/noticias/October2026/ySxadXuDyvcLjEUw57ea.jpg" class="news-img" alt="Dia das Crianças em Japi vai ser do jeito que a criançada gosta!">
+                        </div>
+                        <div class="d-flex flex-column justify-content-between ml-2">
+                            <div>
+                                <span class="news-category"></span>
+                                <h6 class="card-title mb-1">
+                                    <a href="https://japi.rn.gov.br/post/dia-das-criancas-em-japi-vai-ser-do-jeito-que-a-criancada-gosta">Dia das Crianças em Japi vai ser do jeito que a criançada gosta!</a></h6>
+                                <small class="text-muted">15/10/2026</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                            <!-- Notícia 1 -->
+                <div class="card news-card h-120">
+                    <div class="card-body d-flex p-2">
+                        <div class="news-img-container me-3">
+                            <img src="./storage/noticias/October2026/lUYHuDtJ45oLA4gyrE5r.jpg" class="news-img" alt="A festa da criançada continua, e agora é a vez de Queimadas!">
+                        </div>
+                        <div class="d-flex flex-column justify-content-between ml-2">
+                            <div>
+                                <span class="news-category"></span>
+                                <h6 class="card-title mb-1">
+                                    <a href="https://japi.rn.gov.br/post/a-festa-da-criancada-continua-e-agora-e-a-vez-de-queimadas">A festa da criançada continua, e agora é a vez de Queimadas!</a></h6>
+                                <small class="text-muted">15/10/2026</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                               
+            </div>
+        </div>
+    </div>
+    <div class="container">
+      <!-- /.row -->
+      <div class="row">
+            <div class="col-md-12 mt-2 mb-4">
+                <a href="https://radardatransparencia.atricon.org.br/" target="_blank">
+                    <img class="img-fluid" style="border:1px solid #e8e8e8" src="/img/radar.png"/>
+                </a>
+            </div>
+      </div>
+      <!-- Content Row -->
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <h5><i class="fa fa-plus"></i> MAIS NOTÍCIAS</h5>
+          <div class="card" style="border:2px solid #ffffff;">
+                                              <small class="text-muted mb-1">
+                    <a href="#" class="badge alert-success"></a>
+                </small>
+                <a href="https://japi.rn.gov.br/post/prefeitura-de-japi-realiza-estudos-para-implantacao-de-academias-da-saude-no-alto-sao-sebastiao-e-em-pedra-preta" class="text text-dark">
+                    <h6>Prefeitura de Japi realiza estudos para implantação de Academias da Saúde no Alto São Sebastião e em Pedra Preta</h6>
+                </a>
+                                                                                                                                      <hr>
+            </div>
+            <div class="card" style="border:2px solid #ffffff">
+                                              <small class="text-muted mb-1">
+                    <a href="#" class="badge alert-success"></a>
+                </small>
+                <a href="https://japi.rn.gov.br/post/japi-promove-palestra-sobre-saude-sexual-e-prevencao-da-gravidez-na-adolescencia-fortalecendo-a-conscientizacao-e-o-autocuidado-entre-os-jovens" class="text text-dark">
+                    <h6>Japi promove palestra sobre saúde sexual e prevenção da gravidez na adolescência, fortalecendo a conscientização e o autocuidado entre os jovens</h6>
+                </a>
+                                                                                                                                                                    <hr>
+              </div>
+            <div class="card" style="border:2px solid #ffffff">
+                                              <small class="text-muted mb-1">
+                    <a href="#" class="badge alert-success"></a>
+                </small>
+                <a href="https://japi.rn.gov.br/post/unidade-odontologica-movel-de-japi-leva-atendimento-de-saude-bucal-aos-estudantes-da-escola-municipal-marcilio-furtado" class="text text-dark">
+                    <h6>Unidade Odontológica Móvel de Japi leva atendimento de saúde bucal aos estudantes da Escola Municipal Marcílio Furtado</h6>
+                </a>
+                                                                                                                                                                                                  <hr>
+              </div>
+            <div class="card" style="border:2px solid #ffffff">
+                                              <small class="text-muted mb-1">
+                    <a href="#" class="badge alert-success"></a>
+                </small>
+                <a href="https://japi.rn.gov.br/post/ubs-centro-de-japi-passa-a-oferecer-atendimento-em-neurologia-ampliando-o-acesso-da-populacao-a-consultas-especializadas" class="text text-dark">
+                    <h6>UBS Centro de Japi passa a oferecer atendimento em Neurologia, ampliando o acesso da população a consultas especializadas</h6>
+                </a>
+                                                                                                                                                                                                                                </div> 
+              <hr>
+            <div class="card" style="border:2px solid #ffffff">
+                                              <small class="text-muted mb-1">
+                    <a href="#" class="badge alert-success"></a>
+                </small>
+                <a href="https://japi.rn.gov.br/post/secretaria-de-assistencia-social-de-japi-encerra-programacao-da-semana-do-bebe-com-foco-no-cuidado-e-na-valorizacao-da-primeira-infancia" class="text text-dark">
+                    <h6>Secretaria de Assistência Social de Japi encerra programação da Semana do Bebê com foco no cuidado e na valorização da primeira infância</h6>
+                </a>
+                                                                                                                                                                                                                                                              </div>               
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-6 mb-4">
+          <h5 class="text-center">SECRETARIAS MUNICIPAIS</h5>
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="item carousel-item active">
+                              
+                <div class="img-box"><img src="./storage/secretaria/February2025/OUtPROx1vt3zrPB6RVrQ.jpg" alt="sem imagem"></div>
+                <p class="testimonial">
+                  <b>SECRETARIA MUNICIPAL DE EDUCAÇÃO</b><br/>
+                  <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                  <i class="fa fa-phone"></i> (84)98718-2209<br/>
+                  <i class="fa fa-envelope"></i>otaviosouza094@gmail.com
+                </p>
+                <p class="overview">
+                  <b>OTÁVIO DE SOUZA MARTINS FILHO</b>, Secretário
+                </p>
+                <h6>
+                  <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-educacao" class="btn btn-success btn-sm">
+                        Visualizar
+                  </a>
+                <h6>
+                
+                            </div>
+
+              
+                                                                              <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/February2025/cZ3CIpcqjo3EdpJbU0jp.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE TRABALHO, HABITAÇÃO E ASSISTÊNCIA SOCIAL</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98607-0621<br/>
+                      <i class="fa fa-envelope"></i>assistenciajapi2022@gmail.com
+                    </p>
+                    <p class="overview">
+                      <b>LUCIENE TEIXEIRA FELICIANO</b>, Secretária
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-trabalho-habitacao-e-assistencia-social" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/February2025/iQyKq20tAw26XcUzAtuW.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE SAÚDE</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98187-3928<br/>
+                      <i class="fa fa-envelope"></i>smsjapirn2024@gmail.com
+                    </p>
+                    <p class="overview">
+                      <b>RITA DE CASSIA MEDEIROS DE MELO PINHEIRO</b>, Secretária
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-saude" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/February2025/IN4BXCCdfAFd44em7jhS.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE FINANÇAS</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)996312940<br/>
+                      <i class="fa fa-envelope"></i>secretariafinancasjapi@hotmail.com
+                    </p>
+                    <p class="overview">
+                      <b>VANDERSON MENEZES DA SILVA</b>, Secretário
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-financas" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/August2025/vJLBxvlFraASh3ac8rxZ.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA DE AGRICULTURA</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98146-9953<br/>
+                      <i class="fa fa-envelope"></i>secretariadeagriculturajapi@gmail.com
+                    </p>
+                    <p class="overview">
+                      <b>ISABELA CRISTINA DA SILVA DE SOUZA</b>, Secretária
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-de-agricultura" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/February2025/SeqM0EMLUPom7037PDGI.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE TURISMO</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98719-3353<br/>
+                      <i class="fa fa-envelope"></i>saladoempreendedorjapi@gmail.com
+                    </p>
+                    <p class="overview">
+                      <b>ANDERSON CLEYSON DA SILVA</b>, Secretário
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-turismo" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/August2025/BEM4CD6R5Qizjy8QTEWv.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE TRIBUTAÇÃO</b><br/>
+                      <i class="fa fa-map-marker"></i>Endereço: Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98807-0067<br/>
+                      <i class="fa fa-envelope"></i>pmjapirn.tributacao@gmail.com
+                    </p>
+                    <p class="overview">
+                      <b>EDILENE FLORENTINO DE ARAÚJO LIMA</b>, Secretária
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-tributacao" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/November2026/L2xO8oj8WG96mfbO2hdO.jpeg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE OBRAS, TRANSPORTES E SERVIÇOS URBANOS</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98155-3931<br/>
+                      <i class="fa fa-envelope"></i>contato@japi.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>HERON REGIS DE MEDEIROS PINTO</b>, SECRETARIO
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-obras-transportes-e-servicos-urbanos" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/November2026/NY4hQ5Giaicxkt1wJDxj.jpeg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE CULTURA</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98155-3931<br/>
+                      <i class="fa fa-envelope"></i>contato@japi.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>ELLEN CRIS ARCANJO DOS SANTOS PONTES</b>, SECRETARIO
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-cultura" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/November2026/bZpUm2UIuyrrQoE2ZJzd.jpeg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE ESPORTE E LAZER</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98155-3931<br/>
+                      <i class="fa fa-envelope"></i>contato@japi.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>JOSE VITAL DE PONTES JUNIOR</b>, SECRETARIO
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-esporte-e-lazer" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/November2026/P3BUxPonDHWHf5phuM9T.jpeg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE PLANEJAMENTO E ADMINISTRAÇÃO</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98155-3931<br/>
+                      <i class="fa fa-envelope"></i>contato@japi.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>ROMILDO MELO DA SILVA</b>, SECRETARIO
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-planejamento-e-administracao" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/November2026/vYISsv9DC7boQt63o9l6.jpeg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE MEIO AMBIENTE E RECURSOS HIDRICOS</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98155-3931<br/>
+                      <i class="fa fa-envelope"></i>contato@japi.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>CAIO FERNANDO PIMENTA MEDEIROS</b>, SECRETARIO
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-meio-ambiente-e-recursos-hidricos" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/November2026/vigy3ZOIQAmqJBsCGF6U.jpeg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE DEFESA CIVIL</b><br/>
+                      <i class="fa fa-map-marker"></i>Rua João Batista Confessor, 19 – Centro – CEP: 59213-000 - Japi/RN<br/>
+                      <i class="fa fa-phone"></i> (84)98155-3931<br/>
+                      <i class="fa fa-envelope"></i>contato@japi.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>PATRICIO FERNANDES DE MEDEIROS</b>, SECRETARIO
+                    </p>
+                      <h6>
+                        <a href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-defesa-civil" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                              
+            <!-- Carousel controls -->
+            <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+              <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </div>
+        </div>          
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+      <!-- /.row -->
+    <!-- /.container -->
+</div>
+      <div class="map">
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3964.428830916012!2d-35.94820482619452!3d-6.467234793524421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ae08702d491b6f%3A0x8793c8ed0a5483fd!2sPrefeitura%20Municipal%20de%20Japi!5e0!3m2!1spt-BR!2sbr!4v1714164357927!5m2!1spt-BR!2sbr" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <!-- Footer -->
+    <footer class="py-5 bg-secondary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-5 mb-4 text-center">
+            <img class="img-fluid" src="/img/logo-footer.png" width="250" alt="">
+            <br/><br/>
+            <h6>REDES SOCIAS</h6>
+                <a class="navbar-brand" href="https://www.instagram.com/prefeituradejapirn/" target="_blank">
+                    <i class="fa fa-instagram"></i> /prefeituradejapirn
+                </a>
+            <br/>
+          </div>
+          <div class="col-md-3 mb-4">
+            <h6>O MUNICÍPIO</h6>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/pages/historico">Histórico</a>
+              </li>
+              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/pages/simbolos">Símbolos Municipais</a>
+              </li>
+              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/pages/localizacao">Localização</a>
+              </li>
+              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/Contatos">Contato</a>
+              </li> 
+              <li class="list-group-item">
+                  <a class="text text-dark" href="https://mail.hostinger.com/" target="_blank">Webmail</a>
+              </li>              
+            </ul>
+          </div>  
+          <div class="col-md-4 mb-4">
+            <h6>SECRETARIAS</h6>
+            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-de-agricultura">
+                    SECRETARIA DE AGRICULTURA
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-cultura">
+                    SECRETARIA MUNICIPAL DE CULTURA
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-defesa-civil">
+                    SECRETARIA MUNICIPAL DE DEFESA CIVIL
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-educacao">
+                    SECRETARIA MUNICIPAL DE EDUCAÇÃO
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-esporte-e-lazer">
+                    SECRETARIA MUNICIPAL DE ESPORTE E LAZER
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-financas">
+                    SECRETARIA MUNICIPAL DE FINANÇAS
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-meio-ambiente-e-recursos-hidricos">
+                    SECRETARIA MUNICIPAL DE MEIO AMBIENTE E RECURSOS HIDRICOS
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-obras-transportes-e-servicos-urbanos">
+                    SECRETARIA MUNICIPAL DE OBRAS, TRANSPORTES E SERVIÇOS URBANOS
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-planejamento-e-administracao">
+                    SECRETARIA MUNICIPAL DE PLANEJAMENTO E ADMINISTRAÇÃO
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-saude">
+                    SECRETARIA MUNICIPAL DE SAÚDE
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-trabalho-habitacao-e-assistencia-social">
+                    SECRETARIA MUNICIPAL DE TRABALHO, HABITAÇÃO E ASSISTÊNCIA SOCIAL
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-tributacao">
+                    SECRETARIA MUNICIPAL DE TRIBUTAÇÃO
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://japi.rn.gov.br/secretaria/secretaria-municipal-de-turismo">
+                    SECRETARIA MUNICIPAL DE TURISMO
+                  </a>
+                </li>            
+                          </ul>
+          </div> 
+          
+        </div>
+        <p class="m-0 text-center small text-muted">
+            2025 - 2028 &copy; Prefeitura Municipal de Japi/RN</br>
+            <a href="http://www.marcelolimawebdesign.com.br" target="_blank">
+                <img class="img-fluid" src="/img/logo-dev-marcelolima.png" alt="">
+            </a>
+        </p>
+      </div>
+      <!-- /.container -->
+    </footer>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/fontes.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+  
+    <!-- Bootstrap 4 JS 
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>-->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
+  </body>
+
+</html>

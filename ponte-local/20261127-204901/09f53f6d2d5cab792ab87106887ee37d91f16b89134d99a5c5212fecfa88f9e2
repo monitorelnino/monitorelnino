@@ -1,0 +1,1732 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de Maravilhas</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Maravilhas.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de Maravilhas' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://maravilhas.mg.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://maravilhas.mg.gov.br/uploads/config/16693/brasao.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='350'>
+            <meta property='og:image:height' content='342'>
+            <meta property='og:site_name' content='maravilhas.mg.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Maravilhas.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de Maravilhas'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Maravilhas.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://maravilhas.mg.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://maravilhas.mg.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://maravilhas.mg.gov.br/site/custom/default/css/color/c_maravilhas.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://maravilhas.mg.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://maravilhas.mg.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://maravilhas.mg.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://maravilhas.mg.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://maravilhas.mg.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://maravilhas.mg.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://maravilhas.mg.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://maravilhas.mg.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-CV9M3GELKW"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-CV9M3GELKW');
+    });
+</script>
+        <link rel="shortcut icon" href="https://maravilhas.mg.gov.br/uploads/config/18/icon.ico" />    
+	    <!-- Especifico -->
+    <a href="https://maravilhas.mg.gov.br/ouvidoria" target="_blank" class="botao-flutuante">
+        Ouvidoria Online
+    </a>
+
+<style>
+ .max-height100 {
+    max-height: 100%;
+    max-width: 100%;
+
+}
+.header03 #topBar a.logo{margin: 10px 0;}
+ #topBar a.logo .max-height100 {
+
+}
+
+header#navbar {
+    background: linear-gradient(120deg, #327EBC 10%, #07c497, #22943C 90%);
+
+    
+    button.btn.btn-primary {
+        background: #0003;
+        border: 1px solid #0003 !important;
+    }
+}
+
+#footer.footer01 .logo {
+    background: white;
+    border-radius: 8px;
+}
+
+
+        .botao-flutuante {
+            position: fixed;
+            bottom: 50px;
+            right: 15px;
+            background-color: #0c73d4 !important;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 2px 2px 10px rgba(0,0,0,0.2);
+             z-index: 9999;
+
+        }
+        
+.botao-flutuante:hover {
+    background-color: #a4cef5 !important; /* Cor ao passar o mouse */
+}
+
+</style>    </head>
+	    <body class="smoothscroll wide home6_maravilhas" data-background=""><a href="https://maravilhas.mg.gov.br/cdn-cgi/content?id=EZOol97n6ch49E15Pfl2XhgslyY8ubePXIHHxRvvsNs-1795812700.045855-1.2.1.1-LfitjJONIMaQbusattDsIutmKbXEiCJvV10lyfAH2ZXMX3kvlC5uB7HVHO2DERaK" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <!-- Cabeçalho -->
+<!--===================================================-->
+<div id="header" class='header08'>
+  <header id="topBar" class="">
+    <div class="container">
+      <!-- Logo -->
+      <div class="col-md-4 col-sm-7 nopadding-left">
+        <!-- Data -->
+                <p class="mb10 mt5"><small class="pl15">Maravilhas, 27 de novembro de 2026</small></p>
+        <!-- Fim Data -->
+                    <h1 class="client-name nomargin lineh30">
+            <a  class="logo" href="https://maravilhas.mg.gov.br">
+                <img class="max-height100" src="https://maravilhas.mg.gov.br/uploads/config/16699/certo.png" alt="Logo da Prefeitura"/>            </a>
+            </h1>
+                  </div>
+      <!-- / Logo -->
+
+            <div class="col-md-8 col-sm-5 hidden-xs border-b-2-fff radius-right-20 ">
+        <div class="row">
+          <div class="col-md-6 alterate">
+            <div class="box-search-and-weather radius4 m0" title="Temperatura" aria-label="Temperatura" tabindex="0">
+              <!-- Previsão do tempo-->
+                            <div class="weather previsao-topo hidden">
+                <div style="flex:2;"></div>
+                <div class="weather-today">
+                  <i class="m0 fsize32 wi wi-thermometer"></i>
+                </div>
+                <div class="weather-week">
+                  <p class="fontw400 mb0">
+                    <small aria-label="Mínima de">MIN</small> <span class='min-temp'></span>°C
+                  </p>
+				  <span class="sr-only">e</span>
+                  <p class="fontw400 mb0">
+                    <small aria-label="Máxima de">MAX</small> <span class='max-temp'></span>°C
+                  </p>
+                </div>
+              </div>
+                            <!-- /Previsão do tempo-->
+              <!-- Busca -->
+              <div class="search-site" role='search'>
+                <form id="pesquisa" class="search nopadding" method="get" action="https://maravilhas.mg.gov.br/pesquisa">
+			  		<label for="searchbar-desktop" class="sr-only">Pesquisar no site:</label>
+                  <input title="Procurar no site" id="searchbar-desktop" type="text" class="form-control nomargin" name="q" value="" placeholder="Procurar no site">
+                  <button type="submit" class="fa fa-search search-focus styleColor" title="Pesquisar" aria-label="Pesquisar"></button>
+                </form>
+              </div>
+              <!-- /Busca -->
+            </div>
+          </div>
+
+                  </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <!--===================================================-->
+  <header id="topNav" class="">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get"
+            action="https://maravilhas.mg.gov.br/pesquisa">
+		<label for="searchbar-mobile" class="sr-only">Pesquisar no site:</label>
+        <input title="termo de pesquisa" id="searchbar-mobile" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar" style="min-width:24px;min-height:24px;margin-top: -5px;"></button>
+      </form>
+      <!-- Menu Mobile -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse"> <i class="fa fa-bars"></i></button>
+      <!-- Menu -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li><a href='https://maravilhas.mg.gov.br'>Início</a></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/3/?dados-do-municipio.html'>Dados do Município</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1022/?hino-de-maravilhas.html'>Hino de Maravilhas</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/galeria-prefeitos/bcid/55/?galeria-de-prefeitos.html'>Galeria de Prefeitos</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-4"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://maravilhas.mg.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://maravilhas.mg.gov.br/uploads/config/16693/brasao.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(37) 3272-1155</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 8:00 às 11:00 e das 13:00 às 16:00</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://maravilhas.mg.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-4"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://maravilhas.mg.gov.br/secretaria/id/1003/?assessor-juridico.html'>Assessor Jurídico </a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/secretaria/id/105/?prefeito-municipal-de-maravilhas.html'>Prefeito Municipal de Maravilhas</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/secretaria/id/1009/?secretaria-da-cultura.html'>Secretaria da Cultura</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/secretaria/id/1002/?secretaria-de-assistencia-social.html'>Secretaria de Assistência Social</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/secretaria/id/110/?secretaria-de-educacao.html'>Secretaria de Educação</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/secretaria/id/1010/?secretaria-de-governo.html'>Secretaria de Governo </a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/secretaria/id/114/?secretaria-de-saude.html'>Secretaria de Saúde</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/secretaria/id/106/?secretaria-de-transporte-e-obras.html'>Secretaria de Transporte e Obras</a></li></ul></div><div class="col-md-4"><p class="menu-category">Subsecretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://maravilhas.mg.gov.br/subsecretaria/id/1011/?departamento-de-almoxarifado.html'>Departamento de Almoxarifado</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/subsecretaria/id/117/?departamento-de-arrecadacao.html'>Departamento de Arrecadação</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/subsecretaria/id/1007/?departamento-de-recursos-humanos.html'>Departamento de Recursos Humanos</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/subsecretaria/id/1012/?departamento-de-tesouraria.html'>Departamento de Tesouraria</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/subsecretaria/id/1008/?siat---fazenda-estadual.html'>SIAT - Fazenda Estadual </a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://maravilhas.mg.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://maravilhas.mg.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://maravilhas.mg.gov.br/uploads/config/16693/brasao.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(37) 3272-1155</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 8:00 às 11:00 e das 13:00 às 16:00</p></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Licitações</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/5/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/1001/?adesao.html'>Adesão </a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/110/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/1003/?ciclo-1---pnab-maravilhas.html'>CICLO 1 - PNAB MARAVILHAS</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/101/?concorrencia-publica.html'>Concorrência Pública</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/103/?convite.html'>Convite</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/107/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/108/?pregao-presencial.html'>Pregão Presencial</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/licitacao/id/109/?tomada-de-preco.html'>Tomada de Preço</a></li></ul></li><li role="menuitem"><a href='http://maravilhasportaltransparencia.portalfacil.com.br/legislacao' target='_blank'>Leis portal fácil </a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/concurso/id/202/?processo-seletivo.html'>Processo Seletivo</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/perguntas-respostas/bcid/37/?perguntas-frequentes.html'>Perguntas Frequentes</a></li><li role="menuitem"><a href='http://maravilhasportaltransparencia.portalfacil.com.br/servico-de-informacao-ao-cidadao' target='_blank'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li><li role="menuitem"><a href='https://ilai.memory.com.br/#/public/home/emendasparlamentares' target='_blank'>Emenda Parlamentar</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Legislação</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://ilai.memory.com.br/#/entidades/login/9BDJT9/1/' target='_blank'>Portal da Transparência</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/legislacao/id/5/?decretos.html'>Decretos</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/legislacao/id/7/?legislacao-tributaria-municipal.html'>Legislação Tributária Municipal</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/legislacao/id/9/?lei-organica.html'>Lei Orgânica</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/legislacao/id/2/?leis-complementares.html'>Leis Complementares</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/legislacao/id/6/?leis-ordinarias.html'>Leis Ordinárias</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/legislacao/id/11/?portaria.html'>Portaria</a></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>VALE</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://www18.fgv.br/projetorioparaopeba/index.html#acordoreparacao' target='_blank'>Conheça Projeto Rio Paraopeba</a></li><li role="menuitem"><a href='https://www18.fgv.br/projetorioparaopeba/situacao-das-iniciativas.html' target='_blank'>Situação atual das iniciativas</a></li><li role="menuitem"><a href=' https://www18.fgv.br/projetorioparaopeba/acompanhamento-saldo-municipios.html' target='_blank'>Informações Financeiras</a></li></ul></div><div class="col-md-4"><p class="menu-category">Projetos de Maravilhas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1006/?doacao-kits-feira-estruturacao-e-orientacao.html'>Doação Kits Feira, Estruturação e Orientação</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1005/?manutencao-e-recuperacao-de-estradas-rurais-fase-1.html'>Manutenção e recuperação de Estradas Rurais Fase 1</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1007/?casas-populares-flor-das-gerais.html'>Casas Populares Flor das Gerais</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1008/?esf-dona-ceca.html'>ESF Dona Ceça</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1010/?manutencao-e-recuperacao-de-estradas-rurais-fase-2.html'>Manutenção e recuperação de Estradas Rurais Fase 2</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1011/?pavimentacao-e-recapeamento-de-vias-diversas.html'>Pavimentação e Recapeamento de Vias Diversas </a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1012/?programas-de-assistencia-social.html'>Programas de Assistência Social</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1013/?fortalecimento-da-atencao-primaria-a-saude.html'>Fortalecimento da Atenção Primária à Saúde</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1014/?promove-minas.html'>Promove Minas</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1015/?regularizacao-fundiaria.html'>Regularização Fundiária </a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1016/?reforma-e-ampliacao-de-duas-unidades-basicas.html'>Reforma e Ampliação de duas unidades básicas</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/pagina/id/1017/?usina-fotovoltaica.html'>Usina Fotovoltaica</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://maravilhas.mg.gov.br/uploads/config/16693/brasao.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(37) 3272-1155</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 8:00 às 11:00 e das 13:00 às 16:00</p></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://maravilhas.mg.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://maravilhas.mg.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li></ul></li></ul></nav>
+      </div>
+    </div>
+  </header>
+  <!--===================================================-->
+  <!-- Fim Menu -->
+</div>
+<!--===================================================-->
+<!-- Fim Cabeçalho -->
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a><!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350">
+                    <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img                         srcset="
+                            https://maravilhas.mg.gov.br/uploads/banner/17583/thumb_banner.webp 360w,
+                            https://maravilhas.mg.gov.br/uploads/banner/17583/mobile_banner.webp 576w,
+                            https://maravilhas.mg.gov.br/uploads/banner/17583/original_banner.webp 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="ALVARÁ DE FUNCIONAMENTO "
+                    />
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://maravilhas.mg.gov.br/uploads/banner/17550/thumb_banner_site_02.webp 360w,
+                            https://maravilhas.mg.gov.br/uploads/banner/17550/mobile_banner_site_02.webp 576w,
+                            https://maravilhas.mg.gov.br/uploads/banner/17550/original_banner_site_02.webp 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Banner Igreja Matriz "
+                    />
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://maravilhas.mg.gov.br/uploads/banner/17544/thumb_Banner___Capa.webp 360w,
+                            https://maravilhas.mg.gov.br/uploads/banner/17544/mobile_Banner___Capa.webp 576w,
+                            https://maravilhas.mg.gov.br/uploads/banner/17544/original_Banner___Capa.webp 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Banner"
+                    />
+                                        <a href="https://maravilhas.mg.gov.br/pagina/id/2/?historia-do-municipio.html" target='_self' class="linkBannner">
+                        <span class="sr-only">Banner</span>
+                    </a>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: true, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: true        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img loading='lazy' src="https://maravilhas.mg.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+<div class="p0 styleContrasteGray">
+    <div class="container">
+        <hr class="half-margins invisible">
+        <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://ilai.memory.com.br/#/entidades/login/9BDJT9/1/" target='_blank'>
+                                <img src="https://maravilhas.mg.gov.br/uploads/banner/17555/original_Banner_03.webp" class="img-responsive tituloOculto" alt="Portal da Transparência" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://maravilhasportaltransparencia.portalfacil.com.br/ouvidoria" target='_blank'>
+                                <img src="https://maravilhas.mg.gov.br/uploads/banner/17554/original_Banner_02.webp" class="img-responsive tituloOculto" alt="e-SIC" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://maravilhas.mg.gov.br/sic" target='_blank'>
+                                <img src="https://maravilhas.mg.gov.br/uploads/banner/17553/original_Banner_01.webp" class="img-responsive tituloOculto" alt="Acesso a informação" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://maravilhas.mg.gov.br/ouvidoria" target='_blank'>
+                                <img src="https://maravilhas.mg.gov.br/uploads/banner/17556/original_Banner_04.webp" class="img-responsive tituloOculto" alt="Ouvidoria " role="presentation" />
+                </a>
+            </div>
+    </div>        <hr class="half-margins">
+    </div>
+</div>
+
+
+<div class="pb40 pt40">
+    <div class="container">
+        <!-- ACESSO RÁPIDO -->
+
+        <div class="col-md-12 mobile-nopadding mobile-margin-top25"><div id="acessoRapidoHorizontal" class="row">
+    <div class="col-md-12"><h2 class="similar-h4 title"><strong>Acesso Rápido</strong></h2></div>
+    <div class="owl-carousel banner-servicos" data-plugin-options='{"navigation": true, "pagination": false,"items": 1}'>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Ouvidoria" href="/ouvidoria" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Ouvidoria</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Nota Fiscal Eletrônica" href="http://nfsebrasil.net.br/nfse/index.php?cl=3139706" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Nota Fiscal Eletrônica</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Serviços ao Cidadão" href="https://webcidadao.com.br/web-cidadao-web/login?codAux=9BDJT9" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Serviços ao Cidadão</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Contas Públicas" href="http://maravilhasportaltransparencia.portalfacil.com.br/contas-publicas" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Contas Públicas</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Acesso à informação " href="javascript:;" target="_self" onclick="abrePopTelaInteira('/sic','Acesso à informação ')">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Acesso à informação </span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="e-SIC" href="http://maravilhasportaltransparencia.portalfacil.com.br/ouvidoria" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">e-SIC</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Perguntas Frequentes" href="/perguntas-respostas" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Perguntas Frequentes</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Portal da Transparência" href="https://ilai.memory.com.br/#/entidades/login/9BDJT9/1/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Portal da Transparência</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Legislação" href="http://maravilhasportaltransparencia.portalfacil.com.br/legislacao" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Legislação</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Licitações" href="/licitacao" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Licitações</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Concursos" href="/concurso" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Concursos</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Serviços" href="/servico" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">Serviços</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="CIAS  Centro-Oeste" href="https://consorciocias.com.br/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-angle-right'></i>                        <span class="block">CIAS  Centro-Oeste</span>
+                    </div>
+                </a>
+            </div>
+            </div>
+        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+    </div>
+</div>        
+<div class="pb40 pt40">
+    <div class="container">
+        <!-- NOTÍCIAS -->
+
+        <div class="overflow-hidden col-md-12 mobile-nopadding"><!-- NOTÍCIAS Acessiveis -->
+<section role="group" id="noticia4" aria-labelledby="noticia4.title" class="nopadding">
+    <div class="row">
+    <div class="col-md-12">
+        <h2 class="similar-h4 title" id="noticia4.title"><strong>ÚLTIMAS NOT&Iacute;CIAS</strong></h2>
+    </div>
+                        <article class="col-md-4">
+                    <a  href="https://maravilhas.mg.gov.br/noticia/visualizar/id/1118/?capoeira-de-maravilhas-representa-o-municipio-em-evento-em-pedro-leopoldo.html"
+                    aria-labelledby="noticia4.0">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://maravilhas.mg.gov.br/uploads/noticia/18828/media_WhatsApp_Image_2026_11_19_at_063441ghygtf.jpeg" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.0">
+						Capoeira de Maravilhas representa o município em evento em Pedro Leopoldo					</h3>
+    			</a>
+    		</article>
+        	                <article class="col-md-4">
+                    <a  href="https://maravilhas.mg.gov.br/noticia/visualizar/id/1117/?capoeira-de-maravilhas-representa-o-municipio-em-evento-regional-em-nova-serrana.html"
+                    aria-labelledby="noticia4.1">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://maravilhas.mg.gov.br/uploads/noticia/18824/media_WhatsApp_Image_2026_11_19_at_063439juikj.jpeg" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.1">
+						Capoeira de Maravilhas representa o município em evento regional em Nova Serrana					</h3>
+    			</a>
+    		</article>
+        	                <article class="col-md-4">
+                    <a  href="https://maravilhas.mg.gov.br/noticia/visualizar/id/1116/?maravilhas-futsal-conquista-a-copa-minas-gerais-sub-17-de-forma-invicta.html"
+                    aria-labelledby="noticia4.2">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://maravilhas.mg.gov.br/uploads/noticia/18814/media_WhatsApp_Image_2026_11_09_at_171854.jpeg" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.2">
+						Maravilhas Futsal conquista a Copa Minas Gerais Sub-17 de forma invicta					</h3>
+    			</a>
+    		</article>
+        	    </div>
+
+        <div class="other-news hidden-xs col-md-12">
+        <div class="row">
+
+                        <a  href="https://maravilhas.mg.gov.br/noticia/visualizar/id/1115/?atleta-wallyson-goncalves-representa-maravilhas-em-desafio-de-mtb-em-florestal.html"
+                aria-labelledby="noticia4m.3">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://maravilhas.mg.gov.br/uploads/noticia/18812/media_WhatsApp_Image_2026_11_16_at_075903dsvdsvdsf.jpeg" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">09/11/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.3">Atleta Wallyson Gonçalves representa Maravilhas em desafio de MTB em Florestal</h3>
+                    </div>
+                </article>
+            </a>
+                        <a  href="https://maravilhas.mg.gov.br/noticia/visualizar/id/1114/?maravilhas-recebe-mais-de-180-pilotos-no-trilhao-de-motocross.html"
+                aria-labelledby="noticia4m.4">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://maravilhas.mg.gov.br/uploads/noticia/18811/media_WhatsApp_Image_2026_11_16_at_075903.jpeg" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">09/11/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.4">Maravilhas recebe mais de 180 pilotos no Trilhão de Motocross</h3>
+                    </div>
+                </article>
+            </a>
+                        <a  href="https://maravilhas.mg.gov.br/noticia/visualizar/id/1112/?prefeitura-de-maravilhas-realiza-revitalizacao-do-cemiterio-municipal-para-o-dia-de-finados.html"
+                aria-labelledby="noticia4m.5">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://maravilhas.mg.gov.br/uploads/noticia/18796/media_WhatsApp_Image_2026_11_04_at_140532lascl.jpeg" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">04/11/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.5">Prefeitura de Maravilhas realiza revitalização do Cemitério Municipal para o Dia de Finados</h3>
+                    </div>
+                </article>
+            </a>
+                    </div>
+    </div>
+    <a aria-label="Ver mais notícias"
+        href="https://maravilhas.mg.gov.br/noticia/?noticias.html"
+        class="btn btn-default btn-content featured-box-minimal"><i class="fa fa-newspaper-o"></i> Mais not&iacute;cias</a>
+</section></div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- LICITAÇÕES -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>LICITA&Ccedil;&Otilde;ES</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">111/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PE 045-2026" href="https://maravilhas.mg.gov.br/licitacao/visualizar/id/1203/?pe-045-2026.html">
+                            <p>PE 045-2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            09/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">110/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência Pública                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="CE 007-2026" href="https://maravilhas.mg.gov.br/licitacao/visualizar/id/1202/?ce-007-2026.html">
+                            <p>CE 007-2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            10/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">108/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PE 044-2026" href="https://maravilhas.mg.gov.br/licitacao/visualizar/id/1200/?pe-044-2026.html">
+                            <p>PE 044-2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            04/12/2026 &agrave;s 10h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /LICITAÇÕES --></div>
+                <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://maravilhas.mg.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1001">Adesão </option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="1003">CICLO 1 - PNAB MARAVILHAS</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="103">Convite</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="109">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://maravilhas.mg.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="202">Processo Seletivo</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://maravilhas.mg.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="5">Decretos</option>
+                                                        <option value="1">Legislação</option>
+                                                        <option value="7">Legislação Tributária Municipal</option>
+                                                        <option value="9">Lei Orgânica</option>
+                                                        <option value="2">Leis Complementares</option>
+                                                        <option value="6">Leis Ordinárias</option>
+                                                        <option value="11">Portaria</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-4 mobile-nopadding mobile-margin-top25"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://maravilhas.mg.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://maravilhas.mg.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>José Bonaparte Vasconcelos Fonseca</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (37)  2316-0000                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 08:00h às 16:00h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://maravilhas.mg.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Vice-prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://maravilhas.mg.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Alley Ronny Capanema</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (37)  2316-0000                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 08:00h às 16:00h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://maravilhas.mg.gov.br/secretaria/id/110/?secretaria-de-educacao.html">
+                       Secretaria de Educação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria de Educação" href="https://maravilhas.mg.gov.br/secretaria/id/110/?secretaria-de-educacao.html">
+                            <span class="similar-h4"><strong>Susamar  Aparecida  Guimarães Anghinoni</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (37)  2316-0008                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à sexta feira das 8:00 às 11:00 e de 13:00 às 16:00h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://maravilhas.mg.gov.br/secretaria/id/106/?secretaria-de-transporte-e-obras.html">
+                       Secretaria de Transporte e Obras                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Transporte e Obras" href="https://maravilhas.mg.gov.br/secretaria/id/106/?secretaria-de-transporte-e-obras.html">
+                            <span class="similar-h4"><strong>Luciano Antônio Pereira Vieira</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (37)  2316-0000                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à sexta feira das 8:00 às 11:00 e de 13:00 às 16:00h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://maravilhas.mg.gov.br/secretaria/id/1010/?secretaria-de-governo.html">
+                       Secretaria de Governo                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://maravilhas.mg.gov.br/uploads/departamento/18155/thumb_DSC04236jpg_1.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário de Governo: Reginaldo Barbosa dos Santos" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário de Governo</small>
+                        <div class="row">
+                          <a title="Secretaria de Governo " href="https://maravilhas.mg.gov.br/secretaria/id/1010/?secretaria-de-governo.html">
+                            <span class="similar-h4"><strong>Reginaldo Barbosa dos Santos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (37)  2316-0000                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à sexta feira das 8:00 às 11:00 e de 13:00 às 16:00h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://maravilhas.mg.gov.br/secretaria/id/105/?prefeito-municipal-de-maravilhas.html">
+                       Prefeito Municipal de Maravilhas                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://maravilhas.mg.gov.br/uploads/departamento/16695/thumb_Bonaparte.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Prefeito: José Bonaparte Vasconcelos Fonseca" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Prefeito Municipal de Maravilhas" href="https://maravilhas.mg.gov.br/secretaria/id/105/?prefeito-municipal-de-maravilhas.html">
+                            <span class="similar-h4"><strong>José Bonaparte Vasconcelos Fonseca</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (37)  2316-0000                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à sexta feira das 8:00 às 11:00 e de 13:00 às 16:00h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://maravilhas.mg.gov.br/secretaria/id/1002/?secretaria-de-assistencia-social.html">
+                       Secretaria de Assistência Social                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Assistência Social" href="https://maravilhas.mg.gov.br/secretaria/id/1002/?secretaria-de-assistencia-social.html">
+                            <span class="similar-h4"><strong>Marco Antônio Oliveira Bahia</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (37)  2316-0000                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à sexta feira das 8:00 às 11:00 e de 13:00 às 16:00h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://maravilhas.mg.gov.br/secretaria/id/114/?secretaria-de-saude.html">
+                       Secretaria de Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Saúde" href="https://maravilhas.mg.gov.br/secretaria/id/114/?secretaria-de-saude.html">
+                            <span class="similar-h4"><strong>Carlos Eduardo Vital Vasconcelos  Fonseca</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (37)  2316-0002                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à sexta feira das 8:00 às 11:00 e de 13:00 às 16:00h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://maravilhas.mg.gov.br/secretaria/id/1009/?secretaria-da-cultura.html">
+                       Secretaria da Cultura                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://maravilhas.mg.gov.br/uploads/departamento/16691/thumb_Sara.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Sara Matoso" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria da Cultura" href="https://maravilhas.mg.gov.br/secretaria/id/1009/?secretaria-da-cultura.html">
+                            <span class="similar-h4"><strong>Sara Matoso</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (37)  2316-0008                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à sexta feira das 8:00 às 11:00 e de 13:00 às 16:00h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://maravilhas.mg.gov.br/secretaria/id/1003/?assessor-juridico.html">
+                       Assessor Jurídico                     </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Procurador Geral do Município </small>
+                        <div class="row">
+                          <a title="Assessor Jurídico " href="https://maravilhas.mg.gov.br/secretaria/id/1003/?assessor-juridico.html">
+                            <span class="similar-h4"><strong>Fernando Antônio Rodrigues</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (37)  2316-0000                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à sexta feira das 8:00 às 11:00 e de 13:00 às 16:00h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+<div class="styleBackgroundLight styleContrasteGray pt60 pb60">
+    <div class="container">
+      <div class="col-md-12 mobile-nopadding">
+        <!-- MULTIMIDIA -->
+<h2 class="similar-h4 title"><strong>MULTIM&Iacute;DIA</strong></h2>
+    <ul class="sort-destination isotope multimidia flex-center" style="flex-wrap: wrap;">
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="72 ANOS DE MARAVILHAS" class="item-hover" href="https://maravilhas.mg.gov.br/video/id/1015/?72-anos-de-maravilhas.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-video-camera"></span>
+                            <strong>ASSISTIR</strong> VÍDEO							<span class="sr-only">
+								72 ANOS DE MARAVILHAS							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="//i1.ytimg.com/vi/zP3GL1nSH5Q/mqdefault.jpg" width="260" height="260" alt="72 ANOS DE MARAVILHAS" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">28/01/2026 - </small>
+                    <small style="display: inline;">Eventos</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">72 ANOS DE MARAVILHAS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="JUNHO VERMELHO — Doe Sangue, Doe Vida! " class="item-hover" href="https://maravilhas.mg.gov.br/galeria/id/1006/?junho-vermelho--doe-sangue-doe-vida.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								JUNHO VERMELHO — Doe Sangue, Doe Vida! 							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://maravilhas.mg.gov.br/uploads/midia/16719/media_junho_vermelho_.jpg" width="260" height="260" alt="JUNHO VERMELHO — Doe Sangue, Doe Vida! " style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">25/06/2025 - </small>
+                    <small style="display: inline;">Institucional</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">JUNHO VERMELHO — Doe Sangue, Doe Vida! </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="JUNHO LARANJA | Conscientização sobre Anemia e Leucemia " class="item-hover" href="https://maravilhas.mg.gov.br/galeria/id/1008/?junho-laranja--conscientizacao-sobre-anemia-e-leucemia.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								JUNHO LARANJA | Conscientização sobre Anemia e Leucemia 							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://maravilhas.mg.gov.br/uploads/midia/16722/media_Feed___Saude__3.jpg" width="260" height="260" alt="JUNHO LARANJA | Conscientização sobre Anemia e Leucemia " style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">25/06/2025 - </small>
+                    <small style="display: inline;">Institucional</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">JUNHO LARANJA | Conscientização sobre Anemia e Leucemia </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Boletim Socioassistencial – Maio/2025" class="item-hover" href="https://maravilhas.mg.gov.br/galeria/id/1007/?boletim-socioassistencial--maio2025.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Boletim Socioassistencial – Maio/2025							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://maravilhas.mg.gov.br/uploads/midia/16721/media_Feed___Assistencia_3.png" width="260" height="260" alt="Boletim Socioassistencial – Maio/2025" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">25/06/2025 - </small>
+                    <small style="display: inline;">Institucional</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Boletim Socioassistencial – Maio/2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        	</ul>
+<!-- /MULTIMIDIA -->      </div>
+    </div>
+</div>
+
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-19.512608, -44.676815],
+                16
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-19.512608, -44.676815],
+                        {alt:'Prefeitura Municipal de Maravilhas'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de Maravilhas</strong></p>                <p style="margin: 5px 0px;">Av. Brasil, 33&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Maravilhas / MG</p><p style="margin: 5px 0px;">35666-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer02" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <!-- endereço e redes sociais -->
+            <div class="spaced col-md-4 col-sm-4">
+                                <p>
+                    Av. Brasil, 33, Centro<br />
+                    CEP: 35666-000<br />                    gabinete@maravilhas.mg.gov.br<br />                </p>
+                                    <p class="similar-h3">(37) 3272-1155</p>
+                                <p><strong>Segunda à Sexta:</strong> 8:00 às 11:00 e das 13:00 às 16:00</p>
+                				<p class="block">
+					<a href="https://maravilhas.mg.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://maravilhas.mg.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+				</p>
+            </div>
+            <!-- /endereço e redes sociais -->
+
+            <!-- col #2 -->
+            <div class="spaced col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="col-md-5 col-sm-4 hidden-xs hide-line-last-new">
+                        <p class="similar-h4">&Uacute;ltimas not&iacute;cias</p>
+                                                <ul class="list-unstyled">
+                                                        <li>
+                                <a class="block"
+                                href="https://maravilhas.mg.gov.br/noticia/visualizar/id/1118/?capoeira-de-maravilhas-representa-o-municipio-em-evento-em-pedro-leopoldo.html">
+                                    Capoeira de Maravilhas representa o município em evento em Pedro Leopoldo                                </a>
+                                <small>16/11/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://maravilhas.mg.gov.br/noticia/visualizar/id/1117/?capoeira-de-maravilhas-representa-o-municipio-em-evento-regional-em-nova-serrana.html">
+                                    Capoeira de Maravilhas representa o município em evento regional em Nova Serrana                                </a>
+                                <small>16/11/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://maravilhas.mg.gov.br/noticia/visualizar/id/1116/?maravilhas-futsal-conquista-a-copa-minas-gerais-sub-17-de-forma-invicta.html">
+                                    Maravilhas Futsal conquista a Copa Minas Gerais Sub-17 de forma invicta                                </a>
+                                <small>09/11/2026</small>
+                            </li>
+                                                    </ul>
+                                            </div>
+
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <p class="similar-h4">Outras &aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a class="block" href="https://maravilhas.mg.gov.br/transparencia/?transparencia.html">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://maravilhas.mg.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://maravilhas.mg.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://maravilhas.mg.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Not&iacute;cias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://maravilhas.mg.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://maravilhas.mg.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://maravilhas.mg.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                                                <!-- brasão -->
+                        <p class="text-center">
+                            <img alt="Brasão da prefeitura" src="https://maravilhas.mg.gov.br/uploads/config/16693/brasao.png" class="logo img-responsive appear-animation opaco08" data-animation="bounceIn"/>
+                        </p>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+	<div class="container text-center fsize12 post-copyright" style="
+		display: flex;
+		flex-direction: column;
+		justify-content: center">
+		<p style="margin:0" id="footer.copyrightTxt">
+			Este site utiliza a ferramenta
+			<a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+				<img src="https://maravilhas.mg.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+				<span class="sr-only">iPrefeituras</span>
+			</a>.
+		</p>
+		<p style="margin:0" id="footer.copyrightTxt3">
+			Um produto
+			<strong>
+				<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+			</strong>.
+		</p>
+	</div>
+</div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://maravilhas.mg.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://maravilhas.mg.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://maravilhas.mg.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://maravilhas.mg.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://maravilhas.mg.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a614031f48556d5d',t:'MTc5NTgxMjcwMA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a614031f48556d5d',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

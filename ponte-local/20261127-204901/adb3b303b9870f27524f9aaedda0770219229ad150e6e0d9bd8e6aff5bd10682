@@ -1,0 +1,1821 @@
+<!doctype html>
+<html>
+    <head>
+            <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefeitura Municipal de Foz do Jordão - PR</title>
+
+    <link rel="shortcut icon" href="/imagens/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/imagens/favicon.ico" type="image/x-icon">
+
+    <meta name="generator" content="">
+    <meta name="description" content="Prefeitura Municipal de Foz do Jordão - PR">
+    <meta name="abstract" content="Prefeitura Municipal de Foz do Jordão - PR">
+    <meta name="keywords" content="Prefeitura Municipal de Foz do Jordão - PR">
+
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fozdojordao.pr.gov.br/" rel="canonical">
+
+    <!-- Bootstrap core CSS -->
+    <link href="/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/variaveis.css" rel="stylesheet">
+
+    <!-- Owl Stylesheets -->
+    <link rel="stylesheet" href="/js/owlcarousel/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="/js/owlcarousel/assets/owl.theme.default.min.css">
+
+    <!-- Material Design Bootstrap -->
+    <link href="/css/mdb.min.css" rel="stylesheet">
+
+    <!-- Css Stylo Geral -->
+    <link href="/css/style.css" rel="stylesheet">
+    <link href="/css/modules/topo.css" rel="stylesheet">
+    <link href="/css/modules/responsive.css" rel="stylesheet">
+    <link href="/css/modules/home-servicos.css" rel="stylesheet">
+    <link href="/css/modules/footer.css" rel="stylesheet">
+
+    <link href="/css/front/default.header.acessibilidade.css" type="text/css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,500,600,700,800,900" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway" rel="stylesheet"> 
+
+
+    <link href="/css/front/default.header.acessibilidade.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/modules/barra-titulos-internas.css" type="text/css" rel="stylesheet">
+
+    <link href="/css/front/modulos/noticias.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/obras.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/secretarias.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/licitacao.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/gabinete.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/turismo.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/faq.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/contato.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/concursos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/entidades.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/legislacao.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/atos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/boletins.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.eventos.css" type="text/css" rel="stylesheet">
+    <link href="/css/front/modulos/home.obras.css" type="text/css" rel="stylesheet">
+
+    <link href="/header/assets/header.css" type="text/css" rel="stylesheet">
+    <link href="/footer/assets/footer.css" type="text/css" rel="stylesheet">
+
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="/js/newsite/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="/js/newsite/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="/js/newsite/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="/js/newsite/mdb.min.js"></script>
+
+    <!-- javascript -->
+    <script src="/js/owlcarousel/owl.carousel.js"></script>
+
+    <script src="/js/open-search/open-search.js" type="text/javascript"></script>
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="/bootstrap/dist/js/ie10-viewport-bug-workaround.js" type="text/javascript"></script>
+
+    <script src="/js/menu.js" type="text/javascript"></script>
+    
+    <link href="/js/slider-pro-master/css/slider-pro.css" rel="stylesheet" type="text/css"/>
+    <script src="/js/slider-pro-master/js/jquery.sliderPro.js" type="text/javascript"></script>
+    <link href="/js/slider-pro-master/css/examples.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Mensagem deslizante de mensagens -->
+    <script type="text/javascript" src="/js/jquery-sliding-message/jquery.slidingmessage.js"></script>
+    <script type="text/javascript" src="/js/jquery-sliding-message/showMsg.js"></script>
+    <script type="text/javascript" src="/js/jquery.validate.js"></script>
+    <script type="text/javascript" src="/js/jquery.form.js"></script>
+    <script src="/js/acessibilidade/acessibilidade.jquery.js" type="text/javascript"></script>
+    <!-- Fim Mensagem deslizante de mensagens -->
+    
+    <script type="text/javascript">
+        $(function(){   
+             var nav = $('#menuHeader');   
+             $(window).scroll(function () { 
+                 if ($(this).scrollTop() > 30) { 
+                     nav.addClass("menu-fixo");
+                 } else { 
+                     nav.removeClass("menu-fixo");
+                 } 
+             });  
+         });
+     </script>
+
+    <!-- Script Geral -->
+
+    <script type="text/javascript">
+        var popOverSettings = {
+            container: 'body',
+            html: true,
+            selector: '.checksum-info',
+            trigger: 'focus'
+        };
+        $(document).ready(function ($) {
+            "use strict";
+            /*-------------------------------------------------*/
+            /* =  Search animation
+             /*-------------------------------------------------*/
+            var searchToggle = $('.open-search'),
+                inputAnime = $(".formulario-busca"),
+                body = $('body');
+
+            searchToggle.on('click', function (event) {
+                event.preventDefault();
+
+                if (inputAnime.hasClass('active')) {
+                    inputAnime.addClass('active');
+                } else {
+                    inputAnime.removeClass('active');
+                }
+            });
+
+            body.on('click', function () {
+                inputAnime.removeClass('active');
+            });
+
+            var elemBinds = $('.open-search, .formulario-busca');
+            elemBinds.bind('click', function (e) {
+                e.stopPropagation();
+            });
+
+            $(function () {
+                $('[data-toggle="tooltip"]').tooltip()
+            });
+        });
+
+        $(document).ready(function () {
+            $('#banner-principal-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('.servicos').owlCarousel({
+                loop: false,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#secretarias-home').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#banner-noticias-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#noticias-home').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 4000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#mais-noticias-home').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#banner-fino-home').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-licitacoes').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 10000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-obras').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 10000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 3
+                    }
+                }
+            });
+            $('#home-turismo').owlCarousel({
+                loop: true,
+                margin: 15,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 13000,
+                animateIn: 'fadeIn',
+                animateOut: 'fadeOut',
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#home-video').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: false,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#galeria-home').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 2
+                    }
+                }
+            });
+            $('#eventos-home').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: false,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            $('#concursos-home').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#vagas-home').owlCarousel({
+                loop: true,
+                margin: 20,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('#galeria-imagens-noticiaview').owlCarousel({
+                loop: false,
+                margin: 10,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 7000,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            $('.acessoRapido').owlCarousel({
+                loop: true,
+                margin: 7,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 3
+                    },
+                    1200: {
+                        items: 7
+                    }
+                }
+            });
+            $('#veja-mais').owlCarousel({
+                loop: true,
+                margin: 5,
+                nav: true,
+                dots: false,
+                responsiveClass: true,
+                autoplay: true,
+                autoplayTimeout: 6000,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    },
+                    1200: {
+                        items: 1
+                    }
+                }
+            });
+            $('#noticias').owlCarousel({
+                loop: false,
+                margin: 0,
+                nav: false,
+                dots: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 1
+                    },
+                    1000: {
+                        items: 1
+                    }
+                }
+            });
+            $('.pagina-transparencia').owlCarousel({
+                loop: false,
+                margin: 0,
+                nav: true,
+                dots: true,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 4
+                    }
+                }
+            });
+            
+            $('body').popover(popOverSettings);
+            
+            wow = new WOW({
+                boxClass: 'wow', // default
+                animateClass: 'animated', // default
+                offset: 0, // default
+                mobile: true, // default
+                live: true // default
+            });
+            wow.init();
+        });
+    </script>
+    <!-- Script Geral -->
+
+    <!-- Window Locker -->
+    <script type="text/javascript" src="/js/spin/spin.min.js"></script>
+    <script type="text/javascript" src="/js/spin/spin-windowlock/spin-windowlock.js"></script>
+    <!-- /Window Locker -->
+
+    <script type="text/javascript" src="/js/plenus/popup-init.js"></script>
+
+    <style>
+        .wow {
+            visibility: hidden;
+        }
+    </style>
+     
+        <!--<link href="/js/calendario/zabuto_calendar.css" rel="stylesheet" type="text/css"/>
+        <script src="/js/calendario/zabuto_calendar.js"></script>-->
+    </head>
+        
+    <body>
+        <div class="container-fluid">
+    <!-- Exibido em resolução mobile (< 1200px) -->
+    <div class="row d-lg-none"><header id="menuMobile" class="col-12">
+
+    <div class="row">
+        <div class="col-12">
+            <div class="pull-left">
+                <a href="/" alt="Ir para página inicial">
+                    <img src="/imagens/logoPequena.png" class="logo-mobile img-fluid">
+                </a>
+            </div>
+            <div class="pull-right">
+                <button type="button" class="btn-menu-mobile" data-toggle="collapse" data-target="#collapseMenuMobile"
+                        aria-expanded="false" aria-controls="collapseMenuMobile">
+                    <i class="fa fa-fw fa-bars"></i>
+                </button>
+            </div>
+            <div class="pull-right d-none">
+                <button type="button" class="btn-menu-mobile" data-toggle="collapse"
+                        data-target="#collapseAcessibilidadeMobile" aria-expanded="false"
+                        aria-controls="collapseAcessibilidadeMobile">
+                    <i class="fa fa-fw fa-wheelchair"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="collapse" id="collapseAcessibilidadeMobile">
+        <div class="row caixa-acessibilidade">
+            <h4 class="col-12 text-center">
+                <span class="fa fa-wheelchair" aria-hidden="true"></span>
+                <span>Opções de acessibilidade</span>
+            </h4>
+            <nav class="col-12">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="fontBigger">
+                            <span class="fa fw-fa fa-search-plus" aria-hidden="true"></span>
+                            <span>Aumentar fonte</span>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="fontSmaller">
+                            <span class="fa fw-fa fa-search-minus" aria-hidden="true"></span>
+                            <span>Reduzir fonte</span>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="toggleContrast">
+                            <span class="fa fw-fa fa-adjust" aria-hidden="true"></span>
+                            <span>Alto contraste</span>
+                        </a>
+                    </div>
+                    <div class="col-12 col-sm-6 col-md-3">
+                        <a role="button" class="link-opcao" data-acc-action="reset">
+                            <span class="fa fw-fa fa-refresh" aria-hidden="true"></span>
+                            <span>Desfazer opções</span>
+                        </a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <div class="collapse" id="collapseMenuMobile">
+        <div class="row">
+            <nav class="col-12">
+                <div class="barra barra-topo-info">
+                    <div class="container">
+                        <div class="topo-info-box">
+                            <div class="row">
+                                <div class="col-12">
+                                    <ul class="list-menu-topo">
+                                        <li class="mapasite">
+                                            <a href=/pagina/10392_Mapa-do-Site.html title="Mapa do Site">
+                                                <i class="fa fa-sitemap"></i>
+                                            </a>
+                                        </li>
+                                        <li class="acessibilidade">
+                                            <a href="#" id="acessibilidade" class="id_acessibilidade" title="Acessibilidade">
+                                                <i class="fa fa-wheelchair"></i>
+                                            </a>
+                                        </li>
+                                        <li class="ouvidoria">
+                                            <a href="https://esic2.portyx.com.br/ouvidoria/?codeDB=239" title="Ouvidoria">
+                                                <i class="fa fa-comments"></i>
+                                            </a>
+                                        </li>
+                                        <li class="acessoinfo">
+                                            <a href="/faq" title="Acesso a Informação">
+                                                <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                            </a>
+                                        </li>
+                                        <li class="acessoinfo">
+                                            <a href="https://esic2.portyx.com.br/esic/?codeDB=239" title="Acesso a Informação">
+                                                <i class="fa fa-info-circle"></i>
+                                            </a>
+                                        </li>
+                                        <li class="portaltransp">
+                                            <a href="https://fozdojordao.pr.gov.br/portalTransparencia/" title="Portal da Tranparência">
+                                                <i class="fa fa-search"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <ul><li><a href="https://fozdojordao.1doc.com.br/atendimento" target="_blank" class="link-submenu">Central de Atendimento</a></li><li><a href="/" target="_self" class="link-submenu">Início</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-154" aria-expanded="false" aria-controls="mob-submenu-clps-154">Município<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-154"><ul><li><a href="/pagina/10445_Historia.html" target="_self" class="link-submenu">História</a></li><li><a href="/pagina/10464_Simbolos.html" target="_self" class="link-submenu">Símbolos</a></li><li><a href="/pagina/10422_Dados-Gerais.html" target="_self" class="link-submenu">Dados Gerais</a></li><li><a href="/pagina/10449_Hino.html" target="_self" class="link-submenu">Hino</a></li><li><a href="https://www.fozdojordao.pr.gov.br/uploads/pagina/arquivos/QUADRO-URBANO-JULHO-2020-1-1-Model-1.pdf" target="_self" class="link-submenu">Mapa</a></li><li><a href="/pagina/10450_Galeria-de-Prefeitos.html" target="_blank" class="link-submenu">Galeria de Prefeitos</a></li><li><a href="https://www.camarafozdojordao.pr.gov.br/" target="_self" class="link-submenu">Câmara Municipal</a></li><li><a href="#" target="_self" class="link-submenu">Feriados e Pontos Facultativos</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-157" aria-expanded="false" aria-controls="mob-submenu-clps-157">Prefeitura<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-157"><ul><li><a href="/pagina/10390_Estrutura-Administrativa.html" target="_blank" class="link-submenu">Estrutura Administrativa</a></li><li><a href="/secretarias/" target="_self" class="link-submenu">Secretarias</a></li><li><a href="/gabinete/" target="_self" class="link-submenu">Gabinete do Prefeito</a></li><li><a href="/pagina/10388_Enderecos-Oficiais-e-Telefones.html" target="_self" class="link-submenu">Endereços Oficiais e Telefones</a></li><li><a href="https://fozdojordao.pr.gov.br/conselhos-municipais/" target="_self" class="link-submenu">Conselhos Municipais</a></li><li><a href="/localizacao/" target="_self" class="link-submenu">Localização</a></li><li><a href="/pagina/10490_Controle-Interno.html" target="_self" class="link-submenu">Controle Interno</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-22" aria-expanded="false" aria-controls="mob-submenu-clps-22">Legislação<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-22"><ul><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-253" aria-expanded="false" aria-controls="mob-submenu-clps-253">Leis<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-253"><ul><li><a href="https://fozdojordao.pr.gov.br/legislacao/" target="_self" class="link-submenu">Leis Ordinárias</a></li><li><a href="/pagina/10494_Relacao-Municipal-de-Medicamentos-Essenciais-REMUNE.html" target="_self" class="link-submenu">Relação Municipal de Medicamentos Essenciais - REMUNE</a></li><li><a href="/pagina/10505_PNAB-2-Aldir-Blanc.html" target="_self" class="link-submenu">PNAB 2 - Aldir Blanc</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-257" aria-expanded="false" aria-controls="mob-submenu-clps-257">Decretos e Portarias<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-257"><ul><li><a href="/legislacao/?idCategoriaLegislacao=2" target="_self" class="link-submenu">Decretos</a></li><li><a href="https://www.fozdojordao.pr.gov.br/legislacao/?idCategoriaLegislacao=5" target="_self" class="link-submenu">Portarias</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-263" aria-expanded="false" aria-controls="mob-submenu-clps-263">Audiências Públicas<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-263"><ul><li><a href="/pagina/10429_Planejamento-Orcamentario-PPALDOLOA.html" target="_self" class="link-submenu">Planejamento Orçamentário: PPA/LDO/LOA</a></li><li><a href="#" target="_self" class="link-submenu">Metas Fiscais</a></li></ul></div></li><li><a href="https://www.fozdojordao.pr.gov.br/legislacao/?idCategoriaLegislacao=7" target="_self" class="link-submenu">Termos de Fomento</a></li><li><a href="https://www.fozdojordao.pr.gov.br/legislacao/?idCategoriaLegislacao=8" target="_self" class="link-submenu">Chamamento Público</a></li><li><a href="/pagina/10443_Outros-Atos.html" target="_self" class="link-submenu">Outros Atos</a></li></ul></div></li><li><a href="https://fozdojordao.pr.gov.br/portalTransparencia/" target="_self" class="link-submenu">Portal da Transparência</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-165" aria-expanded="false" aria-controls="mob-submenu-clps-165">Cidadão<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-165"><ul><li><a href="https://fozdojordaopr.equiplano.com.br:7492/contribuinte/#/stmIptu2Via/iptuSegundaVia" target="_blank" class="link-submenu">IPTU</a></li><li><a href="https://fozdojordaopr.equiplano.com.br:7492/contribuinte/#/stmCertidaoNegativa/certidaoNegativa" target="_blank" class="link-submenu">Certidão Negativa de Débitos</a></li><li><a href="https://alistamento.eb.mil.br/alistamento" target="_self" class="link-submenu">Alistamento Militar</a></li><li><a href="https://www.fozdojordao.pr.gov.br/concursoView/?id=133" target="_self" class="link-submenu">Processo Seletivo de Estagiários</a></li><li><a href="https://fozdojordaopr.equiplano.com.br:7492/contribuinte/#/" target="_self" class="link-submenu">Portal do Contribuinte</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-166" aria-expanded="false" aria-controls="mob-submenu-clps-166">Empresa<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-166"><ul><li><a href="https://www.youtube.com/channel/UCgleaVyqT_5gjy_nWWgYlZA/videos" target="_self" class="link-submenu">Licitações Ao Vivo</a></li><li><a href="/pagina/10378_Sala-do-Empreendedor.html" target="_self" class="link-submenu">Sala do Empreendedor</a></li><li><a href="https://fozdojordaopr.equiplano.com.br:7492/contribuinte/#/stmCertidaoNegativa/certidaoNegativa" target="_blank" class="link-submenu">Certidão Negativa de Débitos</a></li><li><a href="https://www.esnfs.com.br/nfssolicitacaoacesso.edit.logic" target="_self" class="link-submenu">Nota Fiscal Eletrônica</a></li></ul></div></li><li><a href="https://www.diariomunicipal.com.br/amp/pesquisar" target="_self" class="link-submenu">Publicações - Diário Oficial</a></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-8" aria-expanded="false" aria-controls="mob-submenu-clps-8">Servidor<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-8"><ul><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-310" aria-expanded="false" aria-controls="mob-submenu-clps-310">Recursos Humanos<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-310"><ul><li><a href="https://fozdojordaopr.equiplano.com.br:7492/srh/srhLogin/load" target="_self" class="link-submenu">Sistema SRH</a></li><li><a href="http://fozdojordaoprscp.equiplano.com.br:5492/esocial" target="_self" class="link-submenu">Esocial</a></li></ul></div></li><li><a href="https://fozdojordaopr.equiplano.com.br:7492/esportal/esportalprincipal.index.logic?l=true" target="_self" class="link-submenu">Comprovante de Rendimentos</a></li><li><a href="https://fozdojordaopr.equiplano.com.br:7492/esportal/esportalprincipal.index.logic?l=true" target="_blank" class="link-submenu">Holerite Online</a></li><li><a href="http://webmail.fozdojordao.pr.gov.br/" target="_self" class="link-submenu">Webmail</a></li></ul></div></li><li><a role="button" class="link-submenu" data-toggle="collapse" data-target="#mob-submenu-clps-13" aria-expanded="false" aria-controls="mob-submenu-clps-13">Contato<i class="fa fa-chevron-down pull-right"></i></a><div class="collapse" id="mob-submenu-clps-13"><ul><li><a href="/pagina/10499_Conselho-Tutelar.html" target="_blank" class="link-submenu">Conselho Tutelar</a></li><li><a href="/pagina/10492_Canal-de-Dialogo-com-a-Comunicacao.html" target="_self" class="link-submenu">Canal de Diálogo com a Comunicação</a></li><li><a href="/contato/" target="_self" class="link-submenu">Fale Conosco</a></li><li><a href="/localizacao/" target="_self" class="link-submenu">Localização</a></li><li><a href="/faq" target="_self" class="link-submenu">Perguntas Frequentes</a></li></ul></div></li><li><a href="/pagina/10451_LEI-No-141292021.html" target="_self" class="link-submenu">LEI Nº 14.129/2021</a></li><li><a href="https://fozdojordao.pr.gov.br/uploads/pagina/arquivos/PDMVol1Fase1234FozdoJordao.pdf" target="_self" class="link-submenu">Revisão Plano Diretor</a></li></ul>            </nav>
+        </div>
+    </div>
+</header>
+</div>
+    <!-- Exibido em resolução desktop (> 1200px) -->
+    <div class="row d-none d-lg-block"><div class="barra-acessibilidade hidden-xs" id="barra-acessibilidade">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="nome">
+                    <div class="icone"><span class="fa fa-wheelchair" aria-hidden="true"></span></div>
+                    Acessibilidade
+                </div>
+                <div class="fontes">
+                    <div class="alterar" id="increaseFont">A+</div>
+                    <div class="alterar" id="decreaseFont">A-</div>
+                </div>
+                <div class="contraste">
+                    <div class="alterar" id="changeColorAcess">Contraste</div>
+                </div>
+                <div class="contraste">
+                    <div class="alterar" id="resetFont" id="changeColorDefault"><i class="fa fa-refresh"
+                                                                                   aria-hidden="true"></i> Retornar
+                        acessibilidade
+                    </div>
+                </div>
+                <div class="texto">
+                    <div class="alterar">
+                        <a href="#conteudo">
+                            Ir para o conteúdo  <span class="link">Alt+1</span>
+                        </a>
+                        <a href="#menu-topo">
+                            Ir para o menu  <span class="link">Alt+2</span>
+                        </a>
+                        <a href="#topo">
+                            Ir para o topo  <span class="link">Alt+3</span>
+                        </a>
+                        <a href="#rodape">
+                            Ir para o rodapé  <span class="link">Alt+4</span>
+                        </a>
+                        Controle de Zoom  <span class="link">Ctrl +/-</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-topo-info">
+    <div class="container">
+        <div class="topo-info-box">
+            <div class="row">
+                <div class="col-lg-3 col-md-12 col-sm-12">
+                <!--<div class="clima-topo">
+                        <div id="climatempo-icon-container">
+                            <a id="clima-tempo-link" href="https://www.cptec.inpe.br/previsao-tempo/ms/jaraguari" target="_blank">
+                                <span class="clima-title">Previsão do Tempo</span> 
+                                <img class="clima-img" src="/imagens/icontempo/cl.png" id="climatempo-icon" alt=""/>
+                                <span class="clima-temp" id="climatempo-temperatura-container"></span>
+                            </a>
+                        </div>
+                    </div>-->
+                </div>
+                <div class="col-lg-9 col-md-12 col-sm-12">
+                    <ul class="list-menu-topo">
+                        <li class="mapasite">
+                            <a href="/pagina/10392_Mapa-do-Site.html" title="Mapa do Site">
+                                <i class="fa fa-sitemap"></i>
+                                <div class="descricao">
+                                    Mapa do Site
+                                </div>
+                            </a>
+                        </li>
+                        <li class="acessibilidade">
+                            <a href="#" id="acessibilidade" class="id_acessibilidade" title="Acessibilidade">
+                                <i class="fa fa-wheelchair"></i> 
+                                <div class="descricao">
+                                    Acessibilidade
+                                </div>
+                            </a>
+                        </li>
+                        <li class="ouvidoria">
+                            <a href="https://esic2.portyx.com.br/ouvidoria/?codeDB=239" title="Ouvidoria">
+                                <i class="fa fa-comments"></i> 
+                                <div class="descricao">
+                                    Ouvidoria
+                                </div>
+                            </a>
+                        </li>
+                        <li class="acessoinfo">
+                            <a href="/faq" title="Acesso a Informação">
+                            <i class="fa fa-question-circle-o" aria-hidden="true"></i>
+                                <div class="descricao">
+                                    FAQ
+                                </div>
+                            </a>
+                        </li>
+                        <li class="acessoinfo">
+                            <a href="https://esic2.portyx.com.br/esic/?codeDB=239" title="Acesso a Informação">
+                                <i class="fa fa-info-circle"></i> 
+                                <div class="descricao">
+                                    Acesso à Informação
+                                </div>
+                            </a>
+                        </li>
+                        <li class="portaltransp">
+                            <a href="https://fozdojordao.pr.gov.br/portalTransparencia/" title="Portal da Tranparência">
+                                <i class="fa fa-search"></i> 
+                                <div class="descricao">
+                                    Portal da Transparência
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-topo-logo">
+    <div class="container">
+        <div class="topo-logo-box">
+            <div class="row">
+                <div class="col-lg-5 col-md-12 col-sm-12 logo-topo">
+                    <a href="/" title="Prefeitura Municipal de Foz do Jordão">
+                        <img src="/uploads/siteDescricao/brasao-site.png" class="img-fluid" />
+                    </a>
+                </div>
+                <div class="col-7 d-none d-xl-block d-lg-block d-md-none d-xl-none">
+                    <div class="row">
+                        <!--<div class="col-lg-12 col-md-12 col-sm-12">
+                            <ul class="list-menu-topo">
+                                <li class="acessibilidade">
+                                    <a href="#" id="acessibilidade" title="Acessibilidade">
+                                        <i class="fa fa-wheelchair"></i> Acessibilidade
+                                    </a>
+                                </li>
+                                <li class="ouvidoria">
+                                    <a href="https://esic2.portyx.com.br/ouvidoria/?codeDB=239" title="Ouvidoria">
+                                        <i class="fa fa-comments"></i> Ouvidoria
+                                    </a>
+                                </li>
+                                <li class="acessoinfo">
+                                    <a href="https://esic2.portyx.com.br/esic/?codeDB=239" title="Acesso a Informação">
+                                        <i class="fa fa-info-circle"></i> &nbsp;Acesso à Informação
+                                    </a>
+                                </li>
+                                <li class="portaltransp">
+                                    <a href="https://fozdojordao.pr.gov.br/portalTransparencia/"
+                                       title="Portal da Tranparência">
+                                       <i class="fa fa-search"></i> &nbsp;Portal da Transparência
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>-->
+                        <div class="col-lg-12 col-md-12 col-sm-12">
+                            <div class="telefone-topo">
+                                (42) 3639-8100 
+                                <div class="icon">
+                                    <i class="fa fa-fw fa-phone"></i> 
+                                    <div class="marcador"></div>
+                                </div>
+                            </div>
+                            <div class="atendimento-topo">
+                                Segunda a Sexta-feira - 8h00 às 12h00 / 13h00 às 17h00                                <div class="icon">
+                                    <i class="fa fa-fw fa-clock-o" aria-hidden="true"></i>
+                                    <div class="marcador"></div>
+                                </div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="placeholderMenuDesktop" class="container-fluid"><!-- Deixe isso aqui, vlw --></div>
+<header id="menuDesktopFixo" class="container-fluid">
+	<div class="container">
+		<div class="row">
+			<div class="caixa-logo">
+				<a href="/" title="Prefeitura Municipal de Foz do Jordão">
+					<img src="/imagens/logoPequena.png" class="logo-pequena">
+				</a>
+			</div>
+			<div class="caixa-links">
+				<nav>
+					<ul class="top-level"><li><a href="https://fozdojordao.1doc.com.br/atendimento" target="_blank">Central de Atendimento</a></li><li><a href="/" target="_self">Início</a></li><li><a role="button" id="desk-menu-ddown-154" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Município <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-154"><li class=""><a href="/pagina/10445_Historia.html" target="_self" class="dropdown-item">História</a></li><li class=""><a href="/pagina/10464_Simbolos.html" target="_self" class="dropdown-item">Símbolos</a></li><li class=""><a href="/pagina/10422_Dados-Gerais.html" target="_self" class="dropdown-item">Dados Gerais</a></li><li class=""><a href="/pagina/10449_Hino.html" target="_self" class="dropdown-item">Hino</a></li><li class=""><a href="https://www.fozdojordao.pr.gov.br/uploads/pagina/arquivos/QUADRO-URBANO-JULHO-2020-1-1-Model-1.pdf" target="_self" class="dropdown-item">Mapa</a></li><li class=""><a href="/pagina/10450_Galeria-de-Prefeitos.html" target="_blank" class="dropdown-item">Galeria de Prefeitos</a></li><li class=""><a href="https://www.camarafozdojordao.pr.gov.br/" target="_self" class="dropdown-item">Câmara Municipal</a></li><li class=""><a href="#" target="_self" class="dropdown-item">Feriados e Pontos Facultativos</a></li></ul></li><li><a role="button" id="desk-menu-ddown-157" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prefeitura <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-157"><li class=""><a href="/pagina/10390_Estrutura-Administrativa.html" target="_blank" class="dropdown-item">Estrutura Administrativa</a></li><li class=""><a href="/secretarias/" target="_self" class="dropdown-item">Secretarias</a></li><li class=""><a href="/gabinete/" target="_self" class="dropdown-item">Gabinete do Prefeito</a></li><li class=""><a href="/pagina/10388_Enderecos-Oficiais-e-Telefones.html" target="_self" class="dropdown-item">Endereços Oficiais e Telefones</a></li><li class=""><a href="https://fozdojordao.pr.gov.br/conselhos-municipais/" target="_self" class="dropdown-item">Conselhos Municipais</a></li><li class=""><a href="/localizacao/" target="_self" class="dropdown-item">Localização</a></li><li class=""><a href="/pagina/10490_Controle-Interno.html" target="_self" class="dropdown-item">Controle Interno</a></li></ul></li><li><a role="button" id="desk-menu-ddown-22" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Legislação <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-22"><li class="dropdown-submenu"><a id="desk-submenu-ddown-253" class="dropdown-item">Leis</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-253"><li class=""><a href="https://fozdojordao.pr.gov.br/legislacao/" target="_self" class="dropdown-item">Leis Ordinárias</a></li><li class=""><a href="/pagina/10494_Relacao-Municipal-de-Medicamentos-Essenciais-REMUNE.html" target="_self" class="dropdown-item">Relação Municipal de Medicamentos Essenciais - REMUNE</a></li><li class=""><a href="/pagina/10505_PNAB-2-Aldir-Blanc.html" target="_self" class="dropdown-item">PNAB 2 - Aldir Blanc</a></li></ul></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-257" class="dropdown-item">Decretos e Portarias</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-257"><li class=""><a href="/legislacao/?idCategoriaLegislacao=2" target="_self" class="dropdown-item">Decretos</a></li><li class=""><a href="https://www.fozdojordao.pr.gov.br/legislacao/?idCategoriaLegislacao=5" target="_self" class="dropdown-item">Portarias</a></li></ul></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-263" class="dropdown-item">Audiências Públicas</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-263"><li class=""><a href="/pagina/10429_Planejamento-Orcamentario-PPALDOLOA.html" target="_self" class="dropdown-item">Planejamento Orçamentário: PPA/LDO/LOA</a></li><li class=""><a href="#" target="_self" class="dropdown-item">Metas Fiscais</a></li></ul></li><li class=""><a href="https://www.fozdojordao.pr.gov.br/legislacao/?idCategoriaLegislacao=7" target="_self" class="dropdown-item">Termos de Fomento</a></li><li class=""><a href="https://www.fozdojordao.pr.gov.br/legislacao/?idCategoriaLegislacao=8" target="_self" class="dropdown-item">Chamamento Público</a></li><li class=""><a href="/pagina/10443_Outros-Atos.html" target="_self" class="dropdown-item">Outros Atos</a></li></ul></li><li><a href="https://fozdojordao.pr.gov.br/portalTransparencia/" target="_self">Portal da Transparência</a></li><li><a role="button" id="desk-menu-ddown-165" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cidadão <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-165"><li class=""><a href="https://fozdojordaopr.equiplano.com.br:7492/contribuinte/#/stmIptu2Via/iptuSegundaVia" target="_blank" class="dropdown-item">IPTU</a></li><li class=""><a href="https://fozdojordaopr.equiplano.com.br:7492/contribuinte/#/stmCertidaoNegativa/certidaoNegativa" target="_blank" class="dropdown-item">Certidão Negativa de Débitos</a></li><li class=""><a href="https://alistamento.eb.mil.br/alistamento" target="_self" class="dropdown-item">Alistamento Militar</a></li><li class=""><a href="https://www.fozdojordao.pr.gov.br/concursoView/?id=133" target="_self" class="dropdown-item">Processo Seletivo de Estagiários</a></li><li class=""><a href="https://fozdojordaopr.equiplano.com.br:7492/contribuinte/#/" target="_self" class="dropdown-item">Portal do Contribuinte</a></li></ul></li><li><a role="button" id="desk-menu-ddown-166" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Empresa <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-166"><li class=""><a href="https://www.youtube.com/channel/UCgleaVyqT_5gjy_nWWgYlZA/videos" target="_self" class="dropdown-item">Licitações Ao Vivo</a></li><li class=""><a href="/pagina/10378_Sala-do-Empreendedor.html" target="_self" class="dropdown-item">Sala do Empreendedor</a></li><li class=""><a href="https://fozdojordaopr.equiplano.com.br:7492/contribuinte/#/stmCertidaoNegativa/certidaoNegativa" target="_blank" class="dropdown-item">Certidão Negativa de Débitos</a></li><li class=""><a href="https://www.esnfs.com.br/nfssolicitacaoacesso.edit.logic" target="_self" class="dropdown-item">Nota Fiscal Eletrônica</a></li></ul></li><li><a href="https://www.diariomunicipal.com.br/amp/pesquisar" target="_self">Publicações - Diário Oficial</a></li><li><a role="button" id="desk-menu-ddown-8" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servidor <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-8"><li class="dropdown-submenu"><a id="desk-submenu-ddown-310" class="dropdown-item">Recursos Humanos</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-310"><li class=""><a href="https://fozdojordaopr.equiplano.com.br:7492/srh/srhLogin/load" target="_self" class="dropdown-item">Sistema SRH</a></li><li class=""><a href="http://fozdojordaoprscp.equiplano.com.br:5492/esocial" target="_self" class="dropdown-item">Esocial</a></li></ul></li><li class=""><a href="https://fozdojordaopr.equiplano.com.br:7492/esportal/esportalprincipal.index.logic?l=true" target="_self" class="dropdown-item">Comprovante de Rendimentos</a></li><li class=""><a href="https://fozdojordaopr.equiplano.com.br:7492/esportal/esportalprincipal.index.logic?l=true" target="_blank" class="dropdown-item">Holerite Online</a></li><li class=""><a href="http://webmail.fozdojordao.pr.gov.br/" target="_self" class="dropdown-item">Webmail</a></li></ul></li><li><a role="button" id="desk-menu-ddown-13" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Contato <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-13"><li class=""><a href="/pagina/10499_Conselho-Tutelar.html" target="_blank" class="dropdown-item">Conselho Tutelar</a></li><li class=""><a href="/pagina/10492_Canal-de-Dialogo-com-a-Comunicacao.html" target="_self" class="dropdown-item">Canal de Diálogo com a Comunicação</a></li><li class=""><a href="/contato/" target="_self" class="dropdown-item">Fale Conosco</a></li><li class=""><a href="/localizacao/" target="_self" class="dropdown-item">Localização</a></li><li class=""><a href="/faq" target="_self" class="dropdown-item">Perguntas Frequentes</a></li></ul></li><li><a href="/pagina/10451_LEI-No-141292021.html" target="_self">LEI Nº 14.129/2021</a></li><li><a href="https://fozdojordao.pr.gov.br/uploads/pagina/arquivos/PDMVol1Fase1234FozdoJordao.pdf" target="_self">Revisão Plano Diretor</a></li><li class="open-search-link"><a role="button" id="btnOpenSearchDesktop"><i class="fa fa-search"></i></a></li></ul>				</nav>
+			</div>
+            <div class="col-lg-12 col-md-12 col-sm-12 atendimento">
+                <form class="formulario-busca" method="GET" id="form_pesquisar_home" action="/busca/">
+                    <input type="search" placeholder="Pesquisar" name="q"/>
+                    <button type="submit">
+                        <i class="fa fa-search"></i>
+                    </button>
+                    <div class="overlay"></div>
+                </form>
+            </div>
+		</div>
+	</div>
+</header>
+</div>
+</div>
+
+<div class="menu-lateral-flutuante">
+    <ul>
+                <li>
+            <a href="https://www.facebook.com/prefeiturafozdojordao" title="Facebook"><i class="fa fa-facebook"></i></a>
+        </li>
+                        <li>
+            <a href="https://www.youtube.com/channel/UCgleaVyqT_5gjy_nWWgYlZA" title="Youtube"><i class="fa fa-youtube"></i></a>
+        </li>
+                        <li>
+            <a href="https://www.instagram.com/pmfj_fozdojordao/" title="Instagram"><i class="fa fa-instagram"></i></a>
+        </li>
+                    </ul>
+</div>
+
+<script type="text/javascript" src="/header/assets/header.js"></script>        
+<div id="banner-home-mobile" class="d-sm-block d-md-block d-lg-none d-xl-none">
+</div>
+
+<div id="banner-home">
+<!-- Banners Slider -->
+<section>
+    <div id="banner-principal-home" class="owl-carousel owl-theme">
+        <div class="item">
+            <a href="https://fozdojordao.pr.gov.br/uploads/concurso/editalpss01-2026pequeno.pdf">
+                <img class="d-block w-100" src="/uploads/banner/bannerpss1920x370.jpg" alt="PSS 012026" />
+            </a>
+        </div>
+        <div class="item">
+            <a href="">
+                <img class="d-block w-100" src="/uploads/banner/beneficio-de-prestacao-continuada-bpc.png" alt="CRAS" />
+            </a>
+        </div>
+        <div class="item">
+            <a href="">
+                <img class="d-block w-100" src="/uploads/banner/lote-limpo.png" alt="lote limpo" />
+            </a>
+        </div>
+    </div>
+</section>
+<!--/.Banners Slider--></div>
+
+<div class="barra barra-menu-acesso-informacao">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="owl-carousel owl-theme acessoRapido">
+    <div class="item">
+        <a href="https://fozdojordao.pr.gov.br/pagina/10505_Lei-Aldir-Blanc-2.html"  target="_blank"  title="Lei Aldir Blanc / PNAB">
+        <div class="bloco" style="background-color: #;">
+            <i class="fa fa-paint-brush" aria-hidden="true"></i>
+            <div class="texto">
+                Lei Aldir Blanc / PNAB
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/pagina/10432_Servico-de-Inspecao-Municipal-SIM.html"  target="_blank"  title="Serviço de Inspeção Municipal (S.I.M.)">
+        <div class="bloco" style="background-color: #;">
+            <i class="fa fa-tree" aria-hidden="true"></i>
+            <div class="texto">
+                Serviço de Inspeção Municipal (S.I.M.)
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://fozdojordao.pr.gov.br/uploads/pagina/arquivos/TEXTO-FOZ-DO-JORDAO-1-ITR.pdf"  target="_blank"  title="Valor da Terra Nua">
+        <div class="bloco" style="background-color: #;">
+            <i class="fa fa-file-text-o" aria-hidden="true"></i>
+            <div class="texto">
+                Valor da Terra Nua
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="http://200.195.136.83:2020/transparencia/"  target="_blank"  title="Portal da Transparência - RPPS ">
+        <div class="bloco" style="background-color: #;">
+            <i class="fa fa-users" aria-hidden="true"></i>
+            <div class="texto">
+                Portal da Transparência - RPPS 
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://www.esnfs.com.br/nfssolicitacaoacesso.edit.logic"  title="Nota Fiscal Eletrônica">
+        <div class="bloco" style="background-color: #;">
+            <i class="fa fa-barcode" aria-hidden="true"></i>
+            <div class="texto">
+                Nota Fiscal Eletrônica
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://fozdojordao.pr.gov.br/portalTransparencia/"  target="_blank"  title="Portal da Transparência">
+        <div class="bloco" style="background-color: #;">
+            <i class="fa fa-search" aria-hidden="true"></i>
+            <div class="texto">
+                Portal da Transparência
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="https://fozdojordaopr.equiplano.com.br:7492/transparencia/licitacoes"  title="Licitações">
+        <div class="bloco" style="background-color: #;">
+            <i class="fa fa-gavel" aria-hidden="true"></i>
+            <div class="texto">
+                Licitações
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/concursos"  title="Concursos e Processos Seletivos">
+        <div class="bloco" style="background-color: #;">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            <div class="texto">
+                Concursos e Processos Seletivos
+            </div>
+        </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/pagina/10375_Recomendacoes-Administrativas.html"  title="Recomendações Administrativas">
+        <div class="bloco" style="background-color: #;">
+            <i class="fa fa-bullhorn" aria-hidden="true"></i>
+            <div class="texto">
+                Recomendações Administrativas
+            </div>
+        </div>
+        </a>
+    </div>
+</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-base">
+    <div class="container">
+        <div class="row wow fadeInUp">
+            <!-- Notícias Principais -->
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 wow fadeInLeft">
+                <h2 class="titulo">
+                    <a href="/noticias/" title="Notícias">
+                        <div class="icone">
+                            <i class="fa fa-newspaper-o"></i>
+                            <span></span>
+                        </div>
+                        Notícias 
+                    </a>
+                </h2>
+                <div class="noticias-principais">
+                    <div id="noticias-home" class="owl-carousel owl-theme noticias">
+                            <div class="item">
+        <a href="/noticiasView/?id=661" title="Foz do Jordão entre os melhores do Paraná! ">
+            <div class="bloco">
+                <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_saude.jpg')" >
+
+                </div>
+                <div class="base">
+                    <div class="descricao">
+                        <div class="secretaria">
+                            Geral
+                            <span><i class="fa fa-clock-o" aria-hidden="true"></i> 17/11/2026</span>
+                        </div>
+                        <div class="titulo">
+                            Foz do Jordão entre os melhores do Paraná! 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/noticiasView/?id=660" title="Banda Municipal marcando presença na Feira do Território Cantuquiriguaçu">
+            <div class="bloco">
+                <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_anaatalbanada.jpg')" >
+
+                </div>
+                <div class="base">
+                    <div class="descricao">
+                        <div class="secretaria">
+                            Geral
+                            <span><i class="fa fa-clock-o" aria-hidden="true"></i> 16/11/2026</span>
+                        </div>
+                        <div class="titulo">
+                            Banda Municipal marcando presença na Feira do Território Cantuquiriguaçu
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+    <div class="item">
+        <a href="/noticiasView/?id=658" title=" Campeonato Paranaense de Bolão – Série Ouro">
+            <div class="bloco">
+                <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_800x500_bolao.jpg')" >
+
+                </div>
+                <div class="base">
+                    <div class="descricao">
+                        <div class="secretaria">
+                            Geral
+                            <span><i class="fa fa-clock-o" aria-hidden="true"></i> 05/11/2026</span>
+                        </div>
+                        <div class="titulo">
+                             Campeonato Paranaense de Bolão – Série Ouro
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </div>
+                       </div>
+                </div>
+            </div>
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 wow fadeInLeft">
+                <h2 class="titulo">
+                    <a href="/servicos/" title="Acesso Rápido">
+                        <div class="icone">
+                            <i class="fa fa-newspaper-o"></i>
+                            <span></span>
+                        </div>
+                        Acesso Rápido 
+                    </a>
+                </h2>
+                <ul class="nav nav-tabs" role="tablist">
+    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Geral">
+        <a href="#tb0" class="nav-link active"
+           id="tab0" data-toggle="tab" role="tab" aria-controls="home"
+           aria-selected="true">Geral</a>
+    </li>
+    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Servidor">
+        <a href="#tb1" class="nav-link "
+           id="tab1" data-toggle="tab" role="tab" aria-controls="home"
+           aria-selected="true">Servidor</a>
+    </li>
+    <li class="nav-item" data-toggle="tooltip" data-placement="top" title="Carta de Serviços">
+        <a href="#tb2" class="nav-link "
+           id="tab2" data-toggle="tab" role="tab" aria-controls="home"
+           aria-selected="true">Carta de Serviços</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <div class="tab-pane fade show active" id="tb0" role="tabpanel" aria-labelledby="tab0">
+        <div class="owl-carousel owl-theme servicos">
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://www.youtube.com/@prefeiturafozdojordao7474/streams"  title="Licitações ao vivo">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-play-circle" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Licitações ao vivo
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://fozdojordao.pr.gov.br/pagina/10505_Lei-Aldir-Blanc-2.html" _blank title="Lei Aldir Blanc / PNAB">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-paint-brush" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Lei Aldir Blanc / PNAB
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://fozdojordaopr.equiplano.com.br:7492/contribuinte/#/stmIptu2Via/iptuSegundaVia"  title="IPTU ">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-calculator" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        IPTU 
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="/pagina/10432_Servico-de-Inspecao-Municipal-SIM.html" _blank title="Serviço de Inspeção Municipal (S.I.M.)">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-tree" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Serviço de Inspeção Municipal (S.I.M.)
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://fozdojordao.pr.gov.br/pagina/10414_Unidades-de-Saude-Enderecos-e-Contatos.html"  title="Telefones Unidades de Saúde">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-volume-control-phone" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Telefones Unidades de Saúde
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://fozdojordao.pr.gov.br/iluminacao-publica/"  title="Iluminação Pública">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Iluminação Pública
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="/pagina/10436_Ordens-de-Servico.html"  title="Ordens de Serviço">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Ordens de Serviço
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://fozdojordao.pr.gov.br/uploads/pagina/arquivos/TEXTO-FOZ-DO-JORDAO-1-ITR.pdf" _blank title="Valor da Terra Nua">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Valor da Terra Nua
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="http://200.195.136.83:2020/transparencia/" _blank title="Portal da Transparência - RPPS ">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-users" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Portal da Transparência - RPPS 
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href=" /pagina/10433_Cadastro-de-Forncedores.html"  title="Cadastro de Fornecedores">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-cart-plus" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Cadastro de Fornecedores
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade show " id="tb1" role="tabpanel" aria-labelledby="tab1">
+        <div class="owl-carousel owl-theme servicos">
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://fozdojordaopr.equiplano.com.br:7492/esportal/esportalprincipal.index.logic?l=true"  title="Holerite">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-file-text-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Holerite
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://fozdojordaopr.equiplano.com.br:7492/esportal/esportalprincipal.index.logic?l=true"  title="Comprovante de Rendimentos">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-file-text" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Comprovante de Rendimentos
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="http://webmail.fozdojordao.pr.gov.br/" _blank title="Webmail">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Webmail
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="tab-pane fade show " id="tb2" role="tabpanel" aria-labelledby="tab2">
+        <div class="owl-carousel owl-theme servicos">
+            <div class="item">
+                <div class="row no-gutters">
+                        <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12 nopadding">
+                            <a href="https://www.esnfs.com.br/nfssolicitacaoacesso.edit.logic"  title="Nota Fiscal Eletrônica">
+                                <div class="bloco" style="background: #" >
+                                    <div class="icone">
+                                        <i class="fa fa-barcode" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="texto">
+                                        Nota Fiscal Eletrônica
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-cinza-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="titulo">
+                    <a href="/noticias/" title="Mais Notícias ">
+                        <div class="icone">
+                            <i class="fa fa-newspaper-o"></i>
+                            <span></span>
+                        </div>
+                        Mais Notícias 
+                    </a>
+                </h2>
+                <div class="noticias-principais">
+                    <div id="mais-noticias-home" class="owl-carousel owl-theme noticias">
+                        
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=657" title="Foz do Jordão viveu uma noite de muita música e emoção com Corpo e Alma!">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_acorop.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 28/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Foz do Jordão viveu uma noite de muita música e emoção com Corpo e Alma!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=656" title="Foz do Jordão vivenciou uma noite especial com Ministério Mergulhar">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_ametgulhar.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 28/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Foz do Jordão vivenciou uma noite especial com Ministério Mergulhar
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=655" title="NOTA DE PESAR">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_notap.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 26/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                NOTA DE PESAR
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=654" title="SEGUNDO DIA DO V CANTA CANTU 2026 EM FOZ DO JORDÃO!">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_cvantu.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 23/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                SEGUNDO DIA DO V CANTA CANTU 2026 EM FOZ DO JORDÃO!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=653" title="PRIMEIRO DIA DO V CANTA CANTU EM FOZ DO JORDÃO!">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_cntu.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 23/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                PRIMEIRO DIA DO V CANTA CANTU EM FOZ DO JORDÃO!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=652" title="ATENÇÃO – COMUNICADO OFICIAL ATUALIZADO">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_azis.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 22/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                ATENÇÃO – COMUNICADO OFICIAL ATUALIZADO
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=651" title="ATENÇÃO – COMUNICADO OFICIAL">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_cofa.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 22/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                ATENÇÃO – COMUNICADO OFICIAL
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=650" title="NOTA DE PESAR | LUTO OFICIAL DE 3 DIAS">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_luto.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 22/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                NOTA DE PESAR | LUTO OFICIAL DE 3 DIAS
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=649" title="NOTA OFICIAL">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_nota-oficial_(876).jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 22/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                NOTA OFICIAL
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=648" title="Parabéns, Foz do Jordão ">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_parabs.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 22/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                Parabéns, Foz do Jordão 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=647" title="BAILE DE GALA E MÁSCARA – 30 ANOS DE FOZ DO JORDÃO ">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_abai.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 21/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                BAILE DE GALA E MÁSCARA – 30 ANOS DE FOZ DO JORDÃO 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="pequena">
+            <a href="/noticiasView/?id=646" title="FOZ DO JORDÃO – RAÍZES DA NOSSA TERRA ">
+                <div class="bloco">
+                    <div class="imagem" style="background: url('/uploads/noticia/thumbs/thumb_350x260_benc.jpg')" >
+                        
+                    </div>
+                    <div class="base">
+                        <div class="descricao">
+                            <div class="secretaria">
+                                Geral
+                                <span><i class="fa fa-clock-o" aria-hidden="true"></i> 21/10/2026</span>
+                            </div>
+                            <div class="titulo">
+                                FOZ DO JORDÃO – RAÍZES DA NOSSA TERRA 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="barra barra-base">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2 class="titulo">
+                    <a href="/agenda/" title="Eventos">
+                        <div class="icone">
+                            <i class="fa fa-calendar" aria-hidden="true"></i>
+                            <span></span>
+                        </div>
+                        Calendário / Agenda de Eventos
+                    </a>
+                </h2>
+                                    <span class="mensagem-nao-cadastrado-preto">Nenhum evento cadastrado<br> no momento</span>
+                            </div>
+        </div>
+    </div>
+</div>
+
+        
+<!-- Modal -->
+<div class="modal fade" id="popup-plenus" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">01/2026</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div> -->
+            <div class="modal-body">
+                <p><img alt="" src="https://fozdojordao.pr.gov.br//uploads/wysiwyg//68c3ff11.jpeg" style="height:627px; width:470px" /></p>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="caixa-principal container">
+        <div class="row">
+            <div class="col-12 col-lg-4 col-xl-6">
+                <div class="caixa-logo">
+                    <img src="/imagens/logoRodape.png">
+
+                    <div class="footer-barra02">
+                        <ul>
+                                                            <li>
+                                    <a href="https://www.facebook.com/prefeiturafozdojordao" title="Facebbok"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                </li>
+                                                                                                                    <li>
+                                    <a href="https://www.instagram.com/pmfj_fozdojordao/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                </li>
+                                                                                        <li>
+                                    <a href="https://www.youtube.com/channel/UCgleaVyqT_5gjy_nWWgYlZA" title="Youtube"><i class="fa fa-youtube-play" aria-hidden="true"></i></a>
+                                </li>
+                                                    </ul>
+                    </div>
+                </div>
+                <div class="caixa-botoes">
+                    <ul class="row">
+                        <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="/contato" class="link-btn">
+                                <i class="fa fa-fw fa-pencil-square-o" aria-hidden="true"></i>
+                                <span>Contato</span>
+                            </a>
+                        </li>
+                        <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="/localizacao" class="link-btn">
+                                <i class="fa fa-fw fa-map-marker" aria-hidden="true"></i>
+                                <span>Localização</span>
+                            </a>
+                        </li>
+                        <li class="col-3 col-sm-6 col-md-6 col-lg-6 col-xl-12">
+                            <a href="/faq" class="link-btn">
+                                <i class="fa fa-fw fa-question-circle" aria-hidden="true"></i>
+                                <span>Dúvidas</span>
+                            </a>
+                        </li>
+
+                                            </ul>
+                </div>
+            </div>
+            <div class="caixa-contatos col-12 col-lg-8 col-xl-6">
+                                <div class="info-contato endereco">
+                    <div class="icone"><i class="fa fa-fw fa-map" aria-hidden="true"></i></div>
+                    <div class="texto">
+                        <span>Rua Padre Emilio Barbieri</span>
+                        <span>339</span>
+                                                <span> - Centro</span>
+                                                                        <br>
+                        <span>CEP&nbsp;85145-000</span>
+                                                                        <br>
+                        <span>Foz do Jordão - PR</span>
+                                            </div>
+                </div>
+                
+                                <div class="info-contato telefone">
+                    <div class="icone"><i class="fa fa-fw fa-phone" aria-hidden="true"></i></div>
+                    <div class="texto"><span>(42) 3639-8100</span></div>
+                </div>
+                
+                                <div class="info-contato telefone">
+                    <div class="icone"><i class="fa fa-fw fa-envelope" aria-hidden="true"></i></div>
+                    <div class="texto"><span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="ccafa3a2b8adb8a38caaa3b6a8a3a6a3bea8ada3e2bcbee2aba3bae2aebe">[email&#160;protected]</a></span></div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    
+    <div class="row caixa-copyright">
+        <div class="col-12">
+            <span>2026</span>
+            <span> &copy; </span>
+            <span>Prefeitura Municipal de Foz do Jordão</span>
+            <span> &bullet; </span>
+            <a href="https://plenusgestaopublica.com.br/" target="_blank" title="Plenus Gestão Pública">
+                <span>Desenvolvido por: </span>
+                <img src="/imagens/plenus.png" class="img-fluid">
+            </a>
+        </div>
+    </div>
+</footer>
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+   <div vw-plugin-wrapper>
+       <div class="vw-plugin-top-wrapper"></div>
+   </div>
+</div>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+<script>
+ new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>  
+        <script src="/js/calendario/calendario.home.js"></script>
+        <script>
+            $(document).ready(function () {
+                // Selecionar secretaria
+                $('#formSecretaria').on('change', function () {
+                    $(this).submit();
+                });
+            });
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function ($) {
+                $('#example5').sliderPro({
+                    width: 670,
+                    height: 326,
+                    orientation: 'vertical',
+                    loop: false,
+                    arrows: true,
+                    buttons: false,
+                    thumbnailsPosition: 'right',
+                    thumbnailPointer: true,
+                    thumbnailWidth: 290,
+                    breakpoints: {
+                        800: {
+                            thumbnailsPosition: 'bottom',
+                            thumbnailWidth: 270,
+                            thumbnailHeight: 100
+                        },
+                        500: {
+                            thumbnailsPosition: 'bottom',
+                            thumbnailWidth: 120,
+                            thumbnailHeight: 50
+                        }
+                    }
+                });
+            });
+        </script>
+    </body>
+</html>
+

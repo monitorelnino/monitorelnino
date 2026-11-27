@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de Lavras do Sul</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Lavras do Sul.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de Lavras do Sul' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://lavrasdosul.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://lavrasdosul.rs.gov.br/uploads/config/16025/brasao_lavras_do_sul.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='272'>
+            <meta property='og:image:height' content='421'>
+            <meta property='og:site_name' content='lavrasdosul.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Lavras do Sul.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de Lavras do Sul'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Lavras do Sul.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://lavrasdosul.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+<!-- ESTILOS CSS -->
+<link href="https://lavrasdosul.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://lavrasdosul.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.10" rel="stylesheet" type="text/css" />
+
+    <link id="layoutColor" href="https://lavrasdosul.rs.gov.br/site/custom/default/css/color/azure.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://lavrasdosul.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://lavrasdosul.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://lavrasdosul.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://lavrasdosul.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://lavrasdosul.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-BPES7EQ97R"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-BPES7EQ97R');
+    });
+</script>
+        <link rel="shortcut icon" href="https://lavrasdosul.rs.gov.br/uploads/config/18/favicon.ico" />    
+	        </head>
+	    <body class="smoothscroll wide home4_lavras" data-background=""><a href="https://lavrasdosul.rs.gov.br/cdn-cgi/content?id=esKV2IltJv97iIyQafxojhy0TLnHoHxxEDZ7cxphDA4-1795812685.7592108-1.2.1.1-BmQAFmdxCNZuHyqiFEOJvE8qNBlz.MU4H1SI5tMl4xm6dq2ka6cC50c8.niPLe6y" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <!-- Cabeçalho -->
+<!--===================================================-->
+<div id="header" class='header09 menu-fixo'>
+  <header id="topBar" class="">
+    <div class="container">
+
+      <div class="col-md-4 col-sm-6 hidden-xs">
+        <div class="row">
+                          <div class="mt15">
+                <div class="owl-carousel radius10 styleBackgroundLight" data-plugin-options='{"items":1,"pagination": false, "autoPlay": true}'>
+                                              <div class="item">
+                                                          <ul class="nav nav-list linksCabecalho">
+                                                          <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="https://webapp1-lavrasdosul.cidade360.cloud/pronimtb/" target="_blank" onclick="">
+        <img src='https://lavrasdosul.rs.gov.br/uploads/link/15894/imagem_allow_list.png' alt='Lorem ipsum dolor sit amet, consectetur adipiscing' />                              <p class="h2 styleColor">Portal da Transparência</p>
+                            </a>
+                          </li>
+                                                    <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="/licitacao" target="_self" onclick="">
+        <img src='https://lavrasdosul.rs.gov.br/uploads/link/17315/imagem_contract.png' alt='' />                              <p class="h2 styleColor">Licitações</p>
+                            </a>
+                          </li>
+                                                      </ul>
+                                                        <ul class="nav nav-list linksCabecalho">
+                                                          <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="https://www.lavrasdosul.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html" target="_self" onclick="">
+        <i class='fa fa-microphone'></i>                              <p class="h2 styleColor">Ouvidoria</p>
+                            </a>
+                          </li>
+                                                    <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="https://www.lavrasdosul.rs.gov.br/legislacao/id/1006/?edital-de-processo-seletivo-simplificado.html" target="_self" onclick="">
+        <img src='https://lavrasdosul.rs.gov.br/uploads/link/26443/imagem_logo_processo_seletivo_simplificado.jpeg' alt='' />                              <p class="h2 styleColor">Edital de Processo Seletivo Simplificado</p>
+                            </a>
+                          </li>
+                                                      </ul>
+                                                      </div>
+                                                    <div class="item">
+                                                          <ul class="nav nav-list linksCabecalho">
+                                                          <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="/sic" target="_self" onclick="">
+        <img src='https://lavrasdosul.rs.gov.br/uploads/link/15901/imagem_prefeitura_acesso_informacao.png' alt='' />                              <p class="h2 styleColor">Acesso à Informação</p>
+                            </a>
+                          </li>
+                                                    <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="https://lavrasdosul.1doc.com.br/atendimento" target="_blank" onclick="">
+        <img src='https://lavrasdosul.rs.gov.br/uploads/link/15902/imagem_govbr_logo_completa_negativa_azul2_300x169.png' alt='' />                              <p class="h2 styleColor">Processos Digitais</p>
+                            </a>
+                          </li>
+                                                      </ul>
+                                                      </div>
+                                          </div>
+              </div>
+                      </div>
+      </div>
+
+      <!-- Logo -->
+      <div class="col-md-4 col-sm-6 text-center">
+                          <div class="brasao">
+                  <a href="https://lavrasdosul.rs.gov.br">
+                    <img src="https://lavrasdosul.rs.gov.br/uploads/config/16025/brasao_lavras_do_sul.png" class="img-responsive"
+                         alt="Brasão da Prefeitura" />
+                  </a>
+                </div>
+                            <div class="col-md-12 text-center">
+              <h1 class="client-name nomargin lineh30">
+              <a class="logo" href="https://lavrasdosul.rs.gov.br">
+    			Prefeitura Municipal de Lavras do Sul              </a>
+              </h1>
+            </div>
+                  </div>
+      <!-- / Logo -->
+
+      <!-- Previsão do Tempo e Pesquisa -->
+      <div class="col-md-3 col-md-offset-1 hidden-xs hidden-sm">
+        <div class="box-search-and-weather radius4">
+          <!-- Previsão do tempo-->
+                    <div class="weather previsao-topo hidden">
+            <div class="weather-today">
+              <i class="m0 fsize32 icone-temp"></i>
+            </div>
+            <div class="weather-week">
+              <p class="mb0">
+                <span class="fontw400 minima mr6">
+                  <i class="fa fa-caret-down mr5"></i><span class='min-temp'></span>°C
+                </span>
+                <span class="fontw400 maxima">
+                  <i class="fa fa-caret-up mr5"></i><span class='max-temp'></span>°C
+                </span>
+              </p>
+            </div>
+          </div>
+                    <div>
+            <!-- Data -->
+                        <p class="date styleColor">
+Lavras do Sul, 27 de novembro de 2026.
+            </p>
+            <!-- /Data-->
+          </div>
+          <!-- /Previsão do tempo-->
+          <!-- Busca -->
+          <div class="search-site" role='search'>
+            <form id="pesquisa" class="search nopadding" method="get" action="https://lavrasdosul.rs.gov.br/pesquisa">
+				<label for="searchbar-desktop" class="sr-only">Pesquisar:</label>
+              <input id="searchbar-desktop" title="termo de pesquisa" type="text" class="form-control nomargin" name="q" value="" placeholder="Procurar no site">
+              <button type="submit" class="fa fa-search search-focus styleColor styleBackgroundDark" title="Pesquisar" aria-label="Pesquisar"></button>
+            </form>
+          </div>
+          <!-- /Busca -->
+        </div>
+      </div>
+      <!-- / Previsão do Tempo e Pesquisa -->
+
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <!--===================================================-->
+  <header id="topNav" class="">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get"
+            action="https://lavrasdosul.rs.gov.br/pesquisa">
+		<label for="searchbar-mobile" class="sr-only">Pesquisar:</label>
+        <input id="searchbar-mobile" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar"></button>
+      </form>
+      <!-- Menu Mobile -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse"> <i class="fa fa-bars"></i></button>
+      <!-- Menu -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li><a href='https://lavrasdosul.rs.gov.br'>Início</a></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/3/?dados-do-municipio.html'>Dados do Município</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1001/?telefones-de-taxis.html'>Telefones de Táxis</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1026/?sala-do-empreendedor.html'>SALA DO EMPREENDEDOR</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-4"><p class="menu-category">Atrações Turísticas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/turismo/id/1/?bares-e-restaurantes.html'>Bares e Restaurantes</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/turismo/id/3/?campings.html'>Campings</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/turismo/id/4/?hoteis-e-pousadas.html'>Hotéis e Pousadas</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://lavrasdosul.rs.gov.br/uploads/config/16025/brasao_lavras_do_sul.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(55)  3282-1244</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />Segunda à Sexta-feira: 8h às 14h <br />
+Telefones: (55) 3282.1596 | (55) 3282.2291</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-2"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-2"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/116/?.html'>....</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/105/?administracao.html'>Administração</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/1022/?assessoria-de-comunicacao.html'>Assessoria de Comunicação</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/1001/?assistencia-social.html'>Assistência Social</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/110/?educacao.html'>Educação</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/1016/?financas.html'>Finanças</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/1021/?fundacao-medica-hospitalar-honor-teixeira-da-costa.html'>Fundação Médica Hospitalar Honor Teixeira da Costa</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/1028/?gabinete-vice-prefeito.html'>Gabinete Vice-prefeito</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/1003/?meio-ambiente.html'>Meio Ambiente</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/1002/?meio-rural-e-fomento-economico.html'>Meio Rural e Fomento Econômico</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/1012/?planejamento.html'>Planejamento</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/114/?saude.html'>Saúde</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/secretaria/id/1004/?turismo-cultura-e-desenvolvimento-economico.html'>Turismo, Cultura e Desenvolvimento Econômico</a></li></ul></div><div class="col-md-2"><p class="menu-category">Subsecretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/subsecretaria/id/1005/?casa-de-cultura-jose-neri-da-silveira.html'>Casa de Cultura José Néri da Silveira</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/subsecretaria/id/1009/?coordenadoria-da-mulher.html'>Coordenadoria da Mulher</a></li></ul></div><div class="col-md-2"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1031/?associacoes-de-bairros.html'>Associações de Bairros</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1026/?centro-de-zoonoses-e-bem-estar-animal.html'>Centro de Zoonoses e Bem Estar Animal</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1013/?centro-municipal-de-atendimento-interdisciplinar.html'>Centro Municipal de Atendimento Interdisciplinar</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1032/?cmas-conselho-municipal-de-assistencia-social.html'>CMAS - Conselho Municipal de Assistência Social</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1010/?cme-conselho-municipal-de-educacao.html'>CME - Conselho Municipal de Educação</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1006/?conselho-tutelar.html'>Conselho Tutelar</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1008/?cras-centro-de-referencia-de-assistencia-social.html'>CRAS - Centro de Referência de Assistência Social </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1014/?creche-municipal-professora-noemia-nogueira-teixeira.html'>Creche Municipal  Professora Noêmia Nogueira Teixeira</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1011/?demut-departamento-municipal-de-transito-e-jari.html'>DEMUT - Departamento Municipal de Trânsito e JARI</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1007/?junta-do-servico-militar.html'>Junta do Serviço Militar </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/conselho/id/1027/?sala-dos-conselhos-municipais.html'>Sala dos Conselhos Municipais</a></li></ul></div><div class="col-md-2"><p class="menu-category">Outros Departamentos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/departamento/id/1017/?demut-departamento-municipal-de-transito-e-jari.html'>DEMUT - Departamento Municipal de Trânsito e JARI</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Relatórios</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1034/?inscritos-em-divida-ativa.html'>Inscritos em dívida ativa</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1035/?recursos-humanos.html'>Recursos Humanos</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1036/?educacao.html'>Educação</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1038/?saude.html'>Saúde</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1046/?obras.html'>Obras</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1039/?despesasmovimentacoes-diarias.html'>Despesas/Movimentações Diárias</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1040/?empenhos-a-pagar.html'>Empenhos a pagar</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1041/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1042/?diarias-e-passagens.html'>Diárias e Passagens</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1043/?licitacoes.html'>Licitações</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1050/?pac.html'>PAC</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1044/?lgpd.html'>LGPD</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1045/?sic.html'>SIC</a></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://lavrasdosul.rs.gov.br/uploads/config/16025/brasao_lavras_do_sul.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(55)  3282-1244</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />Segunda à Sexta-feira: 8h às 14h <br />
+Telefones: (55) 3282.1596 | (55) 3282.2291</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-2"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/5/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/110/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/101/?concorrencia-publica.html'>Concorrência Pública</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/103/?convite.html'>Convite</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/1002/?inexigibilidade-de-chamamento-publico.html'>Inexigibilidade de Chamamento Público</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/1004/?patrocinio.html'>PATROCÍNIO</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/107/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/108/?pregao-presencial.html'>Pregão Presencial</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/licitacao/id/109/?tomada-de-preco.html'>Tomada de Preço</a></li></ul></div><div class="col-md-2"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/concurso/id/202/?processo-seletivo.html'>Processo Seletivo</a></li></ul></div><div class="col-md-2"><p class="menu-category">Legislação</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1026/?a-casa-e-sua.html'>A CASA É SUA</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1032/?acordo.html'>ACORDO</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1027/?altera-a-lei-do-rpps.html'>Altera a LEI DO RPPS</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1018/?altera-a-lei-municipal-no-3321-de-09-de-junho-de.html'>Altera a Lei Municipal nº 3.321 de 09 de junho de </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1021/?ata.html'>Ata </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1001/?codigo-de-postura.html'>Código de Postura</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1028/?concurso-publico-2023.html'>CONCURSO PÚBLICO 2023</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1020/?covid-19-receitasdespesas.html'>COVID-19 - RECEITAS/DESPESAS</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1037/?cronograma-de-emendas-2026.html'>Cronograma de emendas 2026 </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/5/?decretos.html'>Decretos</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1024/?decretos-covid-19.html'>Decretos COVID-19</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1007/?editais-de-convocacao-de-audiencia-publica.html'>Editais de Convocação de Audiência Pública</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1022/?editais-pnab-politica-nacional-aldir-blanc.html'>EDITAIS PNAB - POLÍTICA NACIONAL ALDIR BLANC</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1008/?edital-de-concurso-publico.html'>Edital de Concurso Público</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1019/?edital-de-convocacao.html'>Edital de convocação </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1006/?edital-de-processo-seletivo-simplificado.html'>Edital de Processo Seletivo Simplificado</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1012/?edital-de-recadastramento.html'>EDITAL DE RECADASTRAMENTO</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1017/?edital-informativo.html'>Edital Informativo </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1014/?eleicao-unificada-para-conselheiros-tutelares.html'>Eleição Unificada para Conselheiros Tutelares</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1015/?eleicao-unificada-para-conselheiros-tutelares.html'>Eleição Unificada para Conselheiros Tutelares </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1011/?lei-350417-plano-de-custeio-e-amortizacao-rpps.html'>Lei 3.504/17 Plano de Custeio e Amortização  RPPS</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1013/?lei-354318-plano-de-custeio-e-amortizacao-rpps.html'>Lei 3.543/18  Plano de Custeio e Amortização  RPPS</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1016/?lei-municipal-35712019.html'>LEI MUNICIPAL 3.571/2019</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/9/?lei-ordinaria.html'>Lei Ordinária</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/6/?lei-organica.html'>Lei Orgânica</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/2/?leis.html'>Leis</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1004/?metas-e-prioridades.html'>Metas e Prioridades </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/8/?plano-diretor-pddi.html'>Plano Diretor - PDDI</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/10/?plano-plurianual.html'>Plano Plurianual </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/11/?portaria.html'>Portaria</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1023/?prazos-de-renovacao-cnh.html'>Prazos de Renovação CNH</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1025/?processo-de-selecao-para-contratacao-de-efpc-rpps.html'>Processo de Seleção para Contratação de EFPC /RPPS</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1031/?processos-seletivos.html'>PROCESSOS SELETIVOS</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1002/?regime-juridico.html'>Regime Jurídico</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1033/?regulamentos.html'>Regulamentos</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1035/?resolucao.html'>Resolução </a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1009/?rpps-politicas-de-investimentos.html'>RPPS - Políticas de Investimentos</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/legislacao/id/1010/?termo-de-transmissao-de-cargo.html'>TERMO DE TRANSMISSÃO DE CARGO</a></li></ul></div><div class="col-md-2"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='javascript:;' onclick='abrePopUp("http://www1.tce.rs.gov.br/aplicprod/f?p=50500:1:4271227700614:NOVO_MUN:NO:1:P1_PROCURAR_H:Lavras%20do%20Sul&cs=30jcSmrxZqeIthheTyQT4Zfnp8eE","",600,400,0,0);'>Transparência LicitaCon Cidadão</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/relatorio-contas-publicas/id/1014/bcid/1004/?termos-aditivos.html'>Termos Aditivos</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/relatorio-contas-publicas/id/1010/bcid/1002/?atas-de-registro-de-precos.html'>Atas de Registro de Preços</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/relatorio-contas-publicas/id/104/bcid/1003/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html'>Diário Oficial</a></li><li role="menuitem"><a href='https://leismunicipais.com.br/leis/rs/lavrasdosul/?o=tcers' target='_blank'>Leis Municipais/TCE</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li></ul></div><div class="col-md-2"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/ordem-servico/bcid/39/?e-sic-pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-frequentes.html'>Perguntas Frequentes</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/1021/?rpps-previdencia-complementar.html'>RPPS - Previdência Complementar</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li><li role="menuitem"><a href='https://lavrasdosul.rs.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li></ul></li></ul></nav>
+      </div>
+    </div>
+  </header>
+  <!--===================================================-->
+  <!-- Fim Menu -->
+</div>
+<!--===================================================-->
+<!-- Fim Cabeçalho -->
+            <main id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a><!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350">
+                    <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img                         srcset="
+                            https://lavrasdosul.rs.gov.br/uploads/banner/25185/thumb_BANNER_SITE.png 360w,
+                            https://lavrasdosul.rs.gov.br/uploads/banner/25185/mobile_BANNER_SITE.png 576w,
+                            https://lavrasdosul.rs.gov.br/uploads/banner/25185/original_BANNER_SITE.png 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Lavras do Sul"
+                    />
+                                        <a href="https://pt.wikipedia.org/wiki/Lavras_do_Sul" target='_blank' class="linkBannner">
+                        <span class="sr-only">Lavras do Sul</span>
+                    </a>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: false, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: false        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img loading='lazy' src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+<div class="pb40 pt40">
+    <div class="container">
+        <div class="row">
+            <!-- NOTÍCIAS E ACESSO RÁPIDO -->
+                        <div class="overflow-hidden col-md-9 mobile-nopadding"><!-- 3 ÚLTIMAS NOTÍCIAS -->
+<section role="group" id="noticia2" class="nopadding" aria-labelledby="noticia2.title">
+	<div class="row">
+		<div class="col-md-12">
+			<h2 class="similar-h4 title" id="noticia2.title"><strong>ÚLTIMAS NOT&Iacute;CIAS</strong></h2>
+		</div>
+	</div>
+<div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": true, "navigation": false, "pagination": true, "progressBar":"false"}'>
+        <div class="item">
+        <div class="col-md-4">
+                        <img class="img-responsive max-height360" src="https://lavrasdosul.rs.gov.br/uploads/noticia/26931/media_Texto_do_seu_pargrafo_86.png" alt="Em noite de muitas emoções, Governo Municipal entrega 130 escrituras no Bairro Olaria" role="presentation">
+                     </div>
+
+        <div class="col-md-8">
+            <h3 class="mb10 similar-h2 lineh32">
+                <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1535/?em-noite-de-muitas-emocoes-governo-municipal-entrega-130-escrituras-no-bairro-olaria.html">
+                    Em noite de muitas emoções, Governo Municipal entrega 130 escrituras no Bairro Olaria                </a>
+            </h3>
+            <p>.</p>
+        </div>
+    </div>
+        <div class="item">
+        <div class="col-md-4">
+                        <img class="img-responsive max-height360" src="https://lavrasdosul.rs.gov.br/uploads/noticia/26839/media_Texto_do_seu_pargrafo_63.png" alt="Lavras do Sul sedia o 5º Acendimento Regional da Chama Crioula" role="presentation">
+                     </div>
+
+        <div class="col-md-8">
+            <h3 class="mb10 similar-h2 lineh32">
+                <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1533/?lavras-do-sul-sedia-o-5o-acendimento-regional-da-chama-crioula.html">
+                    Lavras do Sul sedia o 5º Acendimento Regional da Chama Crioula                </a>
+            </h3>
+            <p>Na manhã de hoje, 30 de agosto, o Módulo Esportivo de Lavras do Sul foi palco do 5º Acendimento Regional da Chama Crioula da 18ª Região Tradicionalista.</p>
+        </div>
+    </div>
+        <div class="item">
+        <div class="col-md-4">
+                        <img class="img-responsive max-height360" src="https://lavrasdosul.rs.gov.br/uploads/noticia/26741/media_742771227_2825838477794380_129540393374754210_n.jpg" alt="Prefeito Renan Delabary participa de reunião na Lavras Mineração " role="presentation">
+                     </div>
+
+        <div class="col-md-8">
+            <h3 class="mb10 similar-h2 lineh32">
+                <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1532/?prefeito-renan-delabary-participa-de-reuniao-na-lavras-mineracao.html">
+                    Prefeito Renan Delabary participa de reunião na Lavras Mineração                 </a>
+            </h3>
+            <p>O encontro teve como obejtivo reforçar o compromisso com o desenvolvimento do município.</p>
+        </div>
+    </div>
+    </div>
+
+<div class="hidden-xs mb15 other-news">
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1526/?catalogo-de-especies-da-flora-nativa-do-bioma-pampa.html">
+            <img class="img-responsive max-height200" src="https://lavrasdosul.rs.gov.br/uploads/noticia/26631/media_FEIJO_DA_ESPANHA.jpeg" alt="Catálogo de Espécies da Flora Nativa do Bioma Pampa" role="presentation"/>
+        </a>
+        <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1526/?catalogo-de-especies-da-flora-nativa-do-bioma-pampa.html">
+            <p class="nomargin">Catálogo de Espécies da Flora Nativa do Bioma Pampa</p>
+        </a>
+    </div>
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1525/?carnalavras-2026.html">
+            <img class="img-responsive max-height200" src="https://lavrasdosul.rs.gov.br/uploads/noticia/26411/media_632936642_18080965397365859_5480365563595486897_n.jpg" alt="CarnaLavras 2026" role="presentation"/>
+        </a>
+        <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1525/?carnalavras-2026.html">
+            <p class="nomargin">CarnaLavras 2026</p>
+        </a>
+    </div>
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1524/?ughine-conquista-o-titulo-do-campeonato-municipal-de-futebol-de-campo-em-lavras-do-sul.html">
+            <img class="img-responsive max-height200" src="https://lavrasdosul.rs.gov.br/uploads/noticia/26350/media_1.png" alt="Ughine conquista o título do Campeonato Municipal de Futebol de Campo em Lavras do Sul" role="presentation"/>
+        </a>
+        <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1524/?ughine-conquista-o-titulo-do-campeonato-municipal-de-futebol-de-campo-em-lavras-do-sul.html">
+            <p class="nomargin">Ughine conquista o título do Campeonato Municipal de Futebol de Campo em Lavras do Sul</p>
+        </a>
+    </div>
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1523/?carnalavras-2026-conhece-sua-nova-corte-de-soberanos.html">
+            <img class="img-responsive max-height200" src="https://lavrasdosul.rs.gov.br/uploads/noticia/26302/media_c653533a_0f2c_4e49_bb16_0fcae329c3be.jpg" alt="Carnalavras 2026 conhece sua nova corte de soberanos" role="presentation"/>
+        </a>
+        <a href="https://lavrasdosul.rs.gov.br/noticia/visualizar/id/1523/?carnalavras-2026-conhece-sua-nova-corte-de-soberanos.html">
+            <p class="nomargin">Carnalavras 2026 conhece sua nova corte de soberanos</p>
+        </a>
+    </div>
+        <a aria-label="Ver mais notícias" href="https://lavrasdosul.rs.gov.br/noticia/?noticias.html" class="btn btn-default pull-right">Mais not&iacute;cias</a>
+</div>
+</section></div>
+                        <div class="col-md-3 mt4-xs"><!-- ACESSO RÁPIDO -->
+<div id="acessoRapido1" class="widget featured-box-minimal owl-carousel-controls">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>ACESSO R&Aacute;PIDO</strong></h2>
+                        <span class="pull-right">
+				<a class="prev" href="javascript:;" aria-label="Anterior" title="Anterior">
+					<i class="mr5 lineh30 fa fa-arrow-left widget-icon" aria-hidden="true">
+						<span class="sr-only">Anterior</span>
+					</i>
+				</a>
+				<a class="next" href="javascript:;" aria-label="Próximo" title="Próximo">
+					<i class="mr5 lineh30 fa fa-arrow-right widget-icon" aria-hidden="true">
+						<span class="sr-only">Próximo</span>
+					</i>
+				</a>
+            </span>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1,"transitionStyle":"goDown" ,"autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Licitações" href="/licitacao" target="_self" onclick="">
+                        <i class='fa fa-desktop'></i> Licitações                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Central de Atendimento - 1DOC" href="https://lavrasdosul.1doc.com.br/atendimento" target="_self" onclick="">
+                        <i class='fa fa-comments-o'></i> Central de Atendimento - 1DOC                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Transparência LicitaCon Cidadão" href="http://www1.tce.rs.gov.br/aplicprod/f?p=50500:1:4271227700614:NOVO_MUN:NO:1:P1_PROCURAR_H:Lavras%20do%20Sul&cs=30jcSmrxZqeIthheTyQT4Zfnp8eE" target="_blank" onclick="">
+                        <i class='fa fa-group'></i> Transparência LicitaCon Cidadão                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Contas Públicas" href="/contas-publicas" target="_self" onclick="">
+                        <i class='fa fa-folder-open'></i> Contas Públicas                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Acesso à Informação" href="/sic" target="_self" onclick="">
+                        <i class='fa fa-info'></i> Acesso à Informação                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Ouvidoria SUS" href="https://api.whatsapp.com/send?phone=555199144-2719" target="_blank" onclick="">
+                        <i class='fa fa-microphone'></i> Ouvidoria SUS                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="SALA DO EMPREENDEDOR" href="https://www.lavrasdosul.rs.gov.br/setor/visualizar/idDep/1004/id/1033/?sala-do-empreendedor.html" target="_self" onclick="">
+                        <i class='fa fa-user-circle-o'></i> SALA DO EMPREENDEDOR                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Portal do Servidor" href="https://webapp1-lavrasdosul.cidade360.cloud/portalservidor#/" target="_blank" onclick="">
+                        <i class='fa fa-user-o'></i> Portal do Servidor                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Meio Ambiente - Licenciamento Ambiental" href="https://meioambiente.governancabrasil.com.br:3079/meioambiente/index.php?class=indexme&cc=1310" target="_blank" onclick="">
+                        <i class='fa fa-leaf'></i> Meio Ambiente - Licenciamento Ambiental                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="e-SIC - Pedido de informações" href="/ordem-servico/index" target="_self" onclick="">
+                        <i class='fa fa-question-circle-o'></i> e-SIC - Pedido de informações                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Atas de Registro de Preços" href="/relatorio-contas-publicas/id/1010" target="_blank" onclick="">
+                        <i class='fa fa-file-text-o'></i> Atas de Registro de Preços                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Contratos" href="/relatorio-contas-publicas/id/1011" target="_blank" onclick="">
+                        <i class='fa fa-file'></i> Contratos                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Perguntas Frequentes" href="/perguntas-respostas" target="_self" onclick="">
+                        <i class='fa fa-question-circle-o'></i> Perguntas Frequentes                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Portal da Transparência" href="https://webapp1-lavrasdosul.cidade360.cloud/pronimtb/" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Portal da Transparência                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Portal da Transparência Fundação" href="https://webapp1-lavrasdosul.cidade360.cloud/pronimtb_fndcao/" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Portal da Transparência Fundação                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Serviços" href="/servico" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Serviços                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Ouvidoria" href="/ouvidoria" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Ouvidoria                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Concursos" href="/concurso" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Concursos                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Legislação" href="/legislacao" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Legislação                    </a>
+                </li>
+                        </ul>
+        </div>
+	        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+                        <!-- /NOTÍCIAS E ACESSO RÁPIDO -->
+        </div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+<div class="p0 styleContrasteGray">
+    <div class="container">
+        <hr class="half-margins invisible">
+        <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://webapp1-lavrasdosul.cidade360.cloud/portalservidor#/" target='_blank'>
+                                <p class="similar-h4 mb10">Portal do Servidor</p>
+                        <img src="https://lavrasdosul.rs.gov.br/uploads/banner/24817/original_portal.jpg" class="img-responsive" alt="Portal do Servidor" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://radardatransparencia.atricon.org.br/radar-da-transparencia-publica.html" target='_blank'>
+                                <p class="similar-h4 mb10">RADAR DA TRANSPARÊNCIA PÚBLICA</p>
+                        <img src="https://lavrasdosul.rs.gov.br/uploads/banner/24823/original_radar.png" class="img-responsive" alt="RADAR DA TRANSPARÊNCIA PÚBLICA" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://nfg.sefaz.rs.gov.br/site/index.aspx" target='_blank'>
+                                <p class="similar-h4 mb10">Nota Fiscal Gaúcha</p>
+                        <img src="https://lavrasdosul.rs.gov.br/uploads/banner/10/original_Nota_fiscal_gacha.png" class="img-responsive" alt="Nota Fiscal Gaúcha" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://www1.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Lavras%20do%20Sul,&cs=1oq0hv89p2h6Qg7gUiy-4vknQGM0" target='_blank'>
+                                <p class="similar-h4 mb10">LicitaCon Cidadão</p>
+                        <img src="https://lavrasdosul.rs.gov.br/uploads/banner/19910/original_licitacon_cidadao.jpg" class="img-responsive" alt="LicitaCon Cidadão" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://webapp1-lavrasdosul.cidade360.cloud:8443/cidadao/servlet/br.com.cetil.ar.jvlle.hatendimento" target='_blank'>
+                                <p class="similar-h4 mb10">Portal Cidadão</p>
+                        <img src="https://lavrasdosul.rs.gov.br/uploads/banner/19875/original_portal_ciddado.png" class="img-responsive" alt="Portal Cidadão" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://meioambiente.governancabrasil.com.br:3079/meioambiente/index.php?class=indexme&cc=1310" target='_blank'>
+                                <p class="similar-h4 mb10">Meio Ambiente</p>
+                        <img src="https://lavrasdosul.rs.gov.br/uploads/banner/24855/original_como_a_assinatura_digital_pode_preservar_o_meio_ambiente_1170x700.jpg" class="img-responsive" alt="Meio Ambiente" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://webapp1-lavrasdosul.cidade360.cloud/nfse.portal/" target='_blank'>
+                                <p class="similar-h4 mb10">Livro Eletrônico</p>
+                        <img src="https://lavrasdosul.rs.gov.br/uploads/banner/20583/original_site_2.png" class="img-responsive" alt="Livro Eletrônico" role="presentation" />
+                </a>
+            </div>
+    </div>        <hr class="half-margins">
+    </div>
+</div>
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-4 mt4-xs" style="border-right: #C3C3C3 1px dashed;"><!-- LICITAÇÕES -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>LICITA&Ccedil;&Otilde;ES</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">76/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Leilão - 1/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PROC 76/26 - LEILÃO 1/26 - ESPAÇOS CAMPING" href="https://lavrasdosul.rs.gov.br/licitacao/visualizar/id/2480/?proc-7626-leilao-126-espacos-camping.html">
+                            <p>PROC 76/26 - LEILÃO 1/26 - ESPAÇOS CAMPING</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            30/11/2026 &agrave;s 08h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">072/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico - 033/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital e Anexos Proc 72-26 PE 33-26 - SRP PLACAS" href="https://lavrasdosul.rs.gov.br/licitacao/visualizar/id/2479/?edital-e-anexos-proc-72-26-pe-33-26-srp-placas.html">
+                            <p>Edital e Anexos Proc 72-26 PE 33-26 - SRP PLACAS</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            09/12/2026 &agrave;s 08h31min                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">050/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico - 022/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="EDITAL E ANEXOS PROC. 050.26 P.E. 022.26 MAT AMBUL" href="https://lavrasdosul.rs.gov.br/licitacao/visualizar/id/2460/?edital-e-anexos-proc-05026-pe-02226-mat-ambul.html">
+                            <p>EDITAL E ANEXOS PROC. 050.26 P.E. 022.26 MAT AMBUL</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            16/12/2026 &agrave;s 08h31min                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">067/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência Pública - 008/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital e Anexos Proc 67-26 CP 08-26 - COBERTURAS" href="https://lavrasdosul.rs.gov.br/licitacao/visualizar/id/2477/?edital-e-anexos-proc-67-26-cp-08-26-coberturas.html">
+                            <p>Edital e Anexos Proc 67-26 CP 08-26 - COBERTURAS</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            10/12/2026 &agrave;s 10h30min                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">064/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico - 029/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital e Anexos Proc 64-26 PE 29-26 MAT EXPEDIENTE" href="https://lavrasdosul.rs.gov.br/licitacao/visualizar/id/2478/?edital-e-anexos-proc-64-26-pe-29-26-mat-expediente.html">
+                            <p>Edital e Anexos Proc 64-26 PE 29-26 MAT EXPEDIENTE</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            01/12/2026 &agrave;s 08h31min                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">048/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico - 026/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital e Anexos Proc 48-26 PE 26-26 -ILUMINAÇÃO PB" href="https://lavrasdosul.rs.gov.br/licitacao/visualizar/id/2476/?edital-e-anexos-proc-48-26-pe-26-26-iluminacao-pb.html">
+                            <p>Edital e Anexos Proc 48-26 PE 26-26 -ILUMINAÇÃO PB</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            27/11/2026 &agrave;s 08h31min                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">069/2025</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico - 028/2025                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Edital - Proc. 69/2025 - P. E. 28/2025 - REDES  " href="https://lavrasdosul.rs.gov.br/licitacao/visualizar/id/2364/?edital-proc-692025-p-e-282025-redes.html">
+                            <p>Edital - Proc. 69/2025 - P. E. 28/2025 - REDES  </p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            25/07/2055 &agrave;s 08h31min                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">03/2016</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Presencial                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Processo 04/2016 – Pregão Presencial 03/2016" href="https://lavrasdosul.rs.gov.br/licitacao/visualizar/id/1003/?processo-042016-pregao-presencial-032016.html">
+                            <p>Processo 04/2016 – Pregão Presencial 03/2016</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            22/02/2106 &agrave;s 14h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /LICITAÇÕES --></div>
+                <div class="col-md-4" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://lavrasdosul.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="103">Convite</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="1002">Inexigibilidade de Chamamento Público</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="1004">PATROCÍNIO</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="109">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://lavrasdosul.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="202">Processo Seletivo</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://lavrasdosul.rs.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1026">A CASA É SUA</option>
+                                                        <option value="1032">ACORDO</option>
+                                                        <option value="1027">Altera a LEI DO RPPS</option>
+                                                        <option value="1018">Altera a Lei Municipal nº 3.321 de 09 de junho de </option>
+                                                        <option value="1021">Ata </option>
+                                                        <option value="1001">Código de Postura</option>
+                                                        <option value="1028">CONCURSO PÚBLICO 2023</option>
+                                                        <option value="1020">COVID-19 - RECEITAS/DESPESAS</option>
+                                                        <option value="1037">Cronograma de emendas 2026 </option>
+                                                        <option value="5">Decretos</option>
+                                                        <option value="1024">Decretos COVID-19</option>
+                                                        <option value="1007">Editais de Convocação de Audiência Pública</option>
+                                                        <option value="1022">EDITAIS PNAB - POLÍTICA NACIONAL ALDIR BLANC</option>
+                                                        <option value="1008">Edital de Concurso Público</option>
+                                                        <option value="1019">Edital de convocação </option>
+                                                        <option value="1006">Edital de Processo Seletivo Simplificado</option>
+                                                        <option value="1012">EDITAL DE RECADASTRAMENTO</option>
+                                                        <option value="1017">Edital Informativo </option>
+                                                        <option value="1014">Eleição Unificada para Conselheiros Tutelares</option>
+                                                        <option value="1015">Eleição Unificada para Conselheiros Tutelares </option>
+                                                        <option value="1">Legislação</option>
+                                                        <option value="1011">Lei 3.504/17 Plano de Custeio e Amortização  RPPS</option>
+                                                        <option value="1013">Lei 3.543/18  Plano de Custeio e Amortização  RPPS</option>
+                                                        <option value="1016">LEI MUNICIPAL 3.571/2019</option>
+                                                        <option value="9">Lei Ordinária</option>
+                                                        <option value="6">Lei Orgânica</option>
+                                                        <option value="2">Leis</option>
+                                                        <option value="1004">Metas e Prioridades </option>
+                                                        <option value="8">Plano Diretor - PDDI</option>
+                                                        <option value="10">Plano Plurianual </option>
+                                                        <option value="11">Portaria</option>
+                                                        <option value="1023">Prazos de Renovação CNH</option>
+                                                        <option value="1025">Processo de Seleção para Contratação de EFPC /RPPS</option>
+                                                        <option value="1031">PROCESSOS SELETIVOS</option>
+                                                        <option value="1002">Regime Jurídico</option>
+                                                        <option value="1033">Regulamentos</option>
+                                                        <option value="1035">Resolução </option>
+                                                        <option value="1009">RPPS - Políticas de Investimentos</option>
+                                                        <option value="1010">TERMO DE TRANSMISSÃO DE CARGO</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-4 mt4-xs"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto featured-box-minimal">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+                            <span class="pull-right">
+                    <a class="prev" href="javascript:;">
+                        <i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+                            <span class="sr-only">Anterior</span>
+                        </i>
+                    </a>
+                    <a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+                        <span class="sr-only">Próximo</span>
+                    </i></a>
+                </span>
+                        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://lavrasdosul.rs.gov.br/uploads/departamento/25402/thumb_COMUNICADO.png" class="img-responsive img-circle max-height100" alt="Foto do(a) Prefeito: Renan Leal Delabary" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://lavrasdosul.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Renan Leal Delabary</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-055-0062                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Seg a sex, das 8h às 14h.<br />
+                                         </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Chefe de Gabinete</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://lavrasdosul.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Tatiane Mieres</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-055-0062                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Seg a sex, das 8h às 14h.<br />
+                                         </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/116/?.html">
+                       ....                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="...." href="https://lavrasdosul.rs.gov.br/secretaria/id/116/?.html">
+                            <span class="similar-h4"><strong>Rudiney Figueiredo</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (08)  0 0055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira, das 07h30 às 13h30                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/1022/?assessoria-de-comunicacao.html">
+                       Assessoria de Comunicação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Assessor de Marketing/Comunicação </small>
+                        <div class="row">
+                          <a title="Assessoria de Comunicação" href="https://lavrasdosul.rs.gov.br/secretaria/id/1022/?assessoria-de-comunicacao.html">
+                            <span class="similar-h4"><strong>João Victor Severo Vieira</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (55) 3282-1244                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Das 8h às 14h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/1001/?assistencia-social.html">
+                       Assistência Social                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Assistência Social" href="https://lavrasdosul.rs.gov.br/secretaria/id/1001/?assistencia-social.html">
+                            <span class="similar-h4"><strong>...</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (08)  0 0055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda à Sexta das 08:00 às 14:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/114/?saude.html">
+                       Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário de Saúde</small>
+                        <div class="row">
+                          <a title="Saúde" href="https://lavrasdosul.rs.gov.br/secretaria/id/114/?saude.html">
+                            <span class="similar-h4"><strong>Diego Amaral Afonso</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda à Sexta das 8:00 às 20:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/1003/?meio-ambiente.html">
+                       Meio Ambiente                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Meio Ambiente" href="https://lavrasdosul.rs.gov.br/secretaria/id/1003/?meio-ambiente.html">
+                            <span class="similar-h4"><strong>Amanda Cabral</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda à Sexta das 8:00 às 14:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/1002/?meio-rural-e-fomento-economico.html">
+                       Meio Rural e Fomento Econômico                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Meio Rural e Fomento Econômico" href="https://lavrasdosul.rs.gov.br/secretaria/id/1002/?meio-rural-e-fomento-economico.html">
+                            <span class="similar-h4"><strong>...</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (08)  0 0055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda à Sexta das 7:30 às 13:30                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/1028/?gabinete-vice-prefeito.html">
+                       Gabinete Vice-prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Vice-prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete Vice-prefeito" href="https://lavrasdosul.rs.gov.br/secretaria/id/1028/?gabinete-vice-prefeito.html">
+                            <span class="similar-h4"><strong>Vitor Régis Lopes Soares</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (55) 3282-1244                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> De segunda a sexta-feira, das 8h às 14h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/1012/?planejamento.html">
+                       Planejamento                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Planejamento" href="https://lavrasdosul.rs.gov.br/secretaria/id/1012/?planejamento.html">
+                            <span class="similar-h4"><strong>Cristine Bastos Barbosa</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Seg a sex | 8h às 14h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/110/?educacao.html">
+                       Educação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Prefeito </small>
+                        <div class="row">
+                          <a title="Educação" href="https://lavrasdosul.rs.gov.br/secretaria/id/110/?educacao.html">
+                            <span class="similar-h4"><strong>Maria Alice Bulcão Teixeira</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda à Sexta das 8:00 às 17:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/1021/?fundacao-medica-hospitalar-honor-teixeira-da-costa.html">
+                       Fundação Médica Hospitalar Honor Teixeira da Costa                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Diretor</small>
+                        <div class="row">
+                          <a title="Fundação Médica Hospitalar Honor Teixeira da Costa" href="https://lavrasdosul.rs.gov.br/secretaria/id/1021/?fundacao-medica-hospitalar-honor-teixeira-da-costa.html">
+                            <span class="similar-h4"><strong>Elisa Pergher dos Santos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda a sexta-feira das 8h às 14h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/105/?administracao.html">
+                       Administração                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Administração" href="https://lavrasdosul.rs.gov.br/secretaria/id/105/?administracao.html">
+                            <span class="similar-h4"><strong>Daniele da Silva Moreira</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda à Sexta - 8:00 às 14:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/1004/?turismo-cultura-e-desenvolvimento-economico.html">
+                       Turismo, Cultura e Desenvolvimento Econômico                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Turismo, Cultura e Desenvolvimento Econômico" href="https://lavrasdosul.rs.gov.br/secretaria/id/1004/?turismo-cultura-e-desenvolvimento-economico.html">
+                            <span class="similar-h4"><strong>Paulo Sérgio Marques Côrrea</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda à Sexta das 8:00 às 14:00                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://lavrasdosul.rs.gov.br/secretaria/id/1016/?financas.html">
+                       Finanças                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Finanças" href="https://lavrasdosul.rs.gov.br/secretaria/id/1016/?financas.html">
+                            <span class="similar-h4"><strong>Maria Lúcia Izidoro Farias Borges</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-055-0118                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> De segunda a sexta das 08:00 às 14:00h.                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+
+
+
+<div class="pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+                        <div class="col-md-12 mobile-nopadding"><!-- ATRAÇÕES TURÍSTICAS -->
+<h2 class="similar-h4 title"><strong>ATRA&Ccedil;&Otilde;ES TUR&Iacute;STICAS</strong></h2>
+<div class="tabs tab-tur widget featured-box-minimal nomargin-top">
+   <!-- tabs -->
+   <ul class="nav nav-tabs nav-justified">
+           <li class="active">
+         <a href="#tab_0" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-hotel icone-turismo"></i> Pousada Paraíso         </a>
+      </li>
+            <li class="">
+         <a href="#tab_1" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-hotel icone-turismo"></i> Hotel Pousada Terra do Ouro         </a>
+      </li>
+            <li class="">
+         <a href="#tab_2" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-hotel icone-turismo"></i> São Miguel Arcanjo Apart Hotel         </a>
+      </li>
+         </ul>
+
+
+   <!-- tabs content -->
+   <div class="tab-content mb15">
+           <div id="tab_0" class="tab-pane active">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://lavrasdosul.rs.gov.br/uploads/pontoturistico/25393/maior_Captura_de_tela_2025_02_14_143629.png" alt="Pousada Paraíso" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Pousada Paraíso" href="https://lavrasdosul.rs.gov.br/turismo/visualizar/id/1022/?pousada-paraiso.html">
+               Pousada Paraíso             </a>
+             </h3>
+           <p class="mb0">Pousada na entrada da cidade.</p>
+           <p class="mb0"><a href="https://lavrasdosul.rs.gov.br/turismo/visualizar/id/1022" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Pousada Paraíso				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+            <div id="tab_1" class="tab-pane ">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://lavrasdosul.rs.gov.br/uploads/pontoturistico/25391/maior_Imagem_do_WhatsApp_de_2025_02_14_s_140457_33b94d11.jpg" alt="Hotel Pousada Terra do Ouro" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Hotel Pousada Terra do Ouro" href="https://lavrasdosul.rs.gov.br/turismo/visualizar/id/1004/?hotel-pousada-terra-do-ouro.html">
+               Hotel Pousada Terra do Ouro             </a>
+             </h3>
+           <p class="mb0">Hotel Pousada Terra do Ouro</p>
+           <p class="mb0"><a href="https://lavrasdosul.rs.gov.br/turismo/visualizar/id/1004" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Hotel Pousada Terra do Ouro				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+            <div id="tab_2" class="tab-pane ">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://lavrasdosul.rs.gov.br/uploads/pontoturistico/25394/maior_imagem_2025_02_14_144140651.png" alt="São Miguel Arcanjo Apart Hotel" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver São Miguel Arcanjo Apart Hotel" href="https://lavrasdosul.rs.gov.br/turismo/visualizar/id/1023/?sao-miguel-arcanjo-apart-hotel.html">
+               São Miguel Arcanjo Apart Hotel             </a>
+             </h3>
+           <p class="mb0">Av. Cel. Galvão, 67 - Centro, Lavras do Sul - RS, 97390-000•(55) 99963-7295</p>
+           <p class="mb0"><a href="https://lavrasdosul.rs.gov.br/turismo/visualizar/id/1023" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					São Miguel Arcanjo Apart Hotel				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+         </div>
+
+   <a title="Atrações completas" href="https://lavrasdosul.rs.gov.br/turismo" class="btn btn-default btn-content">
+      <i class="fa fa-map-o"></i> Mais Atrações
+	  <span class="sr-only">
+		Turísticas
+	  </span>
+    </a>
+</div></div>
+            			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+        </div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight styleContrasteGray pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mobile-nopadding"><!-- MULTIMIDIA -->
+<h2 class="similar-h4 title"><strong>MULTIM&Iacute;DIA</strong></h2>
+    <ul class="sort-destination isotope multimidia flex-center" style="flex-wrap: wrap;">
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="CARNALAVRAS 2025" class="item-hover" href="https://lavrasdosul.rs.gov.br/galeria/id/1053/?carnalavras-2025.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								CARNALAVRAS 2025							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://lavrasdosul.rs.gov.br/uploads/midia/25578/media_481084493_1085392803629764_1148640795842107656_n.jpg" width="260" height="260" alt="CARNALAVRAS 2025" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">19/03/2025 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">CARNALAVRAS 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="INTERBLOCOS 2025" class="item-hover" href="https://lavrasdosul.rs.gov.br/galeria/id/1052/?interblocos-2025.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								INTERBLOCOS 2025							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://lavrasdosul.rs.gov.br/uploads/midia/25492/media_WhatsApp_Image_2025_02_24_at_125516.jpeg" width="260" height="260" alt="INTERBLOCOS 2025" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">23/02/2025 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">INTERBLOCOS 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="MOLEQUE E COROA BOM DE BOLA 2025" class="item-hover" href="https://lavrasdosul.rs.gov.br/galeria/id/1051/?moleque-e-coroa-bom-de-bola-2025.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								MOLEQUE E COROA BOM DE BOLA 2025							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://lavrasdosul.rs.gov.br/uploads/midia/25403/media_DSC_0007.jpg" width="260" height="260" alt="MOLEQUE E COROA BOM DE BOLA 2025" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">16/02/2025 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">MOLEQUE E COROA BOM DE BOLA 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="VI TORNEIO ABERTO DE VÔLEI DE PRAIA" class="item-hover" href="https://lavrasdosul.rs.gov.br/galeria/id/1050/?vi-torneio-aberto-de-volei-de-praia.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								VI TORNEIO ABERTO DE VÔLEI DE PRAIA							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://lavrasdosul.rs.gov.br/uploads/midia/25131/media_WhatsApp_Image_2025_01_12_at_205845.jpeg" width="260" height="260" alt="VI TORNEIO ABERTO DE VÔLEI DE PRAIA" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">12/01/2025 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">VI TORNEIO ABERTO DE VÔLEI DE PRAIA</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        	</ul>
+<!-- /MULTIMIDIA --></div>
+        </div>
+    </div>
+</div>
+
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-30.811704, -53.900431],
+                16
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-30.811704, -53.900431],
+                        {alt:'Prefeitura Municipal de Lavras do Sul'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de Lavras do Sul</strong></p>                <p style="margin: 5px 0px;">Rua Cel. Mesa, 373&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Lavras do Sul / RS</p><p style="margin: 5px 0px;">97390-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+
+            </main>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer01" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <div class="logo_footer dark col-md-3">
+                                <img alt="Brasão da prefeitura" src="https://lavrasdosul.rs.gov.br/uploads/config/16025/brasao_lavras_do_sul.png" height="130" class="pull-left logo appear-animation opaco08" data-animation="bounceIn"/>
+                                <p class="block">
+                    <br />Rua Cel. Mesa, 373, Centro<br />
+                    CEP: 97390-000<br /><br />                </p>
+                                <p class="block">
+                                        (55)  3282-1244<br/>
+                                        chefiadegabinetepmls@gmail.com<br />                </p>
+                                <p class="block">
+                    <strong>Hor&aacute;rios de Atendimento:</strong><br />
+                    Segunda à Sexta-feira: 8h às 14h <br />
+Telefones: (55) 3282.1596 | (55) 3282.2291                </p>
+                                <p class="block">
+                    <a href="https://lavrasdosul.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/prefeituralavrasdosul" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://twitter.com/prefelavras" target="_blank" class="social">
+						<i class="fa fa-twitter">
+							<span class="sr-only">Twitter/X da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://instagram.com/prefeituralavrasdosul" target="_blank" class="social">
+						<i class="fa fa-instagram">
+							<span class="sr-only">Instagram da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://lavrasdosul.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+                </p>
+            </div>
+
+            <div class="spaced col-md-9 col-sm-9 hidden-sm hidden-xs">
+                            <div class="row">
+                                    <div class="col-md-3">
+                        <p class="similar-h4 mb15">Licita&ccedil;&otilde;es</p>
+						<ul class="list-unstyled nobordered">
+												    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/100/?chamada-publica.html">
+						            <i class="fa fa-angle-right"></i>Chamada Pública					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/110/?chamamento-publico.html">
+						            <i class="fa fa-angle-right"></i>Chamamento Público					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/101/?concorrencia-publica.html">
+						            <i class="fa fa-angle-right"></i>Concorrência Pública					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html">
+						            <i class="fa fa-angle-right"></i>Dispensa de Licitação					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/105/?inexigibilidade.html">
+						            <i class="fa fa-angle-right"></i>Inexigibilidade					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/1002/?inexigibilidade-de-chamamento-publico.html">
+						            <i class="fa fa-angle-right"></i>Inexigibilidade de Chamamento Público					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/106/?leilao.html">
+						            <i class="fa fa-angle-right"></i>Leilão					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/1004/?patrocinio.html">
+						            <i class="fa fa-angle-right"></i>PATROCÍNIO					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/107/?pregao-eletronico.html">
+						            <i class="fa fa-angle-right"></i>Pregão Eletrônico					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/108/?pregao-presencial.html">
+						            <i class="fa fa-angle-right"></i>Pregão Presencial					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/licitacao/id/109/?tomada-de-preco.html">
+						            <i class="fa fa-angle-right"></i>Tomada de Preço					            </a>
+				            </li>
+					    					    </ul>
+				    </div>
+										<div class="col-md-3">
+					    <p class="similar-h4 mb15">Outras &Aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a href="https://lavrasdosul.rs.gov.br/transparencia/?transparencia.html" class="block">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://lavrasdosul.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://lavrasdosul.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://lavrasdosul.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Notícias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://lavrasdosul.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://lavrasdosul.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://lavrasdosul.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+                                        <div class="col-md-6">
+                        <p class="similar-h4 mb15">Secretarias e &Oacute;rg&atilde;os</p>
+                        <ul class="list-unstyled nobordered">
+                            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/gabinete-do-prefeito/?gabinete-do-prefeito.html">
+						            <i class="fa fa-angle-right"></i> Gabinete do Prefeito					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/116/?.html">
+						            <i class="fa fa-angle-right"></i> ....					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/105/?administracao.html">
+						            <i class="fa fa-angle-right"></i> Administração					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/1022/?assessoria-de-comunicacao.html">
+						            <i class="fa fa-angle-right"></i> Assessoria de Comunicação					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/1001/?assistencia-social.html">
+						            <i class="fa fa-angle-right"></i> Assistência Social					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/110/?educacao.html">
+						            <i class="fa fa-angle-right"></i> Educação					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/1016/?financas.html">
+						            <i class="fa fa-angle-right"></i> Finanças					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/1021/?fundacao-medica-hospitalar-honor-teixeira-da-costa.html">
+						            <i class="fa fa-angle-right"></i> Fundação Médica Hospitalar Honor Teixeira da Costa					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/1028/?gabinete-vice-prefeito.html">
+						            <i class="fa fa-angle-right"></i> Gabinete Vice-prefeito					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/1003/?meio-ambiente.html">
+						            <i class="fa fa-angle-right"></i> Meio Ambiente					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/1002/?meio-rural-e-fomento-economico.html">
+						            <i class="fa fa-angle-right"></i> Meio Rural e Fomento Econômico					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/1012/?planejamento.html">
+						            <i class="fa fa-angle-right"></i> Planejamento					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/114/?saude.html">
+						            <i class="fa fa-angle-right"></i> Saúde					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/secretaria/id/1004/?turismo-cultura-e-desenvolvimento-economico.html">
+						            <i class="fa fa-angle-right"></i> Turismo, Cultura e Desenvolvimento Econômico					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1031/?associacoes-de-bairros.html">
+						            <i class="fa fa-angle-right"></i> Associações de Bairros					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1026/?centro-de-zoonoses-e-bem-estar-animal.html">
+						            <i class="fa fa-angle-right"></i> Centro de Zoonoses e Bem Estar Animal					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1013/?centro-municipal-de-atendimento-interdisciplinar.html">
+						            <i class="fa fa-angle-right"></i> Centro Municipal de Atendimento Interdisciplinar					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1032/?cmas-conselho-municipal-de-assistencia-social.html">
+						            <i class="fa fa-angle-right"></i> CMAS - Conselho Municipal de Assistência Social					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1010/?cme-conselho-municipal-de-educacao.html">
+						            <i class="fa fa-angle-right"></i> CME - Conselho Municipal de Educação					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1006/?conselho-tutelar.html">
+						            <i class="fa fa-angle-right"></i> Conselho Tutelar					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1008/?cras-centro-de-referencia-de-assistencia-social.html">
+						            <i class="fa fa-angle-right"></i> CRAS - Centro de Referência de Assistência Social 					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1014/?creche-municipal-professora-noemia-nogueira-teixeira.html">
+						            <i class="fa fa-angle-right"></i> Creche Municipal  Professora Noêmia Nogueira Teixeira					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1011/?demut-departamento-municipal-de-transito-e-jari.html">
+						            <i class="fa fa-angle-right"></i> DEMUT - Departamento Municipal de Trânsito e JARI					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1007/?junta-do-servico-militar.html">
+						            <i class="fa fa-angle-right"></i> Junta do Serviço Militar 					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/conselho/id/1027/?sala-dos-conselhos-municipais.html">
+						            <i class="fa fa-angle-right"></i> Sala dos Conselhos Municipais					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/subsecretaria/id/1005/?casa-de-cultura-jose-neri-da-silveira.html">
+						            <i class="fa fa-angle-right"></i> Casa de Cultura José Néri da Silveira					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/subsecretaria/id/1009/?coordenadoria-da-mulher.html">
+						            <i class="fa fa-angle-right"></i> Coordenadoria da Mulher					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://lavrasdosul.rs.gov.br/departamento/id/1017/?demut-departamento-municipal-de-transito-e-jari.html">
+						            <i class="fa fa-angle-right"></i> DEMUT - Departamento Municipal de Trânsito e JARI					            </a>
+				            </li>
+				            			            </ul>
+		            </div>
+		            	            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+        <div class="container text-center fsize12 post-copyright" style="
+            display: flex;
+			flex-direction: column;
+            justify-content: center">
+            <p style="margin:0" id="footer.copyrightTxt">
+				Este site utiliza a ferramenta
+                <a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+					<img src="https://lavrasdosul.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+					<span class="sr-only">iPrefeituras</span>
+				</a>.
+			</p>
+			<p style="margin:0" id="footer.copyrightTxt3">
+                Um produto
+                <strong>
+					<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+				</strong>.
+            </p>
+        </div>
+    </div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://lavrasdosul.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://lavrasdosul.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://lavrasdosul.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://lavrasdosul.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://lavrasdosul.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a61402c5faa37eed',t:'MTc5NTgxMjY4NQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a61402c5faa37eed',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

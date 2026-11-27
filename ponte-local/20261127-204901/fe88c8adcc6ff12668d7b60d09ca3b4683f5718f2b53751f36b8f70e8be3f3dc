@@ -1,0 +1,2547 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+  <meta name="title" content="Prefeitura Municipal de Araricá/RS | Araricá - RS">
+  <meta name="og:title" content="Prefeitura Municipal de Araricá/RS | Araricá - RS">
+  <meta name="og:site_name" content="Araricá - RS">
+  <meta name="image" content="https://www.ararica.rs.gov.br/images/logo.png">
+  <meta name="og:image" content="https://www.ararica.rs.gov.br/images/logo.png">
+  <meta name="og:image:url" content="https://www.ararica.rs.gov.br/images/logo.png">
+  <meta name="og:image:secure_url" content="https://www.ararica.rs.gov.br/images/logo.png">
+  <meta name="keywords" content="prefeitura, municipal, araricars, portal, voce, pode, consultar, debitos, emitir, guias, pagamento, realizar, parcelamentos, gerar, cnd, imprimir">
+  <meta name="abstract" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, ...">
+  <meta name="description" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, gerar CND, imprimir BCI, acessar o sistema de NFSe">
+  <meta name="og:description" content="No portal, você pode consultar débitos, emitir guias de pagamento, realizar parcelamentos, gerar CND, imprimir BCI, acessar o sistema de NFSe">
+  <meta name="og:type" content="website">
+
+    <meta name="csrf-param" content="_csrf-frontend">
+<meta name="csrf-token" content="Z_-Gu01DMPmGzSc2ClG3nEjYt08tg9ibNci4Wez73Kw_p7_ZLjJEmPebaldmF_yxBraHNXz3u-1jquwOhJ2_lA==">
+  <title>Araricá/RS</title>
+  <script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v4.0" type="7b574363cc56f6da635511f8-text/javascript"></script>
+  <!-- Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+  <script type="7b574363cc56f6da635511f8-text/javascript" src="//www.termsfeed.com/public/cookie-consent/4.1.0/cookie-consent.js" charset="UTF-8"></script>
+  <script type="7b574363cc56f6da635511f8-text/javascript" charset="UTF-8">
+    document.addEventListener('DOMContentLoaded', function() {
+      cookieconsent.run({
+        "notice_banner_type": "simple",
+        "consent_type": "express",
+        "palette": "light",
+        "language": "pt",
+        "page_load_consent_levels": ["strictly-necessary"],
+        "notice_banner_reject_button_hide": false,
+        "preferences_center_close_button_hide": false,
+        "page_refresh_confirmation_buttons": false,
+        "website_name": "Prefeitura de Araricá",
+        "website_privacy_policy_url": "https://www.ararica.rs.gov.br/pagina/view/10"
+      });
+    });
+  </script>
+
+  <!-- Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script type="text/plain" data-cookie-consent="tracking" async src="https://www.googletagmanager.com/gtag/js?id=G-WBX80S0FQM"></script>
+  <script type="text/plain" data-cookie-consent="tracking">
+    window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-WBX80S0FQM');
+    </script>
+  <!-- end of Google Analytics-->
+
+  <noscript>Free cookie consent management tool by <a href="https://www.termsfeed.com/">TermsFeed</a></noscript>
+  <!-- End Cookie Consent by TermsFeed https://www.TermsFeed.com -->
+  <link href="/css/impressao.css?v=1750946858" rel="stylesheet" media="print">
+<link href="/assets/a42cc70a/dist/assets/owl.carousel.min.css?v=1524230530" rel="stylesheet">
+<link href="/assets/a42cc70a/dist/assets/owl.theme.default.min.css?v=1524230530" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" rel="stylesheet">
+<link href="/assets/9029dddc/css/cards.css?v=1783599147" rel="stylesheet">
+<link href="/assets/a43bf447/css/bootstrap.css?v=1750947299" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="/css/animacao.css?v=1750946858" rel="stylesheet">
+<link href="/css/estilos.css?v=1784552859" rel="stylesheet">
+<link href="/css/responsivo.css?v=1783079846" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css" rel="stylesheet">
+<link href="/assets/af58aed8/captcha.css?v=1640022146" rel="stylesheet">
+<style>.card-official-wrapper {
+    background: #fff;
+    border-radius: 8px; /* Cantos menos arredondados = mais seriedade */
+    overflow: hidden;
+    height: 100%;
+    border: 1px solid #e0e0e0;
+    /* A barra lateral colorida */
+    border-bottom: 1px solid var(--dynamic-accent); 
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.card-official-wrapper:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.08);
+}
+.card-official-img {
+    height: 180px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #f0f0f0;
+}
+.card-official-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+.card-official-wrapper:hover .card-official-img img { transform: scale(1.05); }
+
+.card-official-body {
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+.card-official-date {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+.card-official-date::before {
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: var(--dynamic-accent);
+    border-radius: 50%;
+    margin-right: 8px;
+}
+.card-official-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--color-text-main, #333);
+    line-height: 1.35;
+    margin-bottom: 12px;
+    transition: color 0.2s;
+}
+.card-official-wrapper:hover .card-official-title {
+    color: var(--color-text-main, #333);
+}
+.card-official-desc {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    flex-grow: 1;
+}
+.card-official-footer {
+    padding: 15px 20px;
+    background: #f9fafb;
+    border-top: 1px solid #eee;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--dynamic-accent);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}</style>
+<script src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" defer crossorigin="anonymous" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script type="7b574363cc56f6da635511f8-text/javascript">var DynamikaBaseUrl = "https://ararica.rs.gov.br";</script></head>
+
+<body>
+  <script type="7b574363cc56f6da635511f8-text/javascript">function dynamikacaptchaw6(){loadCaptcha(grecaptcha, "w6_c", "#avaliacaoatendimento-recaptcha", "6LekPeEaAAAAAOr3dyTfkuCK0VvniTmuyct7yJTA")}</script>
+  
+<div id="acessibilidade" class="dontPrint">
+    <div id="texto">
+        <span class="icone"><i class="fas fa-wheelchair"></i></span>
+        <span class="links">
+    	<a id="linkMenu" accesskey="1" href="javascript:;" title="Menu  [Ctrl+1]" class="text-left">
+            <i class="fas fa-bars"></i>&nbsp;&nbsp;Menu
+        </a>
+        <a id="linkConteudo" accesskey="2" href="#conteudo" title="Conteúdo  [Ctrl+2]" class="text-left">
+            <i class="fas fa-edit"></i>&nbsp;&nbsp;Conteúdo
+        </a>
+        <a id="linkBusca" accesskey="3" href="javascript:;" title="Busca  [Ctrl+3]" class="text-left">
+            <i class="fas fa-search"></i>&nbsp;&nbsp;Busca
+        </a>
+        <a id="linkMapaSite" accesskey="4" href="/site/mapa-site" title="Mapa  [Ctrl+4]" class="text-left">
+            <i class="fas fa-sitemap"></i>&nbsp;&nbsp;Mapa
+        </a>
+        <a id="acessibilidade-pagina" accesskey="0" href="/pagina/view/21" title="Acessibilidade  [Ctrl+0]" class="text-left">
+            <i class="fas fa-wheelchair"></i>&nbsp;&nbsp;Acessibilidade
+        </a>
+        <a id="lgpd" accesskey="0" href="/pagina/view/10" title="Lei Geral de Proteção de Dados." class="text-left">
+            <i class="fas fa-user-shield"></i>&nbsp;&nbsp;Lei Geral de Proteção de Dados
+        </a>
+        <br />
+        	<a accesskey="5" id='aumentarFonte' href="javascript:;" title="Aumentar Fonte  [Ctrl+5]">
+                <i class="fas fa-plus-circle"></i>&nbsp;&nbsp;Fonte Maior
+            </a>
+        	<a accesskey="6" id='diminuirFonte' href="javascript:;" title="Diminuir Fonte  [Ctrl+6]">
+                <i class="fas fa-minus-circle"></i>&nbsp;&nbsp;Fonte Menor
+            </a>
+            <a accesskey="7" id='fonteOriginal' href="javascript:;" title="Fonte Original  [Ctrl+7]">
+                <i class="fas fa-font"></i>&nbsp;&nbsp;Fonte Padrão
+            </a>
+        <br />
+            <a accesskey="8" id="corOriginal" href="javascript:;" title="Cor Original  [Ctrl+8]">
+            	<h5 class="fas fa-circle"></h5> <small>Original</small>
+            </a>
+        	<a accesskey="9" id='contraste' href="javascript:;" title="Contraste  [Ctrl+9]">
+                <i class="fas fa-adjust"></i>&nbsp;&nbsp;Contraste
+            </a>
+    </span>
+    </div>
+</div>
+
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+<script src="https://vlibras.gov.br/app/vlibras-plugin.js" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script type="7b574363cc56f6da635511f8-text/javascript">
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+</script>  
+<div class="modal fade dontPrint" id="divImpressao" tabindex="-1" role="dialog" aria-labelledby="gridSystemModalLabel" >
+    <div class="modal-dialog modal-lg dontPrint" role="document">
+        <div class="modal-content dontPrint">
+            <div class="modal-header dontPrint">
+                <div id="opcoesImpressao" class="col-md-12 col-sm-12 hidden-xs text-left">
+                    <a href="javascript:;" onclick="if (!window.__cfRLUnblockHandlers) return false; javascript:window.print();" title="Imprimir." class="btnPadrao btn-sm" data-cf-modified-7b574363cc56f6da635511f8-="">Imprimir</a>
+                    <a href="javascript:;" onclick="if (!window.__cfRLUnblockHandlers) return false; fecharImpressao()" title="Fechar." class="btnPadrao btn-sm" data-cf-modified-7b574363cc56f6da635511f8-="">Fechar</a>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="conteudoImpressao"></div>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+
+  <header>
+
+    <section class="container-fluid">
+      <div id="grid-busca" class="row text-center padding30V">
+        <div class="col-12 col-sm-12 col-md-4 col-lg-5 col-xl-6">
+          <div class="logo">
+            <a href="/" title="Araricá/RS">
+              <img src="/images/nova-logo-cabecalho.png" alt="Araricá">            </a>
+          </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-8 col-lg-7 col-xl-6 text-right">
+          <div class="row align-items-center">
+            <form id="form-busca" action="/busca" method="get">            <input type="text" class="form-control" id="pesquisa" name="q" placeholder="Digite aqui ...">
+            <button type="submit" class="pop-icon"><i class="fas fa-search icon"></i><span>&nbsp;&nbsp;busca</span></button>
+            </form>            <a href="https://valegermanicors.com.br/cidade-ararica/" target="_blank" class="vale-germanico" style="position: absolute;right: -90px;top: 4px;">
+              <img src="/images/vale_germanico2.png" width="170px" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <span onclick="if (!window.__cfRLUnblockHandlers) return false; openNav()" class="icon-menu-principal" data-cf-modified-7b574363cc56f6da635511f8-=""><i><i class="fa fa-bars"></i> </i> menu</span>
+    
+    <section id="menu" class="bg-menu">
+        <div class="container-fluid">
+            <nav>
+                <ul class="main-nav">                                    
+
+
+    <li>
+        <a href="#" title="Sobre Ararica" target="">Sobre Ararica&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Institucional) -->
+	<span class="menu-coluna">
+
+    <h3>Institucional</h3>
+
+    
+    
+    <li><a href="/pagina/view/2" title="História." target="">História</a></li>
+            
+    
+    <li><a href="/pagina/view/1" title="Araricá Hoje." target="">Araricá Hoje</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/43/a-azaleia-flor-simbolo-de-ararica" title="Flor Símbolo de Araricá." target="">Flor Símbolo de Araricá</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/45/hino-do-municipio" title="Hino do município." target="">Hino do município</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/46/ararica-vista-do-alto-conheca-as-belezas-do-nosso-municipio" title="Araricá vista do alto | Conheça as belezas do nosso município." target="">Araricá vista do alto | Conheça as belezas do nosso município</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/44/brasao-do-municipio" title="Brasão do Município." target="">Brasão do Município</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/pagina/view/41/galeria-dos-prefeitos" title="Galeria dos Prefeitos e Vice-Prefeitos." target="">Galeria dos Prefeitos e Vice-Prefeitos</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Eventos Municipais) -->
+	<span class="menu-coluna">
+
+    <h3>Eventos Municipais</h3>
+
+    
+    
+    <li><a href="/pagina/view/3" title="Festa das Azaleias." target="">Festa das Azaleias</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/noticia/view/769/feira-do-livro-de-ararica-encerra-programacao-com-participacao-da-comunidade-e-homenagem-ao-patrono-uili-bergammin-oz" title="Feira do Livro 2026." target="">Feira do Livro 2026</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/42/encontro-de-bois-carreiros" title="Encontro de Bois Carreiros." target="">Encontro de Bois Carreiros</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/pagina/view/40/dia-do-cuteleiro" title="Dia do Cuteleiro." target="">Dia do Cuteleiro</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/pagina/view/39/dia-municipal-do-artesao-e-semana-municipal-do-artesanato" title="Dia Municipal do Artesão e Semana Municipal do Artesanato." target="">Dia Municipal do Artesão e Semana Municipal do Artesanato</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Galeria das Soberanas ) -->
+	<span class="menu-coluna">
+
+    <h3>Galeria das Soberanas </h3>
+
+    
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/48/corte-2026" title="Corte 2025/2026." target="">Corte 2025/2026</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Governo" target="">Governo&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Assessoria e Apoio Direto) -->
+	<span class="menu-coluna">
+
+    <h3>Assessoria e Apoio Direto</h3>
+
+    
+    
+    <li><a href="/secretaria/view/4" title="Gabinete do Prefeito." target="">Gabinete do Prefeito</a></li>
+            
+    
+    <li><a href="/secretaria/view/21/gabinete-do-vice-prefeito" title="Gabinete da Vice-Prefeita." target="">Gabinete da Vice-Prefeita</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/secretaria/view/26" title="Chefe de Gabinete." target="">Chefe de Gabinete</a></li>
+            
+    
+    <li><a href="/pagina/view/30" title="Junta Militar." target="">Junta Militar</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/secretaria/view/29/coordenadoria-municipal-de-protecao-e-defesa-civil-compdec" title="Coordenadoria Municipal de Proteção e Defesa Civil - COMPDEC." target="">Coordenadoria Municipal de Proteção e Defesa Civil - COMPDEC</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/secretaria/view/27/departamento-de-comunicacao" title="Departamento de Comunicação." target="">Departamento de Comunicação</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Secretarias Municipais) -->
+	<span class="menu-coluna">
+
+    <h3>Secretarias Municipais</h3>
+
+    
+    
+    <li><a href="/secretaria/view/20" title="Secretaria de Saúde." target="">Secretaria de Saúde</a></li>
+            
+    
+    <li><a href="/secretaria/view/11" title="Secretaria de Obras e Serviços Urbanos." target="">Secretaria de Obras e Serviços Urbanos</a></li>
+            
+    
+    <li><a href="/secretaria/view/13" title="Secretaria de Meio Ambiente." target="">Secretaria de Meio Ambiente</a></li>
+            
+    
+    <li><a href="/secretaria/view/5" title="Secretaria de Ação Social." target="">Secretaria de Ação Social</a></li>
+            
+    
+    <li><a href="/secretaria/view/7" title="Secretaria Geral de Governo." target="">Secretaria Geral de Governo</a></li>
+            
+    
+    <li><a href="/secretaria/view/8" title="Secretaria de Agricultura." target="">Secretaria de Agricultura</a></li>
+            
+    
+    <li><a href="/secretaria/view/18" title="Secretaria de Administração." target="">Secretaria de Administração</a></li>
+            
+    
+    <li><a href="/secretaria/view/10" title="Secretaria da Fazenda." target="">Secretaria da Fazenda</a></li>
+            
+    
+    <li><a href="/secretaria/view/9" title="Secretaria de Cultura e Turismo." target="">Secretaria de Cultura e Turismo</a></li>
+            
+    
+    <li><a href="/secretaria/view/6" title="Secretaria de Educação." target="">Secretaria de Educação</a></li>
+            
+    
+    <li><a href="/secretaria/view/25" title="Secretaria de Desenvolvimento Econômico e Inovação." target="">Secretaria de Desenvolvimento Econômico e Inovação</a></li>
+            
+    
+    <li><a href="/secretaria/view/14" title="Secretaria de Habitação." target="">Secretaria de Habitação</a></li>
+            
+    
+    <li><a href="/secretaria/view/15" title="Secretaria de Esporte." target="">Secretaria de Esporte</a></li>
+            
+    
+    <li><a href="/secretaria/view/12" title="Secretaria de Planejamento." target="">Secretaria de Planejamento</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/secretaria/view/28/secretaria-de-seguranca-publica" title="Secretaria de Segurança Pública." target="">Secretaria de Segurança Pública</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Conselhos, Comissões e Juntas Municipais) -->
+	<span class="menu-coluna">
+
+    <h3>Conselhos, Comissões e Juntas Municipais</h3>
+
+    
+    
+    <li><a href="/departamento/cat/4" title="Conselhos Municipais." target="">Conselhos Municipais</a></li>
+            
+    
+    <li><a href="/pagina/view/17" title="Saneamento Básico." target="">Saneamento Básico</a></li>
+            
+    
+    <li><a href="/departamento/cat/6" title="Comissões ." target="">Comissões </a></li>
+            
+    
+    <li><a href="/departamento/cat/5" title="Juntas Municipais." target="">Juntas Municipais</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Empreenda em Araricá) -->
+	<span class="menu-coluna">
+
+    <h3>Empreenda em Araricá</h3>
+
+    
+    
+    <li><a href="https://www.ararica.rs.gov.br/departamento/view/4/sala-do-empreendedor" title="Sala do Empreendedor." target="">Sala do Empreendedor</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Estrutura) -->
+	<span class="menu-coluna">
+
+    <h3>Estrutura</h3>
+
+    
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/37/organograma-estrutural-do-municipio" title="Organização Estrutural Municipal." target="">Organização Estrutural Municipal</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Publicações" target="">Publicações&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Atos e Publicações) -->
+	<span class="menu-coluna">
+
+    <h3>Atos e Publicações</h3>
+
+    
+    
+    <li><a href="https://www.diariomunicipal.com.br/famurs/pesquisar?busca_avancada%5Btexto%5D=&amp;busca_avancada%5Btitulo%5D=&amp;busca_avancada%5Bentidade%5D=246&amp;busca_avancada%5Borgao%5D=&amp;busca_avancada%5BdataInicio%5D=20" title="Diário Oficial ." target="">Diário Oficial </a></li>
+            
+    
+    <li><a href="https://cespro.com.br/visualizarLeisPorAno.php?cdMunicipio=7233&amp;cdTipoDiploma=691" title="Decretos Municipais." target="">Decretos Municipais</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/visualizarIndicePorAssunto.php?cdMunicipio=7233&amp;cdTipoDiploma=685" title="Leis Municipais." target="">Leis Municipais</a></li>
+            
+    
+    <li><a href="/pagina/view/24" title="Legislação." target="">Legislação</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/visualizarLeisPorAno.php?cdMunicipio=7233&amp;cdTipoDiploma=694" title="Portarias." target="">Portarias</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/pesquisaLegislacao.php?cdMunicipio=7233" title="Consultar Legislação." target="">Consultar Legislação</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Convênios) -->
+	<span class="menu-coluna">
+
+    <h3>Convênios</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=5623" title="Pesquisa por Convênios." target="">Pesquisa por Convênios</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Empenho Orçamentário) -->
+	<span class="menu-coluna">
+
+    <h3>Empenho Orçamentário</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?entidade=1&amp;secao=despesas&amp;sub=empenho" title="Detalhamento dos Empenhos." target="">Detalhamento dos Empenhos</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Diárias) -->
+	<span class="menu-coluna">
+
+    <h3>Diárias</h3>
+
+    
+    
+    <li><a href="https://ararica.rs.gov.br/uploads/pagina/12934/MPqzj3fjYen3Wy7dStUg-o2wcXwb40en.pdf" title="Tabela de Diárias - valores." target="">Tabela de Diárias - valores</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1&amp;secao=despesas&amp;sub=diarias" title="Consulta." target="">Consulta</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Emendas Parlamentares) -->
+	<span class="menu-coluna">
+
+    <h3>Emendas Parlamentares</h3>
+
+    
+    
+    <li><a href="https://www.ararica.rs.gov.br/departamento/view/39/comissao-de-acompanhamento-de-emendas-parlamentares" title="Emendas Parlamentares/ Impositivas." target="">Emendas Parlamentares/ Impositivas</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Compras e Licitações) -->
+	<span class="menu-coluna">
+
+    <h3>Compras e Licitações</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=contrato" title="Detalhamento dos Contratos Municipais ." target="">Detalhamento dos Contratos Municipais </a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index.php?entidade=1&amp;secao=licitacoes&amp;sub=info_licitacao" title="Detalhamento das Licitações." target="">Detalhamento das Licitações</a></li>
+            
+    
+    <li><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:14:::NO:14,RIR:F50500_CD_ORGAO:82900&amp;cs=1vEKklH9eZWCNRRtq-kRaT0O3W5w" title="Licitacon Cidadão." target="">Licitacon Cidadão</a></li>
+            
+    
+    <li><a href="https://pncp.gov.br/app/contratos?q=&amp;pagina=1&amp;municipios=4625&amp;status=vigente" title="Portal Nacional de Contratações Públicas." target="">Portal Nacional de Contratações Públicas</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Chamamento Público) -->
+	<span class="menu-coluna">
+
+    <h3>Chamamento Público</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?entidade=1&amp;secao=dinamico&amp;id=6800" title="Chamada Pública 2026." target="">Chamada Pública 2026</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?entidade=1&amp;secao=dinamico&amp;id=6298" title="Chamada Pública 2025." target="">Chamada Pública 2025</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?entidade=1&amp;secao=dinamico&amp;id=5842" title="Chamada Pública 2024." target="">Chamada Pública 2024</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Editais Diversos) -->
+	<span class="menu-coluna">
+
+    <h3>Editais Diversos</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=5073" title="Editais Diversos - Publicações." target="">Editais Diversos - Publicações</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Portal da Transparência" target="">Portal da Transparência&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Contas Públicas) -->
+	<span class="menu-coluna">
+
+    <h3>Contas Públicas</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=despesas&amp;sub=por_categoria" title="Despesas por Categoria." target="">Despesas por Categoria</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index.php?secao=despesas&amp;sub=funcao_subfuncao" title="Despesas por Função e Subfunção." target="">Despesas por Função e Subfunção</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Transparência) -->
+	<span class="menu-coluna">
+
+    <h3>Transparência</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1#" title="Portal da Transparência." target="">Portal da Transparência</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=7059" title="Tabela de Padrão Remuneratório de Cargos e Funções." target="">Tabela de Padrão Remuneratório de Cargos e Funções</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=7060" title="Estagiários - Bolsa Auxílio." target="">Estagiários - Bolsa Auxílio</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1&amp;secao=servidores_salarios" title="Remuneração dos Servidores Públicos." target="">Remuneração dos Servidores Públicos</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Diário Oficial - Publicações) -->
+	<span class="menu-coluna">
+
+    <h3>Diário Oficial - Publicações</h3>
+
+    
+    
+    <li><a href="https://www.diariomunicipal.com.br/famurs/" title="Diário Oficial Eletrônico." target="">Diário Oficial Eletrônico</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Processos Seletivos" target="">Processos Seletivos&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Processos Seletivos Pessoal) -->
+	<span class="menu-coluna">
+
+    <h3>Processos Seletivos Pessoal</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?secao=dinamico&amp;id=4112" title="Processos Seletivos Simplificados - Publicações ." target="">Processos Seletivos Simplificados - Publicações </a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=6575" title="Convocações dos Processos Seletivos." target="">Convocações dos Processos Seletivos</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Concurso Público" target="">Concurso Público&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Concurso Público) -->
+	<span class="menu-coluna">
+
+    <h3>Concurso Público</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=6068" title="Concurso Público Poder Executivo Municipal - Publicações." target="">Concurso Público Poder Executivo Municipal - Publicações</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+
+
+    <li>
+        <a href="#" title="Serviços da Prefeitura" target="">Serviços da Prefeitura&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Para Empresas) -->
+	<span class="menu-coluna">
+
+    <h3>Para Empresas</h3>
+
+    
+    
+    <li><a href="/servico/view/1/nota-fiscal-eletronica" title="Nota Fiscal Eletrônica." target="">Nota Fiscal Eletrônica</a></li>
+            
+    
+    <li><a href="http://ararica.nfse-tecnos.com.br/" title="ISS – Apuração e Encerramento." target="">ISS – Apuração e Encerramento</a></li>
+            
+    
+    <li><a href="/servico/view/4" title="Licenças Ambientais." target="">Licenças Ambientais</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Para Cidadão) -->
+	<span class="menu-coluna">
+
+    <h3>Para Cidadão</h3>
+
+    
+    
+    <li><a href="https://nfg.sefaz.rs.gov.br/site/index.aspx" title="Nota Fiscal Gaúcha." target="">Nota Fiscal Gaúcha</a></li>
+            
+    
+    <li><a href="http://devolveicms.rs.gov.br" title="Devolve ICMS." target="">Devolve ICMS</a></li>
+            
+    
+    <li><a href="/pagina/view/18" title="Regularização Fundiária." target="">Regularização Fundiária</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/54/telefones-uteis" title="Telefones Úteis." target="">Telefones Úteis</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Serviços Online) -->
+	<span class="menu-coluna">
+
+    <h3>Serviços Online</h3>
+
+    
+    
+    <li><a href="https://ararica.asbanconsig.com.br/login/" title="Servidor Público - Margem Consignado - Asban." target="">Servidor Público - Margem Consignado - Asban</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/portal" title="Portal de Serviços ao Cidadão / Empresas/ Servidor Público." target="">Portal de Serviços ao Cidadão / Empresas/ Servidor Público</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                        
+    
+    <li><a href="https://bancodeoportunidades.ararica.rs.gov.br/banco_de_oportunidades/p1-inicio.php" title="Banco de Oportunidades." target="">Banco de Oportunidades</a></li>
+                                            
+    
+    <li><a href="https://www.ararica.rs.gov.br/formulario/view/7/inscricao-banco-de-cadastro-temporario-de-estagio-periodo-extraordinario" title="Banco de Estágio ." target="">Banco de Estágio </a></li>
+                                            
+
+
+    <li>
+        <a href="#" title="Acesso a Informação" target="">Acesso a Informação&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Informações ao Cidadão) -->
+	<span class="menu-coluna">
+
+    <h3>Informações ao Cidadão</h3>
+
+    
+    
+    <li><a href="https://ararica.rs.gov.br/uploads/legislacao/12909/sVQ5yxWx5_17cz3K6PjiJTrNsa5IMAL0.pdf" title="Serviços da Prefeitura — Carta de Serviços." target="">Serviços da Prefeitura — Carta de Serviços</a></li>
+            
+    
+    <li><a href="/ouvidoria" title="Ouvidoria." target="">Ouvidoria</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1&amp;secao=acesso_informacao" title="Solicitar Informação — e-SIC." target="">Solicitar Informação — e-SIC</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/49/lai-lei-de-acesso-a-informacao" title="Lei de Acesso à Informação (LAI)." target="">Lei de Acesso à Informação (LAI)</a></li>
+            
+    
+    <li><a href="/faq" title="Perguntas Frequentes." target="">Perguntas Frequentes</a></li>
+            
+    
+    <li><a href="/contato" title="Fale com a Prefeitura." target="">Fale com a Prefeitura</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?secao=dinamico&amp;id=7263&amp;menupai=7264&amp;subid=7265" title="Resultados das Pesquisas de Satisfação." target="">Resultados das Pesquisas de Satisfação</a></li>
+            
+    
+    <li><a href="/pagina/view/25/lista-de-espera-e-vagas-para-educacao-infantil-e-fundamental" title="Lista de Espera de Creche." target="">Lista de Espera de Creche</a></li>
+            
+    
+    <li><a href="/servico/view/10" title="Lista de espera de exames e consultas de alta e média complexidade." target="">Lista de espera de exames e consultas de alta e média complexidade</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                                                    </ul>            </nav>
+        </div>
+    </section>
+
+
+
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="if (!window.__cfRLUnblockHandlers) return false; closeNav()" data-cf-modified-7b574363cc56f6da635511f8-="">&times;</a>
+    <nav>
+        <ul class="menu">                    
+
+
+    <li>
+        <a href="#" title="Sobre Ararica" target="">Sobre Ararica&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Institucional) -->
+	<span class="menu-coluna">
+
+    <h3>Institucional</h3>
+
+    
+    
+    <li><a href="/pagina/view/2" title="História." target="">História</a></li>
+            
+    
+    <li><a href="/pagina/view/1" title="Araricá Hoje." target="">Araricá Hoje</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/43/a-azaleia-flor-simbolo-de-ararica" title="Flor Símbolo de Araricá." target="">Flor Símbolo de Araricá</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/45/hino-do-municipio" title="Hino do município." target="">Hino do município</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/46/ararica-vista-do-alto-conheca-as-belezas-do-nosso-municipio" title="Araricá vista do alto | Conheça as belezas do nosso município." target="">Araricá vista do alto | Conheça as belezas do nosso município</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/44/brasao-do-municipio" title="Brasão do Município." target="">Brasão do Município</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/pagina/view/41/galeria-dos-prefeitos" title="Galeria dos Prefeitos e Vice-Prefeitos." target="">Galeria dos Prefeitos e Vice-Prefeitos</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Eventos Municipais) -->
+	<span class="menu-coluna">
+
+    <h3>Eventos Municipais</h3>
+
+    
+    
+    <li><a href="/pagina/view/3" title="Festa das Azaleias." target="">Festa das Azaleias</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/noticia/view/769/feira-do-livro-de-ararica-encerra-programacao-com-participacao-da-comunidade-e-homenagem-ao-patrono-uili-bergammin-oz" title="Feira do Livro 2026." target="">Feira do Livro 2026</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/42/encontro-de-bois-carreiros" title="Encontro de Bois Carreiros." target="">Encontro de Bois Carreiros</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/pagina/view/40/dia-do-cuteleiro" title="Dia do Cuteleiro." target="">Dia do Cuteleiro</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/pagina/view/39/dia-municipal-do-artesao-e-semana-municipal-do-artesanato" title="Dia Municipal do Artesão e Semana Municipal do Artesanato." target="">Dia Municipal do Artesão e Semana Municipal do Artesanato</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Galeria das Soberanas ) -->
+	<span class="menu-coluna">
+
+    <h3>Galeria das Soberanas </h3>
+
+    
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/48/corte-2026" title="Corte 2025/2026." target="">Corte 2025/2026</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Governo" target="">Governo&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Assessoria e Apoio Direto) -->
+	<span class="menu-coluna">
+
+    <h3>Assessoria e Apoio Direto</h3>
+
+    
+    
+    <li><a href="/secretaria/view/4" title="Gabinete do Prefeito." target="">Gabinete do Prefeito</a></li>
+            
+    
+    <li><a href="/secretaria/view/21/gabinete-do-vice-prefeito" title="Gabinete da Vice-Prefeita." target="">Gabinete da Vice-Prefeita</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/secretaria/view/26" title="Chefe de Gabinete." target="">Chefe de Gabinete</a></li>
+            
+    
+    <li><a href="/pagina/view/30" title="Junta Militar." target="">Junta Militar</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/secretaria/view/29/coordenadoria-municipal-de-protecao-e-defesa-civil-compdec" title="Coordenadoria Municipal de Proteção e Defesa Civil - COMPDEC." target="">Coordenadoria Municipal de Proteção e Defesa Civil - COMPDEC</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/secretaria/view/27/departamento-de-comunicacao" title="Departamento de Comunicação." target="">Departamento de Comunicação</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Secretarias Municipais) -->
+	<span class="menu-coluna">
+
+    <h3>Secretarias Municipais</h3>
+
+    
+    
+    <li><a href="/secretaria/view/20" title="Secretaria de Saúde." target="">Secretaria de Saúde</a></li>
+            
+    
+    <li><a href="/secretaria/view/11" title="Secretaria de Obras e Serviços Urbanos." target="">Secretaria de Obras e Serviços Urbanos</a></li>
+            
+    
+    <li><a href="/secretaria/view/13" title="Secretaria de Meio Ambiente." target="">Secretaria de Meio Ambiente</a></li>
+            
+    
+    <li><a href="/secretaria/view/5" title="Secretaria de Ação Social." target="">Secretaria de Ação Social</a></li>
+            
+    
+    <li><a href="/secretaria/view/7" title="Secretaria Geral de Governo." target="">Secretaria Geral de Governo</a></li>
+            
+    
+    <li><a href="/secretaria/view/8" title="Secretaria de Agricultura." target="">Secretaria de Agricultura</a></li>
+            
+    
+    <li><a href="/secretaria/view/18" title="Secretaria de Administração." target="">Secretaria de Administração</a></li>
+            
+    
+    <li><a href="/secretaria/view/10" title="Secretaria da Fazenda." target="">Secretaria da Fazenda</a></li>
+            
+    
+    <li><a href="/secretaria/view/9" title="Secretaria de Cultura e Turismo." target="">Secretaria de Cultura e Turismo</a></li>
+            
+    
+    <li><a href="/secretaria/view/6" title="Secretaria de Educação." target="">Secretaria de Educação</a></li>
+            
+    
+    <li><a href="/secretaria/view/25" title="Secretaria de Desenvolvimento Econômico e Inovação." target="">Secretaria de Desenvolvimento Econômico e Inovação</a></li>
+            
+    
+    <li><a href="/secretaria/view/14" title="Secretaria de Habitação." target="">Secretaria de Habitação</a></li>
+            
+    
+    <li><a href="/secretaria/view/15" title="Secretaria de Esporte." target="">Secretaria de Esporte</a></li>
+            
+    
+    <li><a href="/secretaria/view/12" title="Secretaria de Planejamento." target="">Secretaria de Planejamento</a></li>
+            
+    
+    <li><a href="https://www.ararica.rs.gov.br/secretaria/view/28/secretaria-de-seguranca-publica" title="Secretaria de Segurança Pública." target="">Secretaria de Segurança Pública</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Conselhos, Comissões e Juntas Municipais) -->
+	<span class="menu-coluna">
+
+    <h3>Conselhos, Comissões e Juntas Municipais</h3>
+
+    
+    
+    <li><a href="/departamento/cat/4" title="Conselhos Municipais." target="">Conselhos Municipais</a></li>
+            
+    
+    <li><a href="/pagina/view/17" title="Saneamento Básico." target="">Saneamento Básico</a></li>
+            
+    
+    <li><a href="/departamento/cat/6" title="Comissões ." target="">Comissões </a></li>
+            
+    
+    <li><a href="/departamento/cat/5" title="Juntas Municipais." target="">Juntas Municipais</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Empreenda em Araricá) -->
+	<span class="menu-coluna">
+
+    <h3>Empreenda em Araricá</h3>
+
+    
+    
+    <li><a href="https://www.ararica.rs.gov.br/departamento/view/4/sala-do-empreendedor" title="Sala do Empreendedor." target="">Sala do Empreendedor</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Estrutura) -->
+	<span class="menu-coluna">
+
+    <h3>Estrutura</h3>
+
+    
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/37/organograma-estrutural-do-municipio" title="Organização Estrutural Municipal." target="">Organização Estrutural Municipal</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Publicações" target="">Publicações&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Atos e Publicações) -->
+	<span class="menu-coluna">
+
+    <h3>Atos e Publicações</h3>
+
+    
+    
+    <li><a href="https://www.diariomunicipal.com.br/famurs/pesquisar?busca_avancada%5Btexto%5D=&amp;busca_avancada%5Btitulo%5D=&amp;busca_avancada%5Bentidade%5D=246&amp;busca_avancada%5Borgao%5D=&amp;busca_avancada%5BdataInicio%5D=20" title="Diário Oficial ." target="">Diário Oficial </a></li>
+            
+    
+    <li><a href="https://cespro.com.br/visualizarLeisPorAno.php?cdMunicipio=7233&amp;cdTipoDiploma=691" title="Decretos Municipais." target="">Decretos Municipais</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/visualizarIndicePorAssunto.php?cdMunicipio=7233&amp;cdTipoDiploma=685" title="Leis Municipais." target="">Leis Municipais</a></li>
+            
+    
+    <li><a href="/pagina/view/24" title="Legislação." target="">Legislação</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/visualizarLeisPorAno.php?cdMunicipio=7233&amp;cdTipoDiploma=694" title="Portarias." target="">Portarias</a></li>
+            
+    
+    <li><a href="https://cespro.com.br/pesquisaLegislacao.php?cdMunicipio=7233" title="Consultar Legislação." target="">Consultar Legislação</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Convênios) -->
+	<span class="menu-coluna">
+
+    <h3>Convênios</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=5623" title="Pesquisa por Convênios." target="">Pesquisa por Convênios</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Empenho Orçamentário) -->
+	<span class="menu-coluna">
+
+    <h3>Empenho Orçamentário</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?entidade=1&amp;secao=despesas&amp;sub=empenho" title="Detalhamento dos Empenhos." target="">Detalhamento dos Empenhos</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Diárias) -->
+	<span class="menu-coluna">
+
+    <h3>Diárias</h3>
+
+    
+    
+    <li><a href="https://ararica.rs.gov.br/uploads/pagina/12934/MPqzj3fjYen3Wy7dStUg-o2wcXwb40en.pdf" title="Tabela de Diárias - valores." target="">Tabela de Diárias - valores</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1&amp;secao=despesas&amp;sub=diarias" title="Consulta." target="">Consulta</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Emendas Parlamentares) -->
+	<span class="menu-coluna">
+
+    <h3>Emendas Parlamentares</h3>
+
+    
+    
+    <li><a href="https://www.ararica.rs.gov.br/departamento/view/39/comissao-de-acompanhamento-de-emendas-parlamentares" title="Emendas Parlamentares/ Impositivas." target="">Emendas Parlamentares/ Impositivas</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Compras e Licitações) -->
+	<span class="menu-coluna">
+
+    <h3>Compras e Licitações</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=contrato" title="Detalhamento dos Contratos Municipais ." target="">Detalhamento dos Contratos Municipais </a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index.php?entidade=1&amp;secao=licitacoes&amp;sub=info_licitacao" title="Detalhamento das Licitações." target="">Detalhamento das Licitações</a></li>
+            
+    
+    <li><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:14:::NO:14,RIR:F50500_CD_ORGAO:82900&amp;cs=1vEKklH9eZWCNRRtq-kRaT0O3W5w" title="Licitacon Cidadão." target="">Licitacon Cidadão</a></li>
+            
+    
+    <li><a href="https://pncp.gov.br/app/contratos?q=&amp;pagina=1&amp;municipios=4625&amp;status=vigente" title="Portal Nacional de Contratações Públicas." target="">Portal Nacional de Contratações Públicas</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Chamamento Público) -->
+	<span class="menu-coluna">
+
+    <h3>Chamamento Público</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?entidade=1&amp;secao=dinamico&amp;id=6800" title="Chamada Pública 2026." target="">Chamada Pública 2026</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?entidade=1&amp;secao=dinamico&amp;id=6298" title="Chamada Pública 2025." target="">Chamada Pública 2025</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?entidade=1&amp;secao=dinamico&amp;id=5842" title="Chamada Pública 2024." target="">Chamada Pública 2024</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Editais Diversos) -->
+	<span class="menu-coluna">
+
+    <h3>Editais Diversos</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=5073" title="Editais Diversos - Publicações." target="">Editais Diversos - Publicações</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Portal da Transparência" target="">Portal da Transparência&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Contas Públicas) -->
+	<span class="menu-coluna">
+
+    <h3>Contas Públicas</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=despesas&amp;sub=por_categoria" title="Despesas por Categoria." target="">Despesas por Categoria</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index.php?secao=despesas&amp;sub=funcao_subfuncao" title="Despesas por Função e Subfunção." target="">Despesas por Função e Subfunção</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Transparência) -->
+	<span class="menu-coluna">
+
+    <h3>Transparência</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1#" title="Portal da Transparência." target="">Portal da Transparência</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=7059" title="Tabela de Padrão Remuneratório de Cargos e Funções." target="">Tabela de Padrão Remuneratório de Cargos e Funções</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=7060" title="Estagiários - Bolsa Auxílio." target="">Estagiários - Bolsa Auxílio</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1&amp;secao=servidores_salarios" title="Remuneração dos Servidores Públicos." target="">Remuneração dos Servidores Públicos</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Diário Oficial - Publicações) -->
+	<span class="menu-coluna">
+
+    <h3>Diário Oficial - Publicações</h3>
+
+    
+    
+    <li><a href="https://www.diariomunicipal.com.br/famurs/" title="Diário Oficial Eletrônico." target="">Diário Oficial Eletrônico</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Processos Seletivos" target="">Processos Seletivos&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Processos Seletivos Pessoal) -->
+	<span class="menu-coluna">
+
+    <h3>Processos Seletivos Pessoal</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?secao=dinamico&amp;id=4112" title="Processos Seletivos Simplificados - Publicações ." target="">Processos Seletivos Simplificados - Publicações </a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=6575" title="Convocações dos Processos Seletivos." target="">Convocações dos Processos Seletivos</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Concurso Público" target="">Concurso Público&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Concurso Público) -->
+	<span class="menu-coluna">
+
+    <h3>Concurso Público</h3>
+
+    
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/index?secao=dinamico&amp;id=6068" title="Concurso Público Poder Executivo Municipal - Publicações." target="">Concurso Público Poder Executivo Municipal - Publicações</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+
+
+    <li>
+        <a href="#" title="Serviços da Prefeitura" target="">Serviços da Prefeitura&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Para Empresas) -->
+	<span class="menu-coluna">
+
+    <h3>Para Empresas</h3>
+
+    
+    
+    <li><a href="/servico/view/1/nota-fiscal-eletronica" title="Nota Fiscal Eletrônica." target="">Nota Fiscal Eletrônica</a></li>
+            
+    
+    <li><a href="http://ararica.nfse-tecnos.com.br/" title="ISS – Apuração e Encerramento." target="">ISS – Apuração e Encerramento</a></li>
+            
+    
+    <li><a href="/servico/view/4" title="Licenças Ambientais." target="">Licenças Ambientais</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Para Cidadão) -->
+	<span class="menu-coluna">
+
+    <h3>Para Cidadão</h3>
+
+    
+    
+    <li><a href="https://nfg.sefaz.rs.gov.br/site/index.aspx" title="Nota Fiscal Gaúcha." target="">Nota Fiscal Gaúcha</a></li>
+            
+    
+    <li><a href="http://devolveicms.rs.gov.br" title="Devolve ICMS." target="">Devolve ICMS</a></li>
+            
+    
+    <li><a href="/pagina/view/18" title="Regularização Fundiária." target="">Regularização Fundiária</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/54/telefones-uteis" title="Telefones Úteis." target="">Telefones Úteis</a></li>
+        
+
+	</span>
+                            
+
+
+
+
+	<!-- MENU SUB (Serviços Online) -->
+	<span class="menu-coluna">
+
+    <h3>Serviços Online</h3>
+
+    
+    
+    <li><a href="https://ararica.asbanconsig.com.br/login/" title="Servidor Público - Margem Consignado - Asban." target="">Servidor Público - Margem Consignado - Asban</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/portal" title="Portal de Serviços ao Cidadão / Empresas/ Servidor Público." target="">Portal de Serviços ao Cidadão / Empresas/ Servidor Público</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                        
+    
+    <li><a href="https://bancodeoportunidades.ararica.rs.gov.br/banco_de_oportunidades/p1-inicio.php" title="Banco de Oportunidades." target="">Banco de Oportunidades</a></li>
+                            
+    
+    <li><a href="https://www.ararica.rs.gov.br/formulario/view/7/inscricao-banco-de-cadastro-temporario-de-estagio-periodo-extraordinario" title="Banco de Estágio ." target="">Banco de Estágio </a></li>
+                            
+
+
+    <li>
+        <a href="#" title="Acesso a Informação" target="">Acesso a Informação&nbsp;&nbsp;<i class="fa fa-angle-down"></i> </a>        <ul class="sub-menu-block">
+                            
+
+
+
+
+	<!-- MENU SUB (Informações ao Cidadão) -->
+	<span class="menu-coluna">
+
+    <h3>Informações ao Cidadão</h3>
+
+    
+    
+    <li><a href="https://ararica.rs.gov.br/uploads/legislacao/12909/sVQ5yxWx5_17cz3K6PjiJTrNsa5IMAL0.pdf" title="Serviços da Prefeitura — Carta de Serviços." target="">Serviços da Prefeitura — Carta de Serviços</a></li>
+            
+    
+    <li><a href="/ouvidoria" title="Ouvidoria." target="">Ouvidoria</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1&amp;secao=acesso_informacao" title="Solicitar Informação — e-SIC." target="">Solicitar Informação — e-SIC</a></li>
+            
+    
+    <li><a href="https://ararica.rs.gov.br/pagina/view/49/lai-lei-de-acesso-a-informacao" title="Lei de Acesso à Informação (LAI)." target="">Lei de Acesso à Informação (LAI)</a></li>
+            
+    
+    <li><a href="/faq" title="Perguntas Frequentes." target="">Perguntas Frequentes</a></li>
+            
+    
+    <li><a href="/contato" title="Fale com a Prefeitura." target="">Fale com a Prefeitura</a></li>
+            
+    
+    <li><a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?secao=dinamico&amp;id=7263&amp;menupai=7264&amp;subid=7265" title="Resultados das Pesquisas de Satisfação." target="">Resultados das Pesquisas de Satisfação</a></li>
+            
+    
+    <li><a href="/pagina/view/25/lista-de-espera-e-vagas-para-educacao-infantil-e-fundamental" title="Lista de Espera de Creche." target="">Lista de Espera de Creche</a></li>
+            
+    
+    <li><a href="/servico/view/10" title="Lista de espera de exames e consultas de alta e média complexidade." target="">Lista de espera de exames e consultas de alta e média complexidade</a></li>
+        
+
+	</span>
+                                    
+	</ul>
+    </li>
+                            </ul>    </nav>
+</div>
+    <section class="container-fluid bg-primary">
+      <div class="row">
+        <div class="col-6 margin10V text-left">
+          <a class="btnTopo" href="/ouvidoria" title="Ouvidoria.">Ouvidoria</a>          <a class="btnTopo" href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1#" title="Portal da Transparência." target="_blank">Transparência</a>        </div>
+        <div class="col-6 midias-sociais-top text-right">
+                      <a href="https://www.facebook.com/prefeituradeararica" title="Facebook">
+              <img src="/images/facebook.png" width="38px" alt="Facebook">            </a>
+                                          <a href="https://www.instagram.com/prefeituradeararica" title="Instagram">
+              <img src="/images/instagram.png" width="38px" alt="Instagram">            </a>
+                                <a href="https://www.youtube.com/@municipiodeararica" title="YouTube">
+              <img src="/images/youtube.png" width="38px" alt="YouTube">            </a>
+                  </div>
+      </div>
+    </section>
+
+
+  </header>
+
+
+    <div id="conteudo">
+    
+
+    
+    <div id="banner-popup0" class="modal fade modal-aviso" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">NOTA FISCAL GAÚCHA</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="padding5"><a href="https://nfg.sefaz.rs.gov.br/cadastro/cadastronfg_1.aspx"><img class="minHeight100" src="/uploads/banner/13891/maior_IdqX11P0ZhOh_fD9hd8vZfJwS2HGorxX.jpg" width="100%" alt="NOTA FISCAL GAÚCHA"></a></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btnPadrao" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="banner-popup1" class="modal fade modal-aviso" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Rústica Municipal</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="padding5"><a href="https://www.chip5.com.br/movimentoqueinspira/"><img class="minHeight100" src="/uploads/banner/13813/maior_vqLw1K2qUhoULGgPsRO-B2jD_0NG-ygH.jpg" width="100%" alt="Rústica Municipal"></a></div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btnPadrao" data-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="owlc0" class="owl-carousel">                    <div class="banner-item bannerTopo">
+                <a href="/"><strong>NOVEMBRO AZUL</strong><img src="/uploads/banner/13876/maior_oT3jYCUrYt9AtPAXfQKVs-GCMeDbG0Gm.jpg" alt="NOVEMBRO AZUL."></a>            </div>
+            </div>
+<!-- NOTICIAS -->
+    <section class="margin80T">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="titulo bg-white"><span>Notícias</span></div>
+                    
+<div class="carousel-cards-section" style="--carousel-theme-color: var(--color-secondary);">
+    
+    
+    <div class="carousel-cards-wrapper">
+        
+                    <div class="swiper-button-prev-custom" id="cards-swiper-w1-prev">❮</div>
+        
+        <div class="swiper " id="cards-swiper-w1">
+            <div class="swiper-wrapper">
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/806/prefeitura-de-ararica-realizara-audiencia-publica-para-debater-dois-projetos-de-lei" class="card-official-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-official-img">
+        <img src="/images/indisponivel.png" alt="Prefeitura de Araricá realizará Audiência Pública para debater dois projetos de lei" loading="lazy">    </div>
+    <div class="card-official-body">
+        <div class="card-official-date">24 de novembro de 2026</div>
+        <h3 class="card-official-title">Prefeitura de Araricá realizará Audiência Pública para debater dois projetos de lei</h3>
+        <p class="card-official-desc">
+                    </p>
+    </div>
+    <div class="card-official-footer">
+        Ler Matéria &raquo;
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/805/ararica-realiza-seminario-regional-de-educacao-fiscal-e-saude-financeira" class="card-official-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-official-img">
+        <img src="/uploads/noticia/13945/media_kb2jQOS27G1nRXLBo0mLwa5ByPEZ6WVm.jpg" alt="Araricá realiza Seminário Regional de Educação Fiscal e Saúde Financeira" loading="lazy">    </div>
+    <div class="card-official-body">
+        <div class="card-official-date">24 de novembro de 2026</div>
+        <h3 class="card-official-title">Araricá realiza Seminário Regional de Educação Fiscal e Saúde Financeira</h3>
+        <p class="card-official-desc">
+                    </p>
+    </div>
+    <div class="card-official-footer">
+        Ler Matéria &raquo;
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/804/resultado-do-edital-de-chamamento-e-selecao-de-candidatos-curso-gratuito-tecnicas-de-vendas-e-negociacao" class="card-official-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-official-img">
+        <img src="/uploads/noticia/13953/media_qtswxJRmsD3RdyvtL41fRiXXt1AsBJvZ.jpg" alt="RESULTADO DO EDITAL DE CHAMAMENTO E SELEÇÃO DE CANDIDATOS CURSO GRATUITO – TÉCNICAS DE VENDAS E NEGOCIAÇÃO" loading="lazy">    </div>
+    <div class="card-official-body">
+        <div class="card-official-date">18 de novembro de 2026</div>
+        <h3 class="card-official-title">RESULTADO DO EDITAL DE CHAMAMENTO E SELEÇÃO DE CANDIDATOS CURSO GRATUITO – TÉCNICAS DE VENDAS E NEGOCIAÇÃO</h3>
+        <p class="card-official-desc">
+                    </p>
+    </div>
+    <div class="card-official-footer">
+        Ler Matéria &raquo;
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/803/nova-van-reforca-os-servicos-da-secretaria-municipal-de-saude-de-ararica" class="card-official-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-official-img">
+        <img src="/uploads/noticia/13926/media_UZuhJKSXk5irwT8edZiXvyw1ED9LM8Jw.jpg" alt="Nova van reforça os serviços da Secretaria Municipal de Saúde de Araricá" loading="lazy">    </div>
+    <div class="card-official-body">
+        <div class="card-official-date">18 de novembro de 2026</div>
+        <h3 class="card-official-title">Nova van reforça os serviços da Secretaria Municipal de Saúde de Araricá</h3>
+        <p class="card-official-desc">
+                    </p>
+    </div>
+    <div class="card-official-footer">
+        Ler Matéria &raquo;
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/802/novos-veiculos-reforcam-a-frota-municipal-de-ararica" class="card-official-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-official-img">
+        <img src="/uploads/noticia/13931/media_0JEGZbyF4aEJStporM8VV2J-Tzw6uAWg.jpg" alt="Novos veículos reforçam a frota municipal de Araricá" loading="lazy">    </div>
+    <div class="card-official-body">
+        <div class="card-official-date">18 de novembro de 2026</div>
+        <h3 class="card-official-title">Novos veículos reforçam a frota municipal de Araricá</h3>
+        <p class="card-official-desc">
+                    </p>
+    </div>
+    <div class="card-official-footer">
+        Ler Matéria &raquo;
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/801/ibge-abre-2251-vagas-para-recenseador-no-rio-grande-do-sul-regiao-conta-com-tres-oportunidades" class="card-official-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-official-img">
+        <img src="/uploads/noticia/13903/media_WZvmNdrYLo_Edm23dLPegOqp1KFeqIy2.jpg" alt="IBGE abre 2.251 vagas para recenseador no Rio Grande do Sul; região conta com três oportunidades" loading="lazy">    </div>
+    <div class="card-official-body">
+        <div class="card-official-date">11 de novembro de 2026</div>
+        <h3 class="card-official-title">IBGE abre 2.251 vagas para recenseador no Rio Grande do Sul; região conta com três oportunidades</h3>
+        <p class="card-official-desc">
+                    </p>
+    </div>
+    <div class="card-official-footer">
+        Ler Matéria &raquo;
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/799/gefim-desenvolve-projeto-de-educacao-fiscal-em-parceria-com-a-emef-leni-adir-krupp" class="card-official-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-official-img">
+        <img src="/uploads/noticia/13886/media_rLtbJSeBwh9k7umK15AEx3iN5l_mGuYA.jpg" alt="GEFIM desenvolve projeto de Educação Fiscal em parceria com a EMEF Leni Adir Krupp" loading="lazy">    </div>
+    <div class="card-official-body">
+        <div class="card-official-date">6 de novembro de 2026</div>
+        <h3 class="card-official-title">GEFIM desenvolve projeto de Educação Fiscal em parceria com a EMEF Leni Adir Krupp</h3>
+        <p class="card-official-desc">
+                    </p>
+    </div>
+    <div class="card-official-footer">
+        Ler Matéria &raquo;
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/798/ararica-participa-de-reuniao-da-amvag-sobre-prevencao-de-riscos" class="card-official-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-official-img">
+        <img src="/uploads/noticia/13881/media_T6U25valchHLZFSXISVZInaxzNZVqsy1.jpg" alt="Araricá participa de reunião da AMVAG sobre prevenção de riscos" loading="lazy">    </div>
+    <div class="card-official-body">
+        <div class="card-official-date">5 de novembro de 2026</div>
+        <h3 class="card-official-title">Araricá participa de reunião da AMVAG sobre prevenção de riscos</h3>
+        <p class="card-official-desc">
+                    </p>
+    </div>
+    <div class="card-official-footer">
+        Ler Matéria &raquo;
+    </div>
+</a>                    </div>
+                                    <div class="swiper-slide h-auto">
+                        
+<a href="/noticia/view/797/prefeitura-de-ararica-abre-inscricoes-para-expositores-e-patrocinadores-do-natal-das-azaleias-2026" class="card-official-wrapper" style="--dynamic-accent: var(--color-secondary)">
+    <div class="card-official-img">
+        <img src="/uploads/noticia/13880/media_Gco_ebPQFvfbSS0IJJ4g8cUDYdy5UZiU.jpg" alt="Prefeitura de Araricá abre inscrições para expositores e patrocinadores do Natal das Azaleias 2026" loading="lazy">    </div>
+    <div class="card-official-body">
+        <div class="card-official-date">3 de novembro de 2026</div>
+        <h3 class="card-official-title">Prefeitura de Araricá abre inscrições para expositores e patrocinadores do Natal das Azaleias 2026</h3>
+        <p class="card-official-desc">
+            Interessados podem participar da programação natalina, que será realizada de 27 de nove...        </p>
+    </div>
+    <div class="card-official-footer">
+        Ler Matéria &raquo;
+    </div>
+</a>                    </div>
+                            </div>
+            
+                            <div class="swiper-pagination"></div>
+                    </div>
+
+                    <div class="swiper-button-next-custom" id="cards-swiper-w1-next">❯</div>
+            </div>
+</div>
+
+                    <div class="row margin30T">
+                        <div class="col-12 text-center">
+                            <a class="btnPadrao1" href="/noticia" title="Todas Notícias">Todas</a>                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+<!-- ATALHOS -->
+<section class="container-fluid bg-primary padding80T padding80B margin80T">
+    <div class="row">
+        <div class="col-12">
+            <div class="titulo-branco"><span>Acesso Rápido</span></div>
+                            <a href="https://radardatransparencia.atricon.org.br/" target="_blank" title="Radar Nacional de Transparência">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">radar</span>
+                        <h3>Radar Nacional de Transparência</h3>
+                        Portal de acesso a informações públicas.                    </div>
+                </a>
+                            <a href="https://ararica.cespro.com.br/" target="" title="Legislação Municipal">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">balance</span>
+                        <h3>Legislação Municipal</h3>
+                        Acesso atualizado a todas as leis, decretos, portarias e resoluções do município.                    </div>
+                </a>
+                            <a href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2fEmissorNacional" target="_blank" title="Nota Fiscal Eletrônica">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">article</span>
+                        <h3>Nota Fiscal Eletrônica</h3>
+                        Geração de nota fiscal de serviços eletrônica para as instituições e empresas de Araricá
+
+                    </div>
+                </a>
+                            <a href="http://177.136.215.226:7080/multi24/sistemas/portal/?atalho=consulta-debitos-deslogado" target="" title="IPTU">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">family_group</span>
+                        <h3>IPTU</h3>
+                        Consulte seus débitos.                    </div>
+                </a>
+                            <a href="https://www.ararica.rs.gov.br/pagina/view/25/lista-de-espera-e-criterios-de-priorizacao-para-vagas-na-educacao-infantil-etapa-creche" target="_blank" title="Lista de Espera de Creche">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">description</span>
+                        <h3>Lista de Espera de Creche</h3>
+                                            </div>
+                </a>
+                            <a href="https://famurs.com.br/remume#inicioRemume" target="_blank" title="REMUME - FAMURS">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">prescriptions</span>
+                        <h3>REMUME - FAMURS</h3>
+                        Consulte a lista de medicamentos disponibilizados pelo Município.                    </div>
+                </a>
+                            <a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1&secao=dinamico&id=7449" target="_blank" title="Medicamentos da Farmácia Municipal">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">admin_meds</span>
+                        <h3>Medicamentos da Farmácia Municipal</h3>
+                        Consulte a relação de medicamentos.                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/servico/view/13/locais-horarios-profissionais-servicos-e-especialidades-secretaria-municipal-de-saude" target="_blank" title="Unidades de Saúde, Horários e Profissionais">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">cardiology</span>
+                        <h3>Unidades de Saúde, Horários e Profissionais</h3>
+                        Informações dos Serviços de Saúde                    </div>
+                </a>
+                            <a href="https://www.ararica.rs.gov.br/servico/view/2/inscritos-em-divida-ativa-do-icmsipva" target="_blank" title="Programa de Integração Tributária - PIT">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">search</span>
+                        <h3>Programa de Integração Tributária - PIT</h3>
+                        Consulta a lista de devedores com o ICMS e IPVA                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/pagina/view/38/pnab-politica-nacional-aldir-blanc" target="" title="PNAB - Política Nacional - Aldir Blanc">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">gavel</span>
+                        <h3>PNAB - Política Nacional - Aldir Blanc</h3>
+                        Política Nacional Aldir Blanc de Fomento à Cultura                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/pagina/view/61/lei-geral-de-protecao-de-dados-pessoais-lgpd" target="_blank" title="Lei Geral de Proteção de Dados Pessoais">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">shield_person</span>
+                        <h3>Lei Geral de Proteção de Dados Pessoais</h3>
+                        Regulamentação Municipal da LGPD                    </div>
+                </a>
+                            <a href="https://www.ararica.rs.gov.br/departamento/cat/4" target="_blank" title="Conselhos Municipais">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">groups</span>
+                        <h3>Conselhos Municipais</h3>
+                        Acesso aos diversos Conselhos Municipais                    </div>
+                </a>
+                            <a href="https://www.ararica.rs.gov.br/departamento/cat/6" target="_blank" title="Comissões Municipais">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">groups</span>
+                        <h3>Comissões Municipais</h3>
+                        Acesso as diversas Comissões municipais                    </div>
+                </a>
+                            <a href="https://www.ararica.rs.gov.br/departamento/cat/5" target="_blank" title="Juntas Municipais">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">groups</span>
+                        <h3>Juntas Municipais</h3>
+                        Acesso as diversas Juntas municipais                    </div>
+                </a>
+                            <a href="/pagina/view/17" target="" title="Saneamento Básico">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">water_drop</span>
+                        <h3>Saneamento Básico</h3>
+                        O contrato de concessão para a operação de serviços de esgoto será de 35 anos.                    </div>
+                </a>
+                            <a href="https://www.ararica.rs.gov.br/departamento/view/39/comissao-de-acompanhamento-de-emendas-parlamentares" target="_blank" title="Emendas Parlamentares">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">mystery</span>
+                        <h3>Emendas Parlamentares</h3>
+                        Tudo sobre emendas parlamentares                    </div>
+                </a>
+                            <a href="https://www.ararica.rs.gov.br/noticia/view/737/programa-familia-acolhedora" target="" title="Programa Família Acolhedora">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">family_group</span>
+                        <h3>Programa Família Acolhedora</h3>
+                        Seja uma família acolhedora, saiba mais aqui.                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/secretaria/view/29/coordenadoria-municipal-de-protecao-e-defesa-civil-compdec" target="_blank" title="Proteção e Defesa Civil Municipal">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">siren</span>
+                        <h3>Proteção e Defesa Civil Municipal</h3>
+                        Defesa Civil de Araricá                    </div>
+                </a>
+                            <a href="https://www.ararica.rs.gov.br/noticia/view/731/feriados-e-pontos-facultativos-ano-2026" target="_blank" title="Feriados e Pontos Facultativos - Ano 2026">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">flight_takeoff</span>
+                        <h3>Feriados e Pontos Facultativos - Ano 2026</h3>
+                        Feriados e Pontos Facultativos Municipais 2026                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/pagina/view/49/lai-lei-de-acesso-a-informacao" target="_blank" title="LAI">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">format_letter_spacing</span>
+                        <h3>LAI</h3>
+                        Lei de Acesso à Informação                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/pagina/view/53/plano-municipal-de-cultura-de-ararica-20252035" target="_blank" title="Plano Municipal de Cultura de Araricá – 2025/2035">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">comedy_mask</span>
+                        <h3>Plano Municipal de Cultura de Araricá – 2025/2035</h3>
+                        Novo PMC 2025/2035                    </div>
+                </a>
+                            <a href="https://www.ararica.rs.gov.br/legislacao/view/12" target="_blank" title="Plano Municipal de Educação">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">auto_stories</span>
+                        <h3>Plano Municipal de Educação</h3>
+                        Tudo sobre o PME 2014/2026                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/legislacao/view/45" target="_blank" title="Plano Municipal de Assistência Social">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">diversity_3</span>
+                        <h3>Plano Municipal de Assistência Social</h3>
+                        Tudo sobre o novo PMAS 2026-2029                    </div>
+                </a>
+                            <a href="https://www.ararica.rs.gov.br/legislacao/view/41" target="_blank" title="Plano Municipal de Saúde">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">health_and_safety</span>
+                        <h3>Plano Municipal de Saúde</h3>
+                        Tudo sobre o novo PMS 2026/2029                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/pagina/view/56/lei-anticorrupcao-municipal" target="_blank" title="Lei Anticorrupção Municipal">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">gavel</span>
+                        <h3>Lei Anticorrupção Municipal</h3>
+                        Lei Anticorrupção Municipal                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/pagina/view/57/informacoes-financeiras-e-transparencia-fiscal" target="_blank" title="Receitas, Despesas e Contas Públicas">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">account_balance</span>
+                        <h3>Receitas, Despesas e Contas Públicas</h3>
+                        Consulte as informações financeiras do Município.                    </div>
+                </a>
+                            <a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1&secao=consulta_imoveis_veiculos&identificador=veiculos" target="_blank" title="Patrimônio Público">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">directions_car</span>
+                        <h3>Patrimônio Público</h3>
+                        Veículos                    </div>
+                </a>
+                            <a href="http://177.136.215.226:7080/multi24/sistemas/transparencia/?entidade=1&secao=consulta_imoveis_veiculos&identificador=imoveis" target="_blank" title="Patrimônio Público">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">add_home_work</span>
+                        <h3>Patrimônio Público</h3>
+                        Imóveis                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/pagina/view/62/recolhimento-de-galhos" target="_blank" title="Calendário de Recolhimento de Galhos">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">calendar_clock</span>
+                        <h3>Calendário de Recolhimento de Galhos</h3>
+                        Acesse ao Calendário da Secretaria de Obras                    </div>
+                </a>
+                            <a href="https://ararica.rs.gov.br/pagina/view/63/sinter" target="_blank" title="SINTER – Cadastro Imobiliário">
+                    <div class="atalhos">
+                        <span class="material-symbols-rounded">maps_home_work</span>
+                        <h3>SINTER – Cadastro Imobiliário</h3>
+                        Acesse informações sobre o SINTER e o Cadastro Imobiliário Brasileiro (CIB)                    </div>
+                </a>
+                    </div>
+    </div>
+</section>
+
+<!-- BLOCO 3 SECRETARIAS, LICITAÇÕES -->
+<section class="container-fluid bg-light">
+    <div class="row">
+        <div class="col-12 padding60T padding80B">
+            <div class="row nomargin">
+                <div class="col-12 nopadding padding-box">
+                    <div class="titulo"><span>Secretarias</span></div>
+                                        <div id="owlc2" class="owl-carousel">                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/11667/maior_uqNwT5K23nnUsSMQxIEoRiUNEopQBEiT.jpg" width="100%" alt="Secretário Jordana Manuela de Lima"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/5/secretaria-de-acao-social" title="Secretaria de Ação Social."><strong>Secretaria de Ação Social</strong></a>                            </h5>
+                            <strong>Jordana Manuela de Lima</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/2092/maior_61p51oC2GS7Cms9lYBwh5oO1E738hmRR.jpg" width="100%" alt="Secretário Maximiliano Gomes da Silva"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/20/secretaria-de-saude" title="Secretaria de Saúde."><strong>Secretaria de Saúde</strong></a>                            </h5>
+                            <strong>Maximiliano Gomes da Silva</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/2083/maior_8DhDOzH4Jzy1D7EOyZebEFKOOdPCqgMk.jpg" width="100%" alt="Secretário Janice Teresinha da Silva Machado"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/21/gabinete-da-vice-prefeita" title="Gabinete da Vice-Prefeita."><strong>Gabinete da Vice-Prefeita</strong></a>                            </h5>
+                            <strong>Janice Teresinha da Silva Machado</strong><br />
+                            Vice-Prefeita                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/2088/maior_nJpF8vr7i61ymUgu45vfJbhXgBKrWcA7.jpg" width="100%" alt="Secretário Jadir Peixoto Goularte"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/9/secretaria-de-cultura-e-turismo" title="Secretaria de Cultura e Turismo."><strong>Secretaria de Cultura e Turismo</strong></a>                            </h5>
+                            <strong>Jadir Peixoto Goularte</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/2095/maior_W2VRGBCa9En7LhknOnzHgVyg9mWXSL2B.jpg" width="100%" alt="Secretário Jordana Manuela de Lima"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/13/secretaria-de-meio-ambiente" title="Secretaria de Meio Ambiente."><strong>Secretaria de Meio Ambiente</strong></a>                            </h5>
+                            <strong>Jordana Manuela de Lima</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/2089/maior_6RCRWaeqigiHCKI5ntJ27PezRJ6CruJz.jpg" width="100%" alt="Secretário Alan Junior da Rosa"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/25/secretaria-de-desenvolvimento-economico-e-inovacao" title="Secretaria de Desenvolvimento Econômico e Inovação."><strong>Secretaria de Desenvolvimento Econômico e Inovação</strong></a>                            </h5>
+                            <strong>Alan Junior da Rosa</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/images/indisponivel.png" width="100%" alt="Secretário "><br />
+                            </div>
+                            <h5><a href="/secretaria/view/26/chefe-de-gabinete" title="Chefe de Gabinete."><strong>Chefe de Gabinete</strong></a>                            </h5>
+                            <strong></strong><br />
+                                                    </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/images/indisponivel.png" width="100%" alt="Secretário Sandro Roberto Bertei"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/29/coordenadoria-municipal-de-protecao-e-defesa-civil" title="Coordenadoria Municipal de Proteção e Defesa Civil ."><strong>Coordenadoria Municipal de Proteção e Defesa Civil </strong></a>                            </h5>
+                            <strong>Sandro Roberto Bertei</strong><br />
+                            Coordenador Municipal de Proteção e Defesa Civil                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/11578/maior_Cp4zJGjCGo-JPPtdDnfKFpnTkZ0iBvt-.jfif" width="100%" alt="Secretário Oseas Garcia"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/8/secretaria-da-agricultura" title="Secretaria da Agricultura."><strong>Secretaria da Agricultura</strong></a>                            </h5>
+                            <strong>Oseas Garcia</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/images/indisponivel.png" width="100%" alt="Secretário Mauro de Oliveira"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/11/secretaria-de-obras-e-servicos-urbanos" title="Secretaria de Obras e Serviços Urbanos."><strong>Secretaria de Obras e Serviços Urbanos</strong></a>                            </h5>
+                            <strong>Mauro de Oliveira</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/2085/maior_jRuipDP2eS5E2xfOhwQ5xyXW1d4zLsqZ.jpg" width="100%" alt="Secretário Karin Marion Pilger Fischborn"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/10/secretaria-da-fazenda" title="Secretaria da Fazenda."><strong>Secretaria da Fazenda</strong></a>                            </h5>
+                            <strong>Karin Marion Pilger Fischborn</strong><br />
+                            Secretária Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/images/indisponivel.png" width="100%" alt="Secretário Jaisson Mateus Hinschink"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/27/departamento-de-comunicacao" title="Departamento de Comunicação."><strong>Departamento de Comunicação</strong></a>                            </h5>
+                            <strong>Jaisson Mateus Hinschink</strong><br />
+                            Diretor de Comunicação                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/2765/maior_rqiPqGfyAfqZL2VhEuO4hO2eHwOqF9Pc.JPG" width="100%" alt="Secretário Oseas Garcia"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/4/gabinete-do-prefeito" title="Gabinete do Prefeito."><strong>Gabinete do Prefeito</strong></a>                            </h5>
+                            <strong>Oseas Garcia</strong><br />
+                            Prefeito Municipal                         </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/12723/maior_7uMDZZRF9aGQEM2sTZyWa-IWic7pjpUJ.jpg" width="100%" alt="Secretário Alan Junior da Rosa"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/28/secretaria-de-seguranca-publica" title=" Secretaria de Segurança Pública."><strong> Secretaria de Segurança Pública</strong></a>                            </h5>
+                            <strong>Alan Junior da Rosa</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/11921/maior_WmWfRU2EinS0llbmUGpddzBAWJ0kpbkR.jpeg" width="100%" alt="Secretário Marina Mariana Muller Brock"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/18/secretaria-de-administracao" title="Secretaria de Administração."><strong>Secretaria de Administração</strong></a>                            </h5>
+                            <strong>Marina Mariana Muller Brock</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/images/indisponivel.png" width="100%" alt="Secretário Maele Ramão Garcia"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/7/secretaria-geral-de-governo" title="Secretaria Geral de Governo."><strong>Secretaria Geral de Governo</strong></a>                            </h5>
+                            <strong>Maele Ramão Garcia</strong><br />
+                            Secretária Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/11692/maior_M1rvAs0G-BQRIDWrh0zNEJ1RLaHrNikX.jfif" width="100%" alt="Secretário Oseas Garcia"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/15/secretaria-de-esportes" title="Secretaria de Esportes."><strong>Secretaria de Esportes</strong></a>                            </h5>
+                            <strong>Oseas Garcia</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/12780/maior_uVCfISID9twWiw8SeDoXTDcTfJJeovYb.jfif" width="100%" alt="Secretário Oseas Garcia"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/14/secretaria-de-habitacao" title="Secretaria de Habitação."><strong>Secretaria de Habitação</strong></a>                            </h5>
+                            <strong>Oseas Garcia</strong><br />
+                            Secretário Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/11861/maior__wCjOGsdw7i0zgzzTIbTzeNn9-nX66D1.jpeg" width="100%" alt="Secretário Liege Fialho Viana"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/6/secretaria-de-educacao" title="Secretaria de Educação."><strong>Secretaria de Educação</strong></a>                            </h5>
+                            <strong>Liege Fialho Viana</strong><br />
+                            Secretária Municipal                        </div>
+                    </div>
+                                                            <div class="col-12 text-center">
+                        <div class="cont">
+                            <div class="container-image">
+                                <img class="img-secretario" src="/uploads/secretaria/11577/maior_Lk41mfrrFnlmdzJdortN8eArvBSea5VK.jfif" width="100%" alt="Secretário Oseas Garcia"><br />
+                            </div>
+                            <h5><a href="/secretaria/view/12/secretaria-de-planejamento" title="Secretaria de Planejamento."><strong>Secretaria de Planejamento</strong></a>                            </h5>
+                            <strong>Oseas Garcia</strong><br />
+                            Prefeito Municipal                        </div>
+                    </div>
+                                        </div>                                    </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<section class="row container-fluid margin80T">
+    <div class="col-12 col-md-6">
+        <div class="row nomargin padding10B">
+            <div class="col-12 nopadding">
+                <div class="titulo"><span>Turismo</span></div>
+                <div class="row nomargin">
+                                        <div class="col-12 nopadding galeria-home">
+                        <img class="img-expande" src="/uploads/ponto_turistico/12499/media_7cuOmiqd3XfvNT54y_1cZS3l4aXXoz3B.png" width="100%" alt="encontro-de-bois-carreiros">                        <h3><a href="/turismo/view/1/encontro-de-bois-carreiros">Encontro de Bois Carreiros</a>                        </h3>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="row nomargin padding10B">
+            <div class="col-12 nopadding">
+                <div class="titulo"><span>Araricá em Fotos</span></div>
+                <div class="row nomargin">
+                                        <div class="col-12 nopadding galeria-home">
+                        <img class="img-expande" src="/uploads/midia/12506/media_XKsfRy4m0vNRo6oOhPlWNxpsuIueqKFn.jpeg" width="100%" alt="venha-conhecer-as-belezas-de-ararica">                        <h3><a href="/midia/fotos/13/venha-conhecer-as-belezas-de-ararica">Venha conhecer as belezas de Araricá</a>                        </h3>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </div>
+</section>  </div>
+
+  <footer>
+    <div class="container-fluid">
+      <div class="margin60V" style="margin: 60px 0px 30px 0px;">
+        <div class="row" style="margin-bottom:25px;">
+          <div class="col-12 col-lg-7 col-xl-8 footer">
+            <br />
+            <div class="logo-rodape"><img class="" src="/images/logo.png" alt="Barra Funda"></div>
+            <div class="slogan">
+              <p><strong>Prefeitura Municipal de Araric&aacute;</strong><br />Av. Jos&eacute; Ant&ocirc;nio de Oliveira Neto, n&deg; 355 - Centro - Araric&aacute;<br />Telefone: (51) 3560-1011 e utilize tambem nossa plataforma de atendimento pelo whatsapp (51) 98963-5425<br />Segunda a quinta das 12h30 &agrave;s 18h30 e Sexta das 8h &agrave;s 13h.</p>
+<div class="container">
+<div class="row g-3 justify-content-center">
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://araricasaneamento.com.br/" target="_blank" rel="noopener"><img class="img-fluid" src="../../../uploads/tinymce/configuracao/Rr_TawBVKM7p26jyTE1hNh6E8nj9w5Uj.png" alt="" width="207" height="55" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://prosinos.rs.gov.br/" target="_blank" rel="noopener"><img class="img-fluid" src="../../../uploads/tinymce/configuracao/K_TnIuOZeaIkNVO2qqN6Xh4FSK4D7kfI.png" alt="" width="187" height="61" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:Araric%C3%A1,&amp;cs=12owiDJJWA62yKPe2tAOYJASJ7mw" target="_blank" rel="noopener"><img class="img-fluid" src="../../../uploads/tinymce/configuracao/MuQhcEQvdRbE2FnikG_hjrRAssImobyy.png" alt="" width="189" height="72" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://paineis.tcers.tc.br/extensions/licitacon/mapa.html" target="_blank" rel="noopener"><img src="https://tcers.tc.br/wp-content/themes/tce/dist/images/logos/licitaconobras.png" alt="" width="199" height="100" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://www.camaraararica.rs.gov.br/" target="_blank" rel="noopener"><img class="img-fluid" src="../../../uploads/tinymce/configuracao/Nk4yZN7eqbBHqRZJ1_TsDWZ16lxI8ytk.png" alt="" width="219" height="70" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://www.defesacivil.rs.gov.br/inicial" target="_blank" rel="noopener"><img class="img-fluid" src="../../../uploads/tinymce/configuracao/N32vDMeH2unn675khxmoarIAut5v-ebP.png" alt="" width="221" height="63" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://tcers.tc.br/fiscalizado/" target="_blank" rel="noopener"><img class="img-fluid" src="../../../uploads/tinymce/configuracao/eOWZYMogBiSR3C_2yG8Nmy5mOI83N71C.png" alt="" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://www.mprs.mp.br/" target="_blank" rel="noopener"><img class="img-fluid" style="margin-top: 15px;" src="../../../uploads/tinymce/configuracao/jBupeZaSfyeUXi_hn0-svSSSBgt7KKJz.png" alt="" width="210" height="52" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="../../../pagina/view/49/lai-lei-de-acesso-a-informacao" target="_blank" rel="noopener"><img class="img-fluid" src="../../../uploads/tinymce/configuracao/_uwm2udB5ctmSoRT21Pg50yAqG75vsMK.jpg" alt="" width="183" height="95" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://nfg.sefaz.rs.gov.br/site/sorteios.aspx" target="_blank" rel="noopener"><img src="https://nfg.sefaz.rs.gov.br/img/logo_rodape.png" alt="" width="120" height="90" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://www.devolveicms.rs.gov.br/inicial" target="_blank" rel="noopener"><img src="../../uploads/tinymce/configuracao/AWEJt1BAeFL9LtYUqLgXF8zKeg_I2xQ0.png" alt="" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://www.diariomunicipal.com.br/famurs/" target="_blank" rel="noopener"><img src="https://www.diariomunicipal.com.br/dist/images/diario/famurs/logo.png" alt="" width="196" height="55" /></a></div>
+<div class="col-6 col-md-4 col-lg-3 text-center"><a href="https://cnm.org.br/" target="_blank" rel="noopener"><img src="https://cnm.org.br/img/cnm.svg" alt="" width="179" height="79" /></a></div>
+</div>
+</div>              <div class="row">
+                <div class="col-12 padding20 midias-footer">
+                                      <a href="https://www.facebook.com/prefeituradeararica" title="Facebook">
+                      <img src="/images/facebook.png" width="24px" alt="Facebook">                    </a>
+                                                                          <a href="https://www.instagram.com/prefeituradeararica" title="Instagram">
+                      <img src="/images/instagram.png" width="24px" alt="Instagram">                    </a>
+                                                        <a href="https://www.youtube.com/@municipiodeararica" title="YouTube">
+                      <img src="/images/youtube.png" width="24px" alt="YouTube">                    </a>
+                                  </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-5 col-xl-4 hidden576 hidden767 hidden991 altura-box-3">
+            <div class="padding10 text-left text-primary"> <strong>Governo e Secretarias</strong> </div>
+                                          <a class="btnFooter" href="/secretaria/view/14/secretaria-de-habitacao" title="Secretaria de Habitação.">Secretaria de Habitação</a>                              <a class="btnFooter" href="/secretaria/view/5/secretaria-de-acao-social" title="Secretaria de Ação Social.">Secretaria de Ação Social</a>                              <a class="btnFooter" href="/secretaria/view/10/secretaria-da-fazenda" title="Secretaria da Fazenda.">Secretaria da Fazenda</a>                              <a class="btnFooter" href="/secretaria/view/12/secretaria-de-planejamento" title="Secretaria de Planejamento.">Secretaria de Planejamento</a>                              <a class="btnFooter" href="/secretaria/view/29/coordenadoria-municipal-de-protecao-e-defesa-civil" title="Coordenadoria Municipal de Proteção e Defesa Civil .">Coordenadoria Municipal de Proteção e Defesa Civil </a>                              <a class="btnFooter" href="/secretaria/view/7/secretaria-geral-de-governo" title="Secretaria Geral de Governo.">Secretaria Geral de Governo</a>                              <a class="btnFooter" href="/secretaria/view/21/gabinete-da-vice-prefeita" title="Gabinete da Vice-Prefeita.">Gabinete da Vice-Prefeita</a>                              <a class="btnFooter" href="/secretaria/view/27/departamento-de-comunicacao" title="Departamento de Comunicação.">Departamento de Comunicação</a>                              <a class="btnFooter" href="/secretaria/view/18/secretaria-de-administracao" title="Secretaria de Administração.">Secretaria de Administração</a>                              <a class="btnFooter" href="/secretaria/view/4/gabinete-do-prefeito" title="Gabinete do Prefeito.">Gabinete do Prefeito</a>                              <a class="btnFooter" href="/secretaria/view/25/secretaria-de-desenvolvimento-economico-e-inovacao" title="Secretaria de Desenvolvimento Econômico e Inovação.">Secretaria de Desenvolvimento Econômico e Inovação</a>                              <a class="btnFooter" href="/secretaria/view/13/secretaria-de-meio-ambiente" title="Secretaria de Meio Ambiente.">Secretaria de Meio Ambiente</a>                              <a class="btnFooter" href="/secretaria/view/20/secretaria-de-saude" title="Secretaria de Saúde.">Secretaria de Saúde</a>                              <a class="btnFooter" href="/secretaria/view/11/secretaria-de-obras-e-servicos-urbanos" title="Secretaria de Obras e Serviços Urbanos.">Secretaria de Obras e Serviços Urbanos</a>                              <a class="btnFooter" href="/secretaria/view/6/secretaria-de-educacao" title="Secretaria de Educação.">Secretaria de Educação</a>                              <a class="btnFooter" href="/secretaria/view/26/chefe-de-gabinete" title="Chefe de Gabinete.">Chefe de Gabinete</a>                              <a class="btnFooter" href="/secretaria/view/28/secretaria-de-seguranca-publica" title=" Secretaria de Segurança Pública."> Secretaria de Segurança Pública</a>                              <a class="btnFooter" href="/secretaria/view/9/secretaria-de-cultura-e-turismo" title="Secretaria de Cultura e Turismo.">Secretaria de Cultura e Turismo</a>                              <a class="btnFooter" href="/secretaria/view/15/secretaria-de-esportes" title="Secretaria de Esportes.">Secretaria de Esportes</a>                              <a class="btnFooter" href="/secretaria/view/8/secretaria-da-agricultura" title="Secretaria da Agricultura.">Secretaria da Agricultura</a>                                    </div>
+        </div>
+        <hr>
+        <div class="row margin10B margin10T">
+          <div class="row justify-content-center">
+            <div class="col-12 col-lg-8 text-center">
+              <strong>Qual o seu nível de satisfação com o atendimento da Prefeitura</strong>
+              <fieldset class="radio-image" style="margin-top:15px;">
+                <div class="col">
+                  <label class="radio-satisfacao">
+                    <input type="radio" class="icone-radio" onclick="if (!window.__cfRLUnblockHandlers) return false; setOpcao(1)" data-cf-modified-7b574363cc56f6da635511f8-="">
+                    <img src="/images/muito_insatisfeito.png" alt=""><br /> Muito insatisfeito
+                  </label>
+                </div>
+                <div class="col">
+                  <label class="radio-satisfacao">
+                    <input type="radio" class="icone-radio" onclick="if (!window.__cfRLUnblockHandlers) return false; setOpcao(2)" data-cf-modified-7b574363cc56f6da635511f8-="">
+                    <img src="/images/insatisfeito.png" alt=""><br /> Insatisfeito
+                  </label>
+                </div>
+                <div class="col">
+                  <label class="radio-satisfacao">
+                    <input type="radio" class="icone-radio" onclick="if (!window.__cfRLUnblockHandlers) return false; setOpcao(3)" data-cf-modified-7b574363cc56f6da635511f8-="">
+                    <img src="/images/indiferente.png" alt=""><br /> Neutro
+                  </label>
+                </div>
+                <div class="col">
+                  <label class="radio-satisfacao">
+                    <input type="radio" class="icone-radio" onclick="if (!window.__cfRLUnblockHandlers) return false; setOpcao(4)" data-cf-modified-7b574363cc56f6da635511f8-="">
+                    <img src="/images/satisfeito.png" alt=""><br /> Satisfeito
+                  </label>
+                </div>
+                <div class="col">
+                  <label class="radio-satisfacao">
+                    <input type="radio" class="icone-radio" onclick="if (!window.__cfRLUnblockHandlers) return false; setOpcao(5)" data-cf-modified-7b574363cc56f6da635511f8-="">
+                    <img src="/images/muito_satisfeito.png" alt=""><br /> Muito satisfeito
+                  </label>
+                </div>
+              </fieldset>
+            </div>
+            <div class="col-12 col-lg-4">
+              
+<div id="w5"></div>            </div>
+            <div class="col-md-12 mt-2" id="camposSatisfacao" style="display: none;">
+              
+<form id="pesquisa-form" action="/site/resposta" method="post">
+<input type="hidden" name="_csrf-frontend" value="Z_-Gu01DMPmGzSc2ClG3nEjYt08tg9ibNci4Wez73Kw_p7_ZLjJEmPebaldmF_yxBraHNXz3u-1jquwOhJ2_lA==">    <div class="row">
+        <div class="form-group field-avaliacao-opcao required">
+
+<input type="hidden" id="avaliacao-opcao" class="form-control" name="AvaliacaoAtendimento[opcao]">
+
+<div class="help-block"></div>
+</div>        <div class="col-12 col-md-4">
+            <div class="form-group field-avaliacaoatendimento-nome">
+
+<input type="text" id="avaliacaoatendimento-nome" class="form-control" name="AvaliacaoAtendimento[nome]" maxlength="255" placeholder="Digite seu nome">
+
+<div class="help-block"></div>
+</div>        </div>
+        <div class="col-12 col-md-4">
+            <div class="form-group field-avaliacaoatendimento-email">
+
+<input type="text" id="avaliacaoatendimento-email" class="form-control" name="AvaliacaoAtendimento[email]" maxlength="255" placeholder="Digite aqui seu email">
+
+<div class="help-block"></div>
+</div>        </div>
+        <div class="col-12 col-md-4">
+            <div class="form-group field-avaliacaoatendimento-mensagem required">
+
+<input type="text" id="avaliacaoatendimento-mensagem" class="form-control" name="AvaliacaoAtendimento[mensagem]" placeholder="Digite sua mensagem" aria-required="true">
+
+<div class="help-block"></div>
+</div>        </div>
+        <div class="d-flex w-100 justify-content-center">
+            <div class="form-group field-avaliacaoatendimento-recaptcha required">
+
+<input type="hidden" id="avaliacaoatendimento-recaptcha" class="form-control" name="AvaliacaoAtendimento[reCaptcha]" aria-required="true"><div id="w6_c" class="captcha-size captcha-center captcha-no-print " data-sitekey="6LekPeEaAAAAAOr3dyTfkuCK0VvniTmuyct7yJTA"></div>
+
+<div class="help-block"></div>
+</div>            
+        </div>
+        <div class="form-group text-center justify-content-center w-100">
+            <button type="submit" class="btnPadrao">Enviar</button>        </div>
+    </div>
+</form>            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d362325.10036817903!2d-50.99961927430934!3d-29.723079163602208!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95193dd31596a3e9%3A0xc011fc4b1534090b!2sAraric%C3%A1%2C%20RS%2C%2093880-000!5e0!3m2!1spt-BR!2sbr!4v1617303393601!5m2!1spt-BR!2sbr" width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy" title="Mapa de Araricá"></iframe>
+
+  <div id="barra-footer" class="container-fluid">
+    <div class="row">
+      <div class="col-9 text-left margin10V">
+        <small>&copy; Copyright 2021 - Direitos reservados à Prefeitura de Araricá/RS</small>
+      </div>
+      <div class="col-3 text-right margin10V">
+        <a href="http://www.dynamika.com.br" target="_blank" title="Dynamika Soluções Web"><img src="/images/selo-dynamika.png" alt="Dynamika Soluções Web"></a>
+        <button onclick="if (!window.__cfRLUnblockHandlers) return false; topFunction()" id="myBtn" class="btn btn-info" title="Topo" data-cf-modified-7b574363cc56f6da635511f8-=""><i class="icon-up-open"></i><br />topo</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="stop" class="scrollTop">
+    <span><a href="" title="Topo"><i class="icon-up-open"></i><br />topo</a></span>
+  </div>
+
+
+  <script src="//www.google.com/recaptcha/api.js?onload=dynamikacaptchaw6&amp;render=explicit" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/assets/54776095/jquery.js?v=1693229950" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/assets/a42cc70a/dist/owl.carousel.min.js?v=1524230530" defer="defer" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/assets/5d67b0c5/yii.js?v=1751010173" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/assets/9029dddc/js/cards.js?v=1783599147" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/assets/a43bf447/js/bootstrap.bundle.js?v=1750947299" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/assets/449d11e7/sweetalert2.all.min.js?v=1750947299" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/js/site.js?v=1755623978" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/js/responsive-calendar.min.js?v=1750946858" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/toastify-js" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/js/avaliacao-atendimento.js?v=1750946858" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="https://cdn.jsdelivr.net/npm/gasparesganga-jquery-loading-overlay@2.1.7/dist/loadingoverlay.min.js" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/js/jquery.hotkeys.js?v=1750946858" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/js/cookies.js?v=1750946858" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/assets/c9952696/dist/apexcharts.min.js?v=1793818637" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/assets/5d67b0c5/yii.validation.js?v=1751010173" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/assets/af58aed8/captcha.js?v=1640022146" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script src="/assets/5d67b0c5/yii.activeForm.js?v=1751010173" type="7b574363cc56f6da635511f8-text/javascript"></script>
+<script type="7b574363cc56f6da635511f8-text/javascript">jQuery(function ($) {
+        $(function() {
+            $('#banner-popup0').modal('show');
+        });
+        $(function() {
+            $('#banner-popup0').on('hide.bs.modal', function (event) {
+                $('#banner-popup' + (0 + 1)).modal('show');
+            });
+        });
+        $(function() {
+            $('#banner-popup1').on('hide.bs.modal', function (event) {
+                $('#banner-popup' + (1 + 1)).modal('show');
+            });
+        });
+
+jQuery("#owlc0").owlCarousel(
+{"dots":true,"smartSpeed":700,"autoplay":true,"autoplayTimeout":5000,"items":1,"loop":true}
+);
+
+initCarouselCards('#cards-swiper-w1', {"breakpoints":{"640":{"slidesPerView":1.2,"spaceBetween":5},"768":{"slidesPerView":2,"spaceBetween":5},"1024":{"slidesPerView":3,"spaceBetween":15},"1400":{"slidesPerView":4,"spaceBetween":15}},"autoplay":true,"showPagination":true,"showNavigation":true,"rows":1});
+jQuery("#owlc2").owlCarousel(
+{"dots":true,"smartSpeed":1000,"autoplay":true,"autoplayTimeout":5000,"loop":true,"slideBy":2,"responsive":{"0":{"items":1},"420":{"items":1},"520":{"items":2},"768":{"items":3},"992":{"items":3},"1200":{"items":4}}}
+);
+
+
+var fonteOriginal = 14;
+var teclas = 'ctrl+';
+
+$(document).bind('keydown', teclas+'1', function(){
+    $('#linkMenu').trigger('click');
+    return false;
+});
+
+$(document).bind('keydown', teclas+'2', function(){
+    $('#linkConteudo')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'3', function(){
+    $('#linkBusca')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'4', function(){
+    $('#linkMapaSite')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'5', function(){
+    $('#aumentarFonte')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'6', function(){
+    $('#diminuirFonte')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'7', function(){
+    $('#fonteOriginal')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'8', function(){
+    $('#corOriginal')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'9', function(){
+    $('#contraste')[0].click();
+    return false;
+});
+
+$(document).bind('keydown', teclas+'0', function(){
+    $('#acessibilidade')[0].click();
+    return false;
+});
+
+//link menu
+$('#linkMenu').click(function(){
+    openNav();
+    $('#acessibilidade').css('right',0);
+});
+
+//link conteudo
+$("#linkConteudo").click(function(){
+    $('#conteudo').focus();
+    $('#acessibilidade').css('right',0);
+});
+
+//link busca
+$("#linkBusca").click(function(){
+    $('#pesquisa').focus();
+    $('#pesquisa').val('');
+    $('#acessibilidade').css('right',0);
+});
+
+//aumentar fonte
+$("#aumentarFonte").click(function(){
+    var tamanhoFonte = $('body').css('font-size');
+    tamanhoFonte = parseInt(tamanhoFonte.substr(0,2));
+
+    if (tamanhoFonte <= 16){
+        tamanhoFonte++;
+        $('body').css('font-size',tamanhoFonte);
+    }
+
+    return false;
+});
+
+//diminuit fonte
+$("#diminuirFonte").click(function(){
+    var tamanhoFonte = $('body').css('font-size');
+    tamanhoFonte = parseInt(tamanhoFonte.substr(0,2));
+
+    if (tamanhoFonte >= 10) {
+        tamanhoFonte--;
+        $('body').css('font-size',tamanhoFonte);
+    }
+
+    return false;
+});
+
+$("#fonteOriginal").click(function(){
+    $('body').css('font-size',fonteOriginal);
+    return false;
+});
+
+$("#contraste").click(function(){
+    cssFile = $('#contrasteCSS');
+    if(!cssFile.attr('id')){
+        $('head').append('<link id="contrasteCSS" rel="stylesheet" href="/css/contraste.css" type="text/css" />');
+    }
+    $.cookie("css",'contraste', {expires: 365, path: '/'});
+    return false;
+});
+
+//remover contraste
+$("#corOriginal").click(function(){
+    $('#contrasteCSS').remove();
+    $.cookie("css",'corOriginal', {expires: 365, path: '/'});
+    return false;
+});
+
+if($.cookie("css")) {
+    $('#'+$.cookie("css")).trigger('click');
+}
+
+
+          var chart = new ApexCharts(document.querySelector('#w5'), {"chart":{"type":"bar","width":"100%","height":170,"parentHeightOffset":5,"toolbar":{"show":false},"dropShadow":{"enabled":false}},"series":[{"name":"Muito Insatisfeito","data":[3]},{"name":"Insatisfeito","data":[2]},{"name":"Neutro","data":[2]},{"name":"Satisfeito","data":[12]},{"name":"Muito Satisfeito","data":[23]}],"xaxis":{"categories":["Resultados"],"labels":{"show":false},"axisBorder":{"show":false,"color":"rgb(50,50,50)"},"axisTicks":{"show":false}},"yaxis":{"labels":{"show":false},"axisBorder":{"show":false},"axisTicks":{"show":false}},"colors":["rgb(164, 8, 8)","rgb(158, 38, 38)","rgb(229,194,24)","rgb(0,141,54)","rgb(0,102,51)"],"stroke":{"width":5,"colors":["transparent"]},"grid":{"show":false},"title":{"text":"Resultados","align":"center","floating":true,"style":{"color":"#FFF"}},"subtitle":{"text":"","align":"center","floating":false},"plotOptions":{"bar":{"horizontal":true,"barHeight":"80%","columnWidth":"30%","dataLabels":{"position":"bottom"}}},"tooltip":{"enabled":true,"theme":"dark","style":{"fontSize":"14px","color":"#FFD700"}},"legend":{"show":false,"position":"bottom","horizontalAlign":"left","showForSingleSeries":true},"dataLabels":{"enabled":false}});
+          chart.render();
+jQuery('#pesquisa-form').yiiActiveForm([{"id":"avaliacao-opcao","name":"opcao","container":".field-avaliacao-opcao","input":"#avaliacao-opcao","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Avaliação\u0022 não pode ficar em branco."});yii.validation.number(value, messages, {"pattern":/^[+-]?\d+$/,"message":"\u0022Avaliação\u0022 deve ser um número inteiro.","skipOnEmpty":1});}},{"id":"avaliacaoatendimento-nome","name":"nome","container":".field-avaliacaoatendimento-nome","input":"#avaliacaoatendimento-nome","validate":function (attribute, value, messages, deferred, $form) {yii.validation.string(value, messages, {"message":"\u0022Nome\u0022 deve ser um texto.","max":255,"tooLong":"\u0022Nome\u0022 deve conter no máximo 255 caracteres.","skipOnEmpty":1});}},{"id":"avaliacaoatendimento-email","name":"email","container":".field-avaliacaoatendimento-email","input":"#avaliacaoatendimento-email","validate":function (attribute, value, messages, deferred, $form) {yii.validation.string(value, messages, {"message":"\u0022Email\u0022 deve ser um texto.","max":255,"tooLong":"\u0022Email\u0022 deve conter no máximo 255 caracteres.","skipOnEmpty":1});}},{"id":"avaliacaoatendimento-mensagem","name":"mensagem","container":".field-avaliacaoatendimento-mensagem","input":"#avaliacaoatendimento-mensagem","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Mensagem\u0022 não pode ficar em branco."});yii.validation.string(value, messages, {"message":"\u0022Mensagem\u0022 deve ser um texto.","max":500,"tooLong":"\u0022Mensagem\u0022 deve conter no máximo 500 caracteres.","skipOnEmpty":1});}},{"id":"avaliacaoatendimento-recaptcha","name":"reCaptcha","container":".field-avaliacaoatendimento-recaptcha","input":"#avaliacaoatendimento-recaptcha","validate":function (attribute, value, messages, deferred, $form) {yii.validation.required(value, messages, {"message":"\u0022Verificação\u0022 não pode ficar em branco."});}}], []);
+});</script><script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="7b574363cc56f6da635511f8-|49" defer></script><script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a613ff66dcab49ae',t:'MTc5NTgxMjU0Nw=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a613ff66dcab49ae',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>

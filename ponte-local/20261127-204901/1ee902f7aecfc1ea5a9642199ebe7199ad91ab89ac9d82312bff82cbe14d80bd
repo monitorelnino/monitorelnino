@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de Dom Pedro de Alcântara</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Dom Pedro de Alcântara.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de Dom Pedro de Alcântara' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://dompedrodealcantara.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://dompedrodealcantara.rs.gov.br/uploads/config/21170/Braso_2025_Novo.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='150'>
+            <meta property='og:image:height' content='182'>
+            <meta property='og:site_name' content='dompedrodealcantara.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Dom Pedro de Alcântara.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de Dom Pedro de Alcântara'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Dom Pedro de Alcântara.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://dompedrodealcantara.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://dompedrodealcantara.rs.gov.br/site/custom/default/css/color/darkblue.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://dompedrodealcantara.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://dompedrodealcantara.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://dompedrodealcantara.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://dompedrodealcantara.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://dompedrodealcantara.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://dompedrodealcantara.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://dompedrodealcantara.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-LME6YXKWRP"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-LME6YXKWRP');
+    });
+</script>
+        <link rel="shortcut icon" href="https://dompedrodealcantara.rs.gov.br/uploads/config/16104/7115Brasao_Dom_Pedro_de_Alcantara.ico" />    
+	    <style>
+.arquivo-contas-publicas{width:100%!important;}
+body:has(#div-search-concurso) {
+    .col-md-6.col-md-offset-3.well.well-lg.text-center.mb40 {
+        display: block;
+        margin-right: 25%;
+    }
+    div:has(> .col-md-6.col-md-offset-3.well.well-lg.text-center.mb40)::after {
+        content: "A Prefeitura de Dom Pedro de Alcântara não realizou concurso público nos últimos anos. O último certame para provimento de cargos efetivos do Município foi realizado em 2007.";
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+}
+
+</style>    </head>
+	    <body class="smoothscroll wide home_dompedroalcantra" data-background=""><a href="https://dompedrodealcantara.rs.gov.br/cdn-cgi/content?id=DLZJw9Wv.rHI.mk41RYFajPd8vWXyLmTRKdu2Z46y0s-1795812625.4454336-1.2.1.1-bRH4sXn0rHR.RY7l2LBWzX7J74tZFk8CAPhNzbk3nJvqMf6RbDVd1LnZrZQnt7_b" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	        <div id="selo">
+            <map name="maplink-selo" class="map-oselo"><area shape="circle" alt="Link da Campanha Transparência" title="Selo da Transparência" coords="57,59,55"  target="_blank" /></map>
+            <img alt="selo transparência" class="img-responsive oselo" usemap="#maplink-selo" title="Selo da Transparência" src="//visaoi.com.br/img/selo-tp-prata-2025.png" />
+        </div>
+        
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <div id="header" class='header04' role='banner'>
+    <div class="navbar-fixed">
+        <div class="container">
+            <div class="col-md-9 hidden-xs nopadding-left">
+	                            <ul id="linksCabecalho" class="nav nav-pills nav-main">
+	                                	<li>
+	                	<a href="https://webapp1-dompedrodealcantara.cidade360.cloud/pronimtb/" target="_self" onclick="" class="height44 mb0 btn-dark"><i class='fa fa-search fsize15 mr10'></i>Transparência</a>
+					</li>
+                	                	<li>
+	                	<a href="https://webapp1-dompedrodealcantara.cidade360.cloud/NFSe.portal/" target="_self" onclick="" class="height44 mb0 btn-dark"><i class='fa fa-qrcode fsize15 mr10'></i>NFS-e</a>
+					</li>
+                	                	<li>
+	                	<a href="https://dompedrodealcantara.1doc.com.br/b.php?s=dompedrodealcantara&pg=o/login&erro=t" target="_self" onclick="" class="height44 mb0 btn-dark"><i class='fa fa-check-square fsize15 mr10'></i>1Doc</a>
+					</li>
+                	                	<li>
+	                	<a href="https://dompedrodealcantara.1doc.com.br/b.php?pg=o/wp" target="_blank" onclick="" class="height44 mb0 btn-dark"><i class='fa fa-user-circle fsize15 mr10'></i>Protocolo</a>
+					</li>
+                	                	<li>
+	                	<a href="https://webapp1-dompedrodealcantara.cidade360.cloud:10443/cidadao/servlet/br.com.cetil.ar.jvlle.hatendimento" target="_self" onclick="" class="height44 mb0 btn-dark"><i class='fa fa-users fsize15 mr10'></i>Cidadão</a>
+					</li>
+                	                	<li>
+	                	<a href="https://webapp1-dompedrodealcantara.cidade360.cloud/PortalServidor#/" target="_self" onclick="" class="height44 mb0 btn-dark"><i class='fa fa-user fsize15 mr10'></i>Servidor</a>
+					</li>
+                	                	<li>
+	                	<a href="/sic" target="_self" onclick="" class="height44 mb0 btn-dark"><i class='fa fa-info-circle fsize15 mr10'></i>Informação</a>
+					</li>
+                	           		</ul>
+                			</div>
+
+			<div class="col-md-3 col-md-offset-0 hidden-sm col-xs-offset-3 col-xs-8 nopadding-right" role='search'>
+				<!-- Pesquisa -->
+				<form id="pesquisa" class="form-dark search nopadding mt3" method="get" action="https://dompedrodealcantara.rs.gov.br/pesquisa">
+					<label for="searchbar-desktop" class="sr-only">Pesquisar:</label>
+					<input id="searchbar-desktop" title="termo de pesquisa" type="text" class="form-control nomargin" name="q" value="" placeholder="Procurar no site">
+					<button type="submit" class="fa fa-search search-focus" title="Pesquisar" aria-label="Pesquisar"></button>
+				</form>
+				<!-- /Pesquisa -->
+			</div>
+		</div>
+	</div>
+
+    <!-- Top Bar -->
+    <header id="topBar">
+        <div class="container p15v0h">
+            <div class="col-md-5 col-sm-7">
+                <div class="row">
+                                        <div class="col-md-2 desktop-nopadding-right col-sm-3 col-xs-6 col-xs-offset-3 col-sm-offset-0">
+                        <a class="logo" href="https://dompedrodealcantara.rs.gov.br">
+                            <img src="https://dompedrodealcantara.rs.gov.br/uploads/config/21170/Braso_2025_Novo.png" class="img-responsive widthfull"
+                            alt="Brasão da Prefeitura">
+                        </a>
+                    </div>
+                                        <div class="col-md-9 col-sm-9 col-xs-12">
+                        <h1 class="client-name nomargin lineh30 appear-animation fadeInLeft animation-visible" data-animation="fadeInLeft">
+                            <a class="logo" href="https://dompedrodealcantara.rs.gov.br">
+                                Prefeitura Municipal de Dom Pedro de Alcântara                            </a>
+                        </h1>
+                    </div>
+                                    </div>
+            </div>
+            <div class="col-md-4 col-md-offset-3 col-sm-5 hidden-xs">
+                <div class="fsize13 mobile-margin-top25 hide_mobile text-right">
+                                        <p class="mb10">Dom Pedro de Alcântara, 27 de novembro de 2026</p>
+                                        <div class="pull-right text-left previsao-topo hidden">
+                        <div class="row">
+                            <div class="col-md-3 col-xs-3 nopadding mt5 text-center">
+                                <i class="icone-temp m0 fsize25"></i>
+                            </div>
+                            <div class="col-md-9 col-xs-9">
+                                <p class="nomargin">
+                                    <span class='min-temp'></span>°C&nbsp;<small>MIN</small> <span class='max-temp'></span>°C&nbsp;<small>MAX</small>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                                    </div>
+            </div>
+        </div>
+    </header>
+    <!-- /Top Bar -->
+
+    <!-- Top Nav -->
+    <header id="topNav">
+        <div class="container">
+            <!-- Mobile Menu Button -->
+            <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse">
+                <i class="fa fa-bars"></i>
+            </button>
+
+         	<!-- Pesquisa -->
+			<form id="pesquisaSmart" class="search visible-sm nopadding" method="get" action="https://dompedrodealcantara.rs.gov.br/pesquisa" role='search'>
+				<label for="searchbar-mobile" class="sr-only">Pesquisar:</label>
+				<input id="searchbar-mobile" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+				<button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar"></button>
+			</form>
+			<!-- /Pesquisa -->
+
+            <!-- Top Nav -->
+            <div class="navbar-collapse nav-main-collapse collapse">
+                <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1006/?hino-de-dom-pedro-de-alcantara.html'>Hino de Dom Pedro de Alcântara</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1061/?calendario-municipal-de-eventos.html'>Calendário Municipal de Eventos</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1072/?ruas-e-estradas.html'>Ruas e Estradas</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/galeria-prefeitos/bcid/55/?galeria-de-prefeitos.html'>Galeria de Prefeitos</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Atrações Turísticas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/turismo/id/5/?pontos-turisticos.html'>Pontos Turísticos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/servico/id/4/?servicos-ao-servidor-publico.html'>Serviços ao Servidor Público</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://dompedrodealcantara.rs.gov.br/uploads/config/21170/Braso_2025_Novo.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51)  3664-0011</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong></p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-3"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/secretaria/id/1005/?secretaria-municipal-da-agricultura-sma.html'>Secretaria Municipal da Agricultura (SMA)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/secretaria/id/1001/?secretaria-municipal-da-fazenda-administracao-e-planejamento-smfap.html'>Secretaria Municipal da Fazenda, Administração e Planejamento (SMFAP)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/secretaria/id/1004/?secretaria-municipal-da-saude-e-bem-estar-smsbe.html'>Secretaria Municipal da Saúde e Bem-Estar (SMSBE)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/secretaria/id/1006/?secretaria-municipal-de-assistencia-social-smas.html'>Secretaria Municipal de Assistência Social (SMAS)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/secretaria/id/1002/?secretaria-municipal-de-educacao-e-cultura-smec.html'>Secretaria Municipal de Educação e Cultura (SMEC)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/secretaria/id/1003/?secretaria-municipal-de-obras-e-viacao-smov.html'>Secretaria Municipal de Obras e Viação (SMOV)</a></li></ul></div><div class="col-md-3"><p class="menu-category">Subsecretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1020/?cemiterio-municipal.html'>Cemitério Municipal</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1012/?conselho-tutelar.html'>Conselho Tutelar</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1011/?cras-padre-luiz-jose-benini.html'>CRAS Padre Luiz José Benini</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1008/?departamento-de-gestao-ambiental-dga.html'>Departamento de Gestão Ambiental (DGA)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1010/?departamento-municipal-de-agua-e-esgoto-demaed.html'>Departamento Municipal de Água e Esgoto (DEMAED)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1009/?departamento-municipal-de-cultura-turismo-e-desporto-dmctd.html'>Departamento Municipal de Cultura, Turismo e Desporto (DMCTD)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1007/?departamento-municipal-de-transito-dmt.html'>Departamento Municipal de Trânsito (DMT)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1013/?junta-de-servico-militar-jsm-145.html'>Junta de Serviço Militar (JSM 145)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1021/?unidade-central-de-controle-interno-ucci.html'>Unidade Central de Controle Interno (UCCI)</a></li></ul></div><div class="col-md-3"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1032/?comissao-municipal-de-defesa-civil-comdec.html'>Comissão Municipal de Defesa Civil (COMDEC)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1019/?conselho-de-acompanhamento-e-controle-social-do-fundeb.html'>Conselho de Acompanhamento e Controle Social do Fundeb</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1026/?conselho-municipal-de-alimentacao-escolar-comales.html'>Conselho Municipal de Alimentação Escolar (COMALES)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1023/?conselho-municipal-de-assistencia-social-cmas.html'>Conselho Municipal de Assistência Social (CMAS)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1022/?conselho-municipal-de-defesa-do-meio-ambiente-comdema.html'>Conselho Municipal de Defesa do Meio Ambiente (COMDEMA)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1029/?conselho-municipal-de-direito-do-idoso-comdi.html'>Conselho Municipal de Direito do Idoso (COMDI)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1025/?conselho-municipal-de-educacao-cme.html'>Conselho Municipal de Educação (CME)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1028/?conselho-municipal-de-politica-cultural-cmpc.html'>Conselho Municipal de Política Cultural (CMPC)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1033/?conselho-municipal-de-protecao-e-bem-estar-animal-combea.html'>Conselho Municipal de Proteção e Bem-Estar Animal (COMBEA)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1037/?conselho-municipal-de-protecao-e-defesa-civil-cmpdc.html'>Conselho Municipal de Proteção e Defesa Civil (CMPDC)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1031/?conselho-municipal-de-saude-cms.html'>Conselho Municipal de Saúde (CMS)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1036/?conselho-municipal-de-seguranca-alimentar-e-nutricional-comsea.html'>Conselho Municipal de Segurança Alimentar e Nutricional (COMSEA)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1030/?conselho-municipal-de-turismo-comtur.html'>Conselho Municipal de Turismo (COMTUR)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1024/?conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-comdica.html'>Conselho Municipal dos Direitos da Criança e do Adolescente (COMDICA)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1034/?conselho-municipal-dos-direitos-da-mulher.html'>Conselho Municipal dos Direitos da Mulher</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/conselho/id/1035/?conselho-municipal-dos-direitos-da-pessoa-com-deficiencia-compede.html'>Conselho Municipal dos Direitos da Pessoa com Deficiência (COMPEDE)</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/evento/bcid/12/?calendario-municipal-de-eventos.html'>Calendário Municipal de Eventos</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/site/home/pagina/id/1062/?informativo-de-eventos.html/bcid/1011/?informativo-de-eventos.html'>Informativo de Eventos </a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://dompedrodealcantara.rs.gov.br/uploads/config/21170/Braso_2025_Novo.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51)  3664-0011</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong></p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/1006/?adesao-a-ata-de-registro-de-precos-arp.html'>Adesão à Ata de Registro de Preços (ARP)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/110/?chamada-publica-pnae.html'>Chamada Pública PNAE</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/1005/?chamamento-publico--credenciamento.html'>Chamamento Público / Credenciamento</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/101/?concorrencia.html'>Concorrência</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/103/?convite-lei-866693.html'>Convite (Lei 8.666/93)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/1008/?plano-anual-de-contratacoes-pac.html'>Plano Anual de Contratações (PAC)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/107/?pregao.html'>Pregão</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/licitacao/id/1001/?tomada-de-precos-lei-866693.html'>Tomada de Preços (Lei 8.666/93)</a></li></ul></div><div class="col-md-3"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/concurso/id/200/?concurso-publico.html'>Concurso Público</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/concurso/id/201/?convocacoes-processo-seletivo.html'>Convocações Processo Seletivo</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/concurso/id/1003/?eleicao-conselho-tutelar-20242028.html'>Eleição Conselho Tutelar (2024/2028)</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/concurso/id/202/?processos-seletivos.html'>Processos Seletivos</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/concurso/id/1007/?qualificacao-e-capacitacao-profissional.html'>Qualificação e Capacitação Profissional</a></li></ul></div><div class="col-md-3"><p class="menu-category">Legislação</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1011/?codigo-sanitario-municipal.html'>Código Sanitário Municipal</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/7/?codigo-tributario-municipal.html'>Código Tributário Municipal</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1009/?edital-reurb.html'>Edital REURB</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1002/?lei-de-diretrizes-orcamentarias.html'>Lei de Diretrizes Orçamentárias</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1003/?lei-orcamentaria-anual.html'>Lei Orçamentária Anual</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/6/?lei-organica.html'>Lei Orgânica</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1006/?plano-ambiental-municipal.html'>Plano Ambiental Municipal</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1014/?plano-de-cargos-e-salarios-dos-servidores.html'>Plano de Cargos e Salários dos Servidores</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/8/?plano-diretor-do-municipio.html'>Plano Diretor do Município</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1007/?plano-municipal-de-cultura.html'>Plano Municipal de Cultura</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1004/?plano-municipal-de-educacao.html'>Plano Municipal de Educação</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1005/?plano-municipal-de-saude.html'>Plano Municipal de Saúde </a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/10/?plano-plurianual.html'>Plano Plurianual</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1012/?regime-juridico-dos-servidores-publicos.html'>Regime Jurídico dos Servidores Públicos</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/legislacao/id/1013/?regime-proprio-de-previdencia-social-rpps.html'>Regime Próprio de Previdência Social (RPPS)</a></li><li role="menuitem"><a href='https://leis.org/prefeitura/rs/dom-pedro-de-alcantara' target='_blank'>Leis, Decretos e Portarias</a></li></ul></div><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://www.diariomunicipal.com.br/famurs' target='_blank'>Diário Oficial</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informações Públicas</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1052/?lista-de-espera-educacao-basica.html'>Lista de Espera Educação Básica</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1051/?medicamentos-farmacia-municipal.html'>Medicamentos Farmácia Municipal</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1078/?acompanhamento-de-obras-municipais.html'>Acompanhamento de Obras Municipais</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1038/?diarias.html'>Diárias</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1077/?emendas-impositivas.html'>Emendas Impositivas</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1039/?renuncia-de-receitas.html'>Renúncia de Receitas</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1053/?devolucoes-de-convenios.html'>Devoluções de Convênios</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1013/?plano-de-acao-do-siafic.html'>Plano de Ação do SIAFIC</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1066/?instrucoes-normativas.html'>Instruções Normativas</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1047/?modelo-declaracao-de-bens-e-rendimentos.html'>Modelo Declaração de Bens e Rendimentos</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Lei Aldir Blanc</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1093/?ciclo-1.html'>Ciclo 1</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1094/?ciclo-2.html'>Ciclo 2</a></li></ul></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-frequentes.html'>Perguntas Frequentes</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/ordem-servico/bcid/39/?e-sic---pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Adoção</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/pagina/id/1090/?adocao-de-animais.html'>Adoção de Animais</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://dompedrodealcantara.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li><li role="menuitem"><a href='https://webmail.dompedrodealcantara.rs.gov.br' target='_blank'>Webmail</a></li></ul></li></ul></nav>
+            </div>
+            <!-- /Top Nav -->
+        </div>
+    </header>
+    <!-- /Top Nav -->
+</div>
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a><!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350">
+                    <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img                         srcset="
+                            https://dompedrodealcantara.rs.gov.br/uploads/banner/22010/thumb_02.png 360w,
+                            https://dompedrodealcantara.rs.gov.br/uploads/banner/22010/mobile_02.png 576w,
+                            https://dompedrodealcantara.rs.gov.br/uploads/banner/22010/original_02.png 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Conheça nossa história"
+                    />
+                                        <div class="container">
+                        <div class="box fullbox">
+                            <p class="similar-h3 subTitle">Conheça nossa história</p>
+                                                        <p>O Município de Dom Pedro de Alcântara tem sua origem na então “Colônia São Pedro”, antigo 5º Distrito de Torres. A área emancipou-se em 29 de dezembro de 1995.</p>
+                                                        <p><a href="/pagina/id/2/?historia-do-municipio.html" target='_self' class="btn btn-small btn-primary">Confira</a><br />
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: false, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: false        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img loading='lazy' src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+<div class="pb40 pt40">
+    <div class="container">
+        <div class="row">
+            <!-- NOTÍCIAS E ACESSO RÁPIDO -->
+                        <div class="overflow-hidden col-md-12 mobile-nopadding"><!-- 3 ÚLTIMAS NOTÍCIAS -->
+<div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": true, "navigation": false, "pagination": true, "stopOnHover": "true", "progressBar":"true"}'>
+        <div class="item">
+        <div class="col-md-12 nopadding" style="position: relative;background-color:#F7F7F7">
+                        <img class="img-responsive" style="max-height: 430px!important;" src="https://dompedrodealcantara.rs.gov.br/uploads/noticia/24037/media_Festa_da_Imigrao_Alem_2026_Dia_01_41.png" alt="3ª Festa da Imigração Alemã encerra dois dias de celebração à cultura e à história de Dom Pedro" role="presentation">
+                    </div>
+        <div class="noticias03-item">
+            <p class="mb10 similar-h2 lineh32">
+                <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1824/?3a-festa-da-imigracao-alema-encerra-dois-dias-de-celebracao-a-cultura-e-a-historia-de-dom-pedro.html">
+                3ª Festa da Imigração Alemã encerra dois dias de celebração à cultura e à história de Dom Pedro                </a>
+            </p>
+            <p class="nomargin hidden-xs">Evento reuniu comunidade e visitantes na Praça do Imigrante, com apresentações folclóricas, espetáculo cultural, música e atividades em homenagem aos 200 anos da imigração alemã no Litoral Norte.</p>
+        </div>
+    </div>
+        <div class="item">
+        <div class="col-md-12 nopadding" style="position: relative;background-color:#F7F7F7">
+                        <img class="img-responsive" style="max-height: 430px!important;" src="https://dompedrodealcantara.rs.gov.br/uploads/noticia/24028/media_Festa_da_Imigrao_Alem_2026_Dia_01_29.png" alt="3ª Festa da Imigração Alemã abre programação com Jogos Germânicos e celebração dos 200 anos" role="presentation">
+                    </div>
+        <div class="noticias03-item">
+            <p class="mb10 similar-h2 lineh32">
+                <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1823/?3a-festa-da-imigracao-alema-abre-programacao-com-jogos-germanicos-e-celebracao-dos-200-anos.html">
+                3ª Festa da Imigração Alemã abre programação com Jogos Germânicos e celebração dos 200 anos                </a>
+            </p>
+            <p class="nomargin hidden-xs">Primeiro dia de evento reuniu comunidade na Praça do Imigrante, com atividades culturais, premiação dos Jogos Germânicos, lançamento de documentário e anúncio da retomada do grupo de danças alemãs.</p>
+        </div>
+    </div>
+        <div class="item">
+        <div class="col-md-12 nopadding" style="position: relative;background-color:#F7F7F7">
+                        <img class="img-responsive" style="max-height: 430px!important;" src="https://dompedrodealcantara.rs.gov.br/uploads/noticia/24026/media_Samu.png" alt="Dom Pedro e Torres avançam em tratativas para retomada do atendimento do Samu no município" role="presentation">
+                    </div>
+        <div class="noticias03-item">
+            <p class="mb10 similar-h2 lineh32">
+                <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1821/?dom-pedro-e-torres-avancam-em-tratativas-para-retomada-do-atendimento-do-samu-no-municipio.html">
+                Dom Pedro e Torres avançam em tratativas para retomada do atendimento do Samu no município                </a>
+            </p>
+            <p class="nomargin hidden-xs">Alinhamento entre as Secretarias Municipais de Saúde prevê o retorno gradual do serviço, inicialmente com a Unidade de Suporte Avançado e, posteriormente, também com a Unidade de Suporte Básico.</p>
+        </div>
+    </div>
+    </div></div>
+                        <div class="col-md-12"><div class="hidden-xs mb15 other-news">
+    <h2 class="similar-h4 title"><strong>OUTRAS NOT&Iacute;CIAS</strong></h2>
+    <div class="row">
+                <div class="col-md-3 mb10 block">
+                        <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1819/?dom-pedro-de-alcantara-realiza-mais-uma-etapa-do-mutirao-de-castracao-de-caes-e-gatos.html">
+                <img class="img-responsive" src="https://dompedrodealcantara.rs.gov.br/uploads/noticia/24014/media_01.png" alt="Dom Pedro de Alcântara realiza mais uma etapa do Mutirão de Castração de Cães e Gatos" role="presentation"/>
+            </a>
+            <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1819/?dom-pedro-de-alcantara-realiza-mais-uma-etapa-do-mutirao-de-castracao-de-caes-e-gatos.html">
+                <p class="nomargin">Dom Pedro de Alcântara realiza mais uma etapa do Mutirão de Castração de Cães e Gatos</p>
+            </a>
+        </div>
+            <div class="col-md-3 mb10 block">
+                        <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1817/?estrada-geral-dos-lumertz-recebe-mais-200-metros-de-pavimentacao.html">
+                <img class="img-responsive" src="https://dompedrodealcantara.rs.gov.br/uploads/noticia/23983/media_01.png" alt="Estrada Geral dos Lumertz recebe mais 200 metros de pavimentação" role="presentation"/>
+            </a>
+            <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1817/?estrada-geral-dos-lumertz-recebe-mais-200-metros-de-pavimentacao.html">
+                <p class="nomargin">Estrada Geral dos Lumertz recebe mais 200 metros de pavimentação</p>
+            </a>
+        </div>
+            <div class="col-md-3 mb10 block">
+                        <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1816/?3a-festa-da-imigracao-alema-e-destaque-em-entrevista-na-radio-maristela.html">
+                <img class="img-responsive" src="https://dompedrodealcantara.rs.gov.br/uploads/noticia/23975/media_Rdia_Festa.png" alt="3ª Festa da Imigração Alemã é destaque em entrevista na Rádio Maristela" role="presentation"/>
+            </a>
+            <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1816/?3a-festa-da-imigracao-alema-e-destaque-em-entrevista-na-radio-maristela.html">
+                <p class="nomargin">3ª Festa da Imigração Alemã é destaque em entrevista na Rádio Maristela</p>
+            </a>
+        </div>
+            <div class="col-md-3 mb10 block">
+                        <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1815/?dom-pedro-conquista-o-1o-lugar-no-premio-boas-praticas-da-famurs-na-categoria-assistencia-social.html">
+                <img class="img-responsive" src="https://dompedrodealcantara.rs.gov.br/uploads/noticia/23949/media_55620260331_55b030f53e_6k.png" alt="Dom Pedro conquista o 1º lugar no Prêmio Boas Práticas da Famurs na categoria Assistência Social" role="presentation"/>
+            </a>
+            <a href="https://dompedrodealcantara.rs.gov.br/noticia/visualizar/id/1815/?dom-pedro-conquista-o-1o-lugar-no-premio-boas-praticas-da-famurs-na-categoria-assistencia-social.html">
+                <p class="nomargin">Dom Pedro conquista o 1º lugar no Prêmio Boas Práticas da Famurs na categoria Assistência Social</p>
+            </a>
+        </div>
+        </div>
+    <a href="https://dompedrodealcantara.rs.gov.br/noticia/?noticias.html" class="btn btn-default pull-right">Mais not&iacute;cias</a>
+</div></div>
+            <!-- /NOTÍCIAS E ACESSO RÁPIDO -->
+        </div>
+    </div>
+</div>
+<div class="pb40 pt40 styleBackgroundLight">
+    <div class="container">
+        <div class="row">
+            <!-- ACESSO RÁPIDO -->
+            <div class="overflow-hidden col-md-12 mobile-nopadding"><div id="acessoRapidoHorizontal" class="row">
+    <div class="col-md-12"><h2 class="similar-h4 title"><strong>Acesso Rápido</strong></h2></div>
+    <div class="owl-carousel banner-servicos" data-plugin-options='{"navigation": true, "pagination": false,"items": 1}'>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Protocolo Digital" href="https://dompedrodealcantara.1doc.com.br/b.php?pg=o/wp" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-desktop'></i>                        <span class="block">Protocolo Digital</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Diário Oficial Municipal" href="https://dompedrodealcantara.1dom.com.br/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-newspaper-o'></i>                        <span class="block">Diário Oficial Municipal</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Portal da Transparência" href="https://webapp1-dompedrodealcantara.cidade360.cloud/pronimtb/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-search'></i>                        <span class="block">Portal da Transparência</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Radar Nacional da Transparência Pública" href="https://radardatransparencia.atricon.org.br/" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-eye'></i>                        <span class="block">Radar Nacional da Transparência Pública</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Emissão NFS-e" href="https://webapp1-dompedrodealcantara.cidade360.cloud/NFSe.portal/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-qrcode'></i>                        <span class="block">Emissão NFS-e</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Portal Cidadão" href="https://webapp1-dompedrodealcantara.cidade360.cloud:10443/cidadao/servlet/br.com.cetil.ar.jvlle.hatendimento" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-wpforms'></i>                        <span class="block">Portal Cidadão</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="e-SUS PMDPA" href="http://45.160.173.22:8383/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-heartbeat'></i>                        <span class="block">e-SUS PMDPA</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="i-Educar (Escolas)" href="https://dompedrodealcantara.ieducar.com.br/login" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-book'></i>                        <span class="block">i-Educar (Escolas)</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="i-Diário (Professores)" href="https://dompedrodealcantara-rs.portabilis.com.br/" target="_blank" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-book'></i>                        <span class="block">i-Diário (Professores)</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Leis Municipais" href="https://leis.org/prefeitura/rs/dom-pedro-de-alcantara" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-balance-scale'></i>                        <span class="block">Leis Municipais</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Portal do Servidor" href="https://webapp1-dompedrodealcantara.cidade360.cloud/PortalServidor#/" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-institution'></i>                        <span class="block">Portal do Servidor</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Ouvidoria" href="https://dompedrodealcantara.1doc.com.br/b.php?pg=o/wp&service=01JJDPFWVQQD00FKHKPEBHKZR2" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-bullhorn'></i>                        <span class="block">Ouvidoria</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+            </div>
+            <div class="col-md-12">
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="e-SIC" href="https://dompedrodealcantara.1doc.com.br/b.php?pg=o/wp&service=01JJDP6G24D603R1CBSB5YJPGB" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-info-circle'></i>                        <span class="block">e-SIC</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Contas Públicas" href="https://dompedrodealcantara.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-bar-chart'></i>                        <span class="block">Contas Públicas</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Processo Seletivo" href="https://dompedrodealcantara.rs.gov.br/concurso/id/202/?processos-seletivos.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-clipboard'></i>                        <span class="block">Processo Seletivo</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="LicitaCon Cidadão" href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:4:::NO::F50500_CD_ORGAO:83800&cs=1Z0bnV6Bhd4EdO-gId6aH3iEkzNk" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-folder-open'></i>                        <span class="block">LicitaCon Cidadão</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="LicitaCon Obras" href="https://paineis.tcers.tc.br/extensions/licitacon/lista.html" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-wrench'></i>                        <span class="block">LicitaCon Obras</span>
+                    </div>
+                </a>
+            </div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                <a title="Governança Brasil Nuvem" href="https://dompedrodealcantara.cidade360.cloud/" target="_self" onclick="">
+                    <div class="featured-box noborder"><!-- add .transparent for no background color -->
+                        <i class='fa fa-cloud'></i>                        <span class="block">Governança Brasil Nuvem</span>
+                    </div>
+                </a>
+            </div>
+                <div class="clearfix visible-xs-block col-xs-12"></div>
+                <div class="clearfix visible-sm-block col-sm-12"></div>
+                <div class="clearfix visible-lg-block visible-md-block col-md-12 col-lg-12"></div>
+            </div>
+        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+            <!-- /ACESSO RÁPIDO -->
+        </div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-6 mt4-xs" style="border-right: #C3C3C3 1px dashed;"><!-- LICITAÇÕES -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>LICITA&Ccedil;&Otilde;ES</strong></h2>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">05/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência - 231/2026                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Concorrência Pública Nº 06/2026" href="https://dompedrodealcantara.rs.gov.br/licitacao/visualizar/id/1589/?concorrencia-publica-no-062026.html">
+                            <p>Concorrência Pública Nº 06/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            09/12/2026 &agrave;s 13h30min                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /LICITAÇÕES --></div>
+                <div class="col-md-6 mt4-xs"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://dompedrodealcantara.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://dompedrodealcantara.rs.gov.br/uploads/departamento/16457/thumb_Prefeito_01.png" class="img-responsive max-height100" alt="Foto do(a) Prefeito: Alexandre Model Evaldt" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://dompedrodealcantara.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Alexandre Model Evaldt</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3664-0011</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3664-0011                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://dompedrodealcantara.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://dompedrodealcantara.rs.gov.br/uploads/departamento/20914/thumb_Vice.png" class="img-responsive max-height100" alt="Foto do(a) Vice-prefeita: Cátia Lenir Lumertz Valim" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Vice-prefeita</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://dompedrodealcantara.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Cátia Lenir Lumertz Valim</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3664-0011</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3664-0011                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1003/?secretaria-municipal-de-obras-e-viacao-smov.html">
+                       Secretaria Municipal de Obras e Viação (SMOV)                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Obras e Viação (SMOV)" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1003/?secretaria-municipal-de-obras-e-viacao-smov.html">
+                            <span class="similar-h4"><strong>Sem responsável</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  9 9769-5571</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  9 9769-5571                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1001/?secretaria-municipal-da-fazenda-administracao-e-planejamento-smfap.html">
+                       Secretaria Municipal da Fazenda, Administração e Planejamento (SMFAP)                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://dompedrodealcantara.rs.gov.br/uploads/departamento/19053/thumb_Raquel_02.jpg" class="img-responsive max-height100" alt="Foto do(a) Secretária: Raquel Model Evaldt Hahn" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal da Fazenda, Administração e Planejamento (SMFAP)" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1001/?secretaria-municipal-da-fazenda-administracao-e-planejamento-smfap.html">
+                            <span class="similar-h4"><strong>Raquel Model Evaldt Hahn</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3664-0011</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3664-0011                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1002/?secretaria-municipal-de-educacao-e-cultura-smec.html">
+                       Secretaria Municipal de Educação e Cultura (SMEC)                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Educação e Cultura (SMEC)" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1002/?secretaria-municipal-de-educacao-e-cultura-smec.html">
+                            <span class="similar-h4"><strong>Daiane Behnck Santos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99818-3998</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> <strong>Segunda à Sexta-feira:</strong> das 9h às 17h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99818-3998                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> <strong>Segunda à Sexta-feira:</strong> das 9h às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1004/?secretaria-municipal-da-saude-e-bem-estar-smsbe.html">
+                       Secretaria Municipal da Saúde e Bem-Estar (SMSBE)                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretária de Saúde</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal da Saúde e Bem-Estar (SMSBE)" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1004/?secretaria-municipal-da-saude-e-bem-estar-smsbe.html">
+                            <span class="similar-h4"><strong>Giovana Hahn Paulo</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99955-6662</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> <strong>Segunda à Sexta-feira:</strong>das 8h às 12h e das 13h às 17h<br />
+                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99955-6662                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> <strong>Segunda à Sexta-feira:</strong>das 8h às 12h e das 13h às 17h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1005/?secretaria-municipal-da-agricultura-sma.html">
+                       Secretaria Municipal da Agricultura (SMA)                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal da Agricultura (SMA)" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1005/?secretaria-municipal-da-agricultura-sma.html">
+                            <span class="similar-h4"><strong>Cidinei Evaldt Hahn</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 99715-6367</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99715-6367                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1006/?secretaria-municipal-de-assistencia-social-smas.html">
+                       Secretaria Municipal de Assistência Social (SMAS)                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria Municipal de Assistência Social (SMAS)" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1006/?secretaria-municipal-de-assistencia-social-smas.html">
+                            <span class="similar-h4"><strong>Marcia Denise da Luz</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51) 3664-0388</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 3664-0388                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+
+
+<div class="pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+                        <div class="col-md-12 mobile-nopadding"><!-- ATRAÇÕES TURÍSTICAS -->
+<h2 class="similar-h4 title"><strong>ATRA&Ccedil;&Otilde;ES TUR&Iacute;STICAS</strong></h2>
+<div class="row tabs nomargin-top atracoes-turisticas">
+    <!-- tabs -->
+    <div class="col-md-3 col-sm-3 featured-box-minimal mobile-nopadding-turismo tab-tur">
+        <ul class="nav nav-tabs nav-stacked">
+                        <li class="active">
+                <a href="#tab_0" data-toggle="tab">Pórtico Municipal</a>
+            </li>
+                        <li class="">
+                <a href="#tab_1" data-toggle="tab">Caiaque na Lagoa Itapeva</a>
+            </li>
+                        <li class="">
+                <a href="#tab_2" data-toggle="tab">Gruta N. Sra. de Lourdes</a>
+            </li>
+                    </ul>
+        <a class="btn btn-block btn-primary btn-atracoes" href="https://dompedrodealcantara.rs.gov.br/turismo/?pontos-turisticos.html">
+            <i class="fa fa-plus"></i>Ver mais
+			<span class="sr-only">
+				Pontos Tur&iacute;sticos
+			</span>
+        </a>
+    </div>
+    <!-- tabs content -->
+    <div class="col-md-9 col-sm-9 nopadding-left">
+        <div class="tab-content div-atracoes">
+                        <div id="tab_0" class="tab-pane active">
+                <h3 class="similar-h4">Pórtico Municipal</h3>
+                <div class="row">
+                                        <div class="col-md-7 flex-center">
+                        <img class="img-responsive" src="https://dompedrodealcantara.rs.gov.br/uploads/pontoturistico/21920/maior_DSC00018.png" alt="Pórtico Municipal" />
+                    </div>
+                                        <div class="col-md-5">
+                        O pórtico de Dom Pedro de Alcântara dá as boas-vindas a quem chega à cidade com charme e hospitalidade. Inspirado na arquitetura germânica, é símbolo das raízes culturais do município.                        <a href="https://dompedrodealcantara.rs.gov.br/turismo/visualizar/id/1006/?portico-municipal.html" class="btn btn-default btn-sm mt15">
+							Ver atra&ccedil;&atilde;o
+							<span class="sr-only">
+								Pórtico Municipal							</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+                        <div id="tab_1" class="tab-pane ">
+                <h3 class="similar-h4">Caiaque na Lagoa Itapeva</h3>
+                <div class="row">
+                                        <div class="col-md-7 flex-center">
+                        <img class="img-responsive" src="https://dompedrodealcantara.rs.gov.br/uploads/pontoturistico/21923/maior_DJI_0469_HDR.png" alt="Caiaque na Lagoa Itapeva" />
+                    </div>
+                                        <div class="col-md-5">
+                        A canoagem na Lagoa Itapeva, em Dom Pedro de Alcântara, oferece uma experiência única em meio às águas calmas, com paisagens naturais compostas por rochas, vegetação nativa e margens de areia clara. Ideal para lazer, aventura e contemplação.                        <a href="https://dompedrodealcantara.rs.gov.br/turismo/visualizar/id/1004/?caiaque-na-lagoa-itapeva.html" class="btn btn-default btn-sm mt15">
+							Ver atra&ccedil;&atilde;o
+							<span class="sr-only">
+								Caiaque na Lagoa Itapeva							</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+                        <div id="tab_2" class="tab-pane ">
+                <h3 class="similar-h4">Gruta N. Sra. de Lourdes</h3>
+                <div class="row">
+                                        <div class="col-md-7 flex-center">
+                        <img class="img-responsive" src="https://dompedrodealcantara.rs.gov.br/uploads/pontoturistico/21922/maior_DJI_0912.png" alt="Gruta N. Sra. de Lourdes" />
+                    </div>
+                                        <div class="col-md-5">
+                        A Gruta Nossa Senhora de Lourdes é um dos principais atrativos de Dom Pedro de Alcântara, no RS, unindo beleza natural, história e fé.                        <a href="https://dompedrodealcantara.rs.gov.br/turismo/visualizar/id/1003/?gruta-n-sra-de-lourdes.html" class="btn btn-default btn-sm mt15">
+							Ver atra&ccedil;&atilde;o
+							<span class="sr-only">
+								Gruta N. Sra. de Lourdes							</span>
+						</a>
+                    </div>
+                </div>
+            </div>
+                    </div>
+    </div>
+</div>
+<!-- //// ATRAÇÕES TURÍSTICAS --></div>
+            			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+        </div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight styleContrasteGray pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mobile-nopadding"><!-- MULTIMIDIA -->
+<h2 class="similar-h4 title"><strong>MULTIM&Iacute;DIA</strong></h2>
+    <ul class="sort-destination isotope multimidia flex-center" style="flex-wrap: wrap;">
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="HEIMAT - RAÍZES QUE PERMANECEM | Dom Pedro de Alcântara – 200 Anos da Imigração Alemã" class="item-hover" href="https://dompedrodealcantara.rs.gov.br/video/id/1018/?heimat---raizes-que-permanecem--dom-pedro-de-alcantara--200-anos-da-imigracao-alema.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-video-camera"></span>
+                            <strong>ASSISTIR</strong> VÍDEO							<span class="sr-only">
+								HEIMAT - RAÍZES QUE PERMANECEM | Dom Pedro de Alcântara – 200 Anos da Imigração Alemã							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="//i1.ytimg.com/vi/rnvjJe8P3kE/mqdefault.jpg" width="260" height="260" alt="HEIMAT - RAÍZES QUE PERMANECEM | Dom Pedro de Alcântara – 200 Anos da Imigração Alemã" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">16/11/2026 - </small>
+                    <small style="display: inline;">Institucional</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">HEIMAT - RAÍZES QUE PERMANECEM | Dom Pedro de Alcântara – 200 Anos da Imigração Alemã</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Dom Pedro de Alcântara - Um Caminho de Fé!" class="item-hover" href="https://dompedrodealcantara.rs.gov.br/video/id/1017/?dom-pedro-de-alcantara---um-caminho-de-fe.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-video-camera"></span>
+                            <strong>ASSISTIR</strong> VÍDEO							<span class="sr-only">
+								Dom Pedro de Alcântara - Um Caminho de Fé!							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="//i1.ytimg.com/vi/GcnjDse-y-Q/mqdefault.jpg" width="260" height="260" alt="Dom Pedro de Alcântara - Um Caminho de Fé!" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">30/04/2025 - </small>
+                    <small style="display: inline;">Institucional</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Dom Pedro de Alcântara - Um Caminho de Fé!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Posse Executivo e Legislativo Municipal (2024-2028)" class="item-hover" href="https://dompedrodealcantara.rs.gov.br/galeria/id/1016/?posse-executivo-e-legislativo-municipal-2024-2028.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Posse Executivo e Legislativo Municipal (2024-2028)							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://dompedrodealcantara.rs.gov.br/uploads/midia/20924/media_000_02.png" width="260" height="260" alt="Posse Executivo e Legislativo Municipal (2024-2028)" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">02/01/2025 - </small>
+                    <small style="display: inline;">Eventos</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Posse Executivo e Legislativo Municipal (2024-2028)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Posse Executivo e Legislativo Municipal (2021-2024)" class="item-hover" href="https://dompedrodealcantara.rs.gov.br/galeria/id/1011/?posse-executivo-e-legislativo-municipal-2021-2024.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Posse Executivo e Legislativo Municipal (2021-2024)							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://dompedrodealcantara.rs.gov.br/uploads/midia/16416/media__DSC6974.jpg" width="260" height="260" alt="Posse Executivo e Legislativo Municipal (2021-2024)" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">01/01/2021 - </small>
+                    <small style="display: inline;">Eventos</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Posse Executivo e Legislativo Municipal (2021-2024)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        	</ul>
+<!-- /MULTIMIDIA --></div>
+        </div>
+    </div>
+</div>
+
+<div class="pt60 pb60">
+    <div class="container">
+                <div class="col-md-6 mobile-nopadding mt4-xs"><!-- FACEBOOK -->
+<div class="widget appear-animation" data-animation="bounceIn">
+	<div class="fb-page" data-href="https://www.facebook.com/dompedrodealcantara.rs" data-height="380" data-small-header="true" data-adapt-container-width="true" data-width="10000" data-hide-cover="false" data-show-facepile="false" data-show-posts="true"></div>
+</div>
+<!-- /FACEBOOK --></div>
+                <div class="col-md-6 mobile-nopadding mt4-xs"><!-- CONCURSOS -->
+<div class="widget owl-carousel-controls featured-box-minimal overflow-hidden">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>CONCURSOS</strong></h2>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">01/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Convocações Processo Seletivo                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Convocações PSS 01/2026" href="https://dompedrodealcantara.rs.gov.br/concurso/visualizar/id/1532/?convocacoes-pss-012026.html">
+                            <p>Convocações PSS 01/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-calendar-o"></i>
+                            <strong>Início:</strong>
+                            03/03/2026                            &nbsp;&nbsp;
+                            <strong>Fim:</strong>
+                            03/03/2027                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /CONCURSOS --></div>
+            </div>
+</div>
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-29.368837, -49.848128],
+                19
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-29.368837, -49.848128],
+                        {alt:'Prefeitura Municipal de Dom Pedro de Alcântara'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de Dom Pedro de Alcântara</strong></p>                <p style="margin: 5px 0px;">Avenida Central, 89&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Dom Pedro de Alcântara / RS</p><p style="margin: 5px 0px;">95568-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+<div class="pt60 pb60 visible-xs">
+    <div class="container text-center">
+        <p class="lead">
+    </p>
+<p class="mb0">
+        <img class="img-responsive" src="//visaoi.com.br/img/selo-tp-prata-2025.png" alt="selo transparência" />
+    </p>
+    </div>
+</div>
+
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer01" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <div class="logo_footer dark col-md-3">
+                                <img alt="Brasão da prefeitura" src="https://dompedrodealcantara.rs.gov.br/uploads/config/21170/Braso_2025_Novo.png" height="130" class="pull-left logo appear-animation opaco08" data-animation="bounceIn"/>
+                                <p class="block">
+                    <br />Avenida Central, 89, Centro<br />
+                    CEP: 95568-000<br /><br />                </p>
+                                <p class="block">
+                                        (51)  3664-0011<br/>
+                                        contato@dompedrodealcantara.rs.gov.br<br />                </p>
+                                <p class="block">
+                    <strong>Hor&aacute;rios de Atendimento:</strong><br />
+                    <strong>De 05/11 a 28/02 (Lei Municipal nº 61/1997): </strong>  segunda a sexta-feira, das <strong>13h às 19h</strong><br />
+De 01/03 a 04/11: </strong>  segunda a sexta-feira, das <strong>9h às 17h</strong>                </p>
+                                <p class="block">
+                    <a href="https://dompedrodealcantara.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/dompedrodealcantara.rs" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://instagram.com/dompedrodealcantara.rs" target="_blank" class="social">
+						<i class="fa fa-instagram">
+							<span class="sr-only">Instagram da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://dompedrodealcantara.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+                </p>
+            </div>
+
+            <div class="spaced col-md-9 col-sm-9 hidden-sm hidden-xs">
+                            <div class="row">
+                                    <div class="col-md-3">
+                        <p class="similar-h4 mb15">Licita&ccedil;&otilde;es</p>
+						<ul class="list-unstyled nobordered">
+												    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/1006/?adesao-a-ata-de-registro-de-precos-arp.html">
+						            <i class="fa fa-angle-right"></i>Adesão à Ata de Registro de Preços (ARP)					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/110/?chamada-publica-pnae.html">
+						            <i class="fa fa-angle-right"></i>Chamada Pública PNAE					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/1005/?chamamento-publico--credenciamento.html">
+						            <i class="fa fa-angle-right"></i>Chamamento Público / Credenciamento					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/101/?concorrencia.html">
+						            <i class="fa fa-angle-right"></i>Concorrência					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/103/?convite-lei-866693.html">
+						            <i class="fa fa-angle-right"></i>Convite (Lei 8.666/93)					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html">
+						            <i class="fa fa-angle-right"></i>Dispensa de Licitação					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/105/?inexigibilidade.html">
+						            <i class="fa fa-angle-right"></i>Inexigibilidade					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/106/?leilao.html">
+						            <i class="fa fa-angle-right"></i>Leilão					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/1008/?plano-anual-de-contratacoes-pac.html">
+						            <i class="fa fa-angle-right"></i>Plano Anual de Contratações (PAC)					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/107/?pregao.html">
+						            <i class="fa fa-angle-right"></i>Pregão					            </a>
+				            </li>
+					    						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/licitacao/id/1001/?tomada-de-precos-lei-866693.html">
+						            <i class="fa fa-angle-right"></i>Tomada de Preços (Lei 8.666/93)					            </a>
+				            </li>
+					    					    </ul>
+				    </div>
+										<div class="col-md-3">
+					    <p class="similar-h4 mb15">Outras &Aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a href="https://dompedrodealcantara.rs.gov.br/transparencia/?transparencia.html" class="block">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://dompedrodealcantara.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://dompedrodealcantara.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://dompedrodealcantara.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Notícias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://dompedrodealcantara.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://dompedrodealcantara.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://dompedrodealcantara.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+                                        <div class="col-md-6">
+                        <p class="similar-h4 mb15">Secretarias e &Oacute;rg&atilde;os</p>
+                        <ul class="list-unstyled nobordered">
+                            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/gabinete-do-prefeito/?gabinete-do-prefeito.html">
+						            <i class="fa fa-angle-right"></i> Gabinete do Prefeito					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1005/?secretaria-municipal-da-agricultura-sma.html">
+						            <i class="fa fa-angle-right"></i> Secretaria Municipal da Agricultura (SMA)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1001/?secretaria-municipal-da-fazenda-administracao-e-planejamento-smfap.html">
+						            <i class="fa fa-angle-right"></i> Secretaria Municipal da Fazenda, Administração e Planejamento (SMFAP)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1004/?secretaria-municipal-da-saude-e-bem-estar-smsbe.html">
+						            <i class="fa fa-angle-right"></i> Secretaria Municipal da Saúde e Bem-Estar (SMSBE)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1006/?secretaria-municipal-de-assistencia-social-smas.html">
+						            <i class="fa fa-angle-right"></i> Secretaria Municipal de Assistência Social (SMAS)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1002/?secretaria-municipal-de-educacao-e-cultura-smec.html">
+						            <i class="fa fa-angle-right"></i> Secretaria Municipal de Educação e Cultura (SMEC)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/secretaria/id/1003/?secretaria-municipal-de-obras-e-viacao-smov.html">
+						            <i class="fa fa-angle-right"></i> Secretaria Municipal de Obras e Viação (SMOV)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1032/?comissao-municipal-de-defesa-civil-comdec.html">
+						            <i class="fa fa-angle-right"></i> Comissão Municipal de Defesa Civil (COMDEC)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1019/?conselho-de-acompanhamento-e-controle-social-do-fundeb.html">
+						            <i class="fa fa-angle-right"></i> Conselho de Acompanhamento e Controle Social do Fundeb					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1026/?conselho-municipal-de-alimentacao-escolar-comales.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Alimentação Escolar (COMALES)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1023/?conselho-municipal-de-assistencia-social-cmas.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Assistência Social (CMAS)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1022/?conselho-municipal-de-defesa-do-meio-ambiente-comdema.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Defesa do Meio Ambiente (COMDEMA)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1029/?conselho-municipal-de-direito-do-idoso-comdi.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Direito do Idoso (COMDI)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1025/?conselho-municipal-de-educacao-cme.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Educação (CME)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1028/?conselho-municipal-de-politica-cultural-cmpc.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Política Cultural (CMPC)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1033/?conselho-municipal-de-protecao-e-bem-estar-animal-combea.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Proteção e Bem-Estar Animal (COMBEA)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1037/?conselho-municipal-de-protecao-e-defesa-civil-cmpdc.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Proteção e Defesa Civil (CMPDC)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1031/?conselho-municipal-de-saude-cms.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Saúde (CMS)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1036/?conselho-municipal-de-seguranca-alimentar-e-nutricional-comsea.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Segurança Alimentar e Nutricional (COMSEA)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1030/?conselho-municipal-de-turismo-comtur.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal de Turismo (COMTUR)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1024/?conselho-municipal-dos-direitos-da-crianca-e-do-adolescente-comdica.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal dos Direitos da Criança e do Adolescente (COMDICA)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1034/?conselho-municipal-dos-direitos-da-mulher.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal dos Direitos da Mulher					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/conselho/id/1035/?conselho-municipal-dos-direitos-da-pessoa-com-deficiencia-compede.html">
+						            <i class="fa fa-angle-right"></i> Conselho Municipal dos Direitos da Pessoa com Deficiência (COMPEDE)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1020/?cemiterio-municipal.html">
+						            <i class="fa fa-angle-right"></i> Cemitério Municipal					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1012/?conselho-tutelar.html">
+						            <i class="fa fa-angle-right"></i> Conselho Tutelar					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1011/?cras-padre-luiz-jose-benini.html">
+						            <i class="fa fa-angle-right"></i> CRAS Padre Luiz José Benini					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1008/?departamento-de-gestao-ambiental-dga.html">
+						            <i class="fa fa-angle-right"></i> Departamento de Gestão Ambiental (DGA)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1010/?departamento-municipal-de-agua-e-esgoto-demaed.html">
+						            <i class="fa fa-angle-right"></i> Departamento Municipal de Água e Esgoto (DEMAED)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1009/?departamento-municipal-de-cultura-turismo-e-desporto-dmctd.html">
+						            <i class="fa fa-angle-right"></i> Departamento Municipal de Cultura, Turismo e Desporto (DMCTD)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1007/?departamento-municipal-de-transito-dmt.html">
+						            <i class="fa fa-angle-right"></i> Departamento Municipal de Trânsito (DMT)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1013/?junta-de-servico-militar-jsm-145.html">
+						            <i class="fa fa-angle-right"></i> Junta de Serviço Militar (JSM 145)					            </a>
+				            </li>
+				            						    <li>
+						        <a class="block" href="https://dompedrodealcantara.rs.gov.br/subsecretaria/id/1021/?unidade-central-de-controle-interno-ucci.html">
+						            <i class="fa fa-angle-right"></i> Unidade Central de Controle Interno (UCCI)					            </a>
+				            </li>
+				            			            </ul>
+		            </div>
+		            	            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+        <div class="container text-center fsize12 post-copyright" style="
+            display: flex;
+			flex-direction: column;
+            justify-content: center">
+            <p style="margin:0" id="footer.copyrightTxt">
+				Este site utiliza a ferramenta
+                <a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+					<img src="https://dompedrodealcantara.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+					<span class="sr-only">iPrefeituras</span>
+				</a>.
+			</p>
+			<p style="margin:0" id="footer.copyrightTxt3">
+                Um produto
+                <strong>
+					<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+				</strong>.
+            </p>
+        </div>
+    </div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://dompedrodealcantara.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://dompedrodealcantara.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://dompedrodealcantara.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://dompedrodealcantara.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://dompedrodealcantara.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a614014d0e9e6d40',t:'MTc5NTgxMjYyNQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a614014d0e9e6d40',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

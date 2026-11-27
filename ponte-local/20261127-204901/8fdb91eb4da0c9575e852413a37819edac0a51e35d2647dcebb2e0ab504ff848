@@ -1,0 +1,2774 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Prefeitura Municipal de Cacoal</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --cacoal-green-main:#008f4f;
+      --cacoal-green-dark:#00663a;
+      --cacoal-green-soft:#f3fbf7;
+      --cacoal-green-light:#e6f6ee;
+      --cacoal-yellow:#ffc800;
+      --text-main:#1f2933;
+      --text-soft:#6b7280;
+    }
+
+    *{box-sizing:border-box;}
+
+    body{
+      font-family:'Inter',system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--text-main);
+      background-color:#fff;
+    }
+
+    a{text-decoration:none;}
+
+    .top-access{
+      background-color:var(--cacoal-green-dark);
+      color:#f9fafb;
+      font-size:.8rem;
+    }
+
+    .top-access a{
+      color:inherit;
+      padding:2px 8px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.25);
+      margin-right:.25rem;
+      white-space:nowrap;
+    }
+
+    .top-access button{
+      border-radius:999px;
+      border:0;
+      background:rgba(255,255,255,.12);
+      color:inherit;
+      padding:2px 8px;
+      font-size:.8rem;
+    }
+
+    .header-shell{
+      background:#f3faf6;
+      padding-top:.35rem;
+      padding-bottom:.35rem;
+    }
+
+    .header-pill{
+      border-radius:22px;
+      background:#fff;
+      padding:.55rem .95rem;
+      box-shadow:0 6px 22px rgba(0,0,0,.12);
+      border:1px solid rgba(0,0,0,.05);
+    }
+
+    .logo-badge{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:0;
+      background:transparent;
+    }
+
+    .logo-badge-img{
+      height:46px;
+      width:auto;
+      display:block;
+    }
+
+    .logo-text-small{
+      font-size:.78rem;
+      text-transform:uppercase;
+      letter-spacing:.14em;
+      color:var(--text-soft);
+    }
+
+    .logo-text-main{
+      font-size:1.12rem;
+      font-weight:600;
+      letter-spacing:.10em;
+      text-transform:uppercase;
+    }
+
+    .nav-link{
+      font-size:.9rem;
+      font-weight:500;
+      color:#374151 !important;
+    }
+
+    .nav-link:hover{
+      color:var(--cacoal-green-main) !important;
+    }
+
+    .btn-pill-outline{
+      border-radius:999px;
+      border-width:1px;
+      font-size:.8rem;
+      font-weight:500;
+      padding:.35rem .9rem;
+    }
+
+    .hero{
+      position:relative;
+      color:#fff;
+      padding:2.8rem 0 6.5rem;
+      background:
+        linear-gradient(120deg,rgba(0,0,0,.6),rgba(0,0,0,.25)),
+        url('/assets/img/hero-cacoal.png') center/cover no-repeat;
+    }
+
+    .hero::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-40px;
+      width:100%;
+      height:80px;
+      background:
+        radial-gradient(circle at 0 0,#a7f3d0 0,transparent 55%),
+        radial-gradient(circle at 100% 0,#fbbf24 0,transparent 55%);
+      opacity:.95;
+      z-index:-1;
+    }
+
+    .hero-sub{font-size:.9rem;opacity:.9;}
+    .hero-title{font-size:clamp(1.9rem,3.2vw,2.4rem);font-weight:600;}
+    .hero-question{font-size:1.05rem;opacity:.95;}
+
+    .hero-search-pill{
+      border-radius:999px;
+      box-shadow:0 18px 40px rgba(0,0,0,.4);
+      padding:.3rem;
+      background-color:#fff;
+    }
+
+    .hero-search-pill .form-control{
+      border-radius:999px;
+      border:0;
+      font-size:.95rem;
+    }
+
+    .hero-search-pill .btn{
+      border-radius:999px;
+      padding-inline:1.6rem;
+      font-weight:500;
+    }
+
+    .quick-services-wrapper{
+      margin-top:-3.1rem;
+      margin-bottom:2.6rem;
+    }
+
+    .quick-services-area{
+      background-color:var(--cacoal-green-main);
+      padding:22px 0 26px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .quick-services-area::before,
+    .quick-services-area::after{
+      content:'';
+      position:absolute;
+      top:-40px;
+      bottom:-40px;
+      width:220px;
+      background:radial-gradient(circle at 0 0,#22c55e 0,transparent 70%);
+      opacity:.18;
+    }
+
+    .quick-services-area::before{left:-60px;}
+    .quick-services-area::after{right:-60px;transform:scaleX(-1);}
+
+    .quick-services-board{
+      background-color:var(--cacoal-green-main);
+      border-radius:26px;
+      padding:18px 22px 14px;
+      box-shadow:0 18px 32px rgba(15,23,42,.4);
+    }
+
+    .qs-card{
+      display:flex;
+      align-items:center;
+      gap:.6rem;
+      background-color:#f3f4f6;
+      color:#065f46;
+      border-radius:16px;
+      padding:.55rem 1rem;
+      font-size:.9rem;
+      border:1px solid transparent;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
+      transition:background-color .15s,border-color .15s,box-shadow .15s,transform .12s;
+    }
+
+    .qs-card-icon{
+      font-size:1rem;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .qs-card-label{
+      display:inline-flex;
+      align-items:center;
+      gap:.6rem;
+    }
+
+    .qs-card-label::before{
+      content:'';
+      height:18px;
+      border-left:1px solid #9ca3af;
+    }
+
+    .qs-card:hover{
+      background-color:#e5e7eb;
+      border-color:#d1d5db;
+      box-shadow:0 10px 22px rgba(15,23,42,.24);
+      transform:translateY(-1px);
+    }
+
+    .qs-card-more{
+      background-color:#065f46;
+      color:#f9fafb;
+      justify-content:center;
+    }
+
+    .qs-card-more .qs-card-label::before{
+      content:'?';
+      border-left:0;
+      font-size:.85rem;
+    }
+
+    .help-section{
+      background-color:var(--cacoal-green-soft);
+      padding:2.4rem 0 2.8rem;
+    }
+
+    .help-tabs .nav-link{
+      border-radius:999px !important;
+      font-size:.9rem;
+      padding:.4rem 1rem;
+      border:1px solid #9ca3af !important;
+      color:#374151 !important;
+    }
+
+    .help-tabs .nav-link.active{
+      background-color:var(--cacoal-green-main) !important;
+      border-color:var(--cacoal-green-main) !important;
+      color:#fff !important;
+    }
+
+    .help-card{
+      background:#fff;
+      border-radius:1.1rem;
+      padding:.7rem .9rem;
+      border:1px solid rgba(148,163,184,.55);
+      font-size:.9rem;
+      display:flex;
+      align-items:center;
+      gap:.55rem;
+      cursor:pointer;
+      transition:.15s;
+    }
+
+    .help-card:hover{
+      transform:translateY(-2px);
+      box-shadow:0 12px 26px rgba(15,23,42,.18);
+      border-color:var(--cacoal-green-main);
+    }
+
+    .help-icon{
+      width:24px;
+      height:24px;
+      border-radius:999px;
+      background:var(--cacoal-green-light);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      font-size:.85rem;
+    }
+
+    .news-section{padding:2.4rem 0 2.8rem;}
+
+    .news-card{
+      border-radius:1.1rem;
+      overflow:hidden;
+      border:1px solid #e5e7eb;
+      background:#fff;
+      height:100%;
+      display:flex;
+      flex-direction:column;
+    }
+
+    .news-image{
+      background:#e5e7eb;
+      padding-top:52%;
+    }
+
+    .news-body{
+      padding:.7rem .85rem .9rem;
+      font-size:.9rem;
+    }
+
+    .news-tag{
+      display:inline-block;
+      font-size:.7rem;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      background:#ecfeff;
+      color:#0f766e;
+      border-radius:999px;
+      padding:.2rem .5rem;
+      margin-bottom:.2rem;
+    }
+
+    .news-meta{
+      font-size:.75rem;
+      color:var(--text-soft);
+      margin-bottom:.25rem;
+    }
+
+    .news-title{font-weight:600;margin-bottom:.2rem;}
+
+    .news-more{
+      color:var(--cacoal-green-main);
+      font-size:.82rem;
+      font-weight:500;
+    }
+
+    .news-sidebar{
+      border-radius:1.5rem;
+      border:1px solid #e5e7eb;
+      background:#f9fafb;
+      padding:1rem .95rem .85rem;
+      font-size:.88rem;
+    }
+
+    .sidebar-item + .sidebar-item{
+      border-top:1px solid #e5e7eb;
+      margin-top:.6rem;
+      padding-top:.6rem;
+    }
+
+    .sidebar-item span{
+      display:block;
+      color:var(--text-soft);
+      font-size:.83rem;
+    }
+
+    .events-section{
+      background:#f3faf6;
+      padding:2.3rem 0 2.6rem;
+    }
+
+    .events-strip{
+      display:flex;
+      gap:.75rem;
+      overflow-x:auto;
+      padding-bottom:.3rem;
+    }
+
+    .event-pill{
+      min-width:190px;
+      border-radius:999px;
+      border:1px solid #e5e7eb;
+      background:#fff;
+      display:flex;
+      align-items:center;
+      font-size:.85rem;
+    }
+
+    .event-date{
+      background:var(--cacoal-green-main);
+      color:#fff;
+      padding:.45rem .6rem;
+      text-align:center;
+      min-width:58px;
+    }
+
+    .event-date span{display:block;line-height:1.1;}
+    .event-date .day{font-weight:700;font-size:1.05rem;}
+
+    .event-info{
+      padding:.4rem .8rem;
+      white-space:nowrap;
+      text-overflow:ellipsis;
+      overflow:hidden;
+    }
+
+    footer{
+      background:var(--cacoal-green-dark);
+      padding:2.2rem 0 1.4rem;
+      color:#e5e7eb;
+    }
+
+    .footer-pill{
+      border-radius:1.8rem;
+      background:#064e3b;
+      padding:1.5rem 1.4rem 1.2rem;
+    }
+
+    .footer-title{
+      font-weight:600;
+      margin-bottom:.4rem;
+      font-size:.9rem;
+    }
+
+    .footer-list a{
+      color:#e5e7eb;
+      font-size:.85rem;
+    }
+
+    .footer-list li + li{margin-top:.1rem;}
+
+    .footer-bottom{
+      font-size:.78rem;
+      opacity:.9;
+    }
+
+    @media (max-width:991.98px){
+      .header-pill{border-radius:18px;}
+      .hero{padding-top:2rem;padding-bottom:5rem;}
+      .quick-services-board{padding-inline:16px;}
+      .news-sidebar{margin-top:1rem;}
+    }
+
+    @media (max-width:767.98px){
+      .hero{
+        padding-top:1.6rem;
+        padding-bottom:4.2rem;
+      }
+
+      .hero-search-pill{border-radius:1.1rem;}
+      .quick-services-wrapper{margin-top:-2.4rem;}
+      .qs-card{font-size:.88rem;}
+      .footer-pill{border-radius:1.2rem;}
+
+      .logo-badge-img{
+        height:50px;
+      }
+
+      .top-access-skip{
+        display:none !important;
+      }
+
+      .top-access-transp{
+        display:none !important;
+      }
+    }
+
+    @media (max-width:575.98px){
+      .qs-card-label::before{display:none;}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-access py-1">
+    <div class="container d-flex justify-content-between align-items-center flex-wrap gap-1">
+      <div class="d-flex flex-wrap align-items-center top-access-skip">
+        <a href="#conteudo">Ir para o conte&uacute;do</a>
+        <a href="#menu">Ir para o menu</a>
+        <a href="#busca">Ir para a busca</a>
+        <a href="#rodape">Ir para o rodap&eacute;</a>
+      </div>
+
+      <div class="d-flex align-items-center flex-wrap gap-1">
+        <span class="me-1">Acessibilidade:</span>
+        <button type="button">A+</button>
+        <button type="button">A-</button>
+        <button type="button">Contraste</button>
+        <a href="#" class="ms-1">Leitor de tela</a>
+        <a href="https://transparencia.cacoal.ro.gov.br/portaltransparencia/1/"
+           class="ms-1 top-access-transp"
+           target="_blank"
+           rel="noopener">
+          Transpar&ecirc;ncia Fiscal
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <header class="header-shell sticky-top" style="z-index:1030;">
+    <div class="container">
+      <div class="header-pill mt-2 mb-2">
+        <nav class="navbar navbar-expand-lg" id="menu">
+          <div class="container-fluid px-0">
+
+            <a class="navbar-brand d-flex align-items-center gap-2" href="/">
+              <div class="logo-badge">
+                <img src="/assets/logo-cacoal.png" alt="Logomarca Prefeitura de Cacoal" class="logo-badge-img">
+              </div>
+              <div class="d-flex flex-column">
+                <span class="logo-text-small">Prefeitura Municipal de</span>
+                <span class="logo-text-main">Cacoal &bull; RO</span>
+              </div>
+            </a>
+
+            <button class="navbar-toggler border-0"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#mainNav"
+                    aria-controls="mainNav"
+                    aria-expanded="false"
+                    aria-label="Abrir menu">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+              <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center">
+
+                                                                          <li class="nav-item">
+                      <a class="nav-link" href="/index.php">
+                        Início                      </a>
+                    </li>
+                                                          <li class="nav-item">
+                      <a class="nav-link" href="https://cacoal.ro.gov.br/secretarias.php">
+                        Governo                      </a>
+                    </li>
+                                                          <li class="nav-item">
+                      <a class="nav-link" href="/pagina.php?slug=CONHEÇA%20CACOAL">
+                        Município                      </a>
+                    </li>
+                                                          <li class="nav-item">
+                      <a class="nav-link" href="https://leismunicipais.com.br/prefeitura/ro/cacoal">
+                        Legislação                      </a>
+                    </li>
+                                                          <li class="nav-item">
+                      <a class="nav-link" href="/servicos.php">
+                        Carta de Serviços                      </a>
+                    </li>
+                                                          <li class="nav-item">
+                      <a class="nav-link" href="/servicos.php?cat=programas%20&amp;%20Sistemas">
+                        Programas &amp; Sistemas                      </a>
+                    </li>
+                                                          <li class="nav-item">
+                      <a class="nav-link" href="https://cacoal.ro.gov.br/concursos_publicos.php">
+                        Concurso/Seletivo                      </a>
+                    </li>
+                                                          <li class="nav-item">
+                      <a class="nav-link" href="https://cacoal.ro.gov.br/conselhos.php">
+                        Conselhos Municipais                      </a>
+                    </li>
+                                  
+                <li class="nav-item ms-lg-2">
+                  <a class="btn btn-outline-success btn-pill-outline"
+                     href="https://transparencia.cacoal.ro.gov.br/portaltransparencia/1/"
+                     target="_blank"
+                     rel="noopener">
+                    Portal da Transpar&ecirc;ncia
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+
+          </div>
+        </nav>
+      </div>
+    </div>
+  </header>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+<section class="hero" id="busca">
+  <div class="container">
+    <div class="col-lg-8 col-xl-7">
+      <p class="hero-sub mb-1">Cacoal, cidade que transforma junto com você	</p>
+      <h1 class="hero-title mb-2">O que você está procurando?</h1>
+      <p class="hero-question mb-3">
+        Busque por serviços, programas, sistemas e informações da Prefeitura Municipal de Cacoal.
+      </p>
+
+      <form class="hero-search-pill d-flex flex-column flex-md-row align-items-stretch gap-2"
+            action="busca.php" method="get">
+        <div class="flex-grow-1">
+          <input type="search"
+                 class="form-control"
+                 name="q"
+                 placeholder="Ex.: IPTU, estágio, ônibus, certidão, vaga de trabalho..."
+                 aria-label="Buscar no site da Prefeitura">
+        </div>
+        <div class="d-grid d-md-block">
+          <button type="submit" class="btn btn-success w-100">Buscar</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section class="banner-hero-section">
+  <div class="container-fluid px-0">
+    <div class="swiper bannerHeroSwiper">
+      <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+            <a href="#" >
+              <picture>
+                <source media="(max-width: 768px)" srcset="https://cacoal.ro.gov.br/uploads/banners/banner_20260914_085105_502bcd8afb_1080x1350.jpg">
+                <img src="https://cacoal.ro.gov.br/uploads/banners/banner_20260914_085105_8307beb01f_1920x600.jpg"
+                     class="banner-home-img"
+                     alt="Tem dívida com a Prefeitura de Cacoal? Essa pode ser a oportunidade para colocar as contas em dia."
+                     width="1920" height="600"                     loading="eager" fetchpriority="high">
+              </picture>
+            </a>
+          </div>
+                            <div class="swiper-slide">
+            <a href="https://centraldevagas.defensoria.ro.def.br/portal/ro/cacoal" target="_blank" rel="noopener">
+              <picture>
+                <source media="(max-width: 768px)" srcset="https://cacoal.ro.gov.br/uploads/banners/banner_20261104_134306_0ab420654f_1080x1350.jpg">
+                <img src="https://cacoal.ro.gov.br/uploads/banners/banner_20261104_134306_01bc4ad5c7_1920x600.jpg"
+                     class="banner-home-img"
+                     alt="Central de Vagas"
+                     width="1920" height="600"                     loading="lazy">
+              </picture>
+            </a>
+          </div>
+                            <div class="swiper-slide">
+            <a href="#" >
+              <picture>
+                <source media="(max-width: 768px)" srcset="https://cacoal.ro.gov.br/uploads/banners/banner_20261122_140238_3bf892d5bd_1080x1350.webp">
+                <img src="https://cacoal.ro.gov.br/uploads/banners/banner_20261122_140238_0a20dd5131_1920x600.webp"
+                     class="banner-home-img"
+                     alt="Atrações do 49ª Aniversário de Cacoal"
+                     width="1920" height="600"                     loading="lazy">
+              </picture>
+            </a>
+          </div>
+              </div>
+      <div class="swiper-pagination"></div>
+    </div>
+  </div>
+</section>
+
+<section class="quick-services-wrapper">
+  <div class="quick-services-area">
+    <div class="container">
+      <div class="quick-services-board">
+
+        <div class="row g-2 quick-services-grid">
+                                    <div class="col-4 col-md-3">
+                <a href="https://transparencia.cacoal.ro.gov.br" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-search"></i>
+                                      </span>
+                  <span class="qs-card-label">Portal da Transparência</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://rh.cacoal.ro.gov.br/_login-portal.php" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-person-badge"></i>
+                                      </span>
+                  <span class="qs-card-label">RH - Folha de Ponto e Solicitações</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://leismunicipais.com.br/prefeitura/ro/cacoal" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-search"></i>
+                                      </span>
+                  <span class="qs-card-label">Legislação Municipal</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://cacoal.ro.gov.br/semplan.php" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-map"></i>
+                                      </span>
+                  <span class="qs-card-label">Revisão do Plano Diretor</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://cacoal.oxy.elotech.com.br/cidadao/" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-cash-coin"></i>
+                                      </span>
+                  <span class="qs-card-label">Emissão de ITBI</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://cacoalro.webiss.com.br/" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-file-earmark-text-fill"></i>
+                                      </span>
+                  <span class="qs-card-label">Nota Fiscal</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://cacoal.ro.gov.br/concursos_publicos.php?q=&amp;ano=2024&amp;tipo=CONCURSO_PUBLICO&amp;status=" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-award"></i>
+                                      </span>
+                  <span class="qs-card-label">Concurso Público</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://transparencia.cacoal.ro.gov.br/portaltransparencia/1/esic" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-info-circle"></i>
+                                      </span>
+                  <span class="qs-card-label">E-SIC - Acesso à Informação</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://webmail.cacoal.ro.gov.br/" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-envelope"></i>
+                                      </span>
+                  <span class="qs-card-label">Webmail Institucional</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://cacoal.ro.gov.br/semplan.php" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-building"></i>
+                                      </span>
+                  <span class="qs-card-label">Carta de Serviços - Sec. de Planejamento</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="/ouvidoria.php" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-chat-left-text"></i>
+                                      </span>
+                  <span class="qs-card-label">Ouvidoria</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://transparencia.cacoal.ro.gov.br/portaltransparencia/1/obraspublicas" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-building"></i>
+                                      </span>
+                  <span class="qs-card-label">Obras</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://radardatransparencia.atricon.org.br/" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-bar-chart-line"></i>
+                                      </span>
+                  <span class="qs-card-label">Radar da Transparência</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://sigaobusao.cacoal.ro.gov.br/" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-bus-front"></i>
+                                      </span>
+                  <span class="qs-card-label">Siga o Busão</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://procon.cacoal.ro.gov.br" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-shield-check"></i>
+                                      </span>
+                  <span class="qs-card-label">PROCON - Cacoal</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://cacoal.ro.gov.br/governodigital.php" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-tools"></i>
+                                      </span>
+                  <span class="qs-card-label">Governo Digital Municipal</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="http://dioc.cacoal.ro.gov.br" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-newspaper"></i>
+                                      </span>
+                  <span class="qs-card-label">DIOC - Diário Oficial de Cacoal</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="http://www.cgm.cacoal.ro.gov.br/cgm" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-bank"></i>
+                                      </span>
+                  <span class="qs-card-label">Controladoria Geral do Município</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://sei.cacoal.ro.gov.br" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-pen"></i>
+                                      </span>
+                  <span class="qs-card-label">Sei Cacoal / Acessso</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://siscac.com.br" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-graph-up"></i>
+                                      </span>
+                  <span class="qs-card-label">SISCAC - Dados Econômicos</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://tributos.cacoal.ro.gov.br/portal-contribuinte/emissao-certidoes" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-file-earmark-text"></i>
+                                      </span>
+                  <span class="qs-card-label">Certidão Negativa de Tributos</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://acesso.cacoal.eloweb.net/" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-laptop"></i>
+                                      </span>
+                  <span class="qs-card-label">EloWeb - Sistema Web</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://cacoal.ro.gov.br/telefones_uteis.php" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-telephone"></i>
+                                      </span>
+                  <span class="qs-card-label">Telefones Úteis</span>
+                </a>
+              </div>
+                          <div class="col-4 col-md-3">
+                <a href="https://cidadedigital.cacoal.ro.gov.br/os/index_tiinterna.php" class="qs-card">
+                  <span class="qs-card-icon">
+                                          <i class="bi bi-tools"></i>
+                                      </span>
+                  <span class="qs-card-label">Ordens de Serviços de TI</span>
+                </a>
+              </div>
+                              </div>
+
+        <div class="row g-2 mt-2">
+          <div class="col-12">
+            <a href="servicos.php" class="qs-card qs-card-more w-100 d-flex justify-content-center">
+              <span class="qs-card-label">Carta Completa de serviços</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<main id="conteudo">
+
+  <section class="help-section">
+    <div class="container">
+      <div class="row mb-3">
+        <div class="col-lg-8">
+          <h2 class="h4 mb-1">Em que podemos te ajudar?</h2>
+          <p class="mb-2 text-muted">Escolha de forma rápida o serviço que você procura.</p>
+        </div>
+      </div>
+
+      <ul class="nav nav-pills help-tabs mb-3" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="tab-mais" data-bs-toggle="pill" data-bs-target="#painel-mais" type="button" role="tab">
+            Mais acessados
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tab-transparencia" data-bs-toggle="pill" data-bs-target="#painel-transparencia" type="button" role="tab">
+            Transparência
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tab-cidadao" data-bs-toggle="pill" data-bs-target="#painel-cidadao" type="button" role="tab">
+            Cidadão
+          </button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="tab-servidor" data-bs-toggle="pill" data-bs-target="#painel-servidor" type="button" role="tab">
+            Servidor
+          </button>
+        </li>
+      </ul>
+
+      <div class="tab-content">
+        
+                  <div class="tab-pane fade show active"
+               id="painel-mais"
+               role="tabpanel">
+            <div class="row g-2">
+                                                <div class="col-12 col-md-4">
+                    <a href="https://transparencia.cacoal.ro.gov.br/portaltransparencia/1/" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-search"></i></span>
+                                            Portal da Transparência                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://cacoal.ro.gov.br/semusa.php" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-heart-pulse"></i></span>
+                                            Saúde – unidades e horários                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="/educacao-matriculas-escolas" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-mortarboard"></i></span>
+                                            Educação – matrículas e escolas                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://cidadedigital.cacoal.ro.gov.br/os/index_tiinterna.php" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-tools"></i></span>
+                                            Ordens de Serviços de TI                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://cacoal.ro.gov.br/satisfacao.php" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-chat"></i></span>
+                                            Pesquisa de Satisfação                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://cacoal.ro.gov.br/semplan.php" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-map"></i></span>
+                                            Serviços do Planejamento                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://semast.cacoal.ro.gov.br/assistencia" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-house-heart"></i></span>
+                                            SEMAST - Minha Casa Minha Vida 2026                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://rh.cacoal.ro.gov.br/dashboard_organograma_geral1.php" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-diagram-3"></i></span>
+                                            Estrutura Organizacional                    </a>
+                  </div>
+                                          </div>
+          </div>
+                  <div class="tab-pane fade "
+               id="painel-transparencia"
+               role="tabpanel">
+            <div class="row g-2">
+                                                <div class="col-12 col-md-4">
+                    <a href="https://transparencia.cacoal.ro.gov.br/portaltransparencia/1/publicacoes/1241" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-clipboard-dat"></i></span>
+                                            Prestação de contas                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://transparencia.cacoal.ro.gov.br/portaltransparencia/1/licitacoes" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-hammer"></i></span>
+                                            Licitações                    </a>
+                  </div>
+                                          </div>
+          </div>
+                  <div class="tab-pane fade "
+               id="painel-cidadao"
+               role="tabpanel">
+            <div class="row g-2">
+                                                <div class="col-12 col-md-4">
+                    <a href="https://cacoal.ro.gov.br/semusa.php" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-heart-pulse"></i></span>
+                                            Serviços de saúde                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="/cidadao/educacao" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-mortarboard"></i></span>
+                                            Serviços de educação                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://semast.cacoal.ro.gov.br/assistencia/" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-people-heart"></i></span>
+                                            Assistência social                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://cacoal.ro.gov.br/satisfacao.php" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-chat"></i></span>
+                                            Pesquisa de Satisfação                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://rh.cacoal.ro.gov.br/_login-portal.php" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-diagram-3"></i></span>
+                                            Estrutura Organizacional                    </a>
+                  </div>
+                                          </div>
+          </div>
+                  <div class="tab-pane fade "
+               id="painel-servidor"
+               role="tabpanel">
+            <div class="row g-2">
+                                                <div class="col-12 col-md-4">
+                    <a href="https://apps.cacoal.ro.gov.br/portalrh" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-person-badge"></i></span>
+                                            Portal do Servidor                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://apps.cacoal.ro.gov.br/portalrh" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-person-badge"></i></span>
+                                            Contracheque on-line                    </a>
+                  </div>
+                                  <div class="col-12 col-md-4">
+                    <a href="https://rh.cacoal.ro.gov.br/_login-portal.php" class="help-card">
+                                              <span class="help-icon"><i class="bi bi-diagram-3"></i></span>
+                                            RH - Folha de Ponto e Solicitações                    </a>
+                  </div>
+                                          </div>
+          </div>
+              </div>
+
+              <div class="mt-4">
+          <button class="home-secretarias-pill d-flex align-items-center gap-2 px-3 py-2"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#home-secretarias-collapse"
+                  aria-expanded="false"
+                  aria-controls="home-secretarias-collapse">
+            <i class="bi bi-building"></i>
+            <span>Secretarias e órgãos municipais</span>
+            <span class="ms-auto small d-none d-sm-inline">tocar para ver lista</span>
+            <i class="bi bi-chevron-down"></i>
+          </button>
+
+          <div class="collapse mt-2" id="home-secretarias-collapse">
+            <div class="card border-0 shadow-sm">
+              <div class="card-body py-3">
+                <div class="row g-2">
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=1"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Administração                                                      <span class="badge bg-light text-muted border ms-1 small">SEMAD</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=2"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Fazenda                                                      <span class="badge bg-light text-muted border ms-1 small">SEMFAZ</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="https://cacoal.ro.gov.br/semusa.php"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Saúde                                                      <span class="badge bg-light text-muted border ms-1 small">SEMUSA</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="https://cacoal.ro.gov.br/semplan.php"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Planejamento                                                      <span class="badge bg-light text-muted border ms-1 small">SEMPLAN</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=5"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Desenvolvimento Econômico e Inovação                                                      <span class="badge bg-light text-muted border ms-1 small">SEMDEC</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=6"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Procuradoria Geral do Município                                                      <span class="badge bg-light text-muted border ms-1 small">PGM</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=7"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Superintendência de Licitações                                                      <span class="badge bg-light text-muted border ms-1 small">SUPEL</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=8"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Controladoria Geral do Município                                                      <span class="badge bg-light text-muted border ms-1 small">CGM</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=9"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Educação                                                      <span class="badge bg-light text-muted border ms-1 small">SEMED</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=10"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Transportes e Trânsito                                                      <span class="badge bg-light text-muted border ms-1 small">SEMTTRAN</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="https://cacoal.ro.gov.br/semma.php"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Meio Ambiente                                                      <span class="badge bg-light text-muted border ms-1 small">SEMMA</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=12"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Obras e Serviços Públicos                                                      <span class="badge bg-light text-muted border ms-1 small">SEMOSP</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=13"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Gabinete do Prefeito                                                      <span class="badge bg-light text-muted border ms-1 small">GABINETE</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=14"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Superitendêcia de Comunicação                                                      <span class="badge bg-light text-muted border ms-1 small">ASCOM</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="https://cacoal.ro.gov.br/semc.php"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Agricultura                                                      <span class="badge bg-light text-muted border ms-1 small">SEMAGRI</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=16"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Assistência Social e Trabalho                                                      <span class="badge bg-light text-muted border ms-1 small">SEMAST</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="https://cacoal.ro.gov.br/semc.php"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Secretaria Municipal de Cultura                                                      <span class="badge bg-light text-muted border ms-1 small">SEMC</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                      <div class="col-12 col-sm-6 col-lg-4">
+                      <a href="secretarias.php?id=18"
+                         class="help-card d-flex align-items-center justify-content-between">
+                        <span>
+                          Serviço Autônomo de Água e Esgoto                                                      <span class="badge bg-light text-muted border ms-1 small">SAAE</span>
+                                                  </span>
+                        <i class="bi bi-arrow-right-short"></i>
+                      </a>
+                    </div>
+                                  </div>
+
+                <div class="mt-2">
+                  <a href="secretarias.php" class="small text-success fw-semibold">Ver página completa de secretarias</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      
+    </div>
+  </section>
+
+
+    <section class="cacoal-numeros-home" aria-labelledby="cacoalNumerosTitulo">
+    <div class="container">
+
+      <div class="cacoal-numeros-head">
+        <div>
+          <span class="cacoal-numeros-kicker">Panorama municipal</span>
+          <h2 id="cacoalNumerosTitulo">Cacoal em números</h2>
+          <p>Uma prévia dos principais indicadores do Município.</p>
+        </div>
+
+        <a href="https://cacoal.ro.gov.br/panorama.php"
+           class="btn btn-success cacoal-panorama-btn">
+          Ver panorama completo
+          <i class="bi bi-arrow-right ms-1"></i>
+        </a>
+      </div>
+
+      <div class="row g-2 cacoal-numeros-grid">
+                  <div class="col-6 col-md-4 col-lg-3 col-xl">
+            <article class="cacoal-numero-card">
+              <span class="cacoal-numero-icon">
+                <i class="bi bi-people-fill"></i>
+              </span>
+
+              <div class="cacoal-numero-content">
+                <strong class="cacoal-numero-valor">
+                  97.637                </strong>
+
+                <h3>População estimada</h3>
+              </div>
+            </article>
+          </div>
+                  <div class="col-6 col-md-4 col-lg-3 col-xl">
+            <article class="cacoal-numero-card">
+              <span class="cacoal-numero-icon">
+                <i class="bi bi-graph-up-arrow"></i>
+              </span>
+
+              <div class="cacoal-numero-content">
+                <strong class="cacoal-numero-valor">
+                  R$ 32.313,26                </strong>
+
+                <h3>PIB per capita</h3>
+              </div>
+            </article>
+          </div>
+                  <div class="col-6 col-md-4 col-lg-3 col-xl">
+            <article class="cacoal-numero-card">
+              <span class="cacoal-numero-icon">
+                <i class="bi bi-cash-stack"></i>
+              </span>
+
+              <div class="cacoal-numero-content">
+                <strong class="cacoal-numero-valor">
+                  R$ 2,8 bilhões                </strong>
+
+                <h3>PIB nominal</h3>
+              </div>
+            </article>
+          </div>
+                  <div class="col-6 col-md-4 col-lg-3 col-xl">
+            <article class="cacoal-numero-card">
+              <span class="cacoal-numero-icon">
+                <i class="bi bi-buildings-fill"></i>
+              </span>
+
+              <div class="cacoal-numero-content">
+                <strong class="cacoal-numero-valor">
+                  +10                </strong>
+
+                <h3>Instituições de ensino superior</h3>
+              </div>
+            </article>
+          </div>
+                  <div class="col-6 col-md-4 col-lg-3 col-xl">
+            <article class="cacoal-numero-card">
+              <span class="cacoal-numero-icon">
+                <i class="bi bi-cup-hot-fill"></i>
+              </span>
+
+              <div class="cacoal-numero-content">
+                <strong class="cacoal-numero-valor">
+                  17.664                </strong>
+
+                <h3>Produção de café</h3>
+              </div>
+            </article>
+          </div>
+                  <div class="col-6 col-md-4 col-lg-3 col-xl">
+            <article class="cacoal-numero-card">
+              <span class="cacoal-numero-icon">
+                <i class="bi bi-trophy-fill"></i>
+              </span>
+
+              <div class="cacoal-numero-content">
+                <strong class="cacoal-numero-valor">
+                  2º lugar                </strong>
+
+                <h3>Ranking estadual do café</h3>
+              </div>
+            </article>
+          </div>
+                  <div class="col-6 col-md-4 col-lg-3 col-xl">
+            <article class="cacoal-numero-card">
+              <span class="cacoal-numero-icon">
+                <i class="bi bi-building-check"></i>
+              </span>
+
+              <div class="cacoal-numero-content">
+                <strong class="cacoal-numero-valor">
+                  1.752                </strong>
+
+                <h3>Alvarás de construção</h3>
+              </div>
+            </article>
+          </div>
+                  <div class="col-6 col-md-4 col-lg-3 col-xl">
+            <article class="cacoal-numero-card">
+              <span class="cacoal-numero-icon">
+                <i class="bi bi-buildings"></i>
+              </span>
+
+              <div class="cacoal-numero-content">
+                <strong class="cacoal-numero-valor">
+                  13                </strong>
+
+                <h3>Novos empreendimentos imobiliários</h3>
+              </div>
+            </article>
+          </div>
+              </div>
+
+    </div>
+  </section>
+  
+  
+  <section class="news-section home-news-revised">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+          <h2 class="h4 mb-1">Novidades</h2>
+          <p class="text-muted mb-0">Acompanhe as principais notícias da Prefeitura de Cacoal.</p>
+        </div>
+        <a href="noticias.php" class="small text-success fw-semibold d-none d-sm-inline">Ver todas as notícias</a>
+      </div>
+
+      <div class="row g-3 home-news-grid">
+                                          <div class="col-12 col-md-6 col-lg-4">
+              <a href="noticia.php?slug=cacoal-reforca-convocacao-de-familias-para-cadastro-de-novos-alunos-na-rede-municipal-em-2027" class="news-card-link">
+                <article class="news-card home-news-card h-100">
+                  <div class="news-image home-news-image"
+                                                style="background-image:url('https://cacoal.ro.gov.br/assets/noticias/img/capa_20261124101842_92114b47.webp');"
+                         role="img"
+                         aria-label="Cacoal reforça convocação de famílias para cadastro de novos alunos na rede municipal em 2027"
+                       >
+                                      </div>
+                  <div class="news-body">
+                    <span class="news-tag">Notícia</span>
+                    <div class="news-meta">24 Nov 2026</div>
+                    <h3 class="news-title">Cacoal reforça convocação de famílias para cadastro de novos alunos na rede municipal em 2027</h3>
+
+                    
+                    <span class="news-more">Leia mais</span>
+                  </div>
+                </article>
+              </a>
+            </div>
+                                  <div class="col-12 col-md-6 col-lg-4">
+              <a href="noticia.php?slug=cacoal-conquista-aprovacao-de-unidade-para-recuperacao-de-pacientes-com-sequelas-de-avc-e-acidentes" class="news-card-link">
+                <article class="news-card home-news-card h-100">
+                  <div class="news-image home-news-image"
+                                                style="background-image:url('https://cacoal.ro.gov.br/assets/noticias/img/capa_20261115144340_4f9faabd.webp');"
+                         role="img"
+                         aria-label="Cacoal conquista aprovação de unidade para recuperação de pacientes com sequelas de AVC e acidentes"
+                       >
+                                      </div>
+                  <div class="news-body">
+                    <span class="news-tag">Notícia</span>
+                    <div class="news-meta">15 Nov 2026</div>
+                    <h3 class="news-title">Cacoal conquista aprovação de unidade para recuperação de pacientes com sequelas de AVC e acidentes</h3>
+
+                    
+                    <span class="news-more">Leia mais</span>
+                  </div>
+                </article>
+              </a>
+            </div>
+                                  <div class="col-12 col-md-6 col-lg-4">
+              <a href="noticia.php?slug=educacao-infantil-de-cacoal-ganha-destaque-em-seminario-estadual-em-porto-velho" class="news-card-link">
+                <article class="news-card home-news-card h-100">
+                  <div class="news-image home-news-image"
+                                                style="background-image:url('https://cacoal.ro.gov.br/assets/noticias/img/capa_20261114204259_594396ce.webp');"
+                         role="img"
+                         aria-label="Educação infantil de Cacoal ganha destaque em seminário estadual em Porto Velho"
+                       >
+                                      </div>
+                  <div class="news-body">
+                    <span class="news-tag">Notícia</span>
+                    <div class="news-meta">14 Nov 2026</div>
+                    <h3 class="news-title">Educação infantil de Cacoal ganha destaque em seminário estadual em Porto Velho</h3>
+
+                    
+                    <span class="news-more">Leia mais</span>
+                  </div>
+                </article>
+              </a>
+            </div>
+                                  <div class="col-12 col-md-6 col-lg-4">
+              <a href="noticia.php?slug=cacoal-limpa-atende-seizinha-da-regional-e-bairro-planalto-nesta-terca-feira" class="news-card-link">
+                <article class="news-card home-news-card h-100">
+                  <div class="news-image home-news-image"
+                                                style="background-image:url('https://cacoal.ro.gov.br/assets/noticias/img/capa_20261114172055_85286add.webp');"
+                         role="img"
+                         aria-label="Cacoal + Limpa atende Seizinha da Regional e bairro Planalto nesta terça-feira"
+                       >
+                                      </div>
+                  <div class="news-body">
+                    <span class="news-tag">Notícia</span>
+                    <div class="news-meta">14 Nov 2026</div>
+                    <h3 class="news-title">Cacoal + Limpa atende Seizinha da Regional e bairro Planalto nesta terça-feira</h3>
+
+                    
+                    <span class="news-more">Leia mais</span>
+                  </div>
+                </article>
+              </a>
+            </div>
+                                  <div class="col-12 col-md-6 col-lg-4">
+              <a href="noticia.php?slug=nota-oficial-prefeito-tony-pablo-de-castro-chaves" class="news-card-link">
+                <article class="news-card home-news-card h-100">
+                  <div class="news-image home-news-image"
+                                                style="background-image:url('https://cacoal.ro.gov.br/assets/noticias/img/capa_20261110202721_42e7dd4d.webp');"
+                         role="img"
+                         aria-label="NOTA OFICIAL — PREFEITO TONY PABLO DE CASTRO CHAVES"
+                       >
+                                      </div>
+                  <div class="news-body">
+                    <span class="news-tag">Notícia</span>
+                    <div class="news-meta">10 Nov 2026</div>
+                    <h3 class="news-title">NOTA OFICIAL — PREFEITO TONY PABLO DE CASTRO CHAVES</h3>
+
+                    
+                    <span class="news-more">Leia mais</span>
+                  </div>
+                </article>
+              </a>
+            </div>
+                                  <div class="col-12 col-md-6 col-lg-4">
+              <a href="noticia.php?slug=prefeitura-de-cacoal-realiza-primeira-edicao-do-cacoal-acolhedora-no-distrito-de-riozinho" class="news-card-link">
+                <article class="news-card home-news-card h-100">
+                  <div class="news-image home-news-image"
+                                                style="background-image:url('https://cacoal.ro.gov.br/assets/noticias/img/capa_20261106131832_8603e507.webp');"
+                         role="img"
+                         aria-label="Prefeitura de Cacoal realiza primeira edição do Cacoal+Acolhedora no distrito de Riozinho"
+                       >
+                                      </div>
+                  <div class="news-body">
+                    <span class="news-tag">Notícia</span>
+                    <div class="news-meta">06 Nov 2026</div>
+                    <h3 class="news-title">Prefeitura de Cacoal realiza primeira edição do Cacoal+Acolhedora no distrito de Riozinho</h3>
+
+                    
+                    <span class="news-more">Leia mais</span>
+                  </div>
+                </article>
+              </a>
+            </div>
+                        </div>
+
+      <div class="text-center mt-4">
+        <a href="noticias.php" class="btn btn-outline-success home-news-more-btn">
+          <i class="bi bi-plus-circle me-1"></i>
+          Mostrar mais notícias
+        </a>
+      </div>
+
+              <section class="home-quick-panels mt-5" aria-labelledby="homeQuickPanelsTitle">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <div>
+              <h2 class="h5 mb-1" id="homeQuickPanelsTitle">Painéis rápidos</h2>
+              <p class="text-muted mb-0 small">Acesso direto a informações e serviços municipais.</p>
+            </div>
+          </div>
+
+          <div class="row g-3">
+                                        <div class="col-12 col-md-6 col-lg-4">
+                <a href="https://cacoal.ro.gov.br/secretarias.php"
+                   class="home-quick-panel-card"
+                   target="_blank"
+                   rel="noopener">
+                  <span class="home-quick-panel-icon"><i class="bi bi-speedometer2"></i></span>
+                  <span class="home-quick-panel-content">
+                    <strong>Secretarias e órgãos</strong>
+                                          <small>Descubra as competências, endereços e contatos de toda a estrutura administrativa.</small>
+                                      </span>
+                  <i class="bi bi-arrow-up-right home-quick-panel-arrow"></i>
+                </a>
+              </div>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                <a href="https://cacoal.ro.gov.br/governodigital.php"
+                   class="home-quick-panel-card"
+                   target="_blank"
+                   rel="noopener">
+                  <span class="home-quick-panel-icon"><i class="bi bi-laptop"></i></span>
+                  <span class="home-quick-panel-content">
+                    <strong>Governo Digital Municipal</strong>
+                                          <small>Acesse serviços, soluções e iniciativas de transformação digital do Município.</small>
+                                      </span>
+                  <i class="bi bi-arrow-up-right home-quick-panel-arrow"></i>
+                </a>
+              </div>
+                                        <div class="col-12 col-md-6 col-lg-4">
+                <a href="https://apps.cacoal.ro.gov.br/portalrh/app/login?execution=e3s1"
+                   class="home-quick-panel-card"
+                   target="_blank"
+                   rel="noopener">
+                  <span class="home-quick-panel-icon"><i class="bi bi-person-badge"></i></span>
+                  <span class="home-quick-panel-content">
+                    <strong>Portal do Servidor</strong>
+                                          <small>Consulte contracheques, comprovantes e serviços de Recursos Humanos.</small>
+                                      </span>
+                  <i class="bi bi-arrow-up-right home-quick-panel-arrow"></i>
+                </a>
+              </div>
+                      </div>
+        </section>
+          </div>
+  </section>
+
+  <section class="events-section">
+    <div class="container">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h2 class="h4 mb-0">Calendário de eventos</h2>
+        <a href="eventos.php" class="small text-success fw-semibold">Ver todos os eventos</a>
+      </div>
+
+      <div class="events-strip">
+                  <span class="text-muted small">Nenhum evento futuro cadastrado.</span>
+              </div>
+    </div>
+  </section>
+
+</main>
+
+<nav class="mobile-bottom-nav d-md-none">
+  <div class="mobile-bottom-nav-inner">
+    <a href="index.php" class="mobile-nav-item active">
+      <span class="icon"><i class="bi bi-house-fill"></i></span>
+      <span class="label">Início</span>
+    </a>
+	<a href="https://transparencia.cacoal.ro.gov.br/portaltransparencia/1/"
+   class="mobile-nav-item"
+   target="_blank">
+  <span class="icon">
+    <i class="bi bi-bar-chart-line-fill"></i>
+  </span>
+  <span class="label">Transparência</span>
+</a>
+    <a href="servicos.php" class="mobile-nav-item">
+      <span class="icon"><i class="bi bi-grid-3x3-gap-fill"></i></span>
+      <span class="label">Serviços</span>
+    </a>
+    <a href="noticias.php" class="mobile-nav-item">
+      <span class="icon"><i class="bi bi-newspaper"></i></span>
+      <span class="label">Notícias</span>
+    </a>
+    <a href="eventos.php" class="mobile-nav-item">
+      <span class="icon"><i class="bi bi-calendar-event-fill"></i></span>
+      <span class="label">Eventos</span>
+    </a>
+  </div>
+</nav>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+if (document.querySelector(".bannerHeroSwiper")) {
+  const bannerHeroSwiper = new Swiper(".bannerHeroSwiper", {
+    loop: true,
+    speed: 800,                              // transição suave (deslizante)
+    autoplay: { delay: 6000, disableOnInteraction: false },
+    slidesPerView: 1,
+    autoHeight: true,
+    observer: true,
+    observeParents: true,
+    pagination: {
+      el: ".bannerHeroSwiper .swiper-pagination",
+      clickable: true
+    }
+  });
+
+  document.querySelectorAll('.bannerHeroSwiper img').forEach(function(img){
+    if (img.complete) {
+      bannerHeroSwiper.updateAutoHeight(0);
+      bannerHeroSwiper.update();
+    } else {
+      img.addEventListener('load', function(){
+        bannerHeroSwiper.updateAutoHeight(0);
+        bannerHeroSwiper.update();
+      }, { once:true });
+    }
+  });
+
+  window.addEventListener('resize', function(){
+    bannerHeroSwiper.updateAutoHeight(0);
+    bannerHeroSwiper.update();
+  });
+}
+
+if (document.querySelector(".bannerMeioSwiper")) {
+  new Swiper(".bannerMeioSwiper", {
+    loop: true,
+    speed: 800,                              // transição suave
+    autoplay: { delay: 6000, disableOnInteraction: false },
+    spaceBetween: 24,
+    slidesPerView: 1,
+    pagination: {
+      el: ".bannerMeioSwiper .swiper-pagination",
+      clickable: true
+    },
+    breakpoints: {
+      768: { slidesPerView: 2 }
+    }
+  });
+}
+</script>
+
+<script>
+(function(){
+  var startX = 0, startY = 0;
+
+  document.addEventListener('pointerdown', function(ev){
+    startX = ev.clientX || 0;
+    startY = ev.clientY || 0;
+  }, { passive: true });
+
+  document.addEventListener('click', function(ev){
+    var a = ev.target.closest(
+      '.quick-services-grid .qs-card, .qs-card-more, .help-card'
+    );
+    if (!a) return;
+
+    var dx = Math.abs((ev.clientX || 0) - startX);
+    var dy = Math.abs((ev.clientY || 0) - startY);
+
+    if (dx > 10 || dy > 10) {
+      ev.preventDefault();
+      return;
+    }
+
+    var href = a.getAttribute('href');
+    if (!href || href === '#') {
+      ev.preventDefault();
+    }
+  }, true);
+})();
+</script>
+
+
+<script>
+(function(){
+  var popup = document.getElementById('sitePopup');
+  if (!popup) return;
+
+  var id = popup.getAttribute('data-popup-id') || '0';
+  var once = popup.getAttribute('data-once') === '1';
+  var key = 'popup_home_fechado_' + id;
+
+  if (once && sessionStorage.getItem(key) === '1') return;
+
+  function fechar(){
+    popup.setAttribute('hidden', 'hidden');
+    if (once) sessionStorage.setItem(key, '1');
+  }
+
+  setTimeout(function(){
+    popup.removeAttribute('hidden');
+  }, 700);
+
+  popup.addEventListener('click', function(ev){
+    if (ev.target === popup) fechar();
+  });
+
+  var btn = popup.querySelector('.site-popup-close');
+  if (btn) btn.addEventListener('click', fechar);
+
+  document.addEventListener('keydown', function(ev){
+    if (ev.key === 'Escape' && !popup.hasAttribute('hidden')) fechar();
+  });
+})();
+</script>
+
+<style>
+  .qs-card{ border-radius: 0 22px 2px 0 !important; }
+  .qs-card-more{ border-radius: 0 22px 2px 0 !important; }
+  .quick-services-grid .qs-card{ height:100%; }
+
+  .banner-hero-section{
+    width:100%;
+    margin:0;
+    padding:0;
+    position:relative;
+    z-index:1;
+    overflow:visible;
+    line-height:0;
+    clear:both;
+  }
+
+  /* Some a listra decorativa do .hero (feita pra ser coberta pela PRÓXIMA seção)
+     só quando o banner vier logo em seguida — assim o banner nunca precisa
+     ser deslocado/cortado pra escondê-la. */
+  .hero:has(+ .banner-hero-section)::after{
+    display:none;
+  }
+
+  .banner-hero-section .container-fluid{
+    width:100%;
+    max-width:100%;
+    padding-left:0 !important;
+    padding-right:0 !important;
+    margin-left:0 !important;
+    margin-right:0 !important;
+  }
+
+  .bannerHeroSwiper{
+    width:100%;
+    height:auto !important;
+    padding-bottom:0 !important;
+    margin:0;
+    overflow:visible;
+  }
+
+  .bannerHeroSwiper .swiper-wrapper{
+    width:100%;
+    height:auto !important;
+    display:flex;
+    align-items:flex-start;
+  }
+
+  .bannerHeroSwiper .swiper-slide,
+  .bannerHeroSwiper a,
+  .bannerHeroSwiper picture{
+    width:100%;
+    height:auto !important;
+    display:block;
+  }
+
+  .banner-home-img{
+    width:100%;
+    max-width:100%;
+    height:auto !important;
+    max-height:none !important;
+    display:block;
+    object-fit:contain !important;
+    object-position:center center;
+    border-radius:0 !important;
+    box-shadow:none !important;
+  }
+
+  .bannerHeroSwiper .swiper-pagination{
+    display:none;
+  }
+
+  /* ── card de notícia clicável por inteiro ── */
+  .news-card-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+  }
+
+  .news-card-link .news-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .news-card-link:hover .news-card {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12) !important;
+  }
+
+  .news-card-link:hover .news-more {
+    text-decoration: underline;
+  }
+
+  .banner-middle-section img{
+    object-fit:cover;
+    width:100%;
+    height:auto;
+  }
+
+  .swiper{
+    width:100%;
+  }
+
+  .swiper-slide{
+    display:flex;
+  }
+
+  @media (max-width: 767.98px){
+    body{ padding-bottom:70px; }
+
+    .banner-hero-section{
+      margin-top:0;  /* sem margem negativa — evita cortar a imagem do banner */
+    }
+
+    .banner-home-img{
+      width:100%;
+      max-width:100%;
+      height:auto !important;
+      margin:0;
+      object-fit:contain !important;
+    }
+  }
+
+  @media (max-width: 575.98px){
+    .quick-services-board{ padding-inline:12px; }
+
+    .quick-services-grid > [class*="col-"]{
+      display:flex;
+    }
+
+    .quick-services-grid .qs-card{
+      flex-direction:column;
+      align-items:flex-start;
+      justify-content:center;
+      width:100%;
+      min-height:90px;
+      border-radius:16px;
+      font-size:.8rem;
+      padding:.55rem .6rem;
+    }
+
+    .quick-services-grid .qs-card-icon{
+      font-size:1.1rem;
+      margin-bottom:.25rem;
+    }
+
+    .quick-services-grid .qs-card-label{
+      display:block;
+      white-space:normal;
+      line-height:1.15;
+    }
+
+    .quick-services-grid .qs-card-label::before{
+      display:none;
+    }
+
+    .help-card{
+      font-size:.9rem;
+      padding:.6rem .75rem;
+    }
+
+    .hero-title{
+      font-size:1.6rem;
+    }
+  }
+
+  .events-strip{
+    display:flex;
+    gap:.75rem;
+    overflow-x:auto;
+    padding-bottom:.25rem;
+    scroll-snap-type:x mandatory;
+  }
+
+  .events-strip::-webkit-scrollbar{
+    height:4px;
+  }
+
+  .events-strip::-webkit-scrollbar-thumb{
+    background:rgba(0,0,0,.15);
+    border-radius:999px;
+  }
+
+  .event-pill{
+    flex:0 0 auto;
+    scroll-snap-align:start;
+  }
+
+  .mobile-bottom-nav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index:1040;
+    padding:0 .8rem .6rem;
+    pointer-events:none;
+  }
+
+  .mobile-bottom-nav-inner{
+    pointer-events:auto;
+    max-width:540px;
+    margin:0 auto;
+    height:54px;
+    border-radius:999px;
+    background:linear-gradient(135deg,#15803d,#22c55e);
+    box-shadow:0 10px 30px rgba(22,163,74,.45);
+    display:flex;
+    align-items:stretch;
+    overflow:hidden;
+  }
+
+  .mobile-nav-item{
+    flex:1;
+    text-align:center;
+    font-size:.75rem;
+    color:#ecfdf3;
+    text-decoration:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:2px;
+    opacity:.9;
+  }
+
+  .mobile-nav-item .icon{
+    font-size:1rem;
+    line-height:1;
+  }
+
+  .mobile-nav-item.active{
+    background:rgba(255,255,255,.18);
+    font-weight:600;
+    opacity:1;
+  }
+
+  @media (min-width: 768px){
+    .mobile-bottom-nav{
+      display:none;
+    }
+  }
+
+  .quick-services-wrapper{
+    margin-top:0 !important;
+    transform:none !important;
+    top:auto !important;
+    clear:both;
+  }
+
+  .quick-services-area,
+  .quick-services-board,
+  .quick-services-grid{
+    margin-top:0 !important;
+    transform:none !important;
+    top:auto !important;
+  }
+
+  .quick-services-wrapper,
+  .quick-services-area,
+  .quick-services-board,
+  .quick-services-grid{
+    position:relative;
+    z-index:2;
+  }
+
+  .qs-card,
+  .help-card{
+    position:relative;
+    z-index:5;
+    cursor:pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .hero::before,
+  .hero::after,
+  .quick-services-wrapper::before,
+  .quick-services-wrapper::after,
+  .quick-services-area::before,
+  .quick-services-area::after,
+  .quick-services-board::before,
+  .quick-services-board::after{
+    pointer-events:none !important;
+  }
+
+
+  /* POPUP HOME MENOR / QUADRADO */
+  .site-popup-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(15,23,42,.58);
+    z-index:5000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    backdrop-filter:blur(2px);
+  }
+
+  .site-popup-overlay[hidden]{
+    display:none!important;
+  }
+
+  .site-popup-card{
+    width:520px;
+    max-width:calc(100vw - 32px);
+    max-height:88vh;
+    overflow:auto;
+    background:#fff;
+    border-radius:16px;
+    box-shadow:0 24px 70px rgba(0,0,0,.32);
+    position:relative;
+    animation:popupZoom .22s ease-out;
+  }
+
+  .site-popup-close{
+    position:absolute;
+    right:10px;
+    top:10px;
+    z-index:3;
+    width:36px;
+    height:36px;
+    border:0;
+    border-radius:999px;
+    background:rgba(15,23,42,.88);
+    color:#fff;
+    font-size:27px;
+    line-height:1;
+    cursor:pointer;
+  }
+
+  .site-popup-imglink{
+    display:block;
+    text-decoration:none;
+  }
+
+  .site-popup-image{
+    display:block;
+    background:#f8fafc;
+    border-radius:22px 22px 0 0;
+    overflow:hidden;
+  }
+
+  .site-popup-image img{
+    width:100%;
+    aspect-ratio:1/1;
+    object-fit:cover;
+    display:block;
+  }
+
+  .site-popup-content{
+    padding:19px 22px 23px;
+    text-align:center;
+  }
+
+  .site-popup-tag{
+    display:inline-block;
+    background:#e9f8ef;
+    color:#087a49;
+    border-radius:999px;
+    padding:6px 12px;
+    font-weight:700;
+    font-size:12px;
+    margin-bottom:8px;
+  }
+
+  .site-popup-content h2{
+    font-size:clamp(21px,3vw,27px);
+    line-height:1.15;
+    color:#063f28;
+    font-weight:800;
+    margin:0 0 8px;
+  }
+
+  .site-popup-content p{
+    font-size:15px;
+    color:#53615b;
+    line-height:1.45;
+    margin:0 auto 16px;
+  }
+
+  .site-popup-btn{
+    display:inline-block;
+    width:100%;
+    background:#07894f;
+    color:#fff!important;
+    text-decoration:none;
+    border-radius:13px;
+    padding:12px 18px;
+    font-weight:800;
+    box-shadow:0 10px 22px rgba(7,137,79,.22);
+  }
+
+  .site-popup-btn:hover{
+    text-decoration:none;
+    filter:brightness(.96);
+  }
+
+  @keyframes popupZoom{
+    from{opacity:0;transform:scale(.94) translateY(10px);}
+    to{opacity:1;transform:scale(1) translateY(0);}
+  }
+
+  @media(max-width:768px){
+    .site-popup-overlay{
+      padding:14px;
+    }
+
+    .site-popup-card{
+      width:82vw;
+      max-width:420px;
+      border-radius:20px;
+      max-height:86vh;
+    }
+
+    .site-popup-image{
+      border-radius:20px 20px 0 0;
+    }
+
+    .site-popup-content{
+      padding:16px 16px 18px;
+    }
+
+    .site-popup-content h2{
+      font-size:21px;
+    }
+
+    .site-popup-content p{
+      font-size:14px;
+    }
+  }
+
+  @media(max-width:380px){
+    .site-popup-card{
+      width:88vw;
+    }
+  }
+
+
+  /* NOTÍCIAS DA HOME — capa inteira, três colunas e painéis abaixo */
+  .home-news-revised{
+    padding-top:2.5rem;
+    padding-bottom:2rem;
+  }
+
+  .home-news-grid > [class*="col-"]{
+    display:flex;
+  }
+
+  .home-news-card{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+
+  .home-news-card .news-body{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+  }
+
+  .home-news-card .news-more{
+    margin-top:auto;
+  }
+
+  .home-news-image{
+    width:100%;
+    height:210px;
+    background-color:#f4f7f5;
+    background-repeat:no-repeat;
+    background-position:center;
+    background-size:contain;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+  }
+
+  .home-news-placeholder{
+    width:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#94a3b8;
+    font-size:2.2rem;
+    background:linear-gradient(135deg,#f8fafc,#eef4f0);
+  }
+
+  .home-news-summary{
+    color:#64748b;
+    font-size:.92rem;
+    line-height:1.45;
+  }
+
+  .home-news-more-btn{
+    min-width:230px;
+    border-radius:999px;
+    font-weight:700;
+    padding:.7rem 1.25rem;
+  }
+
+  .home-quick-panels{
+    border-top:1px solid #e5e7eb;
+    padding-top:2rem;
+  }
+
+  .home-quick-panel-card{
+    height:100%;
+    display:flex;
+    align-items:center;
+    gap:.85rem;
+    padding:1rem;
+    border:1px solid #dfe7e2;
+    border-radius:16px;
+    background:#fff;
+    color:#17231d;
+    text-decoration:none;
+    cursor:default;
+    box-shadow:0 4px 16px rgba(15,23,42,.05);
+    transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+  }
+
+  .home-quick-panel-card:hover{
+    color:#087a49;
+    border-color:#9fd6b9;
+    transform:translateY(-2px);
+    box-shadow:0 10px 24px rgba(15,23,42,.09);
+  }
+
+  .home-quick-panel-icon{
+    flex:0 0 42px;
+    width:42px;
+    height:42px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:12px;
+    background:#eaf8f0;
+    color:#07894f;
+    font-size:1.2rem;
+  }
+
+  .home-quick-panel-content{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+    gap:.18rem;
+  }
+
+  .home-quick-panel-content strong{
+    line-height:1.2;
+  }
+
+  .home-quick-panel-content small{
+    color:#64748b;
+    line-height:1.35;
+  }
+
+  .home-quick-panel-arrow{
+    margin-left:auto;
+    color:#07894f;
+  }
+
+  @media(max-width:767.98px){
+    .home-news-image{height:190px;}
+    .home-news-revised{padding-top:2rem;}
+  }
+
+  /* CACOAL EM NÚMEROS — PRÉVIA COMPACTA */
+  .cacoal-numeros-home{
+    padding:28px 0;
+    background:
+      radial-gradient(circle at 92% 15%, rgba(250,204,21,.13), transparent 22%),
+      radial-gradient(circle at 8% 80%, rgba(59,130,246,.08), transparent 20%),
+      linear-gradient(135deg,#f7fcf9,#eef8f2);
+    border-top:1px solid #e0ece5;
+    border-bottom:1px solid #e0ece5;
+  }
+
+  .cacoal-numeros-head{
+    display:flex;
+    align-items:flex-end;
+    justify-content:space-between;
+    gap:1rem;
+    margin-bottom:14px;
+  }
+
+  .cacoal-numeros-kicker{
+    display:block;
+    color:#087a49;
+    font-size:.7rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    margin-bottom:2px;
+  }
+
+  .cacoal-numeros-head h2{
+    margin:0 0 2px;
+    color:#173d2f;
+    font-weight:800;
+    font-size:clamp(1.35rem,2.5vw,1.8rem);
+  }
+
+  .cacoal-numeros-head p{
+    margin:0;
+    color:#66756f;
+    font-size:.88rem;
+  }
+
+  .cacoal-panorama-btn{
+    flex:0 0 auto;
+    border-radius:999px;
+    padding:.58rem 1rem;
+    font-size:.85rem;
+    font-weight:750;
+    white-space:nowrap;
+  }
+
+  .cacoal-numeros-grid > [class*="col-"]{
+    display:flex;
+  }
+
+  .cacoal-numero-card{
+    width:100%;
+    min-height:92px;
+    padding:10px 11px;
+    border:1px solid #dce8e2;
+    border-radius:13px;
+    background:#fff;
+    color:#173d2f;
+    box-shadow:0 5px 14px rgba(15,23,42,.045);
+    display:flex;
+    align-items:center;
+    gap:9px;
+    cursor:default;
+  }
+
+  .cacoal-numero-icon{
+    flex:0 0 31px;
+    width:31px;
+    height:31px;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:#087a49;
+    background:#e9f8ef;
+    font-size:.88rem;
+  }
+
+  .cacoal-numero-content{
+    min-width:0;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .cacoal-numero-valor{
+    display:block;
+    color:#173d2f;
+    font-size:clamp(1rem,1.6vw,1.3rem);
+    line-height:1.05;
+    font-weight:850;
+  }
+
+  .cacoal-numero-card h3{
+    margin:4px 0 0;
+    color:#466057;
+    font-size:.73rem;
+    line-height:1.15;
+    font-weight:700;
+  }
+
+  @media(max-width:767.98px){
+    .cacoal-numeros-home{
+      padding:24px 0;
+    }
+
+    .cacoal-numeros-head{
+      align-items:flex-start;
+      flex-direction:column;
+      margin-bottom:12px;
+    }
+
+    .cacoal-panorama-btn{
+      width:100%;
+      text-align:center;
+    }
+
+    .cacoal-numero-card{
+      min-height:84px;
+      padding:9px;
+    }
+
+    .cacoal-numero-valor{
+      font-size:1rem;
+    }
+
+    .cacoal-numero-card h3{
+      font-size:.68rem;
+    }
+  }
+
+
+</style>
+
+
+<footer id="rodape">
+  <div class="container py-3">
+    <div class="footer-pill">
+
+      <div class="footer-desktop d-none d-md-flex flex-column">
+        <div class="row g-4 mb-3">
+
+          <div class="col-md-4">
+
+            <div class="footer-prefeito">
+              <img
+                src="/img/prefeito-tony-pablo.png"
+                alt="Tony Pablo de Castro Chaves"
+                class="footer-prefeito-foto"
+                loading="lazy"
+                onerror="this.style.display='none'">
+
+              <div class="footer-title">
+                Prefeito Municipal              </div>
+
+              <div class="small mb-3">
+                Tony Pablo de Castro Chaves              </div>
+            </div>
+
+            <div class="footer-title">
+              Endere&ccedil;o
+            </div>
+
+            <div class="small">
+              Rua Anísio Serrão, 2100 - Centro, Cacoal - RO<br>
+              Telefone: (69) 3907-4096<br>
+              E-mail:
+              <a href="/cdn-cgi/l/email-protection#81e2eeeff5e0f5eec1e2e0e2eee0edaff3eeafe6eef7afe3f3" class="text-decoration-underline text-light">
+                <span class="__cf_email__" data-cfemail="32515d5c4653465d725153515d535e1c405d1c555d441c5040">[email&#160;protected]</span>              </a>
+            </div>
+
+          </div>
+
+          <div class="col-md-3">
+            <div class="footer-title">Guia r&aacute;pido</div>
+            <ul class="list-unstyled footer-list small">
+
+              <li>
+                <a href="https://cacoal.ro.gov.br/pagina.php?slug=dpo">
+                  <i class="bi bi-shield-lock"></i> Encarregado de Dados (DPO)
+                </a>
+              </li>
+
+              <li>
+                <a href="/mapa-do-site.php">
+                  <i class="bi bi-diagram-3"></i> Mapa do Site
+                </a>
+              </li>
+
+                              <li>
+                  <a href="/site/ouvidoria.php">
+                                        Ouvidoria                  </a>
+                </li>
+                              <li>
+                  <a href="/faq">
+                                        Perguntas frequentes                  </a>
+                </li>
+                              <li>
+                  <a href="/mapa-do-site">
+                                        Mapa do site                  </a>
+                </li>
+                              <li>
+                  <a href="pagina.php?slug=politica de privacidade">
+                                        Política de privacidade                  </a>
+                </li>
+              
+            </ul>
+          </div>
+
+          <div class="col-md-3">
+            <div class="footer-title">Hor&aacute;rio de atendimento</div>
+            <div class="small mb-3">
+              Segunda a Sexta, das 07h30 às 13h30            </div>
+
+            <div class="footer-title">Redes sociais</div>
+            <div class="small">
+              <a href="https://www.instagram.com/prefeituradecacoal" class="text-light" target="_blank" rel="noopener">Instagram</a> &bull; <a href="https://www.facebook.com/prefeituradecacoal" class="text-light" target="_blank" rel="noopener">Facebook</a> &bull; <a href="https://www.youtube.com/" class="text-light" target="_blank" rel="noopener">YouTube</a>            </div>
+          </div>
+
+        </div>
+
+        <hr class="border-secondary opacity-50 my-2">
+
+        <div class="d-flex flex-wrap justify-content-between align-items-center footer-bottom mt-2">
+          <div>&copy; Prefeitura Municipal de Cacoal - RO</div>
+          <div>Desenvolvido pela equipe de TI da Prefeitura</div>
+        </div>
+      </div>
+
+      <div class="footer-mobile d-md-none">
+
+        <div class="footer-prefeito footer-prefeito-mobile mb-3 small">
+          <img
+            src="/img/prefeito-tony-pablo.png"
+            alt="Tony Pablo de Castro Chaves"
+            class="footer-prefeito-foto"
+            loading="lazy"
+            onerror="this.style.display='none'">
+
+          <strong>Prefeito Municipal</strong>
+          <span>Tony Pablo de Castro Chaves</span>
+        </div>
+
+        <div class="mb-3 small">
+          <strong>Endere&ccedil;o</strong><br>
+          Rua Anísio Serrão, 2100 - Centro, Cacoal - RO<br>
+          Tel: (69) 3907-4096<br>
+          <a href="/cdn-cgi/l/email-protection#c4a7abaab0a5b0ab84a7a5a7aba5a8eab6abeaa3abb2eaa6b6" class="text-decoration-underline text-light">
+            <span class="__cf_email__" data-cfemail="b8dbd7d6ccd9ccd7f8dbd9dbd7d9d496cad796dfd7ce96daca">[email&#160;protected]</span>          </a>
+        </div>
+
+        <div class="mb-3">
+          <div class="footer-title">Atalhos r&aacute;pidos</div>
+          <div class="d-flex flex-wrap gap-2">
+
+            <a href="https://cacoal.ro.gov.br/pagina.php?slug=dpo"
+               class="btn btn-sm btn-warning text-dark rounded-pill px-3 fw-semibold">
+              <i class="bi bi-shield-lock"></i> DPO
+            </a>
+
+            <a href="/mapa-do-site.php"
+               class="btn btn-sm btn-outline-light rounded-pill px-3">
+              <i class="bi bi-diagram-3"></i> Mapa do Site
+            </a>
+
+                          <a href="/site/ouvidoria.php"
+                 class="btn btn-sm btn-outline-light rounded-pill px-3">
+                Ouvidoria              </a>
+                          <a href="/faq"
+                 class="btn btn-sm btn-outline-light rounded-pill px-3">
+                Perguntas frequentes              </a>
+                          <a href="/mapa-do-site"
+                 class="btn btn-sm btn-outline-light rounded-pill px-3">
+                Mapa do site              </a>
+                          <a href="pagina.php?slug=politica de privacidade"
+                 class="btn btn-sm btn-outline-light rounded-pill px-3">
+                Política de privacidade              </a>
+            
+          </div>
+        </div>
+
+        <div class="mb-3">
+          <div class="footer-title mb-1">Redes sociais</div>
+          <div class="small">
+            <a href="https://www.instagram.com/prefeituradecacoal" class="text-light" target="_blank" rel="noopener">Instagram</a> &bull; <a href="https://www.facebook.com/prefeituradecacoal" class="text-light" target="_blank" rel="noopener">Facebook</a> &bull; <a href="https://www.youtube.com/" class="text-light" target="_blank" rel="noopener">YouTube</a>          </div>
+        </div>
+
+        <hr class="border-secondary opacity-50 my-2">
+
+        <div class="footer-bottom small">
+          &copy; Prefeitura Municipal de Cacoal - RO<br>
+          Desenvolvido pela equipe de TI da Prefeitura
+        </div>
+      </div>
+
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+(function(){
+  let tamanhoFonte = parseInt(localStorage.getItem('pmcFonte') || '100', 10);
+  let contrasteAtivo = localStorage.getItem('pmcContraste') === '1';
+
+  function aplicarFonte(){
+    document.documentElement.style.fontSize = tamanhoFonte + '%';
+    localStorage.setItem('pmcFonte', String(tamanhoFonte));
+  }
+
+  function aplicarContraste(){
+    document.body.classList.toggle('modo-contraste', contrasteAtivo);
+    localStorage.setItem('pmcContraste', contrasteAtivo ? '1' : '0');
+  }
+
+  aplicarFonte();
+  aplicarContraste();
+
+  document.addEventListener('DOMContentLoaded', function(){
+
+    const botoes = document.querySelectorAll('.top-access button');
+
+    const btnAmais = botoes[0] || null;
+    const btnAmenos = botoes[1] || null;
+    const btnContraste = botoes[2] || null;
+
+    const linkLeitor = Array.from(document.querySelectorAll('.top-access a')).find(function(a){
+      return (a.textContent || '').toLowerCase().includes('leitor');
+    });
+
+    if (btnAmais) {
+      btnAmais.addEventListener('click', function(){
+        tamanhoFonte += 10;
+        if (tamanhoFonte > 140) tamanhoFonte = 140;
+        aplicarFonte();
+      });
+    }
+
+    if (btnAmenos) {
+      btnAmenos.addEventListener('click', function(){
+        tamanhoFonte -= 10;
+        if (tamanhoFonte < 80) tamanhoFonte = 80;
+        aplicarFonte();
+      });
+    }
+
+    if (btnContraste) {
+      btnContraste.addEventListener('click', function(){
+        contrasteAtivo = !contrasteAtivo;
+        aplicarContraste();
+      });
+    }
+
+    if (linkLeitor) {
+      linkLeitor.addEventListener('click', function(e){
+        e.preventDefault();
+
+        if (!('speechSynthesis' in window)) {
+          alert('Seu navegador não oferece suporte ao leitor de voz.');
+          return;
+        }
+
+        if (window.speechSynthesis.speaking) {
+          window.speechSynthesis.cancel();
+          return;
+        }
+
+        const area = document.querySelector('#conteudo') || document.body;
+        let texto = area.innerText || '';
+
+        texto = texto.replace(/\s+/g, ' ').trim();
+
+        if (!texto) {
+          texto = 'Não há conteúdo principal para leitura nesta página.';
+        }
+
+        const fala = new SpeechSynthesisUtterance(texto);
+        fala.lang = 'pt-BR';
+        fala.rate = 0.95;
+        fala.pitch = 1;
+
+        window.speechSynthesis.cancel();
+        window.speechSynthesis.speak(fala);
+      });
+    }
+
+  });
+})();
+</script>
+
+<style>
+.footer-title{
+  font-weight:600;
+  margin-bottom:8px;
+}
+
+.footer-list a{
+  color:#fff;
+  text-decoration:none;
+}
+
+.footer-list a:hover{
+  text-decoration:underline;
+}
+
+.footer-list li{
+  margin-bottom:6px;
+}
+
+.footer-list i{
+  margin-right:5px;
+}
+
+
+.footer-prefeito{
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+
+.footer-prefeito-foto{
+  width:96px;
+  height:96px;
+  display:block;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:50%;
+  border:3px solid rgba(255,255,255,.42);
+  outline:2px solid rgba(34,197,94,.75);
+  box-shadow:0 10px 25px rgba(0,0,0,.28);
+  margin-bottom:14px;
+  background:#e5e7eb;
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+
+.footer-prefeito-foto:hover{
+  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 14px 30px rgba(0,0,0,.32);
+}
+
+.footer-prefeito-mobile{
+  align-items:flex-start;
+}
+
+.footer-prefeito-mobile strong,
+.footer-prefeito-mobile span{
+  display:block;
+}
+
+.footer-prefeito-mobile strong{
+  margin-bottom:2px;
+}
+
+.modo-contraste,
+.modo-contraste body{
+  background:#000 !important;
+  color:#fff !important;
+}
+
+.modo-contraste *{
+  background-color:#000 !important;
+  color:#fff !important;
+  border-color:#fff !important;
+  box-shadow:none !important;
+}
+
+.modo-contraste a,
+.modo-contraste button,
+.modo-contraste .btn{
+  color:#ffff00 !important;
+  border-color:#ffff00 !important;
+}
+
+.modo-contraste img,
+.modo-contraste video,
+.modo-contraste picture{
+  filter:grayscale(100%) contrast(120%);
+}
+
+@media (max-width: 767.98px){
+  body{
+    padding-bottom:70px;
+  }
+
+  .footer-prefeito-foto{
+    width:86px;
+    height:86px;
+    margin-bottom:12px;
+  }
+}
+</style>
+
+</body>
+</html>

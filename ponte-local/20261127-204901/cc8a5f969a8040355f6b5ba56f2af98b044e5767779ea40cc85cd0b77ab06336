@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <!--| META TAGS |-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="application-name" content="Site Institucional da PREFEITURA MUNICIPAL DE SANTANA DO SERIDÓ">
+    <meta name="description" content="Site Institucional da PREFEITURA MUNICIPAL DE SANTANA DO SERIDÓ">
+    <meta name="keywords" content="Institucional, Transparência, Prefeitura, PREFEITURA MUNICIPAL DE SANTANA DO SERIDÓ">
+    <meta name="author" content="Digitaliza Tecnologia">
+    <meta name="generator" content="VS Code & PhpStorm">
+    <meta name="csrf-token" content="nlEm8XZ2oDwz6DEIZmCNpZhNmZMnzR0CvUH1w105">
+
+    <!--| OG TAGS |-->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="http://pmsantanadoserido.rn.gov.br">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/site/brasao.png">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="PREFEITURA MUNICIPAL DE SANTANA DO SERIDÓ">
+
+    <link rel="alternate" type="application/atom+xml" href="https://pmsantanadoserido.rn.gov.br/noticias.rss" title="Ultimas Noticias">
+
+    <title> PREFEITURA MUNICIPAL DE SANTANA DO SERIDÓ </title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    
+    <style>
+        :root {
+            --color__1: #01208c;
+            --color__2: #01208c;
+        }
+    </style>
+
+    
+    <link rel="icon" type="image/x-icon"
+        href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/site/hxZ9EPZGlb35U98ZZwIH6UQiXxyul7LwPJN0VPvv.png" />
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet"
+        href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/sl-1.6.2/datatables.min.css" />
+
+    
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+
+    
+    <link rel="stylesheet" type="text/css" href="https://pmsantanadoserido.rn.gov.br/css/style.css" />
+    </head>
+
+<body class="context">
+
+    
+        <div class="page_institucional">
+        
+        <nav class="navbar navbar-expand-lg" id="navbar" x-data="navbar">
+    <a href="https://pmsantanadoserido.rn.gov.br" style="height: 100%;">
+        <img class="navbar-brand img-fluid" style="height: 100%; width: auto; object-fit: cover;"
+            src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/site/brasao.png"
+            alt="Brasão">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="ph-bold ph-list" id="action_icon"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://pmsantanadoserido.rn.gov.br"> Home </a>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropMunicipio" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Município </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropMunicipio">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Município </h6>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/cidade"> Cidade </a>
+                            
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/orgaos-municipais"> Órgãos Municipais
+                            </a>
+                            
+
+                                                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/secretarias "> Secretarias </a>
+                            
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/noticias/todas"> Todas as Notícias </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/perguntas-frequentes"> Perguntas
+                                Frequentes </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title">
+                                                                    A Prefeitura
+                                                            </h6>
+                                                                                                                                                                                    <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/gestores">
+                                                Prefeita </a>
+                                                                                                                                                        
+                                                                                                                                                                                                    <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/vices">
+                                                Vice-Prefeito </a>
+                                                                                                                                        
+                            
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/estruturas-organizacional"> Estrutura
+                                Administrativa </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/documentos_oficiais"> Documentos
+                                Oficiais </a>
+
+                            
+                                                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/organogramas"> Organograma </a>
+                            
+                            
+                                                                                                            </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Cultura </h6>
+
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/turismo"> Turismo </a>
+                            
+                                                            
+                                
+                                
+                                                            
+                                                    </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropServicos" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Serviços </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropServicos">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Serviços </h6>
+
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/concursos-publicos"> Concursos </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/editais"> Editais e Processos
+                                Seletivos </a>
+                                                                                                                                        <a class="dropdown-item"
+                                            href="https://pmsantanaseridorn.transparencia.topsolutionsrn.com.br/" target="_blank"
+                                            rel="noopener"> Portal da Transparência </a>
+                                                                    
+                                                                                                            <a class="dropdown-item"
+                                            href="https://app.topsolutionsrn.com.br/contracheque/pmsantanaserido/"
+                                            target="_blank" rel="noopener"> Contracheque </a>
+                                                                    
+                                
+                                
+                                
+                                                                    <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/designacoes"> Designações
+                                    </a>
+                                                                                                    <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/todas-secretarias"> Carta de
+                                        Serviços das Secretarias </a>
+                                                                                            
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/covid/home"> Covid-19 </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/emendas-parlamentares"> Emendas Parlamentares </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <!-- <h6 class="dropdown_title"> Serviços ao cidadão </h6>
+
+                            
+                            <a class="dropdown-item" href="https://sites.google.com/view/sic-santana-do-seridrn/início?authuser=1"> Formulário e-SIC </a>
+                            <a class="dropdown-item" href="https://sites.google.com/view/ouvidoriasantanadoseridorn/início?au"> Formulário Ouvidoria </a>
+                                                                                                <a class="dropdown-item" href="http://pmsantanadoserido.rn.gov.br/servicos/poda-de-arvores"> Poda de Árvores
+                                    </a>
+                                
+                                                                    <a class="dropdown-item" href="http://pmsantanadoserido.rn.gov.br/servicos/ilumininacao-publica"> Iluminação
+                                        Publica </a>
+                                                             -->
+
+                                                    </ul>
+
+                                                    <ul class="dropdown_menu_list">
+                                <h6 class="dropdown_title"> Outros serviços </h6>
+                                                                                                            <a class="dropdown-item" href="http://rn.santanadoserido.tributario.aspec.com.br/portal/login.xhtml">Portal do Contribuinte</a>
+                                                                                                                                                <a class="dropdown-item" href="https://www1.consignet.com.br/portal/#!/santanaserido">Consignet</a>
+                                                                                                                                                <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/sala-mineira">Sala do Empreendedor</a>
+                                                                                                                                                <a class="dropdown-item" href="https://www.pmsantanadoserido.rn.gov.br:2096/">Webmail</a>
+                                                                                                    
+                                                            </ul>
+                                            </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropLegislacao" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Legislação </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropLegislacao">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/todas/Todas%20as%20Leis"> Todas </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/1/Leis%20de%20Diretrizes%20Or%C3%A7ament%C3%A1rias"> Lei
+                                Diretrizes Orçamentárias </a>
+                                                        <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/2/Leis%20Or%C3%A7ament%C3%A1rias%20Anuais"> Lei
+                                Orçamentária Anual </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/3/Planos%20Plurianuais%20"> Plano Plurianual
+                            </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/4/Leis"> Leis </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/5/Leis%20Complementares"> Leis
+                                Complementares </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/15/Leis%20Complementares%20Consolidadas"> Leis
+                                Complementares Consolidadas </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/6/Leis%20Delegadas">
+                                Lei Delegada </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/7/Decretos">
+                                Decretos </a>
+                                    <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/22/Presta%C3%A7%C3%A3o%20de%20Contas">
+                                Prestação de Contas </a>
+                                                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/16/Portarias%20de%20Di%C3%A1rias"> Portarias de
+                                    Diárias</a>
+                                                                                        <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/17/Base%20Legal%20Di%C3%A1ria%20de%20Viagens"> Base
+                                    Legal Diária de Viagens</a>
+                                                        <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/8/Portarias%20">
+                                Portarias </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/9/Resolu%C3%A7%C3%B5es%20">
+                                Resoluções </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/10/Proposi%C3%A7%C3%B5es">
+                                Proposição </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/11/Emenda%20da%20Lei%20Org%C3%A2nica"> Emenda da Lei
+                                Orgânica </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/12/Decis%C3%B5es">
+                                Decisão </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            
+
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/convenios"> Convênios </a>
+
+                            
+                            
+                            
+                                                            <a class="dropdown-item"
+                                    href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/site/0jDP6dn2GoagSD1qQ6lbRLQA8DbPMWbiEmzANSHz.pdf"
+                                    target="_blank" rel="noopener"> Lei de Estrutura Administrativa </a>
+                            
+                            
+
+                            <a class="dropdown-item" href="https://portaldatransparencia.gov.br/convenios/consulta?ordenarPor=orgao&amp;direcao=desc"
+                                target="_blank" rel="noopener"> Convenio Estadual </a>
+                            <a class="dropdown-item" href="https://portaldatransparencia.gov.br/convenios/consulta?ordenarPor=orgao&amp;direcao=desc"
+                                target="_blank" rel="noopener"> Convenio Federal </a>
+
+                            <a class="dropdown-item"
+                                href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm"
+                                target="_blank" rel="noopener"> Lei nº 12.527/2011 </a>
+                            
+                            <a class="dropdown-item"
+                                href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14129.htm"
+                                target="_blank" rel="noopener"> Lei nº 14.129/2021 </a>
+                                                            <a class="dropdown-item"
+                                    href="https://www.almg.gov.br/consulte/legislacao/completa/completa.html?tipo=DEC&num=45969&ano=2012"
+                                    target="_blank" rel="noopener"> Decreto 45.969/2012 </a>
+                            
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/legislacoes/14/Instru%C3%A7%C3%A3o%20Normativa"> Instrução Normativa </a>
+                            <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/page/conselhos-municipais"> Conselhos Municipais </a>
+
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://pmsantanadoserido.rn.gov.br/diarios-oficiais"> Diário Oficial </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Licitações
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="https://pmsantanadoserido.rn.gov.br/licitacoes/1">Editais e avisos</a>
+                        
+                    <a class="dropdown-item" href="http://topdown.servehttp.com:8080/Transparencia/PMSantanaSerido/licitacoes.aspx" target="_blank">Licitação na íntegra</a>
+                </div>
+            </li>
+
+            
+            
+                            <li class="nav-item">
+                    <a class="nav-link" href="https://www.pmsantanadoserido.rn.gov.br/concursos-publicos" >
+                        Concursos e Processos Seletivos </a>
+                </li>
+                            <li class="nav-item">
+                    <a class="nav-link" href="https://sites.google.com/view/sic-santana-do-seridrn/início?authuser=1" target=&quot;_blank&quot;>
+                        E-sic </a>
+                </li>
+                            <li class="nav-item">
+                    <a class="nav-link" href="http://topdown.servehttp.com:8080/Transparencia/PMSantanaSerido/faleconosco.aspx" target=&quot;_blank&quot;>
+                        Fale Conosco </a>
+                </li>
+                            <li class="nav-item">
+                    <a class="nav-link" href="https://pmsantanadoserido.rn.gov.br/page/incentivo-a-cultura" target=&quot;_blank&quot;>
+                        Incentivo à Cultura </a>
+                </li>
+            
+            
+            
+
+
+            <!-- item no menu -->
+            <li id="searchToggle" class="nav-item">
+                <a class="nav-link" href="#" x-on:click="showSearch = !showSearch">
+                    <i class="ph-bold ph-magnifying-glass"></i>
+                    <span hidden> Pesquisa </span>
+                </a>
+                <form method="GET" action="https://pmsantanadoserido.rn.gov.br/busca" class="drop drop-inline" id="inlineSearchDrop" x-cloak x-show="showSearch & isMobile" x-transition>
+                    <input class="form-control" type="text" placeholder="Pesquise..." minlength="3" name="campobusca">
+                </form>
+            </li>
+
+            <!-- fora da nav (ex: logo abaixo no HTML) -->
+            <div class="drop" x-cloak x-show="showSearch & !isMobile" x-transition>
+                <form method="GET" action="https://pmsantanadoserido.rn.gov.br/busca">
+                    <input class="form-control" type="text" placeholder="Pesquise..." minlength="3" name="campobusca">
+                </form>
+            </div>
+
+                    </ul>
+    </div>
+</nav>
+
+
+
+        <main id="main_content">
+            
+            <div class="floating-wrapper">
+    <div class="floating-sidebar">
+        <a href="https://pmsantanadoserido.rn.gov.br/lgpd" class="item" id='lgpd-link'>
+    <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="283.46px" height="283.46px" viewBox="0 0 283.46 283.46" enable-background="new 0 0 283.46 283.46" xml:space="preserve">
+<ellipse fill="#307FE8" cx="143.693" cy="140.938" rx="138.752" ry="138.014"/>
+<path fill="#808080" d="M-341,226.604"/>
+<g>
+	<g>
+		<g>
+			<defs>
+				<path id="SVGID_1_" d="M49.042,187.308h180.471c0,0,29.289-1.868,30.159-26.671c0,0,0.751-20.688-24.8-29.787
+					c0,0,2.368-27.544-29.539-24.304c0,0-15.828-40.134-48.355-11.467c0,0-11.469-27.172-46.366-21.811
+					c0,0-29.289,3.739-31.906,39.259c0,0-31.408-1.744-24.18,29.412c0,0-25.05-1.119-26.795,20.193
+					C27.731,162.133,26.235,182.074,49.042,187.308z"/>
+			</defs>
+			<use xlink:href="#SVGID_1_"  overflow="visible" fill="#F2691D"/>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  overflow="visible"/>
+			</clipPath>
+		</g>
+	</g>
+	<g>
+		<g>
+			<path id="SVGID_3_" fill="#FFFFFF" d="M229.579,189.409H48.804l-0.232-0.054c-12.631-2.899-18.207-10.166-20.661-15.753
+				c-2.657-6.049-2.291-11.4-2.274-11.625c0.725-8.858,5.369-15.453,13.432-19.091c4.868-2.195,9.846-2.832,12.893-2.999
+				c-1.513-8.535-0.238-15.424,3.8-20.507c6.064-7.633,16.615-8.809,21.022-8.95c1.861-17.92,10.551-27.583,17.649-32.569
+				c7.812-5.49,15.266-6.588,15.883-6.671c3.122-0.479,6.196-0.722,9.137-0.722c15.172,0,25.081,6.438,30.723,11.839
+				c3.746,3.587,6.14,7.169,7.458,9.467c7.447-6.052,14.694-9.117,21.57-9.117c16.201,0,25.092,16.557,27.451,21.666
+				c1.265-0.094,2.499-0.141,3.683-0.141c8.826,0,15.657,2.565,20.301,7.625c5.653,6.16,6.354,14.193,6.373,17.599
+				c12.884,4.99,18.927,12.947,21.738,18.847c3.191,6.696,3.03,12.229,3.021,12.46c-0.386,10.97-6.125,19.428-16.596,24.454
+				c-7.713,3.701-15.216,4.218-15.529,4.238L229.579,189.409z M49.282,185.209h180.151c0.692-0.055,7.384-0.662,14.029-3.88
+				c9.033-4.373,13.78-11.361,14.111-20.767c0.023-0.78,0.291-19.296-23.407-27.734l-1.525-0.544l0.139-1.614
+				c0.007-0.092,0.706-9.579-5.261-16.049c-4.581-4.971-12.023-6.997-21.976-5.987l-1.579,0.162l-0.585-1.479
+				c-0.08-0.203-8.298-20.46-24.177-20.46c-6.448,0-13.461,3.296-20.839,9.798l-2.188,1.928l-1.133-2.688
+				c-0.023-0.049-2.349-5.411-7.903-10.679c-7.377-7-16.693-10.549-27.687-10.549c-2.736,0-5.603,0.227-8.522,0.676l-0.053,0.008
+				c-0.065,0.009-7.04,0.977-14.186,6.054c-9.515,6.762-14.861,17.284-15.893,31.278l-0.152,2.056l-2.059-0.114
+				c-0.025-0.001-0.301-0.015-0.768-0.015c-3.028,0-13.329,0.531-18.772,7.383c-3.593,4.521-4.427,11.074-2.478,19.473l0.625,2.695
+				l-2.764-0.123c-0.021-0.002-0.213-0.009-0.544-0.009c-3.768,0-22.641,0.882-24.064,18.273
+				C29.774,163.023,28.819,180.381,49.282,185.209z"/>
+		</g>
+		<g>
+			<defs>
+				<path id="SVGID_4_" d="M229.579,189.409H48.804l-0.232-0.054c-12.631-2.899-18.207-10.166-20.661-15.753
+					c-2.657-6.049-2.291-11.4-2.274-11.625c0.725-8.858,5.369-15.453,13.432-19.091c4.868-2.195,9.846-2.832,12.893-2.999
+					c-1.513-8.535-0.238-15.424,3.8-20.507c6.064-7.633,16.615-8.809,21.022-8.95c1.861-17.92,10.551-27.583,17.649-32.569
+					c7.812-5.49,15.266-6.588,15.883-6.671c3.122-0.479,6.196-0.722,9.137-0.722c15.172,0,25.081,6.438,30.723,11.839
+					c3.746,3.587,6.14,7.169,7.458,9.467c7.447-6.052,14.694-9.117,21.57-9.117c16.201,0,25.092,16.557,27.451,21.666
+					c1.265-0.094,2.499-0.141,3.683-0.141c8.826,0,15.657,2.565,20.301,7.625c5.653,6.16,6.354,14.193,6.373,17.599
+					c12.884,4.99,18.927,12.947,21.738,18.847c3.191,6.696,3.03,12.229,3.021,12.46c-0.386,10.97-6.125,19.428-16.596,24.454
+					c-7.713,3.701-15.216,4.218-15.529,4.238L229.579,189.409z M49.282,185.209h180.151c0.692-0.055,7.384-0.662,14.029-3.88
+					c9.033-4.373,13.78-11.361,14.111-20.767c0.023-0.78,0.291-19.296-23.407-27.734l-1.525-0.544l0.139-1.614
+					c0.007-0.092,0.706-9.579-5.261-16.049c-4.581-4.971-12.023-6.997-21.976-5.987l-1.579,0.162l-0.585-1.479
+					c-0.08-0.203-8.298-20.46-24.177-20.46c-6.448,0-13.461,3.296-20.839,9.798l-2.188,1.928l-1.133-2.688
+					c-0.023-0.049-2.349-5.411-7.903-10.679c-7.377-7-16.693-10.549-27.687-10.549c-2.736,0-5.603,0.227-8.522,0.676l-0.053,0.008
+					c-0.065,0.009-7.04,0.977-14.186,6.054c-9.515,6.762-14.861,17.284-15.893,31.278l-0.152,2.056l-2.059-0.114
+					c-0.025-0.001-0.301-0.015-0.768-0.015c-3.028,0-13.329,0.531-18.772,7.383c-3.593,4.521-4.427,11.074-2.478,19.473l0.625,2.695
+					l-2.764-0.123c-0.021-0.002-0.213-0.009-0.544-0.009c-3.768,0-22.641,0.882-24.064,18.273
+					C29.774,163.023,28.819,180.381,49.282,185.209z"/>
+			</defs>
+			<clipPath id="SVGID_5_">
+				<use xlink:href="#SVGID_4_"  overflow="visible"/>
+			</clipPath>
+			<g clip-path="url(#SVGID_5_)">
+				<polygon fill="#FFFFFF" points="143.693,98.078 143.693,159.216 201.098,128.647 				"/>
+				<polygon fill="#FFFFFF" points="143.693,159.216 143.693,220.354 201.098,189.787 				"/>
+				<polygon fill="#FFFFFF" points="143.693,36.94 143.693,98.078 201.098,67.508 				"/>
+				<polygon fill="#FFFFFF" points="201.098,128.647 201.098,189.787 143.693,159.216 				"/>
+				<polygon fill="#FFFFFF" points="201.098,67.507 201.098,128.648 143.693,98.078 				"/>
+				<polygon fill="#FFFFFF" points="143.693,98.078 143.693,159.216 86.285,128.647 				"/>
+				<polygon fill="#FFFFFF" points="143.693,159.216 143.693,220.354 86.285,189.787 				"/>
+				<polygon fill="#FFFFFF" points="143.693,36.94 143.693,98.078 86.285,67.508 				"/>
+				<polygon fill="#FFFFFF" points="86.285,128.647 86.285,189.787 143.693,159.216 				"/>
+				<polygon fill="#FFFFFF" points="86.285,67.507 86.285,128.648 143.693,98.078 				"/>
+				<polygon fill="#FFFFFF" points="258.505,98.078 258.505,159.216 201.098,128.647 				"/>
+				<polygon fill="#FFFFFF" points="258.505,159.216 258.505,220.354 201.098,189.787 				"/>
+				<polygon fill="#FFFFFF" points="201.098,128.647 201.098,189.787 258.505,159.216 				"/>
+				<polygon fill="#FFFFFF" points="201.098,67.507 201.098,128.648 258.505,98.078 				"/>
+				<polygon fill="#FFFFFF" points="28.878,99.369 28.878,160.506 86.285,129.937 				"/>
+				<polygon fill="#FFFFFF" points="28.878,160.506 28.878,221.647 86.285,191.077 				"/>
+				<polygon fill="#FFFFFF" points="86.285,129.937 86.285,191.077 28.878,160.506 				"/>
+				<polygon fill="#FFFFFF" points="86.285,68.8 86.285,129.939 28.878,99.369 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<path fill="#FFFFFF" d="M88.927,153.978h11.721v9.202H76.767V124.4h12.16V153.978z"/>
+		<path fill="#FFFFFF" d="M128.253,137.654c-0.475-0.766-1.15-1.359-2.026-1.778c-0.876-0.42-1.937-0.631-3.177-0.631
+			c-2.337,0-4.145,0.759-5.422,2.274c-1.279,1.516-1.917,3.587-1.917,6.216c0,3.031,0.712,5.295,2.136,6.793
+			c1.424,1.497,3.615,2.244,6.573,2.244c2.811,0,5.075-1.131,6.792-3.396h-9.694v-8.599h19.772v12.159
+			c-1.679,2.884-3.998,5.358-6.956,7.422c-2.958,2.063-6.701,3.094-11.228,3.094c-4.018,0-7.514-0.83-10.49-2.492
+			c-2.977-1.662-5.258-3.988-6.847-6.983c-1.589-2.994-2.383-6.409-2.383-10.242c0-3.835,0.794-7.249,2.383-10.243
+			c1.588-2.994,3.862-5.321,6.819-6.983s6.426-2.494,10.407-2.494c5.074,0,9.211,1.226,12.405,3.671
+			c3.196,2.447,5.084,5.771,5.669,9.969H128.253L128.253,137.654z"/>
+		<path fill="#FFFFFF" d="M175.686,144.365c-1.131,1.991-2.802,3.57-5.011,4.738c-2.211,1.169-4.884,1.752-8.025,1.752h-4.82v12.325
+			H145.67V124.4h16.981c4.745,0,8.389,1.205,10.927,3.614c2.538,2.411,3.806,5.643,3.806,9.695
+			C177.384,140.157,176.819,142.375,175.686,144.365z M165.061,137.709c0-2.372-1.26-3.56-3.78-3.56h-3.451v7.119h3.451
+			C163.801,141.269,165.061,140.084,165.061,137.709z"/>
+		<path fill="#FFFFFF" d="M208.031,126.864c3.049,1.644,5.395,3.927,7.038,6.847c1.644,2.923,2.466,6.245,2.466,9.969
+			c0,3.689-0.822,7.011-2.466,9.969s-3.989,5.285-7.038,6.984c-3.051,1.697-6.6,2.546-10.654,2.546h-16.158v-38.779h16.158
+			C201.429,124.4,204.98,125.221,208.031,126.864z M202.8,150.088c1.605-1.497,2.409-3.634,2.409-6.409
+			c0-2.774-0.804-4.91-2.409-6.408c-1.607-1.497-3.78-2.246-6.519-2.246h-2.903v17.309h2.903
+			C199.02,152.334,201.193,151.586,202.8,150.088z"/>
+	</g>
+</g>
+</svg>
+</a>
+        <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+        <ul class="item sociais">
+                    <a class="item__flutuante" target="_blank" rel="noopener" href="https://www.facebook.com/prefeituradesantanadoserido/?locale=pt_BR">
+                <img class="img-fluid" src="https://pmsantanadoserido.rn.gov.br/storage/redes_sociais/facebook.svg" alt="...">
+            </a>
+                    <a class="item__flutuante" target="_blank" rel="noopener" href="https://www.instagram.com/prefeituradesantanadoserido/">
+                <img class="img-fluid" src="https://pmsantanadoserido.rn.gov.br/storage/redes_sociais/instagram.svg" alt="...">
+            </a>
+                    <a class="item__flutuante" target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCQwidqzHAWwBgmuyf-Myq0w">
+                <img class="img-fluid" src="https://pmsantanadoserido.rn.gov.br/storage/redes_sociais/youtube.svg" alt="...">
+            </a>
+            </ul>
+    </div>
+</div>
+
+
+
+                            <div id="cont_SANTANA DO SERIDó" class="previsao_tempo none"></div>
+            
+            
+            
+                
+    <section id="home" class="banner" x-data="" x-cloak>
+    <h6 hidden> Home </h6>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                        <img class="carousel__img" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/site/banner.jpeg"
+                            alt="Banner" />
+                    </div>
+
+                                                                        <div class="carousel-item">
+                                <img class="carousel__img" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/carrossel/Banner-Dengue-Prefeitura-de-Serid%C3%B32%20-%20jhhRunNmCw.png" alt="" />
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="carousel__img" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/carrossel/PMSS%2063ANOS%20-%20SECRETARIAS.jpg%20-%20hbjMbLfdRZ.jpeg" alt="" />
+                            </div>
+                                            
+                                        <a class="carousel-item" target="_blank" href="https://pmsantanaseridorn.transparencia.topsolutionsrn.com.br/arquivos/Lista%20de%20Medicamentos">
+                <img class="carousel__img" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/carrossel/cali.png" alt="" />
+            </a>
+
+                            <div class="carousel__controls">
+                    <a class="carousel-control-prev button__icon" href="#carouselExampleControls" role="button"
+                        data-slide="prev">
+                        <i class="ph-bold ph-caret-double-left" aria-hidden="true"></i>
+                        <span class="sr-only"> Previous </span>
+                    </a>
+
+                    <a class="carousel-control-next button__icon" href="#carouselExampleControls" role="button"
+                        data-slide="next">
+                        <i class="ph-bold ph-caret-double-right" aria-hidden="true"></i>
+                        <span class="sr-only"> Next </span>
+                    </a>
+                </div>
+                    </div>
+
+            </div>
+</section>    
+    
+
+    
+    <section class="sections-menu">
+    <div class="section-holder container">
+
+        <div class="section">
+            <div class="title-card">
+                <h2 class="title">Acesso Rápido</h2>
+            </div>
+
+            <div class="context">
+                                                            <div class="subcard">
+                            <h5 class="section-title">Geral</h5>
+                            <div class="items-list">
+                                                                                                            <a class="item" href="https://sites.google.com/view/ouvidoriasantanadoseridorn/in%C3%ADcio?au"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-megaphone"></i>
+                                            
+                                            
+                                                                                            <span class="label">Ouvidoria</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Ouvidoria
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="/webmail"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-at"></i>
+                                            
+                                            
+                                                                                            <span class="label">Webmail</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Webmail
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://app.topsolutionsrn.com.br/contracheque/pmsantanaserido/"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-wallet"></i>
+                                            
+                                            
+                                                                                            <span class="label">Contracheque</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Contracheque
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/documentos-oficiais/Contatos%20da%20Prefeitura%20-%20gFIKHo9TWA.pdf"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-address-book"></i>
+                                            
+                                            
+                                                                                            <span class="label">Contato</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Contato
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://pmsantanaseridorn.transparencia.topsolutionsrn.com.br/emenda-parlamentar?tipoEmenda=&amp;formaRepasse=&amp;origemRecurso=&amp;autor=&amp;ano=2025"
+                                            target="_blank">
+                                            
+                                                                                            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="216.03 328 579.3 381">
+  <path class="qmx-primary" d="M454.78 707.45c-.7.23-54.54.59-119.63.8-100.33.31-118.44.16-118.89-1.02-.77-1.99.55-16.2 2.25-24.28 4.65-22.1 14.57-40.77 30.47-57.32 14.88-15.5 29.29-24.82 47.97-31.02 63.4-21.07 130.15 11.28 151.93 73.62 4.85 13.9 8.54 38.37 5.9 39.22Zm244.22-.91c-9.26 1.94-29.12 2.67-38.5 1.4-15.96-2.15-34.4-8.93-49.22-18.1-11.7-7.23-28.24-23.51-35.89-35.32-11.03-17.03-17.81-36.86-19.04-55.67l-.65-9.85h80.49c44.26 0 98.18-.3 119.8-.67l39.33-.66-.63 10.91c-1.25 21.47-9.37 43.45-22.74 61.49-6.2 8.36-20.57 22.24-28.87 27.87-12.86 8.74-28.43 15.3-44.08 18.6Z"></path>
+  <path class="qmx-secondary" d="M492.8 707.6c-1.86.96-6.26 1.4-14.1 1.4h-11.4l-.61-11.25c-1.67-30.91-15.9-61.54-39.15-84.25-4.51-4.4-10.74-9.8-13.85-12l-5.65-4-.01-130c-.02-128.65 0-130.03 2-133.31 3.65-5.99 5.06-6.19 44.49-6.19h.17c30.78 0 36.75 0 40.58 2.86.93.69 1.73 1.56 2.73 2.63l2.5 2.67v364.68l-2.5 2.67c-1.38 1.48-3.72 3.31-5.2 4.09Zm103.17-.35c-3.11 1.57-7.18 1.75-39.47 1.74-34.16 0-36.17-.1-39.26-1.98-1.79-1.1-4.15-3.46-5.25-5.25-1.97-3.23-1.99-5.04-1.74-184.43l.25-181.17 2.5-2.67c1-1.07 1.8-1.94 2.73-2.63 3.83-2.86 9.8-2.86 40.58-2.86h.17c39.43 0 40.84.2 44.49 6.19 2 3.27 2.02 4.71 2.03 123.06V577h-59.26l.55 16.75c.59 18.42 2.62 28.69 8.67 43.82 8.63 21.62 25.04 43.09 43.25 56.58l6.84 5.08-1.81 3.13c-.99 1.73-3.37 3.93-5.27 4.89Z"></path>
+</svg>
+                                            
+                                            
+                                                                                            <span class="label">Emendas Parlamentares</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Emendas Parlamentares
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="/licitacoes/1"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-gavel"></i>
+                                            
+                                            
+                                                                                            <span class="label">Editais e Avisos</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Editais e Avisos
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://pmsantanaseridorn.transparencia.topsolutionsrn.com.br/licitacao?modalidades=&amp;certames=&amp;situacoes="
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-gavel"></i>
+                                            
+                                            
+                                                                                            <span class="label">Licitação na Íntegra</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Licitação na Íntegra
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://sites.google.com/view/sic-santana-do-seridrn/in%C3%ADcio?authuser=1"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-speaker-simple-none"></i>
+                                            
+                                            
+                                                                                            <span class="label">e-SIC</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    e-SIC
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://www.pmsantanadoserido.rn.gov.br/todas-secretarias"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-file-text"></i>
+                                            
+                                            
+                                                                                            <span class="label">Carta de Serviços</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Carta de Serviços
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://pmsantanaseridorn.transparencia.topsolutionsrn.com.br/arquivos/OBRAS"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-file-text"></i>
+                                            
+                                            
+                                                                                            <span class="label">Obras</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Obras
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://docs.google.com/forms/d/e/1FAIpQLSfjwKQt9cwXYeCita6rF2c-QtEGku9Vl3Gj3hnOxSKbMTiT4w/viewform"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-file-text"></i>
+                                            
+                                            
+                                                                                            <span class="label">Pesquisa de Satisfação</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Pesquisa de Satisfação
+                                                </span>
+                                            
+                                        </a>
+                                                                                                </div>
+                        </div>
+                                                                                <div class="subcard">
+                            <h5 class="section-title">Transparência</h5>
+                            <div class="items-list">
+                                                                                                            <a class="item" href="https://pmsantanaseridorn.transparencia.topsolutionsrn.com.br/"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-file-magnifying-glass"></i>
+                                            
+                                            
+                                                                                            <span class="label">Portal Atual</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Portal Atual
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://www.governotransparente.com.br/68349490"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-file-magnifying-glass"></i>
+                                            
+                                            
+                                                                                            <span class="label">Portal Antigo</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Portal Antigo
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://radardatransparencia.atricon.org.br/"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-crosshair"></i>
+                                            
+                                            
+                                                                                            <span class="label">Radar da Transparência</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Radar da Transparência
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://app.powerbi.com/view?r=eyJrIjoiZGM3MDU2OTAtZDcyMS00YjRjLWFjNWItZjk5MjA2NzczZjBjIiwidCI6ImRmMzBiMzI3LWVlNWMtNDdlZS1iNTljLTM5NTJiZjNiZDBiMyJ9"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-file-text"></i>
+                                            
+                                            
+                                                                                            <span class="label">Transferência Fiscal</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Transferência Fiscal
+                                                </span>
+                                            
+                                        </a>
+                                                                                                </div>
+                        </div>
+                                                </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!--| SOBRE |-->
+<section class="sobre">
+    <h6 hidden> Sobre </h6>
+
+    <div class="container">
+        <div class="sobre_content">
+            <div class="sobre_content">
+                            </div>
+
+                                    <div class="sobre_right">
+                                                                        <div class="div_title">
+                                <span> Gerência </span>
+                                <h3 class="title"> Administração 2025 - 2028 </h3>
+                            </div>
+
+                            <div class="sobre_container">
+                                                                    <div class="sobre_text">
+                                        <a aria-label="Abrir detalhes" href="https://pmsantanadoserido.rn.gov.br/gestores"></a>
+
+                                        <img class="image__gerencia" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/gestor/Tatiana%20F%C3%A1tima%20Ferreira%20de%20Ara%C3%BAjo%20-%20FdKCuEsPJm.jpeg" alt="Tatiana Fátima Ferreira de Araújo">
+
+                                        <div>
+                                            <h2 class="title"> Prefeita </h2><hr>
+                                            <p> Tatiana Fátima Ferreira de Araújo <br> Nascimento: 11/06/1980 </p>
+                                        </div>
+                                    </div>
+                                                                    <div class="sobre_text">
+                                        <a aria-label="Abrir detalhes" href="https://pmsantanadoserido.rn.gov.br/vices"></a>
+
+                                        <img class="image__gerencia" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/gestor/Caio%20Cabral%20Bezerra%20-%20k9OtdH2JFs.jpeg" alt="Caio Cabral Bezerra">
+
+                                        <div>
+                                            <h2 class="title"> Vice-Prefeito </h2><hr>
+                                            <p> Caio Cabral Bezerra <br> Nascimento: 15/04/1996 </p>
+                                        </div>
+                                    </div>
+                                                            </div>
+                                                            </div>
+                            </div>
+    </div>
+</section>
+    
+    
+    
+    <section class="noticias" id="noticias">
+    <h6 hidden> Noticias </h6>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="div_title">
+                    <span> </span>
+                    <h3 class="title"> Notícias & Eventos </h3>
+                    <hr>
+                    <p> Fique por dentro de tudo que acontece no município, novidades, eventos, notícias e outros. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="min-height: 80vh; gap: 1rem; height: fit-content;">
+                            
+                
+                                                            <a href="https://pmsantanadoserido.rn.gov.br/noticias/aviso-de-retificacao-do-cronograma-concurso-publico-edital-no-0072026" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>11</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/AVISO%20DE%20RETIFICA%C3%87%C3%83O%20DO%20CRONOGRAMA%20CONCURSO%20P%C3%9ABLICO%20%E2%80%93%20EDITAL%20N%C2%BA%20007/2026-12-11-2026%20-%20x3nUW.jpeg"
+                            alt="Capa da notícia: AVISO DE RETIFICAÇÃO DO CRONOGRAMA CONCURSO PÚBLICO ..." />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">AVISO DE RETIFICAÇÃO DO CRONOGRAMA CONCURSO PÚBLICO ...</h3>
+
+            <div class="desc">
+                <p><span class="fontstyle0">AVISO DE RETIFICA&Ccedil;&Atilde;O DO CRONOGRAMA CONCURSO P&Uacute;BLICO &ndash; EDITAL N&ordm; 007/2026</span></p>
+<p><span class="fontstyle0">A PREFEITURA MUNICIPAL DE SANTANA DO SERID&Oacute; (RN) </span><span class="fontstyle2">torna p&uacute;blica, para conhecimento dos interessados, a retifica&ccedil;&atilde;o do </span><span class="fontstyle0">ANEXO III &ndash; CRONOGRAMA DE EXECU&Ccedil;&Atilde;O PREVISTO </span><span class="fontstyle2">do Concurso P&uacute;blico regido pelo Edital n&ordm; 007/2026, com a prorroga&ccedil;&atilde;o do prazo final para pagamento da taxa de inscri&ccedil;&atilde;o at&eacute; o dia 13/11/2026, &agrave;s 23h59; a altera&ccedil;&atilde;o da data de publica&ccedil;&atilde;o da listagem de inscritos e concorr&ecirc;ncia por cargo para o dia 18/11/2026; a prorroga&ccedil;&atilde;o do prazo para envio da documenta&ccedil;&atilde;o referente &agrave; Avalia&ccedil;&atilde;o de T&iacute;tulos at&eacute; o dia 18/11/2026; e a disponibiliza&ccedil;&atilde;o do Cart&atilde;o de Confirma&ccedil;&atilde;o de Inscri&ccedil;&atilde;o (CCI) at&eacute; o dia 23/11/2026.</span></p>
+<p>&nbsp;</p>
+<p><span class="fontstyle2">Permanecem inalteradas as demais disposi&ccedil;&otilde;es do edital, no que n&atilde;o conflitarem com a presente retifica&ccedil;&atilde;o. A vers&atilde;o atualizada do edital encontra-se dispon&iacute;vel no endere&ccedil;o eletr&ocirc;nico https://igeduc.selecao.net.br/informacoes/177/.</span></p>
+<p>&nbsp;</p>
+<p>Anexo&nbsp;Aviso de Retifica&ccedil;&atilde;oAnexo Edital Atualizado 11-11-2026</p>
+<p>&nbsp;</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://pmsantanadoserido.rn.gov.br/noticias/santana-do-serido-conquista-o-selo-ouro-em-transparencia-publica-2026" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>10</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/SANTANA%20DO%20SERID%C3%93%20CONQUISTA%20O%20SELO%20OURO%20EM%20TRANSPAR%C3%8ANCIA%20P%C3%9ABLICA%202026-10-11-2026%20-%20scsPl.jpg"
+                            alt="Capa da notícia: SANTANA DO SERIDÓ CONQUISTA O SELO OURO EM TRANSPARÊ..." />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/FEED-10-11-2026%20-%20pyROf.jpg"
+                                alt="Imagem da galeria: SANTANA DO SERIDÓ CONQUISTA O SELO OURO EM TRANSPARÊ..." />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">SANTANA DO SERIDÓ CONQUISTA O SELO OURO EM TRANSPARÊ...</h3>
+
+            <div class="desc">
+                <p>A Prefeitura Municipal de Santana do Serid&oacute; alcan&ccedil;ou o reconhecimento "Ouro" no Radar da Transpar&ecirc;ncia P&uacute;blica 2026, obtendo 93,7% de &iacute;ndice de transpar&ecirc;ncia e atendendo a 100% dos crit&eacute;rios essenciais avaliados pelo Programa Nacional de Transpar&ecirc;ncia P&uacute;blica (PNTP).</p>
+<p>O resultado representa um avan&ccedil;o significativo na evolu&ccedil;&atilde;o dos indicadores do munic&iacute;pio.</p>
+<p>📊 CONFIRA A EVOLU&Ccedil;&Atilde;O:</p>
+<p>*2022: 78,1%</p>
+<p>*2023: 61,0%</p>
+<p>*2024: 60,4%</p>
+<p>*2025: 79,3%</p>
+<p>*2026: 93,7% &ndash; "SELO OURO".</p>
+<p>A avalia&ccedil;&atilde;o considera a disponibiliza&ccedil;&atilde;o de informa&ccedil;&otilde;es p&uacute;blicas, como receitas, despesas, licita&ccedil;&otilde;es, contratos, folha de pagamento, obras, conv&ecirc;nios e acesso aos servi&ccedil;os de transpar&ecirc;ncia.</p>
+<p>O reconhecimento evidencia o avan&ccedil;o do munic&iacute;pio na divulga&ccedil;&atilde;o das informa&ccedil;&otilde;es p&uacute;blicas e refor&ccedil;a a import&acirc;ncia da transpar&ecirc;ncia, da responsabilidade administrativa e do controle social.</p>
+<p>Prefeitura Municipal de Santana do Serid&oacute; transpar&ecirc;ncia e compromisso com a informa&ccedil;&atilde;o p&uacute;blica.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>Administração</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://pmsantanadoserido.rn.gov.br/noticias/prestacao-de-contas-do-1o-e-2o-quadrimestre-de-2026" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>09</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/PRESTA%C3%87%C3%83O%20DE%20CONTAS%20DO%201%C2%BA%20E%202%C2%BA%20QUADRIMESTRE%20DE%202026-10-11-2026%20-%20okems.jpg"
+                            alt="Capa da notícia: PRESTAÇÃO DE CONTAS DO 1º E 2º QUADRIMESTRE DE 2026" />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/FEED%203-10-11-2026%20-%20r8LsJ.jpg"
+                                alt="Imagem da galeria: PRESTAÇÃO DE CONTAS DO 1º E 2º QUADRIMESTRE DE 2026" />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">PRESTAÇÃO DE CONTAS DO 1º E 2º QUADRIMESTRE DE 2026</h3>
+
+            <div class="desc">
+                <p>PRESTA&Ccedil;&Atilde;O DE CONTAS DO 1&ordm; E 2&ordm; QUADRIMESTRE DE 2026A Prefeitura Municipal de Santana do Serid&oacute;, por meio da Secretaria de Sa&uacute;de convida toda a popula&ccedil;&atilde;o para acompanhar a Audi&ecirc;ncia P&uacute;blica de apresenta&ccedil;&atilde;o das metas fiscais referentes ao 1&ordm; e 2&ordm; quadrimestre de 2026.A participa&ccedil;&atilde;o popular &eacute; fundamental para fortalecer a transpar&ecirc;ncia na gest&atilde;o p&uacute;blica e acompanhar de perto a aplica&ccedil;&atilde;o dos recursos e o desenvolvimento das a&ccedil;&otilde;es municipais.📅 Data: Segunda-feira, 16 de novembro⏰ Hor&aacute;rio: A partir das 14h📍 Local: C&acirc;mara Municipal</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>Saúde</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://pmsantanadoserido.rn.gov.br/noticias/vacina-pneumococica-20-liberada-para-idosos-de-85-anos-ou-mais" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>09</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/VACINA%20PNEUMOC%C3%93CICA%2020%20LIBERADA%20PARA%20IDOSOS%20DE%2085%20ANOS%20OU%20MAIS-10-11-2026%20-%20Rb7xX.jpg"
+                            alt="Capa da notícia: VACINA PNEUMOCÓCICA 20 LIBERADA PARA IDOSOS DE 85 AN..." />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/FEED%202-10-11-2026%20-%20unYfH.jpg"
+                                alt="Imagem da galeria: VACINA PNEUMOCÓCICA 20 LIBERADA PARA IDOSOS DE 85 AN..." />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">VACINA PNEUMOCÓCICA 20 LIBERADA PARA IDOSOS DE 85 AN...</h3>
+
+            <div class="desc">
+                <p>VACINA PNEUMOC&Oacute;CICA 20 LIBERADA PARA IDOSOS DE 85 ANOS OU MAISA Prefeitura Municipal de Santana do Serid&oacute;, por meio da Secretaria de Sa&uacute;de, informa que a Vacina Pneumoc&oacute;cica 20 j&aacute; est&aacute; liberada para a popula&ccedil;&atilde;o a partir dos 85 anos de idade.A imuniza&ccedil;&atilde;o &eacute; um passo essencial para fortalecer a prote&ccedil;&atilde;o e a qualidade de vida da nossa popula&ccedil;&atilde;o idosa contra complica&ccedil;&otilde;es respirat&oacute;rias.Procurar a sua Unidade B&aacute;sica de Sa&uacute;de para garantir a vacina&ccedil;&atilde;o e tirar suas d&uacute;vidas com as equipes de sa&uacute;de.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>Saúde</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://pmsantanadoserido.rn.gov.br/noticias/prefeitura-de-santana-do-serido-realiza-palestra-sobre-a-saude-do-homem-nesta-sexta-feira-611" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>02</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/PREFEITURA%20DE%20SANTANA%20DO%20SERID%C3%93%20REALIZA%20PALESTRA%20SOBRE%20A%20SA%C3%9ADE%20DO%20HOMEM%20NESTA%20SEXTA-FEIRA%2C%206/11-10-11-2026%20-%20MgLdo.jpg"
+                            alt="Capa da notícia: PREFEITURA DE SANTANA DO SERIDÓ REALIZA PALESTRA SOB..." />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/FEED%201-10-11-2026%20-%20LcPt7.jpg"
+                                alt="Imagem da galeria: PREFEITURA DE SANTANA DO SERIDÓ REALIZA PALESTRA SOB..." />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">PREFEITURA DE SANTANA DO SERIDÓ REALIZA PALESTRA SOB...</h3>
+
+            <div class="desc">
+                <p>A Prefeitura Municipal de Santana do Serid&oacute;/RN, por meio da Secretaria de Sa&uacute;de, convida todos os homens do munic&iacute;pio para um momento especial de conscientiza&ccedil;&atilde;o, preven&ccedil;&atilde;o e cuidado com a sa&uacute;de, em alus&atilde;o &agrave; campanha Novembro Azul.Como parte da programa&ccedil;&atilde;o dedicada &agrave; sa&uacute;de masculina, ser&aacute; realizada a palestra &ldquo;Sa&uacute;de do Homem&rdquo;, ministrada pelo urologista Dr. Jos&eacute; Hip&oacute;lito.➡️ Data: 6 de novembro (sexta-feira)⏰ Hor&aacute;rio: 19h30📍 Local: Espa&ccedil;o CulturalSer&aacute; uma oportunidade para ampliar conhecimentos, esclarecer d&uacute;vidas e refor&ccedil;ar a import&acirc;ncia da preven&ccedil;&atilde;o e do diagn&oacute;stico precoce de doen&ccedil;as que afetam a sa&uacute;de masculina.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>Saúde</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://pmsantanadoserido.rn.gov.br/noticias/eleicoes-2026-transporte-gratuito-para-eleitores-da-zona-rural" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>21</span>
+                <span>Oct</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/ELEI%C3%87%C3%95ES%202026%20%7C%20TRANSPORTE%20GRATUITO%20PARA%20ELEITORES%20DA%20ZONA%20RURAL%21-21-10-2026%20-%207VvHn.jpg"
+                            alt="Capa da notícia: ELEIÇÕES 2026 | TRANSPORTE GRATUITO PARA ELEITORES D..." />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/FEED%201_-21-10-2026%20-%209wRIv.jpg"
+                                alt="Imagem da galeria: ELEIÇÕES 2026 | TRANSPORTE GRATUITO PARA ELEITORES D..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-santana-do-serido/noticia/FEED%202-21-10-2026%20-%20qhoot.jpg"
+                                alt="Imagem da galeria: ELEIÇÕES 2026 | TRANSPORTE GRATUITO PARA ELEITORES D..." />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">ELEIÇÕES 2026 | TRANSPORTE GRATUITO PARA ELEITORES D...</h3>
+
+            <div class="desc">
+                <p>A Prefeitura Municipal de Santana do Serid&oacute; informa que, neste domingo, 25 de outubro, data do 2&ordm; turno das Elei&ccedil;&otilde;es 2026, ser&aacute; disponibilizado transporte gratuito para eleitoras e eleitores da zona rural.</p>
+<p>✅ Confira as localidades atendidas:</p>
+<p>📍 ROTA 1: Laginha e Saco da Cruz.</p>
+<p>📍 ROTA 2: Po&ccedil;o dos Meninos, Riach&atilde;o, Mulunguzinho, Verdes e Quixaba.</p>
+<p>⏰ As viagens ter&atilde;o in&iacute;cio &agrave;s 7h, com hor&aacute;rios de retorno espec&iacute;ficos para cada rota, conforme informado nas artes.</p>
+<p>🚌 Ponto de embarque e desembarque na zona urbana: Centro Cultural Felino Ivo Bezerra.</p>
+<p>⚠️ ATEN&Ccedil;&Atilde;O: Os eleitores devem ficar atentos aos locais de sa&iacute;da e aos hor&aacute;rios estabelecidos para garantir seu deslocamento de ida e volta.</p>
+<p>📲 Arraste para o lado e confira todas as informa&ccedil;&otilde;es sobre rotas, locais de embarque e hor&aacute;rios!</p>
+<p>A Prefeitura de Santana do Serid&oacute; refor&ccedil;a a import&acirc;ncia de que todos se programem e compare&ccedil;am com anteced&ecirc;ncia aos pontos de sa&iacute;da.</p>
+<p>Prefeitura Municipal de Santana do Serid&oacute; 💙💛</p>
+<p>#SantanaDoSerid&oacute; #Elei&ccedil;&otilde;es2026 #TransporteGratuito #ZonaRural #Informa&ccedil;&atilde;o PrefeituraDeSantanaDoSerid&oacute;</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>Administração</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                    
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-center">
+                        <a class="btn btn_solid mt-5" href="https://pmsantanadoserido.rn.gov.br/noticias/todas"> Todas as notícias </a>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+    <section class="container feedback_context" style="margin-top: 3rem; margin-bottom: 3rem;" x-data="feedbackStars()">
+    <div class="my-6">
+        <div class="div_title">
+            <span> Sua opnião importa </span>
+            <h3 class="title"> Pesquisa de Satisfação </h3>
+        </div>
+
+        <div class="rating-container">
+            <div class="star-rating">
+                <template x-for="i in 5" :key="i">
+                    <span class="star" :style="{ color: starColor(i) }" @mousemove="preview(i, $event)"
+                        @mouseleave="hoverRate = 0" @click="select(i, $event)">
+                        <svg viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient :id="`grad-${i}`">
+                                    <stop offset="50%" stop-color="currentColor" />
+                                    <stop offset="50%" stop-color="#e5e7eb" />
+                                </linearGradient>
+                            </defs>
+
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                :fill="isHalf(i) ? `url(#grad-${i})` : 'currentColor'" d="M12 17.5
+            C12.3 17.5 12.6 17.6 12.8 17.8
+            L17.5 21
+            C17.9 21.3 18.2 20.9 18.1 20.5
+            L16.6 14.8
+            C16.5 14.5 16.6 14.2 16.9 14
+            L21.2 10.5
+            C21.6 10.2 21.4 9.6 20.9 9.5
+            L15.3 9
+            C15 9 14.7 8.8 14.6 8.5
+            L12.4 3
+            C12.2 2.6 11.8 2.6 11.6 3
+            L9.4 8.5
+            C9.3 8.8 9 9 8.7 9
+            L3.1 9.5
+            C2.6 9.6 2.4 10.2 2.8 10.5
+            L7.1 14
+            C7.4 14.2 7.5 14.5 7.4 14.8
+            L5.9 20.5
+            C5.8 20.9 6.1 21.3 6.5 21
+            L11.2 17.8
+            C11.4 17.6 11.7 17.5 12 17.5Z" />
+                        </svg>
+                    </span>
+                </template>
+            </div>
+        </div>
+
+        <div class="feedback-score">
+            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 1rem;">
+                <strong>Média de</strong>
+                <div class="score-number">
+                    <strong>4.9</strong>
+                    <span>/ 5</span>
+                </div>
+            </div>
+
+            <div class="score-meta">
+                25 avaliações
+            </div>
+        </div>
+
+        <div class="rating-breakdown" x-data="{ open: false }">
+
+            <button class="toggle" @click="open = !open">
+                Ver detalhamento
+                <span x-text="open ? '▲' : '▼'"></span>
+            </button>
+
+            <div x-show="open" x-transition class="bars">
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            5.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 76%"></div>
+                        </div>
+
+                        <span class="count">
+                            19
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            4.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 20%"></div>
+                        </div>
+
+                        <span class="count">
+                            5
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            4.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 4%"></div>
+                        </div>
+
+                        <span class="count">
+                            1
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            3.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            3.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            2.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            2.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            1.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            1.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            0.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                            </div>
+        </div>
+
+        <div class="push_modal-backdrop" x-cloak x-data="modalComponent('feedback')" x-show="open" x-transition.opacity
+    @open-modal.window="if ($event.detail === name) open = true"
+    @close-modal.window="if ($event.detail === name) open = false">
+    <div class="push_modal" @click.outside="open = false">
+        <div class="feedback-form">
+                <h3>Sua opinião (opcional)</h3>
+                <form method="POST" action="/feedback">
+                    <input type="hidden" name="_token" value="nlEm8XZ2oDwz6DEIZmCNpZhNmZMnzR0CvUH1w105">                    <input type="hidden" name="rate" :value="rate">
+                    <input type="text" name="name" placeholder="Seu nome (opcional)">
+                    <input type="email" name="email" placeholder="Seu e-mail (opcional)">
+                    <textarea name="message" placeholder="Escreva sua opinião (opcional)"></textarea>
+
+                    <div class="actions">
+                        <button type="submit">Enviar</button>
+                        <button type="button" @click="$dispatch('close-modal', 'feedback')">Agora não</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+        </div>
+</section>
+
+
+
+    
+            <section class="clima">
+    <div class="page_title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="div_title">
+                    <span> Clima </span>
+                    <h1 class="title">  </h1>
+                    <hr>
+                    <p> Veja as informações do clima para a cidade de <span>SANTANA DO SERIDó</span>. </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="climate_content">
+            <p id="weather-info" data-city="SANTANA DO SERIDó">Carregando informações do clima...</p>
+        </div>
+    </div>
+    
+</section>
+    
+    
+
+    
+            </main>
+
+        
+        
+        <footer>
+    <div class="container">
+        <div class="footer_content">
+            <div class="footer_content_1">
+                <div class="footer_info">
+                    <div class="div_title">
+                        <span> Endereço </span>
+                        <h1 class="title"> PREFEITURA MUNICIPAL DE SANTANA DO SERIDÓ </h1>
+                        <hr>
+                        <p>
+                            RUA ZEZÉ APRIGIO, 173  <br>
+                            CENTRO, SANTANA DO SERIDO/RN - <span class="cep" data-mask="00000-000"> 59350000 </span>
+                        </p>
+
+                                                    
+                                                            <p>
+                                    Expediente: 07:30 - 13:30
+
+                                                                    </p>
+                            
+                                            </div>
+                </div>
+
+                <div class="footer_contact">
+                    <div class="div_title">
+                        <span> Contatos </span>
+                    </div>
+
+                    <ul class="nav flex-column nav_footer">
+                        <a class="nav-link" target="_blank" rel="noopener" href="https://maps.app.goo.gl/g5WiJBn945xWDknS9">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-map-pin"></i>
+                            </div>
+                            <span> Localização </span>
+                        </a>
+
+                        <a class="nav-link" target="_blank" rel="noopener" href="/cdn-cgi/l/email-protection#7c1f1312081d08133c0c110f1d12081d121d18130f190e151813520e12521b130a521e0e">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-envelope-simple"></i>
+                            </div>
+                            <span> <span class="__cf_email__" data-cfemail="a3c0cccdd7c2d7cce3d3ced0c2cdd7c2cdc2c7ccd0c6d1cac7cc8dd1cd8dc4ccd58dc1d1">[email&#160;protected]</span> </span>
+                        </a>
+
+                         <a class="nav-link" href="#">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-phone"></i>
+                            </div>
+                            <span> (84) 9 8630-9104 </span>
+                        </a>
+
+                        
+                                                    <a class="nav-link" href="#">
+                                <div class="back_icon">
+                                    <i class="ph-bold ph-phone"></i>
+                                </div>
+                                <span> (84) 9 8630-9104 </span>
+                            </a>
+                         
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_content_2">
+                                    <div class="footer_redes">
+                        <div class="div_title">
+                            <span> Redes Sociais </span>
+                        </div>
+
+                        <ul class="nav flex-column nav_footer">
+                                                            <a class="nav-link" target="_blank" rel="noopener" href="https://www.facebook.com/prefeituradesantanadoserido/?locale=pt_BR">
+                                    <div class="back_icon">
+                                        <img class="img-fluid" src="https://pmsantanadoserido.rn.gov.br/storage/redes_sociais/facebook.svg" alt="...">
+                                    </div>
+                                    <span> FACEBOOK </span>
+                                </a>
+                                                            <a class="nav-link" target="_blank" rel="noopener" href="https://www.instagram.com/prefeituradesantanadoserido/">
+                                    <div class="back_icon">
+                                        <img class="img-fluid" src="https://pmsantanadoserido.rn.gov.br/storage/redes_sociais/instagram.svg" alt="...">
+                                    </div>
+                                    <span> INSTAGRAM </span>
+                                </a>
+                                                            <a class="nav-link" target="_blank" rel="noopener" href="https://www.youtube.com/channel/UCQwidqzHAWwBgmuyf-Myq0w">
+                                    <div class="back_icon">
+                                        <img class="img-fluid" src="https://pmsantanadoserido.rn.gov.br/storage/redes_sociais/youtube.svg" alt="...">
+                                    </div>
+                                    <span> YOUTUBE </span>
+                                </a>
+                                                    </ul>
+                    </div>
+                
+                <div class="footer_menu">
+                    <div class="div_title">
+                        <span> Menu </span>
+                    </div>
+
+                    <ul class="nav flex-column nav_footer">
+                        <a class="nav-link" target="_blank" rel="noopener" href="https://pmsantanadoserido.rn.gov.br/noticias.rss">
+                            <i class="ph-bold ph-rss"></i>
+                            <span> RSS </span>
+                        </a>
+
+                        <a class="nav-link" href="https://pmsantanadoserido.rn.gov.br/mapa-site">
+                            <i class="ph-bold ph-map-trifold"></i>
+                            <span> Mapa do Site </span>
+                        </a>
+
+                                                    <a class="nav-link" href="#" id="clima">
+                                <i class="ph-bold ph-thermometer-simple"></i>
+                                <span> Clima </span>
+                            </a>
+                        
+                                            </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_copy">
+            <div class="copy">
+                <span> 2026 &copy; Todos os direitos reservados PREFEITURA MUNICIPAL DE SANTANA DO SERIDÓ | CNPJ: <span data-mask="00.000.000/0000-00"> 08088247000113 </span> </span>
+            </div>
+
+            <div class="design">
+                <span> Designed by <a href="https://www.digitaliza.com.br" target="_blank" rel="external"> Digitaliza </a> </span>
+            </div>
+        </div>
+    </div>
+</footer>
+        <a href="#" id="topo">
+    <div class="topo">
+        <i class="ph-bold ph-arrow-fat-up"></i>
+    </div>
+</a>
+    </div>
+
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=1054904748249600&autoLogAppEvents=1" crossorigin="anonymous" nonce="TgKZxTuJ"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script> <!-- | DATATABLES Plugin | -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script> <!-- | DATATABLES Plugin | -->
+    <script src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/sl-1.6.2/datatables.min.js"></script>
+
+    <script src="https://pmsantanadoserido.rn.gov.br/js/app.js"></script>
+
+            <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('modalComponent', (name) => ({
+                    name,
+                    open: false,
+                    openModal() {
+                        this.open = true
+                    },
+                    closeModal() {
+                        this.open = false
+                    }
+                }))
+            })
+        </script>
+        <script>
+        // Alpinejs
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('navbar', () => ({
+                showSearch: false,
+                isMobile: false,
+                init() {
+                    this.isMobile = window.matchMedia('(max-width: 768px)').matches;
+                    window.matchMedia('(max-width: 768px)').addEventListener('change', e => {
+                        this.isMobile = e.matches;
+                    });
+                }
+            }));
+        });
+    </script>
+    <!-- UserWay -->
+    <script>
+        window._userway_config = {
+            size: 'small',
+            position: '5'
+        }
+    </script>
+    <script data-account="HJhdKL5MCA" src="https://cdn.userway.org/widget.js"></script>
+    <script>
+        function feedbackStars() {
+            return {
+                rate: 0,
+                hoverRate: 0,
+                starColor(i) {
+                    const step = Math.min(this.displayRate, i * 2);
+                    if (step <= (i - 1) * 2) return '#e5e7eb';
+
+                    // posição global (1 a 10)
+                    const position = step;
+
+                    // interpolação HSL
+                    const startHue = 45; // amarelo fraco
+                    const endHue = 28; // laranja forte
+
+                    const hue =
+                        startHue - ((startHue - endHue) * (position - 1)) / 9;
+
+                    return `hsl(${hue}, 95%, 60%)`;
+                },
+
+                get displayRate() {
+                    return this.hoverRate || this.rate;
+                },
+
+                preview(i, event) {
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const half = (event.clientX - rect.left) < rect.width / 2;
+                    this.hoverRate = half ? (i * 2 - 1) : (i * 2);
+                },
+
+                select(i, event) {
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const half = (event.clientX - rect.left) < rect.width / 2;
+                    this.rate = half ? (i * 2 - 1) : (i * 2);
+                    this.hoverRate = 0;
+                    window.dispatchEvent(
+                        new CustomEvent('open-modal', {
+                            detail: 'feedback'
+                        })
+                    )
+                },
+
+                isFull(i) {
+                    return this.displayRate >= i * 2;
+                },
+
+                isHalf(i) {
+                    return this.displayRate === i * 2 - 1;
+                }
+            }
+        }
+    </script>
+    <!-- VLibras -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        new window.VLibras.Widget({
+            source: 'https://vlibras.gov.br/app',
+            position: 'L',
+        });
+    </script>
+
+            
+        <script>
+            $(function() {
+                const cidade = "SANTANA DO SERID\u00f3";
+
+                fetch(
+                        `https://api.openweathermap.org/data/2.5/weather?q=${cidade},BR&appid=bbbf320c2a267ad7a2fe7b28f7bb6bb2&units=metric&lang=pt_br`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const temperatura = data.main.temp;
+                        const descricao = data.weather[0].description;
+
+                        document.getElementById('clima').textContent =
+                            `Agora em ${cidade}: ${temperatura}°C, ${descricao}`;
+                    })
+                    .catch(error => {
+                        document.getElementById('clima').textContent = 'Erro ao carregar o clima.';
+                        console.error('Erro ao buscar clima:', error);
+                    });
+            })
+        </script>
+    </body>
+
+</html>

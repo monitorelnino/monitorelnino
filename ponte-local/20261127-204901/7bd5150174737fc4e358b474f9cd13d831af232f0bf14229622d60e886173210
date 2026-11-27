@@ -1,0 +1,2133 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de Hulha Negra</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Hulha Negra.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de Hulha Negra' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://hulhanegra.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://hulhanegra.rs.gov.br/uploads/config/23862/brasao_hulha_negra2.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='1196'>
+            <meta property='og:image:height' content='1280'>
+            <meta property='og:site_name' content='hulhanegra.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Hulha Negra.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de Hulha Negra'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Hulha Negra.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://hulhanegra.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://hulhanegra.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+<!-- ESTILOS CSS -->
+<link href="https://hulhanegra.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://hulhanegra.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.10" rel="stylesheet" type="text/css" />
+
+    <link id="layoutColor" href="https://hulhanegra.rs.gov.br/site/custom/default/css/color/darkgreen.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://hulhanegra.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://hulhanegra.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://hulhanegra.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://hulhanegra.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://hulhanegra.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://hulhanegra.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-QWJ9KZD8C9"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-QWJ9KZD8C9');
+    });
+</script>
+        <link rel="shortcut icon" href="https://hulhanegra.rs.gov.br/uploads/config/18/favicon.ico" />    
+	    <style>
+.alterate {
+min-height: 210px;
+}
+</style>    </head>
+	    <body class="smoothscroll wide home5_banner_responsivel" data-background="">
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <!-- Cabeçalho -->
+<!--===================================================-->
+<div id="header" class='header08'>
+  <header id="topBar" class="">
+    <div class="container">
+      <!-- Logo -->
+      <div class="col-md-4 col-sm-7 nopadding-left">
+        <!-- Data -->
+                <p class="mb10 mt5"><small class="pl15">Hulha Negra, 27 de novembro de 2026</small></p>
+        <!-- Fim Data -->
+                        <div class="col-md-3 col-sm-3 col-xs-4 p10v5h desktop-mt20">
+                  <a  href="https://hulhanegra.rs.gov.br">
+                    <img src="https://hulhanegra.rs.gov.br/uploads/config/23862/brasao_hulha_negra2.png" class="img-responsive" alt="Brasão da Prefeitura" />
+                  </a>
+                </div>
+                            <div class="col-md-9 col-sm-9 col-xs-8 desktop-mt20 p10v5h">
+              <h1 class="client-name nomargin lineh30">
+              <a class="logo" href="https://hulhanegra.rs.gov.br">
+                  Prefeitura Municipal de Hulha Negra              </a>
+              </h1>
+            </div>
+                  </div>
+      <!-- / Logo -->
+
+            <div class="col-md-8 col-sm-5 hidden-xs border-b-2-fff radius-right-20 styleBackgroundLight">
+        <div class="row">
+          <div class="col-md-6 alterate">
+            <div class="box-search-and-weather radius4 m0" title="Temperatura" aria-label="Temperatura" tabindex="0">
+              <!-- Previsão do tempo-->
+                            <div class="weather previsao-topo hidden">
+                <div style="flex:2;"></div>
+                <div class="weather-today">
+                  <i class="m0 fsize32 wi wi-thermometer"></i>
+                </div>
+                <div class="weather-week">
+                  <p class="fontw400 mb0">
+                    <small aria-label="Mínima de">MIN</small> <span class='min-temp'></span>°C
+                  </p>
+				  <span class="sr-only">e</span>
+                  <p class="fontw400 mb0">
+                    <small aria-label="Máxima de">MAX</small> <span class='max-temp'></span>°C
+                  </p>
+                </div>
+              </div>
+                            <!-- /Previsão do tempo-->
+              <!-- Busca -->
+              <div class="search-site" role='search'>
+                <form id="pesquisa" class="search nopadding" method="get" action="https://hulhanegra.rs.gov.br/pesquisa">
+			  		<label for="searchbar-desktop" class="sr-only">Pesquisar no site:</label>
+                  <input title="Procurar no site" id="searchbar-desktop" type="text" class="form-control nomargin" name="q" value="" placeholder="Procurar no site">
+                  <button type="submit" class="fa fa-search search-focus styleColor" title="Pesquisar" aria-label="Pesquisar"></button>
+                </form>
+              </div>
+              <!-- /Busca -->
+            </div>
+          </div>
+
+                        <div class="col-md-6 pt15 hidden-sm">
+                <div class="row">
+                  <div class="owl-carousel" data-plugin-options='{"items":1,"pagination": false, "autoPlay": true}'>
+                                                  <div class="item">
+                                                              <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://leismunicipais.com.br/leis/rs/hulhanegra/?o=tcers" target="_blank" onclick="">
+        <i class='fa fa-university styleColor'></i>                                <h2 class="styleColor">TCE-RS Legislação Municipal</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://webapp1-hulhanegra.cidade360.cloud/pronimtb/','Portal da Transparência')">
+        <i class='fa fa-search styleColor'></i>                                <h2 class="styleColor">Portal da Transparência</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                            <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="/ordem-servico" target="_self" onclick="">
+        <i class='fa fa-spinner styleColor'></i>                                <h2 class="styleColor">e-SIC</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="/sic" target="_self" onclick="">
+        <i class='fa fa-info-circle styleColor'></i>                                <h2 class="styleColor">Acesso à Informação</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                          </div>
+                                                        <div class="item">
+                                                              <ul class="nav nav-list linksCabecalho">
+                                                              <li class="col-md-6 col-xs-12 text-center">
+                              <a href="http://webmail.hulhanegra.rs.gov.br" target="_blank" onclick="">
+        <i class='fa fa-envelope styleColor'></i>                                <h2 class="styleColor">Webmail</h2>
+                              </a>
+                            </li>
+                                                        <li class="col-md-6 col-xs-12 text-center">
+                              <a href="https://meioambiente.governancabrasil.com.br:3079/meioambiente/index.php?class=indexme&cc=1355" target="_blank" onclick="">
+        <i class='fa fa-recycle styleColor'></i>                                <h2 class="styleColor">Setor de Meio Ambiente</h2>
+                              </a>
+                            </li>
+                                                          </ul>
+                                                          </div>
+                                              </div>
+                </div>
+              </div>
+                      </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <!--===================================================-->
+  <header id="topNav" class="">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get"
+            action="https://hulhanegra.rs.gov.br/pesquisa">
+		<label for="searchbar-mobile" class="sr-only">Pesquisar no site:</label>
+        <input title="termo de pesquisa" id="searchbar-mobile" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar" style="min-width:24px;min-height:24px;margin-top: -5px;"></button>
+      </form>
+      <!-- Menu Mobile -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse"> <i class="fa fa-bars"></i></button>
+      <!-- Menu -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/galeria-prefeitos/bcid/55/?galeria-de-prefeitos.html'>Galeria de Prefeitos</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/3/?dados-do-municipio.html'>Dados do Município</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-4"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://hulhanegra.rs.gov.br/uploads/config/23862/brasao_hulha_negra2.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(08)  0 0090-0063</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />08:00 - 12:00 | 13:00 - 17:00 <br />
+<b>CENTRO ADMINISTRATIVO: </b><br />
+0800 090 0063</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Secretarias</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-4"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/secretaria/id/1001/?fernando-campani.html'>Fernando Campani</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/secretaria/id/1022/?procuradoria-juridica.html'>Procuradoria Jurídica</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/secretaria/id/1007/?secretaria-de-administracao-planejamento-e-meio-ambiente.html'>Secretaria de Administração Planejamento e Meio Ambiente</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/secretaria/id/1008/?secretaria-de-agropecuaria.html'>Secretaria de Agropecuária</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/secretaria/id/106/?secretaria-de-assistencia-social.html'>Secretaria de Assistência Social</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/secretaria/id/1025/?secretaria-de-cultura-desporto-e-turismo.html'>Secretaria de Cultura, Desporto e Turismo</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/secretaria/id/111/?secretaria-de-educacao.html'>Secretaria de Educação</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/secretaria/id/109/?secretaria-de-financas.html'>Secretaria de Finanças</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/secretaria/id/1011/?secretaria-de-obras-gestao-rodoviaria-e-saneamento-basico.html'>Secretaria de Obras, Gestão Rodoviária e Saneamento Básico</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/secretaria/id/114/?secretaria-de-saude.html'>Secretaria de Saúde</a></li></ul></div><div class="col-md-4"><p class="menu-category">Conselhos e Comitês</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1005/?conselho-municipal-da-merenda-escolar.html'>CONSELHO MUNICIPAL DA MERENDA ESCOLAR</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1023/?conselho-municipal-de-cultura.html'>CONSELHO MUNICIPAL DE CULTURA</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1021/?conselho-municipal-de-desenvolvimento-rural.html'>CONSELHO MUNICIPAL DE DESENVOLVIMENTO RURAL</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1009/?conselho-municipal-de-educacao.html'>CONSELHO MUNICIPAL DE EDUCAÇÃO</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1017/?conselho-municipal-de-meio-ambiente.html'>CONSELHO MUNICIPAL DE MEIO AMBIENTE</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1018/?conselho-municipal-de-planejamento-e-gestao-territorial.html'>CONSELHO MUNICIPAL DE PLANEJAMENTO E GESTÃO TERRITORIAL</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1019/?conselho-municipal-de-saneamento-basico.html'>CONSELHO MUNICIPAL DE SANEAMENTO BÁSICO</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1012/?conselho-municipal-de-saude.html'>CONSELHO MUNICIPAL DE SAÚDE</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1024/?conselho-municipal-de-seguranca-publica.html'>CONSELHO MUNICIPAL DE SEGURANÇA PÚBLICA</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1010/?conselho-municipal-do-fundeb.html'>CONSELHO MUNICIPAL DO FUNDEB</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1020/?conselho-popular-do-orcamento-participativo.html'>CONSELHO POPULAR DO ORÇAMENTO PARTICIPATIVO</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/conselho/id/1004/?conselho-municipal-de-assistencia-social.html'>  CONSELHO MUNICIPAL DE ASSISTÊNCIA SOCIAL</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://hulhanegra.rs.gov.br/uploads/config/23862/brasao_hulha_negra2.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(08)  0 0090-0063</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />08:00 - 12:00 | 13:00 - 17:00 <br />
+<b>CENTRO ADMINISTRATIVO: </b><br />
+0800 090 0063</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-2"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/110/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/101/?concorrencia-publica.html'>Concorrência Pública</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/103/?convite.html'>Convite</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/1001/?editais.html'>Editais</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/107/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/108/?pregao-presencial.html'>Pregão Presencial</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/1002/?suspensao-de-licitacao.html'>Suspensão de Licitação</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/109/?tomada-de-preco.html'>Tomada de Preço</a></li><li><span>Páginas de Licitações</span><ul class="" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1003/?kit-propostas.html'>Kit propostas</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/5/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li></ul></li><li role="menuitem"></li></ul></div><div class="col-md-2"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/concurso/id/202/?processo-seletivo.html'>Processo Seletivo</a></li></ul></div><div class="col-md-2"><p class="menu-category">Dispensa</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html' target='_blank'>Dispensa de Licitação</a></li></ul></div><div class="col-md-2"><p class="menu-category">Legislação</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1022/?ata.html'>ATA</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1009/?balanco-financeiro.html'>Balanço financeiro</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1012/?balanco-orcamentario.html'>Balanço Orçamentário</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1010/?balanco-patrimonial.html'>Balanço patrimonial</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/7/?codigo-tributario-municipal.html'>Código Tributário Municipal</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/5/?decretos.html'>Decretos</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1008/?demonstracao-das-variacoes-patrimoniais.html'>Demonstração das variações patrimoniais</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1013/?demonstracao-dos-fluxos-de-caixa.html'>Demonstração dos fluxos de caixa</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1005/?edital.html'>Edital</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1023/?emendas-impositivas-do-legislativo.html'>Emendas Impositivas do Legislativo</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/4/?estatuto-do-servidor.html'>Estatuto do Servidor</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1001/?lei-de-diretrizes-orcamentarias.html'>Lei de Diretrizes Orçamentárias</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1016/?lei-municipal.html'>Lei Municipal</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1003/?lei-municipal-iss.html'>Lei Municipal - ISS</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1002/?lei-orcamentaria-anual.html'>Lei Orçamentária Anual</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/6/?lei-organica.html'>Lei Orgânica</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1017/?lei-paulo-gustavo.html'>Lei Paulo Gustavo</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/2/?leis.html'>Leis</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1014/?plano-de-contratacao-anual-2022.html'>Plano de Contratação Anual 2022</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1015/?plano-de-contratacao-anual-2023.html'>Plano de Contratação Anual 2023</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1021/?plano-de-contratacao-anual-2025.html'>Plano de Contratação Anual 2025</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1026/?plano-de-contratacao-anual-2026.html'>Plano de Contratação Anual 2026</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/10/?plano-plurianual.html'>Plano Plurianual </a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1020/?pnab-aldir-blanc-fomento-a-cultura.html'>PNAB Aldir Blanc Fomento à Cultura</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/11/?portaria.html'>Portaria</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1006/?relatorio-circunstanciado-do-prefeito.html'>Relatorio Circunstanciado do Prefeito</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1024/?relatorio-circunstanciado-do-prefeito-2024.html'>Relatório Circunstanciado do Prefeito 2024</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/legislacao/id/1025/?resolucoes-dos-conselhos-municipais.html'>Resoluções dos Conselhos Municipais</a></li></ul></div><div class="col-md-2"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html'>Diário Oficial</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/site/transparencia/index/bcid/1000/?portal-da-transparencia.html'>Portal da Transparência</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-frequentes.html'>Perguntas Frequentes</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/ordem-servico/bcid/39/?e-sic-pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1005/?relatorio-de-atendimento-e-sic.html'>Relatório de Atendimento e-SIC</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1030/?obras-em-andamento.html'>Obras em andamento</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li></ul></div><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1048/?emendas-parlamentares-estaduais.html'>Emendas Parlamentares Estaduais </a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1047/?emendas-parlamentares-federais.html'>Emendas Parlamentares Federais</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li></ul></div><div class="col-md-3"><p class="menu-category">COVID-19</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1024/?consultas-contratos-covid-19.html'>Consultas Contratos COVID-19</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1023/?consultas-licitacoes-covid-19.html'>Consultas Licitações COVID-19</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1025/?consultas-receitaxdespesa-covid-19.html'>Consultas ReceitaxDespesa COVID-19</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1009/?decretos-covid-19.html'>Decretos COVID-19</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1021/?vacinacao-covid-19.html'>Vacinação COVID-19 </a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1013/?boletim-epidemiologico.html'>Boletim Epidemiológico</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1014/?vacinometro.html'>Vacinômetro</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1027/?plano-de-cogestao-regional.html'>Plano de Cogestão Regional</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1011/?estatisticas-da-covid-19.html'>Estatísticas da COVID-19</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1015/?doses-de-vacinas-recebidas.html'>Doses de vacinas recebidas</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1026/?doses-aplicadas-por-faixa-etaria.html'>Doses aplicadas por faixa etária</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1028/?insumos-recebidos-vacinacao.html'>Insumos Recebidos Vacinação</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1016/?grupos-prioritarios-pessoas-vacinadas.html'>Grupos prioritários / Pessoas vacinadas</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1019/?ordem-dos-grupos-prioritarios-para-vacinacao.html'>Ordem dos Grupos Prioritários para Vacinação</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1012/?informacoes-das-vacinas-utilizadas-em-hulha-negra.html'>Informações das Vacinas Utilizadas em Hulha Negra</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1018/?denuncie-irregularidades-na-vacinacao.html'>Denuncie irregularidades na vacinação</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1017/?sobras-de-doses-e-nota-tecnica.html'>Sobras de doses e Nota Técnica</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1020/?perguntas-frequentes.html'>Perguntas frequentes</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1022/?prevencao-contra-o-coronavirus.html'>Prevenção contra o coronavírus</a></li></ul></div><div class="col-md-3"><p class="menu-category">Dados Abertos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>NFS-e</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1034/?nota-fiscal-de-servicos-eletronica.html'>Nota Fiscal de Serviços  Eletrônica</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1035/?lei-que-institui-a-nf-de-servicos-eletronica.html'>LEI QUE INSTITUI A NF DE SERVIÇOS ELETRÔNICA</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1036/?decreto-nf-de-servicos-eletronica-n-28642025.html'>DECRETO NF de Serviços Eletrônica N°. 2.864/2025</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1037/?manual-de-orientacao-ao-usuario.html'>Manual de Orientação ao Usuário</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1038/?lei-n-20802025-que-prorroga-o-prazo-da-lei-n2.html'>Lei n° 2.080/2025 que prorroga o prazo da Lei n°2.</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/pagina/id/1040/?folder-nf-de-servicos-eletronica.html'>Folder NF de Serviços Eletrônica</a></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-6"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://hulhanegra.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li></ul></div><div class="col-md-6 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://hulhanegra.rs.gov.br/uploads/config/23862/brasao_hulha_negra2.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(08)  0 0090-0063</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br />08:00 - 12:00 | 13:00 - 17:00 <br />
+<b>CENTRO ADMINISTRATIVO: </b><br />
+0800 090 0063</p></div></div></li></ul></li></ul></nav>
+      </div>
+    </div>
+  </header>
+  <!--===================================================-->
+  <!-- Fim Menu -->
+</div>
+<!--===================================================-->
+<!-- Fim Cabeçalho -->
+            <main id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a><!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350" style="
+            width: 100% !important;
+            height: auto;
+            aspect-ratio: 96 / 25;">
+                    <li>
+                <div class="backgroundBannerInstitucional01"
+                    style="
+                        background-image: url('https://hulhanegra.rs.gov.br/uploads/banner/27467/original_Baile_com_a_banda_Champion_2.webp');
+                        width: 100% !important;
+                        height: auto;
+                        aspect-ratio: 96 / 25;">
+                                        <a title="Nota Fiscal Gaúcha" href="https://nfg.sefaz.rs.gov.br/site/index.aspx" target='_blank' class="linkBannner"></a>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: false, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: false        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img src="https://hulhanegra.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+<div class="pb40 pt40">
+    <div class="container">
+      <!-- NOTÍCIAS E ACESSO RÁPIDO -->
+            <div class="overflow-hidden col-md-9 mobile-nopadding"><!-- NOTÍCIAS Acessiveis -->
+<section role="group" id="noticia4" aria-labelledby="noticia4.title" class="nopadding">
+    <div class="row">
+    <div class="col-md-12">
+        <h2 class="similar-h4 title" id="noticia4.title"><strong>ÚLTIMAS NOT&Iacute;CIAS</strong></h2>
+    </div>
+                        <article class="col-md-4">
+                    <a  href="https://hulhanegra.rs.gov.br/noticia/visualizar/id/2043/?hulha-negra-promove-mais-um-mutirao-de-castracoes.html"
+                    aria-labelledby="noticia4.0">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://hulhanegra.rs.gov.br/uploads/noticia/29582/media_WhatsApp_Image_2026_11_26_at_131446.jpeg" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.0">
+						Hulha Negra promove mais um mutirão de castrações					</h3>
+    			</a>
+    		</article>
+        	                <article class="col-md-4">
+                    <a  href="https://hulhanegra.rs.gov.br/noticia/visualizar/id/2044/?troca-de-bomba-pode-ocasionar-atraso-no-abastecimento-de-agua.html"
+                    aria-labelledby="noticia4.1">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://hulhanegra.rs.gov.br/uploads/noticia/29583/media_WhatsApp_Image_2026_11_25_at_200847_1.jpeg" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.1">
+						Troca de bomba pode ocasionar atraso no abastecimento de água					</h3>
+    			</a>
+    		</article>
+        	                <article class="col-md-4">
+                    <a  href="https://hulhanegra.rs.gov.br/noticia/visualizar/id/2045/?hulha-negra-promove-a-2a-mostra-da-ancestralidade.html"
+                    aria-labelledby="noticia4.2">
+
+					<div class="news-thumb">
+													<img class="img-responsive max-height360" src="https://hulhanegra.rs.gov.br/uploads/noticia/29585/media_WhatsApp_Image_2026_11_23_at_152307.jpeg" alt="Imagem sem descrição" role='presentation'>
+												</div>
+
+					<h3 class="mt10 similar-h4 lineh1p2" id="noticia4.2">
+						Hulha Negra promove a 2ª Mostra da Ancestralidade					</h3>
+    			</a>
+    		</article>
+        	    </div>
+
+        <div class="other-news hidden-xs col-md-12">
+        <div class="row">
+
+                        <a  href="https://hulhanegra.rs.gov.br/noticia/visualizar/id/2046/?secretaria-de-educacao-promove-seminario-de-partilhas-com-parceria-da-zello-consultoria.html"
+                aria-labelledby="noticia4m.3">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://hulhanegra.rs.gov.br/uploads/noticia/29586/media_WhatsApp_Image_2026_11_20_at_105820.jpeg" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">20/11/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.3">Secretaria de Educação promove Seminário de Partilhas com parceria da Zello Consultoria</h3>
+                    </div>
+                </article>
+            </a>
+                        <a  href="https://hulhanegra.rs.gov.br/noticia/visualizar/id/2047/?secretaria-de-saude-de-hulha-negra-participa-de-campanha-de-doacao-de-sangue-em-candiota.html"
+                aria-labelledby="noticia4m.4">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://hulhanegra.rs.gov.br/uploads/noticia/29588/media_WhatsApp_Image_2026_11_18_at_100312.jpeg" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">18/11/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.4">Secretaria de Saúde de Hulha Negra participa de campanha de doação de sangue em Candiota</h3>
+                    </div>
+                </article>
+            </a>
+                        <a  href="https://hulhanegra.rs.gov.br/noticia/visualizar/id/2042/?danos-na-tubulacao-afetam-abastecimento-de-agua-no-interior.html"
+                aria-labelledby="noticia4m.5">
+                <article class="col-md-4" style="padding: 15px 10px;">
+                                        <figure class="col-md-4 nopadding mb0">
+                        <img class="img-responsive" src="https://hulhanegra.rs.gov.br/uploads/noticia/29577/media_WhatsApp_Image_2026_11_16_at_222400.jpeg" alt="Imagem sem descrição" role="presentation"/>
+                    </figure>
+                    <div class="col-md-8">
+                        <p class="date">16/11/2026</p>
+                        <h3 class="similar-h5 mb0" id="noticia4m.5">Danos na tubulação afetam abastecimento de água no interior</h3>
+                    </div>
+                </article>
+            </a>
+                    </div>
+    </div>
+    <a aria-label="Ver mais notícias"
+        href="https://hulhanegra.rs.gov.br/noticia/?noticias.html"
+        class="btn btn-default btn-content featured-box-minimal"><i class="fa fa-newspaper-o"></i> Mais not&iacute;cias</a>
+</section></div>
+            <div class="col-md-3 mt4-xs mobile-nopadding mobile-margin-top25"><!-- ACESSO RÁPIDO -->
+<div id="acessoRapido1" class="widget featured-box-minimal owl-carousel-controls">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>ACESSO R&Aacute;PIDO</strong></h2>
+                        <span class="pull-right">
+				<a class="prev" href="javascript:;" aria-label="Anterior" title="Anterior">
+					<i class="mr5 lineh30 fa fa-arrow-left widget-icon" aria-hidden="true">
+						<span class="sr-only">Anterior</span>
+					</i>
+				</a>
+				<a class="next" href="javascript:;" aria-label="Próximo" title="Próximo">
+					<i class="mr5 lineh30 fa fa-arrow-right widget-icon" aria-hidden="true">
+						<span class="sr-only">Próximo</span>
+					</i>
+				</a>
+            </span>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1,"transitionStyle":"goDown" ,"autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Nossas Redes Sociais" href="https://www.instagram.com/prefeituradehulhanegra?igsh=b2NnbDI3ajFhOTE1" target="_blank" onclick="">
+                        <i class='fa fa-address-card-o'></i> Nossas Redes Sociais                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Fala.BR - Ouvidoria" href="https://sistema.ouvidorias.gov.br/publico/RS/HulhaNegra/Manifestacao/RegistrarManifestacao" target="_blank" onclick="">
+                        <img loading='lazy' class='mr10 radius25 width35 height35' src='https://hulhanegra.rs.gov.br/uploads/link/18182/imagem_e_sic_removebg_preview.png' alt='' /> Fala.BR - Ouvidoria                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="TCE-RS Legislação Municipal" href="https://leismunicipais.com.br/leis/rs/hulhanegra/?o=tcers" target="_blank" onclick="">
+                        <img loading='lazy' class='mr10 radius25 width35 height35' src='https://hulhanegra.rs.gov.br/uploads/link/17847/imagem_tce.jpg' alt='' /> TCE-RS Legislação Municipal                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Contas Públicas" href="/contas-publicas" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Contas Públicas                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Acesso à informação" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://webapp1-hulhanegra.cidade360.cloud/pronimtb/','Acesso à informação')">
+                        <i class='fa fa-angle-right'></i> Acesso à informação                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="e-SIC" href="/ordem-servico" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> e-SIC                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Perguntas Frequentes" href="/perguntas-respostas" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Perguntas Frequentes                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Portal da Transparência" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://webapp1-hulhanegra.cidade360.cloud/pronimtb/','Portal da Transparência')">
+                        <i class='fa fa-angle-right'></i> Portal da Transparência                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Legislação" href="/legislacao" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Legislação                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Licitações" href="/licitacao" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Licitações                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Concursos" href="/concurso" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Concursos                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Serviços" href="/servico" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Serviços                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Ouvidoria" href="/ouvidoria" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Ouvidoria                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="ITBI Online" href="https://webapp1-hulhanegra.cidade360.cloud/itbi/" target="_self" onclick="">
+                        <i class='fa fa-archive'></i> ITBI Online                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Setor de Meio Ambiente" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://meioambiente.governancabrasil.com.br:3079/meioambiente/index.php?class=indexme&cc=1355','Setor de Meio Ambiente')">
+                        <i class='fa fa-angle-right'></i> Setor de Meio Ambiente                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Nota Fiscal Gaúcha" href="https://nfg.sefaz.rs.gov.br/site/index.aspx" target="_blank" onclick="">
+                        <img loading='lazy' class='mr10 radius25 width35 height35' src='https://hulhanegra.rs.gov.br/uploads/link/27871/imagem_noticias_1601582350.jpg' alt='' /> Nota Fiscal Gaúcha                    </a>
+                </li>
+                        </ul>
+        </div>
+	        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+            <!-- /NOTÍCIAS E ACESSO RÁPIDO -->
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- LICITAÇÕES -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>LICITA&Ccedil;&Otilde;ES</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">297/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Dispensa de Licitação                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Aquisição - Equipamento deTreinamento de  Voleibol" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4300/?aquisicao-equipamento-detreinamento-de-voleibol.html">
+                            <p>Aquisição - Equipamento deTreinamento de  Voleibol</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            30/11/2026 &agrave;s 09h45min                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">065/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 065/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4297/?pregao-eletronico-0652026.html">
+                            <p>PREGÃO ELETRÔNICO 065/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            09/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">061/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 061/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4298/?pregao-eletronico-0612026.html">
+                            <p>PREGÃO ELETRÔNICO 061/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            04/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">058/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 058/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4299/?pregao-eletronico-0582026.html">
+                            <p>PREGÃO ELETRÔNICO 058/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            11/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">064/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 064/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4278/?pregao-eletronico-0642026.html">
+                            <p>PREGÃO ELETRÔNICO 064/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            27/11/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">063/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 063/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4276/?pregao-eletronico-0632026.html">
+                            <p>PREGÃO ELETRÔNICO 063/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            30/11/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">050/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 050/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4277/?pregao-eletronico-0502026.html">
+                            <p>PREGÃO ELETRÔNICO 050/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            10/12/2026 &agrave;s 11h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">051/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 051/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4269/?pregao-eletronico-0512026.html">
+                            <p>PREGÃO ELETRÔNICO 051/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            08/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">038/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 038/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4266/?pregao-eletronico-0382026.html">
+                            <p>PREGÃO ELETRÔNICO 038/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            15/12/2026 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">011/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Concorrência Pública                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Licitação para Pavimentação das ruas alvaro Lopes " href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4264/?licitacao-para-pavimentacao-das-ruas-alvaro-lopes.html">
+                            <p>Licitação para Pavimentação das ruas alvaro Lopes </p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            02/12/2026 &agrave;s 09h                        </p>
+                                                <p class="tags">
+                            <i class="fa fa-bookmark" title="Palavras-chaves"></i>
+                            pavimentação                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">015/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Chamamento Público                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="CREDECIAMENTO 015/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4207/?credeciamento-0152026.html">
+                            <p>CREDECIAMENTO 015/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            08/09/2031 &agrave;s 23h59min                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">026/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 026/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4178/?pregao-eletronico-0262026.html">
+                            <p>PREGÃO ELETRÔNICO 026/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            03/09/2029 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">004/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Chamamento Público                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="CREDENCIAMENTO 004/2026" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4074/?credenciamento-0042026.html">
+                            <p>CREDENCIAMENTO 004/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            25/05/2031 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">003/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Chamamento Público                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Credenciamento  Realização de Exames de Endosco" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/4034/?credenciamento-realizacao-de-exames-de-endosco.html">
+                            <p>Credenciamento  Realização de Exames de Endosco</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            17/04/2031 &agrave;s 00h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">005/2025</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Chamamento Público                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="CREDENCIAMENTO N° 005/2025" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/3965/?credenciamento-n-0052025.html">
+                            <p>CREDENCIAMENTO N° 005/2025</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            13/02/2031 &agrave;s 17h                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">004/2025</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Chamamento Público                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="CREDENCIAMENTO N° 004/2025" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/3935/?credenciamento-n-0042025.html">
+                            <p>CREDENCIAMENTO N° 004/2025</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            26/01/2031 &agrave;s 08h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">061/2025</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="PREGÃO ELETRÔNICO 061/2025" href="https://hulhanegra.rs.gov.br/licitacao/visualizar/id/3869/?pregao-eletronico-0612025.html">
+                            <p>PREGÃO ELETRÔNICO 061/2025</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            19/11/2028 &agrave;s 09h                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /LICITAÇÕES --></div>
+                <div class="col-md-4 mobile-nopadding" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://hulhanegra.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="103">Convite</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="1001">Editais</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="1002">Suspensão de Licitação</option>
+                                                        <option value="109">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://hulhanegra.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="202">Processo Seletivo</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://hulhanegra.rs.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1022">ATA</option>
+                                                        <option value="1009">Balanço financeiro</option>
+                                                        <option value="1012">Balanço Orçamentário</option>
+                                                        <option value="1010">Balanço patrimonial</option>
+                                                        <option value="7">Código Tributário Municipal</option>
+                                                        <option value="5">Decretos</option>
+                                                        <option value="1008">Demonstração das variações patrimoniais</option>
+                                                        <option value="1013">Demonstração dos fluxos de caixa</option>
+                                                        <option value="1005">Edital</option>
+                                                        <option value="1023">Emendas Impositivas do Legislativo</option>
+                                                        <option value="4">Estatuto do Servidor</option>
+                                                        <option value="1">Legislação</option>
+                                                        <option value="1001">Lei de Diretrizes Orçamentárias</option>
+                                                        <option value="1016">Lei Municipal</option>
+                                                        <option value="1003">Lei Municipal - ISS</option>
+                                                        <option value="1002">Lei Orçamentária Anual</option>
+                                                        <option value="6">Lei Orgânica</option>
+                                                        <option value="1017">Lei Paulo Gustavo</option>
+                                                        <option value="2">Leis</option>
+                                                        <option value="1014">Plano de Contratação Anual 2022</option>
+                                                        <option value="1015">Plano de Contratação Anual 2023</option>
+                                                        <option value="1021">Plano de Contratação Anual 2025</option>
+                                                        <option value="1026">Plano de Contratação Anual 2026</option>
+                                                        <option value="10">Plano Plurianual </option>
+                                                        <option value="1020">PNAB Aldir Blanc Fomento à Cultura</option>
+                                                        <option value="11">Portaria</option>
+                                                        <option value="1006">Relatorio Circunstanciado do Prefeito</option>
+                                                        <option value="1024">Relatório Circunstanciado do Prefeito 2024</option>
+                                                        <option value="1025">Resoluções dos Conselhos Municipais</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-4 mobile-nopadding mobile-margin-top25"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto featured-box-minimal">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+                            <span class="pull-right">
+                    <a class="prev" href="javascript:;">
+                        <i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+                            <span class="sr-only">Anterior</span>
+                        </i>
+                    </a>
+                    <a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+                        <span class="sr-only">Próximo</span>
+                    </i></a>
+                </span>
+                        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/23616/thumb_WhatsApp_Image_2025_01_16_at_152800.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Chefe de Gabinete: Mônica Andréa dos Santos" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Chefe de Gabinete</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://hulhanegra.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Mônica Andréa dos Santos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-090-0063                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 08:00 - 12:00 | 13:00 - 17:00<br />
+Segunda a sexta-feira                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/23796/thumb_286962862_541724767432020_5107419668554303911_n.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Assessor de Comunicação: Samuel Franz da Rosa" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Assessor de Comunicação</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://hulhanegra.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Samuel Franz da Rosa</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-090-0063                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 08:00 - 12:00 | 13:00 - 17:00<br />
+Segunda a sexta-feira                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/secretaria/id/109/?secretaria-de-financas.html">
+                       Secretaria de Finanças                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/23745/thumb_Imagem_do_WhatsApp_de_2025_04_09_s_142210_6d6a5481.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Ana Lidia de Oliveira Munhós" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria de Finanças" href="https://hulhanegra.rs.gov.br/secretaria/id/109/?secretaria-de-financas.html">
+                            <span class="similar-h4"><strong>Ana Lidia de Oliveira Munhós</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-090-0063                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 8h às 12h - 13h às 17h<br />
+SEGUNDA À SEXTA-FEIRA<br />
+Whatsapp: 53 999271490<br />
+Tributos: 53 99713 9535<br />
+Talões e Exatoria: 53 999786413<br />
+Contabilidade: 53 9927 1490<br />
+Central de atendimento: 0800 09000 63                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/secretaria/id/1008/?secretaria-de-agropecuaria.html">
+                       Secretaria de Agropecuária                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/24116/thumb_439864124_961425195983882_7867602968467533899_n.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Marciane Fischer" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria de Agropecuária" href="https://hulhanegra.rs.gov.br/secretaria/id/1008/?secretaria-de-agropecuaria.html">
+                            <span class="similar-h4"><strong>Marciane Fischer</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-090-0063                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 8h às 12h - 13h às 17h<br />
+SEGUNDA A SEXTA-FEIRA<br />
+Central de atendimento: 0800 09000 63                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/secretaria/id/111/?secretaria-de-educacao.html">
+                       Secretaria de Educação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/23668/thumb_team_6.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Cristiane Pereira Gonçalves" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria de Educação" href="https://hulhanegra.rs.gov.br/secretaria/id/111/?secretaria-de-educacao.html">
+                            <span class="similar-h4"><strong>Cristiane Pereira Gonçalves</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-090-0063                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 8h às 12h - 13h às 17h<br />
+SEGUNDA A SEXTA-FEIRA<br />
+Central de atendimento: 0800 09000 63                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/secretaria/id/1007/?secretaria-de-administracao-planejamento-e-meio-ambiente.html">
+                       Secretaria de Administração Planejamento e Meio Ambiente                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/23664/thumb_369460387_400204169207442_7544455221688266139_n.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Valdinei Roque de Matos" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Administração Planejamento e Meio Ambiente" href="https://hulhanegra.rs.gov.br/secretaria/id/1007/?secretaria-de-administracao-planejamento-e-meio-ambiente.html">
+                            <span class="similar-h4"><strong>Valdinei Roque de Matos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-090-0063                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 08:00 - 12:00 | 13:00 - 17:00<br />
+Segunda a sexta-feira<br />
+<b>Centro Administrativo:</b><br />
+0800 09000 63  <br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/secretaria/id/1022/?procuradoria-juridica.html">
+                       Procuradoria Jurídica                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/23791/thumb_FT00.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) PROCURADOR JURÍDICO: Gabriel Santos Domingues" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">PROCURADOR JURÍDICO</small>
+                        <div class="row">
+                          <a title="Procuradoria Jurídica" href="https://hulhanegra.rs.gov.br/secretaria/id/1022/?procuradoria-juridica.html">
+                            <span class="similar-h4"><strong>Gabriel Santos Domingues</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-090-0063                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 08:00 - 12:00 | 13:00 - 17:00<br />
+Segunda a sexta-feira<br />
+<b>Centro Administrativo:</b><br />
+0800 09000 63  <br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/secretaria/id/1025/?secretaria-de-cultura-desporto-e-turismo.html">
+                       Secretaria de Cultura, Desporto e Turismo                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/25010/thumb_Imagem_do_WhatsApp_de_2025_04_09_s_150317_44a18822.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Marco Igor Ballejo Canto" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Cultura, Desporto e Turismo" href="https://hulhanegra.rs.gov.br/secretaria/id/1025/?secretaria-de-cultura-desporto-e-turismo.html">
+                            <span class="similar-h4"><strong>Marco Igor Ballejo Canto</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-090-0063                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 8h às 12h - 13h às 17h<br />
+SEGUNDA A SEXTA-FEIRA<br />
+Central de atendimento: 0800 09000 63                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/secretaria/id/1001/?fernando-campani.html">
+                       Fernando Campani                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/28059/thumb_Fernando_Campani_2_Copia.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Prefeito: Fernando Campani" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Fernando Campani" href="https://hulhanegra.rs.gov.br/secretaria/id/1001/?fernando-campani.html">
+                            <span class="similar-h4"><strong>Fernando Campani</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (53) 3249-1013                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> Segunda-feira a sexta-feira (8h às12h - 13h às 17h)<br />
+<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/secretaria/id/106/?secretaria-de-assistencia-social.html">
+                       Secretaria de Assistência Social                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/23726/thumb_team_3.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Matheus de Andrade Rodrigues " />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Assistência Social" href="https://hulhanegra.rs.gov.br/secretaria/id/106/?secretaria-de-assistencia-social.html">
+                            <span class="similar-h4"><strong>Matheus de Andrade Rodrigues </strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-090-0063                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 8h às 12h - 13h às 17h<br />
+SEGUNDA A SEXTA-FEIRA<br />
+Central de atendimento: 0800 09000 63                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/secretaria/id/114/?secretaria-de-saude.html">
+                       Secretaria de Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/29331/thumb_WhatsApp_Image_2026_10_21_at_141609.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário : Egon da Silva dos Santos" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário </small>
+                        <div class="row">
+                          <a title="Secretaria de Saúde" href="https://hulhanegra.rs.gov.br/secretaria/id/114/?secretaria-de-saude.html">
+                            <span class="similar-h4"><strong>Egon da Silva dos Santos</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (08)  0 0090-7070                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 8h às 12h - 13h às 17h<br />
+SEGUNDA A SEXTA-FEIRA<br />
+<br />
+<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://hulhanegra.rs.gov.br/secretaria/id/1011/?secretaria-de-obras-gestao-rodoviaria-e-saneamento-basico.html">
+                       Secretaria de Obras, Gestão Rodoviária e Saneamento Básico                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12">
+                        <img src="https://hulhanegra.rs.gov.br/uploads/departamento/28058/thumb_Bruno_Baptista_secretario_de_Obras_Hulha_Negra.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Bruno Baptista" />
+                    </div>
+                                        <div class="col-xs-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Obras, Gestão Rodoviária e Saneamento Básico" href="https://hulhanegra.rs.gov.br/secretaria/id/1011/?secretaria-de-obras-gestao-rodoviaria-e-saneamento-basico.html">
+                            <span class="similar-h4"><strong>Bruno Baptista</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                0800-090-0063                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o text-muted mr6"></i> 8h às 12h - 13h às 17h<br />
+SEGUNDA A SEXTA-FEIRA<br />
+Central de atendimento: 0800 09000 63                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+
+<div class="pt60 pb60">
+    <div class="container">
+      <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+            <div class="col-md-12 mobile-nopadding"><!-- EVENTOS -->
+<div class="widget featured-box-minimal">
+    <div class="row mb0">
+		<div class="pr15 pl15 mrauto mlauto">
+			<h2 class="similar-h4 title"><strong>PR&Oacute;XIMO EVENTO</strong></h2>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<a href="https://hulhanegra.rs.gov.br/evento/visualizar/id/1016/?2a-conferencia-dos-conselhos-municipais.html">
+			<p class="lead">2ª Conferência dos Conselhos Municipais</p>
+		</a>
+		<p class="nomargin">O evento acontece na Câmara de Vereadores e é organizado pela Prefeitura de Hulha Negra.</p>
+	</div>
+
+	<div class="col-md-12 mb15">
+	    		<strong>Local:</strong> Av. Getúlio Vargas<br />
+						<strong>In&iacute;cio:</strong> 15/09/2026 &agrave;s 14h<br />
+				<strong>T&eacute;rmino:</strong> 15/12/2026 &agrave;s 15h			</div>
+
+	<a href="https://hulhanegra.rs.gov.br/evento/?agenda-de-eventos.html" class="btn btn-default btn-content">
+	    <i class="fa fa-calendar"></i> Agenda completa
+    </a>
+</div>
+<!-- /EVENTOS --></div>
+      			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+    </div>
+</div>
+
+<div class="styleBackgroundLight styleContrasteGray pt60 pb60">
+    <div class="container">
+      <div class="col-md-12 mobile-nopadding">
+        <!-- MULTIMIDIA -->
+<h2 class="similar-h4 title"><strong>MULTIM&Iacute;DIA</strong></h2>
+    <ul class="sort-destination isotope multimidia flex-center" style="flex-wrap: wrap;">
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Festa das Infâncias - Sede - 2026" class="item-hover" href="https://hulhanegra.rs.gov.br/galeria/id/1112/?festa-das-infancias-sede-2026.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Festa das Infâncias - Sede - 2026							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://hulhanegra.rs.gov.br/uploads/midia/29199/media_IMG_1494.jpg" width="260" height="260" alt="Festa das Infâncias - Sede - 2026" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">12/10/2026 - </small>
+                    <small style="display: inline;">Programas e ações</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Festa das Infâncias - Sede - 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Desfile Farroupilha 2026" class="item-hover" href="https://hulhanegra.rs.gov.br/galeria/id/1111/?desfile-farroupilha-2026.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Desfile Farroupilha 2026							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://hulhanegra.rs.gov.br/uploads/midia/28879/media_IMG_0214.jpg" width="260" height="260" alt="Desfile Farroupilha 2026" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">25/09/2026 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Desfile Farroupilha 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Chegada da Chama Crioula 2026" class="item-hover" href="https://hulhanegra.rs.gov.br/galeria/id/1110/?chegada-da-chama-crioula-2026.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Chegada da Chama Crioula 2026							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://hulhanegra.rs.gov.br/uploads/midia/28624/media_IMG_8839.jpg" width="260" height="260" alt="Chegada da Chama Crioula 2026" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">14/09/2026 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Chegada da Chama Crioula 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Circuito Verão Sesc de Esportes 2026" class="item-hover" href="https://hulhanegra.rs.gov.br/galeria/id/1109/?circuito-verao-sesc-de-esportes-2026.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Circuito Verão Sesc de Esportes 2026							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://hulhanegra.rs.gov.br/uploads/midia/26893/media_IMG_1200.jpg" width="260" height="260" alt="Circuito Verão Sesc de Esportes 2026" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">10/02/2026 - </small>
+                    <small style="display: inline;">Esporte, Cultura e Lazer</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Circuito Verão Sesc de Esportes 2026</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        	</ul>
+<!-- /MULTIMIDIA -->      </div>
+    </div>
+</div>
+
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-31.407729, -53.871013],
+                16
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-31.407729, -53.871013],
+                        {alt:'Prefeitura Municipal de Hulha Negra'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de Hulha Negra</strong></p>                <p style="margin: 5px 0px;">Av. Getúlio Vargas, 1562 / Paço Municipal&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Hulha Negra / RS</p><p style="margin: 5px 0px;">96460-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+
+            </main>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer02" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <!-- endereço e redes sociais -->
+            <div class="spaced col-md-4 col-sm-4">
+                                <p>
+                    Av. Getúlio Vargas, 1562, Centro<br />
+                    CEP: 96460-000<br />                    gabinete@hulhanegra.rs.gov.br<br />                </p>
+                                    <p class="similar-h3">(08)  0 0090-0063</p>
+                                <p>08:00 - 12:00 | 13:00 - 17:00 <br />
+<b>CENTRO ADMINISTRATIVO: </b><br />
+0800 090 0063</p>
+                				<p class="block">
+					<a href="https://hulhanegra.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://hulhanegra.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+				</p>
+            </div>
+            <!-- /endereço e redes sociais -->
+
+            <!-- col #2 -->
+            <div class="spaced col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="col-md-5 col-sm-4 hidden-xs hide-line-last-new">
+                        <p class="similar-h4">&Uacute;ltimas not&iacute;cias</p>
+                                                <ul class="list-unstyled">
+                                                        <li>
+                                <a class="block"
+                                href="https://hulhanegra.rs.gov.br/noticia/visualizar/id/2043/?hulha-negra-promove-mais-um-mutirao-de-castracoes.html">
+                                    Hulha Negra promove mais um mutirão de castrações                                </a>
+                                <small>26/11/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://hulhanegra.rs.gov.br/noticia/visualizar/id/2044/?troca-de-bomba-pode-ocasionar-atraso-no-abastecimento-de-agua.html">
+                                    Troca de bomba pode ocasionar atraso no abastecimento de água                                </a>
+                                <small>24/11/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://hulhanegra.rs.gov.br/noticia/visualizar/id/2045/?hulha-negra-promove-a-2a-mostra-da-ancestralidade.html">
+                                    Hulha Negra promove a 2ª Mostra da Ancestralidade                                </a>
+                                <small>23/11/2026</small>
+                            </li>
+                                                    </ul>
+                                            </div>
+
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <p class="similar-h4">Outras &aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a class="block" href="https://hulhanegra.rs.gov.br/transparencia/?transparencia.html">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://hulhanegra.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://hulhanegra.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://hulhanegra.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Not&iacute;cias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://hulhanegra.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://hulhanegra.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://hulhanegra.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                                                <!-- brasão -->
+                        <p class="text-center">
+                            <img alt="Brasão da prefeitura" src="https://hulhanegra.rs.gov.br/uploads/config/23862/brasao_hulha_negra2.png" class="logo img-responsive appear-animation opaco08" data-animation="bounceIn"/>
+                        </p>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+	<div class="container text-center fsize12 post-copyright" style="
+		display: flex;
+		flex-direction: column;
+		justify-content: center">
+		<p style="margin:0" id="footer.copyrightTxt">
+			Este site utiliza a ferramenta
+			<a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+				<img src="https://hulhanegra.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+				<span class="sr-only">iPrefeituras</span>
+			</a>.
+		</p>
+		<p style="margin:0" id="footer.copyrightTxt3">
+			Um produto
+			<strong>
+				<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+			</strong>.
+		</p>
+	</div>
+</div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://hulhanegra.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://hulhanegra.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://hulhanegra.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://hulhanegra.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://hulhanegra.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a61402299869ece8',t:'MTc5NTgxMjY2MA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a61402299869ece8',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

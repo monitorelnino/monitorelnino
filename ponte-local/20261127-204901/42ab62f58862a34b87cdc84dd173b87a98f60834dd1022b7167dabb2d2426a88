@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="csrf-token" content="BXb6eb0Mid0w6pIChk3k57NNQmvB6kMO7aw8mXIb">
+    <title>Prefeitura Municipal de Ielmo Marinho/RN, Ielmo Marinho/RN, Poder Executivo</title>
+    <link rel="shortcut icon" href="/img/faviconn.png">
+    <!-- Bootstrap core CSS -->
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/css/small-business.css" rel="stylesheet">
+    <link href="/css/acessibilidade.css" rel="stylesheet">
+    <link href="/css/busca.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <script lang="text/javascript">
+            //setando a variável que controla as funções de acessibilidade
+            if(sessionStorage.getItem('tamanho_fonte') == null){
+                sessionStorage.setItem('tamanho_fonte', 1);
+            }
+            if(sessionStorage.getItem('cor_escura') == null){
+                sessionStorage.setItem('cor_escura', 0);
+            }
+
+        </script>
+        <style type="text/css">
+          @keyframes    pulse {
+          0% { transform: scale(1); }
+          50% { transform: scale(1.1); }
+          100% { transform: scale(1); }
+        }
+        
+        .question-icon {
+          width: 50px;
+          height: 50px;
+          background-color: #3498db;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 24px;
+          color: white;
+          animation: pulse 1.5s infinite;
+        }
+        </style>        
+  </head>
+
+  <body class="acessibilidade">
+    <a href="#" style="position:fixed;bottom:250px;left:0px;z-index:1000;padding:5px;text-decoration:none" data-toggle="modal" data-target="#modalAgente">
+    <div class="question-icon">?</div>
+    </a>
+    <!-- Modal -->
+    <div class="modal fade" id="modalAgente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Pesquisar no Site</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <iframe src="/portal/pesquisa.php" frameborder="0" width="100%" height="300px"></iframe>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary btn-sm" data-dismiss="modal">Fechar</button>
+          </div>
+        </div>
+      </div>
+    </div>       
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+      <div class="container">
+            <a class="navbar-brand" style="font-size:13px" href="#top" accesskey="1">Ir para o Conteúdo Principal [Alt + 1]</a>
+            <a class="navbar-brand" style="font-size:13px" href="#menu" accesskey="2">Início do Menu [Alt + 2]</a>
+
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto m-2 p-1" style="border: 1px solid #fff;border-radius:8px;">
+            <li class="nav-item text-white mt-1" style="font-size:12px">
+              <span style="padding: 4px 6px 4px 4px; display: inline-block;"><i class="fa fa-wheelchair"></i> ACESSIBILIDADE</span>
+            </li>                
+            <li class="nav-item">
+                <a class="navbar-brand" href="#" onClick="fonte('a');">A+</a>
+            </li>
+            <li class="nav-item">
+                <a class="navbar-brand" href="#" onClick="fonte('n');">A</a>
+            </li>
+            <li class="nav-item">
+                <a class="navbar-brand" href="#" onClick="fonte('d');">A-</a>
+            </li>
+            <li class="nav-item">
+                <a class="navbar-brand" href="#" id="altocontraste" accesskey="3" onclick="window.toggleContrast()" onkeydown="window.toggleContrast()"><i class="fa fa-adjust"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="navbar-brand" href="https://ielmomarinho.rn.gov.br/pages/mapasite"><i class="fa fa-sitemap"></i> Mapa do Site</a>
+            </li>            
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Header - set the background image for the header in the line below  -->
+    <header class="bg-light">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <a href="https://ielmomarinho.rn.gov.br">
+              <img class="img-fluid" src="/img/logo-header.png" alt="">              
+            </a>  
+          </div>
+          <div class="col-lg-6">
+            <img class="img-fluid" style="float: right;" src="/img/selo_diamante_2025.png" alt="Programa Nacional de Transparência Pública - PNTP" title="Programa Nacional de Transparência Pública - PNTP">
+          </div>
+        </div>              
+      </div>
+    </header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="menu">
+      <div class="container mt-1 mb-1">
+          <a class="navbar-brand" href="https://ielmomarinho.rn.gov.br">
+            <i class="fa fa-home"></i> INÍCIO
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  A CIDADE
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">                  
+                  <a class="dropdown-item" href="https://ielmomarinho.rn.gov.br/pages/historico">HISTÓRICO</a>
+                  <a class="dropdown-item" href="https://ielmomarinho.rn.gov.br/pages/localizacao">LOCALIZAÇÃO</a>
+                  <a class="dropdown-item" href="https://ielmomarinho.rn.gov.br/pages/simbolos">SÍMBOLOS MUNICIPAIS</a>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  A PREFEITURA
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="https://ielmomarinho.rn.gov.br/ListaDeSecretarias">ESTRUTURA ADMINISTRATIVA</a>
+                  <a class="dropdown-item" href="https://ielmomarinho.rn.gov.br/pages/oPrefeito">O PREFEITO</a>
+                  <a class="dropdown-item" href="https://ielmomarinho.rn.gov.br/pages/vicePrefeito">O VICE-PREFEITO</a>
+                </div>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://ielmomarinho.rn.gov.br/ListaDeNoticias">NOTÍCIAS</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="https://ielmomarinho.rn.gov.br/transparencia-municipal">PORTAL DA TRANSPARÊNCIA</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#servicos">SERVIÇOS</a>
+              </li>              
+              <li class="nav-item">
+                <a class="nav-link" href="https://ielmomarinho.rn.gov.br/Contatos">FALE CONOSCO</a>
+              </li>              
+            </ul>
+            <a href="https://ielmomarinho.rn.gov.br/pesquisa">
+              <form class="card p-2">
+                <div class="input-group">
+                  <input type="text" name="texto" class="form-control" placeholder="Faça sua pesquisa" aria-label="Search">
+                  <div class="input-group-append">
+                    <button type="submit" class="btn btn-success"><i class="fa fa-search"></i></button>
+                  </div>
+                </div>
+              </form>
+            </a>
+          </div>
+        </div>  
+      </nav>
+         
+<div class="services-banner">
+    <div class="services-container">
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-money"></i>
+            </div>
+            <h3>Portal do Contribuinte</h3>
+            <p>IPTU, ISS e outros tributos municipais</p>
+            <a href="https://ielmomarinho.hm2solucoes.com.br/portal/open.do?sys=PDC" target="_blank" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-search"></i>
+            </div>
+            <h3>Portal da Transparência</h3>
+            <p>Execução orçamentária e financeira</p>
+            <a href="https://ielmomarinho.rn.gov.br/transparencia-municipal" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-info"></i>
+            </div>
+            <h3>SIC e E-SIC</h3>
+            <p>Lei Complementar nº 12.527/2011</p>
+            <a href="https://ielmomarinho.rn.gov.br/AcessoAInformacao" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-eye"></i>
+            </div>
+            <h3>Processos Licitatórios</h3>
+            <p>Avisos, editais, contratos e demais atos</p>
+            <a href="https://ielmomarinho.rn.gov.br/licitacoes" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+        
+        <div class="service-card">
+            <div class="service-icon">
+                <i class="fa fa-id-card"></i>
+            </div>
+            <h3>Contracheque Online</h3>
+            <p>Ficha Individual Financeira</p>
+            <a href="https://app.topsolutionsrn.com.br/contracheque/pmielmomarinho/" target="_blank" class="service-link">Acessar <i class="fa fa-arrow-right"></i></a>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mt-4">
+                <a href="https://radardatransparencia.atricon.org.br/" target="_blank">
+                  <img class="img-fluid" src="/img/radar.png" alt="" style="border: 1px solid #e8e8e8; border-radius: 10px; padding: 10px;">              
+                </a> 
+            </div>
+        </div>
+    </div>
+</div>  
+     <!-- Page Content -->
+    <div class="container mt-4">
+        <div class="row">
+            <!-- Coluna esquerda - Notícia em destaque -->
+            <div class="col-lg-8 mb-lg-0">
+                                              
+                <div class="card featured-card">
+                    <div class="featured-img-container">
+                        <img src="./storage/noticias/October2026/vuBks1wt1kXuejKuaZXZ.jpg" class="featured-img" alt="Educação se fortalece com conhecimento, troca de experiências e inovação!">
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-subtitle mb-2 text-muted"><a href="https://ielmomarinho.rn.gov.br/post/educacao-se-fortalece-com-conhecimento-troca-de-experiencias-e-inovacao">Educação se fortalece com conhecimento, troca de experiências e inovação!</a></h3>
+                        <p class="text-muted mb-2">19/10/2026</p>
+                        <p class="card-text">
+                            Com o apoio da Prefeitura de Ielmo Marinho, a secret&aacute;ria municipal de Educa&ccedil;&atilde;o e t&eacute;cnicos da Secretaria participaram do XII Congresso Nacional de Educa&ccedil;&atilde;o (CONEDU 2026), realizado em Campina Grande/PB.
+Investir na forma&ccedil;&atilde;o e na...</p>
+                    </div>
+                </div>
+                                              
+            </div>
+            
+            <!-- Coluna direita - Notícias secundárias -->
+            <div class="col-lg-4">
+                                                                        <!-- Notícia 1 -->
+                <div class="card news-card h-120">
+                    <div class="card-body d-flex p-2">
+                        <div class="news-img-container me-3">
+                            <img src="./storage/noticias/August2026/Wu5e5IDfCVFjGJnTUaa4.jpg" class="news-img" alt="Atenção, agricultores e agricultoras de Ielmo Marinho!">
+                        </div>
+                        <div class="d-flex flex-column justify-content-between ml-2">
+                            <div>
+                                <span class="news-category"></span>
+                                <h6 class="card-title mb-1">
+                                    <a href="https://ielmomarinho.rn.gov.br/post/atencao-agricultores-e-agricultoras-de-ielmo-marinho">Atenção, agricultores e agricultoras de Ielmo Marinho!</a></h6>
+                                <small class="text-muted">17/08/2026</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                            <!-- Notícia 1 -->
+                <div class="card news-card h-120">
+                    <div class="card-body d-flex p-2">
+                        <div class="news-img-container me-3">
+                            <img src="./storage/noticias/October2026/Cnf1cFtZmnc4hMkszfTn.jpg" class="news-img" alt="Vem aí a 2ª Feira do Abacaxi e Agronegócio de Ielmo Marinho!">
+                        </div>
+                        <div class="d-flex flex-column justify-content-between ml-2">
+                            <div>
+                                <span class="news-category"></span>
+                                <h6 class="card-title mb-1">
+                                    <a href="https://ielmomarinho.rn.gov.br/post/vem-ai-a-2a-feira-do-abacaxi-e-agronegocio-de-ielmo-marinho">Vem aí a 2ª Feira do Abacaxi e Agronegócio de Ielmo Marinho!</a></h6>
+                                <small class="text-muted">19/10/2026</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                            <!-- Notícia 1 -->
+                <div class="card news-card h-120">
+                    <div class="card-body d-flex p-2">
+                        <div class="news-img-container me-3">
+                            <img src="./storage/noticias/October2026/EJmBsWJEQjm5AILRYf8O.jpg" class="news-img" alt="DIA D DA VACINAÇÃO ANTIRRÁBICA!">
+                        </div>
+                        <div class="d-flex flex-column justify-content-between ml-2">
+                            <div>
+                                <span class="news-category"></span>
+                                <h6 class="card-title mb-1">
+                                    <a href="https://ielmomarinho.rn.gov.br/post/dia-d-da-vacinacao-antirrabica">DIA D DA VACINAÇÃO ANTIRRÁBICA!</a></h6>
+                                <small class="text-muted">19/10/2026</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                            <!-- Notícia 1 -->
+                <div class="card news-card h-120">
+                    <div class="card-body d-flex p-2">
+                        <div class="news-img-container me-3">
+                            <img src="./storage/noticias/October2026/vuBks1wt1kXuejKuaZXZ.jpg" class="news-img" alt="Educação se fortalece com conhecimento, troca de experiências e inovação!">
+                        </div>
+                        <div class="d-flex flex-column justify-content-between ml-2">
+                            <div>
+                                <span class="news-category"></span>
+                                <h6 class="card-title mb-1">
+                                    <a href="https://ielmomarinho.rn.gov.br/post/educacao-se-fortalece-com-conhecimento-troca-de-experiencias-e-inovacao">Educação se fortalece com conhecimento, troca de experiências e inovação!</a></h6>
+                                <small class="text-muted">19/10/2026</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                                               
+            </div>
+        </div>
+    </div>     
+    <div class="container">
+      <!-- /.row -->
+      <div class="container">
+          <div class="row mb-4">
+              <div class="col-md-6">
+                <a href="https://radardatransparencia.atricon.org.br/" target="_blank">
+                  <img class="img-fluid" src="/img/banner-atricon.jpg" alt="">              
+                </a>                  
+              </div>
+              <div class="col-md-6">
+                <a href="http://128.201.219.209:8080/resultado/" target="_blank">
+                  <img class="img-fluid" src="/img/result_exames.png" alt="">              
+                </a>                   
+              </div>
+          </div>
+      </div>
+      <!-- Content Row -->
+      <div class="row">
+        <div class="col-md-6 mb-4">
+          <h5><i class="fa fa-plus"></i> MAIS NOTÍCIAS</h5>
+          <div class="card" style="border:2px solid #ffffff;">
+                                              <small class="text-muted mb-1">
+                    <a href="#" class="badge alert-success"></a>
+                </small>
+                <a href="https://ielmomarinho.rn.gov.br/post/atencao-agricultores-e-agricultoras-de-ielmo-marinho" class="text text-dark">
+                    <h6>Atenção, agricultores e agricultoras de Ielmo Marinho!</h6>
+                </a>
+                                                                                                                                      <hr>
+            </div>
+            <div class="card" style="border:2px solid #ffffff">
+                                              <small class="text-muted mb-1">
+                    <a href="#" class="badge alert-success"></a>
+                </small>
+                <a href="https://ielmomarinho.rn.gov.br/post/bola-rolando-campeonato-municipal-de-futebol-de-ielmo-marinho-2026-comeca-com-26-equipes" class="text text-dark">
+                    <h6>BOLA ROLANDO! Campeonato Municipal de Futebol de Ielmo Marinho 2026 começa com 26 equipes</h6>
+                </a>
+                                                                                                                                                                    <hr>
+              </div>
+            <div class="card" style="border:2px solid #ffffff">
+                                              <small class="text-muted mb-1">
+                    <a href="#" class="badge alert-success"></a>
+                </small>
+                <a href="https://ielmomarinho.rn.gov.br/post/ielmo-marinho-realiza-audiencia-publica-da-ldo-e-convida-populacao-a-participar-do-planejamento-do-municipio" class="text text-dark">
+                    <h6>Ielmo Marinho realiza Audiência Pública da LDO e convida população a participar do planejamento do município</h6>
+                </a>
+                                                                                                                                                                                                  <hr>
+              </div>
+            <div class="card" style="border:2px solid #ffffff">
+                                              <small class="text-muted mb-1">
+                    <a href="#" class="badge alert-success"></a>
+                </small>
+                <a href="https://ielmomarinho.rn.gov.br/post/a-vacinacao-antirrabica-2026-esta-chegando" class="text text-dark">
+                    <h6>A VACINAÇÃO ANTIRRÁBICA 2026 ESTÁ CHEGANDO!</h6>
+                </a>
+                                                                                                                                                                                                                                </div>              
+        </div>
+        <!-- /.col-md-4 -->
+        <div class="col-md-6 mb-4">
+          <h5 class="text-center">SECRETARIAS MUNICIPAIS</h5>
+          <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner">
+              <div class="item carousel-item active">
+                              
+                <div class="img-box"><img src="./storage/secretaria/July2026/IpnPgVWINh0xThBZ0ZHu.png" alt="sem imagem"></div>
+                <p class="testimonial">
+                  <b>SECRETARIA MUNICIPAL DE SAÚDE - SMS</b><br/>
+                  <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                  <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                  <i class="fa fa-envelope"></i> saude@ielmomarinho.rn.gov.br
+                </p>
+                <p class="overview">
+                  <b>VERUSKA RAMOS TORRES</b>, Secretária
+                </p>
+                <h6>
+                  <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-saude-sms" class="btn btn-success btn-sm">
+                        Visualizar
+                  </a>
+                <h6>
+                
+                            </div>
+
+              
+                                                                              <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/January2025/IFNw4AddifW6XK3WxOte.png" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE TRABALHO, HABITAÇÃO, DESENVOLVIMENTO E ASSISTÊNCIA SOCIAL - SEMTHDAS</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua Tiradentes<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> assistencia@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>ANTÔNIO INÁCIO DE SOUZA BARRETO JÚNIOR</b>, Secretário
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-trabalho-habitacao-desenvolvimento-e-assistencia-social-semthdas" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/January2025/1awb7jLFSCkn2cbNh8Jx.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>GABINETE DO PREFEITO - SGP</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> gabinete@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>JOÃO SOARES DA COSTA JÚNIOR</b>, Chefe de Gabinete
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/gabinete-do-prefeito-sgp" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/January2025/qT8H3aeN7dYHv0DgZuFZ.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE OBRAS E SERVIÇOS URBANOS - SEMOS</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> obras@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>PAULO HENRIQUE LOURENÇO</b>, Secretário
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-obras-e-servicos-urbanos-semos" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/January2025/XK1w9jWkzepAWly94AfU.png" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>CONTROLADORIA GERAL DO MUNICÍPIO - CGM</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> controladoria@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>FRANCISCO DE ASSIS BORGES DA SILVA</b>, Controlador do Município
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/controladoria-geral-do-municipio-cgm" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/June2025/CG2kK0HVsNNpzXxxxTxi.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE GOVERNO - SEMGOV</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> governo@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>FELIPE LEOCADIO DAMASCENO</b>, Secretário
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-governo-semgov" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/January2025/gZsBYxpycfwzg7246Kvv.png" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE TRIBUTAÇÃO - SEMUT</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> tributacao@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>ALINE SOUZA DA SILVA</b>, Secretária
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-tributacao-semut" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/January2025/L2rNm1d17BMCFPH39puH.png" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE EDUCAÇÃO - SEME</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> educacao@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>KEILA ROSÂNIA DE LIMA SOUZA</b>, Secretária
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-educacao-seme" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/January2025/wn5FapFqTDMfECE1I9UI.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE ADMINISTRAÇÃO E FINANÇAS - SEMAF</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> administracao@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>ORLANDO BATISTA DAMASCENO</b>, Secretário
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-administracao-e-financas-semaf" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/July2026/YBCir6SAYeYCcQYUFqkU.jpeg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE ESPORTE E LAZER - SEMEL</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua do Campo<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> esporte@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>VINICIUS GABRIEL CABRAL DE MORAIS</b>, Secretário
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-esporte-e-lazer-semel" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/July2026/CP8a5bedRqZ0WxYozsfI.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE AGRICULTURA - SEMA</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> agricultura@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>FRANCISCO DAS CHAGAS PINHEIRO DE LIMA</b>, Secretário
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-agricultura-sema" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/January2025/S4sFWbGcWLnqFDgOlhoK.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>PROCURADORIA GERAL DO MUNICÍPIO - PGM</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> procuradoria@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>JÉSSICA CAROLINE NOBRE DINIZ</b>, Procuradora Municipal
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/procuradoria-geral-do-municipio-pgm" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/June2025/LqGaQFJtC90QpPfkh1KQ.jpg" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE TURISMO, CULTURA E JUVENTUDE - SEMTCJ</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> cultura@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>TANIA MARIA PEREIRA</b>, Secretária
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-turismo-cultura-e-juventude-semtcj" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/July2026/xdlCyftJkh9gs0ow6k6K.png" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE MEIO AMBIENTE - SEMMA</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> meioambiente@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>KARINA DA LUZ MEDINA</b>, Secretário
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-meio-ambiente-semma" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/October2025/C1yCd93EtZcnbT5UAhlQ.png" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>VICE-PREFEITO MUNICIPAL</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> administracao@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>IONALDO SOUZA DA SILVA</b>, Vice-Prefeito do Município
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/vice-prefeito-municipal" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/October2025/dvXvxiCU4Q2ibkGEmHsL.png" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>PREFEITO MUNICIPAL</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> administracao@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>FERNANDO BATISTA DAMASCENO</b>, Prefeito do Município
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/prefeito-municipal" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                                                                <div class="item carousel-item">  
+                    <div class="img-box"><img src="./storage/secretaria/February2026/ZKfOAO4cV4OFjI9gGi5O.png" alt="sem imagem"></div>
+                    <p class="testimonial">
+                      <b>SECRETARIA MUNICIPAL DE TRANSPORTE E TRÂNSITO - SEMTT</b><br/>
+                      <i class="fa fa-map-marker"></i> Rua José Camilo Bezerra<br/>
+                      <i class="fa fa-phone"></i> (84)3267-0086<br/>
+                      <i class="fa fa-envelope"></i> transportes@ielmomarinho.rn.gov.br
+                    </p>
+                    <p class="overview">
+                      <b>ALBERTO DOS SANTOS SILLVA</b>, Secretário
+                    </p>
+                      <h6>
+                        <a href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-transporte-e-transito-semtt" class="btn btn-success btn-sm">
+                            Visualizar
+                        </a>
+                      <h6>
+                  </div>  
+                              
+            <!-- Carousel controls -->
+            <a class="carousel-control left carousel-control-prev" href="#myCarousel" data-slide="prev">
+              <i class="fa fa-angle-left"></i>
+            </a>
+            <a class="carousel-control right carousel-control-next" href="#myCarousel" data-slide="next">
+              <i class="fa fa-angle-right"></i>
+            </a>
+          </div>
+        </div>          
+        </div>
+        <!-- /.col-md-4 -->
+      </div>
+      <!-- /.row -->
+    <!-- /.container -->
+</div>
+<section id="tabs" class="bg-success">
+	<div class="container" id="servicos">
+		<h2 class="text-white">Acesso Rápido aos Serviços</h2>
+		<div class="row mt-4">
+			<div class="col-md-12">
+				<nav>
+					<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+						<a class="nav-item nav-link active" id="nav-home-tab" style="color:#fff;" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">
+						    <i class="fa fa-user"></i> CIDADÃO
+						</a>
+						<a class="nav-item nav-link" id="nav-profile-tab" style="color:#fff;" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">
+						    <i class="fa fa-sitemap"></i> EMPRESA
+						</a>
+						<a class="nav-item nav-link" id="nav-contact-tab" style="color:#fff;" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">
+						    <i class="fa fa-users"></i> SERVIDOR
+						</a>
+					</div>
+				</nav>
+				<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
+					<div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+						<div class="row">
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.rn.gov.br/BolsaFamilia">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        BOLSA FAMÍLIA
+                                      </div>
+                                    </div>
+                                </a>
+						    </div>
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.rn.gov.br/Contatos/#carta">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        CARTA DE SERVIÇO
+                                      </div>
+                                    </div>						        
+                                </a>
+						    </div>
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.rn.gov.br/ProcessoSeletivo">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        CONCURSOS E SELETIVOS
+                                      </div>
+                                    </div>			
+                                </a>
+						    </div>
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.rn.gov.br/atosNormativos">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        DIÁRIO OFICIAL
+                                      </div>
+                                    </div>						        
+                                </a>
+						    </div>
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.rn.gov.br/pages/juntaMilitar">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        JUNTA MILITAR
+                                      </div>
+                                    </div>	
+                                </a>
+						    </div>
+						    <div class="col-md-2">
+						        <a href="https://pmielmomarinhorn.transparencia.topsolutionsrn.com.br/perguntas" target="_blank">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        PERGUNTAS FREQUENTES
+                                      </div>
+                                    </div>
+                                </a>
+						    </div>						    
+						</div>
+					</div>
+					<div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+						<div class="row">
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.hm2solucoes.com.br/portal/open.do?sys=PDC" target="_blank">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        TRIBUTAÇÃO
+                                      </div>
+                                    </div>						        
+                                </a>
+						    </div>
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.hm2solucoes.com.br/nfe/open.do?sys=NFE" target="_blank">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        NOTA FISCAL
+                                      </div>
+                                    </div>						        
+                                </a>
+						    </div>
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.rn.gov.br/pages/certidoes">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        CERTIDÕES
+                                      </div>
+                                    </div>	
+                                </a>
+						    </div>
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.rn.gov.br/Contatos">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        OUVIDORIA
+                                      </div>
+                                    </div>		
+                                </a>
+						    </div>
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.rn.gov.br/transparencia-municipal/#licitacoes" style="text-decoration: none;">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        LICITAÇÃO
+                                      </div>
+                                    </div>
+                                </a>
+						    </div>
+						    <div class="col-md-2">
+						        <a href="https://ielmomarinho.rn.gov.br/AcessoAInformacao">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        SIC
+                                      </div>
+                                    </div>						      
+                                </a>
+						    </div>						    
+						</div>						
+					</div>
+					<div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+						<div class="row">
+						    <div class="col-md-4">
+						        <a href="https://app.topsolutionsrn.com.br/contracheque/pmielmomarinho/" target="_blank">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        CONTRACHEQUE
+                                      </div>
+                                    </div>
+                                </a>
+						    </div>
+						    <div class="col-md-4">
+						        <a href="https://pmielmomarinhorn.transparencia.topsolutionsrn.com.br/servidores" target="_blank">
+                                    <div class="card alert-success text-center">
+                                      <div class="card-body">
+                                        <h2><i class="fa fa-angle-right"></i></h2>
+                                        FOLHA DE PESSOAL
+                                      </div>
+                                    </div>						        
+                                </a>
+						    </div>
+						    <div class="col-md-4">
+						        <a href="https://mail.hostinger.com/" target="_blank">
+                                <div class="card alert-success text-center">
+                                  <div class="card-body">
+                                    <h2><i class="fa fa-angle-right"></i></h2>
+                                    ACESSO WEBMAIL
+                                  </div>
+                                </div>						        
+                                </a>
+						    </div>
+						</div>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>    
+<div class="map">
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.2274675881226!2d-35.5527073!3d-5.8235149!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b24b6da1e03703%3A0x6917788f9d7f927b!2sPrefeitura%20de%20Ielmo%20Marinho!5e0!3m2!1spt-BR!2sbr!4v1736216344273!5m2!1spt-BR!2sbr" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+      <!-- Footer -->
+    <footer class="py-5 bg-secondary">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 mb-4 text-center">
+            <img class="img-fluid" src="/img/logo-footer.png" alt="">
+            <br/><br/>
+            <h6>REDES SOCIAS</h6>
+                <a class="navbar-brand" href="https://www.facebook.com/profile.php?id=61571683895409" target="_blank">
+                    <i class="fa fa-facebook"></i> /prefeitura.ielmomarinho
+                </a>
+                <br>
+                <a class="navbar-brand" href="https://www.instagram.com/prefeitura.ielmomarinho/" target="_blank">
+                    <i class="fa fa-instagram"></i> /prefeitura.ielmomarinho
+                </a>                
+            <p>&nbsp;</p>
+            <h6>O MUNICÍPIO</h6>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/pages/historico">Histórico</a>
+              </li>
+              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/pages/simbolos">Símbolos Municipais</a>
+              </li>
+              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/pages/localizacao">Localização</a>
+              </li>
+              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/Contatos">Ouvidoria Municipal</a>
+              </li> 
+              <li class="list-group-item">
+                  <a class="text text-dark" href="https://mail.hostinger.com/" target="_blank">Webmail</a>
+              </li>              
+            </ul>            
+          </div>
+          <div class="col-md-6 mb-4">
+            <h6>SECRETARIAS</h6>
+            <ul class="list-group list-group-flush">
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/controladoria-geral-do-municipio-cgm">
+                    CONTROLADORIA GERAL DO MUNICÍPIO - CGM
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/gabinete-do-prefeito-sgp">
+                    GABINETE DO PREFEITO - SGP
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/prefeito-municipal">
+                    PREFEITO MUNICIPAL
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/procuradoria-geral-do-municipio-pgm">
+                    PROCURADORIA GERAL DO MUNICÍPIO - PGM
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-administracao-e-financas-semaf">
+                    SECRETARIA MUNICIPAL DE ADMINISTRAÇÃO E FINANÇAS - SEMAF
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-agricultura-sema">
+                    SECRETARIA MUNICIPAL DE AGRICULTURA - SEMA
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-educacao-seme">
+                    SECRETARIA MUNICIPAL DE EDUCAÇÃO - SEME
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-esporte-e-lazer-semel">
+                    SECRETARIA MUNICIPAL DE ESPORTE E LAZER - SEMEL
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-governo-semgov">
+                    SECRETARIA MUNICIPAL DE GOVERNO - SEMGOV
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-meio-ambiente-semma">
+                    SECRETARIA MUNICIPAL DE MEIO AMBIENTE - SEMMA
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-obras-e-servicos-urbanos-semos">
+                    SECRETARIA MUNICIPAL DE OBRAS E SERVIÇOS URBANOS - SEMOS
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-saude-sms">
+                    SECRETARIA MUNICIPAL DE SAÚDE - SMS
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-trabalho-habitacao-desenvolvimento-e-assistencia-social-semthdas">
+                    SECRETARIA MUNICIPAL DE TRABALHO, HABITAÇÃO, DESENVOLVIMENTO E ASSISTÊNCIA SOCIAL - SEMTHDAS
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-transporte-e-transito-semtt">
+                    SECRETARIA MUNICIPAL DE TRANSPORTE E TRÂNSITO - SEMTT
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-tributacao-semut">
+                    SECRETARIA MUNICIPAL DE TRIBUTAÇÃO - SEMUT
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/secretaria-municipal-de-turismo-cultura-e-juventude-semtcj">
+                    SECRETARIA MUNICIPAL DE TURISMO, CULTURA E JUVENTUDE - SEMTCJ
+                  </a>
+                </li>            
+                              <li class="list-group-item">
+                  <a class="text text-dark" href="https://ielmomarinho.rn.gov.br/secretaria/vice-prefeito-municipal">
+                    VICE-PREFEITO MUNICIPAL
+                  </a>
+                </li>            
+                          </ul>
+          </div> 
+          
+        </div>
+        <p class="m-0 text-center small text-muted">
+            Gestão 2025-2028 &copy; Prefeitura Municipal de Ielmo Marinho/RN</br>
+            <strong>Portal para Administração e Transparência Pública</strong>
+        </p>
+      </div>
+      <!-- /.container -->
+    </footer>
+    <script src="/js/acessibilidade.js"></script>
+    <script src="/js/fontes.js"></script>
+    <script src="/js/busca.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+      <div class="vw-plugin-top-wrapper"></div>
+    </div>
+  </div>
+  <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+  <script>
+    new window.VLibras.Widget('https://vlibras.gov.br/app');
+  </script>
+    <script>
+    document.getElementById('pesquisaTabela').addEventListener('keyup', function () {
+        let filtro = this.value.toLowerCase();
+        let linhas = document.querySelectorAll('#tabelaDados tbody tr');
+    
+        linhas.forEach(function(linha) {
+            let textoLinha = linha.innerText.toLowerCase();
+            linha.style.display = textoLinha.includes(filtro) ? '' : 'none';
+        });
+    });
+    </script>   
+    <script>
+    function exportTableToCSV(filename) {
+      // Obtém a tabela
+      const table = document.getElementById("tabelaDados");
+      
+      // Cria o conteúdo CSV
+      let csv = [];
+      
+      // Percorre as linhas da tabela
+      for (let i = 0; i < table.rows.length; i++) {
+        const row = table.rows[i];
+        const rowData = [];
+        
+        // Percorre as células da linha
+        for (let j = 0; j < row.cells.length; j++) {
+          // Adiciona o conteúdo da célula entre aspas para lidar com vírgulas
+          rowData.push('"' + row.cells[j].innerText.replace(/"/g, '""') + '"');
+        }
+        
+        csv.push(rowData.join(","));
+      }
+      
+      // Junta todas as linhas com quebra de linha
+      const csvContent = csv.join("\n");
+      
+      // Cria um blob com o conteúdo
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      
+      // Cria um link para download
+      const link = document.createElement("a");
+      const url = URL.createObjectURL(blob);
+      
+      link.setAttribute("href", url);
+      link.setAttribute("download", filename);
+      link.style.visibility = "hidden";
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+    </script>                    
+  </body>
+
+</html>

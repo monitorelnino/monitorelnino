@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Trabalhando juntos por uma cidade mais justa e próspera - Prefeitura de Itapuã do Oeste-RO</title>
+
+    <!-- Meta Tags SEO -->
+    <meta name="description" content="Portal Oficial da Prefeitura Municipal de Itapuã do Oeste - Rondônia. Transparência, serviços e informações para o cidadão.">
+    <meta name="keywords" content="Prefeitura, Itapuã do Oeste, Rondônia, RO, Portal, Transparência, Serviços">
+    <meta name="author" content="Prefeitura de Itapuã do Oeste">
+    <meta name="csrf-token" content="yd0hJtLWEUrHRnipj5NasU9ho8GkpCQIo3O5af5S">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Município de Itapuã do Oeste">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="https://itapuadooeste.ro.gov.br">
+    <meta property="og:title" content="Município de Itapuã do Oeste">
+    <meta property="og:description" content="Portal Oficial do Município de Itapuã do Oeste - Rondônia. Transparência, serviços e informações para o cidadão.">
+    <meta property="og:image" content="https://itapuadooeste.ro.gov.br/images/og-share.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Município de Itapuã do Oeste - Rondônia">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Município de Itapuã do Oeste">
+    <meta name="twitter:description" content="Portal Oficial do Município de Itapuã do Oeste - Rondônia">
+    <meta name="twitter:image" content="https://itapuadooeste.ro.gov.br/images/og-share.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://itapuadooeste.ro.gov.br/images/logo-small.png">
+
+    
+    <script>
+        (function() {
+            try {
+                var f = localStorage.getItem('pmio_fonte');
+                var c = localStorage.getItem('pmio_contraste');
+                if (f) document.documentElement.classList.add(f);
+                if (c === '1') document.documentElement.classList.add('alto-contraste');
+            } catch(e) {}
+        })();
+    </script>
+
+    <!-- GOV.BR Design System via CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@govbr-ds/core@3.0.0/dist/core.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <!-- CSS Customizado -->
+    <link rel="stylesheet" href="https://itapuadooeste.ro.gov.br/css/custom.css?v=1791393318">
+    <link rel="stylesheet" href="https://itapuadooeste.ro.gov.br/css/acessibilidade.css?v=1791393318">
+
+    </head>
+<body>
+
+    
+    <a href="#conteudo" accesskey="1" class="skip-link">Ir para o conteúdo [1]</a>
+<a href="#menu-principal" accesskey="2" class="skip-link">Ir para o menu [2]</a>
+<a href="#busca" accesskey="3" class="skip-link">Ir para a busca [3]</a>
+<a href="#rodape" accesskey="4" class="skip-link">Ir para o rodapé [4]</a>
+
+
+<div class="acess-fab" id="acessFab">
+    <button type="button"
+            class="acess-fab-toggle"
+            id="acessFabToggle"
+            aria-label="Abrir opções de acessibilidade"
+            aria-expanded="false"
+            aria-controls="acessFabPainel"
+            title="Acessibilidade">
+        <i class="fas fa-universal-access" aria-hidden="true"></i>
+    </button>
+
+    <div class="acess-fab-painel" id="acessFabPainel" role="dialog"
+         aria-label="Opções de acessibilidade" hidden>
+        <div class="acess-fab-cabecalho">
+            <h2 class="acess-fab-titulo">
+                <i class="fas fa-universal-access" aria-hidden="true"></i>
+                Acessibilidade
+            </h2>
+            <button type="button" class="acess-fab-fechar"
+                    id="acessFabFechar" aria-label="Fechar painel">
+                <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+
+        <div class="acess-grupo">
+            <span class="acess-grupo-titulo">Tamanho da fonte</span>
+            <div class="acess-botoes-linha">
+                <button type="button" id="btn-fonte-menor" class="btn-acess"
+                        aria-label="Diminuir fonte" title="Diminuir fonte">A<span aria-hidden="true">−</span></button>
+                <button type="button" id="btn-fonte-padrao" class="btn-acess"
+                        aria-label="Tamanho padrão" title="Tamanho padrão">A</button>
+                <button type="button" id="btn-fonte-maior" class="btn-acess"
+                        aria-label="Aumentar fonte" title="Aumentar fonte">A<span aria-hidden="true">+</span></button>
+            </div>
+            <span class="acess-fonte-status" id="acessFonteStatus" aria-live="polite">Padrão</span>
+        </div>
+
+        <div class="acess-grupo">
+            <button type="button" id="btn-contraste" class="btn-acess btn-acess-largo"
+                    aria-pressed="false">
+                <i class="fas fa-circle-half-stroke" aria-hidden="true"></i>
+                <span>Alto contraste</span>
+            </button>
+        </div>
+
+        <div class="acess-grupo">
+            <button type="button" id="btn-audio" class="btn-acess btn-acess-largo"
+                    aria-pressed="false">
+                <i class="fas fa-volume-high" aria-hidden="true"></i>
+                <span class="rotulo">Audiodescrição</span>
+            </button>
+        </div>
+
+        <div class="acess-grupo acess-atalhos-info">
+            <span class="acess-grupo-titulo">Atalhos de teclado</span>
+            <ul class="acess-atalhos-lista">
+                <li><kbd>Alt</kbd>+<kbd>1</kbd> Conteúdo</li>
+                <li><kbd>Alt</kbd>+<kbd>2</kbd> Menu</li>
+                <li><kbd>Alt</kbd>+<kbd>3</kbd> Busca</li>
+                <li><kbd>Alt</kbd>+<kbd>4</kbd> Rodapé</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+    <!-- Header Top - Barra Azul -->
+    <header class="header-top">
+        <div class="container">
+            <div class="header-top-links">
+                <a href="/transparencia"><i class="fas fa-file-invoice"></i> Transparência</a>
+                <a href="/ouvidoria"><i class="fas fa-comments"></i> Ouvidoria</a>
+                <a href="/acesso-informacao"><i class="fas fa-info-circle"></i> Acesso à Informação</a>
+                <a href="/acessibilidade"><i class="fas fa-universal-access"></i> Acessibilidade</a>
+                <a href="/lgpd"><i class="fas fa-shield-alt"></i> LGPD</a>
+                <a href="https://itapuadooeste.ro.gov.br/mapa-do-site"><i class="fas fa-map"></i> Mapa do Site</a>
+                <!-- <a href="/mapa-do-site"><i class="fas fa-map"></i> Mapa do Site</a> -->
+            </div>
+            
+            
+            <div class="header-top-links">
+            <a href="https://www.facebook.com/PrefeituraItapuadooeste/" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
+                <a href="https://www.instagram.com/prefeituradeitapuadooeste?igsh=ZjQ3cms3aWNja21j" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+                <a href="https://www.youtube.com/@prefeituramunicipaldeitapu6055/featured" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+                <a href="https://twitter.com/SeuTwitter" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+    </div>
+        </div>
+    </header>
+
+    <!-- Header Main - Logo e Menu -->
+    <header class="header-main">
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="https://itapuadooeste.ro.gov.br/images/logo-prefeitura.png" alt="Prefeitura de Itapuã do Oeste">
+                </a>
+            </div>
+
+            
+            <form class="header-search" id="busca" role="search" action="https://itapuadooeste.ro.gov.br/busca" method="GET">
+                <label for="headerSearchInput" class="sr-only">Buscar no portal</label>
+                <input type="text" name="q" id="headerSearchInput"
+                       placeholder="Buscar no portal..."
+                       aria-label="Termo de busca"
+                       value=""
+                       autocomplete="off">
+                <button type="submit" aria-label="Realizar busca">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                </button>
+            </form>
+
+            <button class="mobile-menu-toggle" type="button" onclick="toggleMenu()"
+                    aria-label="Abrir menu de navegação" aria-expanded="false">
+                <i class="fas fa-bars" aria-hidden="true"></i> Menu
+            </button>
+
+            <!-- Nav Principal (id="menu-principal" para atalho Alt+2) -->
+            <nav class="nav-main" id="menu-principal" aria-label="Menu principal">
+                <a href="/">Início</a>
+                <a href="/municipio">Município</a>
+                <a href="/governo">Estrutura organizacional</a>
+                <a href="/servicos">Serviços</a>
+                <a href="/noticias">Notícias</a>
+                <a href="/contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo Principal (id="conteudo" para atalho Alt+1) -->
+    <main id="conteudo" tabindex="-1">
+        
+<!-- Galeria de Destaques -->
+<section class="gallery-section">
+    <div class="gallery-container">
+        <div class="gallery-slide gallery-slide--contain active">
+            <img src="https://itapuadooeste.ro.gov.br/images/aviso.jpg" alt="Comunicado: o horário de atendimento ao público do Departamento Fiscal e Tributário será somente até as 12:00, por motivos de trabalho interno relacionado à regularização fundiária municipal">
+        </div>
+
+        <div class="gallery-slide gallery-slide--contain">
+            <img src="https://itapuadooeste.ro.gov.br/images/campanha-etica-tribunal.jpeg" alt="Campanha de Sensibilização e Comunicação Interna sobre a Importância da Ética - Publicação do Tribunal de Justiça">
+        </div>
+
+        <div class="gallery-slide">
+            <div class="gallery-caption">
+                <p>EDITAL DE COMUNICAÇÃO<br>REGULAMENTAÇÃO DA EMISSÃO DAS TAXAS E DOS ALVARÁS – EXERCÍCIO 2026</p>
+            </div>
+            <img src="https://itapuadooeste.ro.gov.br/images/galeria-alvara.png" alt="Edital de Comunicação">
+        </div>
+
+        <div class="gallery-slide">
+            <div class="gallery-caption">
+                <p>Os carnês do IPTU e do ITU, conforme disposto no Decreto nº 3.259,<br>de 07 de janeiro de 2026 estão disponíveis.</p>
+            </div>
+            <img src="https://itapuadooeste.ro.gov.br/images/galeria-iptu.png" alt="Carnês IPTU e ITU">
+        </div>
+        
+        <div class="gallery-slide">
+            <div class="gallery-caption">
+                <p>A Prefeitura Municipal de Itapuã do Oeste informa aos empresários, contadores e prestadores de serviços que o sistema municipal de emissão de Nota Fiscal Eletrônica (NFS-e) já está devidamente atualizado e compatível com o padrão nacional definido pela Receita Federal, conforme as diretrizes da Reforma Tributária sobre o consumo.</p>
+            </div>
+            <img src="https://itapuadooeste.ro.gov.br/images/galeria-nf.png" alt="Sistema NFS-e Atualizado">
+        </div>
+
+        <div class="gallery-slide gallery-slide--contain">
+            <img src="https://itapuadooeste.ro.gov.br/images/CAMPNHA DE FORTALECIMENTO DA CULTURA DE CONTROLE E ETICA - 2ª SEMANA.png" alt="Campanha de Fortalecimento da Cultura de Controle e Ética - 2ª Semana">
+        </div>
+
+        <!-- Indicadores -->
+        <div class="gallery-indicators">
+            <span class="indicator active" onclick="goToSlide(0)"></span>
+            <span class="indicator" onclick="goToSlide(1)"></span>
+            <span class="indicator" onclick="goToSlide(2)"></span>
+            <span class="indicator" onclick="goToSlide(3)"></span>
+            <span class="indicator" onclick="goToSlide(4)"></span>
+            <span class="indicator" onclick="goToSlide(5)"></span>
+        </div>
+        
+        <!-- Controles -->
+        <button class="gallery-control prev" onclick="changeSlide(-1)">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="gallery-control next" onclick="changeSlide(1)">
+            <i class="fas fa-chevron-right"></i>
+        </button>
+    </div>
+</section>
+
+<!-- Barra de Serviços Rápidos -->
+<section class="quick-services">
+    <div class="container">
+        <div class="quick-services-grid">
+            <a href="/carta-servicos" class="quick-service-item">
+                <i class="fas fa-file-alt"></i>
+                <span>Carta de Serviços</span>
+            </a>
+            <a href="/ouvidoria" class="quick-service-item">
+                <i class="fas fa-comments"></i>
+                <span>Ouvidoria</span>
+            </a>
+            <a href="/transparencia" class="quick-service-item">
+                <i class="fas fa-eye"></i>
+                <span>Transparência</span>
+            </a>
+            <a href="/e-sic" class="quick-service-item">
+                <i class="fas fa-info-circle"></i>
+                <span>e-SIC</span>
+            </a>
+            <a href="/servicos-online" class="quick-service-item">
+                <i class="fas fa-laptop"></i>
+                <span>Serviços Online</span>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Serviço ao Cidadão -->
+<section class="section">
+    <div class="container">
+        <h2 class="section-title">SERVIÇO AO CIDADÃO</h2>
+        <p class="section-subtitle">Encontre o serviço ou a informação desejada para apoio direto</p>
+        
+        <div class="services-grid">
+            <a href="/portal-servicos" class="service-card">
+                <i class="fas fa-concierge-bell"></i>
+                <h3>Portal de Serviços</h3>
+                <p>Acesse todos os serviços disponíveis</p>
+            </a>
+        
+            
+            <a href="/nfse" class="service-card">
+                <i class="fas fa-file-invoice"></i>
+                <h3>Notas Fiscais Eletrônicas</h3>
+                <p>Emissão e consulta de NFS-e</p>
+            </a>
+            
+            <a href="/Ordem-cronologica-pagamentos" class="service-card">
+                <i class="fas fa-newspaper"></i>
+                <h3>Ordem cronológica de Pagamento</h3>
+                <p>Ordem cronológica de Pagamento da prefeitura/</p>
+            </a>
+            
+            <a href="/iptu" class="service-card">
+                <i class="fas fa-home"></i>
+                <h3>IPTU</h3>
+                <p>Consulta e emissão de guias</p>
+            </a>
+            
+            <a href="/certidoes" class="service-card">
+                <i class="fas fa-certificate"></i>
+                <h3>Certidões</h3>
+                <p>Solicitação de certidões online</p>
+            </a>
+            
+            <a href="/licitacoes" class="service-card">
+                <i class="fas fa-gavel"></i>
+                <h3>Licitações</h3>
+                <p>Editais e processos licitatórios</p>
+            </a>
+            
+            <a href="/protocolo" class="service-card">
+                <i class="fas fa-file-signature"></i>
+                <h3>Protocolo Online</h3>
+                <p>Protocolize documentos digitalmente</p>
+            </a>
+            
+            <a href="/parque-rural" class="service-card">
+                <i class="fas fa-tractor"></i>
+                <h3>Parque Rural</h3>
+                <p>Informações sobre área rural</p>
+            </a>
+            
+            <a href="https://farmacia.itapuadooeste.ro.gov.br/" target="_blank" rel="noopener" class="service-card">
+                <i class="fas fa-clock"></i>
+                <h3>Medicamento</h3>
+                <p>Estoque da farmácia municipal</p>
+            </a>
+            
+            <a href="/sistema-saude" class="service-card">
+                <i class="fas fa-heartbeat"></i>
+                <h3>Sistema Integrado de Saúde</h3>
+                <p>Serviços de saúde municipal</p>
+            </a>
+            
+            <a href="/sistema-educacao" class="service-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Sistema Integrado de Educação</h3>
+                <p>Educação municipal</p>
+            </a>
+            <a href="/documentos" class="service-card">
+                <i class="fas fa-file-invoice"></i>
+                <h3>Requerimentos</h3>
+                <p>Modelo de requerimentos</p>
+            </a>
+            <a href="/creche" class="service-card">
+                <i class="fas fa-baby"></i>
+                <h3>Creche</h3>
+                <p>Central de vagas para creche</p>
+            </a>
+            <a href="/concursoseletivo" class="service-card">
+                <i class="fas fa-clipboard-list"></i>
+                <h3>Concursos e Seletivos</h3>
+                <p>Concurso e processo seletivo</p>
+            </a>
+
+            <a href="https://itapuadooeste.ro.gov.br/sisreg" class="service-card">
+                <i class="fas fa-hospital-user"></i>
+                <h3>Fila do SISREG</h3>
+                <p>Lista de espera da saúde</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Servidores -->
+<section class="section" style="background: #f8f9fa;">
+    <div class="container">
+        <h2 class="section-title">SERVIDORES</h2>
+        <p class="section-subtitle">Assinatura de documentos, contra cheque e sistemas</p>
+        
+        <div class="services-grid">
+            <a href="/contra-cheque" class="service-card">
+                <i class="fas fa-file-invoice-dollar"></i>
+                <h3>Contra Cheque</h3>
+                <p>Consulte seu contracheque online</p>
+            </a>
+            
+            <a href="/portal-professor" class="service-card">
+                <i class="fas fa-chalkboard-teacher"></i>
+                <h3>Portal do Professor</h3>
+                <p>Área exclusiva para professores</p>
+            </a>
+            
+            <a href="/scpi" class="service-card">
+                <i class="fas fa-landmark"></i>
+                <h3>SCPI</h3>
+                <p>Sistema de Controle Patrimonial</p>
+            </a>
+            
+            <a href="/e-sus" class="service-card">
+                <i class="fas fa-microscope"></i>
+                <h3>E-SUS</h3>
+                <p>Sistema Único de Saúde</p>
+            </a>
+            
+            <a href="/protocolo-online" class="service-card">
+                <i class="fas fa-check-square"></i>
+                <h3>Protocolo Online</h3>
+                <p>Protocolize documentos digitalmente</p>
+            </a>
+            
+            <a href="https://sis.itapuadooeste.ro.gov.br/" target="_blank" rel="noopener" class="service-card">
+                <i class="fas fa-syringe"></i>
+                <h3>SIS</h3>
+                <p>Sistema de Informação em Saúde</p>
+            </a>
+            
+            <a href="/sip" class="service-card">
+                <i class="fas fa-folder"></i>
+                <h3>SIP</h3>
+                <p>Sistema Integrado de Processos</p>
+            </a>
+            
+            <a href="/webmail" class="service-card">
+                <i class="fas fa-envelope-open-text"></i>
+                <h3>Webmail</h3>
+                <p>Acesso ao email corporativo</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Banners Informativos -->
+<section class="section">
+    <div class="container">
+        <div class="info-banners">
+            <div class="info-banner">
+                <img src="https://itapuadooeste.ro.gov.br/images/banner-whatsapp.jpeg" alt="WhatsApp Emergências">
+            </div>
+            <div class="info-banner">
+                <img src="https://itapuadooeste.ro.gov.br/images/banner-hospital.jpeg" alt="Hospital de Pequeno Porte">
+            </div>
+            <div class="info-banner">
+                <img src="https://itapuadooeste.ro.gov.br/images/banner-policia.jpeg" alt="Polícia Militar">
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Notícias -->
+<section class="section" style="background: #f8f9fa;">
+    <div class="container">
+        <h2 class="section-title">ÚLTIMAS NOTÍCIAS</h2>
+        <p class="section-subtitle">Fique por dentro do que acontece em nosso município</p>
+        
+                <div class="news-grid">
+                        <div class="news-card">
+                                <a href="https://itapuadooeste.ro.gov.br/noticias/oportunidade-de-capacitacao">
+                    <img src="https://via.placeholder.com/400x250?text=Oportunidade+de+Capacita%C3%A7%C3%A3o" alt="Oportunidade de Capacitação" class="news-image">
+                </a>
+                                <div class="news-content">
+                    <div class="news-date"><i class="far fa-calendar"></i> 13/03/2026</div>
+                    <h3 class="news-title">
+                        <a href="https://itapuadooeste.ro.gov.br/noticias/oportunidade-de-capacitacao" style="text-decoration: none; color: inherit;">
+                            Oportunidade de Capacitação
+                        </a>
+                    </h3>
+                    <p class="news-excerpt">✨ OPORTUNIDADE DE CAPACITAÇÃO!
+Estão abertas as inscrições para os Cursos de Estética e Maquiagem e Design de Sobrance...</p>
+                    <a href="https://itapuadooeste.ro.gov.br/noticias/oportunidade-de-capacitacao" class="news-read-more">
+                        Leia mais <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+                    </div>
+                
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="https://itapuadooeste.ro.gov.br/noticias" class="btn-more">Acesse todas as notícias <i class="fas fa-arrow-right"></i></a>
+        </div>
+    </div>
+</section>
+
+<!-- Transparência PNTP + Radar -->
+<section class="transparency-section">
+    <div class="container">
+        <div class="transparency-content">
+            <div class="transparency-text">
+                <h2>O Programa Nacional de Transparência Pública (PNTP)</h2>
+                <p>O Programa Nacional de Transparência Pública (PNTP) nasceu com o objetivo de fomentar práticas de transparência ativa e passiva nos órgãos públicos, contribuindo para o aumento da confiança da população nas instituições e para o fortalecimento da democracia.</p>
+                <p>As boas práticas de evidenciação das informações quanto à gestão e ao desempenho dos recursos públicos, além da atualização periódica dos conteúdos.</p>
+                <a href="/transparencia" class="btn-more">Acesse o Portal da Transparência</a>
+
+                
+                <a href="https://radardatransparencia.atricon.org.br/"
+                   target="_blank"
+                   rel="noopener"
+                   class="radar-transparencia-link"
+                   aria-label="Acessar o Radar da Transparência Pública">
+                    <img src="https://itapuadooeste.ro.gov.br/images/bg_radar.jpeg"
+                         alt="Radar da Transparência Pública - O maior portal de acesso a informações públicas do Brasil">
+                </a>
+            </div>
+            <div class="transparency-seal">
+                <img src="https://itapuadooeste.ro.gov.br/images/selo-prata.jpeg" alt="Selo PNTP Prata 2025">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+    <div class="container" style="text-align: center;">
+        <h2 class="section-title">Tire suas dúvidas aqui</h2>
+        <p class="section-subtitle">Encontre respostas para as perguntas mais frequentes</p>
+        <a href="/faq" class="btn-more">Acessar FAQ <i class="fas fa-question-circle"></i></a>
+    </div>
+    <div class="container" style="text-align: center;">
+        <h2 class="section-title">Pesquisa de satisfação</h2>
+        <p class="section-subtitle">A Prefeitura Municipal de Itapuã do Oeste convida você a participar desta pesquisa de satisfação. 
+            Seu feedback é essencial para melhorar os serviços públicos, a transparência e o atendimento ao cidadão.</p>
+        <a href="https://itapuadooeste.ro.gov.br/pesquisa-satisfacao" target="_blank" rel="noopener noreferrer" class="btn-more">
+        Responder <i class="fas fa-question-circle"></i>
+        </a>
+    </div>
+</section>
+
+    </main>
+
+    <!-- Rodapé (id="rodape" para atalho Alt+4) -->
+    <footer class="footer" id="rodape">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Links Rápidos -->
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="/transparencia">Portal da Transparência</a></li>
+                        <li><a href="/licitacoes">Licitações</a></li>
+                        <li><a href="/legislacao">Legislação</a></li>
+                        <li><a href="/diario-oficial">Diário Oficial</a></li>
+                        <li><a href="/concursos">Concursos</a></li>
+                    </ul>
+                </div>
+
+                <!-- Governo -->
+                <div class="footer-section">
+                    <h3>Governo</h3>
+                    <ul>
+                        <!--<li><a href="/prefeito">Prefeito</a></li>-->
+                        <!--<li><a href="/vice-prefeito">Vice-Prefeito</a></li>-->
+                        <li><a href="/secretarias">Secretarias</a></li>
+                        <li><a href="/organograma">Organograma</a></li>
+                    </ul>
+                </div>
+
+                <!-- Atendimento -->
+                <div class="footer-section">
+                    <h3>Atendimento</h3>
+                    <ul>
+                        <li><a href="/ouvidoria">Ouvidoria</a></li>
+                        <li><a href="/e-sic">e-SIC</a></li>
+                        <li><a href="/fale-conosco">Fale Conosco</a></li>
+                        <li><a href="/carta-servicos">Carta de Serviços</a></li>
+                        <li><a href="/lgpd"><i class="fas fa-shield-alt"></i> LGPD</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contato + Horário -->
+                <div class="footer-section">
+                    <h3>Contato</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua Airton Senna, 1425 - Centro</p>
+                    <p>CEP: 76.861-000 - Itapuã do Oeste - RO</p>
+                    <p><i class="fas fa-phone"></i> (69) 3231-2245 / 2330 / 2754</p>
+                    <p><i class="fas fa-envelope"></i>
+                        <a href="/cdn-cgi/l/email-protection#0e6d61607a6f7a614e677a6f7e7b6f6a61616b7d7a6b207c6120696178206c7c"><span class="__cf_email__" data-cfemail="1d7e7273697c69725d74697c6d687c797272786e6978336f72337a726b337f6f">[email&#160;protected]</span></a>
+                    </p>
+                    <p><i class="fas fa-clock"></i> <strong>Horário de Atendimento:</strong></p>
+                    <p style="margin-left: 22px;">Segunda a sexta-feira</p>
+                    <p style="margin-left: 22px;">Das 07h30 às 13h30</p>
+
+                    
+                    <div class="social-links">
+            <a href="https://www.facebook.com/PrefeituraItapuadooeste/" target="_blank" rel="noopener" aria-label="Facebook">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+                <a href="https://www.instagram.com/prefeituradeitapuadooeste?igsh=ZjQ3cms3aWNja21j" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+                <a href="https://www.youtube.com/@prefeituramunicipaldeitapu6055/featured" target="_blank" rel="noopener" aria-label="YouTube">
+            <i class="fab fa-youtube"></i>
+        </a>
+                <a href="https://twitter.com/SeuTwitter" target="_blank" rel="noopener" aria-label="Twitter">
+            <i class="fab fa-twitter"></i>
+        </a>
+    </div>                    
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p style="color: #ffffff;">&copy; 2026 Município de Itapuã do Oeste - RO.</p>
+                <p style="color: #cccccc;">CNPJ: 63.761.936/0001-55</p>
+                <p style="color: #cccccc;">Secretaria Municipal de Administração - SEMAP.</p>
+                <p style="color: #cccccc;">Coordenadoria de Tecnologia da Informação - CTI</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ SCRIPTS (todos no final do body) ============ -->
+
+    <!-- GOV.BR DS JavaScript -->
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@govbr-ds/core@3.0.0/dist/core-init.js"></script>
+
+    <!-- Acessibilidade (FAB: fonte zoom, contraste, audiodescrição) -->
+    <script src="https://itapuadooeste.ro.gov.br/js/acessibilidade.js" defer></script>
+
+    <!-- VLibras - Tradutor para Língua Brasileira de Sinais (oficial gov.br) -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+    <script>
+        new window.VLibras.Widget('https://vlibras.gov.br/app');
+    </script>
+
+    <!-- JavaScript Customizado -->
+    <script>
+        // Toggle Menu Mobile
+        function toggleMenu() {
+            const nav = document.getElementById('menu-principal');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            const aberto = nav.classList.toggle('active');
+            toggle.setAttribute('aria-expanded', aberto ? 'true' : 'false');
+        }
+
+        // Scroll Suave (ignora skip-links pra não conflitar com acessibilidade)
+        document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // Fechar menu mobile ao clicar fora
+        document.addEventListener('click', function(event) {
+            const nav = document.getElementById('menu-principal');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            if (nav && nav.classList.contains('active')) {
+                if (!nav.contains(event.target) && !toggle.contains(event.target)) {
+                    nav.classList.remove('active');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            }
+        });
+    </script>
+
+    <script>
+    // ===== GALERIA AUTOMÁTICA =====
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.gallery-slide');
+    const indicators = document.querySelectorAll('.indicator');
+    let autoSlideInterval;
+    
+    function showSlide(index) {
+        // Remove active de todos
+        slides.forEach(slide => slide.classList.remove('active'));
+        indicators.forEach(ind => ind.classList.remove('active'));
+        
+        // Ajusta índice
+        if (index >= slides.length) {
+            currentSlide = 0;
+        } else if (index < 0) {
+            currentSlide = slides.length - 1;
+        } else {
+            currentSlide = index;
+        }
+        
+        // Ativa o slide atual
+        slides[currentSlide].classList.add('active');
+        indicators[currentSlide].classList.add('active');
+    }
+    
+    function changeSlide(direction) {
+        showSlide(currentSlide + direction);
+        resetAutoSlide();
+    }
+    
+    function goToSlide(index) {
+        showSlide(index);
+        resetAutoSlide();
+    }
+    
+    function resetAutoSlide() {
+        clearInterval(autoSlideInterval);
+        startAutoSlide();
+    }
+    
+    function startAutoSlide() {
+        autoSlideInterval = setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 5000); // 5 segundos
+    }
+    
+    // Iniciar galeria automática
+    document.addEventListener('DOMContentLoaded', () => {
+        startAutoSlide();
+    });
+</script>
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a614025f6b88df40',t:'MTc5NTgxMjY2OQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a614025f6b88df40',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,1684 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Prefeitura Municipal de Coqueiro Baixo</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Coqueiro Baixo.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Prefeitura Municipal de Coqueiro Baixo' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://coqueirobaixo.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://coqueirobaixo.rs.gov.br/uploads/config/16025/brasao.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='370'>
+            <meta property='og:image:height' content='441'>
+            <meta property='og:site_name' content='coqueirobaixo.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Coqueiro Baixo.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Prefeitura Municipal de Coqueiro Baixo'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Prefeitura Municipal de Coqueiro Baixo.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://coqueirobaixo.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://coqueirobaixo.rs.gov.br/site/custom/default/css/color/darkgreen.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://coqueirobaixo.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://coqueirobaixo.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://coqueirobaixo.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://coqueirobaixo.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://coqueirobaixo.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://coqueirobaixo.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://coqueirobaixo.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-RZCVJBV7LZ"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-RZCVJBV7LZ');
+    });
+</script>
+        <link rel="shortcut icon" href="https://coqueirobaixo.rs.gov.br/uploads/config/16086/favicon.ico" />    
+	        </head>
+	    <body class="smoothscroll wide home4" data-background=""><a href="https://coqueirobaixo.rs.gov.br/cdn-cgi/content?id=HeMQ09UoKPs9ndSfpaOZUOM51wOPxIMrSWXZ4zdv_d0-1795812609.623783-1.2.1.1-gYZS805A1I7cDKafIxrkpNB9alXJZ9kupRFJCX0NJsIwNNenYXXBSKphcwjg4nKl" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <!-- Cabeçalho -->
+<!--===================================================-->
+<div id="header" class='header09 menu-fixo'>
+  <header id="topBar" class="">
+    <div class="container">
+
+      <div class="col-md-4 col-sm-6 hidden-xs">
+        <div class="row">
+                          <div class="mt15">
+                <div class="owl-carousel radius10 styleBackgroundLight" data-plugin-options='{"items":1,"pagination": false, "autoPlay": true}'>
+                                              <div class="item">
+                                                          <ul class="nav nav-list linksCabecalho">
+                                                          <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="https://multi24.coqueirobaixo.rs.gov.br/multi24/sistemas/transparencia/" target="_blank" onclick="">
+        <img src='https://coqueirobaixo.rs.gov.br/uploads/link/15894/imagem_portal_transparencia.png' alt='Lorem ipsum dolor sit amet, consectetur adipiscing' />                              <p class="h2 styleColor">Transparência</p>
+                            </a>
+                          </li>
+                                                    <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="https://www.nfse.gov.br/EmissorNacional/Login?ReturnUrl=%2fEmissorNacional" target="_blank" onclick="">
+        <img src='https://coqueirobaixo.rs.gov.br/uploads/link/17267/imagem_images.jpg' alt='' />                              <p class="h2 styleColor">NFS-e Nacional</p>
+                            </a>
+                          </li>
+                                                      </ul>
+                                                        <ul class="nav nav-list linksCabecalho">
+                                                          <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="https://www.coqueirobaixo.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html" target="_blank" onclick="">
+        <img src='https://coqueirobaixo.rs.gov.br/uploads/link/15902/imagem_portal_ouvidoria.png' alt='' />                              <p class="h2 styleColor">Ouvidoria</p>
+                            </a>
+                          </li>
+                                                    <li class="col-md-6 col-sm-6 col-xs-12 text-center">
+                            <a class="styleColor" href="https://multi24.coqueirobaixo.rs.gov.br/multi24/sistemas/portal/" target="_blank" onclick="">
+        <i class='fa fa-users'></i>                              <p class="h2 styleColor">Portal de Serviços</p>
+                            </a>
+                          </li>
+                                                      </ul>
+                                                      </div>
+                                          </div>
+              </div>
+                      </div>
+      </div>
+
+      <!-- Logo -->
+      <div class="col-md-4 col-sm-6 text-center">
+                          <div class="brasao">
+                  <a href="https://coqueirobaixo.rs.gov.br">
+                    <img src="https://coqueirobaixo.rs.gov.br/uploads/config/16025/brasao.png" class="img-responsive"
+                         alt="Brasão da Prefeitura" />
+                  </a>
+                </div>
+                            <div class="col-md-12 text-center">
+              <h1 class="client-name nomargin lineh30">
+              <a class="logo" href="https://coqueirobaixo.rs.gov.br">
+    			Prefeitura Municipal de Coqueiro Baixo              </a>
+              </h1>
+            </div>
+                  </div>
+      <!-- / Logo -->
+
+      <!-- Previsão do Tempo e Pesquisa -->
+      <div class="col-md-3 col-md-offset-1 hidden-xs hidden-sm">
+        <div class="box-search-and-weather radius4">
+          <!-- Previsão do tempo-->
+                    <div class="weather previsao-topo hidden">
+            <div class="weather-today">
+              <i class="m0 fsize32 icone-temp"></i>
+            </div>
+            <div class="weather-week">
+              <p class="mb0">
+                <span class="fontw400 minima mr6">
+                  <i class="fa fa-caret-down mr5"></i><span class='min-temp'></span>°C
+                </span>
+                <span class="fontw400 maxima">
+                  <i class="fa fa-caret-up mr5"></i><span class='max-temp'></span>°C
+                </span>
+              </p>
+            </div>
+          </div>
+                    <div>
+            <!-- Data -->
+                        <p class="date styleColor">
+Coqueiro Baixo, 27 de novembro de 2026.
+            </p>
+            <!-- /Data-->
+          </div>
+          <!-- /Previsão do tempo-->
+          <!-- Busca -->
+          <div class="search-site" role='search'>
+            <form id="pesquisa" class="search nopadding" method="get" action="https://coqueirobaixo.rs.gov.br/pesquisa">
+				<label for="searchbar-desktop" class="sr-only">Pesquisar:</label>
+              <input id="searchbar-desktop" title="termo de pesquisa" type="text" class="form-control nomargin" name="q" value="" placeholder="Procurar no site">
+              <button type="submit" class="fa fa-search search-focus styleColor styleBackgroundDark" title="Pesquisar" aria-label="Pesquisar"></button>
+            </form>
+          </div>
+          <!-- /Busca -->
+        </div>
+      </div>
+      <!-- / Previsão do Tempo e Pesquisa -->
+
+    </div>
+  </header>
+
+  <!-- Menu -->
+  <!--===================================================-->
+  <header id="topNav" class="">
+    <div class="container">
+      <!-- Pesquisa -->
+      <form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get"
+            action="https://coqueirobaixo.rs.gov.br/pesquisa">
+		<label for="searchbar-mobile" class="sr-only">Pesquisar:</label>
+        <input id="searchbar-mobile" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+        <button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar"></button>
+      </form>
+      <!-- Menu Mobile -->
+      <button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse"> <i class="fa fa-bars"></i></button>
+      <!-- Menu -->
+      <div class="navbar-collapse nav-main-collapse collapse">
+        <nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/3/?dados-do-municipio.html'>Dados do Município</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1021/?planejamento-e-servicos-de-saude.html'>Planejamento e Serviços de Saúde</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1022/?planejamento-e-servicos-de-educacao.html'>Planejamento e Serviços de Educação</a></li></ul></div><div class="col-md-3"><p class="menu-category">Atrações Turísticas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/turismo/id/3/?campings.html'>Campings</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/turismo/id/5/?pontos-turisticos.html'>Pontos Turísticos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://coqueirobaixo.rs.gov.br/uploads/config/16025/brasao.png' height='100' class='logo opaco08'/></div><p class='block text-center'>0800-000-4370</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 8:00 às 11:30 e das 13:30 às 17:00</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-6"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-6"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/secretaria/id/105/?secretaria-da-administracao.html'>Secretaria da Administração</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/secretaria/id/1001/?secretaria-da-assistencia-social-e-habitacao.html'>Secretaria da Assistencia Social e Habitação</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/secretaria/id/106/?secretaria-da-fazenda.html'>Secretaria da Fazenda</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/secretaria/id/114/?secretaria-da-saude.html'>Secretaria da Saúde</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/secretaria/id/115/?secretaria-de-agricultura-e-meio-ambiente.html'>Secretaria de Agricultura e Meio Ambiente</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/secretaria/id/110/?secretaria-de-educacao-esporte-cultura-e-lazer.html'>Secretaria de Educação, Esporte, Cultura e Lazer</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/secretaria/id/116/?secretaria-de-obras-e-viacao.html'>Secretaria de Obras e Viação</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://coqueirobaixo.rs.gov.br/uploads/config/16025/brasao.png' height='100' class='logo opaco08'/></div><p class='block text-center'>0800-000-4370</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 8:00 às 11:30 e das 13:30 às 17:00</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/5/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/1003/?adesao-ata-de-registro-de-preco.html'>Adesão Ata de Registro de Preço</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/110/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/101/?concorrencia-publica.html'>Concorrência Pública</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/107/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/108/?pregao-presencial.html'>Pregão Presencial</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/1002/?termo-de-adesao.html'>Termo de Adesão</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/licitacao/id/109/?tomada-de-preco.html'>Tomada de Preço</a></li></ul></div><div class="col-md-3"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/concurso/id/200/?concurso.html'>Concurso</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/concurso/id/201/?convocacao.html'>Convocação</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/concurso/id/1001/?eleicao-do-conselho-tutelar.html'>Eleição do Conselho Tutelar</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/concurso/id/1004/?processo-de-certificacao-de-diretor.html'>Processo de Certificação de Diretor</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/concurso/id/202/?processo-seletivo.html'>Processo Seletivo</a></li></ul></div><div class="col-md-3"><p class="menu-category">Legislação</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1017/?auxilio-reconstrucao.html'>Auxílio Reconstrução</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1012/?cacs-fundeb.html'>CACS FUNDEB</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1013/?cacs-fundeb---documentacao-secretarios.html'>CACS FUNDEB - DOCUMENTAÇÃO SECRETÁRIOS</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1001/?lei-de-diretrizes-orcamentarias.html'>Lei de Diretrizes Orçamentárias</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1002/?lei-orcamentaria-anual.html'>Lei Orçamentária Anual</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1006/?parcelamento-do-solo.html'>Parcelamento do Solo</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1004/?plano-de-contingencia.html'>Plano de Contingência</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1008/?plano-de-saneamento-basico.html'>Plano de Saneamento Básico</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/10/?plano-plurianual.html'>Plano Plurianual </a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1011/?promocao-igualdade-racial.html'>Promoção Igualdade Racial</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1007/?siafic.html'>SIAFIC</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1014/?termo-de-adesao-nfg.html'>Termo de Adesão NFG</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/legislacao/id/1003/?termo-de-posse.html'>Termo de Posse</a></li></ul></div><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html'>Diário Oficial</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/ordem-servico/bcid/39/?e-sic---pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-e-respostas.html'>Perguntas e Respostas</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1002/?relatorio-das-ouvidorias.html'>Relatório das Ouvidorias</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1004/?boletim-covid-19.html'>Boletim Covid-19</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1023/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1024/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1025/?lei-paulo-gustavo.html'>Lei Paulo Gustavo</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1027/?vagas-escolares.html'>Vagas Escolares</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1028/?programa-de-integracao-tributaria.html'>Programa de Integração Tributária</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1029/?lei-aldir-blanc.html'>Lei Aldir Blanc</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1030/?plano-anual-de-contratacao.html'>Plano Anual de Contratação</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/contato/bcid/23/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/ouvidoria/bcid/52/?ouvidoria.html'>Ouvidoria</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Portal de Legislação</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://coqueirobaixo.rs.gov.br/pagina/id/1032/?portal-de-legislacao.html'>Portal de Legislação</a></li></ul></li></ul></nav>
+      </div>
+    </div>
+  </header>
+  <!--===================================================-->
+  <!-- Fim Menu -->
+</div>
+<!--===================================================-->
+<!-- Fim Cabeçalho -->
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a><!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350">
+                    <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img                         srcset="
+                            https://coqueirobaixo.rs.gov.br/uploads/banner/17685/thumb_15__Coqueiro_Baixo.jpg 360w,
+                            https://coqueirobaixo.rs.gov.br/uploads/banner/17685/mobile_15__Coqueiro_Baixo.jpg 576w,
+                            https://coqueirobaixo.rs.gov.br/uploads/banner/17685/original_15__Coqueiro_Baixo.jpg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Vista aérea"
+                    />
+                                        <div class="container">
+                        <div class="box fullbox">
+                            <p class="similar-h3 subTitle">Vista aérea</p>
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+                    <img loading="lazy"                        srcset="
+                            https://coqueirobaixo.rs.gov.br/uploads/banner/17243/thumb_IMG_0327.jpg 360w,
+                            https://coqueirobaixo.rs.gov.br/uploads/banner/17243/mobile_IMG_0327.jpg 576w,
+                            https://coqueirobaixo.rs.gov.br/uploads/banner/17243/original_IMG_0327.jpg 1920w
+                        "
+                        sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+                        style="
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        height: 350px;
+                        width: 100%;
+                        object-fit: cover;"
+                        alt="Pontos Turísticos"
+                    />
+                                        <div class="container">
+                        <div class="box fullbox">
+                            <p class="similar-h3 subTitle">Pontos Turísticos</p>
+                                                    </div>
+                    </div>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: true, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: true        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img loading='lazy' src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+<div class="pb40 pt40">
+    <div class="container">
+        <div class="row">
+            <!-- NOTÍCIAS E ACESSO RÁPIDO -->
+                        <div class="overflow-hidden col-md-9 mobile-nopadding"><!-- 3 ÚLTIMAS NOTÍCIAS -->
+<section role="group" id="noticia2" class="nopadding" aria-labelledby="noticia2.title">
+	<div class="row">
+		<div class="col-md-12">
+			<h2 class="similar-h4 title" id="noticia2.title"><strong>ÚLTIMAS NOT&Iacute;CIAS</strong></h2>
+		</div>
+	</div>
+<div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": true, "navigation": false, "pagination": true, "progressBar":"false"}'>
+        <div class="item">
+        <div class="col-md-4">
+                        <img class="img-responsive max-height360" src="https://coqueirobaixo.rs.gov.br/uploads/noticia/26258/media_799590730_18107058674581166_1786467916842173713_n.jpg" alt="Coqueiro Baixo promove teatro “O Jogo do Tempo” em ação do Setembro Amarelo" role="presentation">
+                     </div>
+
+        <div class="col-md-8">
+            <h3 class="mb10 similar-h2 lineh32">
+                <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1331/?coqueiro-baixo-promove-teatro-o-jogo-do-tempo-em-acao-do-setembro-amarelo.html">
+                    Coqueiro Baixo promove teatro “O Jogo do Tempo” em ação do Setembro Amarelo                </a>
+            </h3>
+            <p>O Município de Coqueiro Baixo realizou, no dia 23 de setembro, uma atividade especial alusiva ao Setembro Amarelo, com a apresentação do teatro “O Jogo do Tempo”, no Ginásio de Esportes.</p>
+        </div>
+    </div>
+        <div class="item">
+        <div class="col-md-4">
+                        <img class="img-responsive max-height360" src="https://coqueirobaixo.rs.gov.br/uploads/noticia/26256/media_818743270_18106632854581166_2297950609145718070_n.jpg" alt="Pagamentos de incentivos a produtores" role="presentation">
+                     </div>
+
+        <div class="col-md-8">
+            <h3 class="mb10 similar-h2 lineh32">
+                <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1330/?pagamentos-de-incentivos-a-produtores.html">
+                    Pagamentos de incentivos a produtores                </a>
+            </h3>
+            <p>A Administração Municipal de Coqueiro Baixo realizou novos pagamentos de incentivos destinados a produtores rurais do município. </p>
+        </div>
+    </div>
+        <div class="item">
+        <div class="col-md-4">
+                        <img class="img-responsive max-height360" src="https://coqueirobaixo.rs.gov.br/uploads/noticia/26236/media_790194784_18106527671581166_3016414096451761115_n.jpg" alt="IV Gincana Farroupilha reúne crianças em um dia de integração e tradição" role="presentation">
+                     </div>
+
+        <div class="col-md-8">
+            <h3 class="mb10 similar-h2 lineh32">
+                <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1329/?iv-gincana-farroupilha-reune-criancas-em-um-dia-de-integracao-e-tradicao.html">
+                    IV Gincana Farroupilha reúne crianças em um dia de integração e tradição                </a>
+            </h3>
+            <p>Na quinta-feira, 17 de setembro, foi realizada a IV Gincana Farroupilha de Coqueiro Baixo, reunindo crianças e estudantes em um dia marcado por atividades, diversão, integração e valorização da cultura gaúcha.</p>
+        </div>
+    </div>
+    </div>
+
+<div class="hidden-xs mb15 other-news">
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1328/?grupo-elos-dancantes-participa-de-encontro-de-confraternizacao-em-vespasiano-correa.html">
+            <img class="img-responsive max-height200" src="https://coqueirobaixo.rs.gov.br/uploads/noticia/26229/media_809076521_18105683660581166_3125904246503741833_n.jpg" alt=" Grupo Elos Dançantes participa de encontro de confraternização em Vespasiano Corrêa" role="presentation"/>
+        </a>
+        <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1328/?grupo-elos-dancantes-participa-de-encontro-de-confraternizacao-em-vespasiano-correa.html">
+            <p class="nomargin"> Grupo Elos Dançantes participa de encontro de confraternização em Vespasiano Corrêa</p>
+        </a>
+    </div>
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1326/?coqueiro-baixo-celebra-a-independencia-do-brasil-com-desfile-civico.html">
+            <img class="img-responsive max-height200" src="https://coqueirobaixo.rs.gov.br/uploads/noticia/26211/media_798415146_18104625623581166_6678496254110917547_n.jpg" alt="Coqueiro Baixo celebra a Independência do Brasil com desfile cívico" role="presentation"/>
+        </a>
+        <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1326/?coqueiro-baixo-celebra-a-independencia-do-brasil-com-desfile-civico.html">
+            <p class="nomargin">Coqueiro Baixo celebra a Independência do Brasil com desfile cívico</p>
+        </a>
+    </div>
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1327/?curso-orienta-produtores-sobre-o-uso-correto-de-defensivos-agricolas.html">
+            <img class="img-responsive max-height200" src="https://coqueirobaixo.rs.gov.br/uploads/noticia/26224/media_792912240_18104233331581166_828670128396951613_n.jpg" alt="Curso orienta produtores sobre o uso correto de defensivos agrícolas" role="presentation"/>
+        </a>
+        <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1327/?curso-orienta-produtores-sobre-o-uso-correto-de-defensivos-agricolas.html">
+            <p class="nomargin">Curso orienta produtores sobre o uso correto de defensivos agrícolas</p>
+        </a>
+    </div>
+        <div class="col-md-3 mb10 block text-center">
+                <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1325/?garanta-ja-o-seu-ingresso-antecipado-para-o-xiv-filo-italiano-de-coqueiro-baixo.html">
+            <img class="img-responsive max-height200" src="https://coqueirobaixo.rs.gov.br/uploads/noticia/26202/media_725163311_18093451826581166_9059186952500380831_n.jpg" alt="Garanta já o seu ingresso antecipado para o XIV Filó Italiano de Coqueiro Baixo" role="presentation"/>
+        </a>
+        <a href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1325/?garanta-ja-o-seu-ingresso-antecipado-para-o-xiv-filo-italiano-de-coqueiro-baixo.html">
+            <p class="nomargin">Garanta já o seu ingresso antecipado para o XIV Filó Italiano de Coqueiro Baixo</p>
+        </a>
+    </div>
+        <a aria-label="Ver mais notícias" href="https://coqueirobaixo.rs.gov.br/noticia/?noticias.html" class="btn btn-default pull-right">Mais not&iacute;cias</a>
+</div>
+</section></div>
+                        <div class="col-md-3 mt4-xs"><!-- ACESSO RÁPIDO -->
+<div id="acessoRapido1" class="widget featured-box-minimal owl-carousel-controls">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>ACESSO R&Aacute;PIDO</strong></h2>
+                        <span class="pull-right">
+				<a class="prev" href="javascript:;" aria-label="Anterior" title="Anterior">
+					<i class="mr5 lineh30 fa fa-arrow-left widget-icon" aria-hidden="true">
+						<span class="sr-only">Anterior</span>
+					</i>
+				</a>
+				<a class="next" href="javascript:;" aria-label="Próximo" title="Próximo">
+					<i class="mr5 lineh30 fa fa-arrow-right widget-icon" aria-hidden="true">
+						<span class="sr-only">Próximo</span>
+					</i>
+				</a>
+            </span>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1,"transitionStyle":"goDown" ,"autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="NFS-E Municipal" href="http://coqueirobaixo.nfse-tecnos.com.br/" target="_blank" onclick="">
+                        <i class='fa fa-money'></i> NFS-E Municipal                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Portal de Serviços" href="https://multi24.coqueirobaixo.rs.gov.br/multi24/sistemas/portal/" target="_blank" onclick="">
+                        <i class='fa fa-users'></i> Portal de Serviços                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="e - SIC - Pedido de Informações" href="https://www.coqueirobaixo.rs.gov.br/ordem-servico/bcid/39/?e-sic---pedido-de-informacoes.html" target="_self" onclick="">
+                        <i class='fa fa-info-circle'></i> e - SIC - Pedido de Informações                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Facebook" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://www.facebook.com/prefeituracoqueirobaixo','Facebook')">
+                        <i class='fa fa-facebook'></i> Facebook                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Instagram Oficial" href="javascript:;" target="_self" onclick="abrePopTelaInteira('https://www.instagram.com/coqueirobaixo/','Instagram Oficial')">
+                        <i class='fa fa-instagram'></i> Instagram Oficial                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Radar de Transparência Pública" href="https://radardatransparencia.atricon.org.br/" target="_blank" onclick="">
+                        <img loading='lazy' class='mr10 radius25 width35 height35' src='https://coqueirobaixo.rs.gov.br/uploads/link/18341/imagem_banner_Radar_da_Tranparncia_Pblica_Lcia_Helena.jpg' alt='' /> Radar de Transparência Pública                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Acesso à informação - SIC" href="javascript:;" target="_self" onclick="abrePopTelaInteira('/sic','Acesso à informação - SIC')">
+                        <i class='fa fa-angle-right'></i> Acesso à informação - SIC                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Alistamento Militar" href="https://alistamento.eb.mil.br/" target="_blank" onclick="">
+                        <i class='fa fa-arrow-right'></i> Alistamento Militar                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Licitações" href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:4:::NO::F50500_CD_ORGAO:88028&cs=16jmOSj1wa6LGg6XOX_5odv7Rmik" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Licitações                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Devolve ICMS" href="https://www.devolveicms.rs.gov.br/inicial" target="_blank" onclick="">
+                        <i class='fa fa-money'></i> Devolve ICMS                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Concursos" href="/concurso" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Concursos                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Consulta Dívida Ativa" href="https://atendimento.receita.rs.gov.br/lista-de-debitos-inscritos-em-divida-ativa" target="_blank" onclick="">
+                        <i class='fa fa-money'></i> Consulta Dívida Ativa                    </a>
+                </li>
+                        </ul>
+        </div>
+	        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+                        <!-- /NOTÍCIAS E ACESSO RÁPIDO -->
+        </div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-6" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://coqueirobaixo.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1003">Adesão Ata de Registro de Preço</option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="1002">Termo de Adesão</option>
+                                                        <option value="109">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://coqueirobaixo.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso</option>
+                                                        <option value="201">Convocação</option>
+                                                        <option value="1001">Eleição do Conselho Tutelar</option>
+                                                        <option value="1004">Processo de Certificação de Diretor</option>
+                                                        <option value="202">Processo Seletivo</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://coqueirobaixo.rs.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1017">Auxílio Reconstrução</option>
+                                                        <option value="1012">CACS FUNDEB</option>
+                                                        <option value="1013">CACS FUNDEB - DOCUMENTAÇÃO SECRETÁRIOS</option>
+                                                        <option value="1">Legislação</option>
+                                                        <option value="1001">Lei de Diretrizes Orçamentárias</option>
+                                                        <option value="1002">Lei Orçamentária Anual</option>
+                                                        <option value="1006">Parcelamento do Solo</option>
+                                                        <option value="1004">Plano de Contingência</option>
+                                                        <option value="1008">Plano de Saneamento Básico</option>
+                                                        <option value="10">Plano Plurianual </option>
+                                                        <option value="1011">Promoção Igualdade Racial</option>
+                                                        <option value="1007">SIAFIC</option>
+                                                        <option value="1014">Termo de Adesão NFG</option>
+                                                        <option value="1003">Termo de Posse</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-6 mt4-xs"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://coqueirobaixo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/departamento/19739/thumb_WhatsApp_Image_2025_01_02_at_111758.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Prefeito: Luciano André Ongaratto" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://coqueirobaixo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Luciano André Ongaratto</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99365-1677                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta<br />
+8h às 11h30m e das 13h30m às 17h<br />
+<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://coqueirobaixo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/departamento/19740/thumb_WhatsApp_Image_2025_01_02_at_111756.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Vice-prefeito: Roberto Carlos Bertol" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Vice-prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://coqueirobaixo.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Roberto Carlos Bertol</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99365-1677                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta<br />
+8h às 11h30m e das 13h30m às 17h<br />
+<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://coqueirobaixo.rs.gov.br/secretaria/id/1001/?secretaria-da-assistencia-social-e-habitacao.html">
+                       Secretaria da Assistencia Social e Habitação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/departamento/19741/thumb_WhatsApp_Image_2025_01_02_at_112921.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Veridiane Maria Consatti Bertol" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria da Assistencia Social e Habitação" href="https://coqueirobaixo.rs.gov.br/secretaria/id/1001/?secretaria-da-assistencia-social-e-habitacao.html">
+                            <span class="similar-h4"><strong>Veridiane Maria Consatti Bertol</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99254-0645                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta das 8h às 11h30min e das 13h30min às 17h.<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://coqueirobaixo.rs.gov.br/secretaria/id/116/?secretaria-de-obras-e-viacao.html">
+                       Secretaria de Obras e Viação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/departamento/16094/thumb_paulo.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Paulo Henrique Mariani" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Obras e Viação" href="https://coqueirobaixo.rs.gov.br/secretaria/id/116/?secretaria-de-obras-e-viacao.html">
+                            <span class="similar-h4"><strong>Paulo Henrique Mariani</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99236-3151                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta das 7h30 ás 11h30m e das 13h às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://coqueirobaixo.rs.gov.br/secretaria/id/105/?secretaria-da-administracao.html">
+                       Secretaria da Administração                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/departamento/17729/thumb_WhatsApp_Image_2021_02_04_at_112656.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Henrique Luciano Ongaratto" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria da Administração" href="https://coqueirobaixo.rs.gov.br/secretaria/id/105/?secretaria-da-administracao.html">
+                            <span class="similar-h4"><strong>Henrique Luciano Ongaratto</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99365-1677                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta das 8h às 11h30m e das 13h30m às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://coqueirobaixo.rs.gov.br/secretaria/id/110/?secretaria-de-educacao-esporte-cultura-e-lazer.html">
+                       Secretaria de Educação, Esporte, Cultura e Lazer                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/departamento/20333/thumb_Imagem_do_WhatsApp_de_2025_02_06_s_161105_d040c41a.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretária: Rosmeri Teresinha Campiol Denicol" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria de Educação, Esporte, Cultura e Lazer" href="https://coqueirobaixo.rs.gov.br/secretaria/id/110/?secretaria-de-educacao-esporte-cultura-e-lazer.html">
+                            <span class="similar-h4"><strong>Rosmeri Teresinha Campiol Denicol</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99276-6349                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a Sexta das 8h às 11h30 e das 13h30 às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://coqueirobaixo.rs.gov.br/secretaria/id/115/?secretaria-de-agricultura-e-meio-ambiente.html">
+                       Secretaria de Agricultura e Meio Ambiente                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/departamento/19738/thumb_4006fc8a_88ce_41bc_846b_4d771a5359ab.jpeg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário Municipal da Agricultura: Anderson Junior Emmer" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário Municipal da Agricultura</small>
+                        <div class="row">
+                          <a title="Secretaria de Agricultura e Meio Ambiente" href="https://coqueirobaixo.rs.gov.br/secretaria/id/115/?secretaria-de-agricultura-e-meio-ambiente.html">
+                            <span class="similar-h4"><strong>Anderson Junior Emmer</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99268-8984                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta das 8h às 11h30min e das 13h30min às 17h.<br />
+Whatsapp (51)99268 8984                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://coqueirobaixo.rs.gov.br/secretaria/id/106/?secretaria-da-fazenda.html">
+                       Secretaria da Fazenda                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/departamento/16093/thumb_rubens.jpg" class="img-responsive img-circle max-height100" alt="Foto do(a) Secretário: Ruben Kuhn" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria da Fazenda" href="https://coqueirobaixo.rs.gov.br/secretaria/id/106/?secretaria-da-fazenda.html">
+                            <span class="similar-h4"><strong>Ruben Kuhn</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99276-8124                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta das 8h às 11h30 e das 13h30 às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-white fade in">
+                <p class="lead text-center">
+                    <a href="https://coqueirobaixo.rs.gov.br/secretaria/id/114/?secretaria-da-saude.html">
+                       Secretaria da Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretária</small>
+                        <div class="row">
+                          <a title="Secretaria da Saúde" href="https://coqueirobaixo.rs.gov.br/secretaria/id/114/?secretaria-da-saude.html">
+                            <span class="similar-h4"><strong>Sandra Elisa Viecelin Caumo</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51) 99276-7104                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta das 8h às 11h30 e das 13h30m às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+<div class="p0 styleContrasteGray">
+    <div class="container">
+        <hr class="half-margins invisible">
+        <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm" target='_blank'>
+                                <p class="similar-h4 mb10">Lei de acesso à Informação</p>
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/banner/14/original_acess.jpg" class="img-responsive" alt="Lei de acesso à Informação" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://atendimento.receita.rs.gov.br/informativos-pit" target='_blank'>
+                                <p class="similar-h4 mb10">Informativo PIT</p>
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/banner/22395/original_Imagem_do_WhatsApp_de_2025_02_27_s_150428_1196726f.jpg" class="img-responsive" alt="Informativo PIT" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://coqueirobaixo.rs.gov.br/pagina/id/1029/?lei-aldir-blanc.html" target='_blank'>
+                                <p class="similar-h4 mb10">Lei Aldir Blanc</p>
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/banner/24427/original_Imagem_do_WhatsApp_de_2025_05_14_s_144213_39f13e35.jpg" class="img-responsive" alt="Lei Aldir Blanc" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="/transparencia" target='_blank'>
+                                <p class="similar-h4 mb10">Portal da Transparência</p>
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/banner/12/original_portal_transparencia.jpg" class="img-responsive" alt="Portal da Transparência" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.coqueirobaixo.rs.gov.br/pagina/id/1025/?lei-paulo-gustavo.html" target='_blank'>
+                                <p class="similar-h4 mb10">Lei Paulo Gustavo</p>
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/banner/19464/original_download.png" class="img-responsive" alt="Lei Paulo Gustavo" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://www.diariooficial.rs.gov.br/home" target='_blank'>
+                                <p class="similar-h4 mb10">Diário Oficial do RS</p>
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/banner/15/original_diario_oficial.png" class="img-responsive" alt="Diário Oficial do RS" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://nfg.sefaz.rs.gov.br/site/index.aspx" target='_blank'>
+                                <p class="similar-h4 mb10">Nota Fiscal Gaúcha</p>
+                        <img src="https://coqueirobaixo.rs.gov.br/uploads/banner/10/original_nota_fiscal_gaucha.jpg" class="img-responsive" alt="Nota Fiscal Gaúcha" role="presentation" />
+                </a>
+            </div>
+    </div>        <hr class="half-margins">
+    </div>
+</div>
+
+
+<div class="pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+                        <div class="col-md-8 mobile-nopadding"><!-- ATRAÇÕES TURÍSTICAS -->
+<h2 class="similar-h4 title"><strong>ATRA&Ccedil;&Otilde;ES TUR&Iacute;STICAS</strong></h2>
+<div class="tabs tab-tur widget featured-box-minimal nomargin-top">
+   <!-- tabs -->
+   <ul class="nav nav-tabs nav-justified">
+           <li class="active">
+         <a href="#tab_0" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-star icone-turismo"></i> Pontos Turísticos         </a>
+      </li>
+         </ul>
+
+
+   <!-- tabs content -->
+   <div class="tab-content mb15">
+           <div id="tab_0" class="tab-pane active">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://coqueirobaixo.rs.gov.br/uploads/pontoturistico/16935/maior_IMG_0169.jpg" alt="Linha Arroio da Laje" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Pontos Turísticos" href="https://coqueirobaixo.rs.gov.br/turismo/visualizar/id/1002/?pontos-turisticos.html">
+               Pontos Turísticos             </a>
+             </h3>
+           <p class="mb0">Descubra as belezas do nosso município</p>
+           <p class="mb0"><a href="https://coqueirobaixo.rs.gov.br/turismo/visualizar/id/1002" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Pontos Turísticos				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+         </div>
+
+   <a title="Atrações completas" href="https://coqueirobaixo.rs.gov.br/turismo" class="btn btn-default btn-content">
+      <i class="fa fa-map-o"></i> Mais Atrações
+	  <span class="sr-only">
+		Turísticas
+	  </span>
+    </a>
+</div></div>
+                        <div class="col-md-4 mt4-xs mobile-nopadding"><!-- EVENTOS -->
+<div class="widget featured-box-minimal">
+    <div class="row mb0">
+		<div class="pr15 pl15 mrauto mlauto">
+			<h2 class="similar-h4 title"><strong>&Uacute;LTIMO EVENTO</strong></h2>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<a href="https://coqueirobaixo.rs.gov.br/evento/visualizar/id/1062/?natal-na-praca.html">
+			<p class="lead">Natal na Praça</p>
+		</a>
+		<p class="nomargin">No dia 12 de dezembro, a magia do Natal vai tomar conta da Praça Adélcio Sestari.
+Muitas atrações esperam por você e sua família. Venha viver uma noite cheia de alegria, emoção e muita música.
+
+Haverá venda de lanches e bebidas no local.</p>
+	</div>
+
+	<div class="col-md-12 mb15">
+	    		<strong>Local:</strong> Praça Municipal<br />
+						<strong>In&iacute;cio:</strong> 12/12/2025 &agrave;s 18h<br />
+			</div>
+
+	<a href="https://coqueirobaixo.rs.gov.br/evento/?agenda-de-eventos.html" class="btn btn-default btn-content">
+	    <i class="fa fa-calendar"></i> Agenda completa
+    </a>
+</div>
+<!-- /EVENTOS --></div>
+            			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+        </div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight styleContrasteGray pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mobile-nopadding"><!-- MULTIMIDIA -->
+<h2 class="similar-h4 title"><strong>MULTIM&Iacute;DIA</strong></h2>
+    <ul class="sort-destination isotope multimidia flex-center" style="flex-wrap: wrap;">
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="XIII FILÓ ITALIANO" class="item-hover" href="https://coqueirobaixo.rs.gov.br/galeria/id/1030/?xiii-filo-italiano.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								XIII FILÓ ITALIANO							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://coqueirobaixo.rs.gov.br/uploads/midia/24839/media_DSC_5798.jpg" width="260" height="260" alt="XIII FILÓ ITALIANO" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">01/08/2025 - </small>
+                    <small style="display: inline;">Eventos</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">XIII FILÓ ITALIANO</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Segunda Expo Coqueiro" class="item-hover" href="https://coqueirobaixo.rs.gov.br/galeria/id/1029/?segunda-expo-coqueiro.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Segunda Expo Coqueiro							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://coqueirobaixo.rs.gov.br/uploads/midia/24070/media_DSC_2396.jpg" width="260" height="260" alt="Segunda Expo Coqueiro" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">14/04/2025 - </small>
+                    <small style="display: inline;">Eventos</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Segunda Expo Coqueiro</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Posse 2025" class="item-hover" href="https://coqueirobaixo.rs.gov.br/galeria/id/1021/?posse-2025.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Posse 2025							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://coqueirobaixo.rs.gov.br/uploads/midia/19999/media_DSC_4354.jpg" width="260" height="260" alt="Posse 2025" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">01/01/2025 - </small>
+                    <small style="display: inline;">Eventos</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Posse 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Inauguração-Praça do CRAS" class="item-hover" href="https://coqueirobaixo.rs.gov.br/galeria/id/1028/?inauguracao-praca-do-cras.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-camera"></span>
+                            <strong>VER</strong> FOTOS							<span class="sr-only">
+								Inauguração-Praça do CRAS							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="https://coqueirobaixo.rs.gov.br/uploads/midia/22350/media_IMG_1487.jpg" width="260" height="260" alt="Inauguração-Praça do CRAS" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">27/12/2024 - </small>
+                    <small style="display: inline;">Obras Públicas</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Inauguração-Praça do CRAS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        	</ul>
+<!-- /MULTIMIDIA --></div>
+        </div>
+    </div>
+</div>
+
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-29.177451, -52.098533],
+                16
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-29.177451, -52.098533],
+                        {alt:'Prefeitura Municipal de Coqueiro Baixo'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Prefeitura Municipal de Coqueiro Baixo</strong></p>                <p style="margin: 5px 0px;">Av. Itália, 1660&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">Coqueiro Baixo / RS</p><p style="margin: 5px 0px;">95955-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer02" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <!-- endereço e redes sociais -->
+            <div class="spaced col-md-4 col-sm-4">
+                                <p>
+                    Av. Itália, 1660, Centro<br />
+                    CEP: 95955-000<br />                    prefeitura@coqueirobaixo.com.br<br />                </p>
+                                    <p class="similar-h3">0800-000-4370</p>
+                                <p><strong>Segunda à Sexta:</strong> 8:00 às 11:30 e das 13:30 às 17:00</p>
+                				<p class="block">
+					<a href="https://coqueirobaixo.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://coqueirobaixo.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+				</p>
+            </div>
+            <!-- /endereço e redes sociais -->
+
+            <!-- col #2 -->
+            <div class="spaced col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="col-md-5 col-sm-4 hidden-xs hide-line-last-new">
+                        <p class="similar-h4">&Uacute;ltimas not&iacute;cias</p>
+                                                <ul class="list-unstyled">
+                                                        <li>
+                                <a class="block"
+                                href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1331/?coqueiro-baixo-promove-teatro-o-jogo-do-tempo-em-acao-do-setembro-amarelo.html">
+                                    Coqueiro Baixo promove teatro “O Jogo do Tempo” em ação do Setembro Amarelo                                </a>
+                                <small>25/09/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1330/?pagamentos-de-incentivos-a-produtores.html">
+                                    Pagamentos de incentivos a produtores                                </a>
+                                <small>23/09/2026</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://coqueirobaixo.rs.gov.br/noticia/visualizar/id/1329/?iv-gincana-farroupilha-reune-criancas-em-um-dia-de-integracao-e-tradicao.html">
+                                    IV Gincana Farroupilha reúne crianças em um dia de integração e tradição                                </a>
+                                <small>21/09/2026</small>
+                            </li>
+                                                    </ul>
+                                            </div>
+
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <p class="similar-h4">Outras &aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a class="block" href="https://coqueirobaixo.rs.gov.br/transparencia/?transparencia.html">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://coqueirobaixo.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://coqueirobaixo.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://coqueirobaixo.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Not&iacute;cias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://coqueirobaixo.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://coqueirobaixo.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://coqueirobaixo.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                                                <!-- brasão -->
+                        <p class="text-center">
+                            <img alt="Brasão da prefeitura" src="https://coqueirobaixo.rs.gov.br/uploads/config/16025/brasao.png" class="logo img-responsive appear-animation opaco08" data-animation="bounceIn"/>
+                        </p>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+	<div class="container text-center fsize12 post-copyright" style="
+		display: flex;
+		flex-direction: column;
+		justify-content: center">
+		<p style="margin:0" id="footer.copyrightTxt">
+			Este site utiliza a ferramenta
+			<a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+				<img src="https://coqueirobaixo.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+				<span class="sr-only">iPrefeituras</span>
+			</a>.
+		</p>
+		<p style="margin:0" id="footer.copyrightTxt3">
+			Um produto
+			<strong>
+				<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+			</strong>.
+		</p>
+	</div>
+</div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://coqueirobaixo.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://coqueirobaixo.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://coqueirobaixo.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://coqueirobaixo.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://coqueirobaixo.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a61400ea2d526d4c',t:'MTc5NTgxMjYwOQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a61400ea2d526d4c',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

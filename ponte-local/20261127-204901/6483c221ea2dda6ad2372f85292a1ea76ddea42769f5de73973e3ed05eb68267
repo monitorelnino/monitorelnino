@@ -1,0 +1,737 @@
+
+<!doctype html>
+<html lang="pt-br" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Bem vindo ao site da Prefeitura de Moema">
+    <meta name="keywords" content="prefeitura, munic&#237;pio,minas gerais, centro oeste, moema">
+    <meta name="author" content="OnlineSites" />
+    <meta name="generator" content="OnlineFlex 4.0 &amp; Visual Studio 2012" />
+    <meta name="application-name" content="OnlineFlex 4.0" />
+    <meta name="revisit-after" content="1 days" />
+    <meta name="robots" content="all" />
+        <meta name="geo.region" content="BR-MG" />
+        <meta name="geo.placename" content="Prefeitura de Moema" />
+        <meta name="geo.position" content="-19.84559;-45.40909" />
+        <meta name="ICBM" content="-19.84559, -45.40909" />
+        <meta name="rating" content="general" />
+        <meta name="dcterms.rightsHolder" content="Prefeitura de Moema" />
+        <meta name="DC.language" content="PT-BR" />
+    
+    <meta property="og:title" content="Prefeitura de Moema" />
+    <meta property="og:description" content="Site oficial da Prefeitura de Moema" />
+    <meta name="url" content="https://moema.mg.gov.br/"/>
+    <meta property="og:image" content="https://moema.mg.gov.br/Images/logo_social.jpg"/>
+
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="/Images/ico/apple-touch-icon-72-precomposed.png" />
+
+    <link rel="apple-touch-icon-precomposed" href="/Images/ico/apple-touch-icon-144-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="/Images/ico/apple-touch-icon-114-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="/Images/ico/apple-touch-icon-72-precomposed.png" />
+    <link rel="apple-touch-icon-precomposed" href="/Images/ico/apple-touch-icon-57-precomposed.png" />
+    <link rel="shortcut icon" href="/Images/ico/favicon.ico" />
+
+    <title>Prefeitura de Moema </title>
+
+    <link href="/Content/css?v=5xckysL1mIPJCrOjxjiEc8_P1vzjZL-gWkQagP22R1E1" rel="stylesheet"/>
+
+    <link href="/Content/theme?v=HgIVcHPFt6d1KKisXE7Q6jEw4hMxNExknPHEDGL8tec1" rel="stylesheet"/>
+
+    <script src="/bundles/modernizr?v=w9fZKPSiHtN4N4FRqV7jn-3kGoQY5hHpkwFv5TfMrus1"></script>
+
+    
+   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="~/scripts/html5shiv.js"></script>
+    <![endif]-->
+
+
+    <script type="text/javascript">
+        function loadjscssfile(filename, filetype) {
+            if (filetype == "css") {
+                var fileref = document.createElement("link");
+                fileref.setAttribute("rel", "stylesheet");
+                fileref.setAttribute("type", "text/css");
+                fileref.setAttribute("href", filename);
+            }
+            if (typeof fileref != "undefined")
+                document.getElementsByTagName("head")[0].appendChild(fileref);
+        }
+    </script>
+
+</head>
+<body id="topmenu">
+    <nav class="navbar navbar-onlinesites navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Alternar navegação</span><!-- /sr-only -->
+                    <span class="icon-bar"></span>
+                    <!-- /icon-bar -->
+                    <span class="icon-bar"></span>
+                    <!-- /icon-bar -->
+                    <span class="icon-bar"></span>
+                    <!-- /icon-bar -->
+                </button>
+                <!-- /navbar-toggle -->
+            </div>
+            <!-- /navbar-header -->
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+        
+            <li><a href="/categoria/a-prefeitura" title="Prefeitura">Prefeitura</a></li>
+        
+        
+            <li class="dropdown">
+                <a href="/lista/o-municipio" class="dropdown-toggle" data-toggle="dropdown" title="O Munic&#237;pio">O Munic&#237;pio <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                        <li><a href="/categoria/historia">Hist&#243;ria</a></li>
+                        <li><a href="/categoria/dados-estatisticos">Dados Estat&#237;sticos</a></li>
+                        <li><a href="/categoria/hino-da-cidade">Hino da Cidade</a></li>
+                </ul>
+            </li>
+        
+        
+            <li class="dropdown">
+                <a href="/lista/noticias" class="dropdown-toggle" data-toggle="dropdown" title="Todas as Not&#237;cias">Todas as Not&#237;cias <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                        <li><a href="/categoria/noticias">Not&#237;cias</a></li>
+                </ul>
+            </li>
+        
+        
+            <li class="dropdown">
+                <a href="/comunidade" class="dropdown-toggle" data-toggle="dropdown" title="Fale Conosco">Fale Conosco <b class="caret"></b></a>
+                <ul class="dropdown-menu">
+                        <li><a href="/comunidade">Contato</a></li>
+                </ul>
+            </li>
+        
+
+                </ul>
+                <ul class="nav navbar-nohover navbar-nav navbar-right">
+                    <li><a href="http://www.mg.gov.br/" target="_blank" class="icon-olstop icon-mg text-hide" title="Governo do Estado de Minas Gerais">Governo do Estado de Minas Gerais</a></li>
+                    <li><a href="http://www.brasil.gov.br/" target="_blank" class="icon-olstop icon-br text-hide" title="Portal Brasil">Portal Brasil</a></li>
+                    <li><a href="https://moema.govbr.cloud/pronimtb/" class="icon-olstop icon-ai text-hide nohover" title="Acesso à Informação">Acesso à Informação</a></li>
+                </ul>
+            </div>
+            <!-- /navbar-collapse.collapse -->
+        </div>
+        <!-- /container -->
+    </nav>
+    <!-- /navbar.navbar-onlinesites.navbar-fixed-top -->
+    <header class="container-fluid header-onlinesites" id="headerbar">
+        <div class="container">
+            <div class="col-md-6">
+                <p class="visible-lg visible-md hot-links">
+                    <a accesskey="1" href="#conteudo">Ir para o conteúdo <span>1</span></a>
+                    <a accesskey="2" href="#topmenu">Ir para o menu <span>2</span></a>
+                    <a accesskey="3" href="#headerbar">Ir para a busca <span>3</span></a>
+                    <a accesskey="4" href="#rodape">Ir para o rodapé <span>4</span></a>
+                </p>
+                <a href="/" target="_self" title="Prefeitura de Moema"><img src='/Images/logo.png' alt="Logo Prefeitura de Moema" class="img-responsive img-logo" /></a>
+            </div>
+            <!-- /col-md-6 -->
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <nav class="pull-right action-links">
+                        <a href="/conteudo/acessibilidade" target="_self" title="Acessibilidade">
+                        <img src='/Images/acessibilidade.jpeg' alt="Acessibilidade" style="width:25px; float:left;" class="img-responsive" />Acessibilidade</a>
+                        <a href="javascript:void(0)" onclick="loadjscssfile('/Content/contraste.css','css');" title="Alto Contraste">Alto Contraste</a>
+                        <a href="/MapaDoSite" target="_self" title="Mapa do Site">Mapa do Site</a>
+                    </nav>
+                    <!-- /pull-right.action-links -->
+                </div>
+                <!-- /col-md-12 -->
+                <div class="col-md-12">
+    <form action="/Buscar" method="GET" class="input-group pesquisa" role="search">
+        <input type="search" value="" placeholder="Pesquisar" name="q" class="form-control input-sm">
+        <span class="input-group-btn">
+            <input type="submit" class="button btn btn-sm btn-pesquisa" value="" name="buscar">
+        </span><!-- /input-group-btn -->
+    </form><!-- /input-group.pesquisa -->
+
+                </div>
+                <!-- /col-md-12 -->
+                <div class="col-md-12">
+                    <div class="pull-right">
+                            <a href="https://www.facebook.com/prefeituramoema" target="_blank" class="social social-facebook text-hide" title="Curta no facebook">Curta no facebook</a>
+                                                    <a href="https://instagram.com/prefeituramoema" target="_blank" class="social social-instagram text-hide" style="background-position: -10px -222px;" title="Siga no Instagram">Siga no Instagram</a>
+                                                                                                    <a href="/Rss" target="_self" class="social social-rss text-hide" title="RSS">RSS</a>
+                    </div>
+                    <!-- /pull-right -->
+                </div>
+                <!-- /col-md-12 -->
+            </div>
+            <!-- /col-md-6 -->
+        </div>
+        <!-- /container -->
+    </header>
+    <!-- /container-fluid.header-onlinesites#headerbar -->
+    <div class="row row-fluid">
+        <a name="conteudo"></a>
+        
+
+
+<section class="row row-fluid">
+    <div id="carousel-onlineflex" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+
+    <div class="item active">
+            <img src="/imagens/banners/banner_1911202616240.PNG" alt="Visualizar TODOS CONTRA A DENGUE" />
+    </div><!-- /item -->
+    <div class="item">
+            <img src="/imagens/banners/banner_18112026151815.PNG" alt="Visualizar EST&#193;GIO PARA ASSESSORIA JUR&#205;DICA" />
+    </div><!-- /item -->
+    <div class="item">
+            <img src="/imagens/banners/banner_1811202615176.PNG" alt="Visualizar ATEN&#199;&#195;O, PROPRIET&#193;RIOS DE LOTES E TERRENOS SUJOS " />
+    </div><!-- /item -->
+    <div class="item">
+            <img src="/imagens/banners/banner_31120261700.PNG" alt="Visualizar NOVEMBRO AZUL" />
+    </div><!-- /item -->
+    <div class="item">
+            <img src="/imagens/banners/banner_772025175136.PNG" alt="Visualizar " />
+    </div><!-- /item -->
+
+
+        </div><!-- /carousel-inner -->
+        <a class="left carousel-control" href="#carousel-onlineflex" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-onlineflex" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    </div><!-- /carousel.slide#carousel-onlineflex -->
+</section><!-- /row.row-fluid -->
+
+<section class="row row-fluid">
+    <div class="container">                	
+        <section class="col-md-9 col-md-push-3 home-content">
+
+
+    <h1>Notícias</h1>
+    <hr />
+<div class="col-md-12 col-sm-12 col-xs-12 home-content-col-bottom">             <div class="col-md-4 col-sm-4 col-xs-12">
+  
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<a href="/conteudo/ossa-rede-municipal-alcancou-7-4-nos-anos-finais-e-6-8-nos-anos-iniciais" target="_self" title="ossa rede municipal alcan&#231;ou 7,4 nos anos finais e 6,8 nos anos iniciais.">
+						<img src="/imagens/2289/m_ossa-rede-municipal-alcancou-7-4-nos-anos-finais-e-6-8-nos-anos-iniciais_22920261550560.jpg" alt="ossa rede municipal alcan&#231;ou 7,4 nos anos finais e 6,8 nos anos iniciais." class="img-responsive img-rounded" />
+					</a>
+				</div>
+				<!-- /col-md-12.col-sm-12.col-xs-12 -->
+
+                <div class="col-md-12 col-sm-12 col-xs-12 home-content-col-item">
+                    <br />
+                    <span>7 de Agosto | Acesso R&#225;pido</span>
+                    <br />
+                    <p><a href="/conteudo/ossa-rede-municipal-alcancou-7-4-nos-anos-finais-e-6-8-nos-anos-iniciais" target="_self" title="ossa rede municipal alcan&#231;ou 7,4 nos anos finais e 6,8 nos anos iniciais.">ossa rede municipal alcan&#231;ou 7,4 nos anos finais e 6,8 nos anos iniciais.</a></p>
+                </div>
+                <!-- /col-md-12.col-sm-12.col-xs-12.home-content-col-item -->
+            </div>
+            <!-- /col-md-4.col-sm-4.col-xs-12 -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+  
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<a href="/conteudo/os-novos-uniformes-e-o-vale-feira-foram-entregues-a-todos-os-servidores-municipais" target="_self" title="Os novos uniformes e o Vale-Feira foram entregues.">
+						<img src="/imagens/2287/m_os-novos-uniformes-e-o-vale-feira-foram-entregues-a-todos-os-servidores-municipais_22920261535100.jpg" alt="Os novos uniformes e o Vale-Feira foram entregues." class="img-responsive img-rounded" />
+					</a>
+				</div>
+				<!-- /col-md-12.col-sm-12.col-xs-12 -->
+
+                <div class="col-md-12 col-sm-12 col-xs-12 home-content-col-item">
+                    <br />
+                    <span>30 de Julho | Acesso R&#225;pido</span>
+                    <br />
+                    <p><a href="/conteudo/os-novos-uniformes-e-o-vale-feira-foram-entregues-a-todos-os-servidores-municipais" target="_self" title="Os novos uniformes e o Vale-Feira foram entregues.">Os novos uniformes e o Vale-Feira foram entregues.</a></p>
+                </div>
+                <!-- /col-md-12.col-sm-12.col-xs-12.home-content-col-item -->
+            </div>
+            <!-- /col-md-4.col-sm-4.col-xs-12 -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+  
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<a href="/conteudo/projeto-patrimonio-cultural-de-moema" target="_self" title="Projeto Patrim&#244;nio Cultural de Moema">
+						<img src="/imagens/2286/m_projeto-patrimonio-cultural-de-moema_22920261529200.jpg" alt="Projeto Patrim&#244;nio Cultural de Moema" class="img-responsive img-rounded" />
+					</a>
+				</div>
+				<!-- /col-md-12.col-sm-12.col-xs-12 -->
+
+                <div class="col-md-12 col-sm-12 col-xs-12 home-content-col-item">
+                    <br />
+                    <span>13 de Julho | Acesso R&#225;pido</span>
+                    <br />
+                    <p><a href="/conteudo/projeto-patrimonio-cultural-de-moema" target="_self" title="Projeto Patrim&#244;nio Cultural de Moema">Projeto Patrim&#244;nio Cultural de Moema</a></p>
+                </div>
+                <!-- /col-md-12.col-sm-12.col-xs-12.home-content-col-item -->
+            </div>
+            <!-- /col-md-4.col-sm-4.col-xs-12 -->
+</div><div class="col-md-12 col-sm-12 col-xs-12 home-content-col-bottom">             <div class="col-md-4 col-sm-4 col-xs-12">
+  
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<a href="/conteudo/projeto-gerando-vidas-primeiro-encontro-de-2026" target="_self" title="PROJETO GERANDO VIDAS | PRIMEIRO ENCONTRO DE 2026">
+						<img src="/imagens/2284/m_projeto-gerando-vidas-primeiro-encontro-de-2026_22920261518410.jpg" alt="PROJETO GERANDO VIDAS | PRIMEIRO ENCONTRO DE 2026" class="img-responsive img-rounded" />
+					</a>
+				</div>
+				<!-- /col-md-12.col-sm-12.col-xs-12 -->
+
+                <div class="col-md-12 col-sm-12 col-xs-12 home-content-col-item">
+                    <br />
+                    <span>10 de Julho | Acesso R&#225;pido</span>
+                    <br />
+                    <p><a href="/conteudo/projeto-gerando-vidas-primeiro-encontro-de-2026" target="_self" title="PROJETO GERANDO VIDAS | PRIMEIRO ENCONTRO DE 2026">PROJETO GERANDO VIDAS | PRIMEIRO ENCONTRO DE 2026</a></p>
+                </div>
+                <!-- /col-md-12.col-sm-12.col-xs-12.home-content-col-item -->
+            </div>
+            <!-- /col-md-4.col-sm-4.col-xs-12 -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+  
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<a href="/conteudo/certificado-de-reconhecimento-na-categoria-ouro-do-selo-nacional-compromisso-com-a-alfabetizacao" target="_self" title="Certificado de Reconhecimento na Categoria Ouro do Selo Nacional Compromisso com a Alfabetiza&#231;&#227;o">
+						<img src="/imagens/2285/m_certificado-de-reconhecimento-na-categoria-ouro-do-selo-nacional-compromisso-com-a-alfabetizacao_2292026152480.jpg" alt="Certificado de Reconhecimento na Categoria Ouro do Selo Nacional Compromisso com a Alfabetiza&#231;&#227;o" class="img-responsive img-rounded" />
+					</a>
+				</div>
+				<!-- /col-md-12.col-sm-12.col-xs-12 -->
+
+                <div class="col-md-12 col-sm-12 col-xs-12 home-content-col-item">
+                    <br />
+                    <span>8 de Julho | Acesso R&#225;pido</span>
+                    <br />
+                    <p><a href="/conteudo/certificado-de-reconhecimento-na-categoria-ouro-do-selo-nacional-compromisso-com-a-alfabetizacao" target="_self" title="Certificado de Reconhecimento na Categoria Ouro do Selo Nacional Compromisso com a Alfabetiza&#231;&#227;o">Certificado de Reconhecimento na Categoria Ouro do Selo Nacional Compromisso com a Alfabetiza&#231;&#227;o</a></p>
+                </div>
+                <!-- /col-md-12.col-sm-12.col-xs-12.home-content-col-item -->
+            </div>
+            <!-- /col-md-4.col-sm-4.col-xs-12 -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+  
+				<div class="col-md-12 col-sm-12 col-xs-12">
+					<a href="/conteudo/kit-de-defesa-civil-composto-por-uma-caminhonete-strada-0-km-e-um-notebook" target="_self" title="Kit de Defesa Civil, composto por uma caminhonete Strada 0 km e um notebook">
+						<img src="/imagens/2283/m_kit-de-defesa-civil-composto-por-uma-caminhonete-strada-0-km-e-um-notebook_22920261516210.jpg" alt="Kit de Defesa Civil, composto por uma caminhonete Strada 0 km e um notebook" class="img-responsive img-rounded" />
+					</a>
+				</div>
+				<!-- /col-md-12.col-sm-12.col-xs-12 -->
+
+                <div class="col-md-12 col-sm-12 col-xs-12 home-content-col-item">
+                    <br />
+                    <span>1 de Julho | Acesso R&#225;pido</span>
+                    <br />
+                    <p><a href="/conteudo/kit-de-defesa-civil-composto-por-uma-caminhonete-strada-0-km-e-um-notebook" target="_self" title="Kit de Defesa Civil, composto por uma caminhonete Strada 0 km e um notebook">Kit de Defesa Civil, composto por uma caminhonete Strada 0 km e um notebook</a></p>
+                </div>
+                <!-- /col-md-12.col-sm-12.col-xs-12.home-content-col-item -->
+            </div>
+            <!-- /col-md-4.col-sm-4.col-xs-12 -->
+</div>
+        </section><!-- /col-md-9.col-md-push-3.home-content -->
+
+<nav class="col-md-3 col-xs-12 col-md-pull-9 acesso-rapido">
+    <script>
+    // Adiciona target="_blank" a todos os links cujo href começa com "https://www."
+		document.addEventListener('DOMContentLoaded', function () {
+		  document.querySelectorAll('a[href]').forEach(function (link) {
+		    if (link.getAttribute('href').startsWith('https://www.')) {
+		      link.setAttribute('target', '_blank');
+		      // rel de segurança recomendado ao abrir em nova aba
+		      link.setAttribute('rel', 'noopener noreferrer');
+		    }
+		  });
+		});
+
+    </script>
+    <span class="col-md-12 col-xs-12 acesso-rapido-titulo">Acesso R&#225;pido</span>
+    <ul class="col-md-12 col-xs-12 list-unstyled">
+            <li class="col-md-12 col-xs-12">
+                <a href="https://camaramoema.mg.gov.br/" target="_self" title="Camara Municipal">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_107202682529.jpg" alt="Ícone Camara Municipal" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Camara Municipal</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/chamamentos-publicos" target="_self" title="Chamamentos P&#250;blicos">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_234202616637.jpg" alt="Ícone Chamamentos P&#250;blicos" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Chamamentos P&#250;blicos</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://webapp1-moema.cidade360.cloud/pronimtb/index.asp?acao=3&amp;item=10" target="_self" title="Comprovante Pagamento (Credores)">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142343.jpg" alt="Ícone Comprovante Pagamento (Credores)" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Comprovante Pagamento (Credores)</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://webapp1-moema.cidade360.cloud/pronimtb/index.asp?acao=3&amp;item=15" target="_self" title="Comprovante Recebimento Di&#225;rias/Adiantamentos">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142343.jpg" alt="Ícone Comprovante Recebimento Di&#225;rias/Adiantamentos" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Comprovante Recebimento Di&#225;rias/Adiantamentos</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://webapp1-moema.cidade360.cloud/PortaldoServidor/#/" target="_self" title="Comprovante Rendimentos IRRF (Folha de pagamento)">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142343.jpg" alt="Ícone Comprovante Rendimentos IRRF (Folha de pagamento)" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Comprovante Rendimentos IRRF (Folha de pagamento)</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/selecao" target="_self" title="Concursos P&#250;blicos/Processos Seletivos">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_1062026141332.jpg" alt="Ícone Concursos P&#250;blicos/Processos Seletivos" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Concursos P&#250;blicos/Processos Seletivos</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://servicos.mte.gov.br/spme-v2/#/login" target="_self" title="Consulta Abono Pasep">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_1962023124116.jpg" alt="Ícone Consulta Abono Pasep" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Consulta Abono Pasep</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://meu.inss.gov.br/#/login" target="_self" title="Consulta n&#250;mero NIS/NIT/PIS/PASEP">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_1962023124116.jpg" alt="Ícone Consulta n&#250;mero NIS/NIT/PIS/PASEP" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Consulta n&#250;mero NIS/NIT/PIS/PASEP</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://webapp1-moema.cidade360.cloud/PortaldoServidor/#/" target="_self" title="Contracheques">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142343.jpg" alt="Ícone Contracheques" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Contracheques</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/designacoes" target="_self" title="Designa&#231;&#245;es">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142357.jpg" alt="Ícone Designa&#231;&#245;es" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Designa&#231;&#245;es</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://www2.fazenda.mg.gov.br/sol/ctrl/SOL/PECFORM/CONSULTA_002?ACAO=VISUALIZAR" target="_self" title="Divida Ativa">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_97202610117.jpg" alt="Ícone Divida Ativa" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Divida Ativa</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="http://webapp1-moema.cidade360.cloud/AlvaraWeb" target="_self" title="Emiss&#227;o de 2&#170; Via de Alvar&#225;">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142414.jpg" alt="Ícone Emiss&#227;o de 2&#170; Via de Alvar&#225;" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Emiss&#227;o de 2&#170; Via de Alvar&#225;</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://webapp1-moema.cidade360.cloud/NFSe.Portal/" target="_self" title="Emiss&#227;o de Nota Fiscal - ISS Digital">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142414.jpg" alt="Ícone Emiss&#227;o de Nota Fiscal - ISS Digital" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Emiss&#227;o de Nota Fiscal - ISS Digital</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://moema.mg.gov.br/conteudo/prefeitura-de-moema-mg-secretaria-de-tributos-e-arrecadacao#.ZCxIN3bMKM8" target="_self" title="Emiss&#227;o de Nota Fiscal - Manual Online">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142617.jpg" alt="Ícone Emiss&#227;o de Nota Fiscal - Manual Online" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Emiss&#227;o de Nota Fiscal - Manual Online</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/feriados" target="_self" title="Feriados Municipais">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142428.jpg" alt="Ícone Feriados Municipais" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Feriados Municipais</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://moema.digital.esp.br/" target="_self" title="Gest&#227;o do Esporte">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_1962023124116.jpg" alt="Ícone Gest&#227;o do Esporte" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Gest&#227;o do Esporte</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/legislacao-fundeb" target="_self" title="Legisla&#231;&#227;o FUNDEB">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2692023164127.jpg" alt="Ícone Legisla&#231;&#227;o FUNDEB" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Legisla&#231;&#227;o FUNDEB</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/legislacao" target="_self" title="Legisla&#231;&#227;o Municipal">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2772021152446.jpg" alt="Ícone Legisla&#231;&#227;o Municipal" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Legisla&#231;&#227;o Municipal</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/lei-aldir-blanc" target="_self" title="Lei Aldir Blanc">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2692023164127.jpg" alt="Ícone Lei Aldir Blanc" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Lei Aldir Blanc</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/lei-paulo-gustavo" target="_self" title="Lei Paulo Gustavo">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2692023164127.jpg" alt="Ícone Lei Paulo Gustavo" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Lei Paulo Gustavo</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2018/lei/l13709.htm" target="_self" title="LGPD">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_67202684149.jpg" alt="Ícone LGPD" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">LGPD</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/licitacoes" target="_self" title="Licita&#231;&#245;es">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142535.jpg" alt="Ícone Licita&#231;&#245;es" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Licita&#231;&#245;es</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://moema.mg.gov.br/arquivo/loa" target="_self" title="LOA">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_107202682135.jpg" alt="Ícone LOA" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">LOA</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/estoque" target="_self" title="Medicamentos Farm&#225;cia de Minas">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_22202413218.jpg" alt="Ícone Medicamentos Farm&#225;cia de Minas" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Medicamentos Farm&#225;cia de Minas</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/parcerias" target="_self" title="Parcerias Volunt&#225;rias">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142637.jpg" alt="Ícone Parcerias Volunt&#225;rias" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Parcerias Volunt&#225;rias</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/cultura" target="_self" title="Patrim&#244;nio Cultural">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_22720268943.jpg" alt="Ícone Patrim&#244;nio Cultural" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Patrim&#244;nio Cultural</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/pca-plano-de-contratacoes-anual" target="_self" title="PCA - Plano de Contrata&#231;&#245;es Anual">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2952026172217.jpg" alt="Ícone PCA - Plano de Contrata&#231;&#245;es Anual" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">PCA - Plano de Contrata&#231;&#245;es Anual</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/categoria/pontos-turisticos" target="_self" title="Pontos Tur&#237;sticos">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_157202614213.jpg" alt="Ícone Pontos Tur&#237;sticos" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Pontos Tur&#237;sticos</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://webapp1-moema.cidade360.cloud/pronimtb/" target="_self" title="Portal da Transpar&#234;ncia">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_1662023173234.jpg" alt="Ícone Portal da Transpar&#234;ncia" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Portal da Transpar&#234;ncia</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/arquivo/ppa" target="_self" title="PPA">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_972026103530.jpg" alt="Ícone PPA" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">PPA</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="http://www.diariomunicipal.com.br/amm-mg/pesquisar" target="_self" title="Publica&#231;&#245;es - Di&#225;rio Oficial">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142738.jpg" alt="Ícone Publica&#231;&#245;es - Di&#225;rio Oficial" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Publica&#231;&#245;es - Di&#225;rio Oficial</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://www.saaemoema.mg.gov.br/" target="_self" title="SAAE">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_107202682927.jpg" alt="Ícone SAAE" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">SAAE</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/categoria/secretario" target="_self" title="Secret&#225;rios Municipais">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2102021185949.jpg" alt="Ícone Secret&#225;rios Municipais" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Secret&#225;rios Municipais</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="https://webapp1-moema.cidade360.cloud:8443/cidadao/servlet/br.com.cetil.ar.jvlle.hatendimento" target="_self" title="Servi&#231;os Tribut&#225;rios Municipais">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142414.jpg" alt="Ícone Servi&#231;os Tribut&#225;rios Municipais" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Servi&#231;os Tribut&#225;rios Municipais</p>
+                </a>
+            </li>
+            <li class="col-md-12 col-xs-12">
+                <a href="/comunidade" target="_self" title="Ouvidoria Municipal">
+                        <span class="col-md-4 col-sm-2 hidden-xs text-left">
+                            <img src="/imagens/menus/menu_2452021142819.jpg" alt="Ícone Ouvidoria Municipal" class="img-responsive img-rounded pull-left">
+                        </span>
+                    <p class="col-md-8 col-sm-10 col-xs-12 text-left">Ouvidoria Municipal</p>
+                </a>
+            </li>
+    </ul>
+    <!-- /col-md-12.col-xs-12.list-unstyled -->
+</nav><!-- /col-md-3.col-xs-12.col-md-pull-9.acesso-rapido -->
+    </div><!-- /container -->
+</section><!-- /row.row-fluid -->
+    </div>
+    <!-- /row.row-fluid -->
+    <footer class="container-fluid footer-onlinesites" id="rodape">
+        <div class="container">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+
+	            
+        <nav class="d_responsive_nav">
+            <span>Acesso R&#225;pido</span>
+            <ul class="list-unstyled">
+                    <li><a href="/arquivo/legislacao" target="_self" title="Legisla&#231;&#227;o">Legisla&#231;&#227;o</a></li>
+                    <li><a href="/arquivo/licitacoes" target="_self" title="Licita&#231;&#245;es">Licita&#231;&#245;es</a></li>
+                    <li><a href="https://webapp1-moema.cidade360.cloud/pronimtb/" target="_self" title="Portal da Transpar&#234;ncia">Portal da Transpar&#234;ncia</a></li>
+                    <li><a href="/comunidade" target="_self" title="Fale Conosco">Fale Conosco</a></li>
+            </ul>
+        </nav>
+
+            </div>
+            <!-- /col-md-4.col-sm-4.col-xs-12 -->
+            <div class="col-md-4 col-sm-4 col-xs-12">
+
+	            
+        <nav class="d_responsive_nav">
+            <span>Utilidade P&#250;blica</span>
+            <ul class="list-unstyled">
+                    <li><a href="https://www.almg.gov.br/home/index.html" target="_self" title="Assembleia de Minas Gerais">Assembleia de Minas Gerais</a></li>
+                    <li><a href="https://camaramoema.mg.gov.br/" target="_self" title="C&#226;mara Municipal de Moema">C&#226;mara Municipal de Moema</a></li>
+                    <li><a href="https://www.detran.mg.gov.br/" target="_self" title="Detran MG">Detran MG</a></li>
+                    <li><a href="http://www.mg.gov.br/" target="_self" title="Governo de Minas Gerais">Governo de Minas Gerais</a></li>
+                    <li><a href="http://www.brasil.gov.br/" target="_self" title="Governo Federal">Governo Federal</a></li>
+                    <li><a href="http://www.saaemoema.mg.gov.br/" target="_self" title="SAAE de Moema">SAAE de Moema</a></li>
+            </ul>
+        </nav>
+
+            </div>
+            <!-- /col-md-4.col-sm-4.col-xs-12 -->
+            <div class="col-md-3 col-md-offset-1 col-sm-3 col-sm-offset-1 col-xs-12 footer-infos">
+                <address itemscope itemtype="http://data-vocabulary.org/Organization" class="text-center">
+                    <span itemprop="name">Prefeitura de Moema</span>
+                    <br />
+                    <br />
+                    <div itemprop="address" itemscope itemtype="http://data-vocabulary.org/Address">
+                        <p itemprop="street-address">
+                            Rua Caetés, 444<br />Centro<br />
+                            <span itemprop="locality">Moema</span> - <span itemprop="region">MG</span> - <span itemprop="country-name">Brasil</span>
+                        </p>
+                        <p>CEP: <span itemprop="postal-code">35.604-000</span> | Tel.: <span itemprop="tel">(37)3525-1214</span></p>
+                    </div>
+                </address>
+                <hr />
+                <p class="text-center">
+                    Atendimento:<br>
+                    Segunda à sexta-feira de 12:00hs às 17:30hs<br>
+                    
+                </p>
+                <hr />
+                <p class="text-center">
+                    Administração 2025/2028<br />
+                    &copy; 2026 Todos os direitos reservados
+                </p>
+                <hr />
+                <p class="text-center pull-right">
+                    <a href="http://www.onlinesites.com.br" target="_blank" title="Desenvolvido por OnlineSites Desenvolvimento Web">
+                        <img src='/Images/onlinesites.png' alt="Logo OnlineSites" class="img-responsive" />
+                    </a>
+                </p>
+            </div>
+            <!-- /col-md-3.col-md-offset-1.col-sm-3.col-sm-offset01.col-xs-12.footer-infos -->
+        </div>
+        <!-- /container -->
+    </footer>
+    <!-- /container-fluid.footer-onlinesites -->
+
+        <!--googleoff: index-->
+        <div class="container-fluid visible-md visible-lg hidden-xs hidden-sm robots-nocontent" id="fixed-top">
+            <div class="container visible-md visible-lg hidden-xs hidden-sm">
+                <div class="col-md-8 visible-md visible-lg hidden-xs hidden-sm">
+                    <a href="/" target="_self" title="Prefeitura de Moema"><img src='/Images/logox.png' alt="Logo Prefeitura de Moema" class="img-responsive" /></a>
+                </div>
+                <!-- /col-md-8.visible-md.visible-lg.hidden-xs.hidden-sm -->
+                <div class="col-md-4 visible-md visible-lg hidden-xs hidden-sm">
+    <form action="/Buscar" method="GET" class="input-group col-sm-7 pull-right pesquisa" role="search">
+        <input type="search" value="" placeholder="Pesquisar" name="q" class="form-control input-sm">
+        <span class="input-group-btn">
+            <input type="submit" class="button btn btn-sm btn-pesquisa" value="" name="buscar">
+        </span><!-- /input-group-btn -->
+    </form><!-- /input-group.pesquisa -->
+
+
+                </div>
+                <!-- /col-md-4.visible-md.visible-lg.hidden-xs.hidden-sm -->
+            </div>
+            <!-- /container.visible-md.visible-lg.hidden-xs.hidden-sm -->
+        </div>
+        <!-- /container-fluid.visible-md.visible-lg.hidden-xs.hidden-sm.robots-nocontent#fixed-top -->
+        <!--googleon: index-->
+
+    <script src="/bundles/jquery?v=39caugDK75jeysIhAIlid6HtJidOQB4FjKna9Fu1afQ1"></script>
+
+    <script src="/bundles/bootstrap?v=Jb4iVJi7fovxPeDe43_kEEzx6P3DFhm5CdsgFy6PVvU1"></script>
+
+    
+    
+    
+    <!-- ONLINEFLEX CLIENT-SCRIPT SECTION -->
+    
+    <!-- ONLINEFLEX CLIENT-SCRIPT SECTION -->
+</body>
+</html>

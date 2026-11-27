@@ -1,0 +1,2126 @@
+<!DOCTYPE html>
+<!--[if IE 8]>			<html class="ie ie8" lang="pt-br"> <![endif]-->
+<!--[if IE 9]>			<html class="ie ie9" lang="pt-br"> <![endif]-->
+<!--[if gt IE 9]><!-->	<html lang="pt-br"> <!--<![endif]-->
+    <head>
+            <title>Município de General Câmara Rio Grande do Sul</title>
+    <meta charset='UTF-8' /><meta name='description' content='Seja bem-vindo ao site oficial da Município de General Câmara Rio Grande do Sul.' />    <meta name='keywords' content='' />
+    <meta name='robots' content='index,follow' />
+    <meta name='rating' content='General' />
+    <meta name='author' content='Visãoi Sistemas de Internet' />
+
+    <!-- mobile settings -->
+    <meta name='viewport' content='width=device-width, maximum-scale=5, initial-scale=1' />
+    <meta http-equiv='X-UA-Compatible' content='IE=edge' />
+            <meta property='og:title' content='Município de General Câmara Rio Grande do Sul' />
+            <meta property='og:type' content='website' />
+            <meta property='og:url' content='https://generalcamara.rs.gov.br/' />
+            <meta property='og:image' itemprop='image' content='https://generalcamara.rs.gov.br/uploads/config/16025/brasao.png' />
+            <meta property='og:image:type' content='image/png'>
+            <meta property='og:image:width' content='379'>
+            <meta property='og:image:height' content='511'>
+            <meta property='og:site_name' content='generalcamara.rs.gov.br' />
+        <meta property='og:description' content='Seja bem-vindo ao site oficial da Município de General Câmara Rio Grande do Sul.' />
+            <!-- Social: Twitter -->
+            <meta name='twitter:card' content='summary_large_image'> <!-- aqui fica o tipo de card -->
+            <meta name='twitter:site' content='@visaoi'> <!-- twitter handler do site -->
+            <meta name='twitter:title' content='Município de General Câmara Rio Grande do Sul'>
+            <meta name='twitter:image' content=''>
+      	
+                <meta name='twitter:description' content='Seja bem-vindo ao site oficial da Município de General Câmara Rio Grande do Sul.'>
+            <!-- WEB FONTS -->
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800&amp;subset=latin,latin-ext,cyrillic,cyrillic-ext" rel="stylesheet" type="text/css" />
+<!-- CORE CSS -->
+<link href="https://generalcamara.rs.gov.br/site/template/default/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/font-awesome.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/sky-forms.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/weather-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/line-icons.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/plugins/owl-carousel/owl.pack.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/animate.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/flexslider.css" rel="stylesheet" type="text/css" />
+
+<!-- REVOLUTION SLIDER -->
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/revolution-slider.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/layerslider.css" rel="stylesheet" type="text/css" />
+
+<!-- THEME CSS -->
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/essentials.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/layout.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/header-default.css" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/template/default/css/footer-default.css" rel="stylesheet" type="text/css" />
+
+<!-- Datepicker -->
+<link href="https://generalcamara.rs.gov.br/site/custom/default/css/bootstrap-datepicker.css" rel="stylesheet" media="screen">
+
+    <link id="layoutColor" href="https://generalcamara.rs.gov.br/site/custom/default/css/color/darkblue.css?v=2.1.2" rel="stylesheet" type="text/css"/>
+    
+<!-- ESTILOS CSS -->
+<link href="https://generalcamara.rs.gov.br/site/custom/default/css/menuAcessibilidade.css?v=1.1" rel="stylesheet" type="text/css" />
+<link href="https://generalcamara.rs.gov.br/site/custom/default/css/estilos.css?v=5.7.7" rel="stylesheet" type="text/css" />
+
+<!-- Estilo de Impressão -->
+<link rel="stylesheet" href="https://generalcamara.rs.gov.br/site/custom/default/css/impressao.css" type="text/css" media="print" />
+
+<!-- CookieConsent -->
+<link rel="stylesheet" type="text/css" href="https://generalcamara.rs.gov.br/site/custom/default/css/cookieconsent.css" />
+<!-- ###################### javasccripts ###################### -->
+<!--script src="//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347" data-cookiecategory="third-party" id="facebook-jssdk"></script-->
+
+<!-- configurando caminhos -->
+<script type="text/javascript">
+	var baseurl	= "https://generalcamara.rs.gov.br";
+	var action	= "";
+	var controller	= "";
+	var module = "";
+	var iconspath = "https://generalcamara.rs.gov.br/img/icons/";
+	var urlAmigavel = "";
+	
+	//para usuários não logados no facebook:
+	try {
+		FB.AppEvents.logEvent('eventName', null, {
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 0
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções abaixo.
+	//para usuários logados no facebook:
+	try {
+		FB.AppEvents.updateUserProperties({
+			data_processing_options: [
+				{
+					"setting_id": 1,
+					"setting_value": 1
+				}
+			]
+		});
+	} catch (e) {} //Esperado erro de uma das duas funções acima.
+</script>
+
+<!-- Morenizr -->
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/modernizr.min.js"></script>
+
+<!--[if lte IE 8]>
+<script src="https://generalcamara.rs.gov.br/site/template/default/plugins/respond.js"></script>
+<![endif]-->
+
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/jquery-2.1.4.min.js"></script>
+
+<!-- Cookie Consent -->
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/custom/default/js/cookieconsent.js?v=1.1.0"></script>
+<script type="text/javascript" data-src="https://generalcamara.rs.gov.br/site/custom/default/js/cookie_analytics.js" data-cookiecategory="analytics"></script>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async data-cookiecategory="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-WT10W5FRN0"></script>
+<script>
+    VisaoiCookies.onAllow('analytics', () => {
+        console.log("aceitação");
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-WT10W5FRN0');
+    });
+</script>
+        <link rel="shortcut icon" href="https://generalcamara.rs.gov.br/uploads/config/18/favicon.ico" />    
+	    <style>
+.header06 #topNav ul.nav>li>a{
+    padding: 20px 20px!important;
+    font-size: 15px;
+}
+</style>
+<script>
+    var url = 'https://wati-integration-service.clare.ai/ShopifyWidget/shopifyWidget.js?59375';
+    var s = document.createElement('script');
+    s.type = 'text/javascript';
+    s.async = true;
+    s.src = url;
+    var options = {
+  "enabled":true,
+  "chatButtonSetting":{
+      "backgroundColor":"#4dc247",
+      "ctaText":"Ouvidoria",
+      "borderRadius":"25",
+      "marginLeft":"0",
+      "marginBottom":"65",
+      "marginRight":"8",
+      "position":"right"
+  },
+  "brandSetting":{
+      "brandName":"Prefeitura de General Camara",
+      "brandSubTitle":"Ouvidoria Municipal",
+      "brandImg":"https://generalcamara.rs.gov.br/uploads/config/16025/brasao.png",
+      "welcomeText":"Olá!\nEste é o canal de comunicação da Ouvidoria Municipal. Em que podemos ajudar?",
+      "messageText":"Gostaria de um atendimento para a cidade de General Câmara",
+      "backgroundColor":"#0a5f54",
+      "ctaText":"Iniciar conversa",
+      "borderRadius":"25",
+      "autoShow":false,
+      "phoneNumber":"555183460720"
+  }
+};
+    s.onload = function() {
+        CreateWhatsappChatWidget(options);
+    };
+    var x = document.getElementsByTagName('script')[0];
+    x.parentNode.insertBefore(s, x);
+</script>
+<style>
+#wa-widget-send-button > svg {
+  height: 40px;
+  width: 40px;
+}
+#wa-widget-send-button > div {
+  font-size: 14px !important;
+}
+#wa-widget-send-button {
+  height: 40px !important;
+}
+</style>    </head>
+	    <body class="smoothscroll wide home3" data-background=""><a href="https://generalcamara.rs.gov.br/cdn-cgi/content?id=D04GKf0crvVltt37tdzUgCMBuHmIK0p6.SKxu4_0UEQ-1795812648.042056-1.2.1.1-WdPAarjHzqFSGK5fL_1BCqiKE5SJw2fSgDhL4K7w3sa3PDj5K9.d7gseU6Us.aSS" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <a class="oculto" title="Ir para conte&uacute;do" href="#inicioConteudo">Ir paa conte&uacute;do</a>
+    	
+                <script>
+            (async (d, s, id) => {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+
+                js["src"] = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3&appId=729585460503347";
+                js["data-cookiecategory"] = "third-party";
+                fjs.parentNode.insertBefore(js, fjs);
+                try {
+                    cookieconsent.updateScripts();
+                } catch (e) {
+                    console.log("Cookie consent ainda não carregado, aguardando...");
+                }
+
+            })(document, 'script', 'facebook-jssdk');
+        </script>
+        <div id="wrapper" class="printable">
+            <div id="header" class='header06 menu-fixo'>
+    <!-- CABEÇALHO -->
+	<header id="topBar" class="overflow-hidden">
+		<div class="container">
+			<div class="col-md-4 col-sm-7 col-xs-12 p30v">
+			    				<div class="col-md-3 col-sm-3 col-xs-4 nopadding-left p10">
+					<a href="https://generalcamara.rs.gov.br">
+						<img src="https://generalcamara.rs.gov.br/uploads/config/16025/brasao.png" class="img-responsive mt20"
+						alt="brasão da prefeitura" />
+					</a>
+				</div>
+								<div class="col-md-9 col-sm-9 col-xs-8">
+					<h1 class="client-name nomargin lineh30 appear-animation" data-animation="fadeInLeft">
+						<a class="logo" href="https://generalcamara.rs.gov.br">
+							Município de General Câmara Rio Grande do Sul						</a>
+					</h1>
+				</div>
+							</div>
+
+			<div class="col-md-8 col-sm-5 hidden-xs">
+				<div class="row">
+					<div class="navbar col-md-12 mb0">
+						<!-- Data -->
+												<p class="lineh30 nomargin inline pull-left mr15">
+							General Câmara, 27 de novembro de 2026						</p>
+						<!-- /Data -->
+
+						<!-- Previsão do tempo-->
+                                                <p class="lineh30 nomargin inline pull-left previsao-topo hidden">
+							<i class="icone-temp"></i>
+							<span class="rotate">
+    							<span>
+    							    <span class='min-temp'></span><i class="wi wi-degrees"></i>C&nbsp;<small class="fsize9 maxima">MIN</small>
+    						    </span>
+    							<span style="display: none;">
+    							    <span class='max-temp'></span><i class="wi wi-degrees"></i>C&nbsp;<small class="fsize9 minima">MAX</small>
+    						    </span>
+							</span>
+						</p>
+                                                						<!-- /Previsão do tempo-->
+					</div>
+
+                    					<!-- Acesso Rápido -->
+					<div class="col-md-8 visible-md visible-lg">
+						<div class="owl-carousel radius10" style="background-color:#f3f3f3;" data-plugin-options='{"items":1,"pagination": false, "autoPlay": true}'>
+														<div class="item">
+						    								<ul class="acessorapido nomargin overflow-hidden p0">
+    																<li class="col-md-6 nopadding">
+									    <a href="https://www.centraldoempreendedor.com/" target="_blank" onclick="">
+									        <p class="pl70 mb0 text-left lineh45"><img src='https://generalcamara.rs.gov.br/uploads/link/26889/imagem_LOGO_CENTRAL_EMPREENDEDOR_SEM_FUNDO.png' class='mr10' style='width:40px;position: absolute;left:18px;top:3px;' alt='' />Central Empreendedor</p>
+								        </a>
+									</li>
+																	<li class="col-md-6 nopadding">
+									    <a href="https://leismunicipais.com.br/prefeitura/rs/generalcamara" target="_blank" onclick="">
+									        <p class="pl70 mb0 text-left lineh45"><img src='https://generalcamara.rs.gov.br/uploads/link/30801/imagem_images.jpg' class='mr10' style='width:40px;position: absolute;left:18px;top:3px;' alt='' />Leis Municipais</p>
+								        </a>
+									</li>
+																</ul>
+																<ul class="acessorapido nomargin overflow-hidden p0">
+    																<li class="col-md-6 nopadding">
+									    <a href="https://webapp1-generalcamara.cidade360.cloud/pronimtb/" target="_blank" onclick="">
+									        <p class="pl70 mb0 text-left lineh45"><i class='fa fa-search acesso-rapido-icon'></i>Transparência</p>
+								        </a>
+									</li>
+																	<li class="col-md-6 nopadding">
+									    <a href="https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:General%20C%C3%A2mara,&cs=1zoB0CNBACG9At_RYn2knQ2ul_HY" target="_self" onclick="">
+									        <p class="pl70 mb0 text-left lineh45"><img src='https://generalcamara.rs.gov.br/uploads/link/23573/imagem_licitacon265_80_cpia.png' class='mr10' style='width:40px;position: absolute;left:18px;top:3px;' alt='' />Licitacon</p>
+								        </a>
+									</li>
+																</ul>
+															</div>
+														<div class="item">
+						    								<ul class="acessorapido nomargin overflow-hidden p0">
+    																<li class="col-md-6 nopadding">
+									    <a href="/sic" target="_self" onclick="">
+									        <p class="pl70 mb0 text-left lineh45"><i class='fa fa-info-circle acesso-rapido-icon'></i>Acesso à Informação</p>
+								        </a>
+									</li>
+																	<li class="col-md-6 nopadding">
+									    <a href="https://generalcamara.rs.gov.br/ouvidoria" target="_self" onclick="">
+									        <p class="pl70 mb0 text-left lineh45"><i class='fa fa-bullhorn acesso-rapido-icon'></i>Ouvidoria</p>
+								        </a>
+									</li>
+																</ul>
+																<ul class="acessorapido nomargin overflow-hidden p0">
+    																<li class="col-md-6 nopadding">
+									    <a href="https://meioambiente.governancabrasil.com.br:3079/meioambiente/index.php?class=indexme&cc=1436" target="_blank" onclick="">
+									        <p class="pl70 mb0 text-left lineh45"><i class='fa fa-angle-right acesso-rapido-icon' style='left:35px;'></i>Portal Ambiental</p>
+								        </a>
+									</li>
+																</ul>
+															</div>
+													</div>
+					</div>
+					<!-- /Acesso Rápido -->
+                    					<!-- Busca -->
+					<div class="col-md-4 visible-md visible-lg" role='search'>
+						<form id="pesquisa" class="search nopadding" method="get" action="https://generalcamara.rs.gov.br/pesquisa">
+							<label for="searchbar-desktop" class="sr-only">Pesquisar:</label>
+							<input id="searchbar-desktop" title="termo de pesquisa" type="text" class="form-control nomargin" name="q" value="" placeholder="Procurar no site">
+							<button type="submit" class="fa fa-search search-focus" title="Pesquisar" aria-label="Pesquisar"></button>
+						</form>
+					</div>
+					<!-- /Busca -->
+				</div>
+			</div>
+		</div>
+	</header>
+	<!-- /CABEÇALHO -->
+
+	<!-- MENU -->
+	<header id="topNav" class="styleBackgroundLight">
+		<div class="container">
+			<!-- Pesquisa -->
+			<form id="pesquisaSmart" class="search visible-xs visible-sm nopadding" method="get"
+			action="https://generalcamara.rs.gov.br/pesquisa">
+				<label for="searchbar-mobile" class="sr-only">Pesquisar:</label>
+				<input id="searchbar-mobile" title="termo de pesquisa" type="text" class="form-control" name="q" value="" placeholder="Procurar no site">
+				<button type="submit" class="fa fa-search" title="Pesquisar" aria-label="Pesquisar"></button>
+			</form>
+
+            <!-- Menu Mobile -->
+			<button title='inicioMenuMobile' id='inicioMenuMobile' class="btn btn-mobile" data-toggle="collapse" data-target=".nav-main-collapse"> <i class="fa fa-bars"></i></button>
+
+			<!-- Menu -->
+			<div class="navbar-collapse nav-main-collapse collapse">
+				<nav class="nav-main" role="navigation">
+	        <a class='oculto' title='inicioMenu' id='inicioMenu' tabindex='-1'>in&iacute;cio menu</a>
+		    <ul class='nav nav-pills nav-main' id='topMain'>
+		<li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>O Município</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/2/?historia-do-municipio.html'>História do Município</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/3/?dados-do-municipio.html'>Dados do Município</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/4/?simbolos-do-municipio.html'>Símbolos do Município</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1007/?estacao-meteorologica.html'>Estação Meteorológica</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/projeto/bcid/43/?projetos.html'>Projetos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Atrações Turísticas</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/turismo/id/1/?bares-e-restaurantes.html'>Bares e Restaurantes</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/turismo/id/3/?campings.html'>Campings</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/turismo/id/5/?pontos-turisticos.html'>Pontos Turísticos</a></li></ul></div><div class="col-md-3"><p class="menu-category">Serviços</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/servico/id/2/?servicos-ao-cidadao.html'>Serviços ao Cidadão</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/servico/id/1/?servicos-ao-empreendedor.html'>Serviços ao Empreendedor</a></li></ul></div><div class="col-md-3 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://generalcamara.rs.gov.br/uploads/config/16025/brasao.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 3655-1399</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 8:00 às 11:30 e das 13:30 às 16:30</p></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Departamentos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-6"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/estrutura-organizacional/bcid/57/?estrutura-organizacional.html'>Estrutura Organizacional</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/gabinete-do-prefeito/bcid/45/?gabinete-do-prefeito.html'>Gabinete do Prefeito</a></li></ul></div><div class="col-md-6"><p class="menu-category">Secretarias</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/1004/?coordenadoria-municipal-de-servicos-de-agua.html'>Coordenadoria Municipal de Serviços de Água</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/106/?secretaria-da-fazenda.html'>Secretaria da Fazenda</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/105/?secretaria-de-administracao.html'>Secretaria de Administração</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/1002/?secretaria-de-agricultura.html'>Secretaria de Agricultura</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/1001/?secretaria-de-assistencia-social.html'>Secretaria de Assistência Social</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/110/?secretaria-de-educacao.html'>Secretaria de Educação</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/116/?secretaria-de-obras-mobilidade-e-transito.html'>Secretaria de Obras, Mobilidade e Trânsito</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/109/?secretaria-de-planejamento-habitacao-e-desenvolvimento-economico.html'>Secretaria de Planejamento, Habitação e Desenvolvimento Econômico</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/114/?secretaria-de-saude.html'>Secretaria de Saúde</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/111/?secretaria-de-turismo-cultura-esporte-e-lazer.html'>Secretaria de Turismo, Cultura, Esporte e Lazer</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/secretaria/id/115/?secretaria-do-meio-ambiente.html'>Secretaria do Meio Ambiente</a></li></ul></div></div></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Informativos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-4"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/noticia/bcid/13/?noticias.html'>Notícias</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/evento/bcid/12/?eventos.html'>Eventos</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/enquete/bcid/50/?enquetes-anteriores.html'>Enquetes anteriores</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/links-uteis/bcid/30/?links-uteis.html'>Links Úteis</a></li></ul></div><div class="col-md-4"><p class="menu-category">Multimídia</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/galeria/bcid/15/?galeria-de-fotos.html'>Galeria de Fotos</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/video/bcid/16/?galeria-de-videos.html'>Galeria de Vídeos</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/audio/bcid/17/?audios.html'>Áudios</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/documento/bcid/24/?documentos.html'>Documentos</a></li></ul></div><div class="col-md-4 hidden-xs hidden-sm"><div class='col-md-12 text-center block'><img alt='Brasão da prefeitura' src='https://generalcamara.rs.gov.br/uploads/config/16025/brasao.png' height='100' class='logo opaco08'/></div><p class='block text-center'>(51) 3655-1399</p><p class='block text-center'><strong>Hor&aacute;rios de Atendimento:</strong><br /><strong>Segunda à Sexta:</strong> 8:00 às 11:30 e das 13:30 às 16:30</p></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Empreendedor</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1011/?sobre.html'>Sobre</a></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Serviços</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1012/?formalizacao-de-empresas.html'>Formalização de Empresas</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1013/?formularios.html'>Formulários</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1014/?plano-de-negocios.html'>Plano de Negócios</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1015/?indicadores.html'>Indicadores</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1016/?bombeiros.html'>Bombeiros</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1017/?assessoria-juridica.html'>Assessoria Jurídica</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1028/?guia-itbi.html'>Guia ITBI</a></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Protocolos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://m.cidademob.com.br/Login' target='_blank'>Cidademob</a></li><li role="menuitem"><a href='http://177.38.116.1:83/tpnet' target='_blank'>Protocolo Digital</a></li></ul></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Compras Públicas</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1018/?plano-anual-de-compras.html'>Plano Anual de Compras</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1019/?guia-pratico-de-licitacoes.html'>Guia Prático de Licitações</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1020/?documentos-necessarios.html'>Documentos Necessários</a></li><li role="menuitem"><a href='https://portal.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:General%20C%C3%A2mara,&cs=1zoB0CNBACG9At_RYn2knQ2ul_HY' target='_blank'>Licitacon</a></li><li role="menuitem"><a href='https://www.portaldecompraspublicas.com.br/18/' target='_blank'>Portal de Compras Públicas</a></li></ul></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1021/?credito.html'>Crédito</a></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Links Úteis</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://www.sebrae.com.br/sites/PortalSebrae' target='_blank'>Sebrae - Cursos e Treinamentos</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1022/?consciencia-socioambiental.html'>Consciência Socioambiental</a></li><li role="menuitem"><a href='https://www.sefaz.rs.gov.br/nfa/nfe-nfa-mei.aspx' target='_blank'>Emissão de Nota Fiscal</a></li><li role="menuitem"><a href='https://www.youtube.com/watch?v=qWAJ_Rfpb_c&t=4s&ab_channel=Sebrae' target='_blank'>Declaração Anual MEI</a></li><li role="menuitem"><a href='https://nfg.sefaz.rs.gov.br/site/index.aspx' target='_blank'>Nota Fiscal Gaúcha</a></li><li role="menuitem"><a href='https://jucisrs.rs.gov.br/inicial' target='_blank'>Junta Comercial</a></li><li role="menuitem"><a href='http://servicos.receita.fazenda.gov.br/Servicos/cnpjreva/Cnpjreva_Solicitacao.asp?cnpj=' target='_blank'>Cartão CNPJ</a></li><li role="menuitem"><a href='http://servicos.receita.fazenda.gov.br/servicos/certidao/cndconjuntainter/informanicertidao.asp?tipo=1' target='_blank'>Certidão Negativa</a></li><li role="menuitem"><a href='https://sisbom.cbm.rs.gov.br/msci/' target='_blank'>Bombeiros - RS</a></li><li role="menuitem"><a href='http://www.portaldoempreendedor.gov.br/' target='_blank'>Portal do Empreendedor</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/bcid/1030/?legislacao.html'>Legislação</a></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contato</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1023/?pesquisa-de-satisfacao.html'>Pesquisa de Satisfação</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1024/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1025/?localizacao.html'>Localização</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1026/?atendimentoenderecos-oficiais.html'>Atendimento/Endereços Oficiais</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1027/?perguntas-frequentes.html'>Perguntas Frequentes</a></li></ul></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Protocolo Digital</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://generalcamara.1doc.com.br/atendimento' target='_blank'>Atendimento</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=14674 ' target='_blank'>Demandas Fornecedores</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=14673 ' target='_blank'>Demandas Empresas</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=23203' target='_blank'>Demandas Agrícolas</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=23233' target='_blank'>Demandas Programas Agrícolas</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=23071 ' target='_blank'>Demandas Assistência Social</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=23124' target='_blank'>Demandas Meio ambiente</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=14675' target='_blank'>Demandas Secretaria de Obras</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=23009' target='_blank'>Demandas Secretaria de Planejamento</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=23048' target='_blank'>Demandas Saúde</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=14676' target='_blank'>Demandas RH</a></li><li role="menuitem"><a href='https://generalcamara.1doc.com.br/b.php?pg=wp/wp&itd=5&iagr=14672' target='_blank'>Demandas Tributação</a></li></ul></li><li class='mega-menu dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Publicações Oficiais</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li><div class="row"><div class="col-md-3"><p class="menu-category">Licitações</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/5/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/100/?chamada-publica.html'>Chamada Pública</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/110/?chamamento-publico.html'>Chamamento Público</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/101/?concorrencia-publica.html'>Concorrência Pública</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/103/?convite.html'>Convite</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/1002/?credenciamentos.html'>Credenciamentos</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/104/?dispensa-de-licitacao.html'>Dispensa de Licitação</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/1001/?formulario-para-cadastro-de-fornecedor.html'>Formulário para cadastro de fornecedor</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/1008/?impedidos-de-contratar-com-o-municipio.html'>Impedidos de Contratar com o Município</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/105/?inexigibilidade.html'>Inexigibilidade</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/106/?leilao.html'>Leilão</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/1011/?licitantes-eou-contratados-sancionados.html'>Licitantes e/ou contratados sancionados</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/107/?pregao-eletronico.html'>Pregão Eletrônico</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/108/?pregao-presencial.html'>Pregão Presencial</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/licitacao/id/109/?tomada-de-preco.html'>Tomada de Preço</a></li></ul></div><div class="col-md-3"><p class="menu-category">Concursos</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/concurso/id/200/?concurso-publico-municipal.html'>Concurso Público Municipal</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/concurso/id/1004/?edital-convocacao-processo-seletivo-simplificado.html'>Edital Convocação Processo Seletivo Simplificado</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/concurso/id/201/?edital-de-convocacao-concurso-publico.html'>Edital de Convocação Concurso Público</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/concurso/id/1007/?edital-de-convocacao-processo-seletivo-publico.html'>Edital de Convocação Processo Seletivo Público</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/concurso/id/1006/?processo-seletivo-publico.html'>Processo Seletivo Público</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/concurso/id/202/?processo-seletivo-simplificado.html'>Processo Seletivo Simplificado</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/concurso/id/1009/?processo-seletivo-simplificado-oficinas-culturais.html'>Processo Seletivo Simplificado Oficinas Culturais</a></li></ul></div><div class="col-md-3"><p class="menu-category">Legislação</p><ul class="colunaComTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1003/?avisos.html'>Avisos</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/3/?codigo-de-obras.html'>Código de Obras</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1009/?codigo-de-posturas.html'>Código de Posturas</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/7/?codigo-tributario-municipal.html'>Código Tributário Municipal</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1008/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/5/?decretos-do-poder-executivo.html'>Decretos do Poder Executivo</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1004/?editais-de-contribuicao-de-melhoria.html'>Editais de Contribuição de Melhoria</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1007/?editais---vagas-nas-escolas.html'>Editais - Vagas nas Escolas</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1022/?emendas-parlamentares.html'>Emendas Parlamentares</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/4/?estatuto-do-servidor.html'>Estatuto do Servidor</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1005/?lei-de-diretrizes-orcamentarias---ldo.html'>Lei de Diretrizes Orçamentárias - LDO</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1006/?lei-orcamentaria-anual-loa.html'>Lei Orçamentária Anual (LOA)</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/6/?lei-organica-do-municipio.html'>Lei Orgânica do Município</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/2/?leis.html'>Leis</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1021/?leis-complementares.html'>Leis Complementares</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1015/?licenciamento-ambiental.html'>Licenciamento Ambiental</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1011/?ordem-de-servico.html'>Ordem de Serviço</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1023/?plano-de-carreiras-dos-servidores.html'>Plano de Carreiras dos Servidores</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/8/?plano-diretor---pddi.html'>Plano Diretor - PDDI</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/10/?plano-plurianual.html'>Plano Plurianual </a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/1001/?planos.html'>Planos</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/legislacao/id/11/?portarias.html'>Portarias</a></li></ul></div><div class="col-md-3"><ul class="colunaSemTitulo" role="menu"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html'>Diário Oficial</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/contratos/bcid/59/?contratos.html'>Contratos</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/convenios/bcid/60/?convenios.html'>Convênios</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/parcerias/bcid/61/?parcerias.html'>Parcerias</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/patrocinios/bcid/66/?patrocinios.html'>Patrocínios</a></li></ul></div></div></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Transparência</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/sic/bcid/41/?acesso-a-informacao.html'>Acesso à Informação</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/carta-de-servicos/bcid/58/?carta-de-servicos.html'>Carta de Serviços</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/servico/bcid/65/?avaliacao-dos-servicos.html'>Avaliação dos Serviços</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/ordem-servico/bcid/39/?e-sic---pedido-de-informacoes.html'>e-SIC - Pedido de informações</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/contas-publicas/bcid/19/?contas-publicas.html'>Contas Públicas</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/perguntas-respostas/bcid/37/?perguntas-e-respostas.html'>Perguntas e Respostas</a></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>PNAB</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/1044/?teste.html'>teste</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/6/?documentos-quanto-ao-grau-de-sigilo.html'>Documentos Quanto ao Grau de Sigilo</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/7/?informacoes-desclassificadas.html'>Informações Desclassificadas</a></li></ul></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/acessibilidade/?acessibilidade.html'>Acessibilidade</a></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Dados Abertos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/pagina/id/8/?dados-abertos.html'>Dados Abertos</a></li></ul></li></ul></li><li class='dropdown' aria-haspopup='true'><a href='javascript:;' class='dropdown-toggle'>Contatos</a><ul class="dropdown-menu" role="menu" aria-hidden="true"><li role="menuitem"><a href='https://generalcamara.rs.gov.br/setor/bcid/22/?telefones-e-enderecos.html'>Telefones e Endereços</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/contato/bcid/52/?fale-conosco.html'>Fale Conosco</a></li><li role="menuitem"><a href='https://generalcamara.rs.gov.br/ouvidoria/bcid/23/?ouvidoria.html'>Ouvidoria</a></li></ul></li></ul></nav>
+			</div>
+		</div>
+	</header>
+	<!-- /MENU -->
+</div>
+            <div id="conteudo">
+                                <!-- /PAGE TOP -->
+                
+                <a class="oculto" id="inicioConteudo" title="inicioConteudo" tabindex="-1">in&iacute;cio conte&uacute;do</a><!-- BANNER TOPO -->
+<!-- FLEX SLIDER -->
+<div id="banner02" class="slider dontPrint">
+    <div class="flexslider flexFull">
+        <ul class="slides height-350">
+                    <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+					<img 						srcset="
+							https://generalcamara.rs.gov.br/uploads/banner/28410/thumb_Capa_SITE.png 360w,
+							https://generalcamara.rs.gov.br/uploads/banner/28410/mobile_Capa_SITE.png 576w,
+							https://generalcamara.rs.gov.br/uploads/banner/28410/original_Capa_SITE.png 1920w
+						"
+						sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+						style="
+						position: absolute;
+						top: 0;
+						left: 0;
+						height: 350px;
+						width: 100%;
+						object-fit: cover;"
+						alt="General Câmara - O Nosso Lar é Aqui"
+					/>
+                                    </div>
+            </li>
+                        <li>
+                <div class="backgroundBannerInstitucional01" style="position: relative;">
+					<img loading="lazy"						srcset="
+							https://generalcamara.rs.gov.br/uploads/banner/29938/thumb_Design_sem_nome_1.png 360w,
+							https://generalcamara.rs.gov.br/uploads/banner/29938/mobile_Design_sem_nome_1.png 576w,
+							https://generalcamara.rs.gov.br/uploads/banner/29938/original_Design_sem_nome_1.png 1920w
+						"
+						sizes="(max-width: 360px) 360px, (max-width: 576px) 576px, 1920px"
+						style="
+						position: absolute;
+						top: 0;
+						left: 0;
+						height: 350px;
+						width: 100%;
+						object-fit: cover;"
+						alt="General Câmara - Impulsionando o Progresso"
+					/>
+                                    </div>
+            </li>
+                    </ul>
+    </div>
+    <script type="text/javascript">
+        var flex_options = {
+            animation: "fade",
+            slideshowSpeed: 7000, /*Speed of the slideshow cycling, in milliseconds */
+            animationSpeed: 600,
+            pauseOnAction: true,
+            controlNav: true, /* Navigation for paging control of each clide? Note: Leave true for manualControls usage */
+            directionNav: true        }
+    </script>
+</div>
+
+<div class="p0">
+    <div class="slider-shadow"> <img loading='lazy' src="https://generalcamara.rs.gov.br/site/template/default/plugins/layerslider/skins/borderlessdark3d/shadow.png" alt="Sombra" style="width: 100%;" /></div>
+</div>
+<!-- /FLEX SLIDER -->
+<div class="pb40 pt40">
+    <div class="container">
+        <div class="row">
+            <!-- NOTÍCIAS E ACESSO RÁPIDO -->
+                        <div class="overflow-hidden col-md-9 mobile-nopadding"><!-- 3 ÚLTIMAS NOTÍCIAS -->
+<div class="col-md-7">
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": true, "navigation": false, "pagination": true, "progressBar":"false"}'>
+                <div class="item">
+            <p class="mb10 similar-h2 lineh32">
+                <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2439/?edital-de-chamamento-captacao-de-patrocinio-para-a-1a-rustica-de-santo-amaro.html">
+                    EDITAL DE CHAMAMENTO: Captação de Patrocínio para a 1ª Rústica de Santo Amaro                </a>
+            </p>
+            <p>O presente Edital de Chamamento Público tem por objeto a captação de recursos financeiros e/ou bens e serviços, por meio de patrocínio de pessoas jurídicas e/ou físicas, para a realização do evento 1ª Rústica de Santo Amaro, a ser promovido pela Diretoria</p>
+            <figure class="text-center last-new mb0 radius4">
+                                <img class="img-responsive max-height360" src="https://generalcamara.rs.gov.br/uploads/noticia/31661/media_Pedido_Patrocinio.png" alt="EDITAL DE CHAMAMENTO: Captação de Patrocínio para a 1ª Rústica de Santo Amaro" role="presentation" />
+                            </figure>
+        </div>
+                <div class="item">
+            <p class="mb10 similar-h2 lineh32">
+                <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2438/?operacao-terra-forte.html">
+                    Operação Terra Forte                </a>
+            </p>
+            <p>O Conselho Municipal de Desenvolvimento Agropecuário de General Câmara torna público a relação dos candidatos selecionados e suplentes do Programa Estadual de Recuperação Socioprodutiva e Ambiental e Incremento da Resiliência Climática da Agricultura Fa</p>
+            <figure class="text-center last-new mb0 radius4">
+                                <img class="img-responsive" src="https://generalcamara.rs.gov.br/default/img/imgIndisponivel.jpg" alt="Imagem indisponível" role="presentation"/>
+                            </figure>
+        </div>
+                <div class="item">
+            <p class="mb10 similar-h2 lineh32">
+                <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2437/?consulta-popular-rs-20252026.html">
+                    CONSULTA POPULAR RS 2025/2026                </a>
+            </p>
+            <p>A Prefeitura de General Câmara, por meio da Secretaria de Planejamento, Habitação e Desenvolvimento Econômico, em parceria com o Governo do Estado do RS e o COREDE Vale do Rio Pardo, convida toda a população a participar da Consulta Popular 2025/2026.</p>
+            <figure class="text-center last-new mb0 radius4">
+                                <img class="img-responsive max-height360" src="https://generalcamara.rs.gov.br/uploads/noticia/31327/media_Face_Insta_1.jpg" alt="CONSULTA POPULAR RS 2025/2026" role="presentation" />
+                            </figure>
+        </div>
+            </div>
+</div>
+<div class="col-md-5 mt4-xs hidden-xs mb15 other-news">
+    <h2 class="similar-h4 title"><strong>OUTRAS NOT&Iacute;CIAS</strong></h2>
+    <div id="tab2" class="tab-pane">
+        <ul class="pl0">
+                        <li class="row mb10 block">
+                <div class="col-md-5 col-sm-3 text-right">
+                                        <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2436/?convite-especial-as-entidades-locais.html">
+                        <img class="img-responsive" src="https://generalcamara.rs.gov.br/uploads/noticia/31317/thumb_IMG_20251006_WA0000.jpg" alt="Convite Especial às Entidades Locais" role="presentation" />
+                    </a>
+                    <br>
+                    <small>19/09/2025</small>
+                </div>
+                <div class="col-md-7 col-sm-9">
+                    <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2436/?convite-especial-as-entidades-locais.html">
+                        <p class="nomargin">Convite Especial às Entidades Locais</p>
+                    </a>
+                </div>
+            </li>
+                        <li class="row mb10 block">
+                <div class="col-md-5 col-sm-3 text-right">
+                                        <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2434/?atencao-comunidade-esportiva-de-general-camara.html">
+                        <img class="img-responsive" src="https://generalcamara.rs.gov.br/default/img/imgIndisponivel.jpg" alt="Imagem não disponível!" role="presentation" />
+                    </a>
+                    <br>
+                    <small>04/08/2025</small>
+                </div>
+                <div class="col-md-7 col-sm-9">
+                    <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2434/?atencao-comunidade-esportiva-de-general-camara.html">
+                        <p class="nomargin">Atenção, comunidade esportiva de General Câmara!</p>
+                    </a>
+                </div>
+            </li>
+                        <li class="row mb10 block">
+                <div class="col-md-5 col-sm-3 text-right">
+                                        <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2433/?prefeitura-de-general-camara-realiza-reparo-asfalticos-em-ruas-centrais.html">
+                        <img class="img-responsive" src="https://generalcamara.rs.gov.br/uploads/noticia/31058/thumb_Preparo_para_recapeamento_asfltico_Andr_Liziardi.jpeg" alt="Prefeitura de General Câmara realiza reparo asfálticos em ruas centrais" role="presentation" />
+                    </a>
+                    <br>
+                    <small>15/04/2025</small>
+                </div>
+                <div class="col-md-7 col-sm-9">
+                    <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2433/?prefeitura-de-general-camara-realiza-reparo-asfalticos-em-ruas-centrais.html">
+                        <p class="nomargin">Prefeitura de General Câmara realiza reparo asfálticos em ruas centrais</p>
+                    </a>
+                </div>
+            </li>
+                        <li class="row mb10 block">
+                <div class="col-md-5 col-sm-3 text-right">
+                                        <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2432/?licitacao-de-general-camara-reconhecida-por-boas-praticas-em-transparencia.html">
+                        <img class="img-responsive" src="https://generalcamara.rs.gov.br/uploads/noticia/31057/thumb_Licitao_de_General_Cmara_recebe_prmio_Andr_Liziardi.jpeg" alt="Licitação de General Câmara reconhecida por boas práticas em Transparência" role="presentation" />
+                    </a>
+                    <br>
+                    <small>15/04/2025</small>
+                </div>
+                <div class="col-md-7 col-sm-9">
+                    <a href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2432/?licitacao-de-general-camara-reconhecida-por-boas-praticas-em-transparencia.html">
+                        <p class="nomargin">Licitação de General Câmara reconhecida por boas práticas em Transparência</p>
+                    </a>
+                </div>
+            </li>
+                    </ul>
+        <a href="https://generalcamara.rs.gov.br/noticia/?noticias.html" class="btn btn-default pull-right">
+			Mais not&iacute;cias
+		</a>
+    </div>
+</div></div>
+                        <div class="col-md-3 mt4-xs"><!-- ACESSO RÁPIDO -->
+<div id="acessoRapido1" class="widget featured-box-minimal owl-carousel-controls">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>ACESSO R&Aacute;PIDO</strong></h2>
+                        <span class="pull-right">
+				<a class="prev" href="javascript:;" aria-label="Anterior" title="Anterior">
+					<i class="mr5 lineh30 fa fa-arrow-left widget-icon" aria-hidden="true">
+						<span class="sr-only">Anterior</span>
+					</i>
+				</a>
+				<a class="next" href="javascript:;" aria-label="Próximo" title="Próximo">
+					<i class="mr5 lineh30 fa fa-arrow-right widget-icon" aria-hidden="true">
+						<span class="sr-only">Próximo</span>
+					</i>
+				</a>
+            </span>
+                    </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1,"transitionStyle":"goDown" ,"autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Diário Oficial do Município" href="https://generalcamara.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html" target="_blank" onclick="">
+                        <i class='fa fa-book'></i> Diário Oficial do Município                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Portal do Cidadão" href="https://webapp1-generalcamara.cidade360.cloud:10443/cidadao/servlet/br.com.cetil.ar.jvlle.hatendimento" target="_blank" onclick="">
+                        <i class='fa fa-child'></i> Portal do Cidadão                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Portal do Servidor" href="https://webapp1-generalcamara.cidade360.cloud/PortalServidor#/" target="_blank" onclick="">
+                        <i class='fa fa-money'></i> Portal do Servidor                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Leis Municipais" href="https://leismunicipais.com.br/prefeitura/rs/generalc%C3%A2mara/?o=tcers" target="_blank" onclick="">
+                        <i class='fa fa-gavel'></i> Leis Municipais                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Protocolo Digital" href="https://webapp1-generalcamara.cidade360.cloud/tpnet" target="_blank" onclick="">
+                        <i class='fa fa-edit'></i> Protocolo Digital                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Webmail" href="http://webmail.generalcamara.com" target="_blank" onclick="">
+                        <i class='fa fa-archive'></i> Webmail                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="NF-e Camarense" href="https://webapp1-generalcamara.cidade360.cloud/nfse.portal/" target="_blank" onclick="">
+                        <i class='fa fa-check-circle-o'></i> NF-e Camarense                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="ITBI" href="https://webapp1-generalcamara.cidade360.cloud/itbi" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> ITBI                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Portal da Transparência" href="https://webapp1-generalcamara.cidade360.cloud/pronimtb/" target="_blank" onclick="">
+                        <i class='fa fa-angle-right'></i> Portal da Transparência                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Acesso à informação" href="/transparencia" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Acesso à informação                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="e-SIC" href="ordem-servico/index" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> e-SIC                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Ouvidoria" href="/ouvidoria" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Ouvidoria                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Legislação" href="/legislacao" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Legislação                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Licitações" href="/licitacao" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Licitações                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="Estação Meteorológica" href="https://generalcamara.rs.gov.br/pagina/id/1007/?estacao-meteorologica.html" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Estação Meteorológica                    </a>
+                </li>
+                            <li class="text-left">
+                    <a title="AVISOS IMPORTANTES" href="http://www.generalcamara.rs.gov.br/legislacao/id/1003/?avisos.html" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> AVISOS IMPORTANTES                    </a>
+                </li>
+                        </ul>
+        </div>
+	            <div class="item">
+            <ul class="nav nav-list pt20 pb20 mt15 radius4">
+                        <li class="text-left">
+                    <a title="Emendas Parlamentares" href="https://generalcamara.rs.gov.br/legislacao/id/1022/?emendas-parlamentares.html" target="_self" onclick="">
+                        <i class='fa fa-angle-right'></i> Emendas Parlamentares                    </a>
+                </li>
+                        </ul>
+        </div>
+	        </div>
+</div>
+<!-- /ACESSO RÁPIDO --></div>
+                        <!-- /NOTÍCIAS E ACESSO RÁPIDO -->
+        </div>
+    </div>
+</div>
+
+<div class="callout dark arrow-up forecast ajax-content hidden">
+    <div class="container">
+        <div data-partial="previsaoTempo_01" class="row ajax-content-container"></div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight pt60 pb35">
+    <div class="container">
+                <div class="col-md-4 mt4-xs" style="border-right: #C3C3C3 1px dashed;"><!-- LICITAÇÕES -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>LICITA&Ccedil;&Otilde;ES</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <p style="">
+                            Dispensa de Licitação                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Dispensa de licitação n°73/2026" href="https://generalcamara.rs.gov.br/licitacao/visualizar/id/2667/?dispensa-de-licitacao-n732026.html">
+                            <p>Dispensa de licitação n°73/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            01/12/2026 &agrave;s 16h30min                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <p style="">
+                            Dispensa de Licitação                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Dispensa de licitação n°72/2026" href="https://generalcamara.rs.gov.br/licitacao/visualizar/id/2666/?dispensa-de-licitacao-n722026.html">
+                            <p>Dispensa de licitação n°72/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            01/12/2026 &agrave;s 16h30min                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">029/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Pregão Eletrônico nº 029/2026" href="https://generalcamara.rs.gov.br/licitacao/visualizar/id/2665/?pregao-eletronico-no-0292026.html">
+                            <p>Pregão Eletrônico nº 029/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            09/12/2026 &agrave;s 08h30min                        </p>
+                                                <p class="tags">
+                            <i class="fa fa-bookmark" title="Palavras-chaves"></i>
+                            material de limpeza, produtos de limpeza                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">028/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Pregão Eletrônico nº 028/2026" href="https://generalcamara.rs.gov.br/licitacao/visualizar/id/2663/?pregao-eletronico-no-0282026.html">
+                            <p>Pregão Eletrônico nº 028/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            30/11/2026 &agrave;s 08h30min                        </p>
+                                                <p class="tags">
+                            <i class="fa fa-bookmark" title="Palavras-chaves"></i>
+                            Roçadeira hidráulica, equipamento agrícola                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">027/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Pregão Eletrônico                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="Pregão Eletrônico nº 027/2026" href="https://generalcamara.rs.gov.br/licitacao/visualizar/id/2662/?pregao-eletronico-no-0272026.html">
+                            <p>Pregão Eletrônico nº 027/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            01/12/2026 &agrave;s 08h30min                        </p>
+                                                <p class="tags">
+                            <i class="fa fa-bookmark" title="Palavras-chaves"></i>
+                            material de expediente, registro de preços                        </p>
+                                            </div>
+                </li>
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <p style="">
+                            Licitantes e/ou contratados sancionados                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="IMPEDIDO DE LICITAR E CONTRATAR " href="https://generalcamara.rs.gov.br/licitacao/visualizar/id/2646/?impedido-de-licitar-e-contratar.html">
+                            <p>IMPEDIDO DE LICITAR E CONTRATAR </p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            01/06/2027 &agrave;s 23h59min                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+		        <div class="item">
+            <ul class="nav nav-list pt20 pb20 radius4">
+                        <li class="item-licitacao">
+                    <div class="modalidade">
+                                                <div class="numero-edital">
+                            <span class="styleColor">N° EDITAL</span>
+                            <div class="num styleBackgroundColor">02/2026</div>
+                        </div>
+                                                <p style="padding-right: 40px">
+                            Credenciamentos                        </p>
+                    </div>
+                    <div class="titulo">
+                        <a title="CREDENCIAMENTO PÚBLICO Nº02/2026" href="https://generalcamara.rs.gov.br/licitacao/visualizar/id/2628/?credenciamento-publico-no022026.html">
+                            <p>CREDENCIAMENTO PÚBLICO Nº02/2026</p>
+                        </a>
+                    </div>
+                    <div class="outras-informacoes">
+                        <p>
+                            <i class="fa fa-folder-open"></i>
+                            <strong>Abertura:</strong>
+                            13/05/2027 &agrave;s 08h                        </p>
+                                                <p class="tags">
+                            <i class="fa fa-bookmark" title="Palavras-chaves"></i>
+                            serviços médicos, especialistas, saúde, credenciamento                        </p>
+                                            </div>
+                </li>
+                    </ul>
+        </div>
+			</div>
+</div>
+<!-- /LICITAÇÕES --></div>
+                <div class="col-md-4" style="border-right: #C3C3C3 1px dashed;"><!-- PUBLICAÇÕES OFICIAIS -->
+<div class="widget">
+    <div class="row">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="similar-h4 title"><strong>PUBLICA&Ccedil;&Otilde;ES OFICIAIS</strong></h2>
+            <p>Acesse as informa&ccedil;&otilde;es sobre o andamento de licita&ccedil;&otilde;es e concursos, ou consulte as leis do munic&iacute;pio por meio dos campos abaixo.</p>
+        </div>
+    </div>
+
+    <div class="styleBackgroundDark mb15 radius4 p20">
+                <div class="row">
+            <form class="sky-form flex-center" action="https://generalcamara.rs.gov.br/licitacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaedital">Licita&ccedil;&otilde;es</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaedital">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="100">Chamada Pública</option>
+                                                        <option value="110">Chamamento Público</option>
+                                                        <option value="101">Concorrência Pública</option>
+                                                        <option value="103">Convite</option>
+                                                        <option value="1002">Credenciamentos</option>
+                                                        <option value="104">Dispensa de Licitação</option>
+                                                        <option value="1001">Formulário para cadastro de fornecedor</option>
+                                                        <option value="1008">Impedidos de Contratar com o Município</option>
+                                                        <option value="105">Inexigibilidade</option>
+                                                        <option value="106">Leilão</option>
+                                                        <option value="1">Licitações</option>
+                                                        <option value="1011">Licitantes e/ou contratados sancionados</option>
+                                                        <option value="107">Pregão Eletrônico</option>
+                                                        <option value="108">Pregão Presencial</option>
+                                                        <option value="109">Tomada de Preço</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://generalcamara.rs.gov.br/concurso" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_categoriaconcurso">Concursos</label>
+                    <div class="select">
+                        <select name="id_categoriaedital" id="id_categoriaconcurso">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="200">Concurso Público Municipal</option>
+                                                        <option value="1004">Edital Convocação Processo Seletivo Simplificado</option>
+                                                        <option value="201">Edital de Convocação Concurso Público</option>
+                                                        <option value="1007">Edital de Convocação Processo Seletivo Público</option>
+                                                        <option value="1006">Processo Seletivo Público</option>
+                                                        <option value="202">Processo Seletivo Simplificado</option>
+                                                        <option value="1009">Processo Seletivo Simplificado Oficinas Culturais</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+                <div class="row">
+            <form class="sky-form flex-center" action="https://generalcamara.rs.gov.br/legislacao" method="post">
+                <div class="col-xs-9 col-sm-11 col-md-10">
+                    <label class="label" for="id_normativa">Leis</label>
+                    <div class="select">
+                        <select name="id_normativa" id="id_normativa">
+                            <option value=""> - Todas as categorias - </option>
+                                                        <option value="1003">Avisos</option>
+                                                        <option value="3">Código de Obras</option>
+                                                        <option value="1009">Código de Posturas</option>
+                                                        <option value="7">Código Tributário Municipal</option>
+                                                        <option value="1008">Contratos</option>
+                                                        <option value="5">Decretos do Poder Executivo</option>
+                                                        <option value="1004">Editais de Contribuição de Melhoria</option>
+                                                        <option value="1007">Editais - Vagas nas Escolas</option>
+                                                        <option value="1022">Emendas Parlamentares</option>
+                                                        <option value="4">Estatuto do Servidor</option>
+                                                        <option value="1">Legislação</option>
+                                                        <option value="1005">Lei de Diretrizes Orçamentárias - LDO</option>
+                                                        <option value="1006">Lei Orçamentária Anual (LOA)</option>
+                                                        <option value="6">Lei Orgânica do Município</option>
+                                                        <option value="2">Leis</option>
+                                                        <option value="1021">Leis Complementares</option>
+                                                        <option value="1015">Licenciamento Ambiental</option>
+                                                        <option value="1011">Ordem de Serviço</option>
+                                                        <option value="1023">Plano de Carreiras dos Servidores</option>
+                                                        <option value="8">Plano Diretor - PDDI</option>
+                                                        <option value="10">Plano Plurianual </option>
+                                                        <option value="1001">Planos</option>
+                                                        <option value="11">Portarias</option>
+                                                    </select>
+                        <i></i>
+                    </div>
+                </div>
+                <div class="nopadding">
+                    <button type="submit" class="btn btn-primary" style="margin: 25px 0 0 0px;">Ir</button>
+                </div>
+            </form>
+        </div>
+            </div>
+</div>
+<!-- / PUBLICAÇÕES OFICIAIS --></div>
+                <div class="col-md-4 mt4-xs"><!-- SECRETARIAS -->
+<div class="widget owl-carousel-controls featured-box-minimal">
+    <div class="row mb0">
+        <div class="pr15 pl15 mrauto mlauto">
+            <h2 class="pull-left similar-h4 title"><strong>SECRETARIAS</strong></h2>
+            				<span class="pull-right">
+					<a class="prev" href="javascript:;">
+						<i class="mr5 lineh30 fa fa-arrow-left widget-icon">
+							<span class="sr-only">Anterior</span>
+						</i>
+					</a>
+					<a class="next" href="javascript:;"><i class="mr5 lineh30 fa fa-arrow-right widget-icon">
+						<span class="sr-only">Próximo</span>
+					</i></a>
+				</span>
+				        </div>
+    </div>
+    <div class="owl-carousel" data-plugin-options='{"items":1, "autoHeight": false, "navigation": false, "pagination": false, "progressBar":"false"}'>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://generalcamara.rs.gov.br/uploads/departamento/30830/thumb_4696ba70_47c8_4569_b6bc_9f81d231f17c.jpg" class="img-responsive max-height100" alt="Foto do(a) Prefeito: Marcio Pereira Brandão" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Prefeito</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://generalcamara.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>Marcio Pereira Brandão</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0015</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda-feira a sexta-feira, das 8:00h às 11:30h e das 13:30h às 16:30h<br />
+                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0015                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda-feira a sexta-feira, das 8:00h às 11:30h e das 13:30h às 16:30h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                       Gabinete do Prefeito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário-geral de Governo</small>
+                        <div class="row">
+                          <a title="Gabinete do Prefeito" href="https://generalcamara.rs.gov.br/gabinete-do-prefeito//?gabinete-do-prefeito.html">
+                            <span class="similar-h4"><strong>André de Freitas Liziardi</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0015</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda-feira a sexta-feira, das 8:00h às 11:30h e das 13:30h às 16:30h<br />
+                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0015                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda-feira a sexta-feira, das 8:00h às 11:30h e das 13:30h às 16:30h<br />
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/110/?secretaria-de-educacao.html">
+                       Secretaria de Educação                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário</small>
+                        <div class="row">
+                          <a title="Secretaria de Educação" href="https://generalcamara.rs.gov.br/secretaria/id/110/?secretaria-de-educacao.html">
+                            <span class="similar-h4"><strong>Thiago Reichel</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0015</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a Sexta - das 8h30 às 11h30 e das 13h30 às 16h30                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0015                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a Sexta - das 8h30 às 11h30 e das 13h30 às 16h30                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/116/?secretaria-de-obras-mobilidade-e-transito.html">
+                       Secretaria de Obras, Mobilidade e Trânsito                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretario de Obras, Mobilidade e Trânsito</small>
+                        <div class="row">
+                          <a title="Secretaria de Obras, Mobilidade e Trânsito" href="https://generalcamara.rs.gov.br/secretaria/id/116/?secretaria-de-obras-mobilidade-e-transito.html">
+                            <span class="similar-h4"><strong>Marcelo Pereira Brandão</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0015</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> 8h ás 11h30m - 13h30m às 16h30m                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0015                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> 8h ás 11h30m - 13h30m às 16h30m                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/1002/?secretaria-de-agricultura.html">
+                       Secretaria de Agricultura                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Coordenador da Sec. De Agricultura</small>
+                        <div class="row">
+                          <a title="Secretaria de Agricultura" href="https://generalcamara.rs.gov.br/secretaria/id/1002/?secretaria-de-agricultura.html">
+                            <span class="similar-h4"><strong>Beto Oliveira</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0015</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a Sexta: das 8:00h às 11:30h e das 13:30h às 16:30h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0015                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a Sexta: das 8:00h às 11:30h e das 13:30h às 16:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/106/?secretaria-da-fazenda.html">
+                       Secretaria da Fazenda                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://generalcamara.rs.gov.br/uploads/departamento/16189/thumb_11203075_853317041372718_5120945158250518617_n.jpg" class="img-responsive max-height100" alt="Foto do(a) Secretária da Fazenda: LUCIANA FRANZEN BARROS" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária da Fazenda</small>
+                        <div class="row">
+                          <a title="Secretaria da Fazenda" href="https://generalcamara.rs.gov.br/secretaria/id/106/?secretaria-da-fazenda.html">
+                            <span class="similar-h4"><strong>LUCIANA FRANZEN BARROS</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0015</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a Sexta - das 8h30 às 11h30 e das 13h30 às 16h30                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0015                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a Sexta - das 8h30 às 11h30 e das 13h30 às 16h30                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/105/?secretaria-de-administracao.html">
+                       Secretaria de Administração                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretário de Administração </small>
+                        <div class="row">
+                          <a title="Secretaria de Administração" href="https://generalcamara.rs.gov.br/secretaria/id/105/?secretaria-de-administracao.html">
+                            <span class="similar-h4"><strong>Márcio Pereira Brandão</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0015</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta - 08h00m às 11h30m e das 13h30m às 16h30m                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0015                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta - 08h00m às 11h30m e das 13h30m às 16h30m                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/1004/?coordenadoria-municipal-de-servicos-de-agua.html">
+                       Coordenadoria Municipal de Serviços de Água                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Diretor Geral</small>
+                        <div class="row">
+                          <a title="Coordenadoria Municipal de Serviços de Água" href="https://generalcamara.rs.gov.br/secretaria/id/1004/?coordenadoria-municipal-de-servicos-de-agua.html">
+                            <span class="similar-h4"><strong>Giovani Fornari</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  3655-1119</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a Sexta - das 08h as 11h30 e das 13h30 as 16h30                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  3655-1119                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a Sexta - das 08h as 11h30 e das 13h30 as 16h30                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/1001/?secretaria-de-assistencia-social.html">
+                       Secretaria de Assistência Social                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://generalcamara.rs.gov.br/uploads/departamento/16187/thumb_IMG_20170915_WA0019.jpg" class="img-responsive max-height100" alt="Foto do(a) Secretária de Assistência Social: Tatiane Lima" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretária de Assistência Social</small>
+                        <div class="row">
+                          <a title="Secretaria de Assistência Social" href="https://generalcamara.rs.gov.br/secretaria/id/1001/?secretaria-de-assistencia-social.html">
+                            <span class="similar-h4"><strong>Tatiane Lima</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0015</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a Sexta: das 8:30h às 11:30h e das 13:30h às 16:30h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0015                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a Sexta: das 8:30h às 11:30h e das 13:30h às 16:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/114/?secretaria-de-saude.html">
+                       Secretaria de Saúde                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretária de Saúde</small>
+                        <div class="row">
+                          <a title="Secretaria de Saúde" href="https://generalcamara.rs.gov.br/secretaria/id/114/?secretaria-de-saude.html">
+                            <span class="similar-h4"><strong>Michele Maciel</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0011</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta - das 8h às 12h - das 13h às 17h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0011                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta - das 8h às 12h - das 13h às 17h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/111/?secretaria-de-turismo-cultura-esporte-e-lazer.html">
+                       Secretaria de Turismo, Cultura, Esporte e Lazer                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretária de turismo, Cultura, Esporte e lazer</small>
+                        <div class="row">
+                          <a title="Secretaria de Turismo, Cultura, Esporte e Lazer" href="https://generalcamara.rs.gov.br/secretaria/id/111/?secretaria-de-turismo-cultura-esporte-e-lazer.html">
+                            <span class="similar-h4"><strong>Alessandro Rasquinha</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0011</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta - 8h00 às 11:30h e das 13h30 às 16h30                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0011                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta - 8h00 às 11:30h e das 13h30 às 16h30                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/109/?secretaria-de-planejamento-habitacao-e-desenvolvimento-economico.html">
+                       Secretaria de Planejamento, Habitação e Desenvolvimento Econômico                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-md-5 col-xs-12">
+                        <img src="https://generalcamara.rs.gov.br/uploads/departamento/30711/thumb_WhatsApp_Image_2024_11_19_at_150806.jpeg" class="img-responsive max-height100" alt="Foto do(a) Secretário de Planejamento, Habitação e Desenvolvi: MATHEUS DOS PASSOS LIMA" />
+                    </div>
+                                        <div class="col-xs-12 col-md-7">
+                        <small class="uppercase">Secretário de Planejamento, Habitação e Desenvolvi</small>
+                        <div class="row">
+                          <a title="Secretaria de Planejamento, Habitação e Desenvolvimento Econômico" href="https://generalcamara.rs.gov.br/secretaria/id/109/?secretaria-de-planejamento-habitacao-e-desenvolvimento-economico.html">
+                            <span class="similar-h4"><strong>MATHEUS DOS PASSOS LIMA</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0015</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda a Sexta - das 8h00m às 11h30m e das 13h30m às 16h30m                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0015                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda a Sexta - das 8h00m às 11h30m e das 13h30m às 16h30m                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+                <div class="item">
+            <div class="alert alert-default fade in">
+                <p class="lead text-center">
+                    <a href="https://generalcamara.rs.gov.br/secretaria/id/115/?secretaria-do-meio-ambiente.html">
+                       Secretaria do Meio Ambiente                    </a>
+                </p>
+            </div>
+            <ul class="nav nav-list pt20 pb20 radius4">
+                <li>
+                                        <div class="col-xs-12 col-md-12">
+                        <small class="uppercase">Secretario de Meio ambiente</small>
+                        <div class="row">
+                          <a title="Secretaria do Meio Ambiente" href="https://generalcamara.rs.gov.br/secretaria/id/115/?secretaria-do-meio-ambiente.html">
+                            <span class="similar-h4"><strong>Luis Fernando Gomes Franken</strong></span>
+                          </a>
+                        </div>
+                    </div>
+                    <!--<div class="col-md-12" style="margin-top:1em;">
+                        <p class="nomargin"><strong>Telefone:</strong> (51)  2245-0015</p>
+                        <p class="nomargin">
+                            <strong>Hor&aacute;rio de Atendimento:</strong> Segunda à Sexta - 8h às 11:30h e das 13:30h às 16:30h                        </p>
+                    </div> -->
+
+                      <div class="col-md-12" style="margin-top:1em;">
+                                                    <p class="nomargin no-featured lead">
+                                <i class="fa fa-phone mr6 fsize20 text-muted"></i>
+                                (51)  2245-0015                            </p>
+                                                    <p class="nomargin no-featured"><i class="fa fa-clock-o mr6"></i> Segunda à Sexta - 8h às 11:30h e das 13:30h às 16:30h                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+            </div>
+</div>
+<!-- /SECRETARIAS --></div>
+            </div>
+</div>
+
+<div class="p0 styleContrasteGray">
+    <div class="container">
+        <hr class="half-margins invisible">
+        <div class="owl-carousel banner-servicos" data-plugin-options='{"singleItem": false, "navigation": true, "pagination": false,"items": 4}'>
+        <div class="col-md-12 text-left">
+                <a href="https://generalcamara.rs.gov.br/diario-oficial/bcid/53/?diario-oficial.html" target='_self'>
+                                <p class="similar-h4 mb10">Diário Oficial do Município </p>
+                        <img src="https://generalcamara.rs.gov.br/uploads/banner/23576/original_maior_Imagem_Ilustrativa.jpg" class="img-responsive" alt="Diário Oficial do Município " role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm" target='_blank'>
+                                <p class="similar-h4 mb10">Lei de acesso à Informação</p>
+                        <img src="https://generalcamara.rs.gov.br/uploads/banner/14/original_acess.jpg" class="img-responsive" alt="Lei de acesso à Informação" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://177.38.116.1:83/pronimtb/index.asp" target='_blank'>
+                                <p class="similar-h4 mb10">Portal da Transparência</p>
+                        <img src="https://generalcamara.rs.gov.br/uploads/banner/12/original_portal_transparencia.jpg" class="img-responsive" alt="Portal da Transparência" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="https://nfg.sefaz.rs.gov.br/site/index.aspx" target='_blank'>
+                                <p class="similar-h4 mb10">Nota Fiscal Gaúcha</p>
+                        <img src="https://generalcamara.rs.gov.br/uploads/banner/10/original_nota_fiscal_gaucha.jpg" class="img-responsive" alt="Nota Fiscal Gaúcha" role="presentation" />
+                </a>
+            </div>
+        <div class="col-md-12 text-left">
+                <a href="http://www1.tce.rs.gov.br/aplicprod/f?p=50500:1::NOVO_MUN:NO:1:P1_PROCURAR_H,F50500_CD_ORGAO:General%20C%C3%A2mara,&cs=1zoB0CNBACG9At_RYn2knQ2ul_HY" target='_self'>
+                                <p class="similar-h4 mb10">Licitacon</p>
+                        <img src="https://generalcamara.rs.gov.br/uploads/banner/23575/original_licitacon265_80_cpia.png" class="img-responsive" alt="Licitacon" role="presentation" />
+                </a>
+            </div>
+    </div>        <hr class="half-margins">
+    </div>
+</div>
+
+
+<div class="pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <!-- ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+                        <div class="col-md-8 mobile-nopadding"><!-- ATRAÇÕES TURÍSTICAS -->
+<h2 class="similar-h4 title"><strong>ATRA&Ccedil;&Otilde;ES TUR&Iacute;STICAS</strong></h2>
+<div class="tabs tab-tur widget featured-box-minimal nomargin-top">
+   <!-- tabs -->
+   <ul class="nav nav-tabs nav-justified">
+           <li class="active">
+         <a href="#tab_0" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-cutlery icone-turismo"></i> Pousada e Restaurante O Coqueiro         </a>
+      </li>
+            <li class="">
+         <a href="#tab_1" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-university icone-turismo"></i> Igreja de Santo Amaro         </a>
+      </li>
+            <li class="">
+         <a href="#tab_2" data-toggle="tab" aria-expanded="false">
+         <i class="fa fa-university icone-turismo"></i> Praia da Cachoeirinha         </a>
+      </li>
+         </ul>
+
+
+   <!-- tabs content -->
+   <div class="tab-content mb15">
+           <div id="tab_0" class="tab-pane active">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://generalcamara.rs.gov.br/uploads/pontoturistico/24126/maior_coqueiro.jpg" alt="Pousada e Restaurante O Coqueiro" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Pousada e Restaurante O Coqueiro" href="https://generalcamara.rs.gov.br/turismo/visualizar/id/1013/?pousada-e-restaurante-o-coqueiro.html">
+               Pousada e Restaurante O Coqueiro             </a>
+             </h3>
+           <p class="mb0">Pousada e Restaurante O Coqueiro </p>
+           <p class="mb0"><a href="https://generalcamara.rs.gov.br/turismo/visualizar/id/1013" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Pousada e Restaurante O Coqueiro				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+            <div id="tab_1" class="tab-pane ">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://generalcamara.rs.gov.br/uploads/pontoturistico/16063/maior_IGREJA_SANTO_AMARO_1787.jpg" alt="Igreja de Santo Amaro" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Igreja de Santo Amaro" href="https://generalcamara.rs.gov.br/turismo/visualizar/id/1001/?igreja-de-santo-amaro.html">
+               Igreja de Santo Amaro             </a>
+             </h3>
+           <p class="mb0">Igreja de Santo Amaro, localizada no Distrito Histórico, imóvel tombado pelo IPHAN.</p>
+           <p class="mb0"><a href="https://generalcamara.rs.gov.br/turismo/visualizar/id/1001" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Igreja de Santo Amaro				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+            <div id="tab_2" class="tab-pane ">
+        <div class="row">
+                  <div class="col-md-4 flex-center">
+           <img class="img-responsive" src="https://generalcamara.rs.gov.br/uploads/pontoturistico/16069/maior_CACHOEIRINHA.jpg" alt="Praia da Cachoeirinha" />
+         </div>
+                  <div class="col-md-8">
+             <h3 class="dinline-block similar-h4 mb10">
+               <a title="Ver Praia da Cachoeirinha" href="https://generalcamara.rs.gov.br/turismo/visualizar/id/1003/?praia-da-cachoeirinha.html">
+               Praia da Cachoeirinha             </a>
+             </h3>
+           <p class="mb0">Charmosa praia junto ao Rio Jacuí, a Praia da Cachoeirinha recebe milhares de pessoas a cada final de semana de verão.</p>
+           <p class="mb0"><a href="https://generalcamara.rs.gov.br/turismo/visualizar/id/1003" class="btn btn-default btn-sm mt15">
+				Ver atra&ccedil;&atilde;o
+				<span class="sr-only">
+					Praia da Cachoeirinha				</span>
+			</a></p>
+         </div>
+       </div>
+      </div>
+         </div>
+
+   <a title="Atrações completas" href="https://generalcamara.rs.gov.br/turismo" class="btn btn-default btn-content">
+      <i class="fa fa-map-o"></i> Mais Atrações
+	  <span class="sr-only">
+		Turísticas
+	  </span>
+    </a>
+</div></div>
+                        <div class="col-md-4 mt4-xs mobile-nopadding"><!-- EVENTOS -->
+<div class="widget featured-box-minimal">
+    <div class="row mb0">
+		<div class="pr15 pl15 mrauto mlauto">
+			<h2 class="similar-h4 title"><strong>&Uacute;LTIMO EVENTO</strong></h2>
+		</div>
+	</div>
+	<div class="col-md-12">
+		<a href="https://generalcamara.rs.gov.br/evento/visualizar/id/1037/?muamba-de-carnaval.html">
+			<p class="lead">Muamba de Carnaval</p>
+		</a>
+		<p class="nomargin">Muamba do Carnaval 2025 de General Câmara.</p>
+	</div>
+
+	<div class="col-md-12 mb15">
+	    		<strong>Local:</strong> Praça Eurico Gaspar Dutra<br />
+						<strong>In&iacute;cio:</strong> 28/02/2025 &agrave;s 22h<br />
+			</div>
+
+	<a href="https://generalcamara.rs.gov.br/evento/?agenda-de-eventos.html" class="btn btn-default btn-content">
+	    <i class="fa fa-calendar"></i> Agenda completa
+    </a>
+</div>
+<!-- /EVENTOS --></div>
+            			<!-- /ATRAÇÕES TURÍSTICAS E PUBLICAÇÕES OFICIAIS -->
+        </div>
+    </div>
+</div>
+
+<div class="styleBackgroundLight styleContrasteGray pt60 pb60">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 mobile-nopadding"><!-- MULTIMIDIA -->
+<h2 class="similar-h4 title"><strong>MULTIM&Iacute;DIA</strong></h2>
+    <ul class="sort-destination isotope multimidia flex-center" style="flex-wrap: wrap;">
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="General Câmara Institucional" class="item-hover" href="https://generalcamara.rs.gov.br/video/id/1013/?general-camara-institucional.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-video-camera"></span>
+                            <strong>ASSISTIR</strong> VÍDEO							<span class="sr-only">
+								General Câmara Institucional							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="//i1.ytimg.com/vi/LWlz9Nf0JS0/mqdefault.jpg" width="260" height="260" alt="General Câmara Institucional" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">24/07/2023 - </small>
+                    <small style="display: inline;">Institucional</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">General Câmara Institucional</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+                <li class="isotope-item col-sm-6 col-md-3 flex-center">
+            <div class="item-box">
+                <figure>
+                    <a title="Caminho Açoriano" class="item-hover" href="https://generalcamara.rs.gov.br/video/id/1014/?caminho-acoriano.html">
+                        <span class="overlay color2"></span>
+                        <span class="inner">
+                            <span class="block fa fsize30 fa-video-camera"></span>
+                            <strong>ASSISTIR</strong> VÍDEO							<span class="sr-only">
+								Caminho Açoriano							</span>
+                        </span>
+                    </a>
+                    <img class="img-responsive" src="//i1.ytimg.com/vi/FJBYuMo6D7c/mqdefault.jpg" width="260" height="260" alt="Caminho Açoriano" style="max-height: 170px;" />
+                </figure>
+                <div class="item-box-desc">
+                    <small class="item-box-date">24/07/2023 - </small>
+                    <small style="display: inline;">Programas e ações</small>
+                    <div class="row" style="max-width: 250px;">
+                        <div class="col-md-12">
+                            <p class="similar-h4" style="display: inline;">Caminho Açoriano</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </li>
+        	</ul>
+<!-- /MULTIMIDIA --></div>
+        </div>
+    </div>
+</div>
+
+
+<div id='mapa_01' class='' style='z-index:1;width:100%;height:400px;'></div><script id="mapa_01_script">$(function() {
+                $('#css_leaflet').remove();
+                $('head').append('<link id="css_leaflet" href="'+baseurl+'/default/plugins/leaflet/leaflet.css" rel="stylesheet" type="text/css" />');
+                $('#js_leaflet').remove();
+                $('body').append('<script id="js_leaflet" src="'+baseurl+'/default/plugins/leaflet/leaflet.js" />');
+            
+            var leafletMap1 = L.map('mapa_01').setView(
+                [-29.905795, -51.762753],
+                20
+            );
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {maxZoom: 18}).addTo(leafletMap1);
+            leafletMap1.scrollWheelZoom.disable();
+            markerArray = new Array();
+        
+                        icon = L.icon({
+                            popupAnchor: [0, -30],
+                            iconUrl: baseurl+'/default/plugins/leaflet/images/marker-icon.png',
+                            shadowUrl: baseurl+'/default/plugins/leaflet/images/marker-shadow.png'
+                        });
+                    
+                    marker = L.marker(
+                        [-29.905795, -51.762753],
+                        {alt:'Município de General Câmara Rio Grande do Sul'}
+                    ).addTo(leafletMap1).setIcon(icon);
+                marker.bindPopup('<div id="bodyContent">                    <p style="margin: 5px 0px;"><strong>Município de General Câmara Rio Grande do Sul</strong></p>                <p style="margin: 5px 0px;">General David Canabarro, 120&nbsp;&nbsp;&nbsp;Bairro: Centro</p><p style="margin: 5px 0px;">General Câmara / RS</p><p style="margin: 5px 0px;">95820-000</p></div>');markerArray.push(marker)});</script>
+<div class="bs-callout text-center newsletter styleContrasteGray"><p class="similar-h4 nomargin"><small>Receba as &uacute;ltimas novidades sobre as a&ccedil;&otilde;es da Prefeitura.</small></p>
+<form class="form-inline mt5" id='formNewsletter' action="#" method="post">
+    <div class="form-group mr15">
+        <p class="similar-h4 nomargin">Cadastre-se em nossa <strong>Newsletter</strong>!</p>
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="nomeNewsletter">*Nome Completo</label>
+        <input type="text" class="form-control" name="nomeNewsletter" id="nomeNewsletter" placeholder="Digite seu Nome">
+    </div>
+    <div class="form-group">
+        <label class="sr-only" for="emailNewsletter">*E-mail</label>
+        <input type="text" class="form-control" name="emailNewsletter" id="emailNewsletter" placeholder="Digite seu E-mail">
+    </div>
+    <div class="form-group">
+        <button id="buttonNewsletter" type="submit" class="btn btn-primary m3">Cadastrar</button>
+    </div>
+</form></div>
+
+
+            </div>
+            
+            <a class="oculto" id='inicioRodape' title="inicioRodape" tabindex="-1">in&iacute;cio rodap&eacute;</a>
+            <footer id="footer" class="footer02" role='contentinfo'>
+    <div class="container">
+        <div class="row">
+            <!-- endereço e redes sociais -->
+            <div class="spaced col-md-4 col-sm-4">
+                                <p>
+                    General David Canabarro, 120, Centro<br />
+                    CEP: 95820-000<br />                    prefeito@generalcamara.rs.gov.br<br />                </p>
+                                    <p class="similar-h3">(51) 3655-1399</p>
+                                <p><strong>Segunda à Sexta:</strong> 8:00 às 11:30 e das 13:30 às 16:30</p>
+                				<p class="block">
+					<a href="https://generalcamara.rs.gov.br/sitemap" class="social default">
+						<i class="fa fa-sitemap">
+							<span class="sr-only">Mapa do site</span>
+						</i>
+					</a>
+										<a href="https://www.facebook.com/prefeituradegeneralcamara" target="_blank" class="social">
+						<i class="fa fa-facebook">
+							<span class="sr-only">Facebook da Prefeitura</span>
+						</i>
+					</a>
+										<a href="https://generalcamara.rs.gov.br/rss" target="_blank" class="social">
+						<i class="fa fa-rss">
+							<span class="sr-only">RSS da Prefeitura</span>
+						</i>
+					</a>
+				</p>
+            </div>
+            <!-- /endereço e redes sociais -->
+
+            <!-- col #2 -->
+            <div class="spaced col-md-8 col-sm-8">
+                <div class="row">
+                    <div class="col-md-5 col-sm-4 hidden-xs hide-line-last-new">
+                        <p class="similar-h4">&Uacute;ltimas not&iacute;cias</p>
+                                                <ul class="list-unstyled">
+                                                        <li>
+                                <a class="block"
+                                href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2439/?edital-de-chamamento-captacao-de-patrocinio-para-a-1a-rustica-de-santo-amaro.html">
+                                    EDITAL DE CHAMAMENTO: Captação de Patrocínio para a 1ª Rústica de Santo Amaro                                </a>
+                                <small>01/12/2025</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2438/?operacao-terra-forte.html">
+                                    Operação Terra Forte                                </a>
+                                <small>03/11/2025</small>
+                            </li>
+                                                        <li>
+                                <a class="block"
+                                href="https://generalcamara.rs.gov.br/noticia/visualizar/id/2437/?consulta-popular-rs-20252026.html">
+                                    CONSULTA POPULAR RS 2025/2026                                </a>
+                                <small>06/10/2025</small>
+                            </li>
+                                                    </ul>
+                                            </div>
+
+                    <div class="col-md-3 col-sm-4 hidden-xs">
+                        <p class="similar-h4">Outras &aacute;reas</p>
+						<ul class="list-unstyled nobordered">
+							<li>
+								<a class="block" href="https://generalcamara.rs.gov.br/transparencia/?transparencia.html">
+									<i class="fa fa-angle-right"></i> Transpar&ecirc;ncia
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://generalcamara.rs.gov.br/legislacao/?legislacao.html">
+									<i class="fa fa-angle-right"></i> Legisla&ccedil;&atilde;o
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://generalcamara.rs.gov.br/turismo/?turismo.html">
+									<i class="fa fa-angle-right"></i> Turismo
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://generalcamara.rs.gov.br/noticia/?noticias.html">
+									<i class="fa fa-angle-right"></i> Not&iacute;cias
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://generalcamara.rs.gov.br/galeria/?galeria-de-fotos.html">
+									<i class="fa fa-angle-right"></i> Galeria de Fotos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://generalcamara.rs.gov.br/video/?galeria-de-videos.html">
+									<i class="fa fa-angle-right"></i> Galeria de V&iacute;deos
+								</a>
+							</li>
+							<li>
+								<a class="block" href="https://generalcamara.rs.gov.br/evento/?agenda-de-eventos.html">
+									<i class="fa fa-angle-right"></i> Agenda de Eventos
+								</a>
+							</li>
+														<li>
+								<a class="block" href="/politica-de-privacidade">
+									<i class="fa fa-angle-right"></i> Política de Privacidade
+								</a>
+							</li>
+							<li>
+								<a class="block" href="#" onclick="cookieconsent.showSettings(0)">
+									<i class="fa fa-angle-right"></i> Gerenciar Cookies
+								</a>
+							</li>
+													</ul>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4">
+                                                <!-- brasão -->
+                        <p class="text-center">
+                            <img alt="Brasão da prefeitura" src="https://generalcamara.rs.gov.br/uploads/config/16025/brasao.png" class="logo img-responsive appear-animation opaco08" data-animation="bounceIn"/>
+                        </p>
+                                            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+	<div class="copyright" role="group" tabindex="0" aria-labelledby="footer.copyrightTxt footer.copyrightTxt3">
+	<div class="container text-center fsize12 post-copyright" style="
+		display: flex;
+		flex-direction: column;
+		justify-content: center">
+		<p style="margin:0" id="footer.copyrightTxt">
+			Este site utiliza a ferramenta
+			<a id="footer.copyrightTxt2" tabindex="0" href="https://www.iprefeituras.com.br" target="_blank" class="fsize11 img-empresa">
+				<img src="https://generalcamara.rs.gov.br/site/custom/default/img/i-prefeituras-footer.png" alt="iPrefeituras" role="presentation">
+				<span class="sr-only">iPrefeituras</span>
+			</a>.
+		</p>
+		<p style="margin:0" id="footer.copyrightTxt3">
+			Um produto
+			<strong>
+				<a aria-label="Visão i" id="footer.copyrightTxt4" href="https://www.visaoi.com.br" target="_blank" class="fsize11 img-empresa">Visãoi</a>
+			</strong>.
+		</p>
+	</div>
+</div>
+</footer>
+<a title="Ir para o topo da página" href="javascript:;" id="toTop">
+	<span class="sr-only">Ir para o topo da página</span>
+</a>
+<!-- /FOOTER -->
+		</div><!-- /#wrapper -->
+		
+		<!-- ACESSIBILIDADE -->
+		<!-- ACESSIBILIDADE -->
+<div id="menuAcessibilidade">
+    <div class="content-menuAcessibilidade">
+        <p class="similar-h4">ACESSIBILIDADE</p>
+        <p class="lineh20" tabindex="0">
+            Para navega&ccedil;&atilde;o via teclado, utilize a combina&ccedil;&atilde;o de teclas
+            conforme o modelo abaixo:<br>
+            <span class="altExemploAcessibilidade" style="background-color: #E6E6E6">
+                <strong class="uppercase"></strong>
+            </span>&nbsp;+&nbsp;
+            <span class="styleBackgroundLight altExemploAcessibilidade">
+                [<strong>N&ordm;</strong> de atalho]
+            </span>
+                    </p>
+        <p class="nomargin-bottom">Atalhos de navega&ccedil;&atilde;o:</p>
+        <div class="row">
+            <div class="col-md-12">
+                <a id="linkConteudo" class="closeAcessibilidade" accesskey="1" title="Ir para conte&uacute;do " href="#inicioConteudo">
+					<div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>1</strong></span></div>
+					<small>Ir para o</small> <strong>conte&uacute;do</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkInicioMenu" class="closeAcessibilidade" accesskey="2" title="Ir para o menu " href="#inicioMenu">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>2</strong></span></div>
+                    <small>Ir para o</small> <strong>menu</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+                <a id="linkBusca" class="closeAcessibilidade" accesskey="3" title="Ir para a busca " href="#">
+                    <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>3</strong></span></div>
+                    <small>Ir para a</small> <strong>busca</strong>
+                </a>
+	        </div>
+	        <div class="col-md-12">
+	            <a id="linkInicioRodape" class="closeAcessibilidade" accesskey="4" title="Ir para o rodap&eacute; " href="#inicioRodape">
+	                <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>4</strong></span></div>
+	                <small>Ir para o</small> <strong>rodap&eacute;</strong>
+                </a>
+            </div>
+            <div class="col-md-12">
+    		    <a accesskey="5" title="Página de Acessibilidade " href="https://generalcamara.rs.gov.br/acessibilidade">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>5</strong></span></div>
+    		        <strong>Acessibilidade</strong>
+    	        </a>
+	        </div>
+	        <div class="col-md-12">
+    		    <a accesskey="6" title="Mapa do site " href="https://generalcamara.rs.gov.br/sitemap">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>6</strong></span></div>
+    		        <strong>Mapa do site</strong>
+    	        </a>
+	        </div>
+            <div class="col-md-12" id="checkContraste">
+    		    <a class="addContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Ativar contraste</strong>
+    	        </a>
+                <a class="hide removeContraste" accesskey="7" title="Mapa do site " href="javascript:;">
+    		        <div class="numberAcessibilidade text-center styleBackgroundLight"><span class="spanAccesskey"><strong>7</strong></span></div>
+    		        <strong>Remover contraste</strong>
+    	        </a>
+	        </div>
+        </div>
+        
+        
+        <p class="nomargin-bottom">Tamanho da fonte:</p>
+        <div class="row">
+            <div class="col-md-6 col-xs-12 desktop-pr3 text-center">
+                <a title="Dimuinir Fonte" href="javascript:;" id="diminuirFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-minus"></i>
+					<span class="oculto">Diminuir Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-6 col-xs-12 desktop-pl3 text-center">
+                <a title="Aumentar Fonte" href="javascript:;" id="aumentarFonte" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-plus"></i>
+					<span class="oculto">Aumentar Fonte</span>
+                </a>
+            </div>
+            <div class="col-md-12 col-xs-12 text-center">
+                <a id='fonteOriginal' title="Fonte Original" href="javascript:;" class="btn btn-default btn-block btn-sm">
+                    <i class="fa fa-font"></i><i class="fa fa-refresh"></i>
+					<span class="oculto">Fonte Original</span>
+                </a>
+            </div>
+        </div>
+
+        <a href="#" title="Fechar menu de acessibilidade" id="hideMenuAcessibilidade">&times;<span class="oculto">Fechar menu de acessibilidade</span></a>
+    </div>
+</div>
+<a accesskey="0" href="#" id="showMenuAcessibilidade" class="styleSecondColor" title="Acessibilidade">
+    <div id="iconMenuAcessibilidade" class="text-center"><i class="fa fa-wheelchair styleColor"></i></div>
+    <div id="textMenuAcessibilidade" class="text-center" style="font-size: 0.5em;line-height: 12px;">
+        <span class="styleColor">ACESSIBILIDADE</span><br>
+        <span class="uppercase" aria-hidden="true"></span><span>+0</span>
+    </div>
+</a>
+		<!-- /ACESSIBILIDADE -->
+		
+		<!-- SCRIPTS -->
+		<!-- JAVASCRIPT FILES -->
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/jquery.isotope.js"></script>
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/masonry.js"></script>
+
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/magnific-popup/jquery.magnific-popup.min.js"></script>
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/owl-carousel/owl.carousel.min.js"></script>
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/knob/js/jquery.knob.js"></script>
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/flexslider/jquery.flexslider-min.js"></script>
+
+<!-- REVOLUTION SLIDER -->
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/plugins/revolution-slider/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/js/revolution_slider.js"></script>
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/template/default/js/scripts.js"></script>
+
+<!-- MaskedInput : plugin para criação de qualquer tipo de máscara para campo input -->
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/default/js/jquery/plugins/maskedInput/jquery.maskedinput.min.js?v2"></script>
+
+<!-- moneyMask : plugin para formatação e mascaramento de campo do tipo numeric -->
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/default/js/jquery/plugins/maskMoney/jquery.maskMoney.min.js"></script>
+
+<!--  Datepicker -->
+<script src="https://generalcamara.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script src="https://generalcamara.rs.gov.br/site/custom/default/js/jquery/plugins/datepicker/bootstrap-datepicker.pt-BR.js"></script>
+
+<!-- Funções -->
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/site/custom/default/js/site.js?v=1.2.2"></script>
+<script type="text/javascript" src="https://generalcamara.rs.gov.br/default/js/funcoes.js?v=3.2.1"></script>
+
+		<!-- /SCRIPTS -->
+		
+		
+        <div vw class="enabled dontPrint">
+            <div vw-access-button class="active"></div>
+            <div vw-plugin-wrapper>
+                <div class="vw-plugin-top-wrapper"></div>
+            </div>
+        </div>
+        <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+                                <script>
+            new window.VLibras.Widget('https://vlibras.gov.br/app');
+        </script>
+        
+		<script>
+    let cookieconsent = null;
+    window.addEventListener("load",function() {
+        //$('.rotate').rotaterator({fadeSpeed:300, pauseSpeed:3500});
+
+        cookieconsent = initCookieConsent();
+        const cookiesMessage = `Utilizamos cookies para  melhorar a sua experiência em nosso site.  Ao continuar navegando você concorda com estas condições, e, com nossa Política de Privacidade. Consulte nossa <a href="/politica-de-privacidade" title="Política de Privacidade">Política de Privacidade</a>.`;
+        const priv_ativo = 1;
+
+        window.cookieInfo = {
+            page_scripts: true,
+            gui_options: {
+                consent_modal: {
+                                                layout: 'cloud',               // box/cloud/bar
+                            position: 'bottom center',     // bottom/middle/top + left/right/center
+                            transition: 'slide',           // zoom/slide
+                            swap_buttons: false            // enable to invert buttons
+                                    },
+                settings_modal: {
+                                                layout: 'box',                 // box/bar
+                            // position: 'left',           // left/right
+                            transition: 'zoom'            // zoom/slide
+                                    }
+            },
+            languages: {
+                "en": {
+                    consent_modal: {
+                        title: "Valorizamos sua privacidade!",
+                        description: cookiesMessage,
+                        primary_btn: {
+                            text: 'Ok',
+                            role: 'accept_all'              // 'accept_selected' or 'accept_all'
+                        },
+                        secondary_btn: {
+                            text: 'Configurar',
+                            role: 'settings'                // 'settings' or 'accept_necessary'
+                        }
+                    },
+                    settings_modal: {
+                        title: 'Configurações de cookies',
+                        save_settings_btn: 'Salvar',
+                        accept_all_btn: 'Aceitar tudo',
+                        reject_all_btn: 'Rejeitar todos',       // optional, [v.2.5.0 +]
+                        cookie_table_headers: [
+                            {col1: 'Nome'},
+                            {col2: 'Dominio'},
+                            {col3: 'Expira em'},
+                            {col4: 'Descrição'}
+                        ],
+                        blocks: [
+                            {
+                                mode: "info",
+                                title: 'Uso dos cookies',
+                                description: cookiesMessage,
+                            },
+
+                            //Loop de categorias de cookies
+                                                                {
+                                        mode: "cookie",
+                                        title: 'Cookies Obrigatórios',
+                                        description: 'Estes cookies são necessários para o funcionamento do website e não podem ser desativados em nossas configurações.',
+
+                                        toggle: {
+                                            value: 'necessary',
+                                            enabled: true,
+                                            readonly: true                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: 'PHPSESSID',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de gerenciamento e identificação de sessão.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '__cf_bm',
+                                                        col2: 'cloudflare.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Gerenciador de bots da Cloudflare.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: 'cc_cookie',
+                                                        col2: '' || window.location.hostname,
+                                                        col3: '1 ano' || 'Até o fim da sessão',
+                                                        col4: 'Cookie de consentimento.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                                                    {
+                                        mode: "cookie",
+                                        title: 'Cookies de Análise',
+                                        description: 'Estes cookies permitem analisar o modo como você usa o website e gerar estatísticas sobre eles.',
+
+                                        toggle: {
+                                            value: 'analytics',
+                                            enabled: false,
+                                            readonly: false                                        },
+
+                                        cookie_table: [
+                                                                                                {
+                                                        col1: '_ga*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '2 anos' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: true                                                    },                                                                                                    {
+                                                        col1: '_gat*',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 minuto' || 'Até o fim da sessão',
+                                                        col4: 'Usado para controlar a taxa de solicitação.',
+                                                        regex: false                                                    },                                                                                                    {
+                                                        col1: '_gid',
+                                                        col2: 'google.com' || window.location.hostname,
+                                                        col3: '1 dia' || 'Até o fim da sessão',
+                                                        col4: 'Usado para distinguir usuários.',
+                                                        regex: false                                                    }                                                                                        ]
+                                    },
+                                 {
+                                mode: "info",
+                                title: 'Mais informações',
+                                description: 'Para mais informações sobre os cookies utilizados, consulte nossa <a href="/politica-de-privacidade" class="cc-link">Política de Privacidade</a>.',
+                            }
+                        ]
+                    }
+                }
+            }
+        };
+
+        //checa se existe algum cookie_table vazio. Se houver, remove-o.
+        cookieInfo.languages.en.settings_modal.blocks.forEach((bloco, i) => {
+            if (bloco.mode === 'cookie') {
+                if (bloco.cookie_table.length === 0) {
+                    cookieInfo.languages.en.settings_modal.blocks.splice(i, 1);
+                }
+            }
+        });
+
+        /**
+         * Fallback para os cookies que não estão listados.
+         * (document.cookie se tornará window.requestCookie via PHP)
+         * 
+         * @param {string} cookie_str
+         */
+        window.requestCookie = (cookie_str) => {
+            const cookie_arr = cookie_str.split('=');
+            const cookie_name = cookie_arr[0];
+            const cookie_value = cookie_arr[1];
+            let cookieList = cookieInfo.languages.en.settings_modal.blocks;
+
+            //check if cookie is in the cookieInfo list
+            let found_cookie = false;
+            for (let i = 0; i < cookieList.length; i++) { //category loop
+                let category = cookieList[i];
+
+                if (!category.cookie_table) continue;
+
+                for (let j = 0; j < category.cookie_table.length; j++) { //cookie loop
+                    let cookie = category.cookie_table[j];
+                    let nome = cookie.col1;
+                    let dominio = cookie.col2;
+                    let expiracao = cookie.col3;
+                    let descricao = cookie.col4;
+                    let regex = cookie.regex;
+
+                    //check if cookie_name matches cookie.col1
+                    if (regex) {
+                        let regex = new RegExp(nome);
+                        if (regex.test(cookie_name)) {
+                            found_cookie = true;
+                            break;
+                        }
+                    } else {
+                        if (nome == cookie_name) {
+                            found_cookie = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            //Se o cookie estiver na lista de cookies do LGPD?
+            if (found_cookie) {
+                document.cookie = cookie_str;
+            } else {
+                alert(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+                console.warn(`Cookie não listado: ${cookie_name}\nComo proceder?`);
+            }
+        }
+
+        cookieconsent.run(cookieInfo, !priv_ativo, true);
+        console.log("Cookie consent setado!");
+    });
+</script>		<noscript class="flex-center">
+			<div class="alert alert-warning flex-center">
+				<i class="fa fa-exclamation-triangle"></i>
+				<div class="flex">
+					<p class="bold">Seu navegador n&atilde;o suporta JavaScript!</p>
+					<p>Ative o JavaScript para obter a melhor experi&ecirc;ncia no site.</p>
+				</div>
+			</div>
+		</noscript>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a61401da4efa14b1',t:'MTc5NTgxMjY0OA=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a61401da4efa14b1',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

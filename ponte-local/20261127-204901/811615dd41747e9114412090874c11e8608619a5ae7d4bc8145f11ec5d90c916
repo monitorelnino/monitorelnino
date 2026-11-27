@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <!--| META TAGS |-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="application-name" content="Site Institucional da Prefeitura de Jenipapo de Minas">
+    <meta name="description" content="Site Institucional da Prefeitura de Jenipapo de Minas">
+    <meta name="keywords" content="Institucional, Transparência, Prefeitura, Prefeitura de Jenipapo de Minas">
+    <meta name="author" content="Digitaliza Tecnologia">
+    <meta name="generator" content="VS Code & PhpStorm">
+    <meta name="csrf-token" content="bXDsbG1wd1nSnIEEkLWByDHNuK62sfzJ6BXznNbs">
+
+    <!--| OG TAGS |-->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="http://jenipapodeminas.mg.gov.br">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/site/brasao.png">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Prefeitura de Jenipapo de Minas">
+
+    <link rel="alternate" type="application/atom+xml" href="https://jenipapodeminas.mg.gov.br/noticias.rss" title="Ultimas Noticias">
+
+    <title> Prefeitura de Jenipapo de Minas </title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    
+    <style>
+        :root {
+            --color__1: #0013cf;
+            --color__2: #fecd04;
+        }
+    </style>
+
+    
+    <link rel="icon" type="image/x-icon"
+        href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/site/Ruw1mptci2cloQicUWYX6vllEl4OgW3bv1Zg7SDS.png" />
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet"
+        href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/sl-1.6.2/datatables.min.css" />
+
+    
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+
+    
+    <link rel="stylesheet" type="text/css" href="https://jenipapodeminas.mg.gov.br/css/style.css" />
+    </head>
+
+<body class="context">
+
+    
+        <div class="page_institucional">
+        
+        <nav class="navbar navbar-expand-lg" id="navbar" x-data="navbar">
+    <a href="https://jenipapodeminas.mg.gov.br" style="height: 100%;">
+        <img class="navbar-brand img-fluid" style="height: 100%; width: auto; object-fit: cover;"
+            src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/site/brasao.png"
+            alt="Brasão">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="ph-bold ph-list" id="action_icon"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://jenipapodeminas.mg.gov.br"> Home </a>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropMunicipio" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Município </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropMunicipio">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Município </h6>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/cidade"> Cidade </a>
+                            
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/orgaos-municipais"> Órgãos Municipais
+                            </a>
+                            
+
+                                                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/secretarias "> Secretarias </a>
+                            
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/noticias/todas"> Todas as Notícias </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/perguntas-frequentes"> Perguntas
+                                Frequentes </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title">
+                                                                    A Prefeitura
+                                                            </h6>
+                                                                                                                                                                                    <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/gestores">
+                                                Prefeito </a>
+                                                                                                                                                        
+                                                                                                                                                                                                    <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/vices">
+                                                Vice-Prefeito </a>
+                                                                                                                                        
+                                                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/historia"> Historia </a>
+                            
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/estruturas-organizacional"> Estrutura
+                                Administrativa </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/documentos_oficiais"> Documentos
+                                Oficiais </a>
+
+                            
+                                                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/organogramas"> Organograma </a>
+                            
+                            
+                                                            <a class="dropdown-item" href="https:\\jenipapodeminas.mg.gov.br\page\educacao"
+                                    target=&quot;_blank&quot;> Educação </a>
+                                                            <a class="dropdown-item" href="https:\\jenipapodeminas.mg.gov.br\page\saude"
+                                    target=&quot;_blank&quot;> Saúde </a>
+                                                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/page/assistencia-social"
+                                    target=&quot;_blank&quot;> Assistência social </a>
+                                                                                                            </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Cultura </h6>
+
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/turismo"> Turismo </a>
+                            
+                                                            
+                                
+                                
+                                                            
+                                                    </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropServicos" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Serviços </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropServicos">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Serviços </h6>
+
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/concursos-publicos"> Concursos </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/editais"> Editais e Processos
+                                Seletivos </a>
+                                                                                                                                        <a class="dropdown-item"
+                                            href="https://pmjenipapodeminas.cidadesmg.com.br/portaltransparencia" target="_blank"
+                                            rel="noopener"> Portal da Transparência </a>
+                                                                    
+                                
+                                                                    <a class="dropdown-item" href="https://ged.digitaliza.com.br/login"
+                                        target="_blank" rel="noopener"> GED </a>
+                                
+                                
+                                                                    <a class="dropdown-item"
+                                        href="https://jenipapodeminas.sintesenotafiscal.com.br/NFSEWeb/"
+                                        target="_blank" rel="noopener"> Nota Fiscal de Serviço Eletrônica </a>
+                                
+                                                                    <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/designacoes"> Designações
+                                    </a>
+                                                                                                                                    <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/contratos"> Contratos </a>
+                                                            
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/covid/home"> Covid-19 </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/emendas-parlamentares"> Emendas Parlamentares </a>
+
+                                                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/page/programa-de-estagio"
+                                    target=&quot;_blank&quot;> Programa de Estágio </a>
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                             <h6 class="dropdown_title"> Serviços ao cidadão </h6>
+
+                                                    </ul>
+
+                                                    <ul class="dropdown_menu_list">
+                                <h6 class="dropdown_title"> Outros serviços </h6>
+                                                                                                            <a class="dropdown-item" href="https://jenipapodeminas.sintesetecnologia.com.br/portalDeServicos/">Atendimento ao contribuiente</a>
+                                                                                                                                        <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/form">Formulário de Respostas</a>
+                                
+                                                            </ul>
+                                            </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropLegislacao" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Legislação </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropLegislacao">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/todas/Todas%20as%20Leis"> Todas </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/1/Leis%20de%20Diretrizes%20Or%C3%A7ament%C3%A1rias"> Lei
+                                Diretrizes Orçamentárias </a>
+                                                        <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/2/Leis%20Or%C3%A7ament%C3%A1rias%20Anuais"> Lei
+                                Orçamentária Anual </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/3/Planos%20Plurianuais%20"> Plano Plurianual
+                            </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/4/Leis"> Leis </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/5/Leis%20Complementares"> Leis
+                                Complementares </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/15/Leis%20Complementares%20Consolidadas"> Leis
+                                Complementares Consolidadas </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/6/Leis%20Delegadas">
+                                Lei Delegada </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/7/Decretos">
+                                Decretos </a>
+                                    <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/22/Presta%C3%A7%C3%A3o%20de%20Contas">
+                                Prestação de Contas </a>
+                                                                                    <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/8/Portarias%20">
+                                Portarias </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/9/Resolu%C3%A7%C3%B5es%20">
+                                Resoluções </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/10/Proposi%C3%A7%C3%B5es">
+                                Proposição </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/11/Emenda%20da%20Lei%20Org%C3%A2nica"> Emenda da Lei
+                                Orgânica </a>
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/12/Decis%C3%B5es">
+                                Decisão </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            
+
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/convenios"> Convênios </a>
+
+                            
+                                                            <a class="dropdown-item"
+                                    href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/site/IpKpJ3QQrDZjbGCQs6H0guFNujEWiJXHh1edycDw.pdf"
+                                    target="_blank" rel="noopener"> Regimento Interno </a>
+                            
+                                                            <a class="dropdown-item"
+                                    href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/site/9JrdA9kuEJOIPf1hGzVYgfoUGd7bncXQvXJSez9f.pdf"
+                                    target="_blank" rel="noopener"> Lei Orgânica </a>
+                            
+                            
+                            
+                            <a class="dropdown-item" href="http://www.transparencia.mg.gov.br/convenios/convenios-de-saida/convenios-municipios/0/2020/01-01-2020/31-12-2020/403/0"
+                                target="_blank" rel="noopener"> Convenio Estadual </a>
+                            <a class="dropdown-item" href="http://www.portaldatransparencia.gov.br/localidades/3135456-jenipapo-de-minas"
+                                target="_blank" rel="noopener"> Convenio Federal </a>
+
+                            <a class="dropdown-item"
+                                href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm"
+                                target="_blank" rel="noopener"> Lei nº 12.527/2011 </a>
+                            
+                            <a class="dropdown-item"
+                                href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14129.htm"
+                                target="_blank" rel="noopener"> Lei nº 14.129/2021 </a>
+                                                            <a class="dropdown-item"
+                                    href="https://www.almg.gov.br/consulte/legislacao/completa/completa.html?tipo=DEC&num=45969&ano=2012"
+                                    target="_blank" rel="noopener"> Decreto 45.969/2012 </a>
+                            
+                            <a class="dropdown-item" href="https://jenipapodeminas.mg.gov.br/legislacoes/14/Instru%C3%A7%C3%A3o%20Normativa"> Instrução
+                                Normativa </a>
+
+                                                    </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://jenipapodeminas.mg.gov.br/diarios-oficiais"> Diário Oficial </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://jenipapodeminas.mg.gov.br/licitacoes/1"> Licitações </a>
+            </li>
+
+            
+            
+                            <li class="nav-item">
+                    <a class="nav-link" href="https://www.jenipapodeminas.mg.gov.br/noticias/lei-paulo-gustavo-municipio-de-jenipapo-de-minas" target=&quot;_blank&quot;>
+                        Lei Paulo Gustavo </a>
+                </li>
+            
+                            <li class="nav-item">
+                    <a class="nav-link" href="https://www.jenipapodeminas.mg.gov.br/noticias/lei-aldir-blanc-municipio-de-jenipapo-de-minas"> Lei Aldir Blanc </a>
+                </li>
+            
+                                                <li class="nav-item">
+                                                    <a class="nav-link" href="https://jenipapodeminas.mg.gov.br/webmail" target="_blank" rel="noopener">
+                                Webmail </a>
+                                            </li>
+                            
+
+            <!-- item no menu -->
+            <li id="searchToggle" class="nav-item">
+                <a class="nav-link" href="#" x-on:click="showSearch = !showSearch">
+                    <i class="ph-bold ph-magnifying-glass"></i>
+                    <span hidden> Pesquisa </span>
+                </a>
+                <form method="GET" action="https://jenipapodeminas.mg.gov.br/busca" class="drop drop-inline" id="inlineSearchDrop" x-cloak x-show="showSearch & isMobile" x-transition>
+                    <input class="form-control" type="text" placeholder="Pesquise..." minlength="3" name="campobusca">
+                </form>
+            </li>
+
+            <!-- fora da nav (ex: logo abaixo no HTML) -->
+            <div class="drop" x-cloak x-show="showSearch & !isMobile" x-transition>
+                <form method="GET" action="https://jenipapodeminas.mg.gov.br/busca">
+                    <input class="form-control" type="text" placeholder="Pesquise..." minlength="3" name="campobusca">
+                </form>
+            </div>
+
+                    </ul>
+    </div>
+</nav>
+
+
+
+        <main id="main_content">
+            
+            <div class="floating-wrapper">
+    <div class="floating-sidebar">
+        <a href="https://jenipapodeminas.mg.gov.br/lgpd" class="item" id='lgpd-link'>
+    <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="283.46px" height="283.46px" viewBox="0 0 283.46 283.46" enable-background="new 0 0 283.46 283.46" xml:space="preserve">
+<ellipse fill="#307FE8" cx="143.693" cy="140.938" rx="138.752" ry="138.014"/>
+<path fill="#808080" d="M-341,226.604"/>
+<g>
+	<g>
+		<g>
+			<defs>
+				<path id="SVGID_1_" d="M49.042,187.308h180.471c0,0,29.289-1.868,30.159-26.671c0,0,0.751-20.688-24.8-29.787
+					c0,0,2.368-27.544-29.539-24.304c0,0-15.828-40.134-48.355-11.467c0,0-11.469-27.172-46.366-21.811
+					c0,0-29.289,3.739-31.906,39.259c0,0-31.408-1.744-24.18,29.412c0,0-25.05-1.119-26.795,20.193
+					C27.731,162.133,26.235,182.074,49.042,187.308z"/>
+			</defs>
+			<use xlink:href="#SVGID_1_"  overflow="visible" fill="#F2691D"/>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  overflow="visible"/>
+			</clipPath>
+		</g>
+	</g>
+	<g>
+		<g>
+			<path id="SVGID_3_" fill="#FFFFFF" d="M229.579,189.409H48.804l-0.232-0.054c-12.631-2.899-18.207-10.166-20.661-15.753
+				c-2.657-6.049-2.291-11.4-2.274-11.625c0.725-8.858,5.369-15.453,13.432-19.091c4.868-2.195,9.846-2.832,12.893-2.999
+				c-1.513-8.535-0.238-15.424,3.8-20.507c6.064-7.633,16.615-8.809,21.022-8.95c1.861-17.92,10.551-27.583,17.649-32.569
+				c7.812-5.49,15.266-6.588,15.883-6.671c3.122-0.479,6.196-0.722,9.137-0.722c15.172,0,25.081,6.438,30.723,11.839
+				c3.746,3.587,6.14,7.169,7.458,9.467c7.447-6.052,14.694-9.117,21.57-9.117c16.201,0,25.092,16.557,27.451,21.666
+				c1.265-0.094,2.499-0.141,3.683-0.141c8.826,0,15.657,2.565,20.301,7.625c5.653,6.16,6.354,14.193,6.373,17.599
+				c12.884,4.99,18.927,12.947,21.738,18.847c3.191,6.696,3.03,12.229,3.021,12.46c-0.386,10.97-6.125,19.428-16.596,24.454
+				c-7.713,3.701-15.216,4.218-15.529,4.238L229.579,189.409z M49.282,185.209h180.151c0.692-0.055,7.384-0.662,14.029-3.88
+				c9.033-4.373,13.78-11.361,14.111-20.767c0.023-0.78,0.291-19.296-23.407-27.734l-1.525-0.544l0.139-1.614
+				c0.007-0.092,0.706-9.579-5.261-16.049c-4.581-4.971-12.023-6.997-21.976-5.987l-1.579,0.162l-0.585-1.479
+				c-0.08-0.203-8.298-20.46-24.177-20.46c-6.448,0-13.461,3.296-20.839,9.798l-2.188,1.928l-1.133-2.688
+				c-0.023-0.049-2.349-5.411-7.903-10.679c-7.377-7-16.693-10.549-27.687-10.549c-2.736,0-5.603,0.227-8.522,0.676l-0.053,0.008
+				c-0.065,0.009-7.04,0.977-14.186,6.054c-9.515,6.762-14.861,17.284-15.893,31.278l-0.152,2.056l-2.059-0.114
+				c-0.025-0.001-0.301-0.015-0.768-0.015c-3.028,0-13.329,0.531-18.772,7.383c-3.593,4.521-4.427,11.074-2.478,19.473l0.625,2.695
+				l-2.764-0.123c-0.021-0.002-0.213-0.009-0.544-0.009c-3.768,0-22.641,0.882-24.064,18.273
+				C29.774,163.023,28.819,180.381,49.282,185.209z"/>
+		</g>
+		<g>
+			<defs>
+				<path id="SVGID_4_" d="M229.579,189.409H48.804l-0.232-0.054c-12.631-2.899-18.207-10.166-20.661-15.753
+					c-2.657-6.049-2.291-11.4-2.274-11.625c0.725-8.858,5.369-15.453,13.432-19.091c4.868-2.195,9.846-2.832,12.893-2.999
+					c-1.513-8.535-0.238-15.424,3.8-20.507c6.064-7.633,16.615-8.809,21.022-8.95c1.861-17.92,10.551-27.583,17.649-32.569
+					c7.812-5.49,15.266-6.588,15.883-6.671c3.122-0.479,6.196-0.722,9.137-0.722c15.172,0,25.081,6.438,30.723,11.839
+					c3.746,3.587,6.14,7.169,7.458,9.467c7.447-6.052,14.694-9.117,21.57-9.117c16.201,0,25.092,16.557,27.451,21.666
+					c1.265-0.094,2.499-0.141,3.683-0.141c8.826,0,15.657,2.565,20.301,7.625c5.653,6.16,6.354,14.193,6.373,17.599
+					c12.884,4.99,18.927,12.947,21.738,18.847c3.191,6.696,3.03,12.229,3.021,12.46c-0.386,10.97-6.125,19.428-16.596,24.454
+					c-7.713,3.701-15.216,4.218-15.529,4.238L229.579,189.409z M49.282,185.209h180.151c0.692-0.055,7.384-0.662,14.029-3.88
+					c9.033-4.373,13.78-11.361,14.111-20.767c0.023-0.78,0.291-19.296-23.407-27.734l-1.525-0.544l0.139-1.614
+					c0.007-0.092,0.706-9.579-5.261-16.049c-4.581-4.971-12.023-6.997-21.976-5.987l-1.579,0.162l-0.585-1.479
+					c-0.08-0.203-8.298-20.46-24.177-20.46c-6.448,0-13.461,3.296-20.839,9.798l-2.188,1.928l-1.133-2.688
+					c-0.023-0.049-2.349-5.411-7.903-10.679c-7.377-7-16.693-10.549-27.687-10.549c-2.736,0-5.603,0.227-8.522,0.676l-0.053,0.008
+					c-0.065,0.009-7.04,0.977-14.186,6.054c-9.515,6.762-14.861,17.284-15.893,31.278l-0.152,2.056l-2.059-0.114
+					c-0.025-0.001-0.301-0.015-0.768-0.015c-3.028,0-13.329,0.531-18.772,7.383c-3.593,4.521-4.427,11.074-2.478,19.473l0.625,2.695
+					l-2.764-0.123c-0.021-0.002-0.213-0.009-0.544-0.009c-3.768,0-22.641,0.882-24.064,18.273
+					C29.774,163.023,28.819,180.381,49.282,185.209z"/>
+			</defs>
+			<clipPath id="SVGID_5_">
+				<use xlink:href="#SVGID_4_"  overflow="visible"/>
+			</clipPath>
+			<g clip-path="url(#SVGID_5_)">
+				<polygon fill="#FFFFFF" points="143.693,98.078 143.693,159.216 201.098,128.647 				"/>
+				<polygon fill="#FFFFFF" points="143.693,159.216 143.693,220.354 201.098,189.787 				"/>
+				<polygon fill="#FFFFFF" points="143.693,36.94 143.693,98.078 201.098,67.508 				"/>
+				<polygon fill="#FFFFFF" points="201.098,128.647 201.098,189.787 143.693,159.216 				"/>
+				<polygon fill="#FFFFFF" points="201.098,67.507 201.098,128.648 143.693,98.078 				"/>
+				<polygon fill="#FFFFFF" points="143.693,98.078 143.693,159.216 86.285,128.647 				"/>
+				<polygon fill="#FFFFFF" points="143.693,159.216 143.693,220.354 86.285,189.787 				"/>
+				<polygon fill="#FFFFFF" points="143.693,36.94 143.693,98.078 86.285,67.508 				"/>
+				<polygon fill="#FFFFFF" points="86.285,128.647 86.285,189.787 143.693,159.216 				"/>
+				<polygon fill="#FFFFFF" points="86.285,67.507 86.285,128.648 143.693,98.078 				"/>
+				<polygon fill="#FFFFFF" points="258.505,98.078 258.505,159.216 201.098,128.647 				"/>
+				<polygon fill="#FFFFFF" points="258.505,159.216 258.505,220.354 201.098,189.787 				"/>
+				<polygon fill="#FFFFFF" points="201.098,128.647 201.098,189.787 258.505,159.216 				"/>
+				<polygon fill="#FFFFFF" points="201.098,67.507 201.098,128.648 258.505,98.078 				"/>
+				<polygon fill="#FFFFFF" points="28.878,99.369 28.878,160.506 86.285,129.937 				"/>
+				<polygon fill="#FFFFFF" points="28.878,160.506 28.878,221.647 86.285,191.077 				"/>
+				<polygon fill="#FFFFFF" points="86.285,129.937 86.285,191.077 28.878,160.506 				"/>
+				<polygon fill="#FFFFFF" points="86.285,68.8 86.285,129.939 28.878,99.369 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<path fill="#FFFFFF" d="M88.927,153.978h11.721v9.202H76.767V124.4h12.16V153.978z"/>
+		<path fill="#FFFFFF" d="M128.253,137.654c-0.475-0.766-1.15-1.359-2.026-1.778c-0.876-0.42-1.937-0.631-3.177-0.631
+			c-2.337,0-4.145,0.759-5.422,2.274c-1.279,1.516-1.917,3.587-1.917,6.216c0,3.031,0.712,5.295,2.136,6.793
+			c1.424,1.497,3.615,2.244,6.573,2.244c2.811,0,5.075-1.131,6.792-3.396h-9.694v-8.599h19.772v12.159
+			c-1.679,2.884-3.998,5.358-6.956,7.422c-2.958,2.063-6.701,3.094-11.228,3.094c-4.018,0-7.514-0.83-10.49-2.492
+			c-2.977-1.662-5.258-3.988-6.847-6.983c-1.589-2.994-2.383-6.409-2.383-10.242c0-3.835,0.794-7.249,2.383-10.243
+			c1.588-2.994,3.862-5.321,6.819-6.983s6.426-2.494,10.407-2.494c5.074,0,9.211,1.226,12.405,3.671
+			c3.196,2.447,5.084,5.771,5.669,9.969H128.253L128.253,137.654z"/>
+		<path fill="#FFFFFF" d="M175.686,144.365c-1.131,1.991-2.802,3.57-5.011,4.738c-2.211,1.169-4.884,1.752-8.025,1.752h-4.82v12.325
+			H145.67V124.4h16.981c4.745,0,8.389,1.205,10.927,3.614c2.538,2.411,3.806,5.643,3.806,9.695
+			C177.384,140.157,176.819,142.375,175.686,144.365z M165.061,137.709c0-2.372-1.26-3.56-3.78-3.56h-3.451v7.119h3.451
+			C163.801,141.269,165.061,140.084,165.061,137.709z"/>
+		<path fill="#FFFFFF" d="M208.031,126.864c3.049,1.644,5.395,3.927,7.038,6.847c1.644,2.923,2.466,6.245,2.466,9.969
+			c0,3.689-0.822,7.011-2.466,9.969s-3.989,5.285-7.038,6.984c-3.051,1.697-6.6,2.546-10.654,2.546h-16.158v-38.779h16.158
+			C201.429,124.4,204.98,125.221,208.031,126.864z M202.8,150.088c1.605-1.497,2.409-3.634,2.409-6.409
+			c0-2.774-0.804-4.91-2.409-6.408c-1.607-1.497-3.78-2.246-6.519-2.246h-2.903v17.309h2.903
+			C199.02,152.334,201.193,151.586,202.8,150.088z"/>
+	</g>
+</g>
+</svg>
+</a>
+        <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+        <ul class="item sociais">
+                    <a class="item__flutuante" target="_blank" rel="noopener" href="https://www.instagram.com/prefeiturajenipapodeminas/?igsh=MW8zaWtib2w5Z3FieQ%3D%3D#">
+                <img class="img-fluid" src="https://jenipapodeminas.mg.gov.br/storage/redes_sociais/instagram.svg" alt="...">
+            </a>
+            </ul>
+    </div>
+</div>
+
+
+
+                            <div id="cont_JENIPAPO DE MINAS" class="previsao_tempo none"></div>
+            
+            
+            
+                
+    <section id="home" class="banner" x-data="" x-cloak>
+    <h6 hidden> Home </h6>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                        <img class="carousel__img" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/site/banner.jpg" alt="Banner" />
+                    </div>
+
+                                                                        <div class="carousel-item">
+                                <img class="carousel__img"
+                                    src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/carrossel/IMG-20250206-WA0559%20-%20YLqVLsM5Tm.jpg" alt="" />
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="carousel__img"
+                                    src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/carrossel/IMG-20250206-WA0562%20-%20JuZJ5kXrCZ.jpg" alt="" />
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="carousel__img"
+                                    src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/carrossel/IMG-20250206-WA0560%20-%20BQyfs9uTkh.jpg" alt="" />
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="carousel__img"
+                                    src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/carrossel/IMG-20250206-WA0561%20-%20tYzksS4Drl.jpg" alt="" />
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="carousel__img"
+                                    src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/carrossel/IMG-20250206-WA0563%20-%202TgHEniVZr.jpg" alt="" />
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="carousel__img"
+                                    src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/carrossel/IMG-20250206-WA0564%20-%20Og2n9vRVCz.jpg" alt="" />
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="carousel__img"
+                                    src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/carrossel/IMG-20250206-WA0565%20-%202UdluJQu6o.jpg" alt="" />
+                            </div>
+                                                    <div class="carousel-item">
+                                <img class="carousel__img"
+                                    src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/carrossel/IMG-20250206-WA0566%20-%20q8DY8QoLe4.jpg" alt="" />
+                            </div>
+                                                                        
+                            <div class="carousel__controls">
+                    <a class="carousel-control-prev button__icon" href="#carouselExampleControls" role="button"
+                        data-slide="prev">
+                        
+                        <i class="ph-bold ph-caret-double-left" aria-hidden="true"></i>
+                        <span class="sr-only"> Previous </span>
+                    </a>
+
+                    <a class="carousel-control-next button__icon" href="#carouselExampleControls" role="button"
+                        data-slide="next">
+                        
+                        <i class="ph-bold ph-caret-double-right" aria-hidden="true"></i>
+                        <span class="sr-only"> Next </span>
+                    </a>
+                </div>
+                    </div>
+
+            </div>
+</section>
+    
+    
+
+    
+    <section class="sections-menu">
+    <div class="section-holder container">
+
+        <div class="section">
+            <div class="title-card">
+                <h2 class="title">Acesso Rápido</h2>
+            </div>
+
+            <div class="context">
+                                                            <div class="subcard">
+                            <h5 class="section-title">Geral</h5>
+                            <div class="items-list">
+                                                                                                            <a class="item" href="https://jenipapodeminas.servicosaocidadao.net.br/services"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-megaphone"></i>
+                                            
+                                            
+                                                                                            <span class="label">Ouvidoria</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Ouvidoria
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://jenipapodeminas.servicosaocidadao.net.br/services/e-sic"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-newspaper"></i>
+                                            
+                                            
+                                                                                            <span class="label">Serviço de Informação ao Cidadão (E-SIC)</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Serviço de Informação ao Cidadão (E-SIC)
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://www.jenipapodeminas.mg.gov.br/lgpd"
+                                            target="_self">
+                                            
+                                                                                            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" viewBox="0 0 283.46 283.46">
+  <ellipse cx="143.693" cy="140.938" fill="#307fe8" rx="138.752" ry="138.014"></ellipse>
+  <path fill="gray" d="M-341 226.604"></path>
+  <defs>
+    <path id="SVGID_1_" d="M49.042 187.308h180.471s29.289-1.868 30.159-26.671c0 0 .751-20.688-24.8-29.787 0 0 2.368-27.544-29.539-24.304 0 0-15.828-40.134-48.355-11.467 0 0-11.469-27.172-46.366-21.811 0 0-29.289 3.739-31.906 39.259 0 0-31.408-1.744-24.18 29.412 0 0-25.05-1.119-26.795 20.193 0 .001-1.496 19.942 21.311 25.176"></path>
+  </defs>
+  <use xlink:href="#SVGID_1_" fill="#f2691d" overflow="visible"></use>
+  <clipPath id="SVGID_2_">
+    <use xlink:href="#SVGID_1_" overflow="visible"></use>
+  </clipPath>
+  <path id="SVGID_3_" fill="#fff" d="M229.579 189.409H48.804l-.232-.054c-12.631-2.899-18.207-10.166-20.661-15.753-2.657-6.049-2.291-11.4-2.274-11.625.725-8.858 5.369-15.453 13.432-19.091 4.868-2.195 9.846-2.832 12.893-2.999-1.513-8.535-.238-15.424 3.8-20.507 6.064-7.633 16.615-8.809 21.022-8.95 1.861-17.92 10.551-27.583 17.649-32.569 7.812-5.49 15.266-6.588 15.883-6.671a60.5 60.5 0 0 1 9.137-.722c15.172 0 25.081 6.438 30.723 11.839 3.746 3.587 6.14 7.169 7.458 9.467 7.447-6.052 14.694-9.117 21.57-9.117 16.201 0 25.092 16.557 27.451 21.666a50 50 0 0 1 3.683-.141c8.826 0 15.657 2.565 20.301 7.625 5.653 6.16 6.354 14.193 6.373 17.599 12.884 4.99 18.927 12.947 21.738 18.847 3.191 6.696 3.03 12.229 3.021 12.46-.386 10.97-6.125 19.428-16.596 24.454-7.713 3.701-15.216 4.218-15.529 4.238zm-180.297-4.2h180.151c.692-.055 7.384-.662 14.029-3.88 9.033-4.373 13.78-11.361 14.111-20.767.023-.78.291-19.296-23.407-27.734l-1.525-.544.139-1.614c.007-.092.706-9.579-5.261-16.049-4.581-4.971-12.023-6.997-21.976-5.987l-1.579.162-.585-1.479c-.08-.203-8.298-20.46-24.177-20.46-6.448 0-13.461 3.296-20.839 9.798l-2.188 1.928-1.133-2.688c-.023-.049-2.349-5.411-7.903-10.679-7.377-7-16.693-10.549-27.687-10.549-2.736 0-5.603.227-8.522.676l-.053.008c-.065.009-7.04.977-14.186 6.054-9.515 6.762-14.861 17.284-15.893 31.278l-.152 2.056-2.059-.114c-.025-.001-.301-.015-.768-.015-3.028 0-13.329.531-18.772 7.383-3.593 4.521-4.427 11.074-2.478 19.473l.625 2.695-2.764-.123a11 11 0 0 0-.544-.009c-3.768 0-22.641.882-24.064 18.273-.048.721-1.003 18.079 19.46 22.907"></path>
+  <defs>
+    <path id="SVGID_4_" d="M229.579 189.409H48.804l-.232-.054c-12.631-2.899-18.207-10.166-20.661-15.753-2.657-6.049-2.291-11.4-2.274-11.625.725-8.858 5.369-15.453 13.432-19.091 4.868-2.195 9.846-2.832 12.893-2.999-1.513-8.535-.238-15.424 3.8-20.507 6.064-7.633 16.615-8.809 21.022-8.95 1.861-17.92 10.551-27.583 17.649-32.569 7.812-5.49 15.266-6.588 15.883-6.671a60.5 60.5 0 0 1 9.137-.722c15.172 0 25.081 6.438 30.723 11.839 3.746 3.587 6.14 7.169 7.458 9.467 7.447-6.052 14.694-9.117 21.57-9.117 16.201 0 25.092 16.557 27.451 21.666a50 50 0 0 1 3.683-.141c8.826 0 15.657 2.565 20.301 7.625 5.653 6.16 6.354 14.193 6.373 17.599 12.884 4.99 18.927 12.947 21.738 18.847 3.191 6.696 3.03 12.229 3.021 12.46-.386 10.97-6.125 19.428-16.596 24.454-7.713 3.701-15.216 4.218-15.529 4.238zm-180.297-4.2h180.151c.692-.055 7.384-.662 14.029-3.88 9.033-4.373 13.78-11.361 14.111-20.767.023-.78.291-19.296-23.407-27.734l-1.525-.544.139-1.614c.007-.092.706-9.579-5.261-16.049-4.581-4.971-12.023-6.997-21.976-5.987l-1.579.162-.585-1.479c-.08-.203-8.298-20.46-24.177-20.46-6.448 0-13.461 3.296-20.839 9.798l-2.188 1.928-1.133-2.688c-.023-.049-2.349-5.411-7.903-10.679-7.377-7-16.693-10.549-27.687-10.549-2.736 0-5.603.227-8.522.676l-.053.008c-.065.009-7.04.977-14.186 6.054-9.515 6.762-14.861 17.284-15.893 31.278l-.152 2.056-2.059-.114c-.025-.001-.301-.015-.768-.015-3.028 0-13.329.531-18.772 7.383-3.593 4.521-4.427 11.074-2.478 19.473l.625 2.695-2.764-.123a11 11 0 0 0-.544-.009c-3.768 0-22.641.882-24.064 18.273-.048.721-1.003 18.079 19.46 22.907"></path>
+  </defs>
+  <clipPath id="SVGID_5_">
+    <use xlink:href="#SVGID_4_" overflow="visible"></use>
+  </clipPath>
+  <g fill="#fff" clip-path="url(#SVGID_5_)">
+    <path d="M143.693 98.078v61.138l57.405-30.569zm0 61.138v61.138l57.405-30.567zm0-122.276v61.138l57.405-30.57z"></path>
+    <path d="M201.098 128.647v61.14l-57.405-30.571z"></path>
+    <path d="M201.098 67.507v61.141l-57.405-30.57zm-57.405 30.571v61.138l-57.408-30.569zm0 61.138v61.138l-57.408-30.567zm0-122.276v61.138l-57.408-30.57z"></path>
+    <path d="M86.285 128.647v61.14l57.408-30.571z"></path>
+    <path d="M86.285 67.507v61.141l57.408-30.57zm172.22 30.571v61.138l-57.407-30.569zm0 61.138v61.138l-57.407-30.567z"></path>
+    <path d="M201.098 128.647v61.14l57.407-30.571z"></path>
+    <path d="M201.098 67.507v61.141l57.407-30.57zM28.878 99.369v61.137l57.407-30.569zm0 61.137v61.141l57.407-30.57z"></path>
+    <path d="M86.285 129.937v61.14l-57.407-30.571z"></path>
+    <path d="M86.285 68.8v61.139l-57.407-30.57z"></path>
+  </g>
+  <path fill="#fff" d="M88.927 153.978h11.721v9.202H76.767V124.4h12.16zm39.326-16.324q-.712-1.15-2.026-1.778-1.315-.63-3.177-.631-3.506 0-5.422 2.274-1.918 2.273-1.917 6.216 0 4.546 2.136 6.793 2.136 2.245 6.573 2.244 4.216 0 6.792-3.396h-9.694v-8.599h19.772v12.159q-2.519 4.326-6.956 7.422-4.437 3.094-11.228 3.094-6.026 0-10.49-2.492t-6.847-6.983-2.383-10.242q0-5.752 2.383-10.243 2.383-4.49 6.819-6.983c4.436-2.493 6.426-2.494 10.407-2.494q7.612.002 12.405 3.671 4.793 3.671 5.669 9.969h-12.816zm47.433 6.711q-1.697 2.986-5.011 4.738t-8.025 1.752h-4.82v12.325h-12.16V124.4h16.981q7.119 0 10.927 3.614 3.807 3.617 3.806 9.695 0 3.671-1.698 6.656m-10.625-6.656q0-3.559-3.78-3.56h-3.451v7.119h3.451q3.78.002 3.78-3.559m42.97-10.845q4.573 2.466 7.038 6.847 2.466 4.384 2.466 9.969 0 5.533-2.466 9.969c-2.466 4.436-3.989 5.285-7.038 6.984q-4.575 2.546-10.654 2.546h-16.158V124.4h16.158q6.078 0 10.654 2.464m-5.231 23.224q2.408-2.246 2.409-6.409 0-4.161-2.409-6.408-2.41-2.246-6.519-2.246h-2.903v17.309h2.903q4.109 0 6.519-2.246"></path>
+</svg>
+                                            
+                                            
+                                                                                            <span class="label">LGPD</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    LGPD
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="/licitacoes/1"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-gavel"></i>
+                                            
+                                            
+                                                                                            <span class="label">Licitações</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Licitações
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="/webmail"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-at"></i>
+                                            
+                                            
+                                                                                            <span class="label">Webmail</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Webmail
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://jenipapodeminas.sintesenotafiscal.com.br/NFSEWeb/"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-note"></i>
+                                            
+                                            
+                                                                                            <span class="label">Nota Fiscal</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Nota Fiscal
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://radardatransparencia.atricon.org.br/"
+                                            target="_blank">
+                                            
+                                                                                            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xodm="http://www.corel.com/coreldraw/odm/2003" xml:space="preserve" width="147.664mm" height="153.373mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd" viewBox="0 0 2423.51 2517.2">
+ <defs>
+  <style type="text/css">
+   
+    .fil3 {fill:#164875}
+    .fil2 {fill:#1B5C8B}
+    .fil4 {fill:#1F6D9E}
+    .fil9 {fill:#237EB1}
+    .fil13 {fill:#269087}
+    .fil5 {fill:#2B9DD2}
+    .fil7 {fill:#359D95}
+    .fil8 {fill:#54B7B0}
+    .fil12 {fill:#6AC4BD}
+    .fil11 {fill:#84D1CC}
+    .fil0 {fill:#E6E6E6}
+    .fil6 {fill:#E7A200}
+    .fil10 {fill:#F4CF00}
+    .fil1 {fill:white}
+   
+  </style>
+ </defs>
+ <rect class="fil0" x="-9107.67" y="-2373.7" width="3446.58" height="4874.45"></rect>
+ <g id="Camada_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"></metadata>
+  <path class="fil1" d="M723.27 159.87c-7.42,6.22 -19.29,11.4 -27.06,15.72 -67.36,37.51 -164.3,105.77 -217.38,159.18 -14.33,14.42 -29.03,25 -41.54,40.87 -6.53,8.28 -12.64,13.3 -20.88,21.49l-56.24 66.1c-170.36,226.27 -252.03,470.3 -231.79,763.82 3.53,51.2 17.6,163.21 40.91,208.04 9.28,17.84 19.55,36.41 29.7,52.91 27.34,44.44 103.18,145.65 149.21,185.09 15.34,13.15 28.85,26.44 45.31,39.46 33.51,26.51 58.59,46.78 95.15,69.6l51.23 31.26c10.18,3.19 38.82,18.73 51,24.54 17.53,8.36 33.65,15.53 52.51,22.66 37.22,14.07 76.83,30.16 117.91,37.15 24.98,10.32 100.87,19.91 132.07,22.86 52.83,4.98 103.12,4.53 155.16,1.57 97.17,-12.37 156.75,-19.62 250.94,-55.85 102.99,-39.62 163.05,-77.72 247.56,-140.91l62.78 -52.52c7.91,-7.65 12.28,-13.48 20.26,-19.75 15.88,-12.49 64.37,-66.28 75.31,-80.03 25.09,-31.53 56.03,-80.83 74.94,-117.99 4.22,-8.29 9.21,-20.58 15.42,-25.87 0.34,-5.99 23.44,-53.72 27.98,-65.04 8.84,-22.07 16.54,-43.99 24.44,-67.42 83.34,-247.07 43.17,-534.09 -90.82,-752.76 -33.99,-55.48 -77.75,-112.89 -122.34,-157.74 -8.42,-8.47 -15.14,-15.01 -23.47,-23.66 -7.67,-7.96 -18.32,-13.55 -22.37,-20.85 -11.19,-5.02 -21.78,-16.16 -31.62,-24.04l-91.75 -66.66c-7.41,-1.3 -43.18,-23.25 -51.72,-27.7 -51.93,-27.1 -111.83,-52.11 -169.04,-68.77 -122.51,-35.69 -162.25,-30.18 -281.16,-37.4 28.07,-6.51 116.78,-6.21 148.57,-4.2 104.84,6.61 177.43,11.47 278.93,36.71 21.85,5.43 102.83,25.76 118.64,34.96 23.91,5.33 127.74,49.05 137.91,57.22 18.42,4.92 66.6,34.01 82.99,43.87 82.03,49.36 140.77,97.65 206.33,163.21 77.35,77.35 143.83,168.51 202.64,289.27 93.44,191.88 125.58,382.64 141.67,597.96 5.92,79.14 1.8,160.74 1.8,241.62l3.59 0c0,-11.18 -0.05,-4.46 2.36,-7.06l2.36 -4.71c0.68,-8.23 0.49,-6.92 4.71,-11.77 0.68,-8.23 0.49,-6.92 4.71,-11.77 0.46,-5.46 0.75,-6.38 1.91,-9.86 1.89,-5.66 2.17,-5.54 5.15,-8.97 0.93,-11.21 7.17,-23.64 10.59,-35.32 0,-140.67 -21,-307.33 -49.34,-434.63 -21.81,-98.01 -46.38,-184.17 -84.57,-275.47l-36.39 -83.3c-10.27,-10.36 -16.6,-30.87 -24.51,-44.23 -43.22,-73 -54.11,-92.84 -107.19,-161.13l-29.85 -36.15c-101.48,-110.69 -208.52,-193.23 -348.96,-253.66l-46.69 -20.37c-11.33,-1.46 -33.69,-11.4 -46.74,-15.76 -124.88,-41.66 -243.91,-55.87 -378.21,-62.95 -125.75,-6.63 -326.81,13.36 -442.99,59.17z"></path>
+  <path class="fil2" d="M2319.87 1497.77l-8.02 20.2c-2.8,5.75 -1.47,3.1 -3.73,5.69 -0.45,5.46 -0.75,6.38 -1.91,9.86 -1.89,5.66 -2.17,5.55 -5.15,8.97 -0.68,8.23 -0.49,6.92 -4.71,11.77 -0.68,8.23 -0.49,6.92 -4.71,11.77l-2.36 4.71c0,11.18 0.05,4.47 -2.36,7.06l-2.35 4.71c0,8.11 1.01,2.88 -3.59,4.71 0.3,16.73 -21.2,53.71 -29.22,70.86 -18.91,40.44 -37.68,63.67 -49.75,86.76l-83 114.77c-7,7.19 -1.87,5.67 -11.34,14.65l-18.06 19.17c-20.74,19.48 -7.28,21.01 -36.76,36.61 -21.29,11.27 -18.17,28.16 -35.13,37.8 -16.64,9.45 -71.15,60.52 -83.94,64.37 -4.66,7.04 -29.21,22.97 -38.25,29.5 -4.45,3.22 -7.61,5.99 -12.27,9.18 -8.83,6.04 -18.01,12.55 -26.92,17.67 -53.88,30.96 -79.68,49.36 -141.97,77.87l-58.13 25.55c2.34,-8.36 4.06,-6.02 5.76,-14.94l-13.7 4.09c10.36,-18.06 26.32,-35.78 39.24,-53.75 12.91,-17.96 25.44,-35.36 38.27,-53.61 12.51,-17.8 24.15,-36.01 36.85,-55.05 9.07,-13.6 29.66,-42.06 34.95,-57.15 -6.04,-2.26 -3.11,-15.32 -3.1,-30.62 0.09,-78.16 -2.98,-475 1.21,-501.72 -6.21,5.29 -11.2,17.57 -15.42,25.87 -18.91,37.17 -49.86,86.47 -74.94,117.99 -10.94,13.75 -59.43,67.54 -75.31,80.03 -7.98,6.27 -12.35,12.1 -20.26,19.75l-62.78 52.52c-84.51,63.2 -144.57,101.3 -247.56,140.91 -94.19,36.23 -153.77,43.47 -250.94,55.85 -5.44,14.14 -2.28,64.62 -2.28,83.02l81.98 -28.43c127.2,-47.72 260.05,-113.67 365.97,-196.16l62.81 -50.09c3.8,-3.7 2.76,-3.76 6.72,-7.05l22.16 -20.31c6.74,-6.02 8.94,-5.35 15.91,-12.3 7.11,-7.09 7.12,-9.57 18.11,-14.07 -2.68,8.36 -0.96,3.95 -3.92,9.12l-16.13 17.19c-59.11,52.25 -84.94,80.28 -157.24,128.01 -5.92,3.91 -8.98,5.36 -13.85,10.4l-1.13 397.96c-14.06,6.33 -42.09,4.67 -54.14,11.71l0 16.48c25.36,0 47.09,-3.89 69.9,-7.73 21.22,-3.57 43.37,-7.16 65.59,-12.1 104.05,-23.14 148.24,-41.22 237.42,-78.06 37.25,-15.38 70.32,-34.55 104.23,-53.51 33.74,-18.87 64.59,-39.08 94.89,-60.49 15.14,-10.7 29.31,-22.03 44.41,-33.28l32.58 -26.28c4.75,-4.02 5.86,-5.99 11.12,-10.07 35.95,-27.92 104.84,-101.1 136.1,-139.36 6.43,-7.87 11.31,-14.42 17.75,-22.27 12.23,-14.88 21.73,-29.11 33.14,-44.55 28.08,-37.98 51.62,-79.51 74.11,-121.3l25.88 -51.81c45.37,-90.18 87.12,-239.75 95.71,-339.85 0.95,-11.02 1.51,-22.61 3.08,-34.59 3.44,-26.36 3.92,-86.8 4.07,-116.04 0.42,-81.14 -17.67,-179.25 -36.69,-257.61l-3.19 -10.93c-2.57,-5.97 -0.62,-1.83 -2.49,-4.55 2.17,14.87 6.95,30.29 10.46,46.14 25.19,113.71 30.39,233.67 20.03,349.17 -5.83,65.01 -18.25,123.71 -33.85,185.31 -10.83,42.75 -36.43,122.47 -56.56,157.51l-1.34 -83.63z"></path>
+  <path class="fil3" d="M1795.74 1429.25c-4.19,26.71 -1.13,423.56 -1.21,501.72 -0.02,15.3 -2.95,28.36 3.1,30.62l6.33 -7.15c2.83,-4.57 3.42,-5.93 6.17,-10.52 59.72,-99.7 112.64,-200.33 152.97,-310.94 45.36,-124.4 82.86,-262.35 82.77,-413.02 -0.13,-222.96 -54.82,-399.36 -169.02,-574.07 -16.91,-25.87 -34.09,-48.78 -52.28,-72.49 -18.08,-23.56 -37.44,-45.09 -55.02,-66.74 -14.73,-6.41 -10.3,-8.24 -19.42,-18.94 -5.25,-6.15 -12.74,-13.97 -17.07,-20.85 -7.93,-3.04 -16.15,-13.66 -22.26,-19.82l-45.73 -43.68c-8.05,-7.81 -14.27,-13.67 -23.17,-20.65 -10.15,-5.38 -19.37,-14.46 -28.29,-21.96 -3.83,-3.22 -22.06,-19.29 -24.43,-18.98 4.04,7.3 14.7,12.89 22.37,20.85 8.33,8.65 15.05,15.19 23.47,23.66 44.59,44.85 88.34,102.26 122.34,157.74 133.99,218.68 174.17,505.69 90.82,752.76 -7.91,23.44 -15.6,45.36 -24.44,67.42 -4.53,11.32 -27.63,59.06 -27.98,65.04z"></path>
+  <path class="fil4" d="M667.12 1695.2c17.02,17.13 126.14,10.95 158.97,10.97 3.81,-16.86 1.21,-406.68 1.21,-434.42 0,-144.08 3.69,-293.02 -0.19,-436.49l13.44 -1.86 0 -204.41 -175 0.06c0,178.14 0,356.28 0,534.41 0,32.66 -3.05,513.22 1.56,531.76z"></path>
+  <path class="fil5" d="M273.96 1768.74c4.63,2.37 14.08,16.55 20.21,24.26 5.35,6.73 17.03,21.45 19.78,29.34 4.53,2.81 22.76,27.03 28.24,33.32 11.56,13.24 20.16,22.61 30.83,35.12 13.93,16.33 58.76,52.95 65.1,67.57 5.98,2.54 3.5,1.9 8.99,6.56 44.99,38.25 84.98,72.37 134.99,104.99 8.99,5.86 16.35,9.39 21.87,16.46 7.27,4.3 12.27,7.92 20.01,12.53 8.17,4.86 14.79,8.73 22.21,13.37 1.3,-2.62 8.07,-25.66 -3.28,-34.59 -13.56,-10.66 -95.77,-61.97 -101.42,-75.13 -4.33,-10.1 0.13,-161.76 -1.63,-189.14l-51.23 -31.26c-36.56,-22.82 -61.64,-43.09 -95.15,-69.6 -16.46,-13.02 -29.97,-26.32 -45.31,-39.46 -46.02,-39.44 -121.86,-140.65 -149.21,-185.09 -10.15,-16.49 -20.42,-35.07 -29.7,-52.91 -23.31,-44.83 -37.38,-156.84 -40.91,-208.04 -20.24,-293.53 61.43,-537.55 231.79,-763.82l56.24 -66.1c8.24,-8.19 14.35,-13.21 20.88,-21.49 12.52,-15.87 27.21,-26.45 41.54,-40.87 53.08,-53.41 150.02,-121.67 217.38,-159.18 7.77,-4.33 19.63,-9.51 27.06,-15.72l-14.97 3.07c0.43,-0.48 1.06,-1.05 1.4,-1.34 34.31,-29.59 192.2,-94.84 235.02,-107.32l87.53 -25.63c-13.53,0 -58.67,11.62 -74.14,15.51 -41.25,10.37 -96.44,27.9 -135.58,43.35 -116.84,46.09 -263.01,126.25 -352.58,210.11l-58.86 54.15c-30.97,31.22 -79.76,87.79 -104.83,121.19 -110.23,146.87 -188.59,322.88 -213.71,506.72 -3.29,24.11 -8.02,54.69 -9.28,80.18 -4.48,89.89 -3.32,166.94 10.74,255.31 13.36,83.97 47.14,204.28 82.63,277.59 25.24,52.15 47.05,98.2 79.44,146.59 5.39,8.06 15.71,20.81 17.9,29.4z"></path>
+  <path class="fil6" d="M2148.41 694.95l36.39 83.3c38.19,91.3 62.76,177.46 84.57,275.47 28.33,127.3 49.34,293.96 49.34,434.63l1.16 9.42 1.34 83.63c20.13,-35.04 45.73,-114.76 56.56,-157.51 15.6,-61.6 28.02,-120.3 33.85,-185.31 10.36,-115.5 5.16,-235.47 -20.03,-349.17 -3.51,-15.85 -8.29,-31.28 -10.46,-46.14 -0.43,-16.17 -31.21,-101.77 -38.69,-121.43l-36.71 -83.36c-31.08,-63.31 -64.09,-121.4 -106.56,-178.32 -6.95,-9.32 -30.07,-40.84 -37.23,-45.38l-10.78 210.47c-1.75,11.58 -3.41,59.8 -2.76,69.72z"></path>
+  <path class="fil7" d="M1714.38 2166.45c62.29,-28.51 88.09,-46.91 141.97,-77.87 8.91,-5.12 18.1,-11.63 26.92,-17.67 4.66,-3.19 7.82,-5.97 12.27,-9.18 9.03,-6.53 33.59,-22.46 38.25,-29.5l235.58 -362.18c7.66,-11.79 15.07,-21.9 22.62,-33.85l85.54 -132.58c0.01,4.33 -0.42,11.53 -0.12,15.54l3.95 13.54c-3.22,-49.49 -2.54,-102.46 -7.49,-157.4 -4.56,-50.57 -10.12,-96.62 -16.78,-145.94l-218.38 338.04c-6.39,10.48 -12.08,17.99 -18.82,28.28 -19.34,29.56 -37.66,54.09 -48.76,87.01 -28.73,85.25 -67.87,181.53 -111.84,258.16 -40.8,71.11 -93.4,161.63 -144.92,225.62z"></path>
+  <path class="fil8" d="M1641.89 382.71c8.9,6.98 15.12,12.84 23.17,20.65l45.73 43.68c6.12,6.16 14.33,16.78 22.26,19.82l75.43 -116.09c12.53,3.37 108.34,82.78 117.34,104.54 7.2,10.74 24.64,26.75 34.54,38.79 11.69,14.21 22.93,26.99 33.87,41.6 11.15,14.9 20.77,28.56 31.96,43.42 38.12,50.66 112.6,189.22 129.02,246.61 0.53,0.45 1.13,1.1 1.46,1.49l2.61 3.06c8.58,12.5 53.36,157.18 51.66,167.91l-118.72 184.74c-26.72,39.83 -13.36,27.16 -17.41,46.52 -2.79,13.33 0.13,3.8 -4.13,9.33 -5.67,53.87 -8.92,98.05 -18.66,148.79 -26.66,138.74 -73.42,249.84 -131.52,374.7 -63.98,137.5 -149.26,274.22 -239.18,394.14l-13.62 16.86c-4.76,3.89 2.08,-1.53 -2.75,1.95 -0.29,0.21 -1.23,1.36 -1.44,0.94 -0.21,-0.43 -1,0.58 -1.47,0.91 -1.69,8.92 -3.42,6.58 -5.76,14.94l58.13 -25.55c51.52,-63.99 104.11,-154.51 144.92,-225.62 43.97,-76.63 83.11,-172.91 111.84,-258.16 11.09,-32.92 29.42,-57.45 48.76,-87.01 6.73,-10.29 12.42,-17.8 18.82,-28.28l218.38 -338.04c6.66,49.32 12.22,95.37 16.78,145.94 4.95,54.94 4.27,107.91 7.49,157.4l-1.47 49.84 4.7 0 -1.23 -4.71c0,-80.87 4.12,-162.47 -1.8,-241.62 -16.09,-215.32 -48.24,-406.07 -141.67,-597.96 -58.81,-120.75 -125.29,-211.92 -202.64,-289.27 -65.56,-65.56 -124.3,-113.84 -206.33,-163.21 -16.39,-9.86 -64.57,-38.95 -82.99,-43.87 4.09,9.72 13.09,11.92 28.89,20.9 6.17,3.51 9.26,5.48 14.69,8.76 2.41,1.45 4.7,2.72 7.12,4.55l3.55 3.15c0.16,-0.38 0.63,1.32 1.12,1.17l-56.5 87.75c-5.83,8.6 -5.16,4.66 -4.89,14.52z"></path>
+  <path class="fil9" d="M138.37 1907.42l0 572.11c3.8,9.38 25.81,24.92 34.35,37.67l139.69 -138.91c0,-53.76 -2.67,-550.41 1.53,-555.96 -2.75,-7.89 -14.43,-22.61 -19.78,-29.34 -6.13,-7.71 -15.57,-21.88 -20.21,-24.26l-132.37 133.41c-3.3,4.2 -1.82,1.81 -3.22,5.28z"></path>
+  <path class="fil10" d="M1591.21 179.4l46.69 20.37c140.43,60.43 247.48,142.97 348.96,253.66l29.85 36.15c53.08,68.29 63.97,88.13 107.19,161.13 7.91,13.36 14.25,33.87 24.51,44.23 -0.66,-9.91 1,-58.13 2.76,-69.72l10.78 -210.47c-5.78,-12.11 -40.69,-49.24 -53.36,-61.8 -10.27,-10.17 -16.4,-20.35 -27.17,-29.33 -21.01,-17.5 -37.5,-35.69 -60.86,-54.5l-65.58 -52.14c-11.11,-8.36 -22.05,-16.33 -34.37,-24.49 -24.09,-15.96 -46.36,-29.33 -71.11,-44.26 -6.56,-3.96 -11.48,-5.86 -18.31,-9.94 -7.52,-4.49 -12.4,-7.09 -19.83,-10.78 -13.23,-6.58 -25.37,-12.65 -39.22,-19.64 -33.19,-16.73 -88.8,-37.56 -124.7,-49.53 -13.22,-4.4 -32.01,-12.14 -45.92,-13.24 0,21.93 2.12,45.92 -1.03,67.17 -1.69,11.42 -1.38,21.67 -1.33,34.13 0.06,14.22 -2.36,18.66 -2.12,31.31l-5.81 1.66z"></path>
+  <path class="fil9" d="M646.21 2112.25c57.85,32.75 134.17,71.28 197.19,92.14 10.25,3.39 20.37,6.75 31.81,10.57 41.94,13.98 83.31,25.61 129.97,34.84 42.85,8.48 106.92,20.2 149.3,20.2l0 -14.14 21.2 0 -0.01 -284.87 -42.62 17.15c-34.52,14.37 -76.18,25.32 -109.46,36.67 -6.31,2.15 -14.4,4.13 -21.82,5.05l-0.05 199.8c-80.64,-9.04 -249.71,-75.88 -325.15,-121.41l-7.15 -12.15c-0.05,-0.3 -0.45,-2.43 -0.36,-2.84 1.25,-5.41 -10.18,-1.44 6,-5.7l63.3 -9.23c6.64,-1.29 13.03,-3.48 22.94,-3.74l0 -176.85c-41.08,-6.99 -80.69,-23.08 -117.91,-37.15 -18.86,-7.13 -34.98,-14.3 -52.51,-22.66 -12.18,-5.81 -40.82,-21.35 -51,-24.54 1.77,27.38 -2.7,179.04 1.63,189.14 5.65,13.16 87.86,64.47 101.42,75.13 11.35,8.93 4.58,31.97 3.28,34.59z"></path>
+  <path class="fil9" d="M583.57 1574.39c-4.13,26.05 12.32,59.94 24.97,76.1 12.51,15.97 33.5,38.1 58.58,44.71 -4.61,-18.54 -1.56,-499.09 -1.56,-531.76 0,-178.14 0,-356.27 0,-534.41l-123.94 -0.06 0 202.33 41.4 1.81c4.03,17.59 4.38,724.58 0.55,741.28z"></path>
+  <path class="fil9" d="M1175.66 1970.98l0.01 284.87 -21.2 0 -0 14.14c12.32,5.48 108.68,4.65 136.62,4.76l77.15 -5.26c0.63,-0.12 1.32,-0.36 1.86,-0.5 0.52,-0.13 1.32,-0.52 1.73,-0.64 0.4,-0.12 1.15,-0.39 1.66,-0.71l0 -16.48c12.05,-7.04 40.08,-5.38 54.14,-11.71l1.13 -397.96 -16.32 8.95c-5.39,3.48 -8.29,5.78 -14.09,9.44l-68.86 39.68c-3.66,2.02 -4.67,2.43 -7.76,3.99 -4.18,2.11 -10.75,5.32 -15.9,7.92 -11.19,5.65 -21.96,11.29 -32.74,16.64 -5.22,2.59 -11.37,5.42 -15.89,7.58 -5.1,2.43 -10.66,4.7 -16.1,7.37l-65.46 27.92z"></path>
+  <path class="fil6" d="M1032.25 28.65l-87.53 25.63c-42.82,12.48 -200.7,77.72 -235.02,107.32 -0.34,0.29 -0.96,0.86 -1.4,1.34l14.97 -3.07c116.18,-45.81 317.24,-65.8 442.99,-59.17 134.3,7.08 253.33,21.29 378.21,62.95 13.05,4.35 35.41,14.3 46.74,15.76l5.81 -1.66c-0.23,-12.65 2.18,-17.09 2.12,-31.31 -0.05,-12.46 -0.36,-22.71 1.33,-34.13 3.16,-21.25 1.03,-45.25 1.03,-67.17 -0.43,-0.33 -1.17,-1.31 -1.38,-0.88 -0.22,0.44 -1.11,-0.7 -1.42,-0.85l-27.5 -7.69c-53.28,-13.31 -154.92,-33.13 -207.16,-32.99 -16.17,0.04 -21.61,-2.45 -37.64,-2.39 -26.39,0.11 -53.99,-0.8 -80.18,-0.02 -34.34,1.03 -196.94,19.77 -213.98,28.33z"></path>
+  <path class="fil5" d="M1015.57 1703.81c18.64,-5.07 58.38,-13.48 67.84,-25.24 -3.78,-4.05 -1.67,-0.07 -3,-6.78l-0.15 -1042.85 -64.69 0.03 0 1074.84z"></path>
+  <path class="fil4" d="M1126.95 1648.91c23.73,-17.01 75.45,-95.47 68.9,-145.72 2.65,-22.96 0.86,-402.7 0.86,-436.27 0,-52.24 -3.36,-418.94 1.68,-437.45l-17.73 -0.43 -16.76 0.52c-8.93,6.53 -22.1,4.14 -36.87,4.14l-0.07 1015.2z"></path>
+  <path class="fil11" d="M1841.38 580.05c2.73,5.86 0.98,2.34 4.76,7.05 1.85,2.31 2.12,2.36 4.37,5.1 3.71,4.53 4.53,5.48 8.52,10.24 5.67,6.77 10.96,13.07 16.8,20.87 10.82,14.43 21.82,28.92 32.91,44.9 61.36,88.42 107.9,185.99 134.47,291.32 1.37,5.41 2.26,9.54 3.58,15.11l5.87 13.97c0.29,-10.04 -0.88,-4.62 10.21,-20.98l92.34 -141.89c-16.42,-57.39 -90.9,-195.95 -129.02,-246.61 -11.18,-14.86 -20.8,-28.51 -31.96,-43.42 -10.94,-14.61 -22.18,-27.38 -33.87,-41.6 -9.9,-12.04 -27.35,-28.05 -34.54,-38.79 -10,1.82 -2.5,-2.86 -9.29,5.85l-34.72 54.67c-6.52,10.91 -36.99,54.01 -40.43,64.2z"></path>
+  <path class="fil5" d="M955.8 628.84l0 205.06 -115.23 -0.51 -13.44 1.86c23.71,0 112.27,-2.88 128.58,1.57l0 854.45c25.89,12.81 7.75,18.3 59.86,12.53l0 -1074.84 -59.77 -0.13z"></path>
+  <path class="fil1" d="M1324.49 1098.74c39.7,6.59 78.12,-6.35 100.62,-27.17 22.38,-20.71 38.62,-53.24 37.75,-94.34 -3.28,-45.71 -16.12,-84.23 -56.11,-105.83 -7.8,-4.21 -8.59,-1.84 -13.55,-8.28 -12.86,-0.06 -26.87,-4.69 -45.65,-4.57 -16.57,0.11 -32.8,0.69 -49.44,0.6 -33.12,-0.18 -66.24,-0.34 -99.35,-0.46l0.36 240.05 125.37 0z"></path>
+  <path class="fil5" d="M138.37 2479.53l0 -572.11c-10.41,5.51 -44.64,40.92 -53.11,51.44 -75.35,93.59 -103.71,209.05 -73.14,328.12 14.52,56.52 37.78,95.81 72.13,139.77 8.61,11.02 43.63,47.22 54.13,52.78z"></path>
+  <path class="fil5" d="M583.57 1574.39c3.83,-16.69 3.48,-723.68 -0.55,-741.28l-41.4 -1.81 -0 -202.33c-37.06,-0.88 -75.11,-0.06 -112.28,-0.01 -70.2,0.08 -136.67,-8.65 -136.45,91.86 0.05,25.33 -3.19,93.93 1.13,114.14l287.07 0.16c0,235.16 2.62,484.41 -0.05,719.22 -0.03,2.95 -0.3,9.15 -0.04,11.77 1.22,12.71 -0.94,4.29 2.58,8.28z"></path>
+  <path class="fil4" d="M312.41 2378.29l123.99 -124.78c0,-31.91 -2.84,-288.22 1.72,-295.17 -6.34,-14.62 -51.17,-51.24 -65.1,-67.57 -10.67,-12.52 -19.28,-21.88 -30.83,-35.12 -5.49,-6.29 -23.71,-30.51 -28.24,-33.32 -4.2,5.55 -1.53,502.2 -1.53,555.96z"></path>
+  <path class="fil9" d="M1083.41 1678.58c17,-3.6 32.89,-20.78 43.54,-29.67l0.07 -1015.2c14.77,0 27.94,2.38 36.87,-4.14l-83.63 -0.62 0.15 1042.85c1.34,6.71 -0.77,2.73 3,6.78z"></path>
+  <path class="fil5" d="M1046.25 2005.19c-105.76,29.94 -165.61,46.86 -270.3,66 -7.8,1.43 -19.18,-0.42 -14.65,3.41 -9.91,0.26 -16.3,2.45 -22.94,3.74l-63.3 9.23c-16.18,4.26 -4.75,0.29 -6,5.7 -0.1,0.41 0.31,2.54 0.36,2.84l7.15 12.15c75.44,45.53 244.5,112.37 325.15,121.41l0.05 -199.8c7.42,-0.92 15.51,-2.9 21.82,-5.05 33.28,-11.35 74.94,-22.3 109.46,-36.67l42.62 -17.15 65.46 -27.92c5.44,-2.66 11,-4.93 16.1,-7.37 4.52,-2.16 10.67,-4.99 15.89,-7.58 10.77,-5.36 21.55,-10.99 32.74,-16.64 5.16,-2.6 11.72,-5.81 15.9,-7.92 3.1,-1.56 4.1,-1.97 7.76,-3.99l68.86 -39.68c5.8,-3.66 8.69,-5.96 14.09,-9.44l16.32 -8.95c4.86,-5.04 7.93,-6.49 13.85,-10.4 72.31,-47.73 98.13,-75.76 157.24,-128.01l16.13 -17.19c2.96,-5.16 1.24,-0.76 3.92,-9.12 -10.99,4.51 -11,6.98 -18.11,14.07 -6.97,6.95 -9.17,6.29 -15.91,12.3l-22.16 20.31c-3.97,3.28 -2.92,3.35 -6.72,7.05l-62.81 50.09c-105.93,82.49 -238.78,148.45 -365.97,196.16l-81.98 28.43z"></path>
+  <path class="fil10" d="M1543.09 816.26l4.28 23.43c6.04,8.97 10.17,40.56 10.91,54.56 3.31,12.8 3.35,36.59 4.31,52.6 0.6,10.01 0.26,18.33 -0.35,28.25 -0.46,7.48 0.32,20.47 -2.56,27.03 2.79,20.75 -8.39,77 -13.28,96.37 -8.23,32.55 -19.15,52.88 -29.82,81.31 6.02,6.57 29.93,-27.74 39.84,-38.23l172.48 -188.88c0.43,-52.04 -10.97,-93.18 -28.87,-134.73 -13.73,-31.89 -47.22,-80.41 -69.06,-94.73 -1.12,7.45 -3.88,6.91 -9.21,12.86l-43.5 48.32c-10.47,10.37 -29.67,8.67 -35.18,31.86z"></path>
+  <path class="fil9" d="M761.3 2074.6c-4.53,-3.83 6.86,-1.98 14.65,-3.41 104.69,-19.14 164.54,-36.05 270.3,-66 0,-18.4 -3.16,-68.88 2.28,-83.02 -52.04,2.96 -102.33,3.41 -155.16,-1.57 -31.2,-2.94 -107.09,-12.53 -132.07,-22.86l0 176.85z"></path>
+  <path class="fil6" d="M1516.58 1179.8l-25.16 38.09c-10.53,13.33 -17.55,21.99 -28.53,32.65 -12.4,12.05 -52.87,43.44 -76.58,49.36 -9.94,8.06 -64,23.6 -78.21,21.02 -5.48,3.28 -3.01,2.31 -11.62,3.48 31.94,8.38 142.7,-13.65 174.8,-23.14 53.58,-15.84 97.87,-39.07 134.87,-67.53 76.96,-59.21 121.19,-145.45 122.74,-281.04l-172.48 188.88c-9.91,10.49 -33.83,44.8 -39.84,38.23z"></path>
+  <path class="fil1" d="M1797.63 1961.59c-5.3,15.09 -25.88,43.55 -34.95,57.15 -12.7,19.05 -24.34,37.25 -36.85,55.05 -12.83,18.25 -25.36,35.65 -38.27,53.61 -12.92,17.97 -28.88,35.69 -39.24,53.75l13.7 -4.09c0.47,-0.33 1.26,-1.35 1.47,-0.91 0.21,0.43 1.16,-0.73 1.44,-0.94 4.84,-3.48 -2.01,1.94 2.75,-1.95l13.62 -16.86c89.92,-119.91 175.2,-256.63 239.18,-394.14 58.1,-124.86 104.86,-235.96 131.52,-374.7 9.75,-50.74 12.99,-94.92 18.66,-148.79 2.05,-44.07 1.42,-86.78 -2.06,-129.54 -1.82,-22.44 -3.78,-40.99 -7,-62.21 -2.02,-13.3 -10.09,-47.51 -8.95,-58.42l-5.87 -13.97c-1.31,-5.58 -2.21,-9.7 -3.58,-15.11 -26.57,-105.33 -73.11,-202.91 -134.47,-291.32 -11.09,-15.98 -22.09,-30.46 -32.91,-44.9 -5.84,-7.8 -11.13,-14.1 -16.8,-20.87 -3.99,-4.76 -4.81,-5.71 -8.52,-10.24 -2.25,-2.75 -2.52,-2.8 -4.37,-5.1 -3.78,-4.71 -2.04,-1.18 -4.76,-7.05 -11.78,-13.34 -22.84,-26.22 -35.94,-39.29 -7.18,-7.16 -11.92,-11.32 -18.34,-19.33 -4.2,-5.24 -12.96,-16.94 -17.55,-14.77 17.58,21.65 36.94,43.18 55.02,66.74 18.19,23.71 35.37,46.62 52.28,72.49 114.2,174.71 168.89,351.11 169.02,574.07 0.09,150.68 -37.41,288.63 -82.77,413.02 -40.33,110.61 -93.25,211.24 -152.97,310.94 -2.75,4.59 -3.34,5.95 -6.17,10.52l-6.33 7.15z"></path>
+  <path class="fil12" d="M2052.65 988.61c-1.14,10.91 6.94,45.12 8.95,58.42 3.22,21.22 5.17,39.76 7,62.21 3.48,42.76 4.1,85.47 2.06,129.54 4.26,-5.53 1.35,4 4.13,-9.33 4.05,-19.36 -9.31,-6.68 17.41,-46.52l118.72 -184.74c1.7,-10.73 -43.08,-155.41 -51.66,-167.91l-2.61 -3.06c-0.32,-0.39 -0.93,-1.04 -1.46,-1.49l-92.34 141.89c-11.09,16.36 -9.91,10.95 -10.21,20.98z"></path>
+  <path class="fil13" d="M1933.79 2032.22c12.79,-3.86 67.3,-54.93 83.94,-64.37 16.96,-9.63 13.83,-26.53 35.13,-37.8 29.48,-15.59 16.02,-17.12 36.76,-36.61l18.06 -19.17c9.47,-8.98 4.34,-7.46 11.34,-14.65l83 -114.77c12.06,-23.08 30.84,-46.31 49.75,-86.76 8.02,-17.15 29.52,-54.13 29.22,-70.86l-1.11 -4.71 1.47 -49.84 -3.95 -13.54c-0.3,-4.01 0.14,-11.2 0.12,-15.54l-85.54 132.58c-7.55,11.95 -14.96,22.06 -22.62,33.85l-235.58 362.18z"></path>
+  <path class="fil5" d="M1195.84 1503.19c5.79,-6.16 2.44,-157.64 2.44,-179.73l30.38 2.61c5.13,-3.72 20.49,-9.06 27.57,-13.89 9.68,-6.61 12.36,-13.07 18.75,-23.93 -6.23,-3.01 -2.07,4.64 -3.99,-9.31l0.15 -176.7 53.35 -3.5 -125.37 -0 -0.36 -240.05c2.37,-1.27 0.09,-0.75 5.49,-1.74l43.95 -0.9 0 -217.62c-3.94,-1.74 -5.59,-1.8 -9.17,-3.17 -6.14,-2.35 -1.31,-0.14 -5.66,-2.46 -4.43,-2.37 -3.31,-1.91 -5.77,-4 -14.03,-0.34 -34.77,-4.77 -46.94,0.24l17.73 0.43c-5.04,18.51 -1.68,385.21 -1.68,437.45 0,33.56 1.8,413.3 -0.86,436.27z"></path>
+  <path class="fil8" d="M1308.11 1320.92c14.2,2.58 68.27,-12.96 78.21,-21.02 -4.77,-1.15 -1.63,0.28 -4.29,-2.25l30.54 -50.12c0.26,-0.44 0.63,-1.02 0.89,-1.46l32.05 -52.69c0.37,-0.59 1.39,-2.35 1.75,-2.95 0.26,-0.44 0.61,-1.05 0.87,-1.49l28.94 -51.19c0.26,-0.44 0.7,-0.96 0.97,-1.39l18.47 -30.91c0.27,-0.45 0.63,-1.04 0.9,-1.49l29.62 -48.04c0.27,-0.44 0.64,-1.01 0.91,-1.44l18.89 -33c15.38,-22.6 6.15,-29.2 12.87,-19.34 2.88,-6.56 2.1,-19.55 2.56,-27.03 0.61,-9.92 0.95,-18.24 0.35,-28.25 -0.96,-16.01 -1,-39.8 -4.31,-52.6 -11.37,9.39 -22.49,33.42 -23.93,47.89l-11.86 7.03c-0.68,-3.25 -14.08,20.83 -15.42,23.05l-41.47 69.16c-18.94,31.38 -36.45,61.29 -55.36,92.99l-83.05 138.22c-6.67,11.03 -4.52,16.74 -10.67,27.24 -6.78,11.57 -11.33,16.92 -8.41,21.09z"></path>
+  <path class="fil2" d="M436.41 2253.51l167.58 -167.16c-5.52,-7.07 -12.89,-10.6 -21.87,-16.46 -50.02,-32.62 -90,-66.74 -134.99,-104.99 -5.49,-4.66 -3.02,-4.02 -8.99,-6.56 -4.56,6.95 -1.72,263.26 -1.72,295.17z"></path>
+  <polygon class="fil2" points="840.57,833.4 955.8,833.9 955.8,628.84 840.57,628.98 "></polygon>
+  <path class="fil12" d="M1733.05 466.87c4.33,6.88 11.83,14.7 17.07,20.85 9.12,10.7 4.69,12.53 19.42,18.94 4.59,-2.17 13.35,9.54 17.55,14.77 6.42,8.01 11.16,12.17 18.34,19.33 13.1,13.07 24.16,25.95 35.94,39.29 3.44,-10.19 33.91,-53.3 40.43,-64.2l34.72 -54.67c6.79,-8.72 -0.71,-4.04 9.29,-5.85 -9,-21.76 -104.81,-101.17 -117.34,-104.54l-75.43 116.09z"></path>
+  <path class="fil7" d="M1465.79 251.07l91.75 66.66c9.84,7.88 20.43,19.01 31.62,24.04 2.37,-0.31 20.6,15.76 24.43,18.98 8.92,7.49 18.14,16.58 28.29,21.96 -0.27,-9.87 -0.93,-5.92 4.89,-14.52l56.5 -87.75c-0.49,0.15 -0.96,-1.55 -1.12,-1.17l-3.55 -3.15c-2.42,-1.83 -4.71,-3.1 -7.12,-4.55 -5.43,-3.27 -8.53,-5.25 -14.69,-8.76 -15.8,-8.98 -24.8,-11.18 -28.89,-20.9 -10.17,-8.17 -113.99,-51.89 -137.91,-57.22 1.43,7.5 -25.41,44.09 -31.05,53.31 -10.34,16.9 -6.26,12.14 -13.16,13.08z"></path>
+  <path class="fil12" d="M1462.86 977.23c0.87,41.1 -15.37,73.63 -37.75,94.34 -22.5,20.82 -60.92,33.76 -100.62,27.17 -3.68,66.61 -20.15,139.36 -49.51,189.51 -6.39,10.86 -9.07,17.32 -18.75,23.93 -7.09,4.84 -22.45,10.17 -27.57,13.89 21.33,-1.42 48.96,2.5 67.84,-1.67 8.61,-1.18 6.14,-0.2 11.62,-3.48 -2.91,-4.17 1.63,-9.52 8.41,-21.09 6.15,-10.5 4,-16.21 10.67,-27.24l83.05 -138.22c18.91,-31.69 36.42,-61.61 55.36,-92.99l41.47 -69.16c1.34,-2.22 14.74,-26.3 15.42,-23.05l11.86 -7.03c1.44,-14.47 12.56,-38.5 23.93,-47.89 -0.74,-14 -4.87,-45.59 -10.91,-54.56 -1.2,10.81 -3.82,14.35 -8.11,21.28l-28.02 49.92c-3.22,6.72 -4.73,4.41 -14.34,20.75l-25.3 38.3c-0.23,0.38 -0.56,1.04 -0.79,1.4l-1.49 2.42c-2.62,3.23 -1.18,1.15 -6.46,3.47z"></path>
+  <path class="fil11" d="M1393.2 863.11c4.97,6.44 5.76,4.07 13.55,8.28 39.99,21.6 52.83,60.13 56.11,105.83 5.29,-2.31 3.85,-0.24 6.46,-3.47l1.49 -2.42c0.23,-0.36 0.56,-1.02 0.79,-1.4l25.3 -38.3c9.61,-16.35 11.12,-14.04 14.34,-20.75l28.02 -49.92c4.29,-6.93 6.91,-10.47 8.11,-21.28l-4.28 -23.43c-5.05,-7.28 -15.96,-39.83 -22.14,-52.23 -7.9,-15.88 -18.31,-35.53 -29.25,-44.41 -6.28,3.75 -3.72,2.94 -7.32,8.68l-22 36.85c-0.26,0.43 -0.64,1.01 -0.9,1.45l-51.85 84.65c-4.13,5.29 -0.7,0.84 -4.58,4.86 -8.48,8.78 -4.77,7.21 -11.86,7.01z"></path>
+  <path class="fil13" d="M1465.79 251.07c6.9,-0.95 2.82,3.82 13.16,-13.08 5.64,-9.22 32.47,-45.82 31.05,-53.31 -15.81,-9.21 -96.79,-29.53 -118.64,-34.96 -101.49,-25.24 -174.09,-30.1 -278.93,-36.71 -31.78,-2 -120.49,-2.3 -148.57,4.2 118.91,7.22 158.65,1.71 281.16,37.4 57.21,16.67 117.11,41.67 169.04,68.77 8.53,4.45 44.3,26.4 51.72,27.7z"></path>
+  <path class="fil6" d="M1416.99 658.46c9.12,0.51 6.85,0.95 15.33,5.88 6.53,3.79 8.9,3.58 12.94,10.93 8.98,1.93 19.43,12.12 25.88,18.5 7.09,7.03 16.4,17.02 20.57,25.85 10.94,8.88 21.35,28.53 29.25,44.41 6.17,12.4 17.09,44.95 22.14,52.23 5.51,-23.19 24.71,-21.49 35.18,-31.86l43.5 -48.32c5.33,-5.94 8.09,-5.41 9.21,-12.86 -15.72,-27.29 -97.39,-63.07 -135.08,-72.92 -28.76,-7.51 -55.91,-12.11 -88.51,-15.67 -30.72,-3.35 -67.98,-1.71 -100.1,-5.17 13.09,4.09 41.73,6 58.64,9.64 13.06,2.81 43.82,9.87 51.06,19.35z"></path>
+  <path class="fil4" d="M1248.19 856.05c19.19,-0.82 65.01,6.43 79.28,-0.33l-3.23 -53.03c-7.42,-10.78 -11.61,-121.42 -58.04,-160.76 -9.42,-7.98 -17.59,-7.67 -18.53,-10.33 -0.28,-0.79 -1.12,-0.63 -1.65,-0.99 9.6,-0.01 35.65,1.54 43.93,-1.95l-62.37 0.15c2.46,2.08 1.34,1.63 5.77,4 4.35,2.32 -0.48,0.11 5.66,2.46 3.58,1.37 5.23,1.43 9.17,3.17l0 217.62z"></path>
+  <path class="fil13" d="M1386.32 1299.9c23.71,-5.91 64.18,-37.31 76.58,-49.36 10.97,-10.66 17.99,-19.33 28.53,-32.65l25.16 -38.09c10.67,-28.43 21.59,-48.76 29.82,-81.31 4.89,-19.37 16.08,-75.62 13.28,-96.37 -6.71,-9.86 2.51,-3.26 -12.87,19.34l-18.89 33c-0.27,0.44 -0.64,1.01 -0.91,1.44l-29.62 48.04c-0.27,0.44 -0.63,1.04 -0.9,1.49l-18.47 30.91c-0.27,0.43 -0.7,0.96 -0.97,1.39l-28.94 51.19c-0.27,0.44 -0.61,1.05 -0.87,1.49 -0.36,0.6 -1.38,2.36 -1.75,2.95l-32.05 52.69c-0.26,0.44 -0.63,1.02 -0.89,1.46l-30.54 50.12c2.66,2.53 -0.48,1.1 4.29,2.25z"></path>
+  <path class="fil8" d="M1327.48 855.72c-14.27,6.76 -60.1,-0.48 -79.28,0.33l-43.95 0.9c-5.4,0.99 -3.12,0.46 -5.49,1.74 33.12,0.12 66.23,0.28 99.35,0.46 16.65,0.09 32.87,-0.49 49.44,-0.6 18.78,-0.12 32.79,4.51 45.65,4.57 7.08,0.21 3.38,1.77 11.86,-7.01 3.88,-4.02 0.44,0.43 4.58,-4.86l51.85 -84.65c0.27,-0.44 0.64,-1.01 0.9,-1.45l22 -36.85c3.6,-5.74 1.04,-4.94 7.32,-8.68 -4.17,-8.82 -13.48,-18.82 -20.57,-25.85 -6.44,-6.38 -16.9,-16.58 -25.88,-18.5 -10.52,1.76 -2.93,-2.68 -9.09,7.09 -2.44,3.86 -4.56,7.7 -6.78,12.24l-24.28 41.58c-0.26,0.44 -0.62,1.03 -0.88,1.46l-30.02 50c-1.94,3.18 -2.04,3.44 -3.52,5.92l-30.44 52.12c-5.86,9.75 -2.51,-1.35 -5.31,9.23l-7.45 0.8z"></path>
+  <path class="fil13" d="M1324.25 802.68l25.99 -45.66c0.27,-0.45 0.64,-1.03 0.91,-1.48 0.27,-0.44 0.64,-1.02 0.9,-1.46l23.13 -40.61c0.39,-0.6 2.51,-3.55 2.89,-4.13 0.55,-0.85 2.38,-3.91 2.64,-4.32l15.93 -26.49c0.26,-0.43 0.64,-1 0.9,-1.43 1.57,-2.62 1.63,-2.92 3.42,-6.02 6.34,-10.98 5.37,-10.03 16.03,-12.63 -7.24,-9.49 -38,-16.54 -51.06,-19.35 -16.91,-3.64 -45.55,-5.55 -58.64,-9.64l-17.32 -0.81c-8.29,3.5 -34.33,1.94 -43.93,1.95 0.53,0.36 1.37,0.2 1.65,0.99 0.93,2.66 9.11,2.35 18.53,10.33 46.43,39.33 50.62,149.98 58.04,160.76z"></path>
+  <path class="fil7" d="M1324.25 802.68l3.23 53.03 7.45 -0.8c2.81,-10.58 -0.54,0.52 5.31,-9.23l30.44 -52.12c1.49,-2.49 1.59,-2.75 3.52,-5.92l30.02 -50c0.26,-0.44 0.62,-1.03 0.88,-1.46l24.28 -41.58c2.22,-4.54 4.34,-8.38 6.78,-12.24 6.16,-9.77 -1.43,-5.33 9.09,-7.09 -4.04,-7.35 -6.41,-7.14 -12.94,-10.93 -8.48,-4.93 -6.21,-5.37 -15.33,-5.88 -10.66,2.59 -9.69,1.65 -16.03,12.63 -1.79,3.1 -1.85,3.39 -3.42,6.02 -0.26,0.43 -0.64,1 -0.9,1.43l-15.93 26.49c-0.25,0.41 -2.08,3.47 -2.64,4.32 -0.38,0.58 -2.5,3.52 -2.89,4.13l-23.13 40.61c-0.27,0.44 -0.64,1.02 -0.9,1.46 -0.27,0.45 -0.64,1.03 -0.91,1.48l-25.99 45.66z"></path>
+  <path class="fil2" d="M1274.98 1288.25c29.35,-50.15 45.82,-122.9 49.51,-189.51l-53.35 3.5 -0.15 176.7c1.92,13.95 -2.24,6.3 3.99,9.31z"></path>
+ </g>
+</svg>
+                                            
+                                            
+                                                                                            <span class="label">Radar da  Transparência</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Radar da  Transparência
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="/emendas-parlamentares"
+                                            target="_blank">
+                                            
+                                                                                            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="216.03 328 579.3 381">
+  <path class="qmx-primary" d="M454.78 707.45c-.7.23-54.54.59-119.63.8-100.33.31-118.44.16-118.89-1.02-.77-1.99.55-16.2 2.25-24.28 4.65-22.1 14.57-40.77 30.47-57.32 14.88-15.5 29.29-24.82 47.97-31.02 63.4-21.07 130.15 11.28 151.93 73.62 4.85 13.9 8.54 38.37 5.9 39.22Zm244.22-.91c-9.26 1.94-29.12 2.67-38.5 1.4-15.96-2.15-34.4-8.93-49.22-18.1-11.7-7.23-28.24-23.51-35.89-35.32-11.03-17.03-17.81-36.86-19.04-55.67l-.65-9.85h80.49c44.26 0 98.18-.3 119.8-.67l39.33-.66-.63 10.91c-1.25 21.47-9.37 43.45-22.74 61.49-6.2 8.36-20.57 22.24-28.87 27.87-12.86 8.74-28.43 15.3-44.08 18.6Z"></path>
+  <path class="qmx-secondary" d="M492.8 707.6c-1.86.96-6.26 1.4-14.1 1.4h-11.4l-.61-11.25c-1.67-30.91-15.9-61.54-39.15-84.25-4.51-4.4-10.74-9.8-13.85-12l-5.65-4-.01-130c-.02-128.65 0-130.03 2-133.31 3.65-5.99 5.06-6.19 44.49-6.19h.17c30.78 0 36.75 0 40.58 2.86.93.69 1.73 1.56 2.73 2.63l2.5 2.67v364.68l-2.5 2.67c-1.38 1.48-3.72 3.31-5.2 4.09Zm103.17-.35c-3.11 1.57-7.18 1.75-39.47 1.74-34.16 0-36.17-.1-39.26-1.98-1.79-1.1-4.15-3.46-5.25-5.25-1.97-3.23-1.99-5.04-1.74-184.43l.25-181.17 2.5-2.67c1-1.07 1.8-1.94 2.73-2.63 3.83-2.86 9.8-2.86 40.58-2.86h.17c39.43 0 40.84.2 44.49 6.19 2 3.27 2.02 4.71 2.03 123.06V577h-59.26l.55 16.75c.59 18.42 2.62 28.69 8.67 43.82 8.63 21.62 25.04 43.09 43.25 56.58l6.84 5.08-1.81 3.13c-.99 1.73-3.37 3.93-5.27 4.89Z"></path>
+</svg>
+                                            
+                                            
+                                                                                            <span class="label">Emendas Parlamentares</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Emendas Parlamentares
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://acompanhe-emendas-ia.tce.mg.gov.br/"
+                                            target="_blank">
+                                            
+                                                                                            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="216.03 328 579.3 381">
+  <path class="qmx-primary" d="M454.78 707.45c-.7.23-54.54.59-119.63.8-100.33.31-118.44.16-118.89-1.02-.77-1.99.55-16.2 2.25-24.28 4.65-22.1 14.57-40.77 30.47-57.32 14.88-15.5 29.29-24.82 47.97-31.02 63.4-21.07 130.15 11.28 151.93 73.62 4.85 13.9 8.54 38.37 5.9 39.22Zm244.22-.91c-9.26 1.94-29.12 2.67-38.5 1.4-15.96-2.15-34.4-8.93-49.22-18.1-11.7-7.23-28.24-23.51-35.89-35.32-11.03-17.03-17.81-36.86-19.04-55.67l-.65-9.85h80.49c44.26 0 98.18-.3 119.8-.67l39.33-.66-.63 10.91c-1.25 21.47-9.37 43.45-22.74 61.49-6.2 8.36-20.57 22.24-28.87 27.87-12.86 8.74-28.43 15.3-44.08 18.6Z"></path>
+  <path class="qmx-secondary" d="M492.8 707.6c-1.86.96-6.26 1.4-14.1 1.4h-11.4l-.61-11.25c-1.67-30.91-15.9-61.54-39.15-84.25-4.51-4.4-10.74-9.8-13.85-12l-5.65-4-.01-130c-.02-128.65 0-130.03 2-133.31 3.65-5.99 5.06-6.19 44.49-6.19h.17c30.78 0 36.75 0 40.58 2.86.93.69 1.73 1.56 2.73 2.63l2.5 2.67v364.68l-2.5 2.67c-1.38 1.48-3.72 3.31-5.2 4.09Zm103.17-.35c-3.11 1.57-7.18 1.75-39.47 1.74-34.16 0-36.17-.1-39.26-1.98-1.79-1.1-4.15-3.46-5.25-5.25-1.97-3.23-1.99-5.04-1.74-184.43l.25-181.17 2.5-2.67c1-1.07 1.8-1.94 2.73-2.63 3.83-2.86 9.8-2.86 40.58-2.86h.17c39.43 0 40.84.2 44.49 6.19 2 3.27 2.02 4.71 2.03 123.06V577h-59.26l.55 16.75c.59 18.42 2.62 28.69 8.67 43.82 8.63 21.62 25.04 43.09 43.25 56.58l6.84 5.08-1.81 3.13c-.99 1.73-3.37 3.93-5.27 4.89Z"></path>
+</svg>
+                                            
+                                            
+                                                                                            <span class="label">Acompanhar Emendas - TCE</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Acompanhar Emendas - TCE
+                                                </span>
+                                            
+                                        </a>
+                                                                                                </div>
+                        </div>
+                                                                                <div class="subcard">
+                            <h5 class="section-title">Transparência</h5>
+                            <div class="items-list">
+                                                                                                            <a class="item" href="https://pmjenipapodeminas.cidadesmg.com.br/portaltransparencia/"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-file-magnifying-glass"></i>
+                                            
+                                            
+                                                                                            <span class="label">Transparência Municipal</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Transparência Municipal
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://jenipapodeminas.mg.gov.br/transparencia/sobre"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-file-magnifying-glass"></i>
+                                            
+                                            
+                                                                                            <span class="label">Sobre o Portal</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Sobre o Portal
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://www.tce.mg.gov.br/processo"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-file-magnifying-glass"></i>
+                                            
+                                            
+                                                                                            <span class="label">Prestação de Contas Anual</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Prestação de Contas Anual
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://cidadesmg.com.br/portaltransparencia/faces/user/portal.xhtml?Param=JenipapoMinas"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-file-magnifying-glass"></i>
+                                            
+                                            
+                                                                                            <span class="label">Transparência Antigo</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Transparência Antigo
+                                                </span>
+                                            
+                                        </a>
+                                                                                                </div>
+                        </div>
+                                                </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!--| SOBRE |-->
+<section class="sobre">
+    <h6 hidden> Sobre </h6>
+
+    <div class="container">
+        <div class="sobre_content">
+            <div class="sobre_content">
+                            </div>
+
+                                    <div class="sobre_right">
+                                                                        <div class="div_title">
+                                <span> Gerência </span>
+                                <h3 class="title"> Administração 2025 - 2028 </h3>
+                            </div>
+
+                            <div class="sobre_container">
+                                                                    <div class="sobre_text">
+                                        <a aria-label="Abrir detalhes" href="https://jenipapodeminas.mg.gov.br/gestores"></a>
+
+                                        <img class="image__gerencia" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/gestor/Edson%20Honorato%20Figueir%C3%B3%20-%20RiROYYJp5E.jpg" alt="Edson Honorato Figueiró">
+
+                                        <div>
+                                            <h2 class="title"> Prefeito </h2><hr>
+                                            <p> Edson Honorato Figueiró <br> Nascimento: 22/12/1953 </p>
+                                        </div>
+                                    </div>
+                                                                    <div class="sobre_text">
+                                        <a aria-label="Abrir detalhes" href="https://jenipapodeminas.mg.gov.br/vices"></a>
+
+                                        <img class="image__gerencia" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/gestor/Kennedy%20Geraldo%20Guedes%20-%20Ekv3w3i2Oq.jpg" alt="Kennedy Geraldo Guedes">
+
+                                        <div>
+                                            <h2 class="title"> Vice-Prefeito </h2><hr>
+                                            <p> Kennedy Geraldo Guedes <br> Nascimento: 18/11/1981 </p>
+                                        </div>
+                                    </div>
+                                                            </div>
+                                                            </div>
+                            </div>
+    </div>
+</section>
+    
+    
+    
+    <section class="noticias" id="noticias">
+    <h6 hidden> Noticias </h6>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="div_title">
+                    <span> </span>
+                    <h3 class="title"> Notícias & Eventos </h3>
+                    <hr>
+                    <p> Fique por dentro de tudo que acontece no município, novidades, eventos, notícias e outros. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="min-height: 80vh; gap: 1rem; height: fit-content;">
+                            
+                
+                                                            <a href="https://jenipapodeminas.mg.gov.br/noticias/2026-processo-de-eleicao-dos-conselheiros-representantes-da-sociedade-civil-conselho-municipal-de-cultura-de-jenipapo-de-minas" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>12</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/2026%20%7C%20PROCESSO%20DE%20ELEI%C3%87%C3%83O%20DOS%20CONSELHEIROS%20REPRESENTANTES%20DA%20SOCIEDADE%20CIVIL%20-%20CONSELHO%20MUNICIPAL%20DE%20CULTURA%20%20-%20750YcxYDLd.png"
+                            alt="Capa da notícia: 2026 | PROCESSO DE ELEIÇÃO DOS CONSELHEIROS REPRESEN..." />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">2026 | PROCESSO DE ELEIÇÃO DOS CONSELHEIROS REPRESEN...</h3>
+
+            <div class="desc">
+                <p><strong>Convoca&ccedil;&atilde;o Conselho Municipal de Cultura</strong></p>
+<p><strong>Edital,&nbsp;Clique aqui</strong></p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://jenipapodeminas.mg.gov.br/noticias/lei-aldir-blanc-municipio-de-jenipapo-de-minas" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>09</span>
+                <span>Nov</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/LEI%20ALDIR%20BLANC%20-%20MUNIC%C3%8DPIO%20DE%20JENIPAPO%20DE%20MINAS%20-%205bnGgf1NoP.png"
+                            alt="Capa da notícia: LEI ALDIR BLANC - MUNICÍPIO DE JENIPAPO DE MINAS" />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/LEI%20ALDIR%20BLANC%20-%20MUNIC%C3%8DPIO%20DE%20JENIPAPO%20DE%20MINAS%20-%202zXnXqqVRa%20-%20UNCJrI0KZY.jpeg"
+                                alt="Imagem da galeria: LEI ALDIR BLANC - MUNICÍPIO DE JENIPAPO DE MINAS" />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/Jenipapo%20-%20Cronograma%20-%20vysx0EmBE2.png"
+                                alt="Imagem da galeria: LEI ALDIR BLANC - MUNICÍPIO DE JENIPAPO DE MINAS" />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">LEI ALDIR BLANC - MUNICÍPIO DE JENIPAPO DE MINAS</h3>
+
+            <div class="desc">
+                <p>&nbsp;</p>
+<p style="text-align: center;"><strong>Chamamento P&uacute;blico N&ordm;01/2026 - Premia&ccedil;&atilde;o Cultural:</strong></p>
+
+<strong>03. Resultado Final,&nbsp;Clique aqui</strong>
+02. Resultados Preliminares, Clique aqui
+
+<p style="text-align: left;"><strong>Link para inscri&ccedil;&otilde;es -&nbsp;&nbsp;https://forms.gle/rEwz2a788mFtdixYA</strong></p>
+<p><strong>01. Edital,&nbsp;Clique aqui</strong></p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo I</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo II</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo III</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo IV</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo V</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo VI</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo VII</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo VIII</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo IX</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo X</p>
+
+02. Resultados Preliminares, Clique aqui
+
+<p>&nbsp;</p>
+<p style="text-align: center;"><strong>Chamamento P&uacute;blico N&ordm;02/2026 - Execu&ccedil;&atilde;o Cultural:</strong></p>
+
+<strong>03. Resultado Final,&nbsp;Clique aqui</strong>
+02. Resultados Preliminares, Clique aqui
+
+<p style="text-align: left;">Link para inscri&ccedil;&otilde;es -&nbsp;https://forms.gle/btbrFgJjsD67ihMn9</p>
+<p style="text-align: left;"><span class="selectable-text copyable-text xkrh14z x1sdyfia xss6m8b">01.</span><span class="selectable-text copyable-text xkrh14z"> Edital,&nbsp;Clique aqui</span></p>
+
+&nbsp;Anexo I
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo II</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo III</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo IV</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo V</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6"><span class="selectable-text copyable-text xkrh14z">Anexo VI</span></p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo VII</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo VIII</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo IX</p>
+
+
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">Anexo X</p>
+
+
+<p style="text-align: center;"><strong>________________________________________________</strong></p>
+<p><strong>Etapa de Consulta - Lei Aldir Blanc 2, Clique aqui</strong></p>
+<p><strong>Plano Anual de Aplica&ccedil;&atilde;o dos Recursos - PAAR 2024, Clique aqui</strong></p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>Cultura</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://jenipapodeminas.mg.gov.br/noticias/nossa-historia-comeca-pelo-conhecimento-e-continua-atraves-das-novas-geracoes" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>07</span>
+                <span>Oct</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/NOSSA%20HIST%C3%93RIA%20COME%C3%87A%20PELO%20CONHECIMENTO%20E%20CONTINUA%20ATRAV%C3%89S%20DAS%20NOVAS%20GERA%C3%87%C3%95ES%21%20-%20FQkONGlRiM.jpeg"
+                            alt="Capa da notícia: NOSSA HISTÓRIA COMEÇA PELO CONHECIMENTO E CONTINUA A..." />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/WhatsApp%20Image%202026-10-07%20at%2011.00.22%20-%208LvIlQ6Iq8.jpeg"
+                                alt="Imagem da galeria: NOSSA HISTÓRIA COMEÇA PELO CONHECIMENTO E CONTINUA A..." />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">NOSSA HISTÓRIA COMEÇA PELO CONHECIMENTO E CONTINUA A...</h3>
+
+            <div class="desc">
+                <p>🏛️💚 Nossa hist&oacute;ria come&ccedil;a pelo conhecimento e continua atrav&eacute;s das novas gera&ccedil;&otilde;es!</p>
+<p>A Secretaria Municipal de Cultura realizou uma a&ccedil;&atilde;o de Educa&ccedil;&atilde;o Patrimonial com as crian&ccedil;as da Escola Estadual Padre Willy, promovendo um momento de aprendizado, valoriza&ccedil;&atilde;o e reflex&atilde;o sobre a import&acirc;ncia de manter viva a nossa cultura, a nossa hist&oacute;ria e preservar os bens que fazem parte da identidade de Jenipapo de Minas.</p>
+<p>Durante a a&ccedil;&atilde;o, as crian&ccedil;as tamb&eacute;m conheceram e aprenderam o Hino de Jenipapo de Minas, levando esse conhecimento para suas fam&iacute;lias e ajudando a fazer com que cada vez mais jenipapenses conhe&ccedil;am, valorizem e cantem o hino da nossa cidade. 🎶❤️</p>
+<p>Preservar o patrim&ocirc;nio &eacute; cuidar da nossa hist&oacute;ria. E ensinar &agrave;s novas gera&ccedil;&otilde;es &eacute; garantir que ela continue viva. 🌱</p>
+<p>Cultura se aprende, se valoriza e se passa adiante!</p>
+<p style="text-align: center;">
+</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://jenipapodeminas.mg.gov.br/noticias/melhorias-no-ribeirao-do-bosque" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>07</span>
+                <span>Oct</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/MELHORIAS%20NO%20RIBEIR%C3%83O%20DO%20BOSQUE%20-%20HPseAIBtnw.jpeg"
+                            alt="Capa da notícia: MELHORIAS NO RIBEIRÃO DO BOSQUE" />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">MELHORIAS NO RIBEIRÃO DO BOSQUE</h3>
+
+            <div class="desc">
+                <p>&nbsp;</p>
+<p>A Prefeitura Municipal de Jenipapo de Minas, por meio da Secretaria de Obras, vem realizando servi&ccedil;os de desassoreamento do c&oacute;rrego que corta a comunidade de Ribeir&atilde;o do Bosque, al&eacute;m do aterro e recupera&ccedil;&atilde;o de um trecho da estrada pr&oacute;ximo ao Neg&atilde;o, garantindo melhores condi&ccedil;&otilde;es de acesso e trafegabilidade.</p>
+<p>O prefeito Edson Figueir&oacute;, o vice-prefeito Kennedy Guedes e o vereador Dalton F&eacute;lix estiveram acompanhando de perto os trabalhos, que v&ecirc;m sendo realizados com muito empenho por Francisco e toda a sua equipe.</p>
+<p>A Administra&ccedil;&atilde;o Municipal segue trabalhando para melhorar a infraestrutura e garantir mais seguran&ccedil;a e qualidade de acesso &agrave;s comunidades rurais.</p>
+<p style="text-align: center;">
+</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://jenipapodeminas.mg.gov.br/noticias/mais-um-passo-rumo-ao-sonho-da-casa-propria" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>07</span>
+                <span>Oct</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/MAIS%20UM%20PASSO%20RUMO%20AO%20SONHO%20DA%20CASA%20PR%C3%93PRIA%21%20-%20sw31HfWWL6.jpeg"
+                            alt="Capa da notícia: MAIS UM PASSO RUMO AO SONHO DA CASA PRÓPRIA!" />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">MAIS UM PASSO RUMO AO SONHO DA CASA PRÓPRIA!</h3>
+
+            <div class="desc">
+                <p>🏠 Mais um passo rumo ao sonho da casa pr&oacute;pria!</p>
+<p>As obras das casas do programa Minha Casa, Minha Vida seguem avan&ccedil;ando em ritmo acelerado em Jenipapo de Minas. 🚧🔨</p>
+<p>Trabalho que transforma e realiza sonhos!</p>
+<p>#JenipapoDeMinas #MinhaCasaMinhaVida #Habita&ccedil;&atilde;o #TrabalhoTranspar&ecirc;nciaETransforma&ccedil;&atilde;o</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://jenipapodeminas.mg.gov.br/noticias/2026-campeonato-rural-de-futebol-da-comunidade-quilombola-de-silvolandia" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>05</span>
+                <span>Oct</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/2026%7C%20CAMPEONATO%20RURAL%20DE%20FUTEBOL%20DA%20COMUNIDADE%20QUILOMBOLA%20DE%20SILVOL%C3%82NDIA%20-%20TdSOfk6zsX.jpeg"
+                            alt="Capa da notícia: 2026| CAMPEONATO RURAL DE FUTEBOL DA COMUNIDADE QUIL..." />
+                    </div>
+
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/WhatsApp%20Image%202026-10-02%20at%2010.22.31%20%281%29%20-%20CHYKgZKGmH.jpeg"
+                                alt="Imagem da galeria: 2026| CAMPEONATO RURAL DE FUTEBOL DA COMUNIDADE QUIL..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/WhatsApp%20Image%202026-10-02%20at%2010.22.31%20-%202Sc6giHjPp.jpeg"
+                                alt="Imagem da galeria: 2026| CAMPEONATO RURAL DE FUTEBOL DA COMUNIDADE QUIL..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/WhatsApp%20Image%202026-10-02%20at%2010.22.32%20%281%29%20-%20Veha8qFyQO.jpeg"
+                                alt="Imagem da galeria: 2026| CAMPEONATO RURAL DE FUTEBOL DA COMUNIDADE QUIL..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/WhatsApp%20Image%202026-10-02%20at%2010.22.32%20%282%29%20-%20FulEIsOCQV.jpeg"
+                                alt="Imagem da galeria: 2026| CAMPEONATO RURAL DE FUTEBOL DA COMUNIDADE QUIL..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/WhatsApp%20Image%202026-10-02%20at%2010.22.32%20%283%29%20-%201qpdt7jy8G.jpeg"
+                                alt="Imagem da galeria: 2026| CAMPEONATO RURAL DE FUTEBOL DA COMUNIDADE QUIL..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/WhatsApp%20Image%202026-10-02%20at%2010.22.32%20-%203YPJ1KUCfS.jpeg"
+                                alt="Imagem da galeria: 2026| CAMPEONATO RURAL DE FUTEBOL DA COMUNIDADE QUIL..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/WhatsApp%20Image%202026-10-02%20at%2010.22.33%20%281%29%20-%20g6jeHtX904.jpeg"
+                                alt="Imagem da galeria: 2026| CAMPEONATO RURAL DE FUTEBOL DA COMUNIDADE QUIL..." />
+                        </div>
+                                            <div class="carousel-item lazy-img">
+                            <img class="img-fluid img_padrao"
+                                data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/prefeitura-municipal-de-jenipapo-de-minas/noticia/WhatsApp%20Image%202026-10-02%20at%2010.22.33%20-%20Xa99eCe0Se.jpeg"
+                                alt="Imagem da galeria: 2026| CAMPEONATO RURAL DE FUTEBOL DA COMUNIDADE QUIL..." />
+                        </div>
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">2026| CAMPEONATO RURAL DE FUTEBOL DA COMUNIDADE QUIL...</h3>
+
+            <div class="desc">
+                <p style="text-align: justify;"><strong> ICMS Esportivo 2026</strong></p>
+<p style="text-align: justify;">Entre os dias 28 de mar&ccedil;o e 23 de maio de 2026, o munic&iacute;pio de Jenipapo de Minas realizou o Campeonato Rural de Futebol da Comunidade Quilombola de Silvol&acirc;ndia, iniciativa voltada &agrave; promo&ccedil;&atilde;o e ao incentivo da pr&aacute;tica esportiva no meio rural.</p>
+<p style="text-align: justify;">A competi&ccedil;&atilde;o foi realizada ao longo de nove finais de semana, na Comunidade Quilombola de Silvol&acirc;ndia, reunindo 8 equipes e um total de 120 atletas amadores, com 15 jogadores inscritos por equipe.</p>
+<p style="text-align: justify;">Durante o per&iacute;odo de realiza&ccedil;&atilde;o, foram promovidas partidas de futebol de campo, proporcionando aos participantes a oportunidade de praticar a modalidade de forma organizada e continuada. A competi&ccedil;&atilde;o tamb&eacute;m favoreceu a integra&ccedil;&atilde;o entre atletas, equipes e moradores da comunidade, fortalecendo a participa&ccedil;&atilde;o da popula&ccedil;&atilde;o nas atividades esportivas desenvolvidas no munic&iacute;pio.</p>
+<p style="text-align: justify;">Al&eacute;m de incentivar a pr&aacute;tica regular do futebol, o campeonato contribuiu para a valoriza&ccedil;&atilde;o do esporte rural e comunit&aacute;rio, ampliando as oportunidades de acesso ao esporte e estimulando a conviv&ecirc;ncia, a integra&ccedil;&atilde;o social e a participa&ccedil;&atilde;o coletiva.</p>
+<p style="text-align: justify;">A realiza&ccedil;&atilde;o do campeonato na Comunidade Quilombola de Silvol&acirc;ndia tamb&eacute;m refor&ccedil;a a import&acirc;ncia das a&ccedil;&otilde;es esportivas como instrumento de inclus&atilde;o e de valoriza&ccedil;&atilde;o das comunidades rurais, proporcionando aos atletas amadores um espa&ccedil;o estruturado para a pr&aacute;tica esportiva e para a intera&ccedil;&atilde;o comunit&aacute;ria.</p>
+<p style="text-align: justify;">Com a participa&ccedil;&atilde;o de 120 atletas ao longo de nove finais de semana, o Campeonato Rural de Futebol da Comunidade Quilombola de Silvol&acirc;ndia constituiu uma a&ccedil;&atilde;o esportiva continuada, contribuindo para o fortalecimento do futebol amador e rural em Jenipapo de Minas e para a amplia&ccedil;&atilde;o da participa&ccedil;&atilde;o da comunidade nas pol&iacute;ticas p&uacute;blicas de esporte do munic&iacute;pio.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                    
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-center">
+                        <a class="btn btn_solid mt-5" href="https://jenipapodeminas.mg.gov.br/noticias/todas"> Todas as notícias </a>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+    <section class="container feedback_context" style="margin-top: 3rem; margin-bottom: 3rem;" x-data="feedbackStars()">
+    <div class="my-6">
+        <div class="div_title">
+            <span> Sua opnião importa </span>
+            <h3 class="title"> Pesquisa de Satisfação </h3>
+        </div>
+
+        <div class="rating-container">
+            <div class="star-rating">
+                <template x-for="i in 5" :key="i">
+                    <span class="star" :style="{ color: starColor(i) }" @mousemove="preview(i, $event)"
+                        @mouseleave="hoverRate = 0" @click="select(i, $event)">
+                        <svg viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient :id="`grad-${i}`">
+                                    <stop offset="50%" stop-color="currentColor" />
+                                    <stop offset="50%" stop-color="#e5e7eb" />
+                                </linearGradient>
+                            </defs>
+
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                :fill="isHalf(i) ? `url(#grad-${i})` : 'currentColor'" d="M12 17.5
+            C12.3 17.5 12.6 17.6 12.8 17.8
+            L17.5 21
+            C17.9 21.3 18.2 20.9 18.1 20.5
+            L16.6 14.8
+            C16.5 14.5 16.6 14.2 16.9 14
+            L21.2 10.5
+            C21.6 10.2 21.4 9.6 20.9 9.5
+            L15.3 9
+            C15 9 14.7 8.8 14.6 8.5
+            L12.4 3
+            C12.2 2.6 11.8 2.6 11.6 3
+            L9.4 8.5
+            C9.3 8.8 9 9 8.7 9
+            L3.1 9.5
+            C2.6 9.6 2.4 10.2 2.8 10.5
+            L7.1 14
+            C7.4 14.2 7.5 14.5 7.4 14.8
+            L5.9 20.5
+            C5.8 20.9 6.1 21.3 6.5 21
+            L11.2 17.8
+            C11.4 17.6 11.7 17.5 12 17.5Z" />
+                        </svg>
+                    </span>
+                </template>
+            </div>
+        </div>
+
+        <div class="feedback-score">
+            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 1rem;">
+                <strong>Média de</strong>
+                <div class="score-number">
+                    <strong>4.0</strong>
+                    <span>/ 5</span>
+                </div>
+            </div>
+
+            <div class="score-meta">
+                39 avaliações
+            </div>
+        </div>
+
+        <div class="rating-breakdown" x-data="{ open: false }">
+
+            <button class="toggle" @click="open = !open">
+                Ver detalhamento
+                <span x-text="open ? '▲' : '▼'"></span>
+            </button>
+
+            <div x-show="open" x-transition class="bars">
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            5.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 53.846153846154%"></div>
+                        </div>
+
+                        <span class="count">
+                            21
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            4.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            4.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 10.25641025641%"></div>
+                        </div>
+
+                        <span class="count">
+                            4
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            3.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 15.384615384615%"></div>
+                        </div>
+
+                        <span class="count">
+                            6
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            3.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 5.1282051282051%"></div>
+                        </div>
+
+                        <span class="count">
+                            2
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            2.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 2.5641025641026%"></div>
+                        </div>
+
+                        <span class="count">
+                            1
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            2.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 2.5641025641026%"></div>
+                        </div>
+
+                        <span class="count">
+                            1
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            1.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            1.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 10.25641025641%"></div>
+                        </div>
+
+                        <span class="count">
+                            4
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            0.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                            </div>
+        </div>
+
+        <div class="push_modal-backdrop" x-cloak x-data="modalComponent('feedback')" x-show="open" x-transition.opacity
+    @open-modal.window="if ($event.detail === name) open = true"
+    @close-modal.window="if ($event.detail === name) open = false">
+    <div class="push_modal" @click.outside="open = false">
+        <div class="feedback-form">
+                <h3>Sua opinião (opcional)</h3>
+                <form method="POST" action="/feedback">
+                    <input type="hidden" name="_token" value="bXDsbG1wd1nSnIEEkLWByDHNuK62sfzJ6BXznNbs">                    <input type="hidden" name="rate" :value="rate">
+                    <input type="text" name="name" placeholder="Seu nome (opcional)">
+                    <input type="email" name="email" placeholder="Seu e-mail (opcional)">
+                    <textarea name="message" placeholder="Escreva sua opinião (opcional)"></textarea>
+
+                    <div class="actions">
+                        <button type="submit">Enviar</button>
+                        <button type="button" @click="$dispatch('close-modal', 'feedback')">Agora não</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+        </div>
+</section>
+
+
+
+    
+            <section class="clima">
+    <div class="page_title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="div_title">
+                    <span> Clima </span>
+                    <h1 class="title">  </h1>
+                    <hr>
+                    <p> Veja as informações do clima para a cidade de <span>JENIPAPO DE MINAS</span>. </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="climate_content">
+            <p id="weather-info" data-city="JENIPAPO DE MINAS">Carregando informações do clima...</p>
+        </div>
+    </div>
+    
+</section>
+    
+    <section class="container h-10">
+        <a href="https://radardatransparencia.atricon.org.br/" target="_blank">
+            <img src="https://jenipapodeminas.mg.gov.br/assets/media/radar-trans-prata.png" alt="Radar Transparência">
+        </a>
+    </section>
+
+    
+
+    
+            </main>
+
+        
+        
+        <footer>
+    <div class="container">
+        <div class="footer_content">
+            <div class="footer_content_1">
+                <div class="footer_info">
+                    <div class="div_title">
+                        <span> Endereço </span>
+                        <h1 class="title"> Prefeitura de Jenipapo de Minas </h1>
+                        <hr>
+                        <p>
+                            Turmalina, 200  <br>
+                            Centro, Jenipapo de Minas/MG - <span class="cep" data-mask="00000-000"> 39645000 </span>
+                        </p>
+
+                                                                                <p>
+                                Expediente: 08:00 - 17:00
+
+                                                                    <br> Fechado para almoço: 12:00 - 14:00
+                                                            </p>
+                                                                        </div>
+                </div>
+
+                <div class="footer_contact">
+                    <div class="div_title">
+                        <span> Contatos </span>
+                    </div>
+
+                    <ul class="nav flex-column nav_footer">
+                        <a class="nav-link" target="_blank" rel="noopener" href="https://goo.gl/maps/BYx2uPLJTQjLXFNa9">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-map-pin"></i>
+                            </div>
+                            <span> Localização </span>
+                        </a>
+
+                        <a class="nav-link" target="_blank" rel="noopener" href="/cdn-cgi/l/email-protection#84f4f6e1e2e1edf0f1f6e5c4eee1eaedf4e5f4ebe0e1e9edeae5f7aae9e3aae3ebf2aae6f6">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-envelope-simple"></i>
+                            </div>
+                            <span> <span class="__cf_email__" data-cfemail="a4d4d6c1c2c1cdd0d1d6c5e4cec1cacdd4c5d4cbc0c1c9cdcac5d78ac9c38ac3cbd28ac6d6">[email&#160;protected]</span> </span>
+                        </a>
+
+                         <a class="nav-link" href="#">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-phone"></i>
+                            </div>
+                            <span> (33) 9 9106-1476 </span>
+                        </a>
+
+                        
+                         
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_content_2">
+                                    <div class="footer_redes">
+                        <div class="div_title">
+                            <span> Redes Sociais </span>
+                        </div>
+
+                        <ul class="nav flex-column nav_footer">
+                                                            <a class="nav-link" target="_blank" rel="noopener" href="https://www.instagram.com/prefeiturajenipapodeminas/?igsh=MW8zaWtib2w5Z3FieQ%3D%3D#">
+                                    <div class="back_icon">
+                                        <img class="img-fluid" src="https://jenipapodeminas.mg.gov.br/storage/redes_sociais/instagram.svg" alt="...">
+                                    </div>
+                                    <span> Instagram </span>
+                                </a>
+                                                    </ul>
+                    </div>
+                
+                <div class="footer_menu">
+                    <div class="div_title">
+                        <span> Menu </span>
+                    </div>
+
+                    <ul class="nav flex-column nav_footer">
+                        <a class="nav-link" target="_blank" rel="noopener" href="https://jenipapodeminas.mg.gov.br/noticias.rss">
+                            <i class="ph-bold ph-rss"></i>
+                            <span> RSS </span>
+                        </a>
+
+                        <a class="nav-link" href="https://jenipapodeminas.mg.gov.br/mapa-site">
+                            <i class="ph-bold ph-map-trifold"></i>
+                            <span> Mapa do Site </span>
+                        </a>
+
+                                                    <a class="nav-link" href="#" id="clima">
+                                <i class="ph-bold ph-thermometer-simple"></i>
+                                <span> Clima </span>
+                            </a>
+                        
+                                            </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_copy">
+            <div class="copy">
+                <span> 2026 &copy; Todos os direitos reservados Prefeitura de Jenipapo de Minas | CNPJ: <span data-mask="00.000.000/0000-00"> 01613376000134 </span> </span>
+            </div>
+
+            <div class="design">
+                <span> Designed by <a href="https://www.digitaliza.com.br" target="_blank" rel="external"> Digitaliza </a> </span>
+            </div>
+        </div>
+    </div>
+</footer>
+        <a href="#" id="topo">
+    <div class="topo">
+        <i class="ph-bold ph-arrow-fat-up"></i>
+    </div>
+</a>
+    </div>
+
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=1054904748249600&autoLogAppEvents=1" crossorigin="anonymous" nonce="TgKZxTuJ"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script> <!-- | DATATABLES Plugin | -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script> <!-- | DATATABLES Plugin | -->
+    <script src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/sl-1.6.2/datatables.min.js"></script>
+
+    <script src="https://jenipapodeminas.mg.gov.br/js/app.js"></script>
+
+            <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('modalComponent', (name) => ({
+                    name,
+                    open: false,
+                    openModal() {
+                        this.open = true
+                    },
+                    closeModal() {
+                        this.open = false
+                    }
+                }))
+            })
+        </script>
+        <script>
+        // Alpinejs
+        document.addEventListener('alpine:init', () => {
+            Alpine.data('navbar', () => ({
+                showSearch: false,
+                isMobile: false,
+                init() {
+                    this.isMobile = window.matchMedia('(max-width: 768px)').matches;
+                    window.matchMedia('(max-width: 768px)').addEventListener('change', e => {
+                        this.isMobile = e.matches;
+                    });
+                }
+            }));
+        });
+    </script>
+    <!-- UserWay -->
+    <script>
+        window._userway_config = {
+            size: 'small',
+            position: '5'
+        }
+    </script>
+    <script data-account="HJhdKL5MCA" src="https://cdn.userway.org/widget.js"></script>
+    <script>
+        function feedbackStars() {
+            return {
+                rate: 0,
+                hoverRate: 0,
+                starColor(i) {
+                    const step = Math.min(this.displayRate, i * 2);
+                    if (step <= (i - 1) * 2) return '#e5e7eb';
+
+                    // posição global (1 a 10)
+                    const position = step;
+
+                    // interpolação HSL
+                    const startHue = 45; // amarelo fraco
+                    const endHue = 28; // laranja forte
+
+                    const hue =
+                        startHue - ((startHue - endHue) * (position - 1)) / 9;
+
+                    return `hsl(${hue}, 95%, 60%)`;
+                },
+
+                get displayRate() {
+                    return this.hoverRate || this.rate;
+                },
+
+                preview(i, event) {
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const half = (event.clientX - rect.left) < rect.width / 2;
+                    this.hoverRate = half ? (i * 2 - 1) : (i * 2);
+                },
+
+                select(i, event) {
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const half = (event.clientX - rect.left) < rect.width / 2;
+                    this.rate = half ? (i * 2 - 1) : (i * 2);
+                    this.hoverRate = 0;
+                    window.dispatchEvent(
+                        new CustomEvent('open-modal', {
+                            detail: 'feedback'
+                        })
+                    )
+                },
+
+                isFull(i) {
+                    return this.displayRate >= i * 2;
+                },
+
+                isHalf(i) {
+                    return this.displayRate === i * 2 - 1;
+                }
+            }
+        }
+    </script>
+    <!-- VLibras -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        new window.VLibras.Widget({
+            source: 'https://vlibras.gov.br/app',
+            position: 'L',
+        });
+    </script>
+
+            
+        <script>
+            $(function() {
+                const cidade = "JENIPAPO DE MINAS";
+
+                fetch(
+                        `https://api.openweathermap.org/data/2.5/weather?q=${cidade},BR&appid=bbbf320c2a267ad7a2fe7b28f7bb6bb2&units=metric&lang=pt_br`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const temperatura = data.main.temp;
+                        const descricao = data.weather[0].description;
+
+                        document.getElementById('clima').textContent =
+                            `Agora em ${cidade}: ${temperatura}°C, ${descricao}`;
+                    })
+                    .catch(error => {
+                        document.getElementById('clima').textContent = 'Erro ao carregar o clima.';
+                        console.error('Erro ao buscar clima:', error);
+                    });
+            })
+        </script>
+    </body>
+
+</html>

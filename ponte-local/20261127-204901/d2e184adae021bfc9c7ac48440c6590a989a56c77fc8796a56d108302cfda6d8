@@ -1,0 +1,1454 @@
+
+<!--TOPO-->
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>  Prefeitura de Herval</title>
+<meta property="og:url"           content="https://herval.rs.gov.br/" />
+<meta property="og:type"          content="website" />
+<meta property="og:title"         content="Prefeitura de Herval" />
+<meta property="og:description"   content="Site da Prefeitura de Herval" />
+<meta property="og:image"         content="https://herval.rs.gov.br/./assets/img/logo_grande.png" />
+<!--ESTILOS-->
+
+<link href="https://herval.rs.gov.br/./assets/css/padrao.css" rel="stylesheet" type="text/css" />
+<link href="https://herval.rs.gov.br/./assets/css/fontes.css" rel="stylesheet" type="text/css" />
+	<link rel="alternate stylesheet" href="https://herval.rs.gov.br/./assets/css/padraos.css" title="1">
+	<link rel="alternate stylesheet" href="https://herval.rs.gov.br/./assets/css/escuro.css" title="2">
+
+<link href="https://herval.rs.gov.br/./assets/css/responsive.css" rel="stylesheet" type="text/css" />
+<link href="https://herval.rs.gov.br/./assets/css/settings.revolution.css" rel="stylesheet" type="text/css" />
+<link href="https://herval.rs.gov.br/./assets/css/jquery.bxslider.css" rel="stylesheet" type="text/css" />
+<link href="https://herval.rs.gov.br/./assets/css/fancybox.css" rel="stylesheet" type="text/css" />
+<link href="https://herval.rs.gov.br/./assets/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="https://herval.rs.gov.br/./assets/css/slick.css" rel="stylesheet" type="text/css" />
+<link href="https://herval.rs.gov.br/./assets/css/nanogallery.css" rel="stylesheet" type="text/css" />
+<link href="https://herval.rs.gov.br/./assets/css/slick-theme.css" rel="stylesheet" type="text/css" />
+<!--METAS-->
+<meta name="author" content="Hostche Interatividade Digital" />
+<meta name="keywords" content="Herval, Prefeitura, Sul" />
+<meta name="description" content="Site da Prefeitura de Herval">
+<meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+<meta name="viewport" content="width=device-width" />
+
+<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto|Poppins|Hind|Muli" rel="stylesheet">
+
+<!-- FACEBOOK TAGS -->
+<meta property="og:title" content="Prefeitura de Herval" />
+<meta property="og:image" content="https://herval.rs.gov.br/./assets/img/logo_grande.png" />
+<meta property="og:site_name" content="Prefeitura de Herval" />
+<meta property="og:description" content="Site da Prefeitura de Herval" />
+
+<!-- FAVICON	 -->
+<link rel="shortcut icon" href="https://herval.rs.gov.br/assets/img/favicon.ico" type="image/x-icon" />
+
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/jquery.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/jquery-ui.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/alterar.js"></script>
+
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/jquery.themepunch.plugins.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/jquery.themepunch.tools.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/jquery.themepunch.revolution.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/funcoes.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/jquery.nanogallery.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/jquery.bxslider.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/fancybox.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/shave.min.js" defer></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/slick.js" defer></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/scrollReveal.min.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/mascaras.js"></script>
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/parallaxie.js"></script>
+<!-- <script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/smoothscroll.js"></script> -->
+
+<script type="text/javascript" language="javascript" src="https://herval.rs.gov.br/./assets/js/jquery.nicefileinput.js"></script>
+
+<script src='https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit?hl=pt-BR' async defer></script>
+
+<script type="text/javascript">
+    
+	/*function validar_captcha(){
+
+            var recaptchaRes = grecaptcha.getResponse();
+            
+            var message      = "";
+            
+            if(recaptchaRes.length == 0){
+                    // You can return the message to user
+            //	message = "Please complete the reCAPTCHA challenge!";
+                    alert('Confirme o Captcha!')
+                    return false;
+            }else{
+                    return true;
+            }
+        }*/
+
+	$(document).ready( function(){
+
+		/* ===== Esconde os avisos ===== */
+			$(".aviso-sucesso, .aviso-erro, .aviso-neutro").delay(200).slideDown(200).delay(3000).slideUp(200);
+
+
+        $('.parceiross').slick({
+		  	dots: true,
+		  	arrows: false,
+		  	infinite: true,
+		  	slidesToShow: 6,
+			slidesToScroll: 6,
+		 	adaptiveHeight: false,
+		  	autoplay: false,
+			  autoplaySpeed: 5000,
+			  speed: 500,
+			  responsive: [
+			    {
+			      breakpoint: 990,
+			      settings: {
+			        slidesToShow: 4,
+			        slidesToScroll: 4
+			      }
+			    },
+			    {
+			      breakpoint: 700,
+			      settings: {
+			        slidesToShow: 1,
+			        slidesToScroll: 1
+			      }
+			    }
+		  	]
+		});
+
+
+
+		// $('#icone_mobile').click( function(){
+		// 	$('#menu-mobile').toggle('slide');
+		// });
+
+
+		$('#icone_mobile').click( function(){
+			$('#icone_mobile').removeClass('fa-bars').addClass('fa-times');
+			if ($('#menu-mobile').is(':visible')) {
+				$('#menu-mobile').hide('slow');
+				$('#icone_mobile').removeClass('fa-times').addClass('fa-bars');
+			}else{
+				$('#menu-mobile').show('slow');
+				$('#icone_mobile').removeClass('fa-bars').addClass('fa-times');
+			}
+		});
+
+		$('.subitem').click( function(){
+			if ($(this).find('ul').is(':visible')) {
+				$(this).find('span div').removeClass('esconder').addClass('mostrar');
+				$(this).find('ul').slideToggle();
+			}else{
+				$(this).find('span div').removeClass('mostrar').addClass('esconder');
+				$(this).find('ul').slideToggle();
+			}
+		});
+
+		$('.menu-vertical-mobile .titulo-ul').click( function(){
+			if ($(this).next('.hide_mobile_ul_left').is(':visible')) {
+				$(this).find('div').removeClass('esconder-mobile').addClass('mostrar-mobile');
+				$(this).next('.hide_mobile_ul_left').slideToggle();
+			}else{
+				$(this).find('div').removeClass('mostrar-mobile').addClass('esconder-mobile');
+				$(this).next('.hide_mobile_ul_left').slideToggle();
+			}
+		});
+
+		$('.menu-mob .titulo-ul').click( function(){
+			if ($(this).next('.hide_mobile_ul_left').is(':visible')) {
+				$(this).find('div').removeClass('esconder-mobile').addClass('mostrar-mobile');
+				$(this).next('.hide_mobile_ul_left').slideToggle();
+			}else{
+				$(this).find('div').removeClass('mostrar-mobile').addClass('esconder-mobile');
+				$(this).next('.hide_mobile_ul_left').slideToggle();
+			}
+		});
+
+
+
+		$('.bxslider').bxSlider({
+			responsive:true,
+			captions:true,
+			controls: true,
+			nextText: 'Next',
+			prevText: 'Prev',
+			pager:false,
+			touchEnabled: false
+		});
+
+		$('.texto-novidade').shave(70,{character: '...'});
+
+		$('.noticia-item-texto').shave(70,{character: '...'});
+
+		$('.servicos .texto-cada-servico').shave(100);
+
+		// ===== Mascaras =====
+		$('.mascara-data').mask('00/00/0000');
+		$('.mascara-cep').mask('00000-000');
+		$('.mascara-rg').mask('0000000000');
+		$('.mascara-cpf2').mask('00000000000');
+		$('.mascara-telefone').mask('(00) 0000-000000');
+		$('.mascara-celular').mask('(00) 0000-0000000');
+		$('.mascara-cpf').mask('[CPF REDIGIDO]', {reverse: true});
+		$(".mascara-cnpj").mask("99.999.999/9999-99")
+		$('.mascara-dinheiro').mask('000.000.000.000.000,00', {reverse: true});
+		$('.mascara-country').mask('AA');
+		$('.mascara-numero').mask('0000');
+
+		var options = {
+		    onKeyPress: function (cpf, ev, el, op) {
+		        var masks = ['[CPF REDIGIDO]0', '00.000.000/0000-00'];
+		        $('.cpfOuCnpj').mask((cpf.length > 14) ? masks[1] : masks[0], op);
+		    }
+		}
+		$('.cpfOuCnpj').mask('[CPF REDIGIDO]0', options);
+
+
+
+
+
+		$(".galeria").nanoGallery({
+		    thumbnailHeight: 120,
+            thumbnailWidth:  "auto",
+	        thumbnailAlignment: 'justified',
+	        viewer: 'fancybox',
+	        theme: 'default' ,
+	        colorScheme : 'light'
+
+	      });
+
+			//EFEITOS DE SCROLL
+		window.sr = scrollReveal({ reset: true });
+
+		var $root = $('html, body');
+
+$('a[href^="#"]').click(function() {
+    var href = $.attr(this, 'href');
+
+    setTimeout(function(){
+
+    var posy =$(href).offset().top;
+    console.log(posy);
+
+    var descer = parseInt(posy);
+    console.log(descer);
+    	$root.animate({
+	        scrollTop: descer
+	    }, 500, function () {
+	       // window.location.hash = href;
+	    });
+   }, 1000);
+
+
+
+    return false;
+});
+
+
+	});
+
+</script>
+
+<script>
+   	$(function(){
+
+		$(".fancybox").fancybox();
+		$(".fancybox_ajax").fancybox({type: 'ajax'});
+});
+</script>
+
+<!-- Facebook Like -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+	var js, fjs = d.getElementsByTagName(s)[0];
+	if (d.getElementById(id)) return;
+	js = d.createElement(s); js.id = id;
+	js.src = "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.0";
+	fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+</script>
+
+
+<!-- CONFIGURA O ANALYTICS APARTIR DO PAINEL ADMIN-->
+
+</head>
+
+<!-- DA START NOS PUPUPSS CADASTRADOS-->
+<body >
+<header >
+	<div class="header-topo">
+		<div class="center">
+			<div class="col col-12 acesso-rapido-topo ">
+
+				<div class="acoes-acessibilidade border-right">
+					<a>
+						<img src="https://herval.rs.gov.br/./assets/img/contraste.png" alt="Mudar contraste" title="Mudar contraste" id='contraste'>
+					</a>
+					<a>
+						<img src="https://herval.rs.gov.br/./assets/img/aumentar-fonte.png" id='aumentar-fonte' alt="Aumentar fonte" title="Aumentar fonte">
+					</a>
+					<a>
+						<img src="https://herval.rs.gov.br/./assets/img/diminuir-fonte.png" id='diminuir-fonte' alt="Diminuir fonte" title="Diminuir fonte">
+					</a>
+				</div>
+				<div class="border-right transparencia">
+					<a href="https://herval.rs.gov.br/portal_da_transparencia" target="_blank">
+						TRANSPARÊNCIA
+					</a>
+				</div>
+				<div class="border-right  acesso-informacao">
+					<a href="https://herval.rs.gov.br/sic">
+						ACESSO À INFORMAÇÃO
+					</a>
+				</div>
+
+				<div class="acesso-informacao cidadao">
+					<a href="https://herval.rs.gov.br/cidadao">
+						PORTAL DO CIDADÃO
+					</a>
+				</div>
+
+				<div class=" right midias-topo ">
+										<a href="https://www.facebook.com/PreHerval/" class="right" target="_blank">
+						<img src="https://herval.rs.gov.br/./assets/img/facebook-header.png" alt="Facebook" title="Facebook">
+					</a>
+									</div>
+			</div>
+
+		</div>
+
+	</div>
+	<div class=" col col-full fundo-header">
+			<div class="center">
+				<img src="https://herval.rs.gov.br/./assets/img/sombra.png" class='sombra'>
+				<div class="col col-4 col-sm-6 col-xsm-12 left">
+					<a href="https://herval.rs.gov.br/">
+						<figure id="logo-header">
+							<img src="https://herval.rs.gov.br/./assets/img/logo-herval.png" alt='Prefeitura de Herval' title='Prefeitura de Herval'>
+						</figure>
+					</a>
+				</div>
+				<div class="col col-4 col-sm-5 col-xsm-12 right busca">
+					<form method="get" action="https://herval.rs.gov.br/busca" class="form-busca" autocomplete="off">
+						<input type="text" name="busca" placeholder="PESQUISAR">
+						<input type="submit" name="" value="">
+					</form>
+				</div>
+			</div>
+			<br class="clear">
+		</div>
+
+	<nav class="hide_mobile col col-12 right bg-escuro">
+		<div class="center">
+			<ul class="hide_mobile">
+	<li>
+		<a href="https://herval.rs.gov.br/">Home</a>
+	</li>
+	<li class="abre-menu">
+		<span>O Município</span>
+		<ul class="submenu">
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/aquisicao-de-um-veiculo">Aquisição de um veículo</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/aquisicao-de-um-veiculo">Aquisição de um veículo</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/dados-gerais">Dados Gerais</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/escolas">Escolas</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/hino-e-simbolos-municipais">Hino e Simbolos Municipais</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/historico">Histórico</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/perguntas-frequentes">Perguntas frequentes</a>
+				</li>
+						<li>
+				<a href="https://herval.rs.gov.br/institucional/localizacao">Localização</a>
+			</li>
+		</ul>
+	</li>
+
+	<li class="abre-menu">
+		<span>Secretarias</span>
+		<ul class="submenu">
+							<li><a href="https://herval.rs.gov.br/secretarias/prefeito-e-vice-prefeito/">Prefeito e Vice-Prefeito</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/gabinete-do-prefeito/">Gabinete do Prefeito</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-administracao/">Secretaria Municipal de Administração</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-fazenda/">Secretaria Municipal de Fazenda</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-educacao/">Secretaria Municipal de Educação</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-cultura-e-turismo/">Secretaria Municipal de Cultura e Turismo</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-agropecuaria-e-desenvolvimento/">Secretaria Municipal de Agropecuária e Desenvolvimento</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-obras-mobilidade-urbana-e-rural/">Secretaria Municipal de Obras, Mobilidade Urbana e Rural</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-saude/">Secretaria Municipal de Saúde</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-assistencia-social/">Secretaria Municipal de Assistência Social</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-planejamento-projetos-e-meio-ambiente/">Secretaria Municipal de Planejamento, Projetos e Meio Ambiente</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/procuradoria-juridica/">Procuradoria Jurídica</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/assessoria-de-imprensa/">Assessoria de Imprensa</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-esportes-e-lazer/">Secretaria Municipal de Esportes e Lazer</a></li>
+					</ul>
+	</li>
+
+	<li class="abre-menu">
+		<span>Educação</span>
+		<ul class="submenu">
+					</ul>
+	</li>
+   	<li class="abre-menu">
+		<span>Parcerias OSC</span>
+		<ul class="submenu">
+			<li><a href="https://herval.rs.gov.br/parceria/listar/1/selecao-e-celebracao/">Seleção e Celebração</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/2/execucao-e-monitoramento/">Execução e Monitoramento</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/3/prestacao-de-contas/">Prestação de Contas</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/8/extratos-de-justificativas/">Extratos de Justificativas</a></li>				
+					</ul>
+	</li>
+
+	<li class="abre-menu">
+		<span>Licitações</span>
+		<ul class="submenu">
+			<li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=20&categoria=adesao-a-ata-de-registro-de-precos'> Adesão à Ata de Registro de Preços</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=9&categoria=adjudicacoes-2013'> Adjudicações 2013</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=10&categoria=anos-anteriores'> Anos anteriores</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=18&categoria=autorizacao-de-quebra-da-ordem-cronologica'> Autorização de Quebra da Ordem Cronológica</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=16&categoria=aviso-de-dispensa-de-licitacao'> Aviso de dispensa de licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=8&categoria=chamada-publica'> Chamada pública</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=12&categoria=chamamento-publico'> Chamamento Público</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=7&categoria=compras-realizadas'> Compras realizadas</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=5&categoria=concorrencia'> Concorrência</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=11&categoria=concursos'> Concursos</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=6&categoria=contratos-e-aditivos'> Contratos e Aditivos</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=4&categoria=convite'> Convite</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=14&categoria=dispensa-de-licitacao'> Dispensa de Licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=13&categoria=inexigibilidade-de-licitacao'> Inexigibilidade de Licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=17&categoria=leilao'> Leilão</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=19&categoria=padronizacao'> Padronização</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=2&categoria=pregao-eletronico'> Pregão eletrônico</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=1&categoria=pregao-presencial'> Pregão presencial</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=3&categoria=registro-de-precos'> Registro de preços</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=15&categoria=tomada-de-preco'> Tomada de Preço</a></li>			<li><a href="https://herval.rs.gov.br/licitacoes/resultados">Resultados</a></li>
+		</ul>
+	</li>
+
+	<li class="abre-menu">
+		<span>Concursos</span>
+		<ul class="submenu">
+			<li><a href='https://herval.rs.gov.br/concursos/listar?cat=4&categoria=concurso-publico'> CONCURSO PÚBLICO</a></li><li><a href='https://herval.rs.gov.br/concursos/listar?cat=5&categoria=processo-seletivo'> PROCESSO SELETIVO</a></li>			<li><a href="https://herval.rs.gov.br/concursos/resultados">Resultados</a></li>
+		</ul>
+	</li>
+
+	<li class="abre-menu">
+		<span>Transparência</span>
+		<ul class="submenu">
+			<li><a href="https://herval.rs.gov.br/licitacoes">Central de Licitações</a></li>
+			<li><a href="https://herval.rs.gov.br/concursos">Concursos</a></li>
+			<li><a href="https://herval.rs.gov.br/contas_publicas">Contas Públicas</a></li>
+			<li><a href="https://herval.rs.gov.br/portal_da_transparencia">Portal da Transparência</a></li>
+			<li><a href="https://herval.rs.gov.br/sic">Serviço de Informação ao Cidadão</a></li>
+			<li><a href="https://herval.rs.gov.br/rpps">RPPS</a></li>
+			<!-- <li><a href="https://herval.rs.gov.br/portal_da_transparencia">Portal da Transparência</a></li> -->
+			
+		</ul>
+	</li>
+	<li class="abre-menu" >
+		<span style="width: 150px!important;">Legislação</span>
+		<ul class="submenu">
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/2/decretos">Decretos</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/1/leis">Leis</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/4/portarias">Portarias</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/3/projetos-de-lei">Projetos de lei</a></li>
+				
+		</ul>
+	</li>
+	</ul>
+
+<nav id="menu-mob" class="menu-mob hide_desktop">
+<ul>
+	<li class="subitem bg-claro">
+		<span class="bg-claro"><a href="https://herval.rs.gov.br/">Home</a></span>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Município<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+						<li>
+					<a href="https://herval.rs.gov.br/institucional/aquisicao-de-um-veiculo">Aquisição de um veículo</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/aquisicao-de-um-veiculo">Aquisição de um veículo</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/dados-gerais">Dados Gerais</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/escolas">Escolas</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/hino-e-simbolos-municipais">Hino e Simbolos Municipais</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/historico">Histórico</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/perguntas-frequentes">Perguntas frequentes</a>
+				</li>
+						<li>
+				<a href="https://herval.rs.gov.br/institucional/localizacao">Localização</a>
+			</li>
+		</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Secretárias<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+						<li><a href="https://herval.rs.gov.br/secretarias/prefeito-e-vice-prefeito/">Prefeito e Vice-Prefeito</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/gabinete-do-prefeito/">Gabinete do Prefeito</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-administracao/">Secretaria Municipal de Administração</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-fazenda/">Secretaria Municipal de Fazenda</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-educacao/">Secretaria Municipal de Educação</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-cultura-e-turismo/">Secretaria Municipal de Cultura e Turismo</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-agropecuaria-e-desenvolvimento/">Secretaria Municipal de Agropecuária e Desenvolvimento</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-obras-mobilidade-urbana-e-rural/">Secretaria Municipal de Obras, Mobilidade Urbana e Rural</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-saude/">Secretaria Municipal de Saúde</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-assistencia-social/">Secretaria Municipal de Assistência Social</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-planejamento-projetos-e-meio-ambiente/">Secretaria Municipal de Planejamento, Projetos e Meio Ambiente</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/procuradoria-juridica/">Procuradoria Jurídica</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/assessoria-de-imprensa/">Assessoria de Imprensa</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-esportes-e-lazer/">Secretaria Municipal de Esportes e Lazer</a></li>
+					</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Licitações<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+		<li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=20&categoria=adesao-a-ata-de-registro-de-precos'> Adesão à Ata de Registro de Preços</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=9&categoria=adjudicacoes-2013'> Adjudicações 2013</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=10&categoria=anos-anteriores'> Anos anteriores</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=18&categoria=autorizacao-de-quebra-da-ordem-cronologica'> Autorização de Quebra da Ordem Cronológica</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=16&categoria=aviso-de-dispensa-de-licitacao'> Aviso de dispensa de licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=8&categoria=chamada-publica'> Chamada pública</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=12&categoria=chamamento-publico'> Chamamento Público</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=7&categoria=compras-realizadas'> Compras realizadas</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=5&categoria=concorrencia'> Concorrência</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=11&categoria=concursos'> Concursos</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=6&categoria=contratos-e-aditivos'> Contratos e Aditivos</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=4&categoria=convite'> Convite</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=14&categoria=dispensa-de-licitacao'> Dispensa de Licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=13&categoria=inexigibilidade-de-licitacao'> Inexigibilidade de Licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=17&categoria=leilao'> Leilão</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=19&categoria=padronizacao'> Padronização</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=2&categoria=pregao-eletronico'> Pregão eletrônico</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=1&categoria=pregao-presencial'> Pregão presencial</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=3&categoria=registro-de-precos'> Registro de preços</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=15&categoria=tomada-de-preco'> Tomada de Preço</a></li>			<li><a href="https://herval.rs.gov.br/licitacoes/resultados">Resultados</a></li>
+		</ul>
+	</li>
+
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">COVID-19<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+		<li><a href="https://herval.rs.gov.br/covid/index/8/vacinacao-covid-19/">VACINAÇÃO COVID-19</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/9/denuncias-fura-fila/">Denúncias Fura-Fila</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/10/boletins-epidemiologicos/">Boletins epidemiológicos</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/listar/11/planos-de-vacinacao/">Planos de vacinação</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/12/vacinometro/">Vacinômetro</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/listar/13/grupos-prioritarios-pessoas-vacinadas/">Grupos prioritários / Pessoas vacinadas</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/listar/15/insumos-recebidos-adquiridos/">Insumos recebidos / adquiridos</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/listar/16/informacoes-sobre-vacinas-utilizadas-em-herval/">Informações sobre vacinas utilizadas em Herval</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/17/transparencia-covid-19-processo-de-aquisicao-de-insumos/">Transparência COVID-19 (Processo de Aquisição de Insumos)</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/18/doses-de-vacinas-recebidas-adquiridas/">Doses de vacinas recebidas / adquiridas</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/20/sobra-de-vacinas/">Sobra de Vacinas</a></li>				
+					</ul>
+	</li>
+
+
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Parcerias OSC<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+		<li><a href="https://herval.rs.gov.br/parceria/listar/1/selecao-e-celebracao/">Seleção e Celebração</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/2/execucao-e-monitoramento/">Execução e Monitoramento</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/3/prestacao-de-contas/">Prestação de Contas</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/8/extratos-de-justificativas/">Extratos de Justificativas</a></li>				
+					</ul>
+	</li>
+
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Concursos<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+		<li><a href='https://herval.rs.gov.br/concursos/listar?cat=4&categoria=concurso-publico'> CONCURSO PÚBLICO</a></li><li><a href='https://herval.rs.gov.br/concursos/listar?cat=5&categoria=processo-seletivo'> PROCESSO SELETIVO</a></li>			<li><a href="https://herval.rs.gov.br/concursos/resultados">Resultados</a></li>
+		</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Transparência<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+			<li><a href="https://herval.rs.gov.br/licitacoes">Central de Licitações</a></li>
+			<li><a href="https://herval.rs.gov.br/concursos">Concursos</a></li>
+			<li><a href="https://herval.rs.gov.br/contas_publicas">Contas Públicas</a></li>
+			<li><a href="https://herval.rs.gov.br/portal_da_transparencia">Portal da Transparência</a></li>
+			<li><a href="https://herval.rs.gov.br/sic">Serviço de Informação ao Cidadão</a></li>
+			<!-- <li><a href="https://herval.rs.gov.br/portal_da_transparencia">Portal da Transparencia</a></li> -->
+		</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Legislação<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+					<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/2/decretos">Decretos</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/1/leis">Leis</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/4/portarias">Portarias</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/3/projetos-de-lei">Projetos de lei</a></li>
+				
+		</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Turismo<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+		<li><a href='https://herval.rs.gov.br/institucional/gastronomia'> Gastronomia</a></li><li><a href='https://herval.rs.gov.br/institucional/hospedagem'> Hospedagem</a></li>			<li><a href="https://herval.rs.gov.br/turismo">Turismo</a></li>
+		</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro"><a href="https://herval.rs.gov.br/cidadao">PORTAL DO CIDADÃO</a></span>
+	</li>
+	<li class="subitem bg-claro">
+		<span class="bg-claro"><a href="https://herval.rs.gov.br/contatos">Contatos</a></span>
+	</li><ul>		</div>
+	</nav>
+	<i id="icone_mobile" class="hide_desktop fas fa-bars fa-2x"></i></div>
+	<div class="clear">
+
+
+
+</header>
+	<div id="menu-mobile" class="menu_mobile" style="display: none;">
+		<ul class="hide_mobile">
+	<li>
+		<a href="https://herval.rs.gov.br/">Home</a>
+	</li>
+	<li class="abre-menu">
+		<span>O Município</span>
+		<ul class="submenu">
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/aquisicao-de-um-veiculo">Aquisição de um veículo</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/aquisicao-de-um-veiculo">Aquisição de um veículo</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/dados-gerais">Dados Gerais</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/escolas">Escolas</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/hino-e-simbolos-municipais">Hino e Simbolos Municipais</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/historico">Histórico</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/perguntas-frequentes">Perguntas frequentes</a>
+				</li>
+						<li>
+				<a href="https://herval.rs.gov.br/institucional/localizacao">Localização</a>
+			</li>
+		</ul>
+	</li>
+
+	<li class="abre-menu">
+		<span>Secretarias</span>
+		<ul class="submenu">
+							<li><a href="https://herval.rs.gov.br/secretarias/prefeito-e-vice-prefeito/">Prefeito e Vice-Prefeito</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/gabinete-do-prefeito/">Gabinete do Prefeito</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-administracao/">Secretaria Municipal de Administração</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-fazenda/">Secretaria Municipal de Fazenda</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-educacao/">Secretaria Municipal de Educação</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-cultura-e-turismo/">Secretaria Municipal de Cultura e Turismo</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-agropecuaria-e-desenvolvimento/">Secretaria Municipal de Agropecuária e Desenvolvimento</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-obras-mobilidade-urbana-e-rural/">Secretaria Municipal de Obras, Mobilidade Urbana e Rural</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-saude/">Secretaria Municipal de Saúde</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-assistencia-social/">Secretaria Municipal de Assistência Social</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-planejamento-projetos-e-meio-ambiente/">Secretaria Municipal de Planejamento, Projetos e Meio Ambiente</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/procuradoria-juridica/">Procuradoria Jurídica</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/assessoria-de-imprensa/">Assessoria de Imprensa</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-esportes-e-lazer/">Secretaria Municipal de Esportes e Lazer</a></li>
+					</ul>
+	</li>
+
+	<li class="abre-menu">
+		<span>Educação</span>
+		<ul class="submenu">
+					</ul>
+	</li>
+   	<li class="abre-menu">
+		<span>Parcerias OSC</span>
+		<ul class="submenu">
+			<li><a href="https://herval.rs.gov.br/parceria/listar/1/selecao-e-celebracao/">Seleção e Celebração</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/2/execucao-e-monitoramento/">Execução e Monitoramento</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/3/prestacao-de-contas/">Prestação de Contas</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/8/extratos-de-justificativas/">Extratos de Justificativas</a></li>				
+					</ul>
+	</li>
+
+	<li class="abre-menu">
+		<span>Licitações</span>
+		<ul class="submenu">
+			<li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=20&categoria=adesao-a-ata-de-registro-de-precos'> Adesão à Ata de Registro de Preços</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=9&categoria=adjudicacoes-2013'> Adjudicações 2013</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=10&categoria=anos-anteriores'> Anos anteriores</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=18&categoria=autorizacao-de-quebra-da-ordem-cronologica'> Autorização de Quebra da Ordem Cronológica</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=16&categoria=aviso-de-dispensa-de-licitacao'> Aviso de dispensa de licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=8&categoria=chamada-publica'> Chamada pública</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=12&categoria=chamamento-publico'> Chamamento Público</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=7&categoria=compras-realizadas'> Compras realizadas</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=5&categoria=concorrencia'> Concorrência</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=11&categoria=concursos'> Concursos</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=6&categoria=contratos-e-aditivos'> Contratos e Aditivos</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=4&categoria=convite'> Convite</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=14&categoria=dispensa-de-licitacao'> Dispensa de Licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=13&categoria=inexigibilidade-de-licitacao'> Inexigibilidade de Licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=17&categoria=leilao'> Leilão</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=19&categoria=padronizacao'> Padronização</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=2&categoria=pregao-eletronico'> Pregão eletrônico</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=1&categoria=pregao-presencial'> Pregão presencial</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=3&categoria=registro-de-precos'> Registro de preços</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=15&categoria=tomada-de-preco'> Tomada de Preço</a></li>			<li><a href="https://herval.rs.gov.br/licitacoes/resultados">Resultados</a></li>
+		</ul>
+	</li>
+
+	<li class="abre-menu">
+		<span>Concursos</span>
+		<ul class="submenu">
+			<li><a href='https://herval.rs.gov.br/concursos/listar?cat=4&categoria=concurso-publico'> CONCURSO PÚBLICO</a></li><li><a href='https://herval.rs.gov.br/concursos/listar?cat=5&categoria=processo-seletivo'> PROCESSO SELETIVO</a></li>			<li><a href="https://herval.rs.gov.br/concursos/resultados">Resultados</a></li>
+		</ul>
+	</li>
+
+	<li class="abre-menu">
+		<span>Transparência</span>
+		<ul class="submenu">
+			<li><a href="https://herval.rs.gov.br/licitacoes">Central de Licitações</a></li>
+			<li><a href="https://herval.rs.gov.br/concursos">Concursos</a></li>
+			<li><a href="https://herval.rs.gov.br/contas_publicas">Contas Públicas</a></li>
+			<li><a href="https://herval.rs.gov.br/portal_da_transparencia">Portal da Transparência</a></li>
+			<li><a href="https://herval.rs.gov.br/sic">Serviço de Informação ao Cidadão</a></li>
+			<li><a href="https://herval.rs.gov.br/rpps">RPPS</a></li>
+			<!-- <li><a href="https://herval.rs.gov.br/portal_da_transparencia">Portal da Transparência</a></li> -->
+			
+		</ul>
+	</li>
+	<li class="abre-menu" >
+		<span style="width: 150px!important;">Legislação</span>
+		<ul class="submenu">
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/2/decretos">Decretos</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/1/leis">Leis</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/4/portarias">Portarias</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/3/projetos-de-lei">Projetos de lei</a></li>
+				
+		</ul>
+	</li>
+	</ul>
+
+<nav id="menu-mob" class="menu-mob hide_desktop">
+<ul>
+	<li class="subitem bg-claro">
+		<span class="bg-claro"><a href="https://herval.rs.gov.br/">Home</a></span>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Município<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+						<li>
+					<a href="https://herval.rs.gov.br/institucional/aquisicao-de-um-veiculo">Aquisição de um veículo</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/aquisicao-de-um-veiculo">Aquisição de um veículo</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/dados-gerais">Dados Gerais</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/escolas">Escolas</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/hino-e-simbolos-municipais">Hino e Simbolos Municipais</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/historico">Histórico</a>
+				</li>
+							<li>
+					<a href="https://herval.rs.gov.br/institucional/perguntas-frequentes">Perguntas frequentes</a>
+				</li>
+						<li>
+				<a href="https://herval.rs.gov.br/institucional/localizacao">Localização</a>
+			</li>
+		</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Secretárias<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+						<li><a href="https://herval.rs.gov.br/secretarias/prefeito-e-vice-prefeito/">Prefeito e Vice-Prefeito</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/gabinete-do-prefeito/">Gabinete do Prefeito</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-administracao/">Secretaria Municipal de Administração</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-fazenda/">Secretaria Municipal de Fazenda</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-educacao/">Secretaria Municipal de Educação</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-cultura-e-turismo/">Secretaria Municipal de Cultura e Turismo</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-agropecuaria-e-desenvolvimento/">Secretaria Municipal de Agropecuária e Desenvolvimento</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-obras-mobilidade-urbana-e-rural/">Secretaria Municipal de Obras, Mobilidade Urbana e Rural</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-saude/">Secretaria Municipal de Saúde</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-assistencia-social/">Secretaria Municipal de Assistência Social</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-planejamento-projetos-e-meio-ambiente/">Secretaria Municipal de Planejamento, Projetos e Meio Ambiente</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/procuradoria-juridica/">Procuradoria Jurídica</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/assessoria-de-imprensa/">Assessoria de Imprensa</a></li>
+							<li><a href="https://herval.rs.gov.br/secretarias/secretaria-municipal-de-esportes-e-lazer/">Secretaria Municipal de Esportes e Lazer</a></li>
+					</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Licitações<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+		<li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=20&categoria=adesao-a-ata-de-registro-de-precos'> Adesão à Ata de Registro de Preços</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=9&categoria=adjudicacoes-2013'> Adjudicações 2013</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=10&categoria=anos-anteriores'> Anos anteriores</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=18&categoria=autorizacao-de-quebra-da-ordem-cronologica'> Autorização de Quebra da Ordem Cronológica</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=16&categoria=aviso-de-dispensa-de-licitacao'> Aviso de dispensa de licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=8&categoria=chamada-publica'> Chamada pública</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=12&categoria=chamamento-publico'> Chamamento Público</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=7&categoria=compras-realizadas'> Compras realizadas</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=5&categoria=concorrencia'> Concorrência</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=11&categoria=concursos'> Concursos</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=6&categoria=contratos-e-aditivos'> Contratos e Aditivos</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=4&categoria=convite'> Convite</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=14&categoria=dispensa-de-licitacao'> Dispensa de Licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=13&categoria=inexigibilidade-de-licitacao'> Inexigibilidade de Licitação</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=17&categoria=leilao'> Leilão</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=19&categoria=padronizacao'> Padronização</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=2&categoria=pregao-eletronico'> Pregão eletrônico</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=1&categoria=pregao-presencial'> Pregão presencial</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=3&categoria=registro-de-precos'> Registro de preços</a></li><li><a href='https://herval.rs.gov.br/licitacoes/listar?cat=15&categoria=tomada-de-preco'> Tomada de Preço</a></li>			<li><a href="https://herval.rs.gov.br/licitacoes/resultados">Resultados</a></li>
+		</ul>
+	</li>
+
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">COVID-19<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+		<li><a href="https://herval.rs.gov.br/covid/index/8/vacinacao-covid-19/">VACINAÇÃO COVID-19</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/9/denuncias-fura-fila/">Denúncias Fura-Fila</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/10/boletins-epidemiologicos/">Boletins epidemiológicos</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/listar/11/planos-de-vacinacao/">Planos de vacinação</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/12/vacinometro/">Vacinômetro</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/listar/13/grupos-prioritarios-pessoas-vacinadas/">Grupos prioritários / Pessoas vacinadas</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/listar/15/insumos-recebidos-adquiridos/">Insumos recebidos / adquiridos</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/listar/16/informacoes-sobre-vacinas-utilizadas-em-herval/">Informações sobre vacinas utilizadas em Herval</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/17/transparencia-covid-19-processo-de-aquisicao-de-insumos/">Transparência COVID-19 (Processo de Aquisição de Insumos)</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/18/doses-de-vacinas-recebidas-adquiridas/">Doses de vacinas recebidas / adquiridas</a></li>				
+			<li><a href="https://herval.rs.gov.br/covid/index/20/sobra-de-vacinas/">Sobra de Vacinas</a></li>				
+					</ul>
+	</li>
+
+
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Parcerias OSC<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+		<li><a href="https://herval.rs.gov.br/parceria/listar/1/selecao-e-celebracao/">Seleção e Celebração</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/2/execucao-e-monitoramento/">Execução e Monitoramento</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/3/prestacao-de-contas/">Prestação de Contas</a></li>				
+			<li><a href="https://herval.rs.gov.br/parceria/listar/8/extratos-de-justificativas/">Extratos de Justificativas</a></li>				
+					</ul>
+	</li>
+
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Concursos<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+		<li><a href='https://herval.rs.gov.br/concursos/listar?cat=4&categoria=concurso-publico'> CONCURSO PÚBLICO</a></li><li><a href='https://herval.rs.gov.br/concursos/listar?cat=5&categoria=processo-seletivo'> PROCESSO SELETIVO</a></li>			<li><a href="https://herval.rs.gov.br/concursos/resultados">Resultados</a></li>
+		</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Transparência<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+			<li><a href="https://herval.rs.gov.br/licitacoes">Central de Licitações</a></li>
+			<li><a href="https://herval.rs.gov.br/concursos">Concursos</a></li>
+			<li><a href="https://herval.rs.gov.br/contas_publicas">Contas Públicas</a></li>
+			<li><a href="https://herval.rs.gov.br/portal_da_transparencia">Portal da Transparência</a></li>
+			<li><a href="https://herval.rs.gov.br/sic">Serviço de Informação ao Cidadão</a></li>
+			<!-- <li><a href="https://herval.rs.gov.br/portal_da_transparencia">Portal da Transparencia</a></li> -->
+		</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Legislação<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+					<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/2/decretos">Decretos</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/1/leis">Leis</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/4/portarias">Portarias</a></li>
+						<li  class="bg-claro"><a href="https://herval.rs.gov.br/legislacao/categoria/3/projetos-de-lei">Projetos de lei</a></li>
+				
+		</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro">Turismo<div class="mostrar"></div> </span>
+		<ul class="bg-claro">
+		<li><a href='https://herval.rs.gov.br/institucional/gastronomia'> Gastronomia</a></li><li><a href='https://herval.rs.gov.br/institucional/hospedagem'> Hospedagem</a></li>			<li><a href="https://herval.rs.gov.br/turismo">Turismo</a></li>
+		</ul>
+	</li>
+
+	<li class="subitem bg-claro">
+		<span class="bg-claro"><a href="https://herval.rs.gov.br/cidadao">PORTAL DO CIDADÃO</a></span>
+	</li>
+	<li class="subitem bg-claro">
+		<span class="bg-claro"><a href="https://herval.rs.gov.br/contatos">Contatos</a></span>
+	</li><ul>	</div>
+	<div id="conteudo"><div class="center">
+	<img src="https://herval.rs.gov.br/./assets/img/sombra.png" class='sombra'>
+</div>
+
+<!-- <div class="center">
+	<a href="https://herval-portais.govcloud.com.br/pronimtb/index.asp?acao=21&item=1&visao=paginaprincipalcovid" target="_black">
+		<img src="https://herval.rs.gov.br/./assets/img/covid.png" style="width: 100%; border:0;">
+	</a>
+</div> -->
+<div class="center">
+<br class="clear"><br class="clear">
+	<div class="col col-6 col-sm-12 col-xsm-12 left">
+		<section id="banner">
+
+			<ul class="bxslider">
+									<a href="https://herval.rs.gov.br/turismo" target="_blank">
+						<li data-transition="fade" data-slotamount="7">
+							<img id="banner0" src="https://herval.rs.gov.br/./admin/assets/upload/banners/dji-0288-a-melhor-554.jpg">
+							<div class="titulo-banner">Conheça Herval!</div>
+						</li>
+					</a>
+									<a href="https://herval.rs.gov.br/turismo" target="_blank">
+						<li data-transition="fade" data-slotamount="7">
+							<img id="banner1" src="https://herval.rs.gov.br/./admin/assets/upload/banners/5-4-255.png">
+							<div class="titulo-banner">Conheça Herval!</div>
+						</li>
+					</a>
+							</ul>
+
+		</section>
+	</div>
+	<div class="col col-6 col-sm-12 col-xsm-12 right links">
+		<h1 class="titulo-secao texto-escuro">Links úteis</h1>
+		<div class="detalhe-left"></div>
+		<br class="clear">
+
+		<ul class="links-home">
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://webapp1-herval.cidade360.cloud:8443/cidadao/servlet/br.com.cetil.ar.jvlle.hatendimento" title='Ir para  Emita aqui a sua 2ª via ou guia de recolhimento'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/logo-cidadao-667.jpg">
+						</figure>
+						<span>Emita aqui a sua 2ª via ou guia de recolhimento</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://herval.educarweb.net.br/Login#!/" title='Ir para  Educar Web'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/logo-educar-31.png">
+						</figure>
+						<span>Educar Web</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://leismunicipais.com.br/prefeitura/rs/herval" title='Ir para  Leis Municipais de Herval'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/logo-250x250-435.jpg">
+						</figure>
+						<span>Leis Municipais de Herval</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://atendimento.receita.rs.gov.br/lista-de-debitos-inscritos-em-divida-ativa" title='Ir para  Dívida Ativa ICMS RS'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/icms-ipva-1-79.jpg">
+						</figure>
+						<span>Dívida Ativa ICMS RS</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://www.devolveicms.rs.gov.br/inicial" title='Ir para  Devolve ICMS'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/logodevolveicms-771.jpg">
+						</figure>
+						<span>Devolve ICMS</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://herval.cidade360.cloud/portalacesso/login.aspx" title='Ir para  Processos Digitais'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/logo-cidades360-536.jpg">
+						</figure>
+						<span>Processos Digitais</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://herval.rs.gov.br/busca?busca=siafic" title='Ir para  Plano de Ação SIAFIC'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/whatsapp-image-2021-04-27-at-12-27-835.png">
+						</figure>
+						<span>Plano de Ação SIAFIC</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://leismunicipais.com.br/leis/rs/herval/?o=tcers" title='Ir para  Leis Municipais'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/leis-municipais-100x100-3-246.png">
+						</figure>
+						<span>Leis Municipais</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="http://www.educacaofiscal.rs.gov.br/" title='Ir para  Prog. de Educação Fiscal'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/logo-706.jpg">
+						</figure>
+						<span>Prog. de Educação Fiscal</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://nfg.sefaz.rs.gov.br/Cadastro/CadastroNfg_1.aspx" title='Ir para  Nota Fiscal Gaucha'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/logo-instituicao-366.png">
+						</figure>
+						<span>Nota Fiscal Gaucha</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="http://webmail.herval.rs.gov.br/" title='Ir para  Webmail '>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/images-685.png">
+						</figure>
+						<span>Webmail </span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://herval.rs.gov.br/legislacao/categoria/1/leis" title='Ir para  Leis '>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/timbre-940.jpg">
+						</figure>
+						<span>Leis </span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://tcers.tc.br/fiscalizado/" title='Ir para  TCE - RS'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/imagem-destacada-990x728-955.png">
+						</figure>
+						<span>TCE - RS</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://auth.tce.rs.gov.br/app/tcelogin/login.action?id=8794123484870&sistema=115&url=https://portal.tce.rs.gov.br/aplicprod/f?p=50600:1::::::" title='Ir para  LicitaCon - TCE RS'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/download-455.png">
+						</figure>
+						<span>LicitaCon - TCE RS</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://herval.rs.gov.br/ouvidoria" title='Ir para  Ouvidoria'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/images-289.jpg">
+						</figure>
+						<span>Ouvidoria</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://herval.rs.gov.br/licitacoes" title='Ir para  Central de licitações'>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/licitacao-287x300-928.png">
+						</figure>
+						<span>Central de licitações</span>
+					</a>
+				</li>
+							<li class="col col-6 col-sm-6 col-xsm-12 cada-link left">
+					<a href="https://webapp1-herval.cidade360.cloud/portalservidor" title='Ir para  Contra Cheque '>
+						<figure>
+							<img src="https://herval.rs.gov.br/./admin/assets/upload/links_uteis/images-235.png">
+						</figure>
+						<span>Contra Cheque </span>
+					</a>
+				</li>
+					</ul>
+	</div>
+
+</div>
+
+<section class="col col-full left ultimas-novidades">
+	<img src="https://herval.rs.gov.br/./assets/img/sombra.png" class='sombra'>
+
+	<h1 class="titulo-detalhe texto-centralizado texto-escuro">Últimas Novidades</h1>
+	<div class="detalhe-center"></div>
+	<div class="noticias-home center">
+					<article class="col col-4 col-sm-6 col-xsm-12 left noticia-item">
+				<div class="noticia-item-inner">
+
+					<figure>
+													<img src="https://herval.rs.gov.br/./admin/assets/upload/novidades/769/prefa-23-491.png" alt="Inscrições para seleção de moradias do Minha Casa, Minha Vida em Herval são prorrogadas " />
+											</figure>
+
+					<h2>Inscrições para seleção de moradias do Minha Casa, Minha Vida em Herval são prorrogadas </h2>
+
+					<div class="noticia-item-texto"><div class="xdj266r x14z9mp xat24cr x1lziwak x1vvkbs x126k92a">
+<div dir="auto">&nbsp;</div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto">O sonho da casa pr&oacute;pria vai se tornar realidade para mais 20 fam&iacute;lias hervalenses. As inscri&ccedil;&otilde;es para a sele&ccedil;&atilde;o das fam&iacute;lias que v&atilde;o concorrer as unidades habitacionais, no &acirc;mbito do Programa Minha Casa, Minha Vida &ndash; FNHIS SUB-50, foram prorrogadas e podem ser realizadas at&eacute; dia 1&ordm; de dezembro.<br /><br /></div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto">A obra de constru&ccedil;&atilde;o das unidades habitacionais j&aacute; est&aacute; em andamento e est&atilde;o sendo constru&iacute;das com recursos do Governo Federal e participa&ccedil;&atilde;o do Munic&iacute;pio, ampliando o acesso &agrave; moradia digna, &agrave; seguran&ccedil;a e &agrave; qualidade de vida para quem mais precisa.</div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto"><br />Per&iacute;odo de Inscri&ccedil;&otilde;es: at&eacute; dia 1&ordm; de dezembro</div>
+<div dir="auto">Hor&aacute;rio de atendimento: das 9h30 &agrave;s 11h30 e das 13h30 &agrave;s 16h</div>
+<div dir="auto">Local: Secretaria de Assist&ecirc;ncia Social</div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto"><br />Documenta&ccedil;&atilde;o necess&aacute;ria para inscri&ccedil;&atilde;o:</div>
+<div dir="auto">&ordm; Documento de Identifica&ccedil;&atilde;o do interessado;</div>
+<div dir="auto">&ordm; Documentos de rendimentos do candidato e, quando for o caso, dos integrantes do grupo familiar;</div>
+<div dir="auto">&ordm; Documentos de constitui&ccedil;&atilde;o do grupo familiar; e</div>
+<div dir="auto">&ordm; Documentos de resid&ecirc;ncia e situa&ccedil;&atilde;o habitacional;</div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto"><br />Os interessados devem consultar o edital para verificar a documenta&ccedil;&atilde;o obrigat&oacute;ria, os crit&eacute;rios de classifica&ccedil;&atilde;o e as demais exig&ecirc;ncias para participar da sele&ccedil;&atilde;o</div>
+</div></div>
+					<div class="container-vermais">
+						<a href="https://herval.rs.gov.br/noticias/interna/769/inscricoes-para-selecao-de-moradias-do-minha-casa-minha-vida-em-herval-sao-prorrogadas">Leia mais</a>
+					</div>
+				</div>
+
+			</article>
+					<article class="col col-4 col-sm-6 col-xsm-12 left noticia-item">
+				<div class="noticia-item-inner">
+
+					<figure>
+													<img src="https://herval.rs.gov.br/./admin/assets/upload/novidades/768/prefa-38-607.png" alt="Herval abre inscrições para seleção de 20 unidades habitacionais pelo Minha Casa, Minha Vida" />
+											</figure>
+
+					<h2>Herval abre inscrições para seleção de 20 unidades habitacionais pelo Minha Casa, Minha Vida</h2>
+
+					<div class="noticia-item-texto"><p class="selectable-text copyable-text x15bjb6t x1n2onr6">O sonho da casa pr&oacute;pria est&aacute; mais perto de se tornar realidade para mais 20 fam&iacute;lias hervalenses. A partir do dia 10 de novembro, o Munic&iacute;pio abre inscri&ccedil;&otilde;es para a sele&ccedil;&atilde;o das fam&iacute;lias que v&atilde;o concorrer as 20 unidades habitacionais, no &acirc;mbito do Programa Minha Casa, Minha Vida &ndash; FNHIS SUB-50, constru&iacute;das com recursos do Governo Federal e participa&ccedil;&atilde;o do Munic&iacute;pio, ampliando o acesso &agrave; moradia digna, &agrave; seguran&ccedil;a e &agrave; qualidade de vida para quem mais precisa.</p>
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">&nbsp;</p>
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6"><span class="emoji x1rg5ohu xxymvpz x19la9d6 x1fc57z9 x6ikm8r x10wlt62 x19co3pv x11tp94h xw4jnvo x1qx5ct2 xfibh0p xiy17q3 x1xsqp64 x1lkfr7t xexx8yu xyri2b x18d9i69 x1c1uobl"><span class="xy9tlov x1bhl96m">????</span></span><span class="selectable-text copyable-text xkrh14z"> Per&iacute;odo de Inscri&ccedil;&otilde;es: de 10 a 30 de novembro </span></p>
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6"><span class="emoji x1rg5ohu xxymvpz x19la9d6 x1fc57z9 x6ikm8r x10wlt62 x19co3pv x11tp94h xw4jnvo x1qx5ct2 xfibh0p xiy17q3 x1xsqp64 x1lkfr7t xexx8yu xyri2b x18d9i69 x1c1uobl"><span class="xy9tlov x1bhl96m">?</span></span><span class="selectable-text copyable-text xkrh14z"> Hor&aacute;rio de atendimento: das 9h30 &agrave;s 11h30 e das 13h30 &agrave;s 16h</span></p>
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6"><span class="emoji x1rg5ohu xxymvpz x19la9d6 x1fc57z9 x6ikm8r x10wlt62 x19co3pv x11tp94h xw4jnvo x1qx5ct2 xfibh0p xiy17q3 x1xsqp64 x1lkfr7t xexx8yu xyri2b x18d9i69 x1c1uobl"><span class="xy9tlov x1bhl96m">????</span></span><span class="selectable-text copyable-text xkrh14z"> Local: Secretaria de Assist&ecirc;ncia Social</span></p>
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">&nbsp;</p>
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">????? Documenta&ccedil;&atilde;o necess&aacute;ria para inscri&ccedil;&atilde;o:<br />* Documento de Identifica&ccedil;&atilde;o do interessado;<br />* Documentos de rendimentos do candidato e, quando for o caso, dos integrantes do grupo familiar;<br />* Documentos de constitui&ccedil;&atilde;o do grupo familiar; e<br />* Documentos de resid&ecirc;ncia e situa&ccedil;&atilde;o habitacional;</p>
+<p class="selectable-text copyable-text x15bjb6t x1n2onr6">&nbsp;</p></div>
+					<div class="container-vermais">
+						<a href="https://herval.rs.gov.br/noticias/interna/768/herval-abre-inscricoes-para-selecao-de-20-unidades-habitacionais-pelo-minha-casa-minha-vida">Leia mais</a>
+					</div>
+				</div>
+
+			</article>
+					<article class="col col-4 col-sm-6 col-xsm-12 left noticia-item">
+				<div class="noticia-item-inner">
+
+					<figure>
+													<img src="https://herval.rs.gov.br/./admin/assets/upload/novidades/767/prefa-2026-09-28t112801-922-331.png" alt="CONFIRA O ITINERÁRIO DO TRANSPORTE PARA ELEITORES NO DIA 4 DE OUTUBRO " />
+											</figure>
+
+					<h2>CONFIRA O ITINERÁRIO DO TRANSPORTE PARA ELEITORES NO DIA 4 DE OUTUBRO </h2>
+
+					<div class="noticia-item-texto"><div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto">&nbsp;</div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto">Neste domingo (04), acontece o primeiro turno da elei&ccedil;&atilde;o para presidente, governador, senadores, deputado federal e deputado estadual. Os eleitores de comunidades do interior contar&atilde;o com transporte gratuito para o acesso &agrave; vota&ccedil;&atilde;o.</div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto">A medida atende &agrave; determina&ccedil;&atilde;o da Justi&ccedil;a Eleitoral e ser&aacute; realizada com apoio log&iacute;stico da Prefeitura, que disponibilizar&aacute; ve&iacute;culos de sua frota. Confira a seguir, o roteiro do transporte para os eleitores da zona rural e sede.</div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto"><br />ROTA I &ndash; &Ocirc;NIBUS &ndash;</div>
+<div dir="auto">Sa&iacute;da da Prefeitura &agrave;s 7h30min, passando pela escola S&atilde;o Francisco de Paula, Escola Desvio Herval, Barro das Negras, Fazenda Nova, Terra do Sol, Armando Merlo (Ernesto Che Guevara) e chegando na Escola Corintho &Aacute;vila Escobar, na Vila Bas&iacute;lio. Retorna ao Centro de Herval &agrave;s 11h.</div>
+<div dir="auto">Sa&iacute;da novamente da Prefeitura &agrave;s 14h, fazendo o mesmo roteiro indicado, com retorno ao Centro de Herval &agrave;s 17h.</div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto"><br />ROTA II - MICRO &Ocirc;NIBUS &ndash;</div>
+<div dir="auto">Sa&iacute;da da Prefeitura &agrave;s 7h30min, passando pelo Assentamento Cerro Azul, Escola Astrogildo Pereira da Costa, Assentamento Novo Virg&iacute;lio, Escola Rosaura de Freitas Campello e chegando na Escola Manoel Lima. Retorna ao Centro de Herval &agrave;s 11h.</div>
+<div dir="auto">Sa&iacute;da novamente da Prefeitura &agrave;s 14h, fazendo o mesmo roteiro indicado, com retorno ao Centro de Herval &agrave;s 17h.</div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto"><br />ROTA III - &Ocirc;NIBUS &ndash;</div>
+<div dir="auto">Sa&iacute;da da Prefeitura &agrave;s 7h30min, passando pelas Escolas Luiz Lima de Faria, Santos Thomas de Aquino e chegando na Escola Carolina An&aacute;lia Morais Sais. Retorna ao Centro de Herval &agrave;s 11h.</div>
+<div dir="auto">Sa&iacute;da novamente da Prefeitura &agrave;s 14h, fazendo o mesmo roteiro indicado, com retorno ao Centro de Herval &agrave;s 17h.</div>
+</div>
+<div class="x14z9mp xat24cr x1lziwak x1vvkbs xtlvy1s x126k92a">
+<div dir="auto">Os mesmos roteiros ser&atilde;o disponibilizados no dia 25 de outubro, caso haja segundo turno.</div>
+</div></div>
+					<div class="container-vermais">
+						<a href="https://herval.rs.gov.br/noticias/interna/767/confira-o-itinerario-do-transporte-para-eleitores-no-dia-4-de-outubro">Leia mais</a>
+					</div>
+				</div>
+
+			</article>
+					<article class="col col-4 col-sm-6 col-xsm-12 left noticia-item">
+				<div class="noticia-item-inner">
+
+					<figure>
+													<img src="https://herval.rs.gov.br/./admin/assets/upload/novidades/766/prefs-2026-08-14t153234-394-578.png" alt="Projetos selecionados para etapa de habilitação conforme Edital PNAB 003/2026" />
+											</figure>
+
+					<h2>Projetos selecionados para etapa de habilitação conforme Edital PNAB 003/2026</h2>
+
+					<div class="noticia-item-texto"><div data-block="true" data-editor="8ralh" data-offset-key="5bl9t-0-0">
+<div class="_1mf _1mj" data-offset-key="5bl9t-0-0"><span data-offset-key="5bl9t-0-0">A Secretaria de Cultura e Turismo torna p&uacute;blico o resultado final da an&aacute;lise do m&eacute;rito cultural, ap&oacute;s o julgamento de recursos, dos projetos selecionados da Pol&iacute;tica Nacional Aldir Blanc de Fomento &agrave; Cultura (PNAB), para etapa de habilita&ccedil;&atilde;o, conforme Edital 003/2026.</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="1br1j-0-0">
+<div class="_1mf _1mj" data-offset-key="1br1j-0-0"><span data-offset-key="1br1j-0-0">&nbsp;</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="8j6bj-0-0">
+<div class="_1mf _1mj" data-offset-key="8j6bj-0-0"><span data-offset-key="8j6bj-0-0">&Aacute;REA 01- Artes Visuais</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="5sm9h-0-0">
+<div class="_1mf _1mj" data-offset-key="5sm9h-0-0"><span data-offset-key="5sm9h-0-0">Projeto: Arte que Inclui &ndash; por pontua&ccedil;&atilde;o</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="bdgdj-0-0">
+<div class="_1mf _1mj" data-offset-key="bdgdj-0-0"><span data-offset-key="bdgdj-0-0">&nbsp;</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="do489-0-0">
+<div class="_1mf _1mj" data-offset-key="do489-0-0"><span data-offset-key="do489-0-0">&Aacute;REA 02- Artesanato</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="6lt9e-0-0">
+<div class="_1mf _1mj" data-offset-key="6lt9e-0-0"><span data-offset-key="6lt9e-0-0">Projeto: Costurando Sonhos- por cota</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="3fklg-0-0">
+<div class="_1mf _1mj" data-offset-key="3fklg-0-0"><span data-offset-key="3fklg-0-0">&nbsp;</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="91sut-0-0">
+<div class="_1mf _1mj" data-offset-key="91sut-0-0"><span data-offset-key="91sut-0-0">&Agrave;REA 03- Audio Visual</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="5gn79-0-0">
+<div class="_1mf _1mj" data-offset-key="5gn79-0-0"><span data-offset-key="5gn79-0-0">Projeto: Sentinela da Fronteira na lente do amanh&atilde; &ndash; por pontua&ccedil;&atilde;o</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="b52u9-0-0">
+<div class="_1mf _1mj" data-offset-key="b52u9-0-0"><span data-offset-key="b52u9-0-0">&nbsp;</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="9g625-0-0">
+<div class="_1mf _1mj" data-offset-key="9g625-0-0"><span data-offset-key="9g625-0-0">&Agrave;REA 04- Dan&ccedil;a</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="bu7rg-0-0">
+<div class="_1mf _1mj" data-offset-key="bu7rg-0-0"><span data-offset-key="bu7rg-0-0">Projeto: Dan&ccedil;a sem Idade-cultura e bem estar na maturidade &ndash; por pontua&ccedil;&atilde;o</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="dc1ss-0-0">
+<div class="_1mf _1mj" data-offset-key="dc1ss-0-0"><span data-offset-key="dc1ss-0-0">Projeto: Corpos que Dan&ccedil;am- movimento, inclus&atilde;o e express&atilde;o &ndash; por pontua&ccedil;&atilde;o</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="1saui-0-0">
+<div class="_1mf _1mj" data-offset-key="1saui-0-0"><span data-offset-key="1saui-0-0">Projeto: Toda Mudan&ccedil;a come&ccedil;a com um Primeiro Passo- por pontua&ccedil;&atilde;o</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="adf1f-0-0">
+<div class="_1mf _1mj" data-offset-key="adf1f-0-0"><span data-offset-key="adf1f-0-0">&nbsp;</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="8vprd-0-0">
+<div class="_1mf _1mj" data-offset-key="8vprd-0-0"><span data-offset-key="8vprd-0-0">&Agrave;REA 05- Folclore</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="a56fi-0-0">
+<div class="_1mf _1mj" data-offset-key="a56fi-0-0"><span data-offset-key="a56fi-0-0">Projeto: 5&ordm; Cavalgada do Pi&aacute; &ndash; por pontua&ccedil;&atilde;o</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="94g85-0-0">
+<div class="_1mf _1mj" data-offset-key="94g85-0-0"><span data-offset-key="94g85-0-0">&nbsp;</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="g4kg-0-0">
+<div class="_1mf _1mj" data-offset-key="g4kg-0-0"><span data-offset-key="g4kg-0-0">&Agrave;REA 06- Literatura</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="82co-0-0">
+<div class="_1mf _1mj" data-offset-key="82co-0-0"><span data-offset-key="82co-0-0">Projeto: Jovens Autores &ndash; por pontua&ccedil;&atilde;o</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="5hnmb-0-0">
+<div class="_1mf _1mj" data-offset-key="5hnmb-0-0"><span data-offset-key="5hnmb-0-0">Projeto: Cultura, Sabores e Saberes &ndash; por pontua&ccedil;&atilde;o</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="6rea6-0-0">
+<div class="_1mf _1mj" data-offset-key="6rea6-0-0"><span data-offset-key="6rea6-0-0">&nbsp;</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="4f9j9-0-0">
+<div class="_1mf _1mj" data-offset-key="4f9j9-0-0"><span data-offset-key="4f9j9-0-0">&Agrave;REA 07 &ndash; Mem&oacute;ria e Patrim&ocirc;nio</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="a3ejp-0-0">
+<div class="_1mf _1mj" data-offset-key="a3ejp-0-0"><span data-offset-key="a3ejp-0-0">Projeto: Herval em Foco- mem&oacute;ria e patrim&ocirc;nio atrav&eacute;s da fotografia &ndash; por cota</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="9cuj6-0-0">
+<div class="_1mf _1mj" data-offset-key="9cuj6-0-0"><span data-offset-key="9cuj6-0-0">Projeto: Memorial Centen&aacute;rio- Clube Comercial de Herval &ndash; por pontua&ccedil;&atilde;o</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="1ujlf-0-0">
+<div class="_1mf _1mj" data-offset-key="1ujlf-0-0"><span data-offset-key="1ujlf-0-0">&nbsp;</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="c7rc8-0-0">
+<div class="_1mf _1mj" data-offset-key="c7rc8-0-0"><span data-offset-key="c7rc8-0-0">&Agrave;REA 08- M&uacute;sica</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="4iqbr-0-0">
+<div class="_1mf _1mj" data-offset-key="4iqbr-0-0"><span data-offset-key="4iqbr-0-0">Projeto: M&uacute;sica Agu&ccedil;a os Sentidos &ndash; por cota</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="2qet1-0-0">
+<div class="_1mf _1mj" data-offset-key="2qet1-0-0"><span data-offset-key="2qet1-0-0">&nbsp;</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="d0qds-0-0">
+<div class="_1mf _1mj" data-offset-key="d0qds-0-0"><span data-offset-key="d0qds-0-0">RESERVA COM MENOR PONTUA&Ccedil;&Atilde;O:</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="ffk2e-0-0">
+<div class="_1mf _1mj" data-offset-key="ffk2e-0-0"><span data-offset-key="ffk2e-0-0">01- PROJETO: Sementes da Tradi&ccedil;&atilde;o &ndash; conhecendo a cultura do rio grande do sul</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="4dk2-0-0">
+<div class="_1mf _1mj" data-offset-key="4dk2-0-0"><span data-offset-key="4dk2-0-0">02- PROJETO: Month&aacute;rea, como tudo se originou</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="a0jrg-0-0">
+<div class="_1mf _1mj" data-offset-key="a0jrg-0-0"><span data-offset-key="a0jrg-0-0">03- PROJETO: Maestro Cubano- Instala&ccedil;&atilde;o sonora , interativa em arte contempor&acirc;nea</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="2bo5-0-0">
+<div class="_1mf _1mj" data-offset-key="2bo5-0-0"><span data-offset-key="2bo5-0-0">04- PROJETO: Dan&ccedil;a Inclusiva na Escola </span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="49ato-0-0">
+<div class="_1mf _1mj" data-offset-key="49ato-0-0"><span data-offset-key="49ato-0-0">05- PROJETO: Compacto Duplo - vida real/n&oacute;s dois</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="633p-0-0">
+<div class="_1mf _1mj" data-offset-key="633p-0-0"><span data-offset-key="633p-0-0">&nbsp;</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="d03jp-0-0">
+<div class="_1mf _1mj" data-offset-key="d03jp-0-0"><span data-offset-key="d03jp-0-0">INAPTOS:</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="1j64k-0-0">
+<div class="_1mf _1mj" data-offset-key="1j64k-0-0"><span data-offset-key="1j64k-0-0">01- PROJETO: Tra&ccedil;os de Identidade- Est&eacute;tica Negra, Cultura e Empreendedorismo Feminino</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="8fuad-0-0">
+<div class="_1mf _1mj" data-offset-key="8fuad-0-0"><span data-offset-key="8fuad-0-0">02- PROJETO: Entre Len&ccedil;os e Bandeiras, a mem&oacute;ria Farroupilha</span></div>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="fun5f-0-0">
+<div class="_1mf _1mj" data-offset-key="fun5f-0-0"><span data-offset-key="fun5f-0-0">03- PROJETO: Busca de recursos para a aquisi&ccedil;&atilde;o de Pilchas para o GDF Ess&ecirc;ncia Campeira</span></div>
+<p><span data-offset-key="fun5f-0-0">&nbsp;</span></p>
+</div>
+<div data-block="true" data-editor="8ralh" data-offset-key="dq5qu-0-0">&nbsp;</div></div>
+					<div class="container-vermais">
+						<a href="https://herval.rs.gov.br/noticias/interna/766/projetos-selecionados-para-etapa-de-habilitacao-conforme-edital-pnab-003-2026">Leia mais</a>
+					</div>
+				</div>
+
+			</article>
+					<article class="col col-4 col-sm-6 col-xsm-12 left noticia-item">
+				<div class="noticia-item-inner">
+
+					<figure>
+													<img src="https://herval.rs.gov.br/./admin/assets/upload/novidades/765/edital-notificacao-de-lancamento-page-0001-1.jpg" alt="EDITAL DE NOTIFICAÇÃO DE LANÇAMENTO N° 00003" />
+											</figure>
+
+					<h2>EDITAL DE NOTIFICAÇÃO DE LANÇAMENTO N° 00003</h2>
+
+					<div class="noticia-item-texto"></div>
+					<div class="container-vermais">
+						<a href="https://herval.rs.gov.br/noticias/interna/765/edital-de-notificacao-de-lancamento-n-00003">Leia mais</a>
+					</div>
+				</div>
+
+			</article>
+					<article class="col col-4 col-sm-6 col-xsm-12 left noticia-item">
+				<div class="noticia-item-inner">
+
+					<figure>
+													<img src="https://herval.rs.gov.br/./admin/assets/upload/novidades/764/valor-da-terra-nua-2026-1-page-0001-164.jpg" alt="Valor da Terra Nua 2026" />
+											</figure>
+
+					<h2>Valor da Terra Nua 2026</h2>
+
+					<div class="noticia-item-texto"><p>A Prefeitura Municipal de Herval, por meio da Secretaria da Fazenda, torna p&uacute;blico o Valor da Terra Nua (VTN) dos im&oacute;veis rurais do munic&iacute;pio para o ano de 2026, para cada aptid&atilde;o agr&iacute;cola do munic&iacute;pio. As informa&ccedil;&otilde;es servem para c&aacute;lculo do valor do ITR (Imposto Territorial Rural).</p></div>
+					<div class="container-vermais">
+						<a href="https://herval.rs.gov.br/noticias/interna/764/valor-da-terra-nua-2026">Leia mais</a>
+					</div>
+				</div>
+
+			</article>
+				<br class="clear">
+	</div>
+
+	<div class="col col-12 left texto-centralizado">
+		<a href="https://herval.rs.gov.br/noticias/" class="btn-mais-noticias">Mais notícias</a>
+		<br class="clear">
+	</div>
+</section>
+
+<section id="links-uteis" class="col col-full col-sm-full left">
+	<div class="center">
+		<div class="col col-7 col-sm-full left conteiner-destaque">
+			<h1 class="titulo-secao texto-escuro">Acesso a Informação (SIC)</h1>
+
+			<p><p>Atendendo a Legisla&ccedil;&atilde;o Federal, o Sistema de Informa&ccedil;&atilde;o ao Cidad&atilde;o (SIC) do Munic&iacute;pio de Herval busca promover o acesso &agrave; informa&ccedil;&atilde;o ao cidad&atilde;o, em linguagem clara e objetiva, sobre as origens e aplica&ccedil;&otilde;es dos recursos p&uacute;blicos .</p>
+<p>Clique no link a baixo para acessar o requerimento de Pedido de Acesso &agrave; Informa&ccedil;&atilde; ou para consultar o andamento de uma solicita&ccedil;&atilde;o j&aacute; realizada.</p></p>
+			<a href="https://herval.rs.gov.br/sic/" class="link" title="Clique aqui e solicite mais informações">Solicitar Informações</a>
+		</div>
+	</div>
+</section>
+
+<section class="galeria-home">
+	<div class="center">
+		<img src="https://herval.rs.gov.br/./assets/img/sombra.png" class='sombra'>
+
+		<h1 class="titulo-detalhe texto-centralizado texto-escuro">Galeria de Fotos</h1>
+		<div class="detalhe-center"></div>
+		<br class="clear">
+		<br class="clear">
+		<div class="col col-10 col-sm-12 col-xsm-12 col-centered">
+			<div class="texto texto-centralizado texto-escuro">
+							</div>
+		</div>
+		<br class="clear">
+		<br class="clear">
+		
+		<div class="col col-full left">
+			<a href="https://herval.rs.gov.br/galeria/" title="Clique neste link e veja mais notícias" class="mais-galeria texto-escuro right" accesskey="n">Veja Mais</a>
+		</div>
+
+		<br class="clear">
+	</div>
+</section></div>
+<footer class="bg-escuro col col-full left">
+	<div class="center">
+		<img src="https://herval.rs.gov.br/./assets/img/sombra.png" class='sombra'>
+		<br class="clear">		
+		<div class="col col-8 col-sm-12 col-xsm-12 left">
+			<div class="col col-6 col-sm-12 col-xsm-12 left">
+				<span class='titulo'>Atendimento</span>
+				<ul class="contatos-localizacao">
+					<li class="localizacao">
+						<span>			 
+						R. Pinto Bandeira, 671<br>Bairro: Centro<br>Herval,RS<br> CEP: 96310-000					
+					 	</span>	
+					</li>
+
+					<li class="email" title="E-mail chefedegabinete@herval.rs.gov.br">
+						<span>			 
+						<a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="583b303d3e3d3c3d3f393a31363d2c3d18303d2a2e3934762a2b763f372e763a2a">[email&#160;protected]</a>					
+					 	</span>	
+					</li>
+
+					<li class="telefones" title="Telefones (53) 3267-2900 ">
+						<span>			 
+						<div><a href='tel:+555332672900'>(53) 3267-2900</a>	</div>			
+					 	</span>	
+					</li>
+
+					
+					<li class="horario_atendimento" title="Horário de Atendimento 					Atendimento de segunda a sexta das 8h às 12:00hs e das 13:30hs às 17:30hs .												">
+						<span>			 
+											Atendimento de segunda a sexta das 8h às 12:00hs e das 13:30hs às 17:30hs .																	
+					 	</span>	
+					</li>
+				</ul>
+                                
+                                <br class="clear">
+                                <br class="clear">
+			</div>
+			<div class="col col-5 col-sm-12 col-xsm-12 right">
+				<span class='titulo'>Institucional</span>
+				<ul class="institucional">
+					<li>
+						<a href="https://herval.rs.gov.br/municipio">O Município</a>
+					</li>
+					<li>
+						<a href="https://herval.rs.gov.br/noticias">Notícias</a>
+					</li>
+					<li>
+						<a href="https://herval.rs.gov.br/licitacoes">Licitações</a>
+					</li>
+					<li>
+						<a href="https://herval.rs.gov.br/concursos">Concursos</a>
+					</li>
+					<li>
+						<a href="https://herval.rs.gov.br/transparencia" target="_blank">Transparência</a>
+					</li>
+					<li>
+						<a href="https://herval.rs.gov.br/secretarias">Secretaria</a>
+					</li>
+					<li>
+						<a href="https://herval.rs.gov.br/turismo">Turismo</a>
+					</li>
+					<li>
+						<a href="https://herval.rs.gov.br/institucional/perguntas-frequentes">Perguntas Frequentes</a>
+					</li>
+					<li>
+						<a href="https://herval.rs.gov.br/contatos">Fale conosco</a>
+					</li>
+				</ul>
+				<br class="clear">
+				<br class="clear">
+			</div>
+		</div>
+		<div class="col col-4 col-sm-12 col-xsm-12 right">
+			<!-- <div class="col col-6 col-sm-12 col-xsm-12 left"> -->
+				<span class='titulo'>Links úteis</span>
+				<br class="clear">
+				<ul class="links-rodape col-6 left">
+					<li><a href="https://herval.rs.gov.br/contas_publicas">Contas públicas</a></li>
+					<li><a href="https://herval.rs.gov.br/legislacao">Legislação</a></li>
+					<li><a href="https://herval.rs.gov.br/servicos">Serviços</a></li>
+					<li><a href="https://herval.rs.gov.br/sic">SIC</a></li>
+					<li><a href="https://herval.rs.gov.br/telefones_uteis">Telefones úteis</a></li>
+					<li><a href="https://herval.rs.gov.br/ouvidoria">Ouvidoria</a></li>
+				</ul>
+				</div>				<div class='midias-rodape col-4 right'>	
+								  
+					                                    
+                                            <a href="https://www.facebook.com/PreHerval/" target="_blank">
+                                                    <img src="https://herval.rs.gov.br/./assets/img/facebook-footer.png" alt="Facebook" title="Facebook">
+                                            </a>
+                                    
+					</div>
+			<!-- </div> -->
+		</div>
+		
+		<br class="clear">
+	</div>
+	<div class="footer-bottom bg-escuro">
+		<div class="center">
+			<di id="direitos"> 
+				Prefeitura de Herval -  2026 &copy;	 Todos os direitos reservados			</di>
+			<div class="hostche">
+				<a href="https://www.hostche.com.br/" target="_blank" style="z-index: 99;" >
+					<img src="https://herval.rs.gov.br/./assets/img/hostche.png" alt="Hostche - Criação de Sites" title="Hostche - Criação de Sites">
+				</a>
+			</div>
+		</div>
+	</div>
+</footer>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>

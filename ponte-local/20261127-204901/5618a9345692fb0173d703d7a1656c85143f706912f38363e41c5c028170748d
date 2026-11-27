@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <!--| META TAGS |-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="application-name" content="Site Institucional da Prefeitura Municipal de José Raydan">
+    <meta name="description" content="Site Institucional da Prefeitura Municipal de José Raydan">
+    <meta name="keywords" content="Institucional, Transparência, Prefeitura, Prefeitura Municipal de José Raydan">
+    <meta name="author" content="Digitaliza Tecnologia">
+    <meta name="generator" content="VS Code & PhpStorm">
+    <meta name="csrf-token" content="G6VYn94fvVyoXe3n6s5PWNG4hZmxjiUCsCegiLSa">
+
+    <!--| OG TAGS |-->
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:url" content="http://joseraydan.mg.gov.br">
+    <meta property="og:title" content="">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="">
+    <meta property="og:image" content="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/site/brasao.png">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="Prefeitura Municipal de José Raydan">
+
+    <link rel="alternate" type="application/atom+xml" href="https://joseraydan.mg.gov.br/noticias.rss" title="Ultimas Noticias">
+
+    <title> Prefeitura Municipal de José Raydan </title>
+
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+
+    
+    <style>
+        :root {
+            --color__1: #001f52;
+            --color__2: #0049f5;
+        }
+    </style>
+
+    
+    <link rel="icon" type="image/x-icon"
+        href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/site/y0sJa4aRmYo28p7XwlcHFnnjzvegmLkwRYwm29vW.png" />
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous" />
+
+    
+    <link rel="stylesheet"
+        href="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/sl-1.6.2/datatables.min.css" />
+
+    
+    <link rel="stylesheet" type="text/css" href="https://unpkg.com/@phosphor-icons/web@2.0.3/src/bold/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css" />
+    <link rel="stylesheet" type="text/css"
+        href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css" />
+
+    
+    <link rel="stylesheet" type="text/css" href="https://joseraydan.mg.gov.br/css/style.css" />
+    </head>
+
+<body class="context"><a href="https://joseraydan.mg.gov.br/cdn-cgi/content?id=KON8RYq0gtCovJ5WSwTpvAfQGpBYSluSiO_8dm5QW3Q-1795812681.498434-1.2.1.1-6FbEKZ4mVRW6d9iMjaustY7ttG08c4lkItJM3bWWZvOrhS4pG1YRDs1zKZe7yNL0" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+
+    
+        <div class="page_institucional">
+        
+        <nav class="navbar navbar-expand-lg" id="navbar" x-data="navbar">
+    <a href="https://joseraydan.mg.gov.br" style="height: 100%;">
+        <img class="navbar-brand img-fluid" style="height: 100%; width: auto; object-fit: cover;"
+            src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/site/brasao.png"
+            alt="Brasão">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="ph-bold ph-list" id="action_icon"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://joseraydan.mg.gov.br"> Home </a>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropMunicipio" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Município </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropMunicipio">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Município </h6>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/cidade"> Cidade </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/orgaos-municipais"> Órgãos Municipais </a>
+
+                                                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/secretarias "> Secretarias </a>
+                            
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/noticias/todas"> Todas as Notícias </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/perguntas-frequentes"> Perguntas Frequentes </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title">
+                                                                    A Prefeitura
+                                                            </h6>
+                                                                                                                                                                                    <a class="dropdown-item" href="https://joseraydan.mg.gov.br/gestores">
+                                                Prefeito </a>
+                                                                                                                                                        
+                                                                                                                                                                                                    <a class="dropdown-item" href="https://joseraydan.mg.gov.br/vices">
+                                                Vice-Prefeito </a>
+                                                                                                                                        
+                            
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/estruturas-organizacional"> Estrutura Administrativa </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/documentos_oficiais"> Documentos Oficiais </a>
+
+                            
+                            
+                            
+                                                                                                            </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Cultura </h6>
+
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/turismo"> Turismo </a>
+                            
+                                                                                                <a class="dropdown-item" href="https://joseraydan.mg.gov.br/patrimonios-publicos"> Patrimônio Cultural de José Raydan </a>
+                                
+                                
+                                                                    <a class="dropdown-item" href="https://joseraydan.mg.gov.br/bibliotecas"> Biblioteca Dona Nalzira Fernandes Lopes </a>
+                                
+                                                                    <a class="dropdown-item" href="https://joseraydan.mg.gov.br/centro-informacoes"> Centro de informações </a>
+                                                            
+                                                    </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropServicos" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false"> Serviços </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropServicos">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Serviços da Fazenda </h6>
+
+                                                            <a class="dropdown-item" href="https://mg-joseraydan-pm-nfs.cloud.el.com.br/#/login" target="_blank" rel="noopener"> Nota Fiscal de Serviço Eletrônica </a>
+                            
+                            <a class="dropdown-item" href="https://gpi36.cloud.el.com.br/ServerExec/acessoBase/?idPortal=d53f1d9f-c71f-4b26-9b5d-c4ead3f87e24" target="_blank" rel="noopener"> Dívida ativa </a>
+                            <a class="dropdown-item" href="https://gpi36.cloud.el.com.br/ServerExec/acessoBase/?idPortal=d53f1d9f-c71f-4b26-9b5d-c4ead3f87e24" target="_blank" rel="noopener"> Certidão de débitos </a>
+                            <a class="dropdown-item" href="https://gpi36.cloud.el.com.br/ServerExec/acessoBase/?idPortal=d53f1d9f-c71f-4b26-9b5d-c4ead3f87e24" target="_blank" rel="noopener"> Taxas Anuais (Econômico) </a>
+                            <a class="dropdown-item" href="https://gpi36.cloud.el.com.br/ServerExec/acessoBase/?idPortal=d53f1d9f-c71f-4b26-9b5d-c4ead3f87e24" target="_blank" rel="noopener"> Alvará </a>
+                            <a class="dropdown-item" href="https://gpi36.cloud.el.com.br/ServerExec/acessoBase/?idPortal=d53f1d9f-c71f-4b26-9b5d-c4ead3f87e24" target="_blank" rel="noopener"> Emissão de Guias Diversas </a>
+                            <a class="dropdown-item" href="https://gpi36.cloud.el.com.br/ServerExec/acessoBase/?idPortal=d53f1d9f-c71f-4b26-9b5d-c4ead3f87e24" target="_blank" rel="noopener"> Autenticidade de Documentos </a>
+                            <a class="dropdown-item" href="https://mg-joseraydan-pm-nfs.cloud.el.com.br/" target="_blank" rel="noopener"> ISSQN Retido e ISSQN Eventual (DAPS) </a>
+                        </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <h6 class="dropdown_title"> Serviços do RH </h6>
+
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/concursos-publicos"> Concursos </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/editais"> Editais e Processos Seletivos </a>
+                                                                                                                                        <a class="dropdown-item" href="http://webcidadao.com.br:8080/web-cidadao-web/login?codAux=9B4005&amp;pagina=EMISSAO_2_VIA_CONTRACHEQUE" target="_blank" rel="noopener"> Contracheque </a>
+                                                                    
+                                
+                                                                                                            <a class="dropdown-item" href="http://webcidadao.com.br:8080/web-cidadao-web/login?codAux=9B4005&amp;pagina=EMISSAO_2_VIA_IPTU" target="_blank" rel="noopener"> IPTU </a>
+                                                                    
+                                                                    <a class="dropdown-item" href="https://mg-joseraydan-pm-nfs.cloud.el.com.br/#/login" target="_blank" rel="noopener"> Nota Fiscal de Serviço Eletrônica </a>
+                                
+                                                                    <a class="dropdown-item" href="https://joseraydan.mg.gov.br/designacoes"> Designações </a>
+                                                                                                                            
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/covid/home"> Covid-19 </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/emendas-parlamentares"> Emendas Parlamentares </a>
+
+                                                    </ul>
+
+                        <ul class="dropdown_menu_list">
+                             <h6 class="dropdown_title"> Serviços ao cidadão </h6>
+
+
+                                                            <a class="dropdown-item" target=&quot;_blank&quot; href="http://joseraydan.servicosaocidadao.net.br/services/e-sic"> Formulário e-SIC </a>
+                                                            <a class="dropdown-item" target=&quot;_blank&quot; href="http://joseraydan.servicosaocidadao.net.br/search-code"> Consultar Solicitação e-SIC </a>
+                                                            <a class="dropdown-item" target=&quot;_blank&quot; href="http://joseraydan.servicosaocidadao.net.br/services/ombudsman"> Formulário Ouvidoria </a>
+                                                            <a class="dropdown-item" target=&quot;_blank&quot; href="http://joseraydan.servicosaocidadao.net.br/search-code"> Consultar Solicitação Ouvidoria </a>
+                                                    </ul>
+
+                                                    <ul class="dropdown_menu_list">
+                                <h6 class="dropdown_title"> Outros serviços </h6>
+                                                                    <a class="dropdown-item" href="http://webcidadao.com.br:8080/web-cidadao-web/selecione_entidade.xhtml">
+                                        Guia de serviços
+                                    </a>
+                                                                    <a class="dropdown-item" href="https://joseraydan.mg.gov.br/feira-delivery">
+                                        Feira Delivery
+                                    </a>
+                                                                    <a class="dropdown-item" href="http://webcidadao.com.br:8080/web-cidadao-web/login?codAux=9B4005&amp;pagina=EMISSAO_2_VIA_IPTU">
+                                        IPTU
+                                    </a>
+                                                                    <a class="dropdown-item" href="https://gpi36.cloud.el.com.br/ServerExec/acessoBase/?idPortal=d53f1d9f-c71f-4b26-9b5d-c4ead3f87e24">
+                                        Emissão de Documentos
+                                    </a>
+                                
+                                                                    <a class="dropdown-item" href="https://joseraydan.mg.gov.br/form">Formulário de Respostas</a>
+                                
+                                                            </ul>
+                                            </div>
+                </div>
+            </li>
+
+            <li class="nav-item dropdown full">
+                <a class="nav-link dropdown" href="#" id="dropLegislacao" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Legislação </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropLegislacao">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/todas/Todas%20as%20Leis"> Todas </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/1/Leis%20de%20Diretrizes%20Or%C3%A7ament%C3%A1rias"> Lei Diretrizes Orçamentárias </a>
+                                                        <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/2/Leis%20Or%C3%A7ament%C3%A1rias%20Anuais"> Lei Orçamentária Anual </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/3/Planos%20Plurianuais%20"> Plano Plurianual </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/4/Leis"> Leis </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/5/Leis%20Complementares"> Leis Complementares </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/15/Leis%20Complementares%20Consolidadas"> Leis Complementares Consolidadas </a>
+                        </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/6/Leis%20Delegadas"> Lei Delegada </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/7/Decretos"> Decretos </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/22/Presta%C3%A7%C3%A3o%20de%20Contas"> Prestação de Contas </a>
+                                                                                    <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/8/Portarias%20"> Portarias </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/9/Resolu%C3%A7%C3%B5es%20"> Resoluções </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/10/Proposi%C3%A7%C3%B5es"> Proposição </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/11/Emenda%20da%20Lei%20Org%C3%A2nica"> Emenda da Lei Orgânica </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/12/Decis%C3%B5es"> Decisão </a>
+                        </ul>
+
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/convenios"> Convênios </a>
+
+                            
+                            
+                                                            <a class="dropdown-item" href="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/site/mAJdW02EixzouISUQeMT7yfAga4gc4isC0Eh2ap3.pdf" target="_blank" rel="noopener"> Lei Orgânica </a>
+                            
+                            
+                            
+                            <a class="dropdown-item" href="http://www.transparencia.mg.gov.br/convenios/convenios-de-saida/convenios-municipios/0/2018/01-01-2018/31-12-2018/416/0" target="_blank" rel="noopener"> Convenio Estadual </a>
+                            <a class="dropdown-item" href="http://www.portaldatransparencia.gov.br/localidades/3136553-jose-raydan" target="_blank" rel="noopener"> Convenio Federal </a>
+
+                            <a class="dropdown-item" href="http://www.planalto.gov.br/ccivil_03/_ato2011-2014/2011/lei/l12527.htm" target="_blank" rel="noopener"> Lei nº 12.527/2011 </a>
+                            <a class="dropdown-item" href="https://www.planalto.gov.br/ccivil_03/_ato2019-2022/2021/lei/l14129.htm" target="_blank" rel="noopener"> Lei nº 14.129/2021 </a>
+                            
+                                                            <a class="dropdown-item"
+                                    href="https://www.almg.gov.br/consulte/legislacao/completa/completa.html?tipo=DEC&num=45969&ano=2012"
+                                    target="_blank" rel="noopener"> Decreto 45.969/2012 </a>
+                            
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/legislacoes/14/Instru%C3%A7%C3%A3o%20Normativa"> Instrução Normativa </a>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="https://joseraydan.mg.gov.br/diarios-oficiais"> Diário Oficial </a>
+            </li>
+
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown" href="#" id="dropLicitacao" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Licitações </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropLicitacao">
+                    <div class="dropdown_content">
+                        <ul class="dropdown_menu_list">
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/licitacoes/1"> Editais </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/avisos-licitacoes/1"> Avisos </a>
+                            <a class="dropdown-item" href="https://joseraydan.mg.gov.br/extratos/1"> Extratos </a>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+
+            
+            
+            
+            
+                            <li class="nav-item">
+                    <a class="nav-link" href="https://webmail-seguro.com.br/joseraydan.mg.gov.br/" target="_blank" rel="noopener"> Webmail </a>
+                </li>
+            
+            <!-- Item de busca mobile -->
+            <li id="searchToggle" class="nav-item">
+                <a class="nav-link" href="#" x-on:click="showSearch = !showSearch">
+                    <i class="ph-bold ph-magnifying-glass"></i>
+                    <span hidden> Pesquisa </span>
+                </a>
+                <form method="GET" action="https://joseraydan.mg.gov.br/busca" class="drop drop-inline" id="inlineSearchDrop" x-cloak x-show="showSearch & isMobile" x-transition>
+                    <input type="hidden" name="_token" value="G6VYn94fvVyoXe3n6s5PWNG4hZmxjiUCsCegiLSa">                    <input class="form-control" type="text" placeholder="Pesquise..." minlength="3" name="campobusca">
+                </form>
+            </li>
+
+            <!-- Item de busca desktop corrigido dentro da tag <li> -->
+            <li class="nav-item" x-cloak x-show="showSearch & !isMobile" x-transition>
+                <div class="drop">
+                    <form method="GET" action="https://joseraydan.mg.gov.br/busca">
+                        <input type="hidden" name="_token" value="G6VYn94fvVyoXe3n6s5PWNG4hZmxjiUCsCegiLSa">                        <input class="form-control" type="text" placeholder="Pesquise..." minlength="3" name="campobusca">
+                    </form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+        <main id="main_content">
+            
+            <div class="floating-wrapper">
+    <div class="floating-sidebar">
+        <a href="https://joseraydan.mg.gov.br/lgpd" class="item" id='lgpd-link'>
+    <?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="283.46px" height="283.46px" viewBox="0 0 283.46 283.46" enable-background="new 0 0 283.46 283.46" xml:space="preserve">
+<ellipse fill="#307FE8" cx="143.693" cy="140.938" rx="138.752" ry="138.014"/>
+<path fill="#808080" d="M-341,226.604"/>
+<g>
+	<g>
+		<g>
+			<defs>
+				<path id="SVGID_1_" d="M49.042,187.308h180.471c0,0,29.289-1.868,30.159-26.671c0,0,0.751-20.688-24.8-29.787
+					c0,0,2.368-27.544-29.539-24.304c0,0-15.828-40.134-48.355-11.467c0,0-11.469-27.172-46.366-21.811
+					c0,0-29.289,3.739-31.906,39.259c0,0-31.408-1.744-24.18,29.412c0,0-25.05-1.119-26.795,20.193
+					C27.731,162.133,26.235,182.074,49.042,187.308z"/>
+			</defs>
+			<use xlink:href="#SVGID_1_"  overflow="visible" fill="#F2691D"/>
+			<clipPath id="SVGID_2_">
+				<use xlink:href="#SVGID_1_"  overflow="visible"/>
+			</clipPath>
+		</g>
+	</g>
+	<g>
+		<g>
+			<path id="SVGID_3_" fill="#FFFFFF" d="M229.579,189.409H48.804l-0.232-0.054c-12.631-2.899-18.207-10.166-20.661-15.753
+				c-2.657-6.049-2.291-11.4-2.274-11.625c0.725-8.858,5.369-15.453,13.432-19.091c4.868-2.195,9.846-2.832,12.893-2.999
+				c-1.513-8.535-0.238-15.424,3.8-20.507c6.064-7.633,16.615-8.809,21.022-8.95c1.861-17.92,10.551-27.583,17.649-32.569
+				c7.812-5.49,15.266-6.588,15.883-6.671c3.122-0.479,6.196-0.722,9.137-0.722c15.172,0,25.081,6.438,30.723,11.839
+				c3.746,3.587,6.14,7.169,7.458,9.467c7.447-6.052,14.694-9.117,21.57-9.117c16.201,0,25.092,16.557,27.451,21.666
+				c1.265-0.094,2.499-0.141,3.683-0.141c8.826,0,15.657,2.565,20.301,7.625c5.653,6.16,6.354,14.193,6.373,17.599
+				c12.884,4.99,18.927,12.947,21.738,18.847c3.191,6.696,3.03,12.229,3.021,12.46c-0.386,10.97-6.125,19.428-16.596,24.454
+				c-7.713,3.701-15.216,4.218-15.529,4.238L229.579,189.409z M49.282,185.209h180.151c0.692-0.055,7.384-0.662,14.029-3.88
+				c9.033-4.373,13.78-11.361,14.111-20.767c0.023-0.78,0.291-19.296-23.407-27.734l-1.525-0.544l0.139-1.614
+				c0.007-0.092,0.706-9.579-5.261-16.049c-4.581-4.971-12.023-6.997-21.976-5.987l-1.579,0.162l-0.585-1.479
+				c-0.08-0.203-8.298-20.46-24.177-20.46c-6.448,0-13.461,3.296-20.839,9.798l-2.188,1.928l-1.133-2.688
+				c-0.023-0.049-2.349-5.411-7.903-10.679c-7.377-7-16.693-10.549-27.687-10.549c-2.736,0-5.603,0.227-8.522,0.676l-0.053,0.008
+				c-0.065,0.009-7.04,0.977-14.186,6.054c-9.515,6.762-14.861,17.284-15.893,31.278l-0.152,2.056l-2.059-0.114
+				c-0.025-0.001-0.301-0.015-0.768-0.015c-3.028,0-13.329,0.531-18.772,7.383c-3.593,4.521-4.427,11.074-2.478,19.473l0.625,2.695
+				l-2.764-0.123c-0.021-0.002-0.213-0.009-0.544-0.009c-3.768,0-22.641,0.882-24.064,18.273
+				C29.774,163.023,28.819,180.381,49.282,185.209z"/>
+		</g>
+		<g>
+			<defs>
+				<path id="SVGID_4_" d="M229.579,189.409H48.804l-0.232-0.054c-12.631-2.899-18.207-10.166-20.661-15.753
+					c-2.657-6.049-2.291-11.4-2.274-11.625c0.725-8.858,5.369-15.453,13.432-19.091c4.868-2.195,9.846-2.832,12.893-2.999
+					c-1.513-8.535-0.238-15.424,3.8-20.507c6.064-7.633,16.615-8.809,21.022-8.95c1.861-17.92,10.551-27.583,17.649-32.569
+					c7.812-5.49,15.266-6.588,15.883-6.671c3.122-0.479,6.196-0.722,9.137-0.722c15.172,0,25.081,6.438,30.723,11.839
+					c3.746,3.587,6.14,7.169,7.458,9.467c7.447-6.052,14.694-9.117,21.57-9.117c16.201,0,25.092,16.557,27.451,21.666
+					c1.265-0.094,2.499-0.141,3.683-0.141c8.826,0,15.657,2.565,20.301,7.625c5.653,6.16,6.354,14.193,6.373,17.599
+					c12.884,4.99,18.927,12.947,21.738,18.847c3.191,6.696,3.03,12.229,3.021,12.46c-0.386,10.97-6.125,19.428-16.596,24.454
+					c-7.713,3.701-15.216,4.218-15.529,4.238L229.579,189.409z M49.282,185.209h180.151c0.692-0.055,7.384-0.662,14.029-3.88
+					c9.033-4.373,13.78-11.361,14.111-20.767c0.023-0.78,0.291-19.296-23.407-27.734l-1.525-0.544l0.139-1.614
+					c0.007-0.092,0.706-9.579-5.261-16.049c-4.581-4.971-12.023-6.997-21.976-5.987l-1.579,0.162l-0.585-1.479
+					c-0.08-0.203-8.298-20.46-24.177-20.46c-6.448,0-13.461,3.296-20.839,9.798l-2.188,1.928l-1.133-2.688
+					c-0.023-0.049-2.349-5.411-7.903-10.679c-7.377-7-16.693-10.549-27.687-10.549c-2.736,0-5.603,0.227-8.522,0.676l-0.053,0.008
+					c-0.065,0.009-7.04,0.977-14.186,6.054c-9.515,6.762-14.861,17.284-15.893,31.278l-0.152,2.056l-2.059-0.114
+					c-0.025-0.001-0.301-0.015-0.768-0.015c-3.028,0-13.329,0.531-18.772,7.383c-3.593,4.521-4.427,11.074-2.478,19.473l0.625,2.695
+					l-2.764-0.123c-0.021-0.002-0.213-0.009-0.544-0.009c-3.768,0-22.641,0.882-24.064,18.273
+					C29.774,163.023,28.819,180.381,49.282,185.209z"/>
+			</defs>
+			<clipPath id="SVGID_5_">
+				<use xlink:href="#SVGID_4_"  overflow="visible"/>
+			</clipPath>
+			<g clip-path="url(#SVGID_5_)">
+				<polygon fill="#FFFFFF" points="143.693,98.078 143.693,159.216 201.098,128.647 				"/>
+				<polygon fill="#FFFFFF" points="143.693,159.216 143.693,220.354 201.098,189.787 				"/>
+				<polygon fill="#FFFFFF" points="143.693,36.94 143.693,98.078 201.098,67.508 				"/>
+				<polygon fill="#FFFFFF" points="201.098,128.647 201.098,189.787 143.693,159.216 				"/>
+				<polygon fill="#FFFFFF" points="201.098,67.507 201.098,128.648 143.693,98.078 				"/>
+				<polygon fill="#FFFFFF" points="143.693,98.078 143.693,159.216 86.285,128.647 				"/>
+				<polygon fill="#FFFFFF" points="143.693,159.216 143.693,220.354 86.285,189.787 				"/>
+				<polygon fill="#FFFFFF" points="143.693,36.94 143.693,98.078 86.285,67.508 				"/>
+				<polygon fill="#FFFFFF" points="86.285,128.647 86.285,189.787 143.693,159.216 				"/>
+				<polygon fill="#FFFFFF" points="86.285,67.507 86.285,128.648 143.693,98.078 				"/>
+				<polygon fill="#FFFFFF" points="258.505,98.078 258.505,159.216 201.098,128.647 				"/>
+				<polygon fill="#FFFFFF" points="258.505,159.216 258.505,220.354 201.098,189.787 				"/>
+				<polygon fill="#FFFFFF" points="201.098,128.647 201.098,189.787 258.505,159.216 				"/>
+				<polygon fill="#FFFFFF" points="201.098,67.507 201.098,128.648 258.505,98.078 				"/>
+				<polygon fill="#FFFFFF" points="28.878,99.369 28.878,160.506 86.285,129.937 				"/>
+				<polygon fill="#FFFFFF" points="28.878,160.506 28.878,221.647 86.285,191.077 				"/>
+				<polygon fill="#FFFFFF" points="86.285,129.937 86.285,191.077 28.878,160.506 				"/>
+				<polygon fill="#FFFFFF" points="86.285,68.8 86.285,129.939 28.878,99.369 				"/>
+			</g>
+		</g>
+	</g>
+	<g>
+		<path fill="#FFFFFF" d="M88.927,153.978h11.721v9.202H76.767V124.4h12.16V153.978z"/>
+		<path fill="#FFFFFF" d="M128.253,137.654c-0.475-0.766-1.15-1.359-2.026-1.778c-0.876-0.42-1.937-0.631-3.177-0.631
+			c-2.337,0-4.145,0.759-5.422,2.274c-1.279,1.516-1.917,3.587-1.917,6.216c0,3.031,0.712,5.295,2.136,6.793
+			c1.424,1.497,3.615,2.244,6.573,2.244c2.811,0,5.075-1.131,6.792-3.396h-9.694v-8.599h19.772v12.159
+			c-1.679,2.884-3.998,5.358-6.956,7.422c-2.958,2.063-6.701,3.094-11.228,3.094c-4.018,0-7.514-0.83-10.49-2.492
+			c-2.977-1.662-5.258-3.988-6.847-6.983c-1.589-2.994-2.383-6.409-2.383-10.242c0-3.835,0.794-7.249,2.383-10.243
+			c1.588-2.994,3.862-5.321,6.819-6.983s6.426-2.494,10.407-2.494c5.074,0,9.211,1.226,12.405,3.671
+			c3.196,2.447,5.084,5.771,5.669,9.969H128.253L128.253,137.654z"/>
+		<path fill="#FFFFFF" d="M175.686,144.365c-1.131,1.991-2.802,3.57-5.011,4.738c-2.211,1.169-4.884,1.752-8.025,1.752h-4.82v12.325
+			H145.67V124.4h16.981c4.745,0,8.389,1.205,10.927,3.614c2.538,2.411,3.806,5.643,3.806,9.695
+			C177.384,140.157,176.819,142.375,175.686,144.365z M165.061,137.709c0-2.372-1.26-3.56-3.78-3.56h-3.451v7.119h3.451
+			C163.801,141.269,165.061,140.084,165.061,137.709z"/>
+		<path fill="#FFFFFF" d="M208.031,126.864c3.049,1.644,5.395,3.927,7.038,6.847c1.644,2.923,2.466,6.245,2.466,9.969
+			c0,3.689-0.822,7.011-2.466,9.969s-3.989,5.285-7.038,6.984c-3.051,1.697-6.6,2.546-10.654,2.546h-16.158v-38.779h16.158
+			C201.429,124.4,204.98,125.221,208.031,126.864z M202.8,150.088c1.605-1.497,2.409-3.634,2.409-6.409
+			c0-2.774-0.804-4.91-2.409-6.408c-1.607-1.497-3.78-2.246-6.519-2.246h-2.903v17.309h2.903
+			C199.02,152.334,201.193,151.586,202.8,150.088z"/>
+	</g>
+</g>
+</svg>
+</a>
+        <div vw class="enabled">
+    <div vw-access-button class="active"></div>
+    <div vw-plugin-wrapper>
+        <div class="vw-plugin-top-wrapper"></div>
+    </div>
+</div>
+
+            </div>
+</div>
+
+
+
+                            <div id="cont_JOSé RAYDAN" class="previsao_tempo none"></div>
+            
+            
+            
+                
+    <section id="home" class="banner" x-data="" x-cloak>
+    <h6 hidden> Home </h6>
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" data-interval="5000">
+        <div class="carousel-inner">
+                                                <div class="carousel-item active">
+                        <img class="carousel__img" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/site/banner.png" alt="Banner" />
+                    </div>
+
+                                                                                            
+                    </div>
+
+            </div>
+</section>
+    
+    
+
+    
+    <section class="sections-menu">
+    <div class="section-holder container">
+
+        <div class="section">
+            <div class="title-card">
+                <h2 class="title">Acesso Rápido</h2>
+            </div>
+
+            <div class="context">
+                                                            <div class="subcard">
+                            <h5 class="section-title">Geral</h5>
+                            <div class="items-list">
+                                                                                                            <a class="item" href="http://joseraydan.servicosaocidadao.net.br/services/ombudsman"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-megaphone"></i>
+                                            
+                                            
+                                                                                            <span class="label">Ouvidoria</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Ouvidoria
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="http://joseraydan.servicosaocidadao.net.br/services/e-sic"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-megaphone"></i>
+                                            
+                                            
+                                                                                            <span class="label">e-SIC</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    e-SIC
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="/licitacoes/1"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-gavel"></i>
+                                            
+                                            
+                                                                                            <span class="label">Licitações</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Licitações
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://joseraydan-mg.portaltp.com.br/"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-file-magnifying-glass"></i>
+                                            
+                                            
+                                                                                            <span class="label">Transparência Atual</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Transparência Atual
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="/webmail"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-at"></i>
+                                            
+                                            
+                                                                                            <span class="label">Webmail</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Webmail
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://mg-joseraydan-pm-nfs.cloud.el.com.br/#/login"
+                                            target="_blank">
+                                            
+                                                                                            <i class="ph icon ph-note"></i>
+                                            
+                                            
+                                                                                            <span class="label">Nota Fiscal</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Nota Fiscal
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="/emendas-parlamentares"
+                                            target="_self">
+                                            
+                                                                                            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="216.03 328 579.3 381">
+  <path class="qmx-primary" d="M454.78 707.45c-.7.23-54.54.59-119.63.8-100.33.31-118.44.16-118.89-1.02-.77-1.99.55-16.2 2.25-24.28 4.65-22.1 14.57-40.77 30.47-57.32 14.88-15.5 29.29-24.82 47.97-31.02 63.4-21.07 130.15 11.28 151.93 73.62 4.85 13.9 8.54 38.37 5.9 39.22Zm244.22-.91c-9.26 1.94-29.12 2.67-38.5 1.4-15.96-2.15-34.4-8.93-49.22-18.1-11.7-7.23-28.24-23.51-35.89-35.32-11.03-17.03-17.81-36.86-19.04-55.67l-.65-9.85h80.49c44.26 0 98.18-.3 119.8-.67l39.33-.66-.63 10.91c-1.25 21.47-9.37 43.45-22.74 61.49-6.2 8.36-20.57 22.24-28.87 27.87-12.86 8.74-28.43 15.3-44.08 18.6Z"></path>
+  <path class="qmx-secondary" d="M492.8 707.6c-1.86.96-6.26 1.4-14.1 1.4h-11.4l-.61-11.25c-1.67-30.91-15.9-61.54-39.15-84.25-4.51-4.4-10.74-9.8-13.85-12l-5.65-4-.01-130c-.02-128.65 0-130.03 2-133.31 3.65-5.99 5.06-6.19 44.49-6.19h.17c30.78 0 36.75 0 40.58 2.86.93.69 1.73 1.56 2.73 2.63l2.5 2.67v364.68l-2.5 2.67c-1.38 1.48-3.72 3.31-5.2 4.09Zm103.17-.35c-3.11 1.57-7.18 1.75-39.47 1.74-34.16 0-36.17-.1-39.26-1.98-1.79-1.1-4.15-3.46-5.25-5.25-1.97-3.23-1.99-5.04-1.74-184.43l.25-181.17 2.5-2.67c1-1.07 1.8-1.94 2.73-2.63 3.83-2.86 9.8-2.86 40.58-2.86h.17c39.43 0 40.84.2 44.49 6.19 2 3.27 2.02 4.71 2.03 123.06V577h-59.26l.55 16.75c.59 18.42 2.62 28.69 8.67 43.82 8.63 21.62 25.04 43.09 43.25 56.58l6.84 5.08-1.81 3.13c-.99 1.73-3.37 3.93-5.27 4.89Z"></path>
+</svg>
+                                            
+                                            
+                                                                                            <span class="label">Emendas Parlamentares</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Emendas Parlamentares
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://acompanhe-emendas-ia.tce.mg.gov.br/"
+                                            target="_blank">
+                                            
+                                                                                            <?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="216.03 328 579.3 381">
+  <path class="qmx-primary" d="M454.78 707.45c-.7.23-54.54.59-119.63.8-100.33.31-118.44.16-118.89-1.02-.77-1.99.55-16.2 2.25-24.28 4.65-22.1 14.57-40.77 30.47-57.32 14.88-15.5 29.29-24.82 47.97-31.02 63.4-21.07 130.15 11.28 151.93 73.62 4.85 13.9 8.54 38.37 5.9 39.22Zm244.22-.91c-9.26 1.94-29.12 2.67-38.5 1.4-15.96-2.15-34.4-8.93-49.22-18.1-11.7-7.23-28.24-23.51-35.89-35.32-11.03-17.03-17.81-36.86-19.04-55.67l-.65-9.85h80.49c44.26 0 98.18-.3 119.8-.67l39.33-.66-.63 10.91c-1.25 21.47-9.37 43.45-22.74 61.49-6.2 8.36-20.57 22.24-28.87 27.87-12.86 8.74-28.43 15.3-44.08 18.6Z"></path>
+  <path class="qmx-secondary" d="M492.8 707.6c-1.86.96-6.26 1.4-14.1 1.4h-11.4l-.61-11.25c-1.67-30.91-15.9-61.54-39.15-84.25-4.51-4.4-10.74-9.8-13.85-12l-5.65-4-.01-130c-.02-128.65 0-130.03 2-133.31 3.65-5.99 5.06-6.19 44.49-6.19h.17c30.78 0 36.75 0 40.58 2.86.93.69 1.73 1.56 2.73 2.63l2.5 2.67v364.68l-2.5 2.67c-1.38 1.48-3.72 3.31-5.2 4.09Zm103.17-.35c-3.11 1.57-7.18 1.75-39.47 1.74-34.16 0-36.17-.1-39.26-1.98-1.79-1.1-4.15-3.46-5.25-5.25-1.97-3.23-1.99-5.04-1.74-184.43l.25-181.17 2.5-2.67c1-1.07 1.8-1.94 2.73-2.63 3.83-2.86 9.8-2.86 40.58-2.86h.17c39.43 0 40.84.2 44.49 6.19 2 3.27 2.02 4.71 2.03 123.06V577h-59.26l.55 16.75c.59 18.42 2.62 28.69 8.67 43.82 8.63 21.62 25.04 43.09 43.25 56.58l6.84 5.08-1.81 3.13c-.99 1.73-3.37 3.93-5.27 4.89Z"></path>
+</svg>
+                                            
+                                            
+                                                                                            <span class="label">Acompanhar Emendas - TCE</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Acompanhar Emendas - TCE
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="https://ilai.memory.com.br/#/entidades/login/9B4005/1/"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-file-magnifying-glass"></i>
+                                            
+                                            
+                                                                                            <span class="label">Tansparencia Antiga</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    Tansparencia Antiga
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="http://webcidadao.com.br:8080/web-cidadao-web/login?codAux=9B4005&amp;pagina=EMISSAO_2_VIA_CONTRACHEQUE"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-money-wavy"></i>
+                                            
+                                            
+                                                                                            <span class="label">contra cheque</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    contra cheque
+                                                </span>
+                                            
+                                        </a>
+                                                                                                                                                <a class="item" href="http://webcidadao.com.br:8080/web-cidadao-web/login?codAux=9B4005&amp;pagina=EMISSAO_2_VIA_IPTU"
+                                            target="_self">
+                                            
+                                                                                            <i class="ph icon ph-bank"></i>
+                                            
+                                            
+                                                                                            <span class="label">IPTU</span>
+                                            
+                                            
+                                                                                            <span class="popup">
+                                                    IPTU
+                                                </span>
+                                            
+                                        </a>
+                                                                                                </div>
+                        </div>
+                                                </div>
+        </div>
+    </div>
+</section>
+
+    
+    <!--| SOBRE |-->
+<section class="sobre">
+    <h6 hidden> Sobre </h6>
+
+    <div class="container">
+        <div class="sobre_content">
+            <div class="sobre_content">
+                            </div>
+
+                                    <div class="sobre_right">
+                                                                        <div class="div_title">
+                                <span> Gerência </span>
+                                <h3 class="title"> Administração 2025 - 2028 </h3>
+                            </div>
+
+                            <div class="sobre_container">
+                                                                    <div class="sobre_text">
+                                        <a aria-label="Abrir detalhes" href="https://joseraydan.mg.gov.br/gestores"></a>
+
+                                        <img class="image__gerencia" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/gestor/Rom%C3%A1rio%20Gon%C3%A7alves%20da%20Rocha%20-%207C7sKTZGuP.jpeg" alt="Romário Gonçalves da Rocha">
+
+                                        <div>
+                                            <h2 class="title"> Prefeito </h2><hr>
+                                            <p> Romário Gonçalves da Rocha <br> Nascimento: 05/06/1986 </p>
+                                        </div>
+                                    </div>
+                                                                    <div class="sobre_text">
+                                        <a aria-label="Abrir detalhes" href="https://joseraydan.mg.gov.br/vices"></a>
+
+                                        <img class="image__gerencia" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/gestor/Jos%C3%A9%20Raymundo%20Ferreira%20-%20t7KuqC63fa.jpeg" alt="José Raymundo Ferreira">
+
+                                        <div>
+                                            <h2 class="title"> Vice-Prefeito </h2><hr>
+                                            <p> José Raymundo Ferreira <br> Nascimento: 27/09/1944 </p>
+                                        </div>
+                                    </div>
+                                                            </div>
+                                                            </div>
+                            </div>
+    </div>
+</section>
+    
+    
+    
+    <section class="noticias" id="noticias">
+    <h6 hidden> Noticias </h6>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+                <div class="div_title">
+                    <span> </span>
+                    <h3 class="title"> Notícias & Eventos </h3>
+                    <hr>
+                    <p> Fique por dentro de tudo que acontece no município, novidades, eventos, notícias e outros. </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center" style="min-height: 80vh; gap: 1rem; height: fit-content;">
+                            
+                
+                                                            <a href="https://joseraydan.mg.gov.br/noticias/consulta-publica-eletronica-para-a-elaboracao-da-loa-exercicio-de-2027" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>04</span>
+                <span>Sep</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/noticia/CONSULTA%20P%C3%9ABLICA%20ELETR%C3%94NICA%20PARA%20A%20ELABORA%C3%87%C3%83O%20DA%20LOA%20EXERC%C3%8DCIO%20DE%202027%20-%20TQMG6vhJu0.jpg"
+                            alt="Capa da notícia: CONSULTA PÚBLICA ELETRÔNICA PARA A ELABORAÇÃO DA LOA..." />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">CONSULTA PÚBLICA ELETRÔNICA PARA A ELABORAÇÃO DA LOA...</h3>
+
+            <div class="desc">
+                <p style="text-align: center;"><strong>FORMUL&Aacute;RIO DA CONSULTA P&Uacute;BLICA, CLIQUE AQUI</strong></p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://joseraydan.mg.gov.br/noticias/reuniao-do-cmas-destaca-fortalecimento-da-assistencia-social" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>12</span>
+                <span>Jun</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/noticia/Reuni%C3%A3o%20do%20CMAS%20destaca%20fortalecimento%20da%20Assist%C3%AAncia%20Social.%20-%204x6hlcbDvU.jpeg"
+                            alt="Capa da notícia: Reunião do CMAS destaca fortalecimento da Assistênci..." />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">Reunião do CMAS destaca fortalecimento da Assistênci...</h3>
+
+            <div class="desc">
+                <p>O Conselho Municipal de Assist&ecirc;ncia Social (CMAS) realizou mais uma reuni&atilde;o de trabalho voltada ao fortalecimento das pol&iacute;ticas p&uacute;blicas de assist&ecirc;ncia social e ao acompanhamento das a&ccedil;&otilde;es desenvolvidas no munic&iacute;pio.Durante o encontro, foi discutida a import&acirc;ncia da inscri&ccedil;&atilde;o das entidades e organiza&ccedil;&otilde;es da sociedade civil junto ao Conselho, ampliando o acompanhamento e o acesso a programas e projetos sociais.Outro destaque foi a comemora&ccedil;&atilde;o pela participa&ccedil;&atilde;o de mais de 80 crian&ccedil;as nas aulas de Jiu-Jitsu, iniciativa que promove inclus&atilde;o social, disciplina e desenvolvimento para crian&ccedil;as e adolescentes.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://joseraydan.mg.gov.br/noticias/professores-de-jose-raydan-participam-de-formacao-do-pacto-mineiro-pela-alfabetizacao" class="ei_news-card " role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>20</span>
+                <span>Feb</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/noticia/Professores%20de%20Jos%C3%A9%20Raydan%20participam%20de%20forma%C3%A7%C3%A3o%20do%20Pacto%20Mineiro%20pela%20Alfabetiza%C3%A7%C3%A3o%20-%20V4rgnBC08W.jpeg"
+                            alt="Capa da notícia: Professores de José Raydan participam de formação do..." />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">Professores de José Raydan participam de formação do...</h3>
+
+            <div class="desc">
+                <p>Professores da rede municipal de ensino de Jos&eacute; Raydan participaram, nos dias 3, 19 e 20 de fevereiro, das atividades formativas do Pacto Mineiro pela Alfabetiza&ccedil;&atilde;o, realizadas em Santa Maria do Sua&ccedil;u&iacute;, munic&iacute;pio polo do programa.O Pacto Mineiro pela Alfabetiza&ccedil;&atilde;o &eacute; uma iniciativa do Governo do Estado de Minas Gerais que tem como objetivo fortalecer as a&ccedil;&otilde;es pedag&oacute;gicas voltadas &agrave; alfabetiza&ccedil;&atilde;o nos anos iniciais do Ensino Fundamental, assegurando que todas as crian&ccedil;as sejam alfabetizadas na idade certa. A proposta busca garantir o direito &agrave; aprendizagem e contribuir para a melhoria dos indicadores educacionais em todo o estado.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://joseraydan.mg.gov.br/noticias/prefeitura-de-jose-raydan-amplia-acesso-a-equipamentos-de-mobilidade-com-novas-cadeiras-de-rodas" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>23</span>
+                <span>Jan</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/noticia/Prefeitura%20de%20Jos%C3%A9%20Raydan%20amplia%20acesso%20a%20equipamentos%20de%20mobilidade%20com%20novas%20cadeiras%20de%20rodas.%20-%20bnz8pU7yQ5.jpeg"
+                            alt="Capa da notícia: Prefeitura de José Raydan amplia acesso a equipament..." />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">Prefeitura de José Raydan amplia acesso a equipament...</h3>
+
+            <div class="desc">
+                <p>A Prefeitura de Jos&eacute; Raydan, por meio da Secretaria Municipal de Sa&uacute;de, conquistou nesta quinta-feira (23) um importante refor&ccedil;o para a assist&ecirc;ncia &agrave; popula&ccedil;&atilde;o: a aquisi&ccedil;&atilde;o de 14 cadeiras de rodas destinadas a atender pessoas com mobilidade reduzida no munic&iacute;pio.Do total de equipamentos obtidos, 7 s&atilde;o cadeiras de banho, 5 s&atilde;o cadeiras de rodas convencionais e 2 s&atilde;o cadeiras de rodas motorizadas. Os novos recursos ir&atilde;o contribuir diretamente para a melhoria da qualidade de vida dos usu&aacute;rios, garantindo mais autonomia, dignidade e seguran&ccedil;a no dia a dia.A Prefeitura de Jos&eacute; Raydan, por meio da Secretaria Municipal de Sa&uacute;de, conquistou nesta quinta-feira (23) um importante refor&ccedil;o para a assist&ecirc;ncia &agrave; popula&ccedil;&atilde;o: a aquisi&ccedil;&atilde;o de 14 cadeiras de rodas destinadas a atender pessoas com mobilidade reduzida no munic&iacute;pio.Do total de equipamentos obtidos, 7 s&atilde;o cadeiras de banho, 5 s&atilde;o cadeiras de rodas convencionais e 2 s&atilde;o cadeiras de rodas motorizadas. Os novos recursos ir&atilde;o contribuir diretamente para a melhoria da qualidade de vida dos usu&aacute;rios, garantindo mais autonomia, dignidade e seguran&ccedil;a no dia a dia.A Prefeitura de Jos&eacute; Raydan, por meio da Secretaria Municipal de Sa&uacute;de, conquistou nesta quinta-feira (23) um importante refor&ccedil;o para a assist&ecirc;ncia &agrave; popula&ccedil;&atilde;o: a aquisi&ccedil;&atilde;o de 14 cadeiras de rodas destinadas a atender pessoas com mobilidade reduzida no munic&iacute;pio.Do total de equipamentos obtidos, 7 s&atilde;o cadeiras de banho, 5 s&atilde;o cadeiras de rodas convencionais e 2 s&atilde;o cadeiras de rodas motorizadas. Os novos recursos ir&atilde;o contribuir diretamente para a melhoria da qualidade de vida dos usu&aacute;rios, garantindo mais autonomia, dignidade e seguran&ccedil;a no dia a dia.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://joseraydan.mg.gov.br/noticias/iptu-2025" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>15</span>
+                <span>Oct</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/noticia/IPTU%202025%20-%20j9TZwCn5EX.jpg"
+                            alt="Capa da notícia: IPTU 2025" />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">IPTU 2025</h3>
+
+            <div class="desc">
+                <p style="text-align: justify;">O IPTU 2025 est&atilde;o liberados com 20% de desconto para pagamento efetuado at&eacute; 28/11/2025. Os respectivos carn&ecirc;s encontram-se impressos na sede da prefeitura, e tamb&eacute;m podem ser impressos atrav&eacute;s do site www.joseraydan.mg.gov.br</p>
+<p style="text-align: justify;">Prefeitura de Jos&eacute; Raydan, agilidade e respeito ao&nbsp;contribuinte.</p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                                                                <a href="https://joseraydan.mg.gov.br/noticias/consulta-publica-eletronica-para-a-elaboracao-do-ppa-plano-plurianual-20262029-jose-raydan" class="ei_news-card ei_news-card--hide-on-small" role="article">
+
+        <div class="__header">
+            <div class="__circular-date">
+                <span>01</span>
+                <span>Aug</span>
+            </div>
+        </div>
+
+        <div class="__image">
+            <div class="carousel slide" data-ride="carousel" style="width: 100%; height: 100%;">
+                <div class="carousel-inner">
+                    <div class="carousel-item lazy-img active">
+                        <img class="img-fluid img_padrao" data-url="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/noticia/CONSULTA%20P%C3%9ABLICA%20ELETR%C3%94NICA%20PARA%20A%20ELABORA%C3%87%C3%83O%20DO%20PPA%20%E2%80%93%20PLANO%20PLURIANUAL%20%282026/2029%29%20JOS%C3%89%20RAYDAN%20-%20FIBUV4nENS.jpg"
+                            alt="Capa da notícia: CONSULTA PÚBLICA ELETRÔNICA PARA A ELABORAÇÃO DO PPA..." />
+                    </div>
+
+                                    </div>
+            </div>
+        </div>
+
+        <div class="n_body">
+            <h3 class="title">CONSULTA PÚBLICA ELETRÔNICA PARA A ELABORAÇÃO DO PPA...</h3>
+
+            <div class="desc">
+                <p style="text-align: center;"><strong>ACESSE O FRORMUL&Aacute;RIO AQUI</strong></p>
+            </div>
+
+            
+            <div class="categoria">
+                <div class="__tagbox">
+                    <div class="tag"
+                        style="background-color: #f33; border: 1px solid #f33; color: white;">
+                        <span>geral</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="seemore">
+                <span>Ver Mais</span>
+                <div class="link" aria-hidden="true">
+                    <svg class="img" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        stroke="#ffffff">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path d="M6 12H18M12 6V18" stroke="#ffffff" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </a>
+                                    
+                <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    <div class="text-center">
+                        <a class="btn btn_solid mt-5" href="https://joseraydan.mg.gov.br/noticias/todas"> Todas as notícias </a>
+                    </div>
+                </div>
+                    </div>
+    </div>
+</section>
+
+    <section class="container feedback_context" style="margin-top: 3rem; margin-bottom: 3rem;" x-data="feedbackStars()">
+    <div class="my-6">
+        <div class="div_title">
+            <span> Sua opnião importa </span>
+            <h3 class="title"> Pesquisa de Satisfação </h3>
+        </div>
+
+        <div class="rating-container">
+            <div class="star-rating">
+                <template x-for="i in 5" :key="i">
+                    <span class="star" :style="{ color: starColor(i) }" @mousemove="preview(i, $event)"
+                        @mouseleave="hoverRate = 0" @click="select(i, $event)">
+                        <svg viewBox="0 0 24 24">
+                            <defs>
+                                <linearGradient :id="`grad-${i}`">
+                                    <stop offset="50%" stop-color="currentColor" />
+                                    <stop offset="50%" stop-color="#e5e7eb" />
+                                </linearGradient>
+                            </defs>
+
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                :fill="isHalf(i) ? `url(#grad-${i})` : 'currentColor'" d="M12 17.5
+            C12.3 17.5 12.6 17.6 12.8 17.8
+            L17.5 21
+            C17.9 21.3 18.2 20.9 18.1 20.5
+            L16.6 14.8
+            C16.5 14.5 16.6 14.2 16.9 14
+            L21.2 10.5
+            C21.6 10.2 21.4 9.6 20.9 9.5
+            L15.3 9
+            C15 9 14.7 8.8 14.6 8.5
+            L12.4 3
+            C12.2 2.6 11.8 2.6 11.6 3
+            L9.4 8.5
+            C9.3 8.8 9 9 8.7 9
+            L3.1 9.5
+            C2.6 9.6 2.4 10.2 2.8 10.5
+            L7.1 14
+            C7.4 14.2 7.5 14.5 7.4 14.8
+            L5.9 20.5
+            C5.8 20.9 6.1 21.3 6.5 21
+            L11.2 17.8
+            C11.4 17.6 11.7 17.5 12 17.5Z" />
+                        </svg>
+                    </span>
+                </template>
+            </div>
+        </div>
+
+        <div class="feedback-score">
+            <div style="display: flex; flex-direction: row; align-items: center; justify-content: center; gap: 1rem;">
+                <strong>Média de</strong>
+                <div class="score-number">
+                    <strong>0.0</strong>
+                    <span>/ 5</span>
+                </div>
+            </div>
+
+            <div class="score-meta">
+                0 avaliações
+            </div>
+        </div>
+
+        <div class="rating-breakdown" x-data="{ open: false }">
+
+            <button class="toggle" @click="open = !open">
+                Ver detalhamento
+                <span x-text="open ? '▲' : '▼'"></span>
+            </button>
+
+            <div x-show="open" x-transition class="bars">
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            5.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            4.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            4.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            3.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            3.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            2.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            2.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            1.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            1.0 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                                    
+                    <div class="bar-row">
+                        <span class="label">
+                            0.5 ★
+                        </span>
+
+                        <div class="bar">
+                            <div class="fill" style="width: 0%"></div>
+                        </div>
+
+                        <span class="count">
+                            0
+                        </span>
+                    </div>
+                            </div>
+        </div>
+
+        <div class="push_modal-backdrop" x-cloak x-data="modalComponent('feedback')" x-show="open" x-transition.opacity
+    @open-modal.window="if ($event.detail === name) open = true"
+    @close-modal.window="if ($event.detail === name) open = false">
+    <div class="push_modal" @click.outside="open = false">
+        <div class="feedback-form">
+                <h3>Sua opinião (opcional)</h3>
+                <form method="POST" action="/feedback">
+                    <input type="hidden" name="_token" value="G6VYn94fvVyoXe3n6s5PWNG4hZmxjiUCsCegiLSa">                    <input type="hidden" name="rate" :value="rate">
+                    <input type="text" name="name" placeholder="Seu nome (opcional)">
+                    <input type="email" name="email" placeholder="Seu e-mail (opcional)">
+                    <textarea name="message" placeholder="Escreva sua opinião (opcional)"></textarea>
+
+                    <div class="actions">
+                        <button type="submit">Enviar</button>
+                        <button type="button" @click="$dispatch('close-modal', 'feedback')">Agora não</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+</div>
+        </div>
+</section>
+
+
+
+    
+            <section class="clima">
+    <div class="page_title">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="div_title">
+                    <span> Clima </span>
+                    <h1 class="title">  </h1>
+                    <hr>
+                    <p> Veja as informações do clima para a cidade de <span>JOSé RAYDAN</span>. </p>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <div class="container">
+        <div class="climate_content">
+            <p id="weather-info" data-city="JOSé RAYDAN">Carregando informações do clima...</p>
+        </div>
+    </div>
+    
+</section>
+    
+    
+
+    
+    <div class="modal fade" id="modal_popup" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal_temporaria" role="document">
+            <div class="modal-content modal-content-temporaria">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                                                                            <img class="img-fluid mx-auto d-block" src="https://digitaliza-institucional.s3.us-east-2.amazonaws.com/municipio-de-jose-raydan/modal/4Wq7nxaoSdij2NDDeQt0Z2mIXlcX85uIIfA1EfKm.jpg" alt="">
+                                                            </div>
+            </div>
+        </div>
+    </div>
+
+            </main>
+
+        
+        
+        <footer>
+    <div class="container">
+        <div class="footer_content">
+            <div class="footer_content_1">
+                <div class="footer_info">
+                    <div class="div_title">
+                        <span> Endereço </span>
+                        <h1 class="title"> Prefeitura Municipal de José Raydan </h1>
+                        <hr>
+                        <p>
+                            Rua das Flores, 25 , Casa  <br>
+                            Centro, José Raydan/MG - <span class="cep" data-mask="00000-000"> 39775000 </span>
+                        </p>
+
+                                                    
+                                                            <p>
+                                    Expediente: 07:00 - 17:00
+
+                                                                    </p>
+                            
+                                            </div>
+                </div>
+
+                <div class="footer_contact">
+                    <div class="div_title">
+                        <span> Contatos </span>
+                    </div>
+
+                    <ul class="nav flex-column nav_footer">
+                        <a class="nav-link" target="_blank" rel="noopener" href="https://goo.gl/maps/GKqP7fFStQCgGesCA">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-map-pin"></i>
+                            </div>
+                            <span> Localização </span>
+                        </a>
+
+                        <a class="nav-link" target="_blank" rel="noopener" href="/cdn-cgi/l/email-protection#84e7ebeaf0e5f0ebc4eeebf7e1f6e5fde0e5eaaae9e3aae3ebf2aae6f6">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-envelope-simple"></i>
+                            </div>
+                            <span> <span class="__cf_email__" data-cfemail="3655595842574259765c59455344574f525758185b5118515940185444">[email&#160;protected]</span> </span>
+                        </a>
+
+                         <a class="nav-link" href="#">
+                            <div class="back_icon">
+                                <i class="ph-bold ph-phone"></i>
+                            </div>
+                            <span> (33) 3431-9001 </span>
+                        </a>
+
+                        
+                         
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer_content_2">
+                
+                <div class="footer_menu">
+                    <div class="div_title">
+                        <span> Menu </span>
+                    </div>
+
+                    <ul class="nav flex-column nav_footer">
+                        <a class="nav-link" target="_blank" rel="noopener" href="https://joseraydan.mg.gov.br/noticias.rss">
+                            <i class="ph-bold ph-rss"></i>
+                            <span> RSS </span>
+                        </a>
+
+                        <a class="nav-link" href="https://joseraydan.mg.gov.br/mapa-site">
+                            <i class="ph-bold ph-map-trifold"></i>
+                            <span> Mapa do Site </span>
+                        </a>
+
+                                                    <a class="nav-link" href="#" id="clima">
+                                <i class="ph-bold ph-thermometer-simple"></i>
+                                <span> Clima </span>
+                            </a>
+                        
+                                            </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer_copy">
+            <div class="copy">
+                <span> 2026 &copy; Todos os direitos reservados Prefeitura Municipal de José Raydan | CNPJ: <span data-mask="00.000.000/0000-00"> 01613072000177 </span> </span>
+            </div>
+
+            <div class="design">
+                <span> Designed by <a href="https://www.digitaliza.com.br" target="_blank" rel="external"> Digitaliza </a> </span>
+            </div>
+        </div>
+    </div>
+</footer>
+        <a href="#" id="topo">
+    <div class="topo">
+        <i class="ph-bold ph-arrow-fat-up"></i>
+    </div>
+</a>
+    </div>
+
+    
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script defer src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v12.0&appId=1054904748249600&autoLogAppEvents=1" crossorigin="anonymous" nonce="TgKZxTuJ"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.8/dist/cdn.min.js"></script>
+
+    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js" integrity="sha512-0XDfGxFliYJPFrideYOoxdgNIvrwGTLnmK20xZbCAvPfLGQMzHUsaqZK8ZoH+luXGRxTrS46+Aq400nCnAT0/w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script> <!-- | DATATABLES Plugin | -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script> <!-- | DATATABLES Plugin | -->
+    <script src="https://cdn.datatables.net/v/dt/jszip-2.5.0/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/sl-1.6.2/datatables.min.js"></script>
+
+    <script src="https://joseraydan.mg.gov.br/js/app.js"></script>
+
+            <script>
+            document.addEventListener('alpine:init', () => {
+                Alpine.data('modalComponent', (name) => ({
+                    name,
+                    open: false,
+                    openModal() {
+                        this.open = true
+                    },
+                    closeModal() {
+                        this.open = false
+                    }
+                }))
+            })
+        </script>
+        <!-- UserWay -->
+    <script>
+        window._userway_config = {
+            size: 'small',
+            position: '5'
+        }
+    </script>
+    <script data-account="HJhdKL5MCA" src="https://cdn.userway.org/widget.js"></script>
+    <script>
+        function feedbackStars() {
+            return {
+                rate: 0,
+                hoverRate: 0,
+                starColor(i) {
+                    const step = Math.min(this.displayRate, i * 2);
+                    if (step <= (i - 1) * 2) return '#e5e7eb';
+
+                    // posição global (1 a 10)
+                    const position = step;
+
+                    // interpolação HSL
+                    const startHue = 45; // amarelo fraco
+                    const endHue = 28; // laranja forte
+
+                    const hue =
+                        startHue - ((startHue - endHue) * (position - 1)) / 9;
+
+                    return `hsl(${hue}, 95%, 60%)`;
+                },
+
+                get displayRate() {
+                    return this.hoverRate || this.rate;
+                },
+
+                preview(i, event) {
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const half = (event.clientX - rect.left) < rect.width / 2;
+                    this.hoverRate = half ? (i * 2 - 1) : (i * 2);
+                },
+
+                select(i, event) {
+                    const rect = event.currentTarget.getBoundingClientRect();
+                    const half = (event.clientX - rect.left) < rect.width / 2;
+                    this.rate = half ? (i * 2 - 1) : (i * 2);
+                    this.hoverRate = 0;
+                    window.dispatchEvent(
+                        new CustomEvent('open-modal', {
+                            detail: 'feedback'
+                        })
+                    )
+                },
+
+                isFull(i) {
+                    return this.displayRate >= i * 2;
+                },
+
+                isHalf(i) {
+                    return this.displayRate === i * 2 - 1;
+                }
+            }
+        }
+    </script>
+        <script>
+
+            $(document).ready(function() {
+                $('#modal_popup').modal('show');
+            });
+        </script>
+        <!-- VLibras -->
+    <script src="https://vlibras.gov.br/app/vlibras-plugin.js"></script>
+
+    <script>
+        new window.VLibras.Widget({
+            source: 'https://vlibras.gov.br/app',
+            position: 'L',
+        });
+    </script>
+
+            
+        <script>
+            $(function() {
+                const cidade = "JOS\u00e9 RAYDAN";
+
+                fetch(
+                        `https://api.openweathermap.org/data/2.5/weather?q=${cidade},BR&appid=bbbf320c2a267ad7a2fe7b28f7bb6bb2&units=metric&lang=pt_br`)
+                    .then(response => response.json())
+                    .then(data => {
+                        const temperatura = data.main.temp;
+                        const descricao = data.weather[0].description;
+
+                        document.getElementById('clima').textContent =
+                            `Agora em ${cidade}: ${temperatura}°C, ${descricao}`;
+                    })
+                    .catch(error => {
+                        document.getElementById('clima').textContent = 'Erro ao carregar o clima.';
+                        console.error('Erro ao buscar clima:', error);
+                    });
+            })
+        </script>
+    <script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a61402ab5c8a785e',t:'MTc5NTgxMjY4MQ=='};var l=window.parent.location,o;try{o=new URL(l.origin).origin}catch(e){try{o=new URL(new URL(l.href).origin).origin}catch(e){o=''}}var u='/cdn-cgi/challenge-platform/scripts/jsd/main.js?ray=a61402ab5c8a785e',a=document.createElement('script');a.src=o?new URL(u,o).href:u;document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+</html>

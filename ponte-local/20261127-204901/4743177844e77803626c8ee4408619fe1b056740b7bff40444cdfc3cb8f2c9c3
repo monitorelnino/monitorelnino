@@ -1,0 +1,1326 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prefeitura do Município de Pimenta Bueno  - RO</title>
+<link rel="shortcut icon" href="/imagens/favicon.png" type="image/x-icon"/>
+<meta name="generator" content="" />
+<meta name="description" content="Prefeitura do Município de Pimenta Bueno  - RO" />
+<meta name="abstract" content="Prefeitura do Município de Pimenta Bueno  - RO" />
+<meta name="keywords" content="Prefeitura do Município de Pimenta Bueno  - RO" />
+
+<!-- identificação para o facebook -->
+<link rel="dns-prefetch" href="//connect.facebook.net" />
+
+    <meta property="og:title"         content="Prefeitura do Município de Pimenta Bueno  - RO" />
+    <meta property="og:description"   content="Prefeitura do Município de Pimenta Bueno  - RO" />
+    <meta property="og:locale"        content="pt_BR" />
+    <meta property="og:type"          content="article" />
+    <meta property="og:url"           content="http://portyx.com.br/site/">
+            <meta property="og:image"     content="http://www.portyx.com.br/img/geral/facebook.png">
+        <meta property="og:site_name"     content="Prefeitura Municipal de Pimenta Bueno - RO" />
+
+<!-- Banner LGPD -->
+
+<link rel="stylesheet" href="/css/lgpd.css">
+
+<!-- /identificação para o facebook -->
+
+<link rel="canonical" href="https://portyx.com.br/site/" />
+<link href="/bootstrap/dist/css/bootstrap.css" type="text/css" rel="stylesheet">
+<link href="/bootstrap/dist/css/bootstrap.vertical-tabs.css" type="text/css" rel="stylesheet">
+<link href="/css/dropdown-submenu.css" type="text/css" rel="stylesheet">
+<link href="/css/estilo.css" type="text/css" rel="stylesheet">
+<link href="/css/responsivo.css" rel="stylesheet" type="text/css"/>
+<!-- <link href="/css/responsive-calendar.css" type="text/css" rel="stylesheet"> -->
+<!-- <link rel="stylesheet" href="/css/menu.css"> -->
+<script src="/js/jquery-1.11.2.min.js" type="text/javascript"></script>
+<script src="/js/menu.js"></script>
+
+
+<!-- jQuery Core -->
+<script src="/bootstrap/dist/js/bootstrap.min.js"></script>
+
+<!-- End jQuery Core -->
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="/bootstrap/dist/js/ie10-viewport-bug-workaround.js"></script>
+<!-- Mensagem deslizante de mensagens -->
+<script type="text/javascript" src="/js/jquery-sliding-message/jquery.slidingmessage.js"></script>
+<script type="text/javascript" src="/js/jquery-sliding-message/showMsg.js"></script>
+<script type="text/javascript" src="/js/jquery.validate.js"></script>
+<script type="text/javascript" src="/js/jquery.form.js"></script>
+
+<script src="/js/acessibilidade/acessibilidade.jquery.js" type="text/javascript"></script>
+<!-- Fim Mensagem deslizante de mensagens -->
+<!--  ClimaTempo -->
+<script src="/js/formularios/climatempo/climatempo.js" type="text/javascript"></script>
+<!--  /ClimaTempo -->
+
+
+<!--Owl Carrocel-->
+<link href="/fontes/font-awesome/css/font-awesome.css" rel="stylesheet" type="text/css"/>
+<link type="text/css" rel="stylesheet" media="screen" href="/js/owl/owl-carousel/owl.carousel.css"/>
+<link type="text/css" rel="stylesheet" media="screen" href="/js/owl/owl-carousel/owl.transitions.css"/>
+<link type="text/css" rel="stylesheet" media="screen" href="/js/owl/owl-carousel/owl.theme.css"/>
+<script src="/js/owl/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+
+<!--/   Owl Carrocel-->
+
+
+<!-- Formulário Busca -->
+<script type="text/javascript" src="/js/open-search/open-search.js"></script>
+
+
+<!-- Window Locker -->
+<link href="/js/spin/spin-windowlock/spin-windowlock.css" rel="stylesheet">
+<script type="text/javascript" src="/js/spin/spin.min.js"></script>
+<script type="text/javascript" src="/js/spin/spin-windowlock/spin-windowlock.js"></script>
+<!-- /Window Locker -->
+
+<script type="text/javascript" src="/js/plenus/popup-init.js"></script>
+<!-- <link href="/node_modules/pgwslideshow/pgwslideshow.css" rel="stylesheet">
+<script type="text/javascript" src="/node_modules/pgwslideshow/pgwslideshow.min.js"></script> -->
+<script>
+    // $(document).ready(function () {
+    //     $('.pgwSlideshow').pgwSlideshow({
+    //         transitionEffect: 'fading',
+    //         adaptiveDuration: 4000,
+    //         autoSlide: true,
+    //         intervalDuration: 5000,
+    //     });
+    // });
+</script>
+<script>
+    window.onscroll = function () {
+        myFunction()
+    };
+
+    function myFunction() {
+        if (document.body.scrollTop > 160 || document.documentElement.scrollTop > 160) {
+            document.getElementById("logoPequena").className = "logoPequenaEfeito";
+            document.getElementById("menu-topo").className = "navbar navbar-expand-lg navbar-dark scrolling-navbar fixed-top";
+        } else {
+            document.getElementById("logoPequena").className = "";
+            document.getElementById("menu-topo").className = "navbar navbar-expand-lg navbar-dark scrolling-navbar";
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function ($) {
+        "use strict";
+        /*-------------------------------------------------*/
+        /* =  Search animation
+            /*-------------------------------------------------*/
+        var searchToggle = $('.open-search'),
+            inputAnime = $(".formulario-busca"),
+            body = $('body');
+
+        searchToggle.on('click', function (event) {
+            event.preventDefault();
+
+            if (inputAnime.hasClass('active')) {
+                inputAnime.addClass('active');
+            } else {
+                inputAnime.removeClass('active');
+            }
+        });
+
+        body.on('click', function () {
+            inputAnime.removeClass('active');
+        });
+
+        var elemBinds = $('.open-search, .formulario-busca');
+        elemBinds.bind('click', function (e) {
+            e.stopPropagation();
+        });
+
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        });
+    });
+
+    $(document).ready(function () {
+        $(".acessorapido").owlCarousel({
+            //autoPlay: 3000, //Set AutoPlay to 3 seconds
+            items: 3,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [979, 3]
+        });
+//        $("#cidadao-carousel").owlCarousel({
+//            //autoPlay: 3000, //Set AutoPlay to 3 seconds
+//            items: 3,
+//            itemsDesktop: [1199, 3],
+//            itemsDesktopSmall: [979, 3]
+//        });
+//        $("#empresa-carousel").owlCarousel({
+//            //autoPlay: 3000, //Set AutoPlay to 3 seconds
+//            items: 3,
+//            itemsDesktop: [1199, 3],
+//            itemsDesktopSmall: [979, 3]
+//        });
+//        $("#turista-carousel").owlCarousel({
+//            //autoPlay: 3000, //Set AutoPlay to 3 seconds
+//            items: 3,
+//            itemsDesktop: [1199, 3],
+//            itemsDesktopSmall: [979, 3]
+//        });
+//        $("#servidor-carousel").owlCarousel({
+//            //autoPlay: 3000, //Set AutoPlay to 3 seconds
+//            items: 3,
+//            itemsDesktop: [1199, 3],
+//            itemsDesktopSmall: [979, 3]
+//        });
+        $("#banner-carousel").owlCarousel({
+            autoPlay: 5000, //Set AutoPlay to 3 seconds
+            singleItem: true,
+            transitionStyle: "fade",
+            pagination: false
+        });
+        $("#parceiros-carousel").owlCarousel({
+            items: 4,
+            itemsDesktop: [1199, 3],
+            itemsDesktopSmall: [979, 3],
+            autoPlay: 3000 //Set AutoPlay to 3 seconds
+                    //singleItem: true,
+                    //transitionStyle: "fade",
+                    //pagination: false
+        });
+        $("#videos-home").owlCarousel({
+            items: 1,
+            itemsDesktop: [1199, 1],
+            itemsDesktopSmall: [979, 1],
+            //singleItem: true,
+            //transitionStyle: "fade",
+            //pagination: false
+        });
+    });
+</script>
+
+        <link type="text/css" rel="stylesheet" media="screen" href="/media/js/B86carousel/css/B86carousel.css"/>
+        <script type="text/javascript" src="/js/jquery.maskedinput-1.3.1.min.js"></script>        
+        <script src="/media/js/B86carousel/jquery.js" type="text/javascript"></script>        
+        <script src="/media/js/B86carousel/B86carousel.js" type="text/javascript"></script>
+        <script src="/js/formularios/newsletter/form.js" type="text/javascript"></script>        
+        <!-- Zabuto Calendar -->
+        <link rel="stylesheet" type="text/css" href="/js/calendario/zabuto_calendar.css">
+        <script src="/js/calendario/zabuto_calendar.js"></script>
+
+    </head>
+
+        <body><a href="https://pimentabueno.ro.gov.br/cdn-cgi/content?id=EmLSetxSQbebei_7NIK9xO50mIMzSI_lpPdBkKucE2M-1795812731.5077715-1.2.1.1-OpwLwQ8UGxTIm70EGk8RPo0z0a8JTQLWTxIvjE4OJwk5uU_KN3XM_g29Quk6r5AQ" aria-hidden="true" rel="nofollow noopener" style="display: none !important; visibility: hidden !important"></a>
+        <div class="box-topo barra-topo d-none d-xl-block d-lg-block d-md-none d-xl-none">
+    <div class="container">
+        <div class="topo-info-box">
+            <div class="row">
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="topo-esic">
+                        <a href="http://transparencia.pimentabueno.ro.gov.br/">
+                            <img src="/imagens/servicos/informacao1.png" class="img-fluid" />
+                            Portal da Transparência
+                        </a>
+                    </div>                    
+                    <div class="box-busca">
+                        <form class="" method="GET" id="" action="/busca/">
+                            <input type="search" placeholder="Pesquisar" name="q"/>
+                            <button type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="barra-topo visible-lg visible-md visible-sm">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div class="opcao hidden-md hidden-sm">
+                    <div class="icone"><span class="glyphicon glyphicon-time"></span></div>Atendimento:
+                    Segunda a Sexta, das 7:30h às 13:30h                </div>
+                <div class="opcao hidden-md hidden-sm">
+                    <div class="icone"><span class="glyphicon glyphicon-earphone"></span></div><a
+                        href="/pagina/97_Telefones-Uteis.html">(69) 98116-2254 e (69) 98169-9989</a>
+                </div>
+                <div class="lado-right">
+                    <a href="/mapa-do-site/"
+                        target="_blank">
+                        <div class="opcao">
+                            <div class="icone"><span class="glyphicon glyphicon-list-alt"></span></div>
+                            Mapa do Site
+                        </div>
+                    </a>                    
+		    <div class="opcao visible-lg visible-md" style="cursor: pointer;" id="acessibilidade">
+                        <div class="icone"><span class="fa fa-wheelchair" aria-hidden="true"></span></div>
+                        Acessibilidade
+                    </div>
+                    <a href="http://transparencia.pimentabueno.ro.gov.br/transparencia/index.php?link=aplicacoes/eouv/frmeouv&nomeaplicacao=eouv"
+                        target="_blank">
+                        <div class="opcao">
+                            <div class="icone"><span class="glyphicon glyphicon-bullhorn"></span></div>
+                            Ouvidoria
+                        </div>
+                    </a>
+                    <a href="http://transparencia.pimentabueno.ro.gov.br/transparencia/index.php?link=aplicacoes/esic/frmesic&nomeaplicacao=esic" target="_blank">
+                        <div class="opcao">
+                            <div class="icone">
+                                <img width="18" src="/imagens/acesso1.png">
+                            </div>
+                            Acesso à Informação
+                        </div>
+                    </a>
+                                        <!--                                            <a href="/autenticacao/">
+                            <div class="opcao ultima-opcao"><div class="icone"><span class="glyphicon glyphicon-user"></span></div>Autenticar-se</div>    
+                        </a>
+                          -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="barra-acessibilidade" id="barra-acessibilidade">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="nome">
+                    <div class="icone"><span class="fa fa-wheelchair" aria-hidden="true"></span></div> Acessibilidade
+                </div>
+                <div class="fontes">
+                    <div class="alterar" id="increaseFont">A+</div>
+                    <div class="alterar" id="decreaseFont">A-</div>
+                </div>
+                <div class="contraste">
+                    <div class="alterar" id="changeColorAcess">Contraste</div>
+                </div>
+                <div class="contraste">
+                    <div class="alterar" id="resetFont" id="changeColorDefault"><i class="fa fa-refresh"
+                            aria-hidden="true"></i> Retornar acessibilidade</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="topo">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-3 visible-lg visible-md visible-sm">
+                <div class="logo"><a href="/"><img src="/uploads/siteDescricao/selo-ouro-2027.png"
+                            title="Prefeitura do Municipio de Pimenta Bueno" class="img-responsive"></a></div>
+            </div>
+            <div class="col-lg-8 col-md-9">
+                <div class="servicos-topo">
+                    <div class="topo">
+                        <div class="row">
+                            <div class="col-lg-2 col-md-2 col-sm-4 nopadding">
+                                <a href="https://pimentabueno.ro.gov.br/pagina/243_CND-ALVARA.html" target="_blank">
+                                    <div class="bloco cor">
+                                        <div class="col-lg-12">
+                                            <div class="icone"
+                                                style=" background: rgba(0, 0, 0, 0) url('/imagens/servicos/2.png') no-repeat scroll center center;">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="nome nome1">CND e Alvará</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-4 nopadding ali">
+                                <a href="http://nfse.pimentabueno.ro.gov.br/" target="_blank">
+                                    <div class="bloco cor">
+                                        <div class="col-lg-12">
+                                            <div class="icone"
+                                                style=" background: rgba(0, 0, 0, 0) url('/imagens/servicos/iss-icon.png') no-repeat scroll center center;">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="nome nome1">ISS</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-4 nopadding">
+                                <a href="https://pimentabueno.ro.gov.br/pagina/202_EMISSAO-DE-IPTU.html" target="_blank">
+                                    <div class="bloco cor">
+                                        <div class="col-lg-12">
+                                            <div class="icone"
+                                                style=" background: rgba(0, 0, 0, 0) url('/imagens/servicos/2.png') no-repeat scroll center center;">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="nome nome1">Emissão de IPTU</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-4 nopadding">
+                                <a href="https://pimentabueno.ro.gov.br/pagina/171_Processo-Eletronico.html" target="_blank">
+                                    <div class="bloco cor">
+                                        <div class="col-lg-12">
+                                            <div class="icone"
+                                                style=" background: rgba(0, 0, 0, 0) url('/imagens/servicos/14.png') no-repeat scroll center center;">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="nome nome1">Protocolo Eletrônico</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-4 nopadding">
+                                <a href="https://pimentabueno.ro.gov.br/pagina/174_Sistema-Educacional.html" target="_blank">
+                                    <div class="bloco cor">
+                                        <div class="col-lg-12">
+                                            <div class="icone"
+                                                style=" background: rgba(0, 0, 0, 0) url('/imagens/servicos/4.png') no-repeat scroll center center;">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="nome nome1">Sistema Educacional</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-4 nopadding">
+                                <a href="https://sites.google.com/view/programas-semsau?usp=sharing" target="_blank">
+                                    <div class="bloco cor">
+                                        <div class="col-lg-12">
+                                            <div class="icone"
+                                                style=" background: rgba(0, 0, 0, 0) url('/imagens/servicos/covid-19.png') no-repeat scroll center center;">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-12">
+                                            <div class="nome nome1">Secretaria Saúde</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="menu">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 nopadding">
+                <nav class="navbar navbar-default">
+                    <div style="padding: 0px 10px;">
+                        <a href="/">
+                            <div class="logo visible-xs"><img src="/imagens/logo-mobile.png"
+                                    alt="Prefeitura de Coronel Sapucaia" title="Prefeitura de Coronel Sapucaia"></div>
+                        </a>
+                        <div class="navbar-header">
+                            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar"
+                                data-toggle="collapse" class="navbar-toggle collapsed" type="button"><span
+                                    class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span
+                                    class="icon-bar"></span> <span class="icon-bar"></span></button>
+                        </div>
+                    </div>
+                    <div id="navbar" class="collapse navbar-collapse">
+                        <!-- Collapsible content -->
+                        <div class="collapse navbar-collapse" id="basicExampleNav">
+                            <!-- Links -->
+                            <ul class="nav navbar-nav"><li><a href="/site/" target="_self">Home</a></li><li><a role="button" id="desk-menu-ddown-92" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Cidade <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-92"><li class=""><a href="https://pimenta-bueno-dados.netlify.app/" target="_self" class="dropdown-item">Sobre a Cidade</a></li><li class=""><a href="https://cidades.ibge.gov.br/brasil/ro/pimenta-bueno/panorama" target="_blank" class="dropdown-item">Dados IBGE</a></li><li class=""><a href="https://guia-de-hoteis.netlify.app/" target="_self" class="dropdown-item">Hospedagem</a></li><li class=""><a href="https://gastronomia-pimenta-bueno.netlify.app/" target="_self" class="dropdown-item">Gastronomia</a></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-102" class="dropdown-item">Pontos Turísticos</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-102"><li class=""><a href="https://pimentabuenotemturismo.netlify.app/" target="_blank" class="dropdown-item">Pagina Turismo</a></li><li class=""><a href="https://drive.google.com/file/d/1PA--bt7hGyGsuunuxRI-VxfO57OgCeb4/view?usp=sharing" target="_blank" class="dropdown-item">Mapa Turístico</a></li></ul></li><li class=""><a href="https://simbolos-municipais-pimenta-bueno.netlify.app/" target="_self" class="dropdown-item">Símbolos Municipais</a></li></ul></li><li><a role="button" id="desk-menu-ddown-91" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Prefeitura <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-91"><li class=""><a href="/secretarias/" target="_self" class="dropdown-item">Secretarias Municipais</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/transparencia/aplicacoes/publicacao/sessao.php?grupo=98&subgrupo=5&nomeaplicacao=publicacao&id_menu=65" target="_blank" class="dropdown-item">Cartas de Serviço</a></li><li class=""><a href="https://sites.google.com/view/bancodetalentospmpb/in%C3%ADcio" target="_blank" class="dropdown-item">Banco de Talentos</a></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-196" class="dropdown-item">Conselhos Municipais</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-196"><li class=""><a href="/pagina/234_Conselho-Municipal-De-Educacao.html" target="_self" class="dropdown-item">Conselho Municipal De Educação</a></li></ul></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estruturas/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">Estrutura Organizacional</a></li><li class=""><a href="/galeria-fotos/" target="_self" class="dropdown-item">Galeria de Fotos</a></li><li class=""><a href="https://leis.org/municipais/ro/pimenta-bueno" target="_blank" class="dropdown-item">Portal de Leis</a></li><li class=""><a href="/localizacao/" target="_self" class="dropdown-item">Localização</a></li><li class=""><a href="https://www.google.com/maps/d/u/0/edit?mid=1aV3FTiqcAiqWERDDjYJBj6ocqPJR-dA&usp=sharing" target="_blank" class="dropdown-item">Localização das Demais Unidades Administrativas</a></li></ul></li><li><a role="button" id="desk-menu-ddown-87" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Estrutura organizacional <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-87"><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/ws/publicacao/viewdoc/44328" target="_blank" class="dropdown-item">Estrutura Organizacional Geral do Município - 2026</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/ws/publicacao/viewdoc/44329" target="_blank" class="dropdown-item">Lei Municipal n° 3.815, de 13 de Fevereiro de 2026.</a></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-215" class="dropdown-item">Estrutura Organizacional Secretarias - 2026</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-215"><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estrutura/33/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">SEMAD</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estrutura/6/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">SEMFAZ</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estrutura/4/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">GABINETE DA PREFEITA</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estrutura/5/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">SEMPLAN</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estrutura/11/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">SEMED</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estrutura/7/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">SEMAGRI</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estrutura/8/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">SEMOSP</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estrutura/12/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">SEMSAU</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estrutura/26/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">SEMMA</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estrutura/30/31?exercicio=2026&perPage=10&page=1" target="_blank" class="dropdown-item">AUTARQUIA DE ESPORTE, CULTURA E TURISMO DE PIMENTA</a></li></ul></li></ul></li><li><a role="button" id="desk-menu-ddown-90" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">CIDADÃO <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-90"><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/novo/executivo?perPage=10&page=1" target="_blank" class="dropdown-item">Porta da Transparência</a></li><li class=""><a href="/pagina/239_Modelos-de-Requerimentos.html" target="_self" class="dropdown-item">Modelos de Requerimentos</a></li><li class=""><a href="https://docs.google.com/forms/d/e/1FAIpQLSfZoGzER6msUfFUhy6c9MXX9mj5myxeJOoqHCL1ykc4U0x61Q/viewform?usp=header" target="_blank" class="dropdown-item">Pesquisa de Satisfação do Cidadão</a></li><li class=""><a href="https://sites.google.com/view/bancodetalentospmpb/in%C3%ADcio" target="_blank" class="dropdown-item">Banco de Talentos</a></li><li class=""><a href="https://coleta-seletiva.netlify.app/" target="_self" class="dropdown-item">Coleta Seletiva</a></li><li class=""><a href="/pagina/209_Servico-Militar.html" target="_self" class="dropdown-item">Serviço Militar</a></li><li class=""><a href="http://transparencia.pimentabueno.ro.gov.br/transparencia/aplicacoes/testeseletivo/" target="_self" class="dropdown-item">Concursos e Testes Seletivos</a></li><li class=""><a href="/pagina/240_Programa-Residencia-Medica.html" target="_self" class="dropdown-item">Programa Residência Médica</a></li><li class=""><a href="/pagina/203_Sorteios-da-Nota-Super-Legal.html" target="_self" class="dropdown-item">Sorteios da Nota Super Legal</a></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-123" class="dropdown-item">Saúde</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-123"><li class=""><a href="https://www.google.com/maps/d/u/0/edit?mid=1yreqA7sjRL-rKhCYpU_bqpTiY-6_2Lw&usp=sharing" target="_self" class="dropdown-item">Postos de Saúde</a></li></ul></li><li class="dropdown-submenu"><a id="desk-submenu-ddown-122" class="dropdown-item">Educação</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-122"><li class=""><a href="https://pimentabueno.prematriculaonline.com.br/" target="_self" class="dropdown-item">Lista de espera creches</a></li><li class=""><a href="https://centraldevagas.defensoria.ro.def.br/portal/ro/pimenta-bueno" target="_self" class="dropdown-item">Lista de espera creches pelo .GOV.BR</a></li><li class=""><a href="https://www.google.com/maps/d/u/0/edit?mid=1hdnl-5mHhuQkDliZMFF6sn5uKNs4tgw&usp=sharing" target="_blank" class="dropdown-item">Localização Escolas Municipais</a></li><li class=""><a href="https://www.google.com/maps/d/edit?mid=1ZWuisAf_YUdGsgZcOPhxVFG-xRnrgcw&usp=sharing" target="_blank" class="dropdown-item">Localização Creches</a></li></ul></li><li class=""><a href="/contato/" target="_self" class="dropdown-item">Fale Conosco</a></li><li class=""><a href="/iluminacao-publica/" target="_self" class="dropdown-item">Problemas com Iluminação Pública</a></li><li class=""><a href="/pagina/214_FALA-BR-/-OUVIDORIA-/-ESIC-/-LGPD.html" target="_self" class="dropdown-item">FALA BR / OUVIDORIA / ESIC / LGPD</a></li></ul></li><li><a role="button" id="desk-menu-ddown-89" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Empresas <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-89"><li class=""><a href="/licitacao/" target="_self" class="dropdown-item">Licitações</a></li><li class=""><a href="https://nfse.pimentabueno.ro.gov.br/issweb/paginas/login" target="_self" class="dropdown-item">Nota Fiscal</a></li><li class=""><a href="https://leismunicipais.com.br/prefeitura/ro/pimentabueno" target="_blank" class="dropdown-item">Portal de Leis</a></li><li class=""><a href="https://pimentabueno.sefisc.com.br/" target="_blank" class="dropdown-item">SPED FISCAL - SEFIS</a></li><li class=""><a href="https://sites.google.com/view/sala-empreendedor/p%C3%A1gina-inicial" target="_self" class="dropdown-item">Sala do Empreendedor</a></li></ul></li><li><a role="button" id="desk-menu-ddown-88" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Servidor <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-88"><li class=""><a href="https://sip.pimentabueno.ro.gov.br/sip/" target="_self" class="dropdown-item">SIP Web</a></li><li class=""><a href="https://scpi.pimentabueno.ro.gov.br/scpi9/" target="_self" class="dropdown-item">SCPI Web</a></li><li class=""><a href="http://webmail.pimentabueno.ro.gov.br/" target="_blank" class="dropdown-item">Webmail</a></li><li class=""><a href="/pagina/175_CONSIGNET.html" target="_self" class="dropdown-item">CONSIGNET</a></li><li class=""><a href="https://github.com/rustdesk/rustdesk/releases/download/1.3.5/rustdesk-1.3.5-x86_64.exe" target="_blank" class="dropdown-item">Acesso Remoto</a></li><li class=""><a href="/pagina/179_Central-do-Servidor.html" target="_blank" class="dropdown-item">Central do Servidor</a></li><li class=""><a href="https://heyzine.com/flip-book/cb6824f809.html" target="_self" class="dropdown-item">Manual de boas condutas para o Servidor Público LGPD</a></li><li class=""><a href="https://www.pimentabueno.ro.gov.br/uploads/pagina/arquivos/TERMO-DE-AUTORIZACAO-PARA-CRIACAO-DE-USUARIO-EXERCICIO-2025.docx" target="_self" class="dropdown-item">TERMO DE USO DE SISTEMAS DE GESTÃO</a></li><li class=""><a href="https://transparencia.pimentabueno.ro.gov.br/transparencia/aplicacoes/testeseletivo/index.php?link=modulos/admin/login/login" target="_self" class="dropdown-item">Recursos Humanos - Testes Seletivos</a></li></ul></li><li><a href="http://pimentabueno.sedam.ro.gov.br/" target="_blank">SEMMA</a></li><li><a role="button" id="desk-menu-ddown-181" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">AMPIB <i class="fa fa-caret-down"></i></a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-menu-ddown-181"><li class="dropdown-submenu"><a id="desk-submenu-ddown-206" class="dropdown-item">Esporte</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-206"><li class="dropdown-submenu"><a id="desk-submenu-ddown-207" class="dropdown-item">JEP'S</a><ul class="dropdown-menu" role="menu" aria-labelledby="desk-submenu-ddown-207"><li class=""><a href="https://pimentabueno.ro.gov.br/noticiasView/2788_Pimenta-Bueno-da-inicio-aos-preparativos-para-os-Jogos-Escolares-2026.html" target="_self" class="dropdown-item">2026</a></li></ul></li></ul></li><li class=""><a href="https://pimentabueno.ro.gov.br/noticiasView/?id=2846" target="_self" class="dropdown-item">Cultura</a></li><li class=""><a href="/pagina/238_Turismo.html" target="_self" class="dropdown-item">Turismo</a></li><li class=""><a href="https://ampib.pimentabueno.ro.gov.br/site/" target="_self" class="dropdown-item">Site antigo</a></li></ul></li><li class="open-search"><a role="button" id="btnOpenSearchDesktop"><i class="fa fa-search"></i></a></li></ul>                            <!-- Links -->
+                        </div>
+                        <!-- Collapsible content -->
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 atendimento">
+                            <form class="formulario-busca" method="GET" id="form_pesquisar_home" action="/busca/">
+                                <input type="search" placeholder="Pesquisar" name="q"/>
+                                <button type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                                <div class="overlay"></div>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+                        </div>
+        </div>
+    </div>
+</div>
+<div class="menu-lateral-flutuante">
+    <ul>
+                    <li>
+                <a href="https://www.facebook.com/PrefeituradePimentaBueno/" title="Facebook"><i class="fa fa-facebook"></i></a>
+            </li>
+                            <li>
+                <a href="https://www.youtube.com/channel/UCR0O0wEQvja0taunGuaiBwQ/videos" title="Youtube"><i class="fa fa-youtube"></i></a>
+            </li>
+                            <li>
+                <a href="https://www.instagram.com/prefeiturapb" title="Instagram"><i class="fa fa-instagram"></i></a>
+            </li>
+                    </ul>
+</div>
+
+<script type="text/javascript" src="/header/assets/header.js"></script>
+        <div class="barra-cinza-home">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 col-md-7 col-xs-12" style="padding-left: 0;">
+                <div class="meio-box-home">
+                    <a name="conteudo"></a>
+                    <!--                    <div class="titulo"><h3>Notícias destaques</h3></div>-->
+                    <div class="conteudo-home">
+                        <div class="clearfix" id="B86carousel">
+                            <div class="col-lg-8 col-md-7 col-sm-12 col-xs-12">
+                                <div class="loading" id="B86-imagem"> 
+                                    <a href="#">
+                                        <img class="img-responsive" alt="Responsive image"
+                                             src="/uploads/noticia/thumbs/thumb_445x345_capa-instagram_(715).jpg"
+                                             style="display: block;">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-5 col-sm-12 col-xs-12">
+    <ul class="B86carousel-list clearfix" id="B86carousel-list">
+            <li class="active">
+                <img class="img-responsive" alt="Responsive image" src="/uploads/noticia/thumbs/thumb_445x345_capa-instagram_(715).jpg">
+                <a title="Pimenta Bueno celebra 49 anos com história, cultura e acender das luzes de Natal" href="/noticiasView/?id=2879">Pimenta Bueno celebra 49 anos com história, cultura e acender das luzes de Natal</a>
+            </li>
+            <li class="">
+                <img class="img-responsive" alt="Responsive image" src="/uploads/noticia/thumbs/thumb_445x345_zimagem_compativel.jpg">
+                <a title="2ª Corrida de aniversário de Pimenta Bueno reúne cerca de 200 participantes" href="/noticiasView/?id=2878">2ª Corrida de aniversário de Pimenta Bueno reúne cerca de 200 participantes</a>
+            </li>
+            <li class="">
+                <img class="img-responsive" alt="Responsive image" src="/uploads/noticia/thumbs/thumb_445x345_capa-intagram.jpg">
+                <a title="SEMED Premia Professores destaque do SAERO 2025" href="/noticiasView/?id=2877">SEMED Premia Professores destaque do SAERO 2025</a>
+            </li>
+            <li class="">
+                <img class="img-responsive" alt="Responsive image" src="/uploads/noticia/thumbs/thumb_445x345_capa-instagram-materia-beira-dos-rios.jpg">
+                <a title="Pimenta Bueno realizará ação de preservação ambiental e plantio de árvores" href="/noticiasView/?id=2876">Pimenta Bueno realizará ação de preservação ambiental e plantio de árvores</a>
+            </li>
+    </ul>
+</div>                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-xs-12" style="padding-right: 0;">
+                <div class="meio-box-home">
+                    <!--                    <div class="titulo"><h3>Acesso aos Serviços</h3></div>-->
+                    <div class="conteudo-home">
+                        <div class="navtab-servicos">
+                            <main>
+                                <input id="tab1" type="radio" name="tabs" checked>
+                                <label for="tab1">Cidadão</label>
+                                <input id="tab2" type="radio" name="tabs">
+                                <label for="tab2">Empresa</label>
+                                <input id="tab3" type="radio" name="tabs">
+                                <label for="tab3">Geral</label>
+                                <input id="tab4" type="radio" name="tabs">
+                                <label for="tab4"><i class="f"></i>Servidor</label>
+                                <section id="content1">
+                                    <!-- Serviços Cidadão
+    ================================================== -->
+                                    <div class="servicos-tabs">
+                                        <div class="acessorapido">
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a href="/concursos/">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-pencil-square-o"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome1">Concursos e Testes Seletivos
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-lg-12">
+                                                    <a href="https://sites.google.com/view/listatelefonespmpb/p%C3%A1gina-inicial" target="_blank">
+                                                        <div class="bloco cor1" style="background: #105CA3">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-phone"
+                                                                                      aria-hidden="true" style="color: #FFF;"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome4" style="color: #FFF;">NOVA LISTA <br>DE TELEFONES</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a href="/pagina/182_Diario-Oficial.html">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone">
+                                                                    <i class="fa fa-book" aria-hidden="true"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome1">Diário Oficial</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="item no-padding">
+                                                    <div class="col-md-12">
+                                                        <a href="https://baggy-carrot-20414000.figma.site/">
+                                                            <div class="bloco cor1">
+                                                                <div class="col-lg-12">
+                                                                    <div class="icone">
+                                                                        <img src="/imagens/icones/suporte-acesso-eproc.jpg" alt="">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-12">
+                                                                    <div class="nome nome4">Suporte Portal de serviços</div>
+                                                                </div>
+                                                            </div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a href="https://sites.google.com/view/saladoempreendedorpb">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone">
+                                                                    <img src="/imagens/icones/Sala-do-Empreendedor.jpg" alt="">
+                                                                </div>        
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome1">Sala do Empreendedor <br />
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <a href="https://sites.google.com/view/carta-de-servicos/p%C3%A1gina-inicial">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-envelope"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome1">Carta de Serviços
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a href="https://www.google.com/maps/d/u/0/viewer?mid=1hdnl-5mHhuQkDliZMFF6sn5uKNs4tgw&ll=-11.676356679517625%2C-61.316489849999996&z=12">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-university" aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome1">Escolas<br> Municipais</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <a href="/contato/">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-comments-o"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome1">Fale Conosco</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/falecimentos/74?exercicio=2026"
+                                                       target="_blank">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-plus"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome4">Cemitério Municipal</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <a href="/faq/">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-question"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome1">Perguntas <br> Frequentes</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>                                                
+                                            </div>
+                                        </div>
+                                    </div>
+                                </section>
+                                <!-- Serviços Empresa
+    ================================================== -->
+                                <section id="content2">
+                                    <div class="servicos-tabs">
+                                        <div class="acessorapido">
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a target="_blank"
+                                                       href="/licitacao/"
+                                                       class="holerite-selector">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone">                                                                    
+                                                                    <i class="fa fa-list-ul" aria-hidden="true"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome1">Licitações</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <a target="_blank"
+                                                       href="https://leismunicipais.com.br/prefeitura/ro/pimentabueno"
+                                                       class="prefeitura-virtual-selector">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-balance-scale"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome2">Legislação</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a target="_blank"
+                                                       href="http://pimentabueno.sefisc.com.br/"
+                                                       class="tributos-selector">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-globe"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome4">Sped Fiscal - Sefis</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <a target="_blank" href="https://pimentabueno.ro.gov.br/pagina/215_EMPRESAS-PARCEIRAS.html">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-calculator"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome4">Parcerias</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>                                          
+                                    </div>
+                                </section>
+
+                                <!-- Serviços Geral
+    ================================================== -->
+                                <section id="content3">
+                                    <div class="servicos-tabs">
+                                        <div class="acessorapido">
+                                            
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a href="https://www.pimentabueno.ro.gov.br/pagina/136_Gastronomia.html">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12"><div class="icone"><i class="fa fa-cutlery"></i></div></div>
+                                                            <div class="col-lg-12"><div class="nome nome3">Gastronomia</div></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <a href="https://pimentabuenotemturismo.netlify.app/">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12"><div class="icone"><i class="fa fa-map-marker"></i></div></div>
+                                                            <div class="col-lg-12"><div class="nome nome3">Pontos <br> Turísticos</div></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div> <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a href="/pagina/198_O-que-e-o-SIAFIC.html">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12"><div class="icone"><img src="/imagens/icones/icon-siafic.png" alt=""></div></div>
+                                                            <div class="col-lg-12"><div class="nome nome4">SIAFIC</div></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <a target="_blank" href="/pagina/180_Politica-de-Privacidade-e-Protecao-de-Dados.html" class="tributos-selector">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12"><div class="icone"><i class="fa fa-lock"></i></div></div>
+                                                            <div class="col-lg-12"><div class="nome nome4">LGPD</div></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div> <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/falecimentos/74?exercicio=2026" target="_blank">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12"><div class="icone"><i class="fa fa-plus"></i></div></div>
+                                                            <div class="col-lg-12"><div class="nome nome4">Cemitério Municipal</div></div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                </div> </div>
+                                    </div>
+                                </section>
+                                <!-- Serviços Servidor
+    ================================================== -->
+                                <section id="content4">
+                                    <div class="servicos-tabs">
+                                        <div class="acessorapido">
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a target="_blank"
+                                                       href="https://servidor.pimentabueno.ro.gov.br/sipweb/"
+                                                       class="holerite-selector">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone">                                                                    
+                                                                    <i class="fa fa-users" aria-hidden="true"></i>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome1">Central do Servidor</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <a target="_blank"
+                                                       href="https://scpi.pimentabueno.ro.gov.br/scpi9/"
+                                                       class="prefeitura-virtual-selector">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-share-alt"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome2">SCPI</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a target="_blank"
+                                                       href="https://sites.google.com/view/cursosetreinamentospmpb/p%C3%A1gina-inicial"
+                                                       class="tributos-selector">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><img src="/imagens/iconeCursosTreinamentos.png" alt=""></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome4">Cursos e Treinamentos</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <a target="_blank" href="https://sip.pimentabueno.ro.gov.br/">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-link"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome4">SIP</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="item no-padding">
+                                                <div class="col-md-12">
+                                                    <a target="_blank" href="https://pimentabueno.ro.gov.br/pagina/175_CONSIGNET.html" class="tributos-selector">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-calculator"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome4">CONSIGNET</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <a target="_blank" href="http://webmail.pimentabueno.ro.gov.br/">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-envelope"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome4">Webmail</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                                <div class="col-md-12">
+                                                    <a href="http://131.108.164.162:8085/OuvidoriaNet">
+                                                        <div class="bloco cor1">
+                                                            <div class="col-lg-12">
+                                                                <div class="icone"><i class="fa fa-lock"
+                                                                                      aria-hidden="true"></i></div>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <div class="nome nome3">Área Restrita</div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </div>
+                                            </div>                                          
+                                        </div>
+                                    </div>
+                                </section>
+                            </main>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="barra-branca">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 nopadding" style="padding-bottom: 30px;">
+                <div class="parceiros">
+                    <div class="titulo"><h3>Novidades</h3></div>
+                    <p>Fique por dentro das novas ações, eventos e programas da Prefeitura de Pimenta Bueno.</p>
+                    <div class="conteudo">
+                        <div id="parceiros-carousel">
+                            <div class="col-lg-3 col-xs-12">
+    <div class="item">
+        <div class="bloco">
+            <a href="https://transparencia.pimentabueno.ro.gov.br/novo/EXECUTIVO/informacoes-institucionais/estruturas/31?exercicio=2026" target="_blank">
+                <img src="/uploads/parceiro/thumbs/thumb_200x80_estrut.png" alt=" ESTRUTURA ORGANIZACIONAL" title=" ESTRUTURA ORGANIZACIONAL" />
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bloco">
+            <a href="https://sites.google.com/view/lista-de-espera-em-creches/in%C3%ADcio" target="_blank">
+                <img src="/uploads/parceiro/thumbs/thumb_200x80_zzzsaude.png" alt="LISTA DE ESPERA PARA ACESSO A CRECHES" title="LISTA DE ESPERA PARA ACESSO A CRECHES" />
+            </a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-xs-12">
+    <div class="item">
+        <div class="bloco">
+            <a href="https://www.pimentabueno.ro.gov.br/pagina/232_TDF---Programa-Tratamento-Fora-do-Dominio-.html" target="_blank">
+                <img src="/uploads/parceiro/thumbs/thumb_200x80_tdgfdfd.png" alt="TFD " title="TFD " />
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bloco">
+            <a href="https://www.pimentabueno.ro.gov.br/busca/?q=" target="_blank">
+                <img src="/uploads/parceiro/thumbs/thumb_200x80_busca.png" alt="Faça uma Busca no Site!" title="Faça uma Busca no Site!" />
+            </a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-xs-12">
+    <div class="item">
+        <div class="bloco">
+            <a href="https://pesquisa-de-satistacao.vercel.app/" target="_blank">
+                <img src="/uploads/parceiro/thumbs/thumb_200x80_thumb_200x80_pes-sastf.png" alt="PESQUISA DE SATISFAÇÃO" title="PESQUISA DE SATISFAÇÃO" />
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bloco">
+            <a href="https://sites.google.com/view/consultaindisponibilidade/p%C3%A1gina-inicial" target="_blank">
+                <img src="/uploads/parceiro/thumbs/thumb_200x80_conslttt.png" alt="CONSULTA DE INDISPONIBILIDADE" title="CONSULTA DE INDISPONIBILIDADE" />
+            </a>
+        </div>
+    </div>
+</div>
+<div class="col-lg-3 col-xs-12">
+    <div class="item">
+        <div class="bloco">
+            <a href="http://www.pimentabueno.ro.gov.br/pagina/219_SITEMAP.html" target="_blank">
+                <img src="/uploads/parceiro/thumbs/thumb_200x80_sitemapp.png" alt="SITEMAP" title="SITEMAP" />
+            </a>
+        </div>
+    </div>
+    <div class="item">
+        <div class="bloco">
+            <a href="https://radardatransparencia.atricon.org.br/" target="_blank">
+                <img src="/uploads/parceiro/thumbs/thumb_200x80_radada.png" alt="RADAR DA TRANSPARÊNCIA" title="RADAR DA TRANSPARÊNCIA" />
+            </a>
+        </div>
+    </div>
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>            
+            <div class="col-md-8 col-xs-8 nopadding video-box">
+                                    <div id="videos-home" class="carousel slide" data-ride="carousel">
+                        
+<div class="item">
+    <div class="boxVideo">
+        <iframe src="https://www.youtube.com/embed/hrai-Flr6Ck?controls=0" width="500" height="770" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> <p><a href="https://vimeo.com/10230706">Smarty aula 1</a> from <a href="https://vimeo.com/user3121269">kadunew.com/blog</a> on <a href="https://vimeo.com">Vimeo</a>.</p>
+    </div>    
+</div>
+   
+                    </div>
+                            </div>
+            <div class="col-md-4 col-xs-4 nopadding">
+                <div class="servicos">
+                    <div class="acesso-informacao">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <a href="http://transparencia.pimentabueno.ro.gov.br/" target="new">
+                                    <div class="bloco2 cor1">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <div class="icone portal-transparencia"></div>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                            <div class="nome nome1">Portal da Transparência</div>
+                                            <div class="sub hidden-xs hidden-sm">Veja onde o dinheiro público está sendo
+                                                utilizado
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <a href="http://transparencia.pimentabueno.ro.gov.br/transparencia/index.php?link=aplicacoes/esic/frmesic&nomeaplicacao=esic">
+                                    <div class="bloco2 cor2">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <div class="icone informacao"></div>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                            <div class="nome nome2">Acesso à Informação</div>
+                                            <div class="sub sub2 hidden-xs hidden-sm">Serviço de Informação ao Cidadão
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-12 col-md-12 col-sm-12">
+                                <a href="https://www.pimentabueno.ro.gov.br/pagina/214_Fala-BR-/-Ouvidoria-/-eSic-/-LGPD.html" target="_blank">
+                                    <img src="/uploads/galeria/ouvidoria.jpg" alt="">
+                                </a>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12 nopadding">
+                <div class="titulo">
+                    <h3>
+                        <a href="/noticias/" style="color: #26508C;" title="Notícias">Notícias</a>
+                    </h3>
+                </div>
+                <div class="margin-top-home">
+    <ul class="noticias-pequenas-home margin-top-home">
+            <a href="/noticiasView/?id=2875" title="ATENÇÃO, POPULAÇÃO! FIQUE ATENTO AO CALENDÁRIO DE NOVEMBRO!">
+                <li>
+                <span class="leia-mais"> Assessoria de Comunicação</span>
+                <p class="text">ATENÇÃO, POPULAÇÃO! FIQUE ATENTO AO CALENDÁRIO DE NOVEMBRO!</p>
+                </li>
+            </a>
+            <a href="/noticiasView/?id=2874" title="Pimenta Bueno conquista o Selo Ouro no Programa Nacional de Transparência Pública!">
+                <li>
+                <span class="leia-mais"> Secretaria de Administração</span>
+                <p class="text">Pimenta Bueno conquista o Selo Ouro no Programa Nacional de Transparência Pública!</p>
+                </li>
+            </a>
+            <a href="/noticiasView/?id=2873" title="Prefeitura de Pimenta Bueno discute Política de Segurança da Informação">
+                <li>
+                <span class="leia-mais"> Secretaria de Administração</span>
+                <p class="text">Prefeitura de Pimenta Bueno discute Política de Segurança da Informação</p>
+                </li>
+            </a>
+            <a href="/noticiasView/?id=2872" title="AMPIB abre inscrições para edital de fomento a projetos culturais em Pimenta Bueno">
+                <li>
+                <span class="leia-mais"> Assessoria de Comunicação</span>
+                <p class="text">AMPIB abre inscrições para edital de fomento a projetos culturais em Pimenta Bueno</p>
+                </li>
+            </a>
+            <a href="/noticiasView/?id=2871" title="HORTO MUNICIPAL RECEBE ALUNOS DO CURSO TÉCNICO EM AGROPECUÁRIA PARA AULA PRÁTICA">
+                <li>
+                <span class="leia-mais"> Secretaria de Meio Ambiente</span>
+                <p class="text">HORTO MUNICIPAL RECEBE ALUNOS DO CURSO TÉCNICO EM AGROPECUÁRIA PARA AULA PRÁTICA</p>
+                </li>
+            </a>
+            <a href="/noticiasView/?id=2870" title="Segurança digital: Prefeitura reforça orientações para proteção de dados e sistemas institucio...">
+                <li>
+                <span class="leia-mais"> Assessoria de Comunicação</span>
+                <p class="text">Segurança digital: Prefeitura reforça orientações para proteção de dados e sistemas institucio...</p>
+                </li>
+            </a>
+    </ul>
+</div>            </div>
+        </div>
+    </div>
+</div>
+<div class="barra-branca" style="border-top:1px solid #EEE;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 nopadding">
+                <div class="titulo"><h3>Acessar</h3></div>
+                <div class="conteudo">
+                    <div class="servicos nopadding">
+                        <div class="acesso-rapido">
+                            <div class="col-lg-6 col-md-6 col-sm-6 padding-servicos-right">
+                                <a href="http://transparencia.pimentabueno.ro.gov.br/transparencia/index.php?link=aplicacoes/eouv/frmeouv&nomeaplicacao=eouv" target="_blank">
+                                    <div class="bloco cor">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <div class="icone ouvidoria"></div>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 no-padding-left">
+                                            <div class="nome">OUVIDORIA</div>
+                                            <div class="sub hidden-xs hidden-sm">Dúvidas, questionamentos e
+                                                reclamações.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="/contato/">
+                                    <div class="bloco cor">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <div class="icone solicitacao-servicos"></div>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 no-padding-left">
+                                            <div class="nome">SOLICITAÇÃO DE SERVIÇO</div>
+                                            <div class="sub hidden-xs hidden-sm">Solicitação de serviços para o
+                                                cidadão.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 padding-servicos-right">
+                                <a href="/iluminacao-publica/">
+                                    <div class="bloco cor">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <div class="icone iluminacao"></div>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 no-padding-left">
+                                            <div class="nome">ILUMINAÇÃO PÚBLICA</div>
+                                            <div class="sub hidden-xs hidden-sm">Informe sobre problemas com a
+                                                iluminação pública.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <a href="/agenda/">
+                                    <div class="bloco cor">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                                            <div class="icone agenda"></div>
+                                        </div>
+                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 no-padding-left">
+                                            <div class="nome">AGENDA DO MUNICÍPIO</div>
+                                            <div class="sub hidden-xs hidden-sm">Veja na agenda todas as datas no
+                                                calendário da prefeitura.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 nopadding">
+                <div class="titulo"><h3>Facebook</h3></div>
+                <div class="conteudo">
+                    <div class="conteudo">
+                        <div id="fb-root"></div>
+                        <div id="fb-root"></div>
+                        <script>(function (d, s, id) {
+                                var js, fjs = d.getElementsByTagName(s)[0];
+                                if (d.getElementById(id))
+                                    return;
+                                js = d.createElement(s);
+                                js.id = id;
+                                js.src = "//connect.facebook.net/es_ES/sdk.js#xfbml=1&version=v2.8";
+                                fjs.parentNode.insertBefore(js, fjs);
+                            }(document, 'script', 'facebook-jssdk'));</script>
+                        <div class="fb-page" data-href="https://www.facebook.com/PrefeituradePimentaBueno/"
+                             data-tabs="timeline" data-width="500" data-height="222" data-small-header="false"
+                             data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+                            <blockquote cite="https://www.facebook.com/PrefeituradePimentaBueno/"
+                                        class="fb-xfbml-parse-ignore"><a
+                                    href="https://www.facebook.com/PrefeituradePimentaBueno/">Prefeitura de Pimenta
+                                    Bueno</a></blockquote>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>        <footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-4 col-xs-12 nopadding">
+                <div class="col-lg-7 hidden-sm">
+                    <div class="bloco">
+                        <a href="https://pimentabueno.ro.gov.br/noticiasView/2031_Pimenta-Bueno-e-Selo-Diamante-em-transparencia-publica.-Confira-.html"><img src="/imagens/logo-rodape-selo.png" alt=""/></a>
+                    </div>
+                </div>
+                <div class="col-lg-5">
+                    <div class="bloco">
+                        <div class="titulo"><h2>Prefeitura</h2></div>
+                        <div class="sub"><h3><a href="http://transparencia.pimentabueno.ro.gov.br/">Portal da
+                                    Transparência</a></h3></div>
+                        <div class="sub"><h3><a href="/gabinete/">Gabinete do Prefeito</a></h3></div>
+                        <div class="sub"><h3><a href="/secretarias/">Secretarias</a></h3></div>
+                        <div class="sub"><h3><a href="/pagina/100_Procuradoria.html">Procurador</a></h3></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 nopadding">
+                <div class="col-lg-4">
+                    <div class="bloco">
+                        <div class="titulo"><h2>Serviços</h2></div>
+                        <div class="sub"><h3><a href="/concursos/">Concursos</a></h3></div>
+                        <div class="sub"><h3><a href="/licitacao/">Licitação</a></h3></div>
+                        <div class="sub"><h3><a href="http://webmail.pimentabueno.ro.gov.br/">Webmail</a></h3></div>
+                    </div>
+                </div>
+                <div class="col-lg-8">
+                    <div class="bloco">
+                        <div class="titulo"><h2>Contato</h2></div>
+                        <div class="sub">
+                            <div class="icone"><span class="glyphicon glyphicon-envelope"></span>
+                            </div><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="01666063686f6475644171686c646f75606374646f6e2f736e2f666e772f6373">[email&#160;protected]</a></div>
+                        <div class="sub">
+                            <div class="icone"><span class="glyphicon glyphicon-time"></span>
+                            </div>Segunda a Sexta, das 7:30h às 13:30h </div>
+                        <div class="sub">
+                            <div class="icone"><span class="glyphicon glyphicon-earphone"></span>
+                            </div>(69) 98116-2254 e (69) 98169-9989</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12 nopadding">
+                <div class="bloco">
+                    <div class="titulo"><h2>Localização</h2></div>
+                    <a target="_blank" href="https://www.google.com.br/maps/place/Prefeitura+Mun+de+Pimenta+Bueno/@-11.6708335,-61.1906699,17z/data=!3m1!4b1!4m5!3m4!1s0x93b7e6812bec245f:0xa2319a2e0faea796!8m2!3d-11.6708335!4d-61.1884759?hl=pt-BR">
+                        <div class="mapa">
+                            Ver localização
+                        </div>
+                    </a>
+                    <div class="sub">Av. Castelo Branco, 1046  - Pimenta Bueno - RO , 76970-000</div>
+                </div>
+            </div>
+            <div class="col-lg-12 nopadding">
+                <div class="copyrights">
+                    <!--                    CNPJ: 04.092.680/0001-71<Br/>-->
+                    © 2026 Prefeitura do Municipio de Pimenta Bueno                    <a href="http://www.plenussistemas.com.br" target="_blank">
+                        <div class="mediasystems">
+                            Desenvolvido por:<img src="/imagens/plenus.png">
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- Banner LGPD -->
+<div class="banner-lgpd-consent-container">
+    <div class="banner-lgpd-consent">
+       <div class="banner-lgpd-consent__column">
+           Utilizamos cookies essenciais e tecnologias semelhantes de acordo com a nossa &nbsp;<a href=" /pagina/180_LGPD.html">Política de Privacidade</a>&nbsp; e, ao continuar navegando, você concorda com estas condições.
+       </div>
+       <div class="banner-lgpd-consent__column">
+           <button class="btn btn-warning" id="bt-lgpd">Concordo</button>
+       </div>
+   </div>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+   function setCookie(name, value, duration) {
+       var cookie = name + "=" + escape(value) +
+       ((duration) ? "; expires=" + duration.toGMTString() : "");
+
+       document.cookie = cookie;
+   }
+   function getCookie(name) {
+       var cookies = document.cookie;
+       var prefix = name + "=";
+       var begin = cookies.indexOf("; " + prefix);
+
+       if (begin == -1) {
+
+           begin = cookies.indexOf(prefix);
+
+           if (begin != 0) {
+               return null;
+           }
+
+       } else {
+           begin += 2;
+       }
+
+       var end = cookies.indexOf(";", begin);
+
+       if (end == -1) {
+           end = cookies.length;                        
+       }
+
+       return unescape(cookies.substring(begin + prefix.length, end));
+   }
+       
+   $( "#bt-lgpd" ).click(function() {
+       var data = new Date(2090,0,01);
+       setCookie('banner_lgpd', '1', data);
+       
+       if(getCookie('banner_lgpd') == '1'){
+           $('.banner-lgpd-consent-container').hide();
+       }
+   });
+   
+   if(getCookie('banner_lgpd') == '1'){
+       $('.banner-lgpd-consent-container').hide();
+   }
+   
+   
+</script>
+<!-- Banner LGPD -->   
+        <script src="../js/calendario/calendarioInit.js"></script>
+    </body>
+</html>
+
+
