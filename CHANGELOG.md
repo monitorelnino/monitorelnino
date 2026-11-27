@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-27 · #PR · Portal recusado com 403 de fora se relê pela cópia da ponte
+
+O leitor do portal da prefeitura guardava como recusa o 403 visto de fora do país e não o refazia no mesmo dia, mesmo depois de a ponte trazer a página do Brasil. Agora a recusa com 403 cujo domínio tem cópia da ponte se refaz uma vez, pela cópia; recusa confirmada do Brasil e muro de robô continuam recusa.
+
 ## 2026-11-27 · #2173 · Válvula recusa ramo que parte de main velha
 
 Dois lotes do Buscador 2 (26 e 27/11) nasceram de um `origin/main` local parado em 24/11 e rodaram código antigo, sem SearXNG: 2.711 pistas fechadas, nenhuma resolvida. A válvula agora recusa o ramo quando a `main` tem commit que ele não tem há mais de 6 h.
