@@ -1,0 +1,76 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-27T04:05:24+00:00",
+ "itens": [
+  {
+   "url": "https://www.in.gov.br/consulta/-/buscar/dou?q=%22Emerg%C3%AAncia%20em%20Sa%C3%BAde%20P%C3%BAblica%20de%20Import%C3%A2ncia%20Nacional%22&s=do1&exactDate=personalizado&sortType=0&publishFrom=23-11-2026&publishTo=27-11-2026&delta=50",
+   "em": "2026-11-27T04:04:02+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://lauromuller.sc.gov.br/plancon/",
+   "em": "2026-11-27T04:05:17+00:00",
+   "status": 403,
+   "recusa": true
+  },
+  {
+   "url": "https://cacador.sc.gov.br/prefeitura-de-cacador-auxilia-130-pessoas-apos-estragos-provocados-por-vendaval-em-cacador/",
+   "em": "2026-11-27T04:05:18+00:00",
+   "status": 403,
+   "recusa": true
+  },
+  {
+   "url": "https://www.curitiba.pr.gov.br/noticias/prefeitura-concentra-vacina-contra-covid-em-dez-unidades-de-saude-para-publico-prioritario-com-12-anos-ou-mais/83298",
+   "em": "2026-11-27T04:05:18+00:00",
+   "status": 403,
+   "recusa": true
+  },
+  {
+   "url": "https://xanxere.sc.gov.br/xanxere-ira-decretar-situacao-de-emergencia-apos-passagem-de-tornado/",
+   "em": "2026-11-27T04:05:19+00:00",
+   "status": 403,
+   "recusa": true
+  },
+  {
+   "url": "https://agrolandia.sc.gov.br/pagina-43058/",
+   "em": "2026-11-27T04:05:19+00:00",
+   "status": 403,
+   "recusa": true
+  },
+  {
+   "url": "https://autazes.am.gov.br/downloads/4/auxilio-permanente--beneficiarios--zona-rural--autazes",
+   "em": "2026-11-27T04:05:19+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://autazes.am.gov.br/downloads/4/auxilio-permanente--beneficiarios--zona-rural--autazes",
+   "bytes": 288029,
+   "sha256": "63b4d9b30eaf42a5d8401c92b87802698b4070c498e755a742e3670c57cf9cb7"
+  },
+  {
+   "url": "https://autazes.am.gov.br/downloads/9/carteiras-de-identidade-nacional-cin",
+   "em": "2026-11-27T04:05:20+00:00",
+   "status": 200,
+   "tipo": "text/html; charset=UTF-8",
+   "final": "https://autazes.am.gov.br/downloads/9/carteiras-de-identidade-nacional-cin",
+   "bytes": 288147,
+   "sha256": "fcda3c7dd2c632c45be6a7b60a5b51932fc3f554902b39915e77c5324ca03f74"
+  },
+  {
+   "url": "https://cocaldosul.sc.gov.br/plano-municipal-de-cultura/",
+   "em": "2026-11-27T04:05:24+00:00",
+   "status": 403,
+   "recusa": true
+  },
+  {
+   "url": "https://rsgovbr-my.sharepoint.com/expediente",
+   "em": "2026-11-27T04:05:24+00:00",
+   "erro": "endereço fora da regra (só site público .br)"
+  },
+  {
+   "url": "https://rsgovbr-my.sharepoint.com/",
+   "em": "2026-11-27T04:05:24+00:00",
+   "erro": "endereço fora da regra (só site público .br)"
+  }
+ ]
+}
