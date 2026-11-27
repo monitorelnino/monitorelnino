@@ -9,7 +9,7 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
-## 2026-11-27 · #PR · Nível de intensidade lido na portaria e na notícia preservadas
+## 2026-11-27 · #2181 · Nível de intensidade lido na portaria e na notícia preservadas
 
 439 reconhecimentos federais sem tipo de declaração recebem "situação de emergência", lido no texto preservado da portaria SEDEC/MIDR (106) ou da notícia do MIDR (333, sem estado de calamidade fora da frase padrão). Municípios com nível: 1.020 (II 1.013, III 7); 300 seguem sem nível, 173 deles sem evidência preservada.
 
