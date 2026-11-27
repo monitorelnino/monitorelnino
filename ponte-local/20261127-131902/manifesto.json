@@ -1,0 +1,51 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-27T13:23:29+00:00",
+ "itens": [
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=20-11-2026&secao=do1",
+   "em": "2026-11-27T13:19:02+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=21-11-2026&secao=do1",
+   "em": "2026-11-27T13:20:05+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=UTF-8",
+   "final": "https://www.in.gov.br/leiturajornal?data=21-11-2026&secao=do1",
+   "bytes": 138347,
+   "sha256": "1e8a6765cd91f79f389ef56ed4bf1aa87c54aef2313af7497d5cd30c1f388263"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=23-11-2026&secao=do1",
+   "em": "2026-11-27T13:20:09+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=24-11-2026&secao=do1",
+   "em": "2026-11-27T13:21:13+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=UTF-8",
+   "final": "https://www.in.gov.br/leiturajornal?data=24-11-2026&secao=do1",
+   "bytes": 572851,
+   "sha256": "e46d1e6d01f0128d2ed959ac1c0f5bbb05646645f87dbd46080fa767041c1c5c"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=25-11-2026&secao=do1",
+   "em": "2026-11-27T13:21:17+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1",
+   "em": "2026-11-27T13:22:21+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1e",
+   "em": "2026-11-27T13:23:24+00:00",
+   "status": 502,
+   "erro": "HTTP 502"
+  }
+ ]
+}
