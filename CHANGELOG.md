@@ -11,7 +11,7 @@ não pontuados permanecem na versão corrente.
 
 ## 2026-11-27 · #2157 · Coluna "Nível" na tabela de emergências da Defesa civil
 
-A tabela "Ver em tabela" do mapa de emergências ganha a coluna "Nível" (III · calamidade pública, II · situação de emergência ou "não informado"), lida de `municipios_decretados.json`, e a nota da figura traz a Portaria MDR nº 260/2022, art. 5º. Mapa e cartões não mudam.
+A tabela "Ver em tabela" do mapa de emergências ganha a coluna "Nível" (III · calamidade pública, II · situação de emergência ou "não informado"), lida de `municipios_decretados.json`, e um parágrafo da seção traz os níveis da Portaria MDR nº 260/2022. Mapa e cartões não mudam.
 
 ## 2026-11-27 · #2156 · Nível II para as emergências reconhecidas lidas no DOU
 
