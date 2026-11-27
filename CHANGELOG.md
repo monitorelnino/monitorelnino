@@ -19,6 +19,10 @@ O leitor do portal da prefeitura guardava como recusa o 403 visto de fora do pa�
 
 Um bug de 24/11 fez a busca no veículo do Buscador 2 devolver zero resultado, e 1.684 links do Google News foram fechados como "redirecionamento não resolvido" sem terem sido lidos. Agora essas pistas voltam à fila uma vez, com o título do arquivo. A busca tentada passa a ficar marcada, para não ser reaberta a cada rodada. Nada é apagado; o dado publicado não muda.
 
+## 2026-11-27 · #2179 · História do `atualizar.py` ao HISTORICO
+
+Consolidação: os comentários de história da rodada semanal (cadência, teto por etapa, ordem carimbo → derivados → portões, corte) viram uma linha de regra cada; datas e incidentes passam a `docs/HISTORICO_DE_REGIMES.md`. Sem mudança de comportamento: AST idêntica, ensaio da noite verde. Código −123 linhas líquidas.
+
 ## 2026-11-27 · #2173 · Válvula recusa ramo que parte de main velha
 
 Dois lotes do Buscador 2 (26 e 27/11) nasceram de um `origin/main` local parado em 24/11 e rodaram código antigo, sem SearXNG: 2.711 pistas fechadas, nenhuma resolvida. A válvula agora recusa o ramo quando a `main` tem commit que ele não tem há mais de 6 h.
