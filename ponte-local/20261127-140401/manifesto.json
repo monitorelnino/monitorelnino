@@ -1,0 +1,26 @@
+{
+ "ponte_local": "4",
+ "cliente": "MonitorElNinoBrasil/2.2.4 (+https://monitorelnino.com.br; ponte no Brasil, programa local v4)",
+ "gerado_em": "2026-11-27T14:06:10+00:00",
+ "itens": [
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=20-11-2026&secao=do1",
+   "em": "2026-11-27T14:04:01+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1",
+   "em": "2026-11-27T14:05:02+00:00",
+   "status": 200,
+   "tipo": "text/html;charset=UTF-8",
+   "final": "https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1",
+   "bytes": 138348,
+   "sha256": "e5fdc21c10e3c3bb8b64c9cb7a288bb0392a10af860d52d23ce74befc99cc174"
+  },
+  {
+   "url": "https://www.in.gov.br/leiturajornal?data=26-11-2026&secao=do1e",
+   "em": "2026-11-27T14:05:07+00:00",
+   "erro": "TimeoutError: The read operation timed out"
+  }
+ ]
+}
