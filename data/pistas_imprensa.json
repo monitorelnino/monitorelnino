@@ -686412,7 +686412,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 4
+    "tentativas": 5
    }
   },
   {
@@ -687093,7 +687093,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 6
+    "tentativas": 7
    }
   },
   {
@@ -734930,7 +734930,7 @@
    "fechada_em": "2026-11-17",
    "id": "4616379fde",
    "nivel_confianca": "C",
-   "repeticoes": 6
+   "repeticoes": 7
   },
   {
    "alvo": "D-municipio-prioritario/Simão Dias/SE",
@@ -746895,7 +746895,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 4
+    "tentativas": 5
    }
   },
   {
@@ -754822,7 +754822,7 @@
     "falhas": []
    },
    "nivel_confianca": "C",
-   "repeticoes": 20,
+   "repeticoes": 21,
    "juiz": {
     "codebook": "1.8 (30/10/2026)",
     "promove": false,
@@ -757038,7 +757038,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 4
+    "tentativas": 5
    },
    "ultima_busca_em": "2026-11-26",
    "tentativas_de_busca_dirigida": 1,
@@ -757099,7 +757099,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 4
+    "tentativas": 5
    },
    "juiz_tentativas": [
     {
@@ -757254,7 +757254,7 @@
      },
      "A1_corpo": {
       "ok": true,
-      "trecho": "8390 caracteres"
+      "trecho": "8364 caracteres"
      },
      "B4_ciclo_e_genero": {
       "ok": true,
@@ -757274,8 +757274,8 @@
      }
     },
     "lido_em": "2026-11-27",
-    "tamanho_do_corpo": 8390,
-    "hash_do_corpo": "005c60e04d9f8e2f6489d74b82913081b144b9d8d20be62c0ec1b96deb87ffc7",
+    "tamanho_do_corpo": 8364,
+    "hash_do_corpo": "9f7f2bee6dc04db0876c2bd1b6f8d0a5f7fbc9d614c8618362546f5f617b56f5",
     "data_da_materia": "2026-11-03 (degrau: json_ld)"
    },
    "buscador2_em": "2026-11-21",
@@ -761348,7 +761348,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 3
+    "tentativas": 4
    },
    "juiz_tentativas": [
     {
@@ -761407,7 +761407,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 3
+    "tentativas": 4
    },
    "juiz_tentativas": [
     {
@@ -765983,7 +765983,7 @@
     "falhas": [
      "pagina: MuroDeRobo"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "C",
    "pontos_confianca": 2,
@@ -766077,7 +766077,7 @@
     "falhas": [
      "pagina: MuroDeRobo"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "C",
    "pontos_confianca": 2,
@@ -766708,6 +766708,15 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-27",
     "criterios": {}
+   },
+   "buscador2_em": "2026-11-27",
+   "seguimento": {
+    "data": "27/11/2026",
+    "via": "B9",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [],
+    "lacuna": "página não legível até 2026-11-27"
    }
   },
   {
@@ -766817,7 +766826,7 @@
     "falhas": [
      "pagina: MuroDeRobo"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "A",
    "pontos_confianca": 6,
@@ -767183,6 +767192,17 @@
     "motivo": "veiculo_nao_listado",
     "lido_em": "2026-11-27",
     "criterios": {}
+   },
+   "buscador2_em": "2026-11-27",
+   "seguimento": {
+    "data": "27/11/2026",
+    "via": "",
+    "candidatos": 0,
+    "pistas_novas": 0,
+    "falhas": [
+     "pagina: HTTPError 403"
+    ],
+    "tentativas": 1
    }
   },
   {
@@ -767216,7 +767236,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "A",
    "pontos_confianca": 6,
@@ -767303,7 +767323,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "A",
    "pontos_confianca": 6,
@@ -767352,7 +767372,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "A",
    "pontos_confianca": 6,
@@ -767401,7 +767421,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "A",
    "pontos_confianca": 6,
@@ -767565,7 +767585,7 @@
     "falhas": [
      "pagina: MuroDeRobo"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "A",
    "pontos_confianca": 7,
@@ -767731,7 +767751,7 @@
     "falhas": [
      "pagina: MuroDeRobo"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "A",
    "pontos_confianca": 6,
@@ -767780,7 +767800,7 @@
     "falhas": [
      "pagina: MuroDeRobo"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "A",
    "pontos_confianca": 6,
@@ -767829,7 +767849,7 @@
     "falhas": [
      "pagina: HTTPError 403"
     ],
-    "tentativas": 1
+    "tentativas": 2
    },
    "nivel_confianca": "A",
    "pontos_confianca": 6,
