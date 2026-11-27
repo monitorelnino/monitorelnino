@@ -1,0 +1,35 @@
+{
+ "consultas": [
+  "\"Autoriza a transferência de recursos\"",
+  "\"Autoriza o empenho e a transferência de recursos\""
+ ],
+ "janela": {
+  "desde": "2026-11-18",
+  "ate": "2026-11-26",
+  "atos_na_busca": 0,
+  "janelas_incompletas": [
+   {
+    "de": "2026-11-18",
+    "ate": "2026-11-26",
+    "erro": "HTTPError: HTTP Error 502: Bad Gateway",
+    "consulta": "\"Autoriza a transferência de recursos\""
+   },
+   {
+    "de": "2026-11-18",
+    "ate": "2026-11-26",
+    "erro": "HTTPError: HTTP Error 502: Bad Gateway",
+    "consulta": "\"Autoriza o empenho e a transferência de recursos\""
+   }
+  ]
+ },
+ "recusas": {
+  "fora_do_orgao": 0,
+  "prorrogacao_de_prazo": 0,
+  "sem_municipio_legivel": 0,
+  "sem_valor_declarado": 0,
+  "retificacao": 0,
+  "ato_nao_lido": 0
+ },
+ "atos": [],
+ "retificacoes": []
+}
