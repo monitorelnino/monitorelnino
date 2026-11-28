@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-28 · #2188 · Válvula adiada pela guarda da janela sai vermelha
+
+Na válvula `coleta-dia/*`, a coleta que a guarda da janela barra (teto cruzando 01:00–09:00 UTC) passa a terminar vermelha: ninguém a redispara, e o run 46088017356 de 28/11 saiu verde sem coletar. Na `main` a guarda segue parando em sucesso, porque a reserva do despachante refaz o elo.
+
 ## 2026-11-27 · #2184 · Pedido à ponte dos 294 portais com 403 de fora sem sonda do Brasil
 
 294 portais de prefeitura gravados como recusa por 403 visto de fora, antes de a regra de 26/11 exigir a sonda da ponte, entram em `ponte_pedidos.json`. A ponte os busca do Brasil; o que abrir é relido pela cópia, e o que recusar também de lá fica recusa.
