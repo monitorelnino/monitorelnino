@@ -12138,27 +12138,39 @@
   }
  ],
  "janela_lida": {
-  "desde": "2026-11-18",
-  "ate": "2026-11-26",
+  "desde": "2026-11-19",
+  "ate": "2026-11-27",
   "atos_na_busca": 0,
   "janelas_incompletas": [
    {
     "de": "2026-11-18",
     "ate": "2026-11-26",
-    "erro": "HTTPError: HTTP Error 502: Bad Gateway",
+    "erro": "HTTPError: HTTP Error 404: Not Found",
     "consulta": "\"Autoriza a transferência de recursos\""
    },
    {
     "de": "2026-11-18",
     "ate": "2026-11-26",
-    "erro": "HTTPError: HTTP Error 502: Bad Gateway",
+    "erro": "HTTPError: HTTP Error 404: Not Found",
+    "consulta": "\"Autoriza o empenho e a transferência de recursos\""
+   },
+   {
+    "de": "2026-11-19",
+    "ate": "2026-11-27",
+    "erro": "HTTPError: HTTP Error 404: Not Found",
+    "consulta": "\"Autoriza a transferência de recursos\""
+   },
+   {
+    "de": "2026-11-19",
+    "ate": "2026-11-27",
+    "erro": "HTTPError: HTTP Error 404: Not Found",
     "consulta": "\"Autoriza o empenho e a transferência de recursos\""
    }
   ]
  },
  "cobertura": {
   "desde": "2026-06-29",
-  "ate": "2026-11-26",
+  "ate": "2026-11-27",
   "consultas": [
    "\"Autoriza a transferência de recursos\"",
    "\"Autoriza o empenho e a transferência de recursos\""
@@ -12173,6 +12185,16 @@
     "de": "2026-11-18",
     "ate": "2026-11-26",
     "consulta": "\"Autoriza o empenho e a transferência de recursos\""
+   },
+   {
+    "de": "2026-11-19",
+    "ate": "2026-11-27",
+    "consulta": "\"Autoriza a transferência de recursos\""
+   },
+   {
+    "de": "2026-11-19",
+    "ate": "2026-11-27",
+    "consulta": "\"Autoriza o empenho e a transferência de recursos\""
    }
   ]
  },
@@ -12185,7 +12207,7 @@
   "ato_nao_lido": 0
  },
  "atos_novos_nesta_rodada": 0,
- "atualizado_em": "26/11/2026",
+ "atualizado_em": "27/11/2026",
  "total_por_acao": {
   "resposta": 293681178.38,
   "recuperacao": 263951833.73,

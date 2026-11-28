@@ -13621,9 +13621,17 @@
      "data": "26/11/2026",
      "decreto": "Decreto nº 17.696/26",
      "hash": "50849fc43cf9d62e47b91e979addb36ccc54e6cd75cdf4a6bab5ece2d3076d15"
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Mineiros (AMM-MG))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=182&i=publicado_118488_2026-11-26_aa1c9397577822240fe0bb1bfc7c09c5.pdf",
+     "data": "27/11/2026",
+     "decreto": "Decreto nº 17.696",
+     "hash": "4ca7deeae55bb8a62f523d22950f09c32c95b84f81ec536b26843a4ecaccc9e4"
     }
    ],
-   "n_eventos": 1,
+   "n_eventos": 2,
    "declaracao": "situacao_de_emergencia",
    "nivel_intensidade": null,
    "dias_sem_reconhecimento": 2
@@ -14044,10 +14052,11 @@
    "primeiro_decreto": "03/07/2026",
    "primeiro_reconhecimento": "03/07/2026",
    "tipos": [
-    "reconhecimento_federal"
+    "reconhecimento_federal",
+    "SE"
    ],
    "reconhecido": true,
-   "decretado": false,
+   "decretado": true,
    "decreto_anterior_ao_ciclo": false,
    "evento_observado": "em_classificacao",
    "evento_declarado": [
@@ -14062,10 +14071,18 @@
      "data": "03/07/2026",
      "decreto": "Portaria SEDEC/MIDR nº 2203",
      "hash": null
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios de Pernambuco (AMUPE))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=365&i=publicado_115948_2026-11-26_826a5e681be0907fe4f0a8c6357094be.pdf",
+     "data": "27/11/2026",
+     "decreto": "Decreto nº 107/2026",
+     "hash": "3def7574d0218f9fcb1ac2f5b9177809077a8be27edb66385b81d28e8c0c0fb9"
     }
    ],
-   "n_eventos": 1,
-   "declaracao": null,
+   "n_eventos": 2,
+   "declaracao": "situacao_de_emergencia",
    "nivel_intensidade": null,
    "dias_sem_reconhecimento": null
   },
@@ -24189,6 +24206,47 @@
    "nivel_intensidade": "II",
    "dias_sem_reconhecimento": null
   },
+  "4113908": {
+   "ibge": "4113908",
+   "nome": "Mallet",
+   "uf": "PR",
+   "decreto": true,
+   "primeiro_decreto": "26/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Paraná (AMP))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=4410&i=publicado_118234_2026-11-26_d7fdc767f854d9e1af8d558860436317.pdf",
+     "data": "27/11/2026",
+     "decreto": "Decreto nº 550",
+     "hash": "6c225c852443f7785541a359bc1a849258748db792612d0076c82779aecab28b"
+    },
+    {
+     "canal": "repositorio_estadual",
+     "fonte": "Diário Oficial do Estado (PR)",
+     "url": "https://www.dioe.pr.gov.br/portal/edicoes/download/17508",
+     "data": "26/11/2026",
+     "decreto": "Decreto municipal nº 550",
+     "hash": "8c2eed5d48ee4f016fb3a68e17049fc5f8f43cbd6c0c6ccd5af5f75e58939f51"
+    }
+   ],
+   "n_eventos": 2,
+   "declaracao": "situacao_de_emergencia",
+   "nivel_intensidade": null,
+   "dias_sem_reconhecimento": 2
+  },
   "3139250": {
    "ibge": "3139250",
    "nome": "Mamonas",
@@ -26072,6 +26130,39 @@
    "nivel_intensidade": "II",
    "dias_sem_reconhecimento": null
   },
+  "2705309": {
+   "ibge": "2705309",
+   "nome": "Minador do Negrão",
+   "uf": "AL",
+   "decreto": true,
+   "primeiro_decreto": "27/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios Alagoanos (AMA))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=9878&i=publicado_115440_2026-11-26_1f6452d987f15e7e51210756a475bf20.pdf",
+     "data": "27/11/2026",
+     "decreto": "Decreto nº 19",
+     "hash": "d02f8998f7a3ca97d0ede0d31149e6cff3389f30b049a26600573d4c7d26975d"
+    }
+   ],
+   "n_eventos": 1,
+   "declaracao": "situacao_de_emergencia",
+   "nivel_intensidade": null,
+   "dias_sem_reconhecimento": 1
+  },
   "4312252": {
    "ibge": "4312252",
    "nome": "Minas do Leão",
@@ -26369,6 +26460,39 @@
    "declaracao": "situacao_de_emergencia",
    "nivel_intensidade": "II",
    "dias_sem_reconhecimento": null
+  },
+  "2308500": {
+   "ibge": "2308500",
+   "nome": "Mombaça",
+   "uf": "CE",
+   "decreto": true,
+   "primeiro_decreto": "27/11/2026",
+   "primeiro_reconhecimento": null,
+   "tipos": [
+    "SE"
+   ],
+   "reconhecido": false,
+   "decretado": true,
+   "decreto_anterior_ao_ciclo": false,
+   "evento_observado": "em_classificacao",
+   "evento_declarado": [
+    "sem_tipo_informado"
+   ],
+   "dias_ate_reconhecimento": null,
+   "fontes": [
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Ceará (APRECE))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=764&i=publicado_116964_2026-11-26_34d08372a5bab58b0573b53f87441deb.pdf",
+     "data": "27/11/2026",
+     "decreto": "Decreto nº 632",
+     "hash": "0f4d9fc99b0b1f942b5c6ff538c7311f505ca3c9f78912ef4958a7b3934bf7c5"
+    }
+   ],
+   "n_eventos": 1,
+   "declaracao": "situacao_de_emergencia",
+   "nivel_intensidade": null,
+   "dias_sem_reconhecimento": 1
   },
   "2308609": {
    "ibge": "2308609",
@@ -42135,9 +42259,17 @@
      "data": "09/10/2026",
      "decreto": "ato de resposta — Portaria n.º 3.435",
      "hash": null
+    },
+    {
+     "canal": "DOM-consorciado",
+     "fonte": "Diário consorciado (via Diário Oficial dos Municípios do Rio Grande do Sul (FAMURS))",
+     "url": "https://www-storage.voxtecnologia.com.br/?m=sigpub.publicacao&f=159&i=publicado_117980_2026-11-26_2a66c0f34ac92cd2df808855bfaf0268.pdf",
+     "data": "27/11/2026",
+     "decreto": "Decreto nº 4.673/2026",
+     "hash": "9b2bbb20fa466d78de7738e35826546485c84683193879ebfd13e11b0d3ac7bf"
     }
    ],
-   "n_eventos": 5,
+   "n_eventos": 6,
    "declaracao": "situacao_de_emergencia",
    "nivel_intensidade": "II",
    "dias_sem_reconhecimento": null
