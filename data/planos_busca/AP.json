@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-23",
+ "gerado_em": "2026-11-28",
  "municipios": {
   "1600303": {
    "S16": {
@@ -52,10 +52,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
+    "consultado_em": "2026-11-28",
     "situacao": "erro",
     "consulta": null,
-    "motivo": "HTTP 503",
+    "motivo": "ValueError: leitura incompleta: teto de 20 min no município, 5666 contratação(ões) lida(s); não vale como ausência",
     "dominio": null
    },
    "S17": {
@@ -152,11 +152,11 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
+    "consultado_em": "2026-11-28",
     "situacao": "sem_resultado",
     "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600105&pagina=1&tamanhoPagina=500",
-    "motivo": "467 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
-    "dominio": "amapa.ap.gov.br"
+    "motivo": "479 contratação(ões) lida(s) em 35 consulta(s), nenhuma cita plano",
+    "dominio": null
    },
    "S27": {
     "consultado_em": "2026-11-22",
@@ -238,11 +238,11 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
+    "consultado_em": "2026-11-28",
     "situacao": "sem_resultado",
     "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600204&pagina=1&tamanhoPagina=500",
     "motivo": "63 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
-    "dominio": "calcoene.ap.gov.br"
+    "dominio": null
    },
    "S27": {
     "consultado_em": "2026-11-22",
@@ -324,10 +324,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "HTTP 503",
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600238&pagina=1&tamanhoPagina=500",
+    "motivo": "65 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    },
    "S27": {
@@ -410,10 +410,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "HTTP 503",
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600253&pagina=1&tamanhoPagina=500",
+    "motivo": "55 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    },
    "S27": {
@@ -496,10 +496,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "HTTP 503",
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600279&pagina=1&tamanhoPagina=500",
+    "motivo": "178 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    },
    "S27": {
@@ -554,10 +554,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "HTTP 503",
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600402&pagina=1&tamanhoPagina=500",
+    "motivo": "70 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    },
    "S27": {
@@ -624,6 +624,13 @@
     "consulta": "\"Oiapoque\" AP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600501&pagina=1&tamanhoPagina=500",
+    "motivo": "115 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1600154": {
@@ -674,6 +681,13 @@
     "situacao": "erro",
     "consulta": "\"Pedra Branca do Amapari\" AP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600154&pagina=1&tamanhoPagina=500",
+    "motivo": "53 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -726,6 +740,13 @@
     "consulta": "\"Porto Grande\" AP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600535&pagina=1&tamanhoPagina=500",
+    "motivo": "88 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1600600": {
@@ -777,6 +798,13 @@
     "consulta": "\"Santana\" AP (\"redução de riscos\" OR PMRR OR \"saneamento básico\" OR \"plano municipal de saúde\" OR consórcio OR \"comitê de bacia\") \"plano de contingência\"",
     "motivo": "ValueError: metabuscador sem cobertura completa, não vale como ausência; motores: [['google cse', 'Suspended: too many requests']]",
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600600&pagina=1&tamanhoPagina=500",
+    "motivo": "319 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1600055": {
@@ -813,6 +841,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1600055&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600055&pagina=1&tamanhoPagina=500",
+    "motivo": "38 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
@@ -851,6 +886,13 @@
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1600709&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": null,
     "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600709&pagina=1&tamanhoPagina=500",
+    "motivo": "34 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "dominio": null
    }
   },
   "1600808": {
@@ -887,6 +929,13 @@
     "situacao": "sem_resultado",
     "consulta": "https://api.queridodiario.org.br/gazettes?territory_ids=1600808&size=5&querystring=%22plano+de+conting%C3%AAncia%22+%7C+plancon+%7C+placon&excerpt_size=300&number_of_excerpts=1",
     "motivo": "município sem diário no acervo do Querido Diário (cobertura parcial: ausência de acervo, não de plano)",
+    "dominio": null
+   },
+   "S22": {
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1600808&pagina=1&tamanhoPagina=500",
+    "motivo": "66 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    }
   },
