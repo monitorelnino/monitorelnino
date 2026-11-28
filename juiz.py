@@ -2316,12 +2316,14 @@ PROPOSTAS_MEDIDAS_18 = ("J13", "J18")   # medidas à parte: ligadas só no paral
 
 
 def texto_local_18(hash_: str, base=None) -> str:
-    """Texto da cópia local de `evidencias/<hash>`: a primeira fonte (txt, ocr.txt, html, pdf) com letras
-    suficientes. Cópia falha (txt só com "=== página N ===") não encerra a busca: 144 documentos da amostra
-    tinham o PDF ao lado. PDF sem camada de texto vai ao OCR, o mesmo caminho da produção (`com_ocr`)."""
+    """Texto da cópia local de `evidencias/<hash>`, na ordem da produção: o arquivo original (pdf, depois html)
+    é relido com o mesmo extrator e OCR de `julgar_e_aplicar_descobertas`; o txt e o ocr.txt são cache e só
+    entram sem original. Cache com outra quebra de linha ou marcador de página muda o J7 (Salvador/BA: o txt
+    tirava a data 2025 que o pdf dava; 36 promoções de produção caíam como data_nao_confirmada). Cópia falha
+    (txt só com "=== página N ===") não encerra a busca. PDF sem camada de texto vai ao OCR (`com_ocr`)."""
     from julgar_e_aplicar_descobertas import com_ocr, texto_do_documento
     base = base or RAIZ / "evidencias"
-    for nome in (f"{hash_}.txt", f"{hash_}.ocr.txt", f"{hash_}.html", f"{hash_}.pdf"):
+    for nome in (f"{hash_}.pdf", f"{hash_}.html", f"{hash_}.ocr.txt", f"{hash_}.txt"):
         arq = base / nome
         if not arq.is_file():
             continue
@@ -2349,9 +2351,19 @@ def casos_leitura_local_18() -> list:
         (base / f"{h1}.html").write_text("<html><body>" + "PLANO DE CONTINGENCIA municipal " * 20 + "</body></html>",
                                          encoding="utf-8", newline="\n")
         (base / f"{h2}.txt").write_text("=== página 1 ===", encoding="utf-8", newline="\n")
+        h3, h4 = "d" * 64, "e" * 64
+        (base / f"{h3}.txt").write_text("PLANO DE CONTINGENCIA cache " * 20, encoding="utf-8", newline="\n")
+        (base / f"{h4}.txt").write_text("CACHE DO TXT " * 40, encoding="utf-8", newline="\n")
+        (base / f"{h4}.html").write_text("<html><body>" + "ORIGINAL DO HTML " * 40 + "</body></html>",
+                                         encoding="utf-8", newline="\n")
         return [
             ("leitura local: txt falho cai para o html com texto",
              "PLANO DE CONTINGENCIA" in texto_local_18(h1, base=base)),
+            ("leitura local: txt sem original (pdf/html) é usado como cache",
+             "PLANO DE CONTINGENCIA cache" in texto_local_18(h3, base=base)),
+            ("leitura local: o original (html) vence o txt de cache, como na produção",
+             "ORIGINAL DO HTML" in texto_local_18(h4, base=base)
+             and "CACHE DO TXT" not in texto_local_18(h4, base=base)),
             ("leitura local: sem letras suficientes em nenhuma cópia devolve vazio",
              texto_local_18(h2, base=base) == ""),
             ("leitura local: hash sem cópia devolve vazio",
