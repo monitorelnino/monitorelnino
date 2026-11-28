@@ -1,5 +1,5 @@
 {
- "gerado_em": "2026-11-23",
+ "gerado_em": "2026-11-28",
  "municipios": {
   "1400100": {
    "S16": {
@@ -80,10 +80,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
+    "consultado_em": "2026-11-28",
     "situacao": "erro",
     "consulta": null,
-    "motivo": "HTTP 503",
+    "motivo": "ValueError: leitura incompleta: teto de 20 min no município, 3450 contratação(ões) lida(s); não vale como ausência",
     "dominio": null
    },
    "S17": {
@@ -180,10 +180,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "HTTP 503",
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1400050&pagina=1&tamanhoPagina=500",
+    "motivo": "8 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    },
    "S27": {
@@ -266,10 +266,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
-    "situacao": "erro",
-    "consulta": null,
-    "motivo": "HTTP 503",
+    "consultado_em": "2026-11-28",
+    "situacao": "sem_resultado",
+    "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1400209&pagina=1&tamanhoPagina=500",
+    "motivo": "173 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    },
    "S27": {
@@ -352,10 +352,10 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
+    "consultado_em": "2026-11-28",
     "situacao": "sem_resultado",
     "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1400456&pagina=1&tamanhoPagina=500",
-    "motivo": "55 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
+    "motivo": "58 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
     "dominio": null
    },
    "S27": {
@@ -438,7 +438,7 @@
     "dominio": null
    },
    "S22": {
-    "consultado_em": "2026-10-29",
+    "consultado_em": "2026-11-28",
     "situacao": "sem_resultado",
     "consulta": "https://pncp.gov.br/api/consulta/v1/contratacoes/publicacao?dataInicial=20230101&dataFinal=20231231&codigoModalidadeContratacao=8&codigoMunicipioIbge=1400472&pagina=1&tamanhoPagina=500",
     "motivo": "109 contratação(ões) lida(s) em 32 consulta(s), nenhuma cita plano",
