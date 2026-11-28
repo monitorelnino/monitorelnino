@@ -13467,8 +13467,14 @@
     "desfecho": "sem documento oficial localizado",
     "motivo": "6 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
    },
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
@@ -46072,13 +46078,19 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "repeticoes": 1,
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "triagem": {
     "em": "2026-11-22",
     "desfecho": "sem documento oficial localizado",
     "motivo": "52 dias na fila (prazo de 21); lida e recusada: natureza_duvidosa"
    },
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
@@ -47532,7 +47544,16 @@
     "desfecho": "sem documento oficial localizado",
     "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
    },
-   "repeticoes": 2
+   "repeticoes": 2,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "São Mateus",
@@ -47597,7 +47618,26 @@
     "hash_evidencia": "5794d1c523445b378d2c84767d6c83f24d6cd54ce3c5ce58c1e731bc0904c0d2"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 4
+   "tentativas_de_busca_dirigida": 4,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Nova Friburgo",
@@ -47642,7 +47682,26 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "tentativas_de_busca_dirigida": 4,
-   "repeticoes": 1
+   "repeticoes": 1,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Nova Friburgo",
@@ -47733,7 +47792,26 @@
     "hash_evidencia": "596cc842e44206845300b55ed4a604d1c5910338e6702c1bdaf7b0eb5a052bb8"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 6
+   "tentativas_de_busca_dirigida": 6,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "DECRETO 326",
+    "data_ato": "2022",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Bom Jesus do Itabapoana",
@@ -47757,7 +47835,26 @@
     "hash_evidencia": "01f4a67396df39a08c9783c090dc90d2b23dcb76d6c1851f3e64c98ce2dddf04"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 11
+   "repeticoes": 11,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2006",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2006)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2006)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Bom Jesus do Itabapoana",
@@ -47781,7 +47878,26 @@
     "hash_evidencia": "2e19539e93141b12438c847ef2393f553df3621d44eba6d4748b8ab4ef2e9449"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 4
+   "repeticoes": 4,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "16/12/2024",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Aperibé",
@@ -47844,7 +47960,26 @@
     "hash_evidencia": "183245b9dbded0f21c7e3769f397deaef32765b763da290a4946d609f7045149"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 7
+   "repeticoes": 7,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2010",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2010)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2010)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Petrolina",
@@ -47995,7 +48130,26 @@
     "hash_evidencia": "1ce04abc7ea543874f96d053eee5cdb44db35bedf0d2251f544ecb917643243f"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 5
+   "repeticoes": 5,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "01/12/2010",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'calamidade pública' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Itajaí",
@@ -48113,7 +48267,26 @@
     "hash_evidencia": "00f4126934eeed940309bfeb8e39023baae81b0eb0cd3b925eb33efc54cd0234"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 5
+   "repeticoes": 5,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2023",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2023)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2023)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Brusque",
@@ -48137,7 +48310,26 @@
     "hash_evidencia": "cd5cf6bb40398cf6f4f37707d06d89b725f6079263786d71d5d69614428b1445"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 22
+   "repeticoes": 22,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "18.4.04",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (18.4.04)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (18.4.04)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Brusque",
@@ -48288,7 +48480,26 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "578c58543f5d5630ca874b741a17f0c9ca3f273d66135cc928940182d22db7f3"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Araranguá",
@@ -48407,7 +48618,26 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "4454e8c4f8d16067b186ff0c4d9311e505c624cdaed2487b67f2fc40ddad52c6"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2025",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Papanduva",
@@ -48517,7 +48747,26 @@
     "julgado_em": "2026-11-20",
     "hash_evidencia": "89394eb210fad0896cfe458191462578ee60f1ed4904ea3ac4ed7965e178fab8"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2020)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2020)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Imperatriz",
@@ -48638,7 +48887,26 @@
     "julgado_em": "2026-11-20",
     "hash_evidencia": "e8d9b13f717086714bc4d09e4836f8b294b54e7918723a6cb4738c640cf72aec"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "21/05/2025",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2025 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2025 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Montenegro",
@@ -48662,7 +48930,26 @@
     "hash_evidencia": "31bf930dade2f90f1b196d51a0bafc2913e3424c2b4af4fc9f04e74220184152"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Resolução nº 087",
+    "data_ato": "09/04/2020",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2020 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2020 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Montenegro",
@@ -48686,7 +48973,26 @@
     "hash_evidencia": "7cf9454149d458ecbfd64c14d4ecae51b0cce8cab45843f4e398cebda2873e82"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 30
+   "repeticoes": 30,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Nº 55.128",
+    "data_ato": "2020",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'estado de calamidade pública' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Montenegro",
@@ -48711,7 +49017,26 @@
     "hash_evidencia": "811b6a5d7954a15089d836fa21dc4cd6771ef449ce114815ee4b4d6493e9aa3b"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 5
+   "tentativas_de_busca_dirigida": 5,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "São Sebastião do Caí",
@@ -48735,7 +49060,26 @@
     "hash_evidencia": "200d793ff349b6fcdcea10bc74f2233cd84f90ca870fc4e9cc9f2b599412c6d1"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 32
+   "repeticoes": 32,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Nº 55.128",
+    "data_ato": "2020",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "sinalizador 'estado de calamidade pública' + recital de dano ocorrido",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "São Sebastião do Caí",
@@ -48758,7 +49102,26 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "8807664980551695a7e3cad816c9d26d5ca500592954ab98ff82592ba73cc77a"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Canoas",
@@ -48817,7 +49180,26 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "7a761c367d4d4ec4cac9cdcbc53b6eb9433bccdd164f3dc9d62e98ffb806a0a3"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2024",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Encantado",
@@ -48944,7 +49326,26 @@
     "hash_evidencia": "f7523adbca95f51d7e95aadd1c09d654db6d1b892f4cf2f0825cb73fb7086a0a"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 12
+   "repeticoes": 12,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2013",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2013)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2013)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Tocantínia",
@@ -49011,7 +49412,26 @@
     "hash_evidencia": "905b83ced5f211ad21af746687ab783b121994f04e8bea58ebf5378c1889b0df"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "29/12/2019",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2019 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2019 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Belém",
@@ -49036,7 +49456,26 @@
     "hash_evidencia": "4cf92af802ea62b24906d6bc0b7bbfc058c93432f170bf82845a7f230040b7e2"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 6
+   "tentativas_de_busca_dirigida": 6,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2008",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Saúde",
@@ -49237,7 +49676,26 @@
     "hash_evidencia": "258d9d024bba7acd603164be473c1aa1ccdf998dc56f6e6ddd796bc0df0113cd"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 9
+   "repeticoes": 9,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "17/01/2025",
+    "citacao_completa": false,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Inconfidentes",
@@ -49261,7 +49719,26 @@
     "hash_evidencia": "994db06b749c4abc93da429a0e864698fba7c293fd7280cb56f423dc39236111"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2024",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2024)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2024)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Paulicéia",
@@ -49292,7 +49769,26 @@
     "julgado_em": "2026-11-20",
     "hash_evidencia": "2a81f0745be4373303a4ae267db5e86f70c08ac85fc03c01f9d62473d039ad0b"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei 13.979",
+    "data_ato": "20/03/2020",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'situação de emergência' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Portalegre",
@@ -49345,7 +49841,26 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "d7f3d14200d825d268f665ef61e679903c27ac1cd560d09de0b54c2e8163f681"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei 13.303",
+    "data_ato": "19/08/2024",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2024 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2024 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Lagoa",
@@ -49369,7 +49884,26 @@
     "hash_evidencia": "a14f5c30e6d26d14acee531009a6af2bbc3b2ab8db5a3b0830640ce7dd834ba8"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "09/05/2026",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "sem texto normativo articulado (Art. 1º / fica instituído)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: sem texto normativo articulado (Art. 1º / fica instituído)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Lagoa",
@@ -49392,7 +49926,26 @@
     "julgado_em": "2026-11-26",
     "hash_evidencia": "fcb4231e231c4e422f81012ff0f233073e82a7b846468441f68ac27435fa4c31"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (None)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (None)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Rio Tinto",
@@ -49425,7 +49978,26 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "ultima_busca_em": "2026-11-20",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 2,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Municipal nº 014",
+    "data_ato": "18/05/2021",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Parintins",
@@ -49510,7 +50082,26 @@
     "hash_evidencia": "8c6d29b8ec4c20d2e9468d2845b045611ae753d01f74ae2546bcd1e121ec85b5"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 113
+   "repeticoes": 113,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2020",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2020)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2020)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Parintins",
@@ -49534,7 +50125,26 @@
     "hash_evidencia": "a93a43e27cb1501f4fda83fb30f26a91f80d61bf294cc1d402060f631af88be0"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 95
+   "repeticoes": 95,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "18/12/2018",
+    "citacao_completa": false,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "sinalizador 'situação de emergência' + recital de dano ocorrido",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza RESPOSTA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Caapiranga",
@@ -49557,7 +50167,26 @@
     "julgado_em": "2026-11-05",
     "hash_evidencia": "d76812b28a8b72c672a7c39e81766bd5ead9e6c5ab22da634e439177bfa84821"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "26/11/2024",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2024 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2024 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Caapiranga",
@@ -49581,7 +50210,26 @@
     "hash_evidencia": "d85fcb96558423eb7172fd6fa17e6ae07ef5ca62467794dfdfc6a39151ea14d7"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (None)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (None)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Caapiranga",
@@ -49605,7 +50253,26 @@
     "hash_evidencia": "16db733ffd4abd57c1d60e32626ec6db4bd3c9c5ca152c9c811efbdade1d98be"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 103
+   "repeticoes": 103,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "07/07/2002",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2002 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2002 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Cotia",
@@ -49665,7 +50332,26 @@
     "julgado_em": "2026-11-20",
     "hash_evidencia": "07c70a59401f86d75451ec86169a4a163bac62ca29cb017c5fcd35ad00c5aada"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Portaria n.º 030",
+    "data_ato": "06/05/2026",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Macaé",
@@ -49931,7 +50617,26 @@
    "reaplicada_em": "reaplicacao da noite",
    "repeticoes": 1,
    "ultima_busca_em": "2026-11-20",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 2,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Resolução 496",
+    "data_ato": "03/01/2024",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2024 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2024 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "São João da Barra",
@@ -49954,7 +50659,16 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "32245fcc5562a47244a6b5ba8a1f467e559fa51dd534799c95af32620280ddf8"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "resultado": "documento_nao_obtido",
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false
+   }
   },
   {
    "municipio": "São João da Barra",
@@ -49977,7 +50691,26 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "4ae3c9f8721bf9d9dccff903b2ae12dbdfbf8fcf96b9fbba172b65b9455cbbff"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "sinalizador 'situação de emergência' + recital de dano ocorrido",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Bom Jesus do Itabapoana",
@@ -50002,7 +50735,26 @@
     "hash_evidencia": "3e912dbc0e59de8f3ec21fd8769d107a7cb76456d81ac5ff93b0ff53794f1556"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 2,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto Estadual nº 42.518",
+    "data_ato": "2010",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Itajaí",
@@ -50239,7 +50991,26 @@
     "julgado_em": "2026-10-31",
     "hash_evidencia": "5ee75687f65692c9d3af8677bd3fd496c3493ddd9f0719c6c2af93e1bc66429b"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei 18.316",
+    "data_ato": "2021",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Caçador",
@@ -50354,7 +51125,26 @@
     "desfecho": "sem documento oficial localizado",
     "motivo": "3 tentativas de busca dirigida sem documento; lida e recusada: citacao_incompleta"
    },
-   "repeticoes": 1
+   "repeticoes": 1,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Ascurra",
@@ -50449,7 +51239,26 @@
     "hash_evidencia": "b4da7fcea2c0ee9c8bd13410d992ba7290dd2e0127643016d41a4142daf867e6"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto nº 5.502",
+    "data_ato": "29/07/2005",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Palma Sola",
@@ -50473,7 +51282,26 @@
     "hash_evidencia": "8c2cb5e1a4cfd2b0fcf5b97c32703301e2ba42f30b42d0478312e0d280648e86"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 49
+   "repeticoes": 49,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "DECRETONº 372",
+    "data_ato": "19/06/2007",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'pae', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2007 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2007 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Ipuaçu",
@@ -50499,7 +51327,26 @@
    "reaplicada_em": "reaplicacao da noite",
    "repeticoes": 1,
    "ultima_busca_em": "2026-11-20",
-   "tentativas_de_busca_dirigida": 2
+   "tentativas_de_busca_dirigida": 2,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei 12.983",
+    "data_ato": "02/06/2014",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "sinalizador 'calamidade pública' presente, mas sem dano nem disclaimer claro",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Descanso",
@@ -50531,7 +51378,26 @@
     "hash_evidencia": "58f93cb38b8ecfa52edcfa5c4f9a479b181fe1d937e8131bd2e9da3289e27028"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 2
+   "repeticoes": 2,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2023",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2023)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2023)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Major Vieira",
@@ -50577,7 +51443,26 @@
    },
    "reaplicada_em": "reaplicacao da noite",
    "tentativas_de_busca_dirigida": 1,
-   "repeticoes": 14
+   "repeticoes": 14,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "porTaria nº 215",
+    "data_ato": "18/12/2025",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2025 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2025 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": null,
@@ -50683,7 +51568,26 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "8ade24cf6be78c312e9697d2701f0a06ccb24228a01f66e8c7e2fa4ad192ac67"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (None)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (None)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Bandeirantes",
@@ -50744,7 +51648,26 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "e5123997d6eef2609540accaac61171b144a9a47ddc49929c47dc1563110b7f8"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "15.10.001",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (15.10.001)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (15.10.001)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Peritoró",
@@ -50767,7 +51690,26 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "568e9bf970b4de702c63da5ad44026205c39ab4b37fc35aa4124447655acbeaf"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "26.03.2010",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "sem sinalizador de resposta, gatilho de previsão presente",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2010 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2010 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Peritoró",
@@ -50790,7 +51732,26 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "5063f284f9d99e3bf3b4156a6928ad140d0c0eb48bbce7a2a1a17a24503890d4"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei nº 053",
+    "data_ato": "1993",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Peritoró",
@@ -50813,7 +51774,26 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "d3a9060c783f26e8b901c5231df5a5f5fce74cc0286b2edc34df6a46cad03d01"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei 8.080",
+    "data_ato": "1990",
+    "citacao_completa": true,
+    "natureza": "RESPOSTA",
+    "motivo_natureza": "teste-fósforo: menciona rota de reconhecimento federal/FIDE",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Peritoró",
@@ -50836,7 +51816,26 @@
     "julgado_em": "2026-11-13",
     "hash_evidencia": "3c32de3f6caae0cfa892dcc35ffa5ccccf6d0c33b9297dfc20c5f6e0bb23a9b6"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Portaria n° 253",
+    "data_ato": "24/04/2020",
+    "citacao_completa": true,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Apicum-Açu",
@@ -50859,7 +51858,26 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "499177e27fb99f6b97c09764d50d1f0d0a6085e1f18dae0a0d7a32441eadca2b"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei 8.443",
+    "data_ato": "1992",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Apicum-Açu",
@@ -50883,7 +51901,26 @@
     "hash_evidencia": "7390490db96f37f962993fa03bf5532281b7bff8091b35a62da94982234f5e3d"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 3
+   "repeticoes": 3,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "28/12/2007",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "ato de 2007 — pode ser edição anterior; abstenção registrada"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: ato de 2007 — pode ser edição anterior; abstenção registrada"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Apicum-Açu",
@@ -50907,7 +51944,26 @@
     "hash_evidencia": "403b96f7e5529de89d7c997fdd199a7695e24d6c723b5c6a23de15c37d51140d"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 1
+   "repeticoes": 1,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "1923",
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (1923)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (1923)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Apicum-Açu",
@@ -50931,7 +51987,26 @@
     "hash_evidencia": "d95608dc827d784131a00a0dcce86ae2803efe7ef11bc8df68ddd8720d02fdf7"
    },
    "reaplicada_em": "reaplicacao da noite",
-   "repeticoes": 16
+   "repeticoes": 16,
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": null,
+    "citacao_completa": false,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (None)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (None)"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Taió",
@@ -50985,6 +52060,25 @@
     "data": null,
     "julgado_em": "2026-11-15",
     "hash_evidencia": "e8354a52623efe3f6633d5e16ffe466aa0a98afa1828a7e4214d940939eb0236"
+   },
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Lei nº 489",
+    "data_ato": "2024",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de contingência', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "data do ato incompleta (2024)"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: data do ato incompleta (2024)"
+    },
+    "resultado": "preparada"
    }
   },
   {
@@ -51008,7 +52102,26 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "a1d85aaef91cc77d02872ad3b36943182912e37e17653cb68de6a8b205f850b1"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": null,
+    "data_ato": "2007",
+    "citacao_completa": false,
+    "natureza": "DUVIDA",
+    "motivo_natureza": "nenhum padrão claro bateu — não classificar sozinho",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: natureza DUVIDA — só ex-ante é aplicado sozinho"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Santana do Ipanema",
@@ -51039,7 +52152,26 @@
     "julgado_em": "2026-11-20",
     "hash_evidencia": "19c416474d1032a4dcd16bac27e1fa92114a21208e49a7dd277cfade5d8e4886"
    },
-   "reaplicada_em": "reaplicacao da noite"
+   "reaplicada_em": "reaplicacao da noite",
+   "preparacao": {
+    "data": "28/11/2026",
+    "versao": 2,
+    "fonte_oficial": true,
+    "numero": "Decreto 7.616",
+    "data_ato": "17/11/2011",
+    "citacao_completa": true,
+    "natureza": "EX_ANTE",
+    "motivo_natureza": "nomeia instrumento conhecido do dicionário: 'plano de enfrentamento', sem dano relatado",
+    "portao_automatico": {
+     "ok": false,
+     "motivo": "página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "juiz": {
+     "decisao": "ABSTENCAO",
+     "motivo": "portão automático: página oficial que não é o ato publicado (notícia em portal) — exige diário oficial ou PDF do ato"
+    },
+    "resultado": "preparada"
+   }
   },
   {
    "municipio": "Arapiraca",
@@ -55295,8 +56427,14 @@
     "julgado_em": "2026-11-01",
     "hash_evidencia": "c0ef2738129d2966fff30b3f75a6c6a4b28a2b8e93783b10ceefd9783652dbb4"
    },
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
@@ -288241,8 +289379,14 @@
     "julgado_em": "2026-11-04",
     "hash_evidencia": "f7ab49ba2ab14fba2919816d2690830746451a27247a3166df08f4111500d86b"
    },
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
@@ -288359,8 +289503,14 @@
     "julgado_em": "2026-11-04",
     "hash_evidencia": "c109a9c5c1729c7f4b8b2da1a1b55c0e8c2db83d8472cdb3c82ec199e162a8b6"
    },
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
@@ -307360,8 +308510,14 @@
     "julgado_em": "2026-11-04",
     "hash_evidencia": "487ffbe3a7a0d6874c6d3d75e6e39d0e5b6ed21b069617d6e3c8edf201370ff5"
    },
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
@@ -404209,8 +405365,14 @@
     "julgado_em": "2026-11-05",
     "hash_evidencia": "f1d469fcb3f643580aa5824e28a5051c235d13144e8e901f211e840561230c01"
    },
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
@@ -404757,8 +405919,14 @@
     "julgado_em": "2026-11-05",
     "hash_evidencia": "ea64474a81482121401a7244caf96daf334e5d850a868ba2c5cc445cf43db6f0"
    },
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
@@ -587328,8 +588496,14 @@
    },
    "tentativas_de_busca_dirigida": 1,
    "ultima_busca_em": "2026-11-06",
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
@@ -587369,8 +588543,14 @@
     "julgado_em": "2026-11-06",
     "hash_evidencia": "d2df0c82f972dc0abd146d6af16ce84784351fc09020be8560efc8fd663e8904"
    },
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
@@ -636208,10 +637388,16 @@
     "pistas_novas": 1,
     "falhas": []
    },
-   "proxima_tentativa_em": "2026-12-01",
+   "proxima_tentativa_em": "2026-12-05",
    "juiz_tentativas": [
     {
      "em": "2026-11-27",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
+    {
+     "em": "2026-11-28",
      "classe": "tecnica",
      "motivo": "documento_inacessivel",
      "codebook": "1.8 (30/10/2026)"
@@ -730592,7 +731778,7 @@
    "ultima_busca_em": "2026-11-19",
    "tentativas_de_busca_dirigida": 1,
    "buscador2_em": "2026-11-21",
-   "proxima_tentativa_em": "2026-11-29",
+   "proxima_tentativa_em": "2026-12-01",
    "seguimento": {
     "data": "21/11/2026",
     "via": "B4",
@@ -730601,6 +731787,12 @@
     "falhas": []
    },
    "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    },
     {
      "em": "2026-11-28",
      "classe": "tecnica",
