@@ -9,6 +9,18 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-28 · #2189 · União de pistas: o veredito vem inteiro de um lado
+
+Na união pela base comum da fila de pistas, `juiz_tentativas` passa a somar as tentativas dos dois lados, e `juiz`, `status` e `proxima_tentativa_em` vêm do mesmo lado: veredito novo vence adiamento; o mais recente vence; no mesmo dia, duas recusas ficam com a da `main` e a outra vai para `juiz_historico`. Fecha a recusa de 27/11 (robo-registro#483).
+
+## 2026-11-28 · #2187 · Rodada J18: leitura local do juiz 1.8 pelo original
+
+A leitura local de `evidencias/<hash>` seguia o cache txt antes do pdf; a produção relê o original. Com outra quebra de linha, o J7 recusava Salvador/BA, plano 2025 que a produção promove. Ordem corrigida (pdf, html, ocr.txt, txt), com duas travas novas. Só o paralelo muda (`data/paralelo_*`); índice, produção e páginas não.
+
+## 2026-11-28 · #2188 · Válvula adiada pela guarda da janela sai vermelha
+
+Na válvula `coleta-dia/*`, a coleta que a guarda da janela barra (teto cruzando 01:00–09:00 UTC) passa a terminar vermelha: ninguém a redispara, e o run 46088017356 de 28/11 saiu verde sem coletar. Na `main` a guarda segue parando em sucesso, porque a reserva do despachante refaz o elo.
+
 ## 2026-11-27 · #2184 · Pedido à ponte dos 294 portais com 403 de fora sem sonda do Brasil
 
 294 portais de prefeitura gravados como recusa por 403 visto de fora, antes de a regra de 26/11 exigir a sonda da ponte, entram em `ponte_pedidos.json`. A ponte os busca do Brasil; o que abrir é relido pela cópia, e o que recusar também de lá fica recusa.
