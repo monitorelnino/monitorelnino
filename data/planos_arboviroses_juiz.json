@@ -1,6 +1,6 @@
 {
  "_governanca": "Planos municipais de contingência de arboviroses julgados pela régua da camada de saúde, aplicada ao município (julgar_saude_municipal.py). Peso zero: não entra no índice. `municipios` guarda, por código IBGE, o plano mais forte promovido; município sem linha não teve plano promovido até o corte, o que não afirma que não haja plano.",
- "atualizado_em": "2026-11-27",
+ "atualizado_em": "2026-11-28",
  "municipios": {
   "2100303": {
    "municipio": "Aldeias Altas",
@@ -458,6 +458,14 @@
    "data": "30/09/2026",
    "url": "https://do.ib.itaborai.rj.gov.br/edicoes/2026/2026-10-19.pdf"
   },
+  "3170206": {
+   "municipio": "Uberlândia",
+   "uf": "MG",
+   "status": "VIG",
+   "doc": "Plano de Contingência de Arboviroses",
+   "data": "28/04/2023",
+   "url": "https://docs.uberlandia.mg.gov.br/wp-content/uploads/2026/06/15o-TERMO-DE-APOSTILAMENTO-AO-CONTRATO-No-251-2020-Missao-Sal-da-Terra-1.pdf"
+  },
   "2408102": {
    "municipio": "Natal",
    "uf": "RN",
@@ -473,6 +481,14 @@
    "doc": "PLANO DE CONTINGÊNCIA PARA O ENFRENTAMENTO DA DENGUE",
    "data": "10/2026",
    "url": "https://palmitos.sc.gov.br/uploads/sites/364/2026/10/PLANO-DE-CONTINGENCIA-DENGUE-2026.pdf"
+  },
+  "3550308": {
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "status": "VIG",
+   "doc": "PLANO DE CONTINGÊNCIA DAS ARBOVIROSES URBANAS DENGUE",
+   "data": "01/2025",
+   "url": "https://portal.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/doc/dengue/planodecontingeencia_arbo_2025_2026_sp_final-coupia.pdf"
   },
   "4121703": {
    "municipio": "Reserva",
@@ -578,14 +594,6 @@
    "data": "2023",
    "url": "https://www.paranagua.pr.gov.br/imgbank2/file/semsa/Plano%20de%20contingencia%20dengue%20ultima%20vers%C3%A3o%202023%20(1).pdf"
   },
-  "3550308": {
-   "municipio": "São Paulo",
-   "uf": "SP",
-   "status": "VENC",
-   "doc": "plano de enfrentamento integrado",
-   "data": "2024",
-   "url": "https://www.prefeitura.sp.gov.br/cidade/secretarias/upload/saude/vigilancia_em_saude/Plano_Municipal_Enfrentamento_Arboviroses_24_25.pdf"
-  },
   "3106200": {
    "municipio": "Belo Horizonte",
    "uf": "MG",
@@ -654,7 +662,6 @@
   "2700201": "nao_localizado",
   "2700300": "nao_localizado",
   "2701001": "nao_localizado",
-  "2701357": "nao_localizado",
   "2701506": "nao_localizado",
   "2702355": "nao_localizado",
   "2702603": "nao_localizado",
@@ -675,12 +682,10 @@
   "2706406": "nao_localizado",
   "2706422": "nao_localizado",
   "2706505": "nao_localizado",
-  "2706604": "nao_localizado",
   "2707008": "nao_localizado",
   "2707107": "nao_localizado",
   "2707305": "nao_localizado",
   "2707503": "nao_localizado",
-  "2707800": "nao_localizado",
   "2708303": "nao_localizado",
   "2708907": "nao_localizado",
   "2709103": "nao_localizado",
@@ -694,7 +699,6 @@
   "2802700": "nao_localizado",
   "2802908": "nao_localizado",
   "2804607": "nao_localizado",
-  "2804706": "nao_localizado",
   "2804805": "nao_localizado",
   "2805000": "nao_localizado",
   "2805505": "citado",
@@ -723,7 +727,6 @@
   "3114402": "nao_localizado",
   "3118601": "citado",
   "3145802": "nao_localizado",
-  "3170206": "nao_localizado",
   "3205002": "citado",
   "3205200": "nao_localizado",
   "3300100": "citado",
@@ -6095,6 +6098,248 @@
    "vigencia_declarada": "2024-2025",
    "status": "VENC",
    "julgado_em": "2026-11-27"
+  },
+  "https://saude.se.gov.br/wp-content/uploads/2026/08/Boletim-Arboviroses-SE-2026-34.pdf": {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": "08/2026",
+   "ibge": "2800308",
+   "municipio": "Aracaju",
+   "uf": "SE",
+   "url": "https://saude.se.gov.br/wp-content/uploads/2026/08/Boletim-Arboviroses-SE-2026-34.pdf",
+   "criterios": {
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "numero": null,
+   "julgado_em": "2026-11-28"
+  },
+  "https://sesdev.se.gov.br/arboviroses-dengue-chikungunya-e-zika/": {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": null,
+   "ibge": "2800308",
+   "municipio": "Aracaju",
+   "uf": "SE",
+   "url": "https://sesdev.se.gov.br/arboviroses-dengue-chikungunya-e-zika/",
+   "criterios": {
+    "1b_e_o_plano": {
+     "ok": false,
+     "trecho": ""
+    }
+   },
+   "julgado_em": "2026-11-28"
+  },
+  "https://www.documentador.pr.gov.br/documentador/pub.do?action=d&uuid=%40gtf-escriba-sesa%400846282d-0915-4a8f-ac55-aeffe0403f8a&emPg=true": {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://www.documentador.pr.gov.br/documentador/pub.do?action=d&uuid=%40gtf-escriba-sesa%400846282d-0915-4a8f-ac55-aeffe0403f8a&emPg=true",
+   "criterios": {
+    "1b_e_o_plano": {
+     "ok": false,
+     "trecho": ""
+    }
+   },
+   "julgado_em": "2026-11-28"
+  },
+  "https://www.documentador.pr.gov.br/documentador/pub.do?action=d&uuid=%40gtf-escriba-sesa%4026b313e9-e831-450c-b1b2-e8e5129903df": {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": null,
+   "ibge": "4106902",
+   "municipio": "Curitiba",
+   "uf": "PR",
+   "url": "https://www.documentador.pr.gov.br/documentador/pub.do?action=d&uuid=%40gtf-escriba-sesa%4026b313e9-e831-450c-b1b2-e8e5129903df",
+   "criterios": {
+    "1b_e_o_plano": {
+     "ok": false,
+     "trecho": ""
+    }
+   },
+   "julgado_em": "2026-11-28"
+  },
+  "http://www.adcon.rn.gov.br/ACERVO/sesap/DOC/DOC000000000347698.PDF": {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": "2025",
+   "ibge": "2408102",
+   "municipio": "Natal",
+   "uf": "RN",
+   "url": "http://www.adcon.rn.gov.br/ACERVO/sesap/DOC/DOC000000000347698.PDF",
+   "criterios": {
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "te: IBGE – Estimativas de população, 2019. Em maio de 2018 foi pactuado na 278ª Comissão Intergestores Bipartite – CIB/RN (conforme Deliberação nº 1463/18), dua"
+    }
+   },
+   "numero": null,
+   "julgado_em": "2026-11-28"
+  },
+  "https://www.to.gov.br/saude/dengue-chikungunya-zika-e-arboviroses-silvestres/3b6g8ahrdwum": {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": null,
+   "ibge": "1721000",
+   "municipio": "Palmas",
+   "uf": "TO",
+   "url": "https://www.to.gov.br/saude/dengue-chikungunya-zika-e-arboviroses-silvestres/3b6g8ahrdwum",
+   "criterios": {
+    "1b_e_o_plano": {
+     "ok": false,
+     "trecho": ""
+    }
+   },
+   "julgado_em": "2026-11-28"
+  },
+  "https://central3.to.gov.br/arquivo/256582/": {
+   "promove": false,
+   "motivo": "autoridade_nao_confirmada",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": "2016",
+   "ibge": "1721000",
+   "municipio": "Palmas",
+   "uf": "TO",
+   "url": "https://central3.to.gov.br/arquivo/256582/",
+   "criterios": {
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "nenhuma autoridade do Executivo no texto"
+    }
+   },
+   "numero": null,
+   "julgado_em": "2026-11-28"
+  },
+  "https://www.to.gov.br/saude/boletins-epidemiologicos-das-arboviroses/6aqzbftl85g2": {
+   "promove": false,
+   "motivo": "noticia_institucional_nao_e_o_plano",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": null,
+   "ibge": "1721000",
+   "municipio": "Palmas",
+   "uf": "TO",
+   "url": "https://www.to.gov.br/saude/boletins-epidemiologicos-das-arboviroses/6aqzbftl85g2",
+   "criterios": {
+    "1b_e_o_plano": {
+     "ok": false,
+     "trecho": ""
+    }
+   },
+   "julgado_em": "2026-11-28"
+  },
+  "https://portal.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/doc/dengue/planodecontingeencia_arbo_2025_2026_sp_final-coupia.pdf": {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": "plano_antigo",
+   "data": "01/2025",
+   "ibge": "3550308",
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "url": "https://portal.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/doc/dengue/planodecontingeencia_arbo_2025_2026_sp_final-coupia.pdf",
+   "criterios": {},
+   "numero": null,
+   "natureza": "EX_ANTE",
+   "titulo_do_documento": "PLANO DE CONTINGÊNCIA DAS ARBOVIROSES URBANAS DENGUE",
+   "vigencia_declarada": null,
+   "status": "VIG",
+   "julgado_em": "2026-11-28"
+  },
+  "http://www.saude.sp.gov.br/cve-centro-de-vigilancia-epidemiologica-prof.-alexandre-vranjac/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/arboviroses-urbanas/documentos/documentos": {
+   "promove": false,
+   "motivo": "executivo_pendente",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": "2023",
+   "ibge": "3550308",
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "url": "http://www.saude.sp.gov.br/cve-centro-de-vigilancia-epidemiologica-prof.-alexandre-vranjac/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/arboviroses-urbanas/documentos/documentos",
+   "criterios": {
+    "3_autoridade": {
+     "ok": false,
+     "trecho": "boviroses Urbanas >> 2016 Arboviroses - Nota Técnica CIB - 2016 Nota Técnica da Comissão Intergestores Bipartite (CIB) do Estado de São Paulo, aprovada em reuni"
+    }
+   },
+   "numero": null,
+   "julgado_em": "2026-11-28"
+  },
+  "https://www.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/doc/arboviroses/arboviroses18_plano_contingencia_out18.pdf?attach=true": {
+   "promove": false,
+   "motivo": "plano_sem_identificacao",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": null,
+   "ibge": "3550308",
+   "municipio": "São Paulo",
+   "uf": "SP",
+   "url": "https://www.saude.sp.gov.br/resources/cve-centro-de-vigilancia-epidemiologica/areas-de-vigilancia/doencas-de-transmissao-por-vetores-e-zoonoses/doc/arboviroses/arboviroses18_plano_contingencia_out18.pdf?attach=true",
+   "criterios": {
+    "6_categoria": {
+     "ok": false,
+     "trecho": "plano_sem_identificacao: sem ano no documento"
+    }
+   },
+   "numero": null,
+   "natureza": "EX_ANTE",
+   "titulo_do_documento": "Plano de Contingência foi construído a partir da experiência no enfrentamento da transmissão epidêmica de dengue e tem como eixos",
+   "julgado_em": "2026-11-28"
+  },
+  "https://docs.uberlandia.mg.gov.br/wp-content/uploads/2026/06/15o-TERMO-DE-APOSTILAMENTO-AO-CONTRATO-No-251-2020-Missao-Sal-da-Terra-1.pdf": {
+   "promove": true,
+   "motivo": null,
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": "plano_antigo",
+   "data": "28/04/2023",
+   "ibge": "3170206",
+   "municipio": "Uberlândia",
+   "uf": "MG",
+   "url": "https://docs.uberlandia.mg.gov.br/wp-content/uploads/2026/06/15o-TERMO-DE-APOSTILAMENTO-AO-CONTRATO-No-251-2020-Missao-Sal-da-Terra-1.pdf",
+   "criterios": {},
+   "numero": "8.666/1993",
+   "natureza": "EX_ANTE",
+   "titulo_do_documento": "Plano de Contingência de Arboviroses",
+   "vigencia_declarada": null,
+   "status": "VIG",
+   "julgado_em": "2026-11-28"
+  },
+  "https://data.queridodiario.ok.org.br/4101408/2026-11-06/ce93947bc28c6d27da2673495e1d63596022b559.pdf": {
+   "promove": false,
+   "motivo": "citacao_incompleta",
+   "codebook": "1.8 (30/10/2026)",
+   "categoria": null,
+   "data": null,
+   "ibge": "4101408",
+   "municipio": "Apucarana",
+   "uf": "PR",
+   "url": "https://data.queridodiario.ok.org.br/4101408/2026-11-06/ce93947bc28c6d27da2673495e1d63596022b559.pdf",
+   "criterios": {
+    "2_citacao": {
+     "ok": false,
+     "trecho": ""
+    }
+   },
+   "numero": "358/2026",
+   "julgado_em": "2026-11-28"
   }
  }
 }
