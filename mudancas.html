@@ -44,6 +44,8 @@
   <section id="mudancas" aria-labelledby="mudancasTitulo">
     <h2 id="mudancasTitulo">Registro de mudanças</h2>
     <dl class="mudancas-lista">
+      <dt>28/11/2026 · União de pistas: o veredito vem inteiro de um lado</dt>
+      <dd>Na união pela base comum da fila de pistas, `juiz_tentativas` passa a somar as tentativas dos dois lados, e `juiz`, `status` e `proxima_tentativa_em` vêm do mesmo lado: veredito novo vence adiamento; o mais recente vence; no mesmo dia, duas recusas ficam com a da `main` e a outra vai para `juiz_historico`. Fecha a recusa de 27/11 (robo-registro#483).</dd>
       <dt>28/11/2026 · Rodada J18: leitura local do juiz 1.8 pelo original</dt>
       <dd>A leitura local de `evidencias/&lt;hash&gt;` seguia o cache txt antes do pdf; a produção relê o original. Com outra quebra de linha, o J7 recusava Salvador/BA, plano 2025 que a produção promove. Ordem corrigida (pdf, html, ocr.txt, txt), com duas travas novas. Só o paralelo muda (`data/paralelo_*`); índice, produção e páginas não.</dd>
       <dt>28/11/2026 · Válvula adiada pela guarda da janela sai vermelha</dt>
@@ -162,8 +164,6 @@
       <dd>A reposição manual do domínio publicou o site e depois terminou vermelha ao arquivar o relatório, por uma cópia própria do registro que clonava o repositório de notas inteiro e escondia o erro. Ela passa a usar o mesmo registro dos outros workflows; se o relatório falhar, o job avisa sem reprovar.</dd>
       <dt>24/11/2026 · Válvula: conferir enxerga o módulo base</dt>
       <dd>A etapa `conferir` da válvula de dia baixava só `scripts/saude_pipeline.py`, e o script importa `coletores_base.py` da raiz; os lotes J18 caíram antes de conferir a entrada. O checkout esparso passa a incluir `coletores_base.py`. Sem mudança de coleta, dado ou página.</dd>
-      <dt>24/11/2026 · Válvula traz a main antes do PR de dado</dt>
-      <dd>O ramo `coleta-dia/*` nasce da `main` do disparo e a coleta leva horas; o PR de dado nascia em conflito e, em conflito, os Portões não rodavam (#2038, #2045). Antes do push, a válvula une a `main` ao ramo pela base comum, com o mesmo resolvedor do rebase. Falha F99; ensaio 30 roda o trecho do próprio workflow.</dd>
     </dl>
   </section>
 </main>
