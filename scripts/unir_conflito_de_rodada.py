@@ -180,7 +180,7 @@ IDENTIDADE_PROPRIA = {"data/pistas_imprensa_saude.json": ("url", "alvo", "consul
 
 # Decisão da central (25/10/2026, item 7): quando os dois lados mudaram o MESMO campo para valores
 # diferentes, a regra é por campo, e nenhum campo é escolhido ao acaso.
-#   juiz            vence o veredito de `julgado_em` mais recente; o outro vai para `juiz_historico`.
+#   juiz, status, proxima_tentativa_em  o veredito é uma unidade e vem de UM lado (`_lado_do_veredito`).
 #   juiz_historico  união dos dois lados (nada se perde).
 #   rejeitada_em    vence a data mais antiga (a primeira rejeição).
 #   buscador2_em, busca_veiculo_em  vence a data mais nova: o seguidor regrava a data a cada passada,
@@ -196,18 +196,33 @@ _CAMPOS_DO_ARQUIVO = ("caracteres", "sha256")
 
 
 # Campos da pista que são registro de tentativas: só crescem, e cada tentativa conta (mesmo idêntica).
-CAMPOS_QUE_SO_CRESCEM = ("busca_dirigida",)
+CAMPOS_QUE_SO_CRESCEM = ("busca_dirigida", "juiz_tentativas")
+
+# O veredito vem inteiro de um lado (28/11/2026, robo-registro#483: duas rodadas julgaram a mesma pista
+# no mesmo dia). Veredito novo vence adiamento técnico; dois vereditos, o `julgado_em` mais recente; no
+# mesmo dia, se os dois recusam, o da `main` (o outro vai para `juiz_historico`); com promoção, recusa;
+# dois adiamentos, a `proxima_tentativa_em` mais tardia.
+CAMPOS_DO_VEREDITO = ("juiz", "status", "proxima_tentativa_em")
+
+
+def _lado_do_veredito(b: dict, nossa: dict, delas: dict, perdidos: list) -> dict:
+    nj, dj, bj = nossa.get("juiz"), delas.get("juiz"), b.get("juiz")
+    novo_n, novo_d = isinstance(nj, dict) and nj != bj, isinstance(dj, dict) and dj != bj
+    if novo_n != novo_d:
+        return nossa if novo_n else delas
+    if not novo_n:
+        return max((nossa, delas), key=lambda p: str(p.get("proxima_tentativa_em") or ""))
+    n_em, d_em = str(nj.get("julgado_em") or ""), str(dj.get("julgado_em") or "")
+    if n_em == d_em and nj != dj and (nj.get("promove") or dj.get("promove")):
+        raise Recusa("veredito do juiz diferente nos dois lados com a mesma data de julgamento")
+    vence, perde = (delas, nj) if d_em > n_em else (nossa, dj)
+    if nj != dj:
+        perdidos.append(perde)
+    return vence
 
 
 def _politica_do_campo(campo, nosso_v, deles_v, perdidos: list, base_v=None):
     """Valor vencedor do campo mudado nos dois lados. `perdidos` recebe o veredito que perdeu."""
-    if campo == "juiz" and isinstance(nosso_v, dict) and isinstance(deles_v, dict):
-        nos_em, eles_em = str(nosso_v.get("julgado_em") or ""), str(deles_v.get("julgado_em") or "")
-        if nos_em == eles_em:
-            raise Recusa("veredito do juiz diferente nos dois lados com a mesma data de julgamento")
-        vence, perde = (nosso_v, deles_v) if nos_em > eles_em else (deles_v, nosso_v)
-        perdidos.append(perde)
-        return vence
     if campo in CAMPOS_QUE_SO_CRESCEM and isinstance(nosso_v, list) and isinstance(deles_v, list):
         return _multiconjunto(base_v if isinstance(base_v, list) else [], nosso_v, deles_v)
     if campo == "repeticoes" and all(type(v) is int for v in (nosso_v, deles_v, base_v or 0)):
@@ -290,16 +305,24 @@ def _mesclar_pista(base: dict, nossa: dict, delas: dict) -> dict:
     lado tocou entra. Campo que os dois tocaram para o MESMO valor entra. Campo que os dois tocaram
     para valores DIFERENTES segue `_politica_do_campo` (decisão da central, 25/10/2026).
     """
-    b = dict(base or {})
+    b, nossa, delas = dict(base or {}), dict(nossa or {}), dict(delas or {})
     fora = dict(b)
     perdidos = []
-    for campo in sorted(set(dict(nossa or {})) | set(dict(delas or {}))):
+    vs = lambda p, c: p.get(c, _AUSENTE)
+    conflita = lambda c: vs(nossa, c) != vs(b, c) != vs(delas, c) != vs(nossa, c)
+    veredito = (_lado_do_veredito(b, nossa, delas, perdidos)
+                if any(map(conflita, CAMPOS_DO_VEREDITO)) and (conflita("proxima_tentativa_em") or any(
+                    isinstance(p.get("juiz"), dict) and p["juiz"] != b.get("juiz") for p in (nossa, delas)))
+                else None)
+    for campo in sorted(set(nossa) | set(delas)):
         na_base = b.get(campo, _AUSENTE)
-        nosso_v = (nossa or {}).get(campo, _AUSENTE)
-        deles_v = (delas or {}).get(campo, _AUSENTE)
+        nosso_v = nossa.get(campo, _AUSENTE)
+        deles_v = delas.get(campo, _AUSENTE)
         nos_mudou = nosso_v != na_base
         eles_mudou = deles_v != na_base
-        if nos_mudou and eles_mudou and nosso_v != deles_v:
+        if veredito is not None and campo in CAMPOS_DO_VEREDITO:
+            escolhido = veredito.get(campo, _AUSENTE)
+        elif nos_mudou and eles_mudou and nosso_v != deles_v:
             if _AUSENTE in (nosso_v, deles_v):
                 raise (FicaComoNaMain if campo == "julgamento_automatico" else Recusa)(f"o campo {campo!r} foi removido de um lado e mudado no outro")
             escolhido = _politica_do_campo(campo, nosso_v, deles_v, perdidos,
@@ -1383,11 +1406,26 @@ def autoteste() -> int:
     checar("regra 7: busca_web_espera (estado de fila) vence o lado da main", m["busca_web_espera"] == "a2")
     try:
         _mesclar_pista(base, dict(base, juiz={"x": 1, "julgado_em": "2026-10-24"}),
-                       dict(base, juiz={"x": 2, "julgado_em": "2026-10-24"}))
+                       dict(base, juiz={"x": 2, "promove": True, "julgado_em": "2026-10-24"}))
         recusou = False
     except Recusa:
         recusou = True
-    checar("regra 7: juiz com mesma data nos dois lados é recusado, não adivinhado", recusou)
+    checar("regra 7: promoção e recusa na mesma data são recusadas, não adivinhadas", recusou)
+    # robo-registro#483 (27/11): duas rodadas no mesmo dia; o veredito vem inteiro de um lado.
+    _t = lambda m: [{"em": "2026-11-04", "motivo": "documento_inacessivel"}] + ([{"em": "2026-11-27", "motivo": m}] if m else [])
+    _b = {"id": 1, "status": "na fila", "proxima_tentativa_em": "2026-11-25", "juiz_tentativas": _t(None)}
+    _v = lambda m: dict(_b, juiz={"promove": False, "motivo": m, "julgado_em": "2026-11-27"},
+                        status="recusada: " + m, juiz_tentativas=_t(m))
+    _adia = dict(_b, proxima_tentativa_em="2026-12-04", juiz_tentativas=_t("documento_inacessivel"))
+    m = _mesclar_pista(_b, _v("uf_do_dominio_diverge"), {k: v for k, v in _v("citacao_incompleta").items()
+                                                         if k != "proxima_tentativa_em"})
+    checar("#483: duas recusas no mesmo dia, vence a da main inteira; a outra vai para juiz_historico; "
+           "as duas tentativas ficam", m["juiz"]["motivo"] == m["status"][10:] == "uf_do_dominio_diverge"
+           and m["juiz_historico"][0]["motivo"] == "citacao_incompleta" and len(m["juiz_tentativas"]) == 3)
+    m = _mesclar_pista(_b, _adia, {k: v for k, v in _v("citacao_incompleta").items() if k != "proxima_tentativa_em"})
+    checar("#483: veredito vence adiamento técnico, sem proxima_tentativa_em",
+           m["juiz"]["motivo"] == "citacao_incompleta" and "proxima_tentativa_em" not in m
+           and len(m["juiz_tentativas"]) == 3)
 
     # D2 (central, 23/11/2026): `julgamento_automatico`, uma checagem por linha da regra.
     _j = lambda d, dt: {"decisao": d, "data": dt, "motivo": d}

@@ -17510,7 +17510,7 @@
    "status_robots": "permite",
    "crawl_delay": null,
    "primeiro_acesso": "2026-11-16",
-   "total_acessos": 8,
+   "total_acessos": 9,
    "acessos": [
     {
      "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fc%20%3Fu%20WHERE%20%7B%20%3Fm%20wdt%3AP1585%20%3Fc%20%3B%20wdt%3AP856%20%3Fu%20.%20%7D",
@@ -17559,9 +17559,15 @@
      "quando": "2026-11-27T20:46:32Z",
      "origem": "robo",
      "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://query.wikidata.org/sparql?format=json&query=SELECT%20%3Fc%20%3Fu%20WHERE%20%7B%20%3Fm%20wdt%3AP1585%20%3Fc%20%3B%20wdt%3AP856%20%3Fu%20.%20%7D",
+     "quando": "2026-11-28T09:18:09Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
     }
    ],
-   "ultimo_acesso": "2026-11-27"
+   "ultimo_acesso": "2026-11-28"
   },
   "www.planalto.ba.gov.br": {
    "status_robots": "proibe",
@@ -21657,6 +21663,27 @@
     }
    ],
    "ultimo_acesso": "2026-11-26"
+  },
+  "mangaratiba.rj.gov.br": {
+   "status_robots": "proibe",
+   "crawl_delay": null,
+   "primeiro_acesso": "2026-11-28",
+   "total_acessos": 2,
+   "acessos": [
+    {
+     "url": "https://mangaratiba.rj.gov.br/",
+     "quando": "2026-11-28T10:02:33Z",
+     "origem": "robo",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    },
+    {
+     "url": "https://mangaratiba.rj.gov.br/",
+     "quando": "2026-11-28T10:02:40Z",
+     "origem": "descobrir_planos/portal",
+     "cliente": "MonitorElNinoBrasil/2.2.4"
+    }
+   ],
+   "ultimo_acesso": "2026-11-28"
   }
  }
 }

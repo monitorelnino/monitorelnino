@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-28 · #2189 · União de pistas: o veredito vem inteiro de um lado
+
+Na união pela base comum da fila de pistas, `juiz_tentativas` passa a somar as tentativas dos dois lados, e `juiz`, `status` e `proxima_tentativa_em` vêm do mesmo lado: veredito novo vence adiamento; o mais recente vence; no mesmo dia, duas recusas ficam com a da `main` e a outra vai para `juiz_historico`. Fecha a recusa de 27/11 (robo-registro#483).
+
 ## 2026-11-28 · #2187 · Rodada J18: leitura local do juiz 1.8 pelo original
 
 A leitura local de `evidencias/<hash>` seguia o cache txt antes do pdf; a produção relê o original. Com outra quebra de linha, o J7 recusava Salvador/BA, plano 2025 que a produção promove. Ordem corrigida (pdf, html, ocr.txt, txt), com duas travas novas. Só o paralelo muda (`data/paralelo_*`); índice, produção e páginas não.
