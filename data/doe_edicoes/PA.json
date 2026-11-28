@@ -2,9 +2,9 @@
  "_governanca": "Canal 2 desta unidade. Rota de edição não achada é `rota_nao_descoberta` (palpite de endereço errado, a descobrir); só recusa real da fonte (401, 403, 429, 451, muro de robô) é `sem_acesso_automatico`. As duas são lacuna declarada, que não conta como consultado (A5-08, 10/10/2026; 17/10/2026).",
  "canal2": {
   "modo": "padrao_por_data",
-  "em": "26/11/2026",
+  "em": "27/11/2026",
   "conta_como_consultado": true,
-  "ultima_edicao_lida": "2026-11-26"
+  "ultima_edicao_lida": "2026-11-27"
  },
  "edicoes": {
   "2026-06-29": {
@@ -1518,7 +1518,7 @@
   },
   "2026-11-20": {
    "decisao": "sem_edicao_na_data",
-   "em": "26/11/2026",
+   "em": "27/11/2026",
    "motivo": "HTTPError: HTTP Error 404: Not Found"
   },
   "2026-11-25": {
@@ -1579,9 +1579,23 @@
    "legal_versao": "2026-10-30",
    "emergencia_versao": "2026-11-15",
    "termos_achados": []
+  },
+  "2026-11-27": {
+   "decisao": "lida",
+   "em": "27/11/2026",
+   "bytes": 8614978,
+   "paginas": 90,
+   "paginas_com_texto": 90,
+   "url": "https://www.ioepa.com.br/pages/2026/2026.11.27.DOE.pdf",
+   "impressao": "8d9ff36ea7ec0ec6d8a043c523b72d655db6cb9cff43b22bb44dba015e206ce1",
+   "termos_versao": "2026-10-17",
+   "leitor": "2026-10-20",
+   "legal_versao": "2026-10-30",
+   "emergencia_versao": "2026-11-15",
+   "termos_achados": []
   }
  },
- "atualizado_em": "26/11/2026",
+ "atualizado_em": "27/11/2026",
  "declaracoes_estaduais": {
   "5.489": {
    "numero": "5.489",

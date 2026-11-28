@@ -535,9 +535,7 @@
  "serie_mensal_download": {
   "fonte": "https://portaldatransparencia.gov.br/download-de-dados/transferencias/",
   "ultimo_mes": "202610",
-  "meses_parciais": [
-   "202610"
-  ],
+  "meses_parciais": [],
   "meses": [
    {
     "mes": "202601",
@@ -650,13 +648,14 @@
    {
     "mes": "202610",
     "por_rota": {
+     "constitucional": 27173133427.79,
      "outras": 2349569945.11,
      "saude": 12817164.8,
      "defesa_civil": 65891148.33,
      "assistencia_social": 1416479.36
     },
-    "total": 2429694737.6,
-    "parcial": true
+    "total": 29602828165.39,
+    "parcial": false
    }
   ],
   "meses_tentados": {}
