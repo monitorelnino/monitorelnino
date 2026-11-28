@@ -233,9 +233,9 @@ jobs:
       # dependia de os `cron` estarem certos, e `cron` certo nao impede disparo manual, cadeia de
       # `workflow_run` nem reexecucao de run antigo. Em 06/10 a publicacao da fase 0 encadeou a
       # corrente antiga e cinco elos coletaram de dia na `main`, dois deles perdendo o commit.
-      # A guarda pergunta antes de coletar, e para em SUCESSO: nao coletar fora da hora e o
-      # comportamento certo, nao um defeito. Fora da `main` ela nunca barra -- e no ramo `ensaio`
-      # que a campanha roda de dia. O publicador e a excecao unica, quando a editoria chama.
+      # A guarda pergunta antes de coletar, e na `main` para em SUCESSO: a reserva do despachante
+      # refaz o elo na janela. Na valvula `coleta-dia/*` ninguem refaz, e em 28/11 um lote adiado
+      # saiu verde sem coletar: la a parada e vermelha (regra 3, pulado nao conta como feito).
       - name: Janela da noite — na `main`, só de noite
         id: janela
         timeout-minutes: 2
@@ -253,6 +253,7 @@ jobs:
             echo "pode=1" >> "$GITHUB_OUTPUT"
           else
             echo "pode=0" >> "$GITHUB_OUTPUT"
+            case "$RAMO" in coleta-dia/*) exit 1 ;; esac
           fi
 
       # 08/10/2026 (A2-26): o painel e preenchido pelo elo SEGUINTE, pela API. A linha gravada
