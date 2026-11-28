@@ -768545,7 +768545,16 @@
    "alvo": "3132305",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -768559,7 +768568,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: titulo_nao_e_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768568,7 +768577,25 @@
    "alvo": "3112505",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "titulo_nao_e_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "titulo_nao_e_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "e2f3db24ab4914a25f5e41c6cfa4f01ade4c67a99a2cbcf1a1f37c62c665a014"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768582,7 +768609,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768591,7 +768618,38 @@
    "alvo": "4316451",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "15/07/2021",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "722d491c53afb7c3c659db3608e1048e379724b59d608941b78ad2560fb459ec"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768605,7 +768663,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768614,7 +768672,25 @@
    "alvo": "4316451",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "e4a467d9a63b6e9db7e8bf31f9c6be056145c85e94a29c503440e12ba5e593b4"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768628,7 +768704,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768637,7 +768713,25 @@
    "alvo": "4316451",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "bbfcba3dbb9c0a8cad7b7e8feb27bbe34b0d8c68791d90982ae40bc59454cfd1"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768651,7 +768745,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768660,7 +768754,25 @@
    "alvo": "4316451",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "4c1087e30b1752babed3d1845bd2872738a375c8f3a5f9b72741bc81d9fe306d"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768674,7 +768786,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: ente_nao_confirmado",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768683,7 +768795,25 @@
    "alvo": "4316451",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "ente_nao_confirmado",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "ente_nao_confirmado",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "0103a1dde99c44803c6089d22c38ac1689f6458656e41b88f247015387c04f86"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768706,7 +768836,16 @@
    "alvo": "3200136",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -768720,7 +768859,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768729,7 +768868,36 @@
    "alvo": "4308300",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "29/02/2024",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "1e352e1318552f3e2e4e819df6600d09da97137f17210270de664ba532e2262c"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768752,7 +768920,16 @@
    "alvo": "4212650",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -768775,7 +768952,16 @@
    "alvo": "4211058",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -768789,7 +768975,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768798,7 +768984,36 @@
    "alvo": "4201505",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "07/11/2024",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "d8cb39525cd8b8c1a46ae02eb98482a2d886c8162238c1a4fa750280ed8f2040"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768812,7 +769027,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768821,7 +769036,36 @@
    "alvo": "4201505",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "767a26cd559326ddef2850b50b652e614b23b69ab39815621a7ded25322ab7a7"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768835,7 +769079,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768844,7 +769088,25 @@
    "alvo": "4201505",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "23/06/2015",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "8734db8c9e587f40758416db20672f09193375d25b4550b3d975e6bdebdda9f6"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768867,7 +769129,16 @@
    "alvo": "3126901",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -768881,7 +769152,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768890,7 +769161,36 @@
    "alvo": "4201703",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "11/02/2022",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "97be2b59c8ae7ffa4a400cc7c4f25e5a2fddb4462acd15cc24809eafca37a8e3"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768913,7 +769213,16 @@
    "alvo": "4113734",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -768927,7 +769236,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768936,7 +769245,36 @@
    "alvo": "4210308",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "13/07/2023",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "d090db8e5c1f18e36f69e8b3b2e63162bd31c2d186e04d6ac2f1c6b02ab2e8de"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768950,7 +769288,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -768959,7 +769297,38 @@
    "alvo": "4212700",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "19/02/2021",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "d179189a09a0c27e26361aaa67ed7131d7e8bc5b5f840065c0eb2c8bddcf0a72"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -768982,7 +769351,16 @@
    "alvo": "4307104",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -768996,7 +769374,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769005,7 +769383,36 @@
    "alvo": "3552908",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "01/04/2026",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "9d4c471ee430c0a6389e0d3844369234e01cdf0feb318ca25bd2276268897c49"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769028,7 +769435,16 @@
    "alvo": "3101201",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769051,7 +769467,16 @@
    "alvo": "3101201",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769074,7 +769499,16 @@
    "alvo": "3101201",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769088,7 +769522,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: documento_estadual",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769097,7 +769531,25 @@
    "alvo": "4202131",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "uf"
+   "entrada": "uf",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "documento_estadual",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "documento_estadual",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "f72fc622301109a4f661145235d714efef23801536dfea9e24ebdcc9ffc06094"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769120,7 +769572,16 @@
    "alvo": "4320305",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769134,7 +769595,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769143,7 +769604,25 @@
    "alvo": "4320305",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "e269bdb5a68d97f8d4fb0b275e02fd5a42be7c50a92fdf5c865a4d50ebf2e4cb"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769166,7 +769645,16 @@
    "alvo": "4320305",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "texto_nao_extraivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769189,7 +769677,16 @@
    "alvo": "4320305",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769212,7 +769709,16 @@
    "alvo": "4207403",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769235,7 +769741,16 @@
    "alvo": "4218103",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769249,7 +769764,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769258,7 +769773,36 @@
    "alvo": "4214904",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "22/08/2019",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "dda628a0df5fb6acbd3edb81ebb34123f1e0b393039e2ed3b922b70b4e712d50"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769281,7 +769825,16 @@
    "alvo": "4215208",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769304,7 +769857,16 @@
    "alvo": "4215208",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769327,7 +769889,16 @@
    "alvo": "3120409",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769350,7 +769921,16 @@
    "alvo": "3149606",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769364,7 +769944,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769373,7 +769953,38 @@
    "alvo": "4300851",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "28/05/2026",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "b6fd99ee3c21cb3c7c6c75d976561276ae56522f9a24963e1be0fa81b7668928"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769387,7 +769998,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769396,7 +770007,25 @@
    "alvo": "4305603",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "b2d81171a96cd877d6f75480d59972f8742f8ffb39add62dbaa7d52d99008ad6"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769410,7 +770039,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769419,7 +770048,25 @@
    "alvo": "4305603",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "9d534ddfc5907e1553a032409d629eba979198ef5f2281cd86c7dde9e90fbf43"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769442,7 +770089,16 @@
    "alvo": "4219606",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769456,7 +770112,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769465,7 +770121,36 @@
    "alvo": "4219606",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "05/10/2023",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "eb7328c562b70dde8ea7b0de0a47aab085032b64916d5162ff5c98b40bb25114"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769488,7 +770173,16 @@
    "alvo": "4205175",
    "nivel": "C",
    "tipo": "estrutura",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769502,7 +770196,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769511,7 +770205,36 @@
    "alvo": "4209805",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "08/12/2014",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "c6467ab29ce29b354419372b8176d028c0a876f610f5e35c68e6dd96914a045e"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769525,7 +770248,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: autoridade_nao_confirmada",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769534,7 +770257,25 @@
    "alvo": "4205605",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "autoridade_nao_confirmada",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "autoridade_nao_confirmada",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "12/05/2015",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "89386a796b951ad6e109c0e3ed6781e0378b169649a1e7e2db627d20cf6a560c"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769548,7 +770289,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769557,7 +770298,25 @@
    "alvo": "4202081",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "ac6a43b95ae033287d7eac9853abcc274b306659bfa0e7744316d7e1bc92ab3f"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769571,7 +770330,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769580,7 +770339,38 @@
    "alvo": "4202081",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "24/08/2020",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "f03ade2d550f271077013054225e9dd96d6e74b8d4dcc4a2f7a6f768ff7feec6"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769594,7 +770384,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_nao_e_documento",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769603,7 +770393,25 @@
    "alvo": "4202081",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_nao_e_documento",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_nao_e_documento",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "d7d404c4c2d224c2e75b4ed4e6c83dccb2f5ec90b422bad9fc7d04049e564d69"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769617,7 +770425,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769626,7 +770434,36 @@
    "alvo": "4207577",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "73fc5fda67dd92a23068fbea6b15f7169466905a8516cc10fabdb1fe83fa2d8c"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769640,7 +770477,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769649,7 +770486,25 @@
    "alvo": "4306551",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "7a89816ce3e32714d4841c9b5dcfa082d66dac35e4650d27ceb08909d61daccb"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769663,7 +770518,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769672,7 +770527,25 @@
    "alvo": "4306551",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "5c787b890e443d0dd8eacb5d6685b0acf6ee7e7fbdde609e0db140c995932e65"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769686,7 +770559,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769695,7 +770568,25 @@
    "alvo": "4306551",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "c74387dfd7868c66bb454230bcb4b9e7befbbe8d1aa39cda76b2c9fae9bb1144"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769718,7 +770609,16 @@
    "alvo": "4306551",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769732,7 +770632,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769741,7 +770641,25 @@
    "alvo": "1101468",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "33ee7f049b6533a3420e5e4498d94adea46ffa16b41100120c0f0e34e24b5129"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769764,7 +770682,16 @@
    "alvo": "4321626",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769787,7 +770714,16 @@
    "alvo": "4312955",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769801,7 +770737,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769810,7 +770746,38 @@
    "alvo": "4310876",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "cdd0e2418fa9bf589d9798fc5e29fe549ab37e6416052739930a0d0c9b17abdf"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769824,7 +770791,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769833,7 +770800,36 @@
    "alvo": "4306759",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "26/02/2026",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "17bd8c0f970e823f738da191bf19949f03e3fc00a1d04f2a8a47a9f767de4e7c"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769847,7 +770843,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769856,7 +770852,38 @@
    "alvo": "4317251",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "16/08/2021",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "3c682c2080edcf5e99adde1afe9d370bceb17398ba2805c206655b4db87d00c2"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769879,7 +770906,16 @@
    "alvo": "4309258",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769902,7 +770938,16 @@
    "alvo": "4205357",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769916,7 +770961,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769925,7 +770970,25 @@
    "alvo": "4320107",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "7c767ec2b9c188dff9e5b26bbe7b85a5dc372a21a43539bdd1ca94542c91b8a5"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769939,7 +771002,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769948,7 +771011,38 @@
    "alvo": "4312906",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario",
+      "sitio_oficial",
+      "busca_web"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "20/08/21",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "755b5cee804a60805872ae72591d30cbd74c6b8523a36df6358af89acecfec0b"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -769971,7 +771065,16 @@
    "alvo": "4300877",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -769985,7 +771088,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: citacao_incompleta",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -769994,7 +771097,36 @@
    "alvo": "4300877",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "busca_dirigida": [
+    {
+     "em": "2026-11-28",
+     "fontes": [
+      "querido_diario"
+     ],
+     "encontrou": null
+    }
+   ],
+   "ultima_busca_em": "2026-11-28",
+   "tentativas_de_busca_dirigida": 1,
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "citacao_incompleta",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "citacao_incompleta",
+    "leu_documento": true,
+    "categoria": null,
+    "data": "25/06/2014",
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "59ae09d97d201b963b013f5c887d54fcd115999e0a362f05072c6e5c3a8c718a"
+   }
   },
   {
    "documento_oficial_confirmado": null,
@@ -770017,7 +771149,16 @@
    "alvo": "4300877",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -770040,7 +771181,16 @@
    "alvo": "4300877",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "tecnica",
+     "motivo": "documento_inacessivel",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "proxima_tentativa_em": "2026-11-29"
   },
   {
    "documento_oficial_confirmado": null,
@@ -770054,7 +771204,7 @@
    "data_publicacao": null,
    "origem": "descoberta",
    "hash_evidencia": null,
-   "status": "pista — na fila, aguardando busca dirigida e juiz",
+   "status": "pista — recusada pelo juiz: noticia_institucional_nao_e_o_plano",
    "data": "2026-11-28",
    "registrado_em": "2026-11-28",
    "origem_do_coletor": "descoberta",
@@ -770063,7 +771213,25 @@
    "alvo": "4315354",
    "nivel": "C",
    "tipo": "plano",
-   "entrada": "municipio"
+   "entrada": "municipio",
+   "juiz_tentativas": [
+    {
+     "em": "2026-11-28",
+     "classe": "criterio",
+     "motivo": "noticia_institucional_nao_e_o_plano",
+     "codebook": "1.8 (30/10/2026)"
+    }
+   ],
+   "juiz": {
+    "codebook": "1.8 (30/10/2026)",
+    "promove": false,
+    "motivo": "noticia_institucional_nao_e_o_plano",
+    "leu_documento": true,
+    "categoria": null,
+    "data": null,
+    "julgado_em": "2026-11-28",
+    "hash_evidencia": "e90177beb905e420b2734e2e6a6740323eff75d99bee6595633f8c086dc60712"
+   }
   }
  ],
  "quarentena": {
