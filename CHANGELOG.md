@@ -9,6 +9,10 @@ altera pesos, créditos ou componentes do índice exige **versão maior**
 documentação, novos portões de verificação e reconhecimentos editoriais
 não pontuados permanecem na versão corrente.
 
+## 2026-11-28 · #2187 · Rodada J18: leitura local do juiz 1.8 pelo original
+
+A leitura local de `evidencias/<hash>` seguia o cache txt antes do pdf; a produção relê o original. Com outra quebra de linha, o J7 recusava Salvador/BA, plano 2025 que a produção promove. Ordem corrigida (pdf, html, ocr.txt, txt), com duas travas novas. Só o paralelo muda (`data/paralelo_*`); índice, produção e páginas não.
+
 ## 2026-11-28 · #2188 · Válvula adiada pela guarda da janela sai vermelha
 
 Na válvula `coleta-dia/*`, a coleta que a guarda da janela barra (teto cruzando 01:00–09:00 UTC) passa a terminar vermelha: ninguém a redispara, e o run 46088017356 de 28/11 saiu verde sem coletar. Na `main` a guarda segue parando em sucesso, porque a reserva do despachante refaz o elo.
